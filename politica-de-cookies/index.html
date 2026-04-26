@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0e0f0d">
+<title>Política de Cookies — Maturare</title>
+<meta name="description" content="Política de Cookies da Maturare. Entenda quais cookies utilizamos, suas finalidades e como gerenciá-los.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<style>
+/* === LOADER === */
+.loader {
+  position: fixed;
+  inset: 0;
+  background: var(--z0, #0e0f0d);
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 24px;
+}
+.loader-brand {
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-size: clamp(28px, 5vw, 48px);
+  font-style: italic;
+  color: var(--paper);
+  opacity: 0;
+  transition: opacity .6s ease;
+}
+.loader-brand.visible { opacity: 1; }
+.loader-line {
+  width: 48px;
+  height: 1px;
+  background: rgba(255,255,255,.12);
+  position: relative;
+  overflow: hidden;
+}
+.loader-line::after {
+  content: '';
+  position: absolute;
+  left: 0; top: 0;
+  height: 100%;
+  width: 0%;
+  background: #1a7a4a;
+  transition: width 1s cubic-bezier(.16,1,.3,1);
+}
+.loader-line.active::after { width: 100%; }
+.loader.done {
+  opacity: 0;
+  transition: opacity .5s ease;
+  pointer-events: none;
+}
+
+/* === VARIABLES === */
+:root {
+  --ink: #111210;
+  --ink2: #1c1b19;
+  --paper: #f5f4f0;
+  --paper2: #edebe3;
+  --paper3: #e2dfd6;
+  --dim: #5a5a56;
+  --faint: #d6d4ce;
+  --green: #1a7a4a;
+  --green2: #6fcf97;
+  --green-bg: #e8f5ee;
+  --orange: #e07b39;
+  --serif: 'Instrument Serif', Georgia, serif;
+  --sans: 'DM Sans', system-ui, sans-serif;
+  --radius: 16px;
+  --radius-sm: 8px;
+  --sec-pad: clamp(100px, 12vw, 160px);
+  --spring: cubic-bezier(.16, 1, .3, 1);
+  --z0: #0e0f0d;
+  --z1: #141513;
+  --z2: #1a1b18;
+  --z3: #21221f;
+  --z4: #292a26;
+  --glow-green: rgba(26, 122, 74, .14);
+  --glow-green-edge: rgba(111, 207, 151, .07);
+  --glow-orange: rgba(224, 123, 57, .06);
+  --border-z1: rgba(255, 255, 255, .055);
+  --border-z2: rgba(255, 255, 255, .08);
+  --border-z3: rgba(255, 255, 255, .11);
+  --toplight: inset 0 1px 0 rgba(255, 255, 255, .06);
+  --toplight-strong: inset 0 1px 0 rgba(255, 255, 255, .1);
+  --sp-2: 8px; --sp-3: 12px; --sp-4: 16px; --sp-6: 24px; --sp-8: 32px; --sp-10: 40px; --sp-12: 48px; --sp-16: 64px;
+  --r-sharp: 0px; --r-subtle: 4px; --r-card: 12px; --r-soft: 16px; --r-pill: 999px;
+  --zi-nav: 300; --zi-bar: 301; --zi-prog: 999;
+  --t-fast: 150ms; --t-normal: 250ms; --t-slow: 400ms; --t-slower: 750ms;
+  --shadow-2: 0 4px 12px rgba(0,0,0,.25), 0 2px 4px rgba(0,0,0,.2);
+  --shadow-3: 0 8px 24px rgba(0,0,0,.3), 0 4px 8px rgba(0,0,0,.2);
+  --shadow-5: 0 24px 80px rgba(0,0,0,.45), 0 12px 24px rgba(0,0,0,.25);
+  --color-warmth: #1a1812;
+  --color-warmth-border: rgba(224, 123, 57, .08);
+}
+
+/* === RESET === */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+/* === GLOBAL === */
+body {
+  background: var(--z0);
+  color: var(--paper);
+  font-family: var(--sans);
+  font-size: 16px;
+  letter-spacing: -.008em;
+  line-height: 1.75;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+a { text-decoration: none; color: inherit; }
+img { display: block; max-width: 100%; }
+
+/* === NAV === */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--zi-nav);
+  height: 62px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  background: transparent;
+  backdrop-filter: none;
+  border-bottom: 1px solid transparent;
+  transition: top .3s, background .3s, border-color .3s, backdrop-filter .3s;
+  will-change: background, backdrop-filter;
+}
+nav.scrolled {
+  background: rgba(7, 7, 9, .9);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  border-bottom-color: rgba(255, 255, 255, .07);
+  box-shadow: var(--toplight), 0 1px 20px rgba(0, 0, 0, .3);
+}
+.logo {
+  font-family: var(--serif);
+  font-size: 19px;
+  letter-spacing: .05em;
+  color: var(--paper);
+  transition: opacity .2s;
+}
+.logo:hover { opacity: .6; }
+.nav-links { display: flex; list-style: none; align-items: center; }
+.nav-btn {
+  background: none;
+  border: none;
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, .55);
+  padding: 8px 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: color .2s;
+  white-space: nowrap;
+}
+.nav-btn:hover { color: var(--paper); }
+.nav-r { display: flex; align-items: center; gap: 12px; }
+.nav-cta {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  background: var(--paper);
+  color: var(--ink);
+  padding: 10px 24px;
+  border: none;
+  cursor: pointer;
+  font-family: var(--sans);
+  transition: transform .2s, box-shadow .2s;
+}
+.nav-cta:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(244, 243, 239, .15);
+}
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+.hamburger span { display: block; width: 22px; height: 1.5px; background: var(--paper); }
+.skip-link { position: absolute; top: -100%; left: 16px; background: var(--green); color: #fff; padding: 8px 16px; border-radius: 4px; z-index: 100000; font-size: 14px; transition: top .2s; }
+.skip-link:focus { top: 8px; }
+.mob-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.6); z-index: 998; }
+.mob-overlay.open { display: block; }
+.mob-menu { position: fixed; top: 0; right: 0; width: 280px; height: 100vh; background: var(--z1, #141513); z-index: 999; display: flex; flex-direction: column; padding: 80px 24px 32px; gap: 4px; transform: translateX(100%); transition: transform .3s cubic-bezier(.16,1,.3,1); overflow-y: auto; }
+.mob-menu.open { transform: translateX(0); }
+.mob-menu a { color: rgba(255,255,255,.6); font-size: 15px; font-weight: 500; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,.06); transition: color .2s; }
+.mob-menu a:hover, .mob-menu a.active { color: var(--paper); }
+.mob-menu-cta { margin-top: 16px; background: var(--green); color: #fff !important; text-align: center; padding: 12px 24px !important; border-radius: 8px; border: none !important; font-weight: 600; }
+
+/* === HERO === */
+.legal-hero {
+  padding: 140px 0 64px;
+  text-align: center;
+  background: var(--z0);
+  position: relative;
+}
+.legal-hero h1 {
+  font-family: var(--serif);
+  font-size: clamp(36px, 5vw, 56px);
+  line-height: 1.1;
+  letter-spacing: -.02em;
+  color: var(--paper);
+  margin-bottom: 12px;
+}
+.legal-hero .updated {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--dim);
+  letter-spacing: .02em;
+}
+
+/* === LEGAL CONTENT === */
+.legal-wrap {
+  background: var(--z1);
+  padding: 80px 40px;
+}
+.legal-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.legal-section {
+  margin-bottom: 48px;
+  padding-left: 24px;
+  border-left: 2px solid var(--green);
+}
+.legal-section h2 {
+  font-family: var(--serif);
+  font-size: clamp(22px, 3vw, 28px);
+  line-height: 1.2;
+  letter-spacing: -.01em;
+  color: var(--paper);
+  margin-bottom: 16px;
+}
+.legal-section p,
+.legal-section ul {
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.8;
+  color: rgba(245, 244, 240, .9);
+  margin-bottom: 16px;
+}
+.legal-section ul {
+  padding-left: 20px;
+}
+.legal-section li {
+  margin-bottom: 8px;
+}
+.legal-section strong {
+  font-weight: 600;
+  color: var(--paper);
+}
+.legal-section a {
+  color: var(--green2);
+  border-bottom: 1px solid rgba(111, 207, 151, .3);
+  transition: color .2s;
+}
+.legal-section a:hover { color: #a8f0c8; }
+
+/* Cookie table */
+.cookie-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0 24px;
+  font-size: 14px;
+}
+.cookie-table th,
+.cookie-table td {
+  text-align: left;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border-z1);
+}
+.cookie-table th {
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--dim);
+  background: var(--z2);
+}
+.cookie-table td {
+  color: rgba(245, 244, 240, .85);
+  font-weight: 300;
+}
+.cookie-table tr:last-child td { border-bottom: none; }
+
+/* === FOOTER === */
+footer {
+  background: #0d0e0c;
+  border-top: 1px solid #111;
+  padding: 64px 40px 32px;
+}
+.foot-in { max-width: 1200px; margin: 0 auto; }
+.foot-top {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 64px;
+}
+.foot-brand {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-style: italic;
+  color: var(--paper);
+  margin-bottom: 8px;
+}
+.foot-tag {
+  font-size: 14px;
+  font-weight: 300;
+  color: #4a4a44;
+  line-height: 1.7;
+  max-width: 220px;
+  margin-bottom: 32px;
+}
+.foot-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: #24251f;
+  border: 1px solid #1e1f1c;
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+.foot-live::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #1a7a4a;
+  animation: pulse 2.5s infinite;
+}
+.fcol-h {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: #4a4a44;
+  margin-bottom: 16px;
+}
+.flinks { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.flinks a { font-size: 14px; font-weight: 300; color: #4a4a44; transition: color .2s; }
+.flinks a:hover { color: var(--paper); }
+.foot-bot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 32px;
+  border-top: 1px solid #111;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+.foot-copy { font-size: 13px; color: #24251f; }
+.foot-socs { display: flex; gap: 24px; }
+.foot-socs a {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: #24251f;
+  transition: color .2s;
+}
+.foot-socs a:hover { color: var(--paper); }
+.foot-legal { width: 100%; display: flex; gap: 24px; flex-wrap: wrap; margin-bottom: 8px; }
+.foot-legal a { font-size: 12px; color: #24251f; text-decoration: underline; text-underline-offset: 2px; transition: color .2s; }
+.foot-legal a:hover { color: var(--paper); }
+
+/* === KEYFRAMES === */
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: .4; transform: scale(.75); }
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 960px) {
+  nav { padding: 0 20px; }
+  .nav-links, .nav-cta { display: none; }
+  .hamburger { display: flex; }
+  nav { top: 0 !important; }
+  .legal-hero { padding: 100px 20px 48px; }
+  .legal-wrap { padding: 48px 20px; }
+  .foot-top { grid-template-columns: 1fr 1fr; }
+  .cookie-table { font-size: 13px; }
+  .cookie-table th, .cookie-table td { padding: 10px 12px; }
+}
+@media (max-width: 480px) {
+  .foot-top { grid-template-columns: 1fr; }
+  .legal-section { padding-left: 16px; }
+  .cookie-table { display: block; overflow-x: auto; }
+}
+</style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div class="loader" id="loader">
+  <div class="loader-line" id="loaderLine"></div>
+  <div class="loader-brand" id="loaderBrand">Maturare</div>
+</div>
+
+<!-- NAV -->
+<a href="#main-content" class="skip-link">Pular para conteúdo</a>
+<nav id="nav">
+  <a href="home-maturare-final.html" class="logo">Maturare</a>
+  <ul class="nav-links">
+    <li><a href="home-maturare-final.html" class="nav-btn">Home</a></li>
+    <li><a href="metodologia.html" class="nav-btn">Metodologia</a></li>
+    <li><a href="projetos.html" class="nav-btn">Projetos</a></li>
+    <li><a href="blog.html" class="nav-btn">Blog</a></li>
+    <li><a href="contato.html" class="nav-btn">Contato</a></li>
+  </ul>
+  <div class="nav-r">
+    <a href="contato.html" class="nav-cta">Fale Com Especialista</a>
+    <button class="hamburger" id="hambBtn" aria-label="Abrir menu de navegação"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mob-overlay" id="mobOverlay"></div>
+<div class="mob-menu" id="mobMenu">
+  <a href="home-maturare-final.html">Home</a>
+  <a href="sobre.html">Sobre</a>
+  <a href="metodologia.html">Metodologia</a>
+  <a href="projetos.html">Projetos</a>
+  <a href="blog.html">Blog</a>
+  <a href="daniel-rios.html">Daniel Rios</a>
+  <a href="nossos-clientes.html">Clientes</a>
+  <a href="depoimentos.html">Depoimentos</a>
+  <a href="faq-maturare.html">FAQ</a>
+  <a href="contato.html" class="mob-menu-cta">Fale Com Especialista</a>
+</div>
+
+<!-- HERO -->
+<section class="legal-hero" id="main-content">
+  <h1>Política de Cookies</h1>
+  <p class="updated">Última atualização: Abril 2026</p>
+</section>
+
+<!-- CONTENT -->
+<section class="legal-wrap">
+  <div class="legal-content">
+
+    <div class="legal-section">
+      <h2>1. O que são cookies</h2>
+      <p>Cookies são pequenos arquivos de texto armazenados no seu dispositivo (computador, tablet ou smartphone) quando você visita um site. Eles permitem que o site reconheça seu dispositivo e armazene informações sobre suas preferências ou ações anteriores.</p>
+      <p>Os cookies são amplamente utilizados para fazer os sites funcionarem de maneira mais eficiente, bem como para fornecer informações aos proprietários do site. Eles não causam danos ao seu dispositivo e não contêm vírus ou programas maliciosos.</p>
+      <p>Além dos cookies tradicionais, esta política também abrange tecnologias similares, como pixels de rastreamento (web beacons), armazenamento local (localStorage) e identificadores de dispositivo.</p>
+    </div>
+
+    <div class="legal-section">
+      <h2>2. Tipos de cookies que utilizamos</h2>
+      <p>O site <strong>maturare.com.br</strong> utiliza as seguintes categorias de cookies:</p>
+
+      <p><strong>Cookies Essenciais</strong></p>
+      <p>São indispensáveis para o funcionamento básico do site. Sem eles, funcionalidades fundamentais como navegação entre páginas, segurança e manutenção da sessão não seriam possíveis. Estes cookies não coletam informações pessoais para fins de marketing.</p>
+      <table class="cookie-table">
+        <tr><th>Cookie</th><th>Finalidade</th><th>Duração</th></tr>
+        <tr><td>Sessão do site</td><td>Mantém o estado da navegação durante a visita</td><td>Sessão</td></tr>
+        <tr><td>Segurança (CSRF)</td><td>Protege contra ataques de falsificação de solicitação</td><td>Sessão</td></tr>
+        <tr><td>Preferência de cookies</td><td>Armazena sua escolha sobre o uso de cookies</td><td>12 meses</td></tr>
+      </table>
+
+      <p><strong>Cookies Analíticos</strong></p>
+      <p>Utilizados para coletar informações sobre como os visitantes utilizam o site, como as páginas mais acessadas, tempo de permanência e origem do tráfego. Todas as informações coletadas são agregadas e anonimizadas sempre que possível.</p>
+      <table class="cookie-table">
+        <tr><th>Cookie</th><th>Finalidade</th><th>Duração</th></tr>
+        <tr><td>Google Analytics (_ga)</td><td>Distingue usuários únicos, análise de tráfego</td><td>24 meses</td></tr>
+        <tr><td>Google Analytics (_ga_*)</td><td>Mantém o estado da sessão</td><td>24 meses</td></tr>
+        <tr><td>Google Analytics (_gid)</td><td>Distingue usuários para contagem de visitas</td><td>24 horas</td></tr>
+      </table>
+
+      <p><strong>Cookies de Marketing</strong></p>
+      <p>Utilizados para rastrear visitantes em diferentes sites e exibir anúncios mais relevantes. São aplicados quando há campanhas ativas de remarketing.</p>
+      <table class="cookie-table">
+        <tr><th>Cookie</th><th>Finalidade</th><th>Duração</th></tr>
+        <tr><td>Google Ads (_gcl_*)</td><td>Remarketing e conversões de anúncios do Google</td><td>90 dias</td></tr>
+        <tr><td>Meta Pixel (_fbp)</td><td>Remarketing e conversões de anúncios do Meta (Facebook/Instagram), quando aplicável</td><td>90 dias</td></tr>
+      </table>
+
+      <p><strong>Cookies de Preferências</strong></p>
+      <p>Permitem que o site lembre de suas escolhas e ofereça uma experiência personalizada.</p>
+      <table class="cookie-table">
+        <tr><th>Cookie</th><th>Finalidade</th><th>Duração</th></tr>
+        <tr><td>Idioma</td><td>Armazena a preferência de idioma do usuário</td><td>12 meses</td></tr>
+        <tr><td>Tema/aparência</td><td>Armazena preferências visuais (quando disponível)</td><td>12 meses</td></tr>
+      </table>
+    </div>
+
+    <div class="legal-section">
+      <h2>3. Cookies de terceiros</h2>
+      <p>Alguns cookies são definidos por serviços de terceiros que aparecem em nossas páginas. Não controlamos a configuração desses cookies. Recomendamos que você consulte as políticas de privacidade dessas empresas para mais informações:</p>
+      <ul>
+        <li><strong>Google (Analytics, Ads, YouTube):</strong> cookies utilizados para análise de tráfego, remarketing e reprodução de vídeos incorporados. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Política de Privacidade do Google</a>;</li>
+        <li><strong>Meta (Facebook, Instagram):</strong> cookies utilizados para remarketing e análise de conversão, quando aplicável. <a href="https://www.facebook.com/privacy/policy/" target="_blank" rel="noopener">Política de Privacidade da Meta</a>;</li>
+        <li><strong>YouTube (embeds):</strong> quando vídeos do YouTube estão incorporados em nossas páginas, o YouTube pode definir cookies no seu dispositivo. Utilizamos o modo de privacidade avançada sempre que possível, o que limita o rastreamento até que o vídeo seja reproduzido.</li>
+      </ul>
+    </div>
+
+    <div class="legal-section">
+      <h2>4. Como gerenciar cookies</h2>
+      <p>Você pode controlar e gerenciar cookies de várias maneiras. A maioria dos navegadores permite que você recuse ou aceite cookies, exclua cookies existentes e configure preferências para determinados sites.</p>
+      <p>Veja como gerenciar cookies nos principais navegadores:</p>
+      <ul>
+        <li><strong>Google Chrome:</strong> Configurações &rarr; Privacidade e segurança &rarr; Cookies e outros dados do site. Você pode bloquear cookies de terceiros, limpar cookies ao fechar o navegador ou gerenciar exceções por site;</li>
+        <li><strong>Mozilla Firefox:</strong> Configurações &rarr; Privacidade e Segurança &rarr; Cookies e dados de sites. O Firefox oferece proteção aprimorada contra rastreamento em três níveis: Padrão, Rigoroso e Personalizado;</li>
+        <li><strong>Safari:</strong> Preferências &rarr; Privacidade &rarr; Gerenciar dados do site. O Safari bloqueia cookies de terceiros por padrão e oferece a opção de Prevenção Inteligente de Rastreamento;</li>
+        <li><strong>Microsoft Edge:</strong> Configurações &rarr; Cookies e permissões do site &rarr; Gerenciar e excluir cookies e dados do site. Você pode escolher entre três níveis de prevenção de rastreamento: Básico, Equilibrado e Estrito.</li>
+      </ul>
+      <p>Você também pode utilizar ferramentas de gerenciamento de consentimento, como extensões de navegador que bloqueiam rastreadores automaticamente.</p>
+    </div>
+
+    <div class="legal-section">
+      <h2>5. Impacto de desabilitar cookies</h2>
+      <p>A desabilitação de cookies pode afetar sua experiência de navegação no site. Especificamente:</p>
+      <ul>
+        <li><strong>Cookies essenciais:</strong> a desabilitação pode impedir o funcionamento correto do site, incluindo formulários de contato e funcionalidades de navegação;</li>
+        <li><strong>Cookies analíticos:</strong> sem eles, não conseguiremos analisar o comportamento de navegação para melhorar o site. Sua experiência não será diretamente afetada;</li>
+        <li><strong>Cookies de marketing:</strong> você continuará vendo anúncios, porém eles serão menos relevantes para seus interesses;</li>
+        <li><strong>Cookies de preferências:</strong> o site pode não lembrar de suas configurações pessoais, como idioma ou tema visual.</li>
+      </ul>
+      <p>Recomendamos que você mantenha ao menos os cookies essenciais ativados para garantir o funcionamento adequado do site.</p>
+    </div>
+
+    <div class="legal-section">
+      <h2>6. Consentimento</h2>
+      <p>Ao acessar nosso site pela primeira vez, você verá um banner de cookies informando sobre o uso de cookies e solicitando seu consentimento. Você pode:</p>
+      <ul>
+        <li><strong>Aceitar todos os cookies:</strong> ao clicar em "Aceitar", você consente com o uso de todos os tipos de cookies descritos nesta política;</li>
+        <li><strong>Gerenciar preferências:</strong> ao clicar em "Configurações" ou "Gerenciar cookies", você pode escolher quais categorias de cookies deseja autorizar;</li>
+        <li><strong>Recusar cookies não essenciais:</strong> ao clicar em "Recusar", apenas os cookies estritamente necessários serão utilizados.</li>
+      </ul>
+      <p>Sua escolha será armazenada em um cookie de preferência por 12 meses. Após esse período, ou quando você limpar os cookies do navegador, o banner será exibido novamente.</p>
+      <p>Você pode alterar suas preferências de cookies a qualquer momento acessando as configurações de cookies no rodapé do site ou nas configurações do seu navegador.</p>
+    </div>
+
+    <div class="legal-section">
+      <h2>7. Alterações nesta Política</h2>
+      <p>A Maturare pode atualizar esta Política de Cookies periodicamente para refletir mudanças nos cookies que utilizamos, em nossos serviços ou na legislação aplicável.</p>
+      <p>Quando realizarmos alterações significativas, publicaremos a versão atualizada nesta página com a nova data de "Última atualização". Recomendamos que você consulte esta política regularmente.</p>
+    </div>
+
+    <div class="legal-section">
+      <h2>8. Contato</h2>
+      <p>Se você tiver dúvidas sobre o uso de cookies no site da Maturare ou desejar exercer seus direitos relacionados à proteção de dados, entre em contato:</p>
+      <ul>
+        <li><strong>Empresa:</strong> Maturare — CNPJ 47.336.340/0001-51</li>
+        <li><strong>E-mail:</strong> <a href="mailto:contato@maturare.com.br">contato@maturare.com.br</a></li>
+        <li><strong>Endereço:</strong> Niterói, RJ — Brasil</li>
+        <li><strong>Site:</strong> <a href="https://maturare.com.br">maturare.com.br</a></li>
+      </ul>
+      <p>Para informações adicionais sobre como tratamos seus dados pessoais, consulte nossa <a href="termos-de-privacidade.html">Política de Privacidade</a>.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-in">
+    <div class="foot-top">
+      <div>
+        <div class="foot-brand">Maturare</div>
+        <p class="foot-tag">Aceleradora de negócios que faz empresas locais serem encontradas no Google e recomendadas pelas IAs.</p>
+        <div class="foot-live">Monitoramento ativo</div>
+      </div>
+      <div>
+        <div class="fcol-h">Principal</div>
+        <ul class="flinks">
+          <li><a href="home-maturare-final.html">Home</a></li>
+          <li><a href="sobre.html">Sobre</a></li>
+          <li><a href="metodologia.html">Metodologia</a></li>
+          <li><a href="projetos.html">Projetos</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="fcol-h">Empresa</div>
+        <ul class="flinks">
+          <li><a href="nossos-clientes.html">Nossos Clientes</a></li>
+          <li><a href="depoimentos.html">Depoimentos</a></li>
+          <li><a href="contato.html">Contato</a></li>
+          <li><a href="faq-maturare.html">FAQ</a></li>
+          <li><a href="daniel-rios.html">Daniel Rios</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="fcol-h">Contato</div>
+        <ul class="flinks">
+          <li><a href="contato.html">Diagnóstico grátis</a></li>
+          <li><a href="contato.html">Falar com Daniel</a></li>
+          <li><a href="mailto:contato@maturare.com.br">contato@maturare.com.br</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <div class="foot-legal">
+        <a href="termos-de-privacidade.html">Termos de Privacidade</a>
+        <a href="politica-de-cookies.html">Política de Cookies</a>
+        <a href="termos-de-uso.html">Termos de Uso</a>
+      </div>
+      <div class="foot-copy">&#169; 2026 Maturare · CNPJ 47.336.340/0001-51 · Niterói, RJ</div>
+      <div class="foot-socs">
+        <a href="https://br.linkedin.com/in/daniel-batista-674b62140" target="_blank" aria-label="LinkedIn da Maturare">LinkedIn</a>
+        <a href="https://www.instagram.com/maturare.com.br/" target="_blank" aria-label="Instagram da Maturare">Instagram</a>
+        <a href="https://www.youtube.com/@googledominado1" target="_blank" aria-label="YouTube da Maturare">YouTube</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* === LOADER === */
+(function() {
+  var loader = document.getElementById('loader');
+  var line = document.getElementById('loaderLine');
+  var brand = document.getElementById('loaderBrand');
+  if (!loader) return;
+  document.body.style.overflow = 'hidden';
+  requestAnimationFrame(function() { if (line) line.classList.add('active'); });
+  setTimeout(function() { if (brand) brand.classList.add('visible'); }, 200);
+  setTimeout(function() {
+    loader.classList.add('done');
+    document.body.style.overflow = '';
+    setTimeout(function() { loader.style.display = 'none'; }, 600);
+  }, 1200);
+})();
+
+/* === NAV SCROLL === */
+var navEl = document.getElementById('nav');
+window.addEventListener('scroll', function() {
+  if (navEl) navEl.classList.toggle('scrolled', window.scrollY > 80);
+}, {passive: true});
+
+/* === MOBILE MENU === */
+var hambBtn = document.getElementById('hambBtn');
+var mobMenu = document.getElementById('mobMenu');
+var mobOverlay = document.getElementById('mobOverlay');
+function toggleMob() { mobMenu.classList.toggle('open'); mobOverlay.classList.toggle('open'); }
+if (hambBtn) hambBtn.addEventListener('click', toggleMob);
+if (mobOverlay) mobOverlay.addEventListener('click', toggleMob);
+</script>
+</body>
+</html>

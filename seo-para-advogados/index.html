@@ -1,0 +1,2042 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0e0f0d">
+<title>SEO para Advogados — Clientes Encontram seu Escritório | Maturare</title>
+<meta name="description" content="Seu escritório de advocacia no topo do Google quando o cliente mais precisa. Páginas por área de atuação, SEO local, conteúdo informativo conforme OAB e Schema LegalService.">
+<meta property="og:title" content="SEO para Advogados — Clientes Encontram seu Escritório | Maturare">
+<meta property="og:description" content="Escritórios de advocacia que aparecem no Google quando o cliente pesquisa 'advogado trabalhista + cidade' ou 'advogado para divórcio'. SEO com respeito às normas da OAB.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,350;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<style>
+/* === LOADER === */
+.loader {
+  position: fixed;
+  inset: 0;
+  background: var(--z0, #0e0f0d);
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 32px;
+}
+.loader-phrase {
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-size: clamp(22px, 4.5vw, 42px);
+  font-style: italic;
+  color: rgba(255,255,255,.9);
+  letter-spacing: .01em;
+  text-align: center;
+  max-width: 600px;
+  padding: 0 24px;
+  overflow: hidden;
+}
+.loader-phrase span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity .4s ease, transform .4s ease;
+}
+.loader-phrase span.visible { opacity: 1; transform: none; }
+.loader-brand {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: #6fcf97;
+  opacity: 0;
+  transition: opacity .6s ease .3s;
+}
+.loader-brand.visible { opacity: 1; }
+.loader-line {
+  width: 48px;
+  height: 1px;
+  background: rgba(255,255,255,.12);
+  position: relative;
+  overflow: hidden;
+}
+.loader-line::after {
+  content: '';
+  position: absolute;
+  left: 0; top: 0;
+  height: 100%;
+  width: 0%;
+  background: #1a7a4a;
+  transition: width 1.8s cubic-bezier(.16,1,.3,1);
+}
+.loader-line.active::after { width: 100%; }
+.loader.done {
+  opacity: 0;
+  transition: opacity .6s ease;
+  pointer-events: none;
+}
+
+/* === VARIABLES === */
+:root {
+  --ink: #111210;
+  --ink2: #1c1b19;
+  --paper: #f5f4f0;
+  --paper2: #edebe3;
+  --paper3: #e2dfd6;
+  --dim: #5a5a56;
+  --faint: #d6d4ce;
+  --green: #1a7a4a;
+  --green2: #6fcf97;
+  --green-bg: #e8f5ee;
+  --orange: #e07b39;
+  --serif: 'Instrument Serif', Georgia, serif;
+  --sans: 'DM Sans', system-ui, sans-serif;
+  --radius: 16px;
+  --radius-sm: 8px;
+  --sec-pad: clamp(100px, 12vw, 160px);
+  --spring: cubic-bezier(.16, 1, .3, 1);
+  --z0: #0e0f0d;
+  --z1: #141513;
+  --z2: #1a1b18;
+  --z3: #21221f;
+  --z4: #292a26;
+  --glow-green: rgba(26, 122, 74, .14);
+  --glow-green-edge: rgba(111, 207, 151, .07);
+  --glow-orange: rgba(224, 123, 57, .06);
+  --border-z1: rgba(255, 255, 255, .055);
+  --border-z2: rgba(255, 255, 255, .08);
+  --border-z3: rgba(255, 255, 255, .11);
+  --toplight: inset 0 1px 0 rgba(255, 255, 255, .06);
+  --toplight-strong: inset 0 1px 0 rgba(255, 255, 255, .1);
+  --sp-2: 8px; --sp-3: 12px; --sp-4: 16px; --sp-6: 24px; --sp-8: 32px; --sp-10: 40px; --sp-12: 48px; --sp-16: 64px;
+  --r-sharp: 0px; --r-subtle: 4px; --r-card: 12px; --r-soft: 16px; --r-pill: 999px;
+  --zi-nav: 300; --zi-bar: 301; --zi-prog: 999;
+  --t-fast: 150ms; --t-normal: 250ms; --t-slow: 400ms; --t-slower: 750ms;
+  --shadow-2: 0 4px 12px rgba(0,0,0,.25), 0 2px 4px rgba(0,0,0,.2);
+  --shadow-3: 0 8px 24px rgba(0,0,0,.3), 0 4px 8px rgba(0,0,0,.2);
+  --shadow-5: 0 24px 80px rgba(0,0,0,.45), 0 12px 24px rgba(0,0,0,.25);
+}
+
+/* === RESET === */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+/* === GLOBAL === */
+body {
+  background: var(--z0);
+  color: var(--paper);
+  font-family: var(--sans);
+  font-size: 16px;
+  letter-spacing: -.008em;
+  line-height: 1.75;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  padding-bottom: 60px;
+}
+a { text-decoration: none; color: inherit; }
+img { display: block; max-width: 100%; }
+
+/* === CONTAINER === */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(24px, 5vw, 80px);
+}
+
+/* === REVEAL ANIMATIONS === */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .8s var(--spring), transform .8s var(--spring);
+  will-change: opacity, transform;
+}
+.reveal.in { opacity: 1; transform: none; will-change: auto; }
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity .8s var(--spring), transform .8s var(--spring);
+}
+.reveal-left.in { opacity: 1; transform: none; }
+.reveal-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity .8s var(--spring), transform .8s var(--spring);
+}
+.reveal-right.in { opacity: 1; transform: none; }
+.reveal-scale {
+  opacity: 0;
+  transform: scale(.85);
+  transition: opacity .7s var(--spring), transform .7s var(--spring);
+}
+.reveal-scale.in { opacity: 1; transform: none; }
+.reveal-blur {
+  opacity: 0;
+  filter: blur(8px);
+  transform: translateY(12px);
+  transition: opacity .9s var(--spring), filter .9s var(--spring), transform .9s var(--spring);
+}
+.reveal-blur.in { opacity: 1; filter: blur(0); transform: none; }
+
+/* Stagger delays */
+.d1 { transition-delay: .08s; }
+.d2 { transition-delay: .16s; }
+.d3 { transition-delay: .24s; }
+.d4 { transition-delay: .32s; }
+.d5 { transition-delay: .40s; }
+.d6 { transition-delay: .48s; }
+
+/* === SECTION TYPOGRAPHY === */
+.sec-label {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  color: #5a5a54;
+}
+.sec-label.lt { color: var(--green2); }
+.sec-h {
+  font-family: var(--serif);
+  font-size: clamp(32px, 4.5vw, 52px);
+  line-height: 1.1;
+  letter-spacing: -.02em;
+  color: var(--paper);
+  text-wrap: balance;
+}
+.sec-h em { font-style: italic; color: var(--green2); }
+.sec-desc {
+  font-size: 18px;
+  font-weight: 300;
+  font-variation-settings: 'opsz' 18, 'wght' 350;
+  line-height: 1.8;
+  max-width: 640px;
+  color: rgba(255, 255, 255, .55);
+  text-wrap: pretty;
+}
+
+/* === SCROLL PROGRESS === */
+.scroll-prog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--green) 0%, var(--green2) 60%, var(--orange) 100%);
+  z-index: var(--zi-prog);
+  width: 0%;
+  pointer-events: none;
+  will-change: width;
+}
+
+/* === NAV === */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--zi-nav);
+  height: 62px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  background: transparent;
+  backdrop-filter: none;
+  border-bottom: 1px solid transparent;
+  transition: background .3s, border-color .3s, backdrop-filter .3s;
+}
+nav.scrolled {
+  background: rgba(7, 7, 9, .9);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  border-bottom-color: rgba(255, 255, 255, .07);
+  box-shadow: var(--toplight), 0 1px 20px rgba(0, 0, 0, .3);
+}
+.logo {
+  font-family: var(--serif);
+  font-size: 19px;
+  letter-spacing: .05em;
+  color: var(--paper);
+  transition: opacity .2s;
+}
+.logo:hover { opacity: .6; }
+.nav-links { display: flex; list-style: none; align-items: center; }
+.nav-btn {
+  background: none;
+  border: none;
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, .55);
+  padding: 8px 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: color .2s;
+  white-space: nowrap;
+}
+.nav-btn:hover { color: var(--paper); }
+.nav-r { display: flex; align-items: center; gap: 12px; }
+.nav-cta {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  background: var(--paper);
+  color: var(--ink);
+  padding: 10px 24px;
+  border: none;
+  cursor: pointer;
+  font-family: var(--sans);
+  transition: transform .2s, box-shadow .2s;
+}
+.nav-cta:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(244, 243, 239, .15);
+}
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+.hamburger span { display: block; width: 22px; height: 1.5px; background: var(--paper); transition: transform .3s, opacity .3s; }
+
+/* Mobile menu */
+.mob-menu {
+  display: none;
+  position: fixed;
+  top: 62px;
+  left: 0;
+  right: 0;
+  background: rgba(14, 15, 13, .97);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid var(--border-z2);
+  z-index: 299;
+  padding: 24px 20px 32px;
+  flex-direction: column;
+  gap: 0;
+  transform: translateY(-8px);
+  opacity: 0;
+  transition: opacity .3s var(--spring), transform .3s var(--spring);
+  pointer-events: none;
+}
+.mob-menu.open {
+  display: flex;
+  transform: none;
+  opacity: 1;
+  pointer-events: all;
+}
+.mob-menu a {
+  font-size: 16px;
+  font-weight: 500;
+  color: rgba(255,255,255,.65);
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border-z1);
+  transition: color .2s;
+}
+.mob-menu a:last-child { border-bottom: none; }
+.mob-menu a:hover { color: var(--paper); }
+.mob-menu .mob-cta {
+  margin-top: 20px;
+  background: var(--green);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: 14px 24px;
+  text-align: center;
+  border-radius: var(--r-pill);
+}
+
+/* === NOISE OVERLAY === */
+.noise { position: relative; }
+.noise::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.045'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  mix-blend-mode: screen;
+  opacity: .5;
+  transform: translate3d(0, 0, 0);
+}
+.noise > * { position: relative; z-index: 1; }
+
+/* === HERO === */
+.hero {
+  background: var(--z1);
+  padding: clamp(110px, 14vw, 160px) 0 clamp(80px, 10vw, 120px);
+  position: relative;
+  overflow: hidden;
+}
+.hero-glow {
+  position: absolute;
+  top: -20%;
+  right: -10%;
+  width: 700px;
+  height: 700px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse 70% 60% at 70% 20%, var(--glow-green) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-glow-2 {
+  position: absolute;
+  bottom: -10%;
+  left: -5%;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--glow-orange) 0%, transparent 65%);
+  pointer-events: none;
+  z-index: 0;
+}
+.hero-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(26, 122, 74, .08);
+  border: 1px solid rgba(26, 122, 74, .18);
+  border-radius: var(--r-pill);
+  padding: 4px 14px 4px 10px;
+  color: var(--green2);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+  opacity: 0;
+  animation: up .6s .1s var(--spring) forwards;
+}
+.hero-kicker::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--green2);
+  animation: pulse 2s infinite;
+}
+.hero-h1 {
+  font-family: var(--serif);
+  font-size: clamp(38px, 5vw, 64px);
+  line-height: 1.05;
+  letter-spacing: -.028em;
+  text-wrap: balance;
+  opacity: 0;
+  animation: up .9s .18s var(--spring) forwards;
+}
+.hero-h1 em { font-style: italic; color: var(--green2); }
+.hero-sub {
+  font-size: 18px;
+  font-weight: 350;
+  font-variation-settings: 'opsz' 18, 'wght' 350;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, .55);
+  max-width: 560px;
+  margin: 24px 0 36px;
+  text-wrap: pretty;
+  opacity: 0;
+  animation: up .9s .3s var(--spring) forwards;
+}
+.hero-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: rgba(255,255,255,.35);
+  opacity: 0;
+  animation: up .7s .5s var(--spring) forwards;
+}
+.hero-breadcrumb a { color: rgba(255,255,255,.35); transition: color .2s; }
+.hero-breadcrumb a:hover { color: rgba(255,255,255,.65); }
+.hero-breadcrumb span { color: rgba(255,255,255,.2); }
+.hero-breadcrumb strong { color: rgba(255,255,255,.55); font-weight: 500; }
+
+/* === SECTION BASE === */
+section.dark { background: var(--z0); }
+section.raised { background: var(--z1); }
+
+/* === STAT BAR === */
+.stat-bar {
+  background: var(--z2);
+  border-top: 1px solid var(--border-z2);
+  border-bottom: 1px solid var(--border-z2);
+  padding: 32px 0;
+}
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  divide-x: 1px solid var(--border-z2);
+}
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 16px 24px;
+  border-right: 1px solid var(--border-z2);
+}
+.stat-item:last-child { border-right: none; }
+.stat-num {
+  font-family: var(--serif);
+  font-size: clamp(28px, 3vw, 40px);
+  font-style: italic;
+  color: var(--green2);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.stat-label {
+  font-size: 13px;
+  font-weight: 400;
+  color: rgba(255,255,255,.4);
+  line-height: 1.4;
+  max-width: 140px;
+}
+
+/* === CENARIO SECTION === */
+.cenario-section {
+  padding: clamp(80px, 10vw, 130px) 0;
+}
+.cenario-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(48px, 6vw, 80px);
+  align-items: start;
+}
+.cenario-txt {}
+.cenario-h { margin-bottom: 20px; }
+.cenario-desc {
+  font-size: 17px;
+  font-weight: 300;
+  font-variation-settings: 'opsz' 18, 'wght' 350;
+  line-height: 1.85;
+  color: rgba(255,255,255,.55);
+  margin-bottom: 28px;
+  text-wrap: pretty;
+}
+.queries-block {
+  background: var(--z2);
+  border: 1px solid var(--border-z2);
+  border-radius: var(--r-card);
+  padding: 28px 28px 20px;
+  box-shadow: var(--toplight);
+}
+.queries-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.25);
+  margin-bottom: 18px;
+}
+.query-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border-z1);
+}
+.query-row:last-child { border-bottom: none; }
+.query-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  background: rgba(26, 122, 74, .1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.query-text {
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(255,255,255,.7);
+  flex: 1;
+}
+.query-vol {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--green2);
+  background: rgba(26,122,74,.1);
+  padding: 2px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+.cenario-aside {}
+.insight-card {
+  background: var(--z2);
+  border: 1px solid var(--border-z2);
+  border-radius: var(--r-card);
+  padding: 28px 32px;
+  box-shadow: var(--toplight);
+  margin-bottom: 20px;
+  position: relative;
+  overflow: hidden;
+}
+.insight-card::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 160px; height: 160px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(26,122,74,.08) 0%, transparent 65%);
+  transform: translate(40%, -40%);
+  pointer-events: none;
+}
+.insight-tag {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--green2);
+  margin-bottom: 12px;
+}
+.insight-h {
+  font-family: var(--serif);
+  font-size: 22px;
+  letter-spacing: -.015em;
+  line-height: 1.25;
+  color: var(--paper);
+  margin-bottom: 12px;
+}
+.insight-p {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.7;
+  color: rgba(255,255,255,.5);
+  text-wrap: pretty;
+}
+.value-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(224, 123, 57, .1);
+  border: 1px solid rgba(224, 123, 57, .2);
+  border-radius: var(--r-pill);
+  padding: 4px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #e07b39;
+  margin-top: 14px;
+}
+
+/* === OAB SECTION === */
+.oab-section {
+  padding: clamp(72px, 9vw, 110px) 0;
+}
+.oab-banner {
+  background: var(--z2);
+  border: 1px solid rgba(224, 123, 57, .15);
+  border-radius: var(--r-card);
+  padding: clamp(36px, 5vw, 60px) clamp(28px, 4vw, 56px);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 32px;
+  align-items: start;
+  box-shadow: var(--toplight), 0 0 40px rgba(224, 123, 57, .04);
+  position: relative;
+  overflow: hidden;
+}
+.oab-banner::before {
+  content: '';
+  position: absolute;
+  left: -40px;
+  top: -40px;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(224,123,57,.06) 0%, transparent 65%);
+  pointer-events: none;
+}
+.oab-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  background: rgba(224, 123, 57, .1);
+  border: 1px solid rgba(224, 123, 57, .2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+.oab-body { position: relative; z-index: 1; }
+.oab-tag {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: #e07b39;
+  margin-bottom: 10px;
+}
+.oab-h {
+  font-family: var(--serif);
+  font-size: clamp(22px, 2.8vw, 32px);
+  letter-spacing: -.018em;
+  line-height: 1.2;
+  color: var(--paper);
+  margin-bottom: 16px;
+  text-wrap: balance;
+}
+.oab-desc {
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.8;
+  color: rgba(255,255,255,.5);
+  max-width: 580px;
+  text-wrap: pretty;
+}
+.oab-rules {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 24px;
+}
+.oab-rule {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 14px 16px;
+  background: rgba(255,255,255,.03);
+  border: 1px solid var(--border-z1);
+  border-radius: 8px;
+}
+.oab-rule-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.oab-rule-txt {
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: rgba(255,255,255,.55);
+}
+.oab-rule-txt strong {
+  display: block;
+  font-weight: 600;
+  color: rgba(255,255,255,.8);
+  margin-bottom: 2px;
+}
+
+/* === WHAT WE DO === */
+.services-section {
+  padding: clamp(80px, 10vw, 130px) 0;
+}
+.services-head {
+  margin-bottom: clamp(48px, 6vw, 72px);
+}
+.services-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.svc-card {
+  background: var(--z2);
+  border: 1px solid var(--border-z2);
+  border-radius: var(--r-card);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: var(--toplight);
+  transition: transform var(--t-slow) var(--spring), border-color var(--t-slow), box-shadow var(--t-slow);
+  position: relative;
+  overflow: hidden;
+}
+.svc-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--r-card);
+  background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(26,122,74,.06) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity var(--t-slow);
+  pointer-events: none;
+}
+.svc-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(26, 122, 74, .3);
+  box-shadow: var(--toplight), 0 12px 40px rgba(0,0,0,.3), 0 0 32px rgba(26,122,74,.08);
+}
+.svc-card:hover::before { opacity: 1; }
+.svc-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(26, 122, 74, .12);
+  border: 1px solid rgba(26, 122, 74, .18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.svc-icon svg { width: 22px; height: 22px; }
+.svc-card-title {
+  font-family: var(--serif);
+  font-size: 21px;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -.015em;
+  color: var(--paper);
+}
+.svc-card-desc {
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.7;
+  color: rgba(255,255,255,.5);
+  flex: 1;
+  text-wrap: pretty;
+}
+.svc-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 4px;
+}
+.svc-tag {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--green2);
+  background: rgba(26,122,74,.1);
+  border: 1px solid rgba(26,122,74,.15);
+  padding: 3px 10px;
+  border-radius: var(--r-pill);
+}
+
+/* === KEYWORDS === */
+.kw-section {
+  padding: clamp(72px, 9vw, 110px) 0;
+}
+.kw-head {
+  margin-bottom: clamp(40px, 5vw, 56px);
+}
+.kw-cols {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.kw-col {
+  background: var(--z2);
+  border: 1px solid var(--border-z2);
+  border-radius: var(--r-card);
+  padding: 24px;
+  box-shadow: var(--toplight);
+}
+.kw-col-title {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--green2);
+  margin-bottom: 18px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border-z1);
+}
+.kw-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.kw-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(255,255,255,.6);
+  line-height: 1.4;
+}
+.kw-list li::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--green2);
+  opacity: .5;
+  flex-shrink: 0;
+}
+
+/* === PROCESS === */
+.process-section {
+  padding: clamp(80px, 10vw, 130px) 0;
+}
+.process-head {
+  margin-bottom: clamp(48px, 6vw, 72px);
+}
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  position: relative;
+}
+.process-steps::before {
+  content: '';
+  position: absolute;
+  top: 28px;
+  left: calc(12.5% + 14px);
+  right: calc(12.5% + 14px);
+  height: 1px;
+  background: linear-gradient(90deg, var(--green) 0%, rgba(26,122,74,.15) 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+.step-card {
+  background: var(--z2);
+  border: 1px solid var(--border-z2);
+  border-radius: var(--r-card);
+  padding: 28px 24px;
+  text-align: center;
+  box-shadow: var(--toplight);
+  position: relative;
+  z-index: 1;
+  transition: transform var(--t-slow) var(--spring), border-color var(--t-slow);
+}
+.step-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(26,122,74,.3);
+}
+.step-num {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(26, 122, 74, .12);
+  border: 1px solid rgba(26, 122, 74, .25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--green2);
+}
+.step-title {
+  font-family: var(--serif);
+  font-size: 18px;
+  letter-spacing: -.01em;
+  line-height: 1.25;
+  color: var(--paper);
+  margin-bottom: 10px;
+}
+.step-desc {
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 1.65;
+  color: rgba(255,255,255,.45);
+  text-wrap: pretty;
+}
+
+/* === FAQ === */
+.faq-section {
+  padding: clamp(80px, 10vw, 130px) 0;
+}
+.faq-head {
+  margin-bottom: clamp(40px, 5vw, 60px);
+}
+.faq-list {
+  max-width: 760px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid var(--border-z2);
+  border-radius: var(--r-card);
+  overflow: hidden;
+}
+.faq-item {
+  border-bottom: 1px solid var(--border-z1);
+  background: var(--z2);
+}
+.faq-item:last-child { border-bottom: none; }
+.faq-q {
+  width: 100%;
+  background: none;
+  border: none;
+  font-family: var(--sans);
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--paper);
+  text-align: left;
+  padding: 20px 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  transition: background .2s;
+  line-height: 1.4;
+}
+.faq-q:hover { background: rgba(255,255,255,.025); }
+.faq-q-icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(26,122,74,.1);
+  border: 1px solid rgba(26,122,74,.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform .3s var(--spring), background .2s;
+}
+.faq-item.open .faq-q-icon {
+  transform: rotate(45deg);
+  background: rgba(26,122,74,.2);
+}
+.faq-a {
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.8;
+  color: rgba(255,255,255,.5);
+  padding: 0 24px 20px;
+  display: none;
+  text-wrap: pretty;
+}
+.faq-item.open .faq-a { display: block; }
+
+/* === CTA SECTION === */
+.cta-section {
+  padding: clamp(80px, 10vw, 130px) 0;
+  text-align: center;
+}
+.cta-inner {
+  max-width: 620px;
+  margin: 0 auto;
+}
+.cta-tag {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.3);
+  margin-bottom: 20px;
+}
+.cta-h {
+  font-family: var(--serif);
+  font-size: clamp(30px, 4vw, 48px);
+  letter-spacing: -.025em;
+  line-height: 1.1;
+  color: var(--paper);
+  margin-bottom: 20px;
+  text-wrap: balance;
+}
+.cta-h em { font-style: italic; color: var(--green2); }
+.cta-desc {
+  font-size: 17px;
+  font-weight: 300;
+  font-variation-settings: 'opsz' 18, 'wght' 350;
+  line-height: 1.8;
+  color: rgba(255,255,255,.5);
+  margin-bottom: 36px;
+  text-wrap: pretty;
+}
+.cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--green);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  padding: 16px 40px;
+  border-radius: var(--r-pill);
+  border: none;
+  cursor: pointer;
+  font-family: var(--sans);
+  transition: transform .25s var(--spring), background .2s, box-shadow .25s;
+}
+.cta-btn:hover {
+  background: #1f8f55;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(26,122,74,.25);
+}
+.cta-note {
+  font-size: 13px;
+  color: rgba(255,255,255,.25);
+  margin-top: 14px;
+}
+
+/* === FOOTER === */
+footer {
+  background: #0d0e0c;
+  border-top: 1px solid #111;
+  padding: 64px 40px 32px;
+}
+.foot-in { max-width: 1200px; margin: 0 auto; }
+.foot-top {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 64px;
+}
+.foot-brand {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-style: italic;
+  color: var(--paper);
+  margin-bottom: 8px;
+}
+.foot-tag {
+  font-size: 14px;
+  font-weight: 300;
+  color: #4a4a44;
+  line-height: 1.7;
+  max-width: 220px;
+  margin-bottom: 32px;
+}
+.foot-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: #24251f;
+  border: 1px solid #1e1f1c;
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+.foot-live::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #1a7a4a;
+  animation: pulse 2.5s infinite;
+}
+.fcol-h {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: #4a4a44;
+  margin-bottom: 16px;
+}
+.flinks { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.flinks a { font-size: 14px; font-weight: 300; color: #4a4a44; transition: color .2s; }
+.flinks a:hover { color: var(--paper); }
+.foot-bot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 32px;
+  border-top: 1px solid #111;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+.foot-copy { font-size: 13px; color: #24251f; }
+.foot-socs { display: flex; gap: 24px; }
+.foot-socs a {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: #24251f;
+  transition: color .2s;
+}
+.foot-socs a:hover { color: var(--paper); }
+
+/* === BOTTOM BAR === */
+.bottom-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 95;
+  background: rgba(244, 243, 239, .92);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  box-shadow: 0 -1px 0 rgba(0, 0, 0, .06);
+  transform: translateY(100%);
+  transition: transform .5s var(--spring);
+}
+.bottom-bar.visible { transform: translateY(0); }
+.bb-desktop {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  padding: 14px 40px;
+}
+.bb-info { font-size: 14px; font-weight: 500; color: var(--dim); }
+.bb-sep { width: 1px; height: 20px; background: var(--faint); }
+.bb-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 28px;
+  border-radius: 50px;
+  background: var(--green);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background .2s;
+}
+.bb-cta:hover { background: #1f8f55; }
+.bb-mobile { display: none; }
+
+/* === KEYFRAMES === */
+@keyframes up {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: .4; transform: scale(.75); }
+}
+
+/* === REDUCED MOTION === */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+  .reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-blur { opacity: 1 !important; transform: none !important; filter: none !important; }
+  .hero-kicker, .hero-h1, .hero-sub, .hero-breadcrumb { opacity: 1 !important; }
+}
+
+/* === RETINA NOISE === */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .noise::after { background-size: 150px 150px; opacity: .38; }
+}
+
+/* === RESPONSIVE: TABLET (960px) === */
+@media (max-width: 960px) {
+  nav { padding: 0 20px; }
+  .nav-links, .nav-cta { display: none; }
+  .hamburger { display: flex; }
+  nav { top: 0 !important; }
+  body { padding-bottom: 66px; }
+  :root { --sec-pad: clamp(64px, 10vw, 100px); }
+
+  .bb-desktop { display: none; }
+  .bb-mobile {
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    padding: 8px 16px calc(8px + env(safe-area-inset-bottom, 4px));
+  }
+  .bb-mobile-top { font-size: 11px; font-weight: 500; color: var(--dim); flex: 1; line-height: 1.3; }
+  .bb-mobile-cta {
+    display: flex; align-items: center; justify-content: center; gap: 5px;
+    padding: 8px 16px; border-radius: 50px;
+    background: var(--green); color: #fff; font-size: 11px; font-weight: 600;
+    border: none; cursor: pointer; white-space: nowrap; flex-shrink: 0;
+  }
+
+  .stat-grid { grid-template-columns: 1fr 1fr; }
+  .stat-item { border-right: none; border-bottom: 1px solid var(--border-z2); padding: 20px 16px; }
+  .stat-item:nth-child(odd) { border-right: 1px solid var(--border-z2); }
+  .stat-item:nth-last-child(-n+2) { border-bottom: none; }
+
+  .cenario-layout { grid-template-columns: 1fr; gap: 40px; }
+  .oab-banner { grid-template-columns: 1fr; gap: 20px; }
+  .oab-rules { grid-template-columns: 1fr; }
+  .services-grid { grid-template-columns: 1fr; gap: 16px; }
+  .kw-cols { grid-template-columns: 1fr 1fr; }
+  .process-steps { grid-template-columns: 1fr 1fr; gap: 16px; }
+  .process-steps::before { display: none; }
+  .foot-top { grid-template-columns: 1fr 1fr; }
+  .cta-section { text-align: left; }
+  .cta-inner { max-width: 100%; }
+  footer { padding: 48px 20px 24px; }
+}
+
+/* === RESPONSIVE: MOBILE (480px) === */
+@media (max-width: 480px) {
+  .hero-h1 { font-size: 30px; line-height: 1.05; }
+  .hero-sub { font-size: 16px; line-height: 1.7; }
+  .sec-h { font-size: clamp(24px, 6.5vw, 32px); }
+  .stat-grid { grid-template-columns: 1fr 1fr; }
+  .kw-cols { grid-template-columns: 1fr; }
+  .process-steps { grid-template-columns: 1fr; }
+  .foot-top { grid-template-columns: 1fr; }
+  .svc-card { padding: 24px 20px; }
+  .oab-rules { grid-template-columns: 1fr; }
+  .faq-list { border-radius: 8px; }
+}
+</style>
+
+<!-- Schema.org -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://maturare.com.br/seo-advogados",
+      "url": "https://maturare.com.br/seo-advogados",
+      "name": "SEO para Advogados — Clientes Encontram seu Escritório | Maturare",
+      "description": "Estratégia de SEO para escritórios de advocacia: páginas por área de atuação, conteúdo informativo conforme OAB, SEO local e Schema LegalService.",
+      "inLanguage": "pt-BR",
+      "isPartOf": { "@id": "https://maturare.com.br/#website" },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://maturare.com.br/" },
+          { "@type": "ListItem", "position": 2, "name": "Serviços", "item": "https://maturare.com.br/servicos" },
+          { "@type": "ListItem", "position": 3, "name": "SEO para Advogados", "item": "https://maturare.com.br/seo-advogados" }
+        ]
+      }
+    },
+    {
+      "@type": "Service",
+      "name": "SEO para Advogados",
+      "description": "Estratégia completa de SEO para escritórios de advocacia: páginas por área de atuação (trabalhista, tributário, família, empresarial), conteúdo informativo respeitando as normas da OAB, SEO local por cidade e Schema LegalService.",
+      "serviceType": "SEO para Escritórios de Advocacia",
+      "category": "LegalService",
+      "provider": {
+        "@type": "Organization",
+        "name": "Maturare",
+        "url": "https://maturare.com.br",
+        "address": { "@type": "PostalAddress", "addressLocality": "Niterói", "addressRegion": "RJ", "addressCountry": "BR" }
+      },
+      "areaServed": { "@type": "Country", "name": "Brasil" },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://maturare.com.br/analise-gratuita",
+        "description": "Análise gratuita do escritório no Google"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "SEO para advogados é permitido pela OAB?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim. O SEO para advogados é plenamente permitido quando baseado em conteúdo informativo, educativo e de utilidade pública. A OAB veda a captação direta de clientes e a publicidade mercantilista, mas não proíbe que um escritório seja encontrado no Google por quem busca informação jurídica. Trabalhamos estritamente dentro das diretrizes do Provimento 205/2021 do CFOAB."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quanto tempo leva para um escritório aparecer no Google?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Para buscas locais ('advogado trabalhista em [cidade]'), os primeiros resultados costumam aparecer entre 60 e 90 dias. Para keywords de conteúdo informativo ('quais os direitos do trabalhador demitido'), o processo pode ser mais rápido — 30 a 60 dias — dependendo da autoridade do domínio."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Vocês criam o conteúdo jurídico ou o escritório precisa fornecer?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Criamos o conteúdo com revisão do advogado responsável. Temos um processo de produção especializado para conteúdo jurídico: texto informativo, linguagem acessível ao leigo, sem promessas de resultado e com indicação para buscar orientação profissional — tudo dentro das normas da OAB."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Vale a pena investir em SEO local para escritórios de advocacia?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim. O cliente que pesquisa 'advogado trabalhista em Niterói' está no momento decisivo — ele precisa de um advogado agora. Esse lead tem altíssimo valor. Diferente de um post patrocinado que desaparece quando o orçamento acaba, uma página bem posicionada no Google trabalha por você 24h, sem custo por clique."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<!-- LOADER -->
+<div class="loader" id="loader">
+  <div class="loader-phrase" id="loaderPhrase"></div>
+  <div class="loader-line" id="loaderLine"></div>
+  <div class="loader-brand" id="loaderBrand">Maturare</div>
+</div>
+
+<!-- SCROLL PROGRESS -->
+<div class="scroll-prog" id="scrollProg"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="/" class="logo">Maturare</a>
+  <ul class="nav-links">
+    <li><a href="/" class="nav-btn">Home</a></li>
+    <li><a href="/servicos" class="nav-btn" style="color:var(--green2)">Serviços</a></li>
+    <li><a href="/blog" class="nav-btn">Blog</a></li>
+    <li><a href="/#resultados" class="nav-btn">Resultados</a></li>
+    <li><a href="/#sobre" class="nav-btn">Sobre</a></li>
+    <li><a href="/#faq" class="nav-btn">FAQ</a></li>
+  </ul>
+  <div class="nav-r">
+    <button class="nav-cta" onclick="location.href='/analise-gratuita'">Análise Gratuita</button>
+    <button class="hamburger" id="hambBtn" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mob-menu" id="mobMenu" role="navigation" aria-label="Menu mobile">
+  <a href="/">Home</a>
+  <a href="/servicos" style="color:var(--green2)">Serviços</a>
+  <a href="/blog">Blog</a>
+  <a href="/#resultados">Resultados</a>
+  <a href="/#sobre">Sobre</a>
+  <a href="/#faq">FAQ</a>
+  <a href="/analise-gratuita" class="mob-cta">Análise Gratuita</a>
+</div>
+
+<!-- HERO -->
+<section class="hero noise" id="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-glow-2"></div>
+  <div class="container">
+    <div class="hero-kicker">SEO Para Advogados</div>
+    <h1 class="hero-h1">Escritórios de advocacia que aparecem<br><em>quando o cliente precisa</em></h1>
+    <p class="hero-sub">Seu escritório no topo do Google no momento exato em que o potencial cliente pesquisa um advogado. Conteúdo informativo, respeitando a OAB, gerando autoridade.</p>
+    <nav class="hero-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span aria-hidden="true">›</span>
+      <a href="/servicos">Serviços</a>
+      <span aria-hidden="true">›</span>
+      <strong>SEO para Advogados</strong>
+    </nav>
+  </div>
+</section>
+
+<!-- STAT BAR -->
+<div class="stat-bar">
+  <div class="container">
+    <div class="stat-grid reveal">
+      <div class="stat-item">
+        <div class="stat-num">78%</div>
+        <div class="stat-label">dos clientes pesquisam no Google antes de contratar um advogado</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">R$0</div>
+        <div class="stat-label">por clique após o posicionamento orgânico — sem depender de anúncios</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">Alto</div>
+        <div class="stat-label">valor por lead: quem busca "advogado" já tomou a decisão de contratar</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">24h</div>
+        <div class="stat-label">trabalhando para o escritório — seu site atrai clientes enquanto você dorme</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION: O CENÁRIO -->
+<section class="cenario-section dark" id="cenario">
+  <div class="container">
+    <div class="cenario-layout">
+
+      <div class="cenario-txt">
+        <div class="reveal">
+          <div class="sec-label lt">O CENÁRIO</div>
+          <h2 class="sec-h cenario-h">Quem precisa de advogado<br><em>pesquisa no Google primeiro</em></h2>
+        </div>
+        <p class="cenario-desc reveal d1">Quando alguém recebe uma notificação de demissão por justa causa, descobre uma dívida tributária ou precisa iniciar um divórcio, a primeira reação é abrir o Google. Não ligar para um amigo. Não ir a uma lista telefônica. Pesquisar.</p>
+        <p class="cenario-desc reveal d2">Essa pessoa está no momento de maior urgência — pronta para tomar uma decisão. Se o seu escritório não aparecer nesse momento, outro aparece. O SEO coloca você exatamente onde o cliente está olhando.</p>
+        <div class="queries-block reveal d3">
+          <div class="queries-label">Buscas reais no Google</div>
+          <div class="query-row">
+            <div class="query-icon">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#6fcf97" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            </div>
+            <span class="query-text">advogado trabalhista em [cidade]</span>
+            <span class="query-vol">Alto volume</span>
+          </div>
+          <div class="query-row">
+            <div class="query-icon">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#6fcf97" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            </div>
+            <span class="query-text">advogado para divórcio consensual</span>
+            <span class="query-vol">Alto volume</span>
+          </div>
+          <div class="query-row">
+            <div class="query-icon">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#6fcf97" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            </div>
+            <span class="query-text">advogado empresarial pequenas empresas</span>
+            <span class="query-vol">Médio volume</span>
+          </div>
+          <div class="query-row">
+            <div class="query-icon">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#6fcf97" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            </div>
+            <span class="query-text">advogado tributário recuperação de crédito</span>
+            <span class="query-vol">Médio volume</span>
+          </div>
+          <div class="query-row">
+            <div class="query-icon">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#6fcf97" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            </div>
+            <span class="query-text">o que fazer quando fui demitido sem justa causa</span>
+            <span class="query-vol">Alto volume</span>
+          </div>
+          <div class="query-row">
+            <div class="query-icon">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#6fcf97" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            </div>
+            <span class="query-text">escritório advocacia [bairro] [cidade]</span>
+            <span class="query-vol">Local</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cenario-aside">
+        <div class="insight-card reveal d1">
+          <div class="insight-tag">Por que advocacia?</div>
+          <div class="insight-h">Lead de alto valor, intenção declarada</div>
+          <p class="insight-p">Diferente de um e-commerce onde o usuário está comparando preços, quem pesquisa "advogado" já decidiu que precisa de ajuda jurídica. Só falta escolher qual escritório vai atender. Esse é o momento que o SEO captura.</p>
+          <div class="value-tag">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+            Alta intenção de contratação
+          </div>
+        </div>
+        <div class="insight-card reveal d2">
+          <div class="insight-tag">Concorrência</div>
+          <div class="insight-h">A maioria dos escritórios ainda não investe em SEO</div>
+          <p class="insight-p">O setor jurídico tem baixa adoção de SEO orgânico — a maioria ainda depende de indicações e Google Ads. Isso cria uma janela de oportunidade real para escritórios que se posicionarem agora com conteúdo de qualidade.</p>
+          <div class="value-tag" style="background:rgba(26,122,74,.1);border-color:rgba(26,122,74,.2);color:var(--green2)">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            Janela de oportunidade aberta
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SECTION: OAB COMPLIANCE -->
+<section class="oab-section raised" id="compliance-oab">
+  <div class="container">
+    <div class="oab-banner reveal">
+      <div class="oab-icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#e07b39" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          <path d="M9 12l2 2 4-4"/>
+        </svg>
+      </div>
+      <div class="oab-body">
+        <div class="oab-tag">Conformidade OAB</div>
+        <h2 class="oab-h">SEO respeitando as normas da OAB — sem riscos para o seu registro</h2>
+        <p class="oab-desc">O Provimento 205/2021 do CFOAB regula a publicidade na advocacia. Toda a nossa estratégia é desenvolvida com isso em mente: conteúdo informativo e educativo que posiciona o escritório com autoridade, sem captação direta de clientela.</p>
+        <div class="oab-rules">
+          <div class="oab-rule">
+            <svg class="oab-rule-icon" viewBox="0 0 24 24" fill="none" stroke="#6fcf97" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <div class="oab-rule-txt">
+              <strong>Conteúdo informativo</strong>
+              Artigos que explicam direitos e procedimentos — sem prometer resultados ou captar diretamente
+            </div>
+          </div>
+          <div class="oab-rule">
+            <svg class="oab-rule-icon" viewBox="0 0 24 24" fill="none" stroke="#6fcf97" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <div class="oab-rule-txt">
+              <strong>Sem mercantilização</strong>
+              Nenhuma linguagem publicitária agressiva, comparativo de preços ou promessa de ganho
+            </div>
+          </div>
+          <div class="oab-rule">
+            <svg class="oab-rule-icon" viewBox="0 0 24 24" fill="none" stroke="#6fcf97" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <div class="oab-rule-txt">
+              <strong>Identificação correta</strong>
+              Todas as páginas identificam o escritório responsável e os advogados com número OAB
+            </div>
+          </div>
+          <div class="oab-rule">
+            <svg class="oab-rule-icon" viewBox="0 0 24 24" fill="none" stroke="#6fcf97" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <div class="oab-rule-txt">
+              <strong>Revisão pelo advogado</strong>
+              Todo conteúdo é revisado e aprovado pelo advogado responsável antes de publicar
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION: O QUE FAZEMOS -->
+<section class="services-section dark" id="o-que-fazemos">
+  <div class="container">
+    <div class="services-head reveal">
+      <div class="sec-label lt">O QUE FAZEMOS</div>
+      <h2 class="sec-h">Estratégia completa para<br><em>escritórios de advocacia</em></h2>
+      <p class="sec-desc" style="margin-top:16px">Cada elemento construído para atrair o cliente certo, no momento certo, com a abordagem correta para o setor jurídico.</p>
+    </div>
+    <div class="services-grid">
+
+      <!-- Card 1 -->
+      <div class="svc-card reveal d1">
+        <div class="svc-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#6fcf97" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+            <polyline points="14,2 14,8 20,8"/>
+            <line x1="16" y1="13" x2="8" y2="13"/>
+            <line x1="16" y1="17" x2="8" y2="17"/>
+          </svg>
+        </div>
+        <div class="svc-card-title">Páginas por Área de Atuação</div>
+        <p class="svc-card-desc">Uma página dedicada para cada área: Direito do Trabalho, Direito de Família, Direito Tributário, Direito Empresarial, Direito do Consumidor. Cada página otimizada para as keywords específicas da área, com estrutura que transmite autoridade.</p>
+        <div class="svc-tags">
+          <span class="svc-tag">Trabalhista</span>
+          <span class="svc-tag">Família</span>
+          <span class="svc-tag">Tributário</span>
+          <span class="svc-tag">Empresarial</span>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="svc-card reveal d2">
+        <div class="svc-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#6fcf97" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M12 8v4l3 3"/>
+          </svg>
+        </div>
+        <div class="svc-card-title">Conteúdo Informativo Conforme OAB</div>
+        <p class="svc-card-desc">Artigos e guias que respondem perguntas reais do potencial cliente — "quais meus direitos na rescisão?", "como funciona a partilha de bens?". Conteúdo que educa, posiciona o escritório como referência e é 100% aderente ao Provimento 205/2021.</p>
+        <div class="svc-tags">
+          <span class="svc-tag">Blog jurídico</span>
+          <span class="svc-tag">Guias práticos</span>
+          <span class="svc-tag">FAQ legal</span>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="svc-card reveal d3">
+        <div class="svc-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#6fcf97" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+        </div>
+        <div class="svc-card-title">SEO Local por Cidade e Bairro</div>
+        <p class="svc-card-desc">Otimização para buscas locais: "advogado trabalhista em Niterói", "escritório de advocacia Centro Rio". Google Meu Negócio otimizado, citações locais consistentes e páginas geolocalizada para cada cidade de atuação do escritório.</p>
+        <div class="svc-tags">
+          <span class="svc-tag">Google Maps</span>
+          <span class="svc-tag">SEO local</span>
+          <span class="svc-tag">Buscas locais</span>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="svc-card reveal d4">
+        <div class="svc-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#6fcf97" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <path d="M9 12l2 2 4-4"/>
+          </svg>
+        </div>
+        <div class="svc-card-title">Schema LegalService</div>
+        <p class="svc-card-desc">Implementação do Schema.org tipo LegalService em todas as páginas do escritório. Isso comunica ao Google exatamente o que o escritório faz, para quem e onde — aumentando a chance de aparecer em rich results e no Google Knowledge Panel.</p>
+        <div class="svc-tags">
+          <span class="svc-tag">LegalService</span>
+          <span class="svc-tag">Rich results</span>
+          <span class="svc-tag">Dados estruturados</span>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="svc-card reveal d5">
+        <div class="svc-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#6fcf97" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+          </svg>
+        </div>
+        <div class="svc-card-title">SEO Técnico e Velocidade</div>
+        <p class="svc-card-desc">Core Web Vitals otimizados, estrutura de URLs limpa, sitemap jurídico, links internos estratégicos entre áreas de atuação e HTTPS. Um site lento ou com problemas técnicos não ranqueia — independente do conteúdo.</p>
+        <div class="svc-tags">
+          <span class="svc-tag">Core Web Vitals</span>
+          <span class="svc-tag">Sitemap</span>
+          <span class="svc-tag">Performance</span>
+        </div>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="svc-card reveal d6">
+        <div class="svc-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#6fcf97" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="3" width="20" height="14" rx="2"/>
+            <path d="M8 21h8M12 17v4"/>
+            <path d="M7 8l3 3-3 3M13 14h4"/>
+          </svg>
+        </div>
+        <div class="svc-card-title">Autoridade E-E-A-T Jurídica</div>
+        <p class="svc-card-desc">O Google avalia conteúdo jurídico com critério especial (YMYL — Your Money or Your Life). Construímos a autoridade do escritório: perfil do advogado com credenciais OAB, bio detalhada, citações em veículos externos e sinais de expertise jurídica.</p>
+        <div class="svc-tags">
+          <span class="svc-tag">E-E-A-T</span>
+          <span class="svc-tag">YMYL</span>
+          <span class="svc-tag">Autoridade</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SECTION: KEYWORDS ESTRATÉGICAS -->
+<section class="kw-section raised" id="keywords">
+  <div class="container">
+    <div class="kw-head reveal">
+      <div class="sec-label lt">PALAVRAS-CHAVE</div>
+      <h2 class="sec-h">Keywords estratégicas<br>para <em>escritórios de advocacia</em></h2>
+      <p class="sec-desc" style="margin-top:16px">Mapeamos três tipos de intenção de busca para cobrir todo o funil do cliente jurídico.</p>
+    </div>
+    <div class="kw-cols">
+
+      <div class="kw-col reveal d1">
+        <div class="kw-col-title">Intenção Transacional</div>
+        <ul class="kw-list">
+          <li>advogado trabalhista [cidade]</li>
+          <li>advogado para divórcio [cidade]</li>
+          <li>escritório advocacia empresarial</li>
+          <li>advogado tributário [cidade]</li>
+          <li>advogado família e herança</li>
+          <li>advogado previdenciário INSS</li>
+          <li>advogado imobiliário [cidade]</li>
+          <li>defesa criminal advogado</li>
+        </ul>
+      </div>
+
+      <div class="kw-col reveal d2">
+        <div class="kw-col-title">Intenção Informacional</div>
+        <ul class="kw-list">
+          <li>o que fazer quando sou demitido</li>
+          <li>direitos na rescisão por justa causa</li>
+          <li>como funciona inventário extrajudicial</li>
+          <li>diferença divórcio litigioso consensual</li>
+          <li>prazo para reclamar horas extras</li>
+          <li>o que é holding familiar</li>
+          <li>como contestar multa de trânsito</li>
+          <li>direitos consumidor produto defeituoso</li>
+        </ul>
+      </div>
+
+      <div class="kw-col reveal d3">
+        <div class="kw-col-title">SEO Local</div>
+        <ul class="kw-list">
+          <li>advogado [área] em [bairro] [cidade]</li>
+          <li>escritório advocacia perto de mim</li>
+          <li>consulta jurídica gratuita [cidade]</li>
+          <li>advogado trabalhista Rio de Janeiro</li>
+          <li>advogado família Niterói</li>
+          <li>escritório advocacia Centro SP</li>
+          <li>advogado previdenciário Campinas</li>
+          <li>advocacia empresarial Belo Horizonte</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SECTION: PROCESSO -->
+<section class="process-section dark" id="processo">
+  <div class="container">
+    <div class="process-head reveal">
+      <div class="sec-label lt">COMO FUNCIONA</div>
+      <h2 class="sec-h">Do diagnóstico ao<br><em>primeiro cliente orgânico</em></h2>
+    </div>
+    <div class="process-steps">
+
+      <div class="step-card reveal d1">
+        <div class="step-num">01</div>
+        <div class="step-title">Diagnóstico do Escritório</div>
+        <p class="step-desc">Auditamos o site atual, mapeamos as áreas de atuação, analisamos a concorrência local e identificamos oportunidades de palavras-chave com menor dificuldade e maior intenção.</p>
+      </div>
+
+      <div class="step-card reveal d2">
+        <div class="step-num">02</div>
+        <div class="step-title">Arquitetura de Páginas</div>
+        <p class="step-desc">Estruturamos a hierarquia do site: página principal, páginas por área de atuação, páginas locais por cidade. Cada URL pensada para capturar uma intenção de busca específica.</p>
+      </div>
+
+      <div class="step-card reveal d3">
+        <div class="step-num">03</div>
+        <div class="step-title">Produção e Publicação</div>
+        <p class="step-desc">Criamos o conteúdo de cada página — informativo, dentro das normas OAB, com Schema LegalService. O advogado revisa e aprova antes de qualquer publicação.</p>
+      </div>
+
+      <div class="step-card reveal d4">
+        <div class="step-num">04</div>
+        <div class="step-title">Monitoramento Mensal</div>
+        <p class="step-desc">Acompanhamos as posições, tráfego e conversões mensalmente. Ajustamos a estratégia conforme os dados e produzimos novos conteúdos para ampliar o alcance.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SECTION: FAQ -->
+<section class="faq-section raised" id="faq">
+  <div class="container">
+    <div class="faq-head reveal">
+      <div class="sec-label lt">DÚVIDAS FREQUENTES</div>
+      <h2 class="sec-h">Perguntas sobre SEO<br>para <em>advocacia</em></h2>
+    </div>
+    <div class="faq-list reveal d1" role="list">
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-q" aria-expanded="false">
+          SEO para advogados é permitido pela OAB?
+          <span class="faq-q-icon" aria-hidden="true">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#6fcf97" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </span>
+        </button>
+        <div class="faq-a">Sim. O SEO para advogados é plenamente permitido quando baseado em conteúdo informativo, educativo e de utilidade pública. A OAB veda a captação direta de clientes e a publicidade mercantilista, mas não proíbe que um escritório seja encontrado no Google por quem busca informação jurídica. Trabalhamos estritamente dentro das diretrizes do Provimento 205/2021 do CFOAB.</div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-q" aria-expanded="false">
+          Quanto tempo leva para meu escritório aparecer no Google?
+          <span class="faq-q-icon" aria-hidden="true">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#6fcf97" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </span>
+        </button>
+        <div class="faq-a">Para buscas locais ("advogado trabalhista em [cidade]"), os primeiros resultados costumam aparecer entre 60 e 90 dias. Para keywords de conteúdo informativo ("quais os direitos do trabalhador demitido"), o processo pode ser mais rápido — 30 a 60 dias — dependendo da autoridade do domínio e da concorrência na cidade.</div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-q" aria-expanded="false">
+          Vocês criam o conteúdo jurídico ou o escritório precisa fornecer?
+          <span class="faq-q-icon" aria-hidden="true">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#6fcf97" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </span>
+        </button>
+        <div class="faq-a">Criamos o conteúdo com revisão obrigatória do advogado responsável. Temos um processo de produção especializado para conteúdo jurídico: texto informativo, linguagem acessível ao leigo, sem promessas de resultado e com indicação para buscar orientação profissional — tudo dentro das normas da OAB. O advogado aprova antes de publicar.</div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-q" aria-expanded="false">
+          Vale a pena investir em SEO local para escritórios pequenos?
+          <span class="faq-q-icon" aria-hidden="true">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#6fcf97" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </span>
+        </button>
+        <div class="faq-a">Especialmente para escritórios pequenos ou individuais. O cliente que pesquisa "advogado trabalhista em [cidade]" está no momento decisivo — ele precisa de um advogado agora. Diferente de um post patrocinado que desaparece quando o orçamento acaba, uma página bem posicionada no Google trabalha por você 24h, sem custo por clique.</div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-q" aria-expanded="false">
+          Meu escritório já tem site. Precisamos refazer ou é só otimizar?
+          <span class="faq-q-icon" aria-hidden="true">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#6fcf97" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </span>
+        </button>
+        <div class="faq-a">Depende do diagnóstico. Na maioria dos casos, otimizamos o site existente: adicionamos páginas por área de atuação, criamos conteúdo, implementamos Schema LegalService e ajustamos a estrutura técnica. A reformulação completa só faz sentido quando o site atual tem limitações técnicas que impedem o SEO de funcionar.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SECTION: CTA FINAL -->
+<section class="cta-section dark" id="cta-final">
+  <div class="container">
+    <div class="cta-inner reveal">
+      <div class="cta-tag">Próximo passo</div>
+      <h2 class="cta-h">Veja como seu escritório<br>aparece <em>no Google hoje</em></h2>
+      <p class="cta-desc">Fazemos uma análise gratuita do seu escritório: como você aparece nas buscas, quais oportunidades de keyword existem na sua cidade e o que seus concorrentes estão fazendo.</p>
+      <a href="/analise-gratuita" class="cta-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        Quero Minha Análise Gratuita
+      </a>
+      <div class="cta-note">Sem compromisso. Sem pressão. Só informação útil sobre o seu escritório.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-in">
+    <div class="foot-top">
+      <div>
+        <div class="foot-brand">Maturare</div>
+        <p class="foot-tag">Construímos ativos digitais que vendem por você.</p>
+        <div class="foot-live">Monitoramento ativo</div>
+      </div>
+      <div>
+        <div class="fcol-h">Serviços</div>
+        <ul class="flinks">
+          <li><a href="/consultoria-seo">Consultoria de SEO</a></li>
+          <li><a href="/criacao-sites-seo-ia">Criação de Sites</a></li>
+          <li><a href="/google-meu-negocio">Google Meu Negócio</a></li>
+          <li><a href="/agencia-geo-aeo">GEO e AEO</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="fcol-h">Segmentos</div>
+        <ul class="flinks">
+          <li><a href="/seo-contadores">Contadores</a></li>
+          <li><a href="/seo-clinicas">Clínicas</a></li>
+          <li><a href="/seo-advogados" style="color:var(--paper)">Advogados</a></li>
+          <li><a href="/seo-negocios-locais">Negócios Locais</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="fcol-h">Empresa</div>
+        <ul class="flinks">
+          <li><a href="/#sobre">Sobre</a></li>
+          <li><a href="/blog">Blog</a></li>
+          <li><a href="/cases-resultados">Resultados</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="fcol-h">Contato</div>
+        <ul class="flinks">
+          <li><a href="/analise-gratuita">Diagnóstico grátis</a></li>
+          <li><a href="/#orcamento">Falar com Daniel</a></li>
+          <li><a href="mailto:contato@maturare.com.br">contato@maturare.com.br</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <div class="foot-copy">&#169; 2026 Maturare · CNPJ 47.336.340/0001-51 · Niterói, RJ</div>
+      <div class="foot-socs">
+        <a href="https://br.linkedin.com/in/daniel-batista-674b62140" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://www.instagram.com/maturare.com.br/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.youtube.com/@googledominado1" target="_blank" rel="noopener">YouTube</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- BOTTOM BAR -->
+<div class="bottom-bar" id="bottomBar">
+  <div class="bb-desktop">
+    <div class="bb-info">SEO para Advocacia com conformidade OAB</div>
+    <div class="bb-sep"></div>
+    <div class="bb-info">Escritórios que aparecem quando o cliente precisa</div>
+    <div class="bb-sep"></div>
+    <div class="bb-info">Schema LegalService + SEO Local</div>
+    <a href="/analise-gratuita" class="bb-cta">Análise Gratuita</a>
+  </div>
+  <div class="bb-mobile">
+    <div class="bb-mobile-top">SEO para Advocacia · Conformidade OAB · Schema LegalService</div>
+    <a href="/analise-gratuita" class="bb-mobile-cta">Análise Grátis</a>
+  </div>
+</div>
+
+<script>
+/* === LOADER === */
+(function() {
+  var loader = document.getElementById('loader');
+  var phrase = document.getElementById('loaderPhrase');
+  var line = document.getElementById('loaderLine');
+  var brand = document.getElementById('loaderBrand');
+  if (!loader || !phrase) return;
+  var text = 'Quem precisa de advogado pesquisa no Google primeiro.';
+  var words = text.split(' ');
+  phrase.innerHTML = words.map(function(w) { return '<span>' + w + '</span>'; }).join(' ');
+  var spans = phrase.querySelectorAll('span');
+  document.body.style.overflow = 'hidden';
+  requestAnimationFrame(function() { if (line) line.classList.add('active'); });
+  spans.forEach(function(s, i) {
+    setTimeout(function() { s.classList.add('visible'); }, 200 + i * 160);
+  });
+  setTimeout(function() { if (brand) brand.classList.add('visible'); }, 200 + words.length * 160 + 200);
+  setTimeout(function() {
+    loader.classList.add('done');
+    document.body.style.overflow = '';
+    setTimeout(function() { loader.style.display = 'none'; }, 700);
+  }, 200 + words.length * 160 + 800);
+})();
+
+/* === SCROLL PROGRESS === */
+window.addEventListener('scroll', function() {
+  var h = document.documentElement.scrollHeight - window.innerHeight;
+  var prog = document.getElementById('scrollProg');
+  if (prog && h > 0) prog.style.width = (window.scrollY / h * 100) + '%';
+}, { passive: true });
+
+/* === NAV + BOTTOM BAR SCROLL === */
+var navEl = document.getElementById('nav');
+var bottomBar = document.getElementById('bottomBar');
+window.addEventListener('scroll', function() {
+  if (navEl) navEl.classList.toggle('scrolled', window.scrollY > 80);
+  if (bottomBar) bottomBar.classList.toggle('visible', window.scrollY > window.innerHeight * 0.4);
+}, { passive: true });
+
+/* === HAMBURGER MENU === */
+var hambBtn = document.getElementById('hambBtn');
+var mobMenu = document.getElementById('mobMenu');
+var menuOpen = false;
+if (hambBtn && mobMenu) {
+  hambBtn.addEventListener('click', function() {
+    menuOpen = !menuOpen;
+    hambBtn.setAttribute('aria-expanded', menuOpen);
+    if (menuOpen) {
+      mobMenu.classList.add('open');
+      var spans = hambBtn.querySelectorAll('span');
+      if (spans[0]) spans[0].style.transform = 'translateY(6.5px) rotate(45deg)';
+      if (spans[1]) spans[1].style.opacity = '0';
+      if (spans[2]) spans[2].style.transform = 'translateY(-6.5px) rotate(-45deg)';
+    } else {
+      mobMenu.classList.remove('open');
+      var spans = hambBtn.querySelectorAll('span');
+      if (spans[0]) spans[0].style.transform = '';
+      if (spans[1]) spans[1].style.opacity = '';
+      if (spans[2]) spans[2].style.transform = '';
+    }
+  });
+  mobMenu.querySelectorAll('a').forEach(function(a) {
+    a.addEventListener('click', function() {
+      menuOpen = false;
+      mobMenu.classList.remove('open');
+      hambBtn.setAttribute('aria-expanded', 'false');
+      var spans = hambBtn.querySelectorAll('span');
+      if (spans[0]) spans[0].style.transform = '';
+      if (spans[1]) spans[1].style.opacity = '';
+      if (spans[2]) spans[2].style.transform = '';
+    });
+  });
+}
+
+/* === REVEAL ON SCROLL (IntersectionObserver) === */
+document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-blur').forEach(function(el) {
+  new IntersectionObserver(function(entries, obs) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }).observe(el);
+});
+
+/* === FAQ ACCORDION === */
+document.querySelectorAll('.faq-q').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    var item = btn.closest('.faq-item');
+    var isOpen = item.classList.contains('open');
+    // Close all
+    document.querySelectorAll('.faq-item').forEach(function(i) {
+      i.classList.remove('open');
+      i.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+    });
+    // Open clicked if it was closed
+    if (!isOpen) {
+      item.classList.add('open');
+      btn.setAttribute('aria-expanded', 'true');
+    }
+  });
+});
+</script>
+</body>
+</html>

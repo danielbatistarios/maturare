@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0e0f0d">
+<title>Maturare — SEO, GEO e Presença Digital para Negócios Locais</title>
+<meta name="description" content="A Maturare faz sua empresa aparecer no Google e ser recomendada pelas IAs.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --z0: #0e0f0d; --z1: #141513; --z2: #1a1b18; --z3: #21221f;
+  --paper: #f5f4f0; --dim: #5a5a56;
+  --green: #1a7a4a; --green2: #6fcf97; --orange: #e07b39;
+  --border-z2: rgba(255,255,255,.08); --border-z3: rgba(255,255,255,.11);
+  --serif: 'Instrument Serif', Georgia, serif;
+  --sans: 'DM Sans', system-ui, sans-serif;
+  --spring: cubic-bezier(.16, 1, .3, 1);
+}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--z0); color: var(--paper); font-family: var(--sans);
+  font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased;
+  min-height: 100dvh; display: flex; flex-direction: column; align-items: center;
+}
+a { text-decoration: none; color: inherit; }
+.bio { width: 100%; max-width: 520px; padding: 0 20px; display: flex; flex-direction: column; align-items: center; }
+@media (min-width: 768px) { .bio { max-width: 560px; padding: 0 32px; } }
+
+/* === HEADER === */
+.bio-header { text-align: center; padding: 44px 0 16px; width: 100%; }
+.bio-avatar {
+  width: 72px; height: 72px; border-radius: 50%; background: var(--z2);
+  border: 2px solid rgba(26,122,74,.3); display: flex; align-items: center;
+  justify-content: center; margin: 0 auto 12px;
+  font-family: var(--serif); font-size: 24px; font-style: italic; color: var(--green2);
+}
+.bio-name { font-family: var(--serif); font-size: 22px; font-style: italic; color: var(--paper); margin-bottom: 4px; }
+.bio-role { font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--green2); margin-bottom: 12px; }
+
+/* === PITCH === */
+.bio-pitch {
+  width: 100%; padding: 20px 18px; background: var(--z2);
+  border: 1px solid var(--border-z2); border-radius: 14px; margin-top: 4px;
+}
+.bio-pitch-main {
+  font-family: var(--serif); font-size: 17px; font-style: italic;
+  color: var(--paper); line-height: 1.4; margin-bottom: 12px; text-align: center;
+}
+.bio-pitch-main strong { color: var(--green2); font-weight: 400; }
+.bio-pitch-bullets { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.bio-pitch-bullet {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: 13px; font-weight: 400; color: rgba(255,255,255,.55); line-height: 1.45;
+}
+.bio-pitch-bullet-dot {
+  width: 6px; height: 6px; border-radius: 50%; background: var(--green2);
+  flex-shrink: 0; margin-top: 6px; opacity: .6;
+}
+.bio-pitch-diff {
+  margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--border-z2);
+  font-size: 12px; color: rgba(255,255,255,.35); text-align: center; line-height: 1.5;
+}
+.bio-pitch-diff strong { color: var(--orange); font-weight: 600; }
+
+/* === DIVIDER === */
+.bio-div { width: 40px; height: 1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,.1), transparent); margin: 16px auto; }
+
+/* === LABEL === */
+.bio-label {
+  font-size: 10px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase;
+  color: rgba(255,255,255,.2); text-align: left; margin-bottom: 10px; width: 100%;
+}
+
+/* === CTA === */
+.bio-cta {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  width: 100%; background: var(--green); color: #fff; font-size: 15px; font-weight: 700;
+  letter-spacing: .04em; text-transform: uppercase; padding: 18px 24px;
+  border-radius: 14px; border: none; cursor: pointer; font-family: var(--sans);
+  transition: transform .25s var(--spring), background .2s;
+  box-shadow: 0 4px 20px rgba(26,122,74,.2);
+}
+.bio-cta:hover { background: #1f8f55; transform: translateY(-2px); }
+.bio-cta:active { transform: scale(.97); }
+.bio-cta svg { width: 18px; height: 18px; }
+.bio-cta-sub { font-size: 11px; color: rgba(255,255,255,.25); text-align: center; margin-top: 6px; width: 100%; }
+
+/* === CAROUSEL === */
+.carousel-wrap { width: 100%; position: relative; overflow: hidden; }
+.carousel-track {
+  display: flex; gap: 10px; overflow-x: auto; scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch; scrollbar-width: none; padding: 2px 0;
+}
+.carousel-track::-webkit-scrollbar { display: none; }
+.carousel-wrap::after {
+  content: ''; position: absolute; top: 0; right: 0; bottom: 0; width: 48px;
+  background: linear-gradient(90deg, transparent, var(--z0) 85%);
+  pointer-events: none; z-index: 2; transition: opacity .3s;
+}
+.carousel-wrap.at-end::after { opacity: 0; }
+.carousel-card {
+  flex: 0 0 260px; scroll-snap-align: start;
+  background: var(--z2); border: 1px solid var(--border-z2); border-radius: 12px;
+  padding: 16px 14px; display: flex; flex-direction: column; gap: 6px;
+  transition: border-color .25s; cursor: pointer;
+}
+.carousel-card:last-child { margin-right: 48px; }
+.carousel-card:hover { border-color: rgba(26,122,74,.25); }
+.carousel-card-top { display: flex; align-items: center; justify-content: space-between; }
+.cc-icon {
+  width: 32px; height: 32px; border-radius: 8px; display: flex;
+  align-items: center; justify-content: center; flex-shrink: 0;
+}
+.cc-icon.red { background: rgba(255,68,68,.08); border: 1px solid rgba(255,68,68,.1); }
+.cc-icon.orange { background: rgba(224,123,57,.08); border: 1px solid rgba(224,123,57,.12); }
+.cc-icon.green { background: rgba(26,122,74,.1); border: 1px solid rgba(26,122,74,.15); }
+.cc-icon.purple { background: rgba(99,102,241,.08); border: 1px solid rgba(99,102,241,.12); }
+.cc-icon svg { width: 14px; height: 14px; }
+.cc-badge {
+  font-size: 9px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase;
+  padding: 2px 7px; border-radius: 99px;
+}
+.cc-badge.hot { background: rgba(255,80,80,.12); color: #ff6b6b; }
+.cc-badge.free { background: rgba(26,122,74,.12); color: var(--green2); }
+.cc-title { font-size: 13px; font-weight: 600; color: var(--paper); line-height: 1.3; }
+.cc-desc { font-size: 11px; color: rgba(255,255,255,.3); }
+
+/* === CASE CARDS === */
+.case-cards { display: flex; flex-direction: column; gap: 10px; width: 100%; }
+.case-card {
+  width: 100%; padding: 18px 16px; background: var(--z2);
+  border: 1px solid var(--border-z2); border-radius: 14px;
+  border-left: 3px solid var(--green); transition: border-color .25s;
+}
+.case-card:hover { border-color: rgba(26,122,74,.3); }
+.case-card-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+.case-card-name { font-size: 14px; font-weight: 600; color: var(--paper); }
+.case-card-tag {
+  font-size: 9px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+  padding: 2px 8px; border-radius: 99px; background: rgba(26,122,74,.1); color: var(--green2);
+}
+.case-card-text { font-size: 13px; color: rgba(255,255,255,.45); line-height: 1.5; margin-bottom: 10px; }
+.case-card-nums { display: flex; gap: 16px; }
+.case-card-n { font-family: var(--serif); font-size: 17px; font-style: italic; color: var(--green2); line-height: 1; }
+.case-card-l { font-size: 10px; color: rgba(255,255,255,.25); margin-top: 2px; }
+
+/* === LINKS === */
+.bio-links { display: flex; flex-direction: column; gap: 10px; width: 100%; }
+.bio-link {
+  display: flex; align-items: center; gap: 14px; background: var(--z2);
+  border: 1px solid var(--border-z2); border-radius: 14px; padding: 14px 16px;
+  transition: transform .25s var(--spring), border-color .25s;
+}
+.bio-link:active { transform: scale(.97); }
+.bio-link:hover { border-color: rgba(26,122,74,.25); }
+.bl-icon {
+  width: 40px; height: 40px; border-radius: 10px; display: flex;
+  align-items: center; justify-content: center; flex-shrink: 0;
+  background: rgba(26,122,74,.1); border: 1px solid rgba(26,122,74,.15);
+}
+.bl-icon.orange { background: rgba(224,123,57,.08); border-color: rgba(224,123,57,.12); }
+.bl-icon svg { width: 18px; height: 18px; }
+.bl-body { flex: 1; min-width: 0; }
+.bl-title { font-size: 14px; font-weight: 600; color: var(--paper); line-height: 1.3; }
+.bl-desc { font-size: 11px; font-weight: 400; color: rgba(255,255,255,.35); margin-top: 1px; }
+.bl-arrow { color: rgba(255,255,255,.15); flex-shrink: 0; }
+.bio-link:hover .bl-arrow { color: var(--green2); }
+
+/* === AI + SOCIAL + FOOTER === */
+.bio-ai-row { display: flex; justify-content: center; gap: 6px; flex-wrap: wrap; width: 100%; }
+.bio-ai-pill {
+  display: inline-flex; align-items: center; gap: 4px; font-size: 10px; font-weight: 500;
+  color: rgba(255,255,255,.35); background: var(--z2); border: 1px solid var(--border-z2);
+  padding: 3px 8px; border-radius: 99px;
+}
+.bio-ai-dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; }
+.bio-socials { display: flex; justify-content: center; gap: 10px; width: 100%; margin-top: 12px; }
+.bio-social {
+  width: 40px; height: 40px; border-radius: 10px; background: var(--z2);
+  border: 1px solid var(--border-z2); display: flex; align-items: center;
+  justify-content: center; transition: border-color .2s;
+}
+.bio-social:hover { border-color: var(--border-z3); }
+.bio-social svg { width: 16px; height: 16px; color: rgba(255,255,255,.35); }
+.bio-footer { text-align: center; padding: 24px 0 36px; width: 100%; }
+.bio-footer-copy { font-size: 10px; color: rgba(255,255,255,.1); }
+.bio-footer-copy a { color: rgba(255,255,255,.18); }
+
+/* === ANIMATIONS === */
+.anim { opacity: 0; transform: translateY(10px); animation: fadeUp .5s var(--spring) forwards; }
+.a1{animation-delay:.05s} .a2{animation-delay:.1s} .a3{animation-delay:.15s}
+.a4{animation-delay:.2s} .a5{animation-delay:.25s} .a6{animation-delay:.3s}
+.a7{animation-delay:.35s} .a8{animation-delay:.4s} .a9{animation-delay:.45s}
+@keyframes fadeUp { to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .anim { opacity:1!important; transform:none!important; animation:none!important; } }
+@media (min-width: 768px) {
+  .carousel-card { flex: 0 0 280px; }
+  .carousel-wrap::after { width: 64px; }
+  .carousel-card:last-child { margin-right: 64px; }
+}
+</style>
+</head>
+<body>
+
+<div class="bio">
+
+  <!-- ========== HEADER ========== -->
+  <div class="bio-header anim a1">
+    <div class="bio-avatar">M</div>
+    <div class="bio-name">Maturare</div>
+    <div class="bio-role">Construímos ativos digitais que vendem por você</div>
+  </div>
+
+  <!-- ========== PITCH: O QUE FAZEMOS ========== -->
+  <div class="bio-pitch anim a2">
+    <div class="bio-pitch-main">Construímos <strong>ativos digitais</strong> que fazem sua empresa ser encontrada no Google e <strong>recomendada pelas IAs</strong></div>
+    <ul class="bio-pitch-bullets">
+      <li class="bio-pitch-bullet"><span class="bio-pitch-bullet-dot"></span>Páginas que ranqueiam no Google e geram clientes 24h por dia — sem pagar por clique</li>
+      <li class="bio-pitch-bullet"><span class="bio-pitch-bullet-dot"></span>Presença no Google Maps para aparecer quando pesquisam na sua cidade</li>
+      <li class="bio-pitch-bullet"><span class="bio-pitch-bullet-dot"></span>Posicionamento nas respostas do ChatGPT, Gemini e Perplexity</li>
+      <li class="bio-pitch-bullet"><span class="bio-pitch-bullet-dot"></span>Visão de negócio + SEO técnico + IA — não somos agência genérica</li>
+    </ul>
+    <div class="bio-pitch-diff"><strong>SEO + IA + Visão de negócio</strong> · Niterói, RJ · Atendimento nacional</div>
+  </div>
+
+  <div class="bio-div"></div>
+
+  <!-- ========== CTA ========== -->
+  <a href="/analise-gratuita" class="bio-cta anim a3">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg>
+    Análise Gratuita em 48h
+  </a>
+  <div class="bio-cta-sub anim a3">Gratuito · Sem compromisso · Resultado em 48h</div>
+
+  <div class="bio-div"></div>
+
+  <!-- ========== CARROSSEL 1: ISSO ACONTECE COM VOCÊ? ========== -->
+  <div class="bio-label anim a4">Isso acontece com você?</div>
+  <div class="carousel-wrap anim a4">
+    <div class="carousel-track" data-carousel>
+      <a href="/o-chatgpt-ja-indica-seu-concorrente" class="carousel-card">
+        <div class="carousel-card-top">
+          <div class="cc-icon orange"><svg viewBox="0 0 24 24" fill="none" stroke="#e07b39" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg></div>
+          <span class="cc-badge hot">Novo</span>
+        </div>
+        <div class="cc-title">O ChatGPT Já Indica Seu Concorrente. E Você?</div>
+        <div class="cc-desc">Blog · 5 min</div>
+      </a>
+      <a href="/fiz-meu-site-e-ninguem-encontra" class="carousel-card">
+        <div class="carousel-card-top">
+          <div class="cc-icon orange"><svg viewBox="0 0 24 24" fill="none" stroke="#e07b39" stroke-width="1.6"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+        </div>
+        <div class="cc-title">Fiz Meu Site e Ninguém Encontra</div>
+        <div class="cc-desc">Blog · Por que 90% dos sites são invisíveis</div>
+      </a>
+      <a href="/clientes-ficam-mais-caros-todo-mes" class="carousel-card">
+        <div class="carousel-card-top">
+          <div class="cc-icon orange"><svg viewBox="0 0 24 24" fill="none" stroke="#e07b39" stroke-width="1.6"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+        </div>
+        <div class="cc-title">Clientes Ficam Mais Caros Todo Mês</div>
+        <div class="cc-desc">Blog · O custo real de depender de ads</div>
+      </a>
+      <a href="/contratei-agencia-e-nao-tive-resultado" class="carousel-card">
+        <div class="carousel-card-top">
+          <div class="cc-icon orange"><svg viewBox="0 0 24 24" fill="none" stroke="#e07b39" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg></div>
+        </div>
+        <div class="cc-title">Contratei Agência e Não Tive Resultado</div>
+        <div class="cc-desc">Blog · O que realmente deu errado</div>
+      </a>
+      <a href="/sua-empresa-vai-ficar-invisivel" class="carousel-card">
+        <div class="carousel-card-top">
+          <div class="cc-icon orange"><svg viewBox="0 0 24 24" fill="none" stroke="#e07b39" stroke-width="1.6"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div>
+        </div>
+        <div class="cc-title">Sua Empresa Vai Ficar Invisível</div>
+        <div class="cc-desc">Blog · O que acontece se não agir</div>
+      </a>
+    </div>
+  </div>
+
+  <div class="bio-div"></div>
+
+  <!-- ========== CARROSSEL 2: APRENDA ========== -->
+  <div class="bio-label anim a5">Aprenda de graça</div>
+  <div class="carousel-wrap anim a5">
+    <div class="carousel-track" data-carousel>
+      <a href="/como-fazer-minha-empresa-aparecer-no-google" class="carousel-card">
+        <div class="carousel-card-top">
+          <div class="cc-icon green"><svg viewBox="0 0 24 24" fill="none" stroke="#6fcf97" stroke-width="1.6"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></div>
+          <span class="cc-badge free">Guia</span>
+        </div>
+        <div class="cc-title">Como Fazer Minha Empresa Aparecer no Google</div>
+        <div class="cc-desc">Guia completo · Passo a passo</div>
+      </a>
+      <a href="/sua-empresa-aparece-no-chatgpt" class="carousel-card">
+        <div class="carousel-card-top">
+          <div class="cc-icon red"><svg viewBox="0 0 24 24" fill="none" stroke="#ff4444" stroke-width="1.6"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+          <span class="cc-badge hot">Popular</span>
+        </div>
+        <div class="cc-title">Sua Empresa Aparece no ChatGPT?</div>
+        <div class="cc-desc">Vídeo · Teste ao vivo</div>
+      </a>
+      <a href="/como-escolher-agencia-de-seo" class="carousel-card">
+        <div class="carousel-card-top">
+          <div class="cc-icon purple"><svg viewBox="0 0 24 24" fill="none" stroke="#6366f1" stroke-width="1.6"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/></svg></div>
+          <span class="cc-badge free">Guia</span>
+        </div>
+        <div class="cc-title">Como Escolher Agência de SEO (10 Perguntas)</div>
+        <div class="cc-desc">Guia · Para quem já foi enganado</div>
+      </a>
+      <a href="/seo-ou-google-ads" class="carousel-card">
+        <div class="carousel-card-top">
+          <div class="cc-icon green"><svg viewBox="0 0 24 24" fill="none" stroke="#6fcf97" stroke-width="1.6"><path d="M8 3v3a2 2 0 0 1-2 2H3M21 8h-3a2 2 0 0 1-2-2V3M3 16h3a2 2 0 0 1 2 2v3M16 21v-3a2 2 0 0 1 2-2h3"/></svg></div>
+        </div>
+        <div class="cc-title">SEO ou Google Ads — Qual Funciona?</div>
+        <div class="cc-desc">Blog · A comparação definitiva</div>
+      </a>
+      <a href="/quanto-custa-posicionar-no-google" class="carousel-card">
+        <div class="carousel-card-top">
+          <div class="cc-icon green"><svg viewBox="0 0 24 24" fill="none" stroke="#6fcf97" stroke-width="1.6"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+        </div>
+        <div class="cc-title">Quanto Custa Posicionar no Google e nas IAs</div>
+        <div class="cc-desc">Blog · Valores reais, sem enrolação</div>
+      </a>
+    </div>
+  </div>
+
+  <div class="bio-div"></div>
+
+  <!-- ========== RESULTADOS REAIS: 3 CASES ========== -->
+  <div class="bio-label anim a6">Resultados reais</div>
+  <div class="case-cards anim a6">
+
+    <a href="/case-move-maquinas" class="case-card">
+      <div class="case-card-head">
+        <div class="case-card-name">Move Máquinas</div>
+        <div class="case-card-tag">Empilhadeiras</div>
+      </div>
+      <div class="case-card-text">Aluguel e venda de empilhadeiras. Dependia 100% de indicação. Hoje aparece no Google para todas as buscas do setor na região e recebe orçamentos orgânicos toda semana.</div>
+      <div class="case-card-nums">
+        <div><div class="case-card-n">1ª página</div><div class="case-card-l">Google</div></div>
+        <div><div class="case-card-n">R$0</div><div class="case-card-l">em ads</div></div>
+        <div><div class="case-card-n">+5x</div><div class="case-card-l">orçamentos</div></div>
+      </div>
+    </a>
+
+    <a href="/case-phd-playground" class="case-card">
+      <div class="case-card-head">
+        <div class="case-card-name">PHD Playground</div>
+        <div class="case-card-tag">Parquinhos</div>
+      </div>
+      <div class="case-card-text">Playground artesanal. Mercado de nicho com poucas buscas — mas alto valor por cliente. Hoje domina as buscas do segmento e recebe leads qualificados sem gastar em anúncio.</div>
+      <div class="case-card-nums">
+        <div><div class="case-card-n">Top 3</div><div class="case-card-l">Google</div></div>
+        <div><div class="case-card-n">Nicho</div><div class="case-card-l">dominado</div></div>
+        <div><div class="case-card-n">R$0</div><div class="case-card-l">em ads</div></div>
+      </div>
+    </a>
+
+    <a href="/case-contabilidade" class="case-card">
+      <div class="case-card-head">
+        <div class="case-card-name">Amanda Contabilidade</div>
+        <div class="case-card-tag">Contábil</div>
+      </div>
+      <div class="case-card-text">Escritório contábil em Niterói. Era invisível no Google — nenhum cliente vinha por busca orgânica. Hoje está no Top 3 do Maps e recebe contatos pelo Google toda semana.</div>
+      <div class="case-card-nums">
+        <div><div class="case-card-n">+340%</div><div class="case-card-l">tráfego</div></div>
+        <div><div class="case-card-n">Top 3</div><div class="case-card-l">Maps</div></div>
+        <div><div class="case-card-n">6 meses</div><div class="case-card-l">de trabalho</div></div>
+      </div>
+    </a>
+
+  </div>
+
+  <div class="bio-div"></div>
+
+  <!-- ========== LINKS ========== -->
+  <div class="bio-label anim a7">Conheça a Maturare</div>
+  <div class="bio-links anim a7">
+    <a href="/cases-resultados" class="bio-link">
+      <div class="bl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#6fcf97" stroke-width="1.6"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></div>
+      <div class="bl-body"><div class="bl-title">Todos os Cases</div><div class="bl-desc">Move, PHD, Contabilidade, Mundpay e mais</div></div>
+      <div class="bl-arrow"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+    </a>
+    <a href="/servicos" class="bio-link">
+      <div class="bl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#6fcf97" stroke-width="1.6"><path d="M4 6h16M4 12h16M4 18h16"/></svg></div>
+      <div class="bl-body"><div class="bl-title">Nossos Serviços</div><div class="bl-desc">SEO, GEO, Sites, GMB e posicionamento mensal</div></div>
+      <div class="bl-arrow"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+    </a>
+    <a href="/daniel-rios" class="bio-link">
+      <div class="bl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#6fcf97" stroke-width="1.6"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+      <div class="bl-body"><div class="bl-title">Daniel Rios — Fundador</div><div class="bl-desc">Quem está por trás da Maturare</div></div>
+      <div class="bl-arrow"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+    </a>
+    <a href="/academy" class="bio-link">
+      <div class="bl-icon orange"><svg viewBox="0 0 24 24" fill="none" stroke="#e07b39" stroke-width="1.6"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.66 2.69 3 6 3s6-1.34 6-3v-5"/></svg></div>
+      <div class="bl-body"><div class="bl-title">Maturare Academy</div><div class="bl-desc">Curso de SEO e IA · Comunidade 300+</div></div>
+      <div class="bl-arrow"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+    </a>
+  </div>
+
+  <div class="bio-div"></div>
+
+  <!-- ========== IAs + SOCIAL ========== -->
+  <div class="bio-ai-row anim a8">
+    <span class="bio-ai-pill"><span class="bio-ai-dot" style="background:#10a37f"></span>ChatGPT</span>
+    <span class="bio-ai-pill"><span class="bio-ai-dot" style="background:#6366f1"></span>Perplexity</span>
+    <span class="bio-ai-pill"><span class="bio-ai-dot" style="background:#4285f4"></span>Gemini</span>
+    <span class="bio-ai-pill"><span class="bio-ai-dot" style="background:#c96442"></span>Claude</span>
+    <span class="bio-ai-pill"><span class="bio-ai-dot" style="background:#0078d4"></span>Copilot</span>
+  </div>
+  <div class="bio-socials anim a9">
+    <a href="https://www.instagram.com/maturare.com.br/" target="_blank" class="bio-social" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/></svg></a>
+    <a href="https://br.linkedin.com/in/daniel-batista-674b62140" target="_blank" class="bio-social" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+    <a href="https://www.youtube.com/@googledominado1" target="_blank" class="bio-social" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19.1c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.43z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg></a>
+  </div>
+  <div class="bio-footer anim a9">
+    <div class="bio-footer-copy">&#169; 2026 <a href="/">Maturare</a> · Niterói, RJ</div>
+  </div>
+
+</div>
+
+<script>
+document.querySelectorAll('[data-carousel]').forEach(function(track) {
+  track.addEventListener('scroll', function() {
+    var wrap = track.parentElement;
+    wrap.classList.toggle('at-end', track.scrollLeft + track.clientWidth >= track.scrollWidth - 20);
+  }, { passive: true });
+});
+</script>
+</body>
+</html>

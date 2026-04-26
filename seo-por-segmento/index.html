@@ -1,0 +1,1367 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0e0f0d">
+<title>SEO por Segmento — Nichos que Atendemos | Maturare</title>
+<meta name="description" content="A Maturare desenvolve estratégias de SEO específicas para cada segmento: B2B, negócios locais, SaaS, contadores, clínicas e advogados. Descubra a estratégia certa para o seu nicho.">
+<meta property="og:title" content="SEO por Segmento — Nichos que Atendemos | Maturare">
+<meta property="og:description" content="Cada nicho tem suas regras. Nós conhecemos todas. Estratégias de SEO especializadas para o seu mercado.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,350;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+
+<!-- Schema.org -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://maturare.com.br/seo-por-segmento",
+      "url": "https://maturare.com.br/seo-por-segmento",
+      "name": "SEO por Segmento — Nichos que Atendemos | Maturare",
+      "description": "A Maturare desenvolve estratégias de SEO específicas para cada segmento: B2B, negócios locais, SaaS, contadores, clínicas e advogados.",
+      "inLanguage": "pt-BR",
+      "isPartOf": { "@id": "https://maturare.com.br/#website" },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://maturare.com.br/" },
+          { "@type": "ListItem", "position": 2, "name": "Serviços", "item": "https://maturare.com.br/servicos" },
+          { "@type": "ListItem", "position": 3, "name": "SEO por Segmento", "item": "https://maturare.com.br/seo-por-segmento" }
+        ]
+      }
+    },
+    {
+      "@type": "ItemList",
+      "name": "Segmentos atendidos pela Maturare",
+      "description": "Nichos para os quais a Maturare oferece estratégias de SEO especializadas.",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "SEO para Empresas B2B", "url": "https://maturare.com.br/seo-empresas-b2b" },
+        { "@type": "ListItem", "position": 2, "name": "SEO para Negócios Locais", "url": "https://maturare.com.br/seo-negocios-locais" },
+        { "@type": "ListItem", "position": 3, "name": "SEO para SaaS", "url": "https://maturare.com.br/seo-saas" },
+        { "@type": "ListItem", "position": 4, "name": "SEO para Contadores", "url": "https://maturare.com.br/seo-contadores" },
+        { "@type": "ListItem", "position": 5, "name": "SEO para Clínicas", "url": "https://maturare.com.br/seo-clinicas" },
+        { "@type": "ListItem", "position": 6, "name": "SEO para Advogados", "url": "https://maturare.com.br/seo-advogados" }
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://maturare.com.br/#organization",
+      "name": "Maturare",
+      "url": "https://maturare.com.br",
+      "description": "Agência especializada em SEO, GEO e presença digital para empresas brasileiras."
+    }
+  ]
+}
+</script>
+
+<style>
+/* === LOADER === */
+.loader {
+  position: fixed;
+  inset: 0;
+  background: var(--z0, #0e0f0d);
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 32px;
+}
+.loader-phrase {
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-size: clamp(20px, 4vw, 40px);
+  font-style: italic;
+  color: rgba(255,255,255,.9);
+  letter-spacing: .01em;
+  text-align: center;
+  max-width: 620px;
+  padding: 0 24px;
+  overflow: hidden;
+}
+.loader-phrase span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity .4s ease, transform .4s ease;
+}
+.loader-phrase span.visible { opacity: 1; transform: none; }
+.loader-brand {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: #6fcf97;
+  opacity: 0;
+  transition: opacity .6s ease .3s;
+}
+.loader-brand.visible { opacity: 1; }
+.loader-line {
+  width: 48px;
+  height: 1px;
+  background: rgba(255,255,255,.12);
+  position: relative;
+  overflow: hidden;
+}
+.loader-line::after {
+  content: '';
+  position: absolute;
+  left: 0; top: 0;
+  height: 100%;
+  width: 0%;
+  background: #1a7a4a;
+  transition: width 1.8s cubic-bezier(.16,1,.3,1);
+}
+.loader-line.active::after { width: 100%; }
+.loader.done {
+  opacity: 0;
+  transition: opacity .6s ease;
+  pointer-events: none;
+}
+
+/* === VARIABLES === */
+:root {
+  --ink: #111210;
+  --paper: #f5f4f0;
+  --paper2: #edebe3;
+  --dim: #5a5a56;
+  --faint: #d6d4ce;
+  --green: #1a7a4a;
+  --green2: #6fcf97;
+  --orange: #e07b39;
+  --serif: 'Instrument Serif', Georgia, serif;
+  --sans: 'DM Sans', system-ui, sans-serif;
+  --z0: #0e0f0d;
+  --z1: #141513;
+  --z2: #1a1b18;
+  --z3: #21221f;
+  --z4: #292a26;
+  --border-z2: rgba(255,255,255,.08);
+  --border-z1: rgba(255,255,255,.055);
+  --border-z3: rgba(255,255,255,.11);
+  --toplight: inset 0 1px 0 rgba(255,255,255,.06);
+  --toplight-strong: inset 0 1px 0 rgba(255,255,255,.1);
+  --glow-green: rgba(26,122,74,.14);
+  --glow-green-edge: rgba(111,207,151,.07);
+  --glow-orange: rgba(224,123,57,.06);
+  --r-card: 12px;
+  --r-pill: 999px;
+  --shadow-3: 0 8px 24px rgba(0,0,0,.3), 0 4px 8px rgba(0,0,0,.2);
+  --spring: cubic-bezier(.16,1,.3,1);
+  --t-fast: 150ms; --t-normal: 250ms; --t-slow: 400ms;
+  --zi-nav: 300; --zi-bar: 301; --zi-prog: 999;
+}
+
+/* === RESET === */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+/* === GLOBAL === */
+body {
+  background: var(--z0);
+  color: var(--paper);
+  font-family: var(--sans);
+  font-size: 16px;
+  letter-spacing: -.008em;
+  line-height: 1.75;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  padding-bottom: 60px;
+}
+a { text-decoration: none; color: inherit; }
+img { display: block; max-width: 100%; }
+
+/* === CONTAINER === */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(24px, 5vw, 80px);
+}
+
+/* === REVEAL ANIMATIONS === */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .8s var(--spring), transform .8s var(--spring);
+  will-change: opacity, transform;
+}
+.reveal.in { opacity: 1; transform: none; will-change: auto; }
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity .8s var(--spring), transform .8s var(--spring);
+}
+.reveal-left.in { opacity: 1; transform: none; }
+.reveal-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity .8s var(--spring), transform .8s var(--spring);
+}
+.reveal-right.in { opacity: 1; transform: none; }
+.reveal-scale {
+  opacity: 0;
+  transform: scale(.85);
+  transition: opacity .7s var(--spring), transform .7s var(--spring);
+}
+.reveal-scale.in { opacity: 1; transform: none; }
+
+/* Stagger delays */
+.d1 { transition-delay: .08s; }
+.d2 { transition-delay: .16s; }
+.d3 { transition-delay: .24s; }
+.d4 { transition-delay: .32s; }
+.d5 { transition-delay: .40s; }
+.d6 { transition-delay: .48s; }
+
+/* === SECTION TYPOGRAPHY === */
+.sec-label {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  color: #5a5a54;
+}
+.sec-label.lt { color: var(--green2); }
+.sec-h {
+  font-family: var(--serif);
+  font-size: clamp(32px, 4.5vw, 52px);
+  line-height: 1.1;
+  letter-spacing: -.02em;
+  color: var(--paper);
+  text-wrap: balance;
+}
+.sec-h em { font-style: italic; color: var(--green2); }
+.sec-desc {
+  font-size: 18px;
+  font-weight: 300;
+  font-variation-settings: 'opsz' 18, 'wght' 350;
+  line-height: 1.8;
+  max-width: 640px;
+  color: rgba(255,255,255,.55);
+  text-wrap: pretty;
+}
+
+/* === SCROLL PROGRESS === */
+.scroll-prog {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--green) 0%, var(--green2) 60%, var(--orange) 100%);
+  z-index: var(--zi-prog);
+  width: 0%;
+  pointer-events: none;
+  will-change: width;
+}
+
+/* === NAV === */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: var(--zi-nav);
+  height: 62px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  background: transparent;
+  backdrop-filter: none;
+  border-bottom: 1px solid transparent;
+  transition: background .3s, border-color .3s, backdrop-filter .3s;
+}
+nav.scrolled {
+  background: rgba(7,7,9,.9);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  border-bottom-color: rgba(255,255,255,.07);
+  box-shadow: var(--toplight), 0 1px 20px rgba(0,0,0,.3);
+}
+.logo {
+  font-family: var(--serif);
+  font-size: 19px;
+  letter-spacing: .05em;
+  color: var(--paper);
+  transition: opacity .2s;
+}
+.logo:hover { opacity: .6; }
+.nav-links { display: flex; list-style: none; align-items: center; }
+.nav-btn {
+  background: none;
+  border: none;
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255,255,255,.55);
+  padding: 8px 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: color .2s;
+  white-space: nowrap;
+}
+.nav-btn:hover { color: var(--paper); }
+.nav-btn.active { color: var(--green2); }
+.nav-r { display: flex; align-items: center; gap: 12px; }
+.nav-cta {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  background: var(--paper);
+  color: var(--ink);
+  padding: 10px 24px;
+  border: none;
+  cursor: pointer;
+  font-family: var(--sans);
+  transition: transform .2s, box-shadow .2s;
+}
+.nav-cta:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(244,243,239,.15);
+}
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+.hamburger span { display: block; width: 22px; height: 1.5px; background: var(--paper); transition: transform .3s, opacity .3s; }
+
+/* Mobile menu */
+.mob-menu {
+  display: none;
+  position: fixed;
+  top: 62px; left: 0; right: 0;
+  background: rgba(14,15,13,.97);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid var(--border-z2);
+  z-index: 299;
+  padding: 24px 20px 32px;
+  flex-direction: column;
+  gap: 0;
+  transform: translateY(-8px);
+  opacity: 0;
+  transition: opacity .3s var(--spring), transform .3s var(--spring);
+  pointer-events: none;
+}
+.mob-menu.open {
+  display: flex;
+  transform: none;
+  opacity: 1;
+  pointer-events: all;
+}
+.mob-menu a {
+  font-size: 16px;
+  font-weight: 500;
+  color: rgba(255,255,255,.65);
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border-z1);
+  transition: color .2s;
+}
+.mob-menu a:last-child { border-bottom: none; }
+.mob-menu a:hover { color: var(--paper); }
+.mob-menu .mob-cta {
+  margin-top: 20px;
+  background: var(--green);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: 14px 24px;
+  text-align: center;
+  border-radius: var(--r-pill);
+}
+
+/* === NOISE OVERLAY === */
+.noise { position: relative; }
+.noise::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.045'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  mix-blend-mode: screen;
+  opacity: .5;
+  transform: translate3d(0,0,0);
+}
+.noise > * { position: relative; z-index: 1; }
+
+/* === KEYFRAMES === */
+@keyframes up {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: .4; transform: scale(.75); }
+}
+
+/* === HERO === */
+.hero {
+  background: var(--z1);
+  padding: clamp(110px, 14vw, 160px) 0 clamp(80px, 10vw, 120px);
+  position: relative;
+  overflow: hidden;
+}
+.hero-glow {
+  position: absolute;
+  top: -20%; right: -10%;
+  width: 700px; height: 700px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse 70% 60% at 70% 20%, var(--glow-green) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-glow-2 {
+  position: absolute;
+  bottom: -10%; left: -5%;
+  width: 500px; height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--glow-orange) 0%, transparent 65%);
+  pointer-events: none;
+  z-index: 0;
+}
+.hero-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(26,122,74,.08);
+  border: 1px solid rgba(26,122,74,.18);
+  border-radius: var(--r-pill);
+  padding: 4px 14px 4px 10px;
+  color: var(--green2);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+  opacity: 0;
+  animation: up .6s .1s var(--spring) forwards;
+}
+.hero-kicker::before {
+  content: '';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--green2);
+  animation: pulse 2s infinite;
+}
+.hero-h1 {
+  font-family: var(--serif);
+  font-size: clamp(38px, 5vw, 64px);
+  line-height: 1.05;
+  letter-spacing: -.028em;
+  text-wrap: balance;
+  opacity: 0;
+  animation: up .9s .18s var(--spring) forwards;
+}
+.hero-h1 em { font-style: italic; color: var(--green2); }
+.hero-sub {
+  font-size: 18px;
+  font-weight: 350;
+  font-variation-settings: 'opsz' 18, 'wght' 350;
+  line-height: 1.8;
+  color: rgba(255,255,255,.55);
+  max-width: 560px;
+  margin: 24px 0 36px;
+  text-wrap: pretty;
+  opacity: 0;
+  animation: up .9s .3s var(--spring) forwards;
+}
+.hero-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: rgba(255,255,255,.35);
+  opacity: 0;
+  animation: up .7s .5s var(--spring) forwards;
+  list-style: none;
+}
+.hero-breadcrumb a { color: rgba(255,255,255,.35); transition: color .2s; }
+.hero-breadcrumb a:hover { color: rgba(255,255,255,.65); }
+.hero-breadcrumb span { color: rgba(255,255,255,.2); }
+.hero-breadcrumb strong { color: rgba(255,255,255,.55); font-weight: 500; }
+
+/* === WHY SPECIALIZED SEO SECTION === */
+.why-section {
+  padding: clamp(80px, 10vw, 130px) 0;
+  background: var(--z0);
+}
+.why-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(48px, 7vw, 96px);
+  align-items: start;
+}
+.why-body { display: flex; flex-direction: column; gap: 20px; }
+.why-body p {
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.85;
+  color: rgba(255,255,255,.55);
+  text-wrap: pretty;
+}
+.why-body p strong { font-weight: 600; color: rgba(255,255,255,.8); }
+.why-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.why-stat {
+  background: var(--z2);
+  border: 1px solid var(--border-z2);
+  border-radius: var(--r-card);
+  padding: 24px 28px;
+  box-shadow: var(--toplight);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  transition: border-color var(--t-slow), transform var(--t-slow) var(--spring);
+}
+.why-stat:hover {
+  border-color: rgba(26,122,74,.25);
+  transform: translateX(4px);
+}
+.why-stat-icon {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: rgba(26,122,74,.1);
+  border: 1px solid rgba(26,122,74,.18);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.why-stat-icon svg { width: 20px; height: 20px; }
+.why-stat-body {}
+.why-stat-label {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .05em;
+  color: var(--paper);
+  margin-bottom: 4px;
+}
+.why-stat-desc {
+  font-size: 13px;
+  font-weight: 300;
+  color: rgba(255,255,255,.45);
+  line-height: 1.6;
+}
+
+/* === SEGMENTS GRID SECTION === */
+.seg-section {
+  padding: clamp(80px, 10vw, 130px) 0;
+  background: var(--z1);
+}
+.seg-head {
+  margin-bottom: clamp(48px, 6vw, 72px);
+}
+.seg-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.seg-card {
+  background: var(--z2);
+  border: 1px solid var(--border-z2);
+  border-radius: var(--r-card);
+  padding: 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  box-shadow: var(--toplight);
+  transition: transform var(--t-slow) var(--spring), border-color var(--t-slow), box-shadow var(--t-slow);
+  position: relative;
+  overflow: hidden;
+}
+.seg-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--r-card);
+  background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(26,122,74,.07) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity var(--t-slow);
+  pointer-events: none;
+}
+.seg-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(26,122,74,.32);
+  box-shadow: var(--toplight), 0 16px 48px rgba(0,0,0,.32), 0 0 40px rgba(26,122,74,.1);
+}
+.seg-card:hover::before { opacity: 1; }
+.seg-card-icon {
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  background: rgba(26,122,74,.12);
+  border: 1px solid rgba(26,122,74,.2);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.seg-card-icon svg { width: 24px; height: 24px; }
+.seg-card-title {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -.015em;
+  color: var(--paper);
+}
+.seg-card-desc {
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.75;
+  color: rgba(255,255,255,.5);
+  flex: 1;
+  text-wrap: pretty;
+}
+.seg-card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .05em;
+  color: var(--green2);
+  transition: gap .2s var(--spring);
+  margin-top: 4px;
+  width: fit-content;
+}
+.seg-card:hover .seg-card-link { gap: 10px; }
+
+/* === APPROACH SECTION === */
+.approach-section {
+  padding: clamp(80px, 10vw, 130px) 0;
+  background: var(--z0);
+}
+.approach-head {
+  margin-bottom: clamp(48px, 6vw, 72px);
+  max-width: 640px;
+}
+.approach-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.approach-card {
+  background: var(--z2);
+  border: 1px solid var(--border-z2);
+  border-radius: var(--r-card);
+  padding: 32px 28px;
+  box-shadow: var(--toplight);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: transform var(--t-slow) var(--spring), border-color var(--t-slow), box-shadow var(--t-slow);
+}
+.approach-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(26,122,74,.25);
+  box-shadow: var(--toplight), 0 12px 40px rgba(0,0,0,.28), 0 0 28px rgba(26,122,74,.07);
+}
+.approach-num {
+  font-family: var(--serif);
+  font-size: 44px;
+  font-style: italic;
+  color: rgba(26,122,74,.25);
+  line-height: 1;
+  letter-spacing: -.02em;
+}
+.approach-title {
+  font-family: var(--serif);
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: -.01em;
+  color: var(--paper);
+  line-height: 1.25;
+}
+.approach-desc {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.75;
+  color: rgba(255,255,255,.45);
+  text-wrap: pretty;
+}
+
+/* === CTA SECTION === */
+.cta-section {
+  padding: clamp(80px, 10vw, 130px) 0;
+  background: var(--z1);
+  text-align: center;
+}
+.cta-inner {
+  max-width: 600px;
+  margin: 0 auto;
+}
+.cta-tag {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.3);
+  margin-bottom: 20px;
+}
+.cta-h {
+  font-family: var(--serif);
+  font-size: clamp(30px, 4vw, 48px);
+  letter-spacing: -.025em;
+  line-height: 1.1;
+  color: var(--paper);
+  margin-bottom: 20px;
+  text-wrap: balance;
+}
+.cta-h em { font-style: italic; color: var(--green2); }
+.cta-desc {
+  font-size: 17px;
+  font-weight: 300;
+  font-variation-settings: 'opsz' 18, 'wght' 350;
+  line-height: 1.8;
+  color: rgba(255,255,255,.5);
+  margin-bottom: 40px;
+  text-wrap: pretty;
+}
+.cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--green);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  padding: 16px 44px;
+  border-radius: var(--r-pill);
+  border: none;
+  cursor: pointer;
+  font-family: var(--sans);
+  transition: transform .25s var(--spring), background .2s, box-shadow .25s;
+}
+.cta-btn:hover {
+  background: #1f8f55;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(26,122,74,.28);
+}
+
+/* === FOOTER === */
+footer {
+  background: #0d0e0c;
+  border-top: 1px solid #111;
+  padding: 64px 40px 32px;
+}
+.foot-in { max-width: 1200px; margin: 0 auto; }
+.foot-top {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 64px;
+}
+.foot-brand {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-style: italic;
+  color: var(--paper);
+  margin-bottom: 8px;
+}
+.foot-tag {
+  font-size: 14px;
+  font-weight: 300;
+  color: #4a4a44;
+  line-height: 1.7;
+  max-width: 220px;
+  margin-bottom: 32px;
+}
+.foot-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: #24251f;
+  border: 1px solid #1e1f1c;
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+.foot-live::before {
+  content: '';
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: #1a7a4a;
+  animation: pulse 2.5s infinite;
+}
+.fcol-h {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: #4a4a44;
+  margin-bottom: 16px;
+}
+.flinks { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.flinks a { font-size: 14px; font-weight: 300; color: #4a4a44; transition: color .2s; }
+.flinks a:hover { color: var(--paper); }
+.foot-bot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 32px;
+  border-top: 1px solid #111;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+.foot-copy { font-size: 13px; color: #24251f; }
+.foot-socs { display: flex; gap: 24px; }
+.foot-socs a {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: #24251f;
+  transition: color .2s;
+}
+.foot-socs a:hover { color: var(--paper); }
+
+/* === BOTTOM BAR === */
+.bottom-bar {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  z-index: 95;
+  background: rgba(244,243,239,.92);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  box-shadow: 0 -1px 0 rgba(0,0,0,.06);
+  transform: translateY(100%);
+  transition: transform .5s var(--spring);
+}
+.bottom-bar.visible { transform: translateY(0); }
+.bb-desktop {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  padding: 14px 40px;
+}
+.bb-info { font-size: 14px; font-weight: 500; color: var(--dim); }
+.bb-sep { width: 1px; height: 20px; background: var(--faint); }
+.bb-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 28px;
+  border-radius: 50px;
+  background: var(--green);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background .2s;
+}
+.bb-cta:hover { background: #1f8f55; }
+.bb-mobile { display: none; }
+
+/* === REDUCED MOTION === */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+  .reveal, .reveal-left, .reveal-right, .reveal-scale { opacity: 1 !important; transform: none !important; }
+  .hero-kicker, .hero-h1, .hero-sub, .hero-breadcrumb { opacity: 1 !important; }
+}
+
+/* === RETINA === */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .noise::after { background-size: 150px 150px; opacity: .38; }
+}
+
+/* === RESPONSIVE: TABLET (960px) === */
+@media (max-width: 960px) {
+  nav { padding: 0 20px; }
+  .nav-links, .nav-cta { display: none; }
+  .hamburger { display: flex; }
+  body { padding-bottom: 66px; }
+
+  .bb-desktop { display: none; }
+  .bb-mobile {
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    padding: 8px 16px calc(8px + env(safe-area-inset-bottom, 4px));
+  }
+  .bb-mobile-top { font-size: 11px; font-weight: 500; color: var(--dim); flex: 1; line-height: 1.3; }
+  .bb-mobile-cta {
+    display: flex; align-items: center; justify-content: center; gap: 5px;
+    padding: 8px 16px; border-radius: 50px;
+    background: var(--green); color: #fff; font-size: 11px; font-weight: 600;
+    border: none; cursor: pointer; white-space: nowrap; flex-shrink: 0;
+  }
+
+  .why-inner { grid-template-columns: 1fr; }
+  .seg-grid { grid-template-columns: 1fr; gap: 16px; }
+  .approach-grid { grid-template-columns: 1fr; gap: 16px; }
+  .foot-top { grid-template-columns: 1fr 1fr; }
+  .cta-section { text-align: left; }
+  .cta-inner { max-width: 100%; }
+  footer { padding: 48px 20px 24px; }
+}
+
+/* === RESPONSIVE: MOBILE (480px) === */
+@media (max-width: 480px) {
+  .hero-h1 { font-size: 30px; line-height: 1.05; }
+  .hero-sub { font-size: 16px; line-height: 1.7; }
+  .sec-h { font-size: clamp(24px, 6.5vw, 32px); }
+  .seg-card { padding: 28px 24px; }
+  .foot-top { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div class="loader" id="loader">
+  <div class="loader-phrase" id="loaderPhrase"></div>
+  <div class="loader-line" id="loaderLine"></div>
+  <div class="loader-brand" id="loaderBrand">Maturare</div>
+</div>
+
+<!-- SCROLL PROGRESS -->
+<div class="scroll-prog" id="scrollProg"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="/" class="logo">Maturare</a>
+  <ul class="nav-links">
+    <li><a href="/" class="nav-btn">Home</a></li>
+    <li><a href="/servicos" class="nav-btn active">Serviços</a></li>
+    <li><a href="/blog" class="nav-btn">Blog</a></li>
+    <li><a href="/#resultados" class="nav-btn">Resultados</a></li>
+    <li><a href="/#sobre" class="nav-btn">Sobre</a></li>
+    <li><a href="/#faq" class="nav-btn">FAQ</a></li>
+  </ul>
+  <div class="nav-r">
+    <button class="nav-cta" onclick="location.href='/#orcamento'">Fale Com Especialista</button>
+    <button class="hamburger" id="hambBtn" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mob-menu" id="mobMenu" role="navigation" aria-label="Menu mobile">
+  <a href="/">Home</a>
+  <a href="/servicos" style="color:var(--green2)">Serviços</a>
+  <a href="/blog">Blog</a>
+  <a href="/#resultados">Resultados</a>
+  <a href="/#sobre">Sobre</a>
+  <a href="/#faq">FAQ</a>
+  <a href="/#orcamento" class="mob-cta">Fale Com Especialista</a>
+</div>
+
+<!-- HERO -->
+<section class="hero noise" id="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-glow-2"></div>
+  <div class="container">
+    <div class="hero-kicker">SEO POR SEGMENTO</div>
+    <h1 class="hero-h1">SEO por Segmento — Seu mercado tem regras próprias.<br><em>Nós conhecemos todas.</em></h1>
+    <p class="hero-sub">Um contador não busca clientes da mesma forma que uma clínica. Não aplicamos a mesma fórmula para todo mundo — estudamos seu segmento a fundo antes de criar qualquer estratégia.</p>
+    <nav class="hero-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span aria-hidden="true">›</span>
+      <a href="/servicos">Serviços</a>
+      <span aria-hidden="true">›</span>
+      <strong>SEO por Segmento</strong>
+    </nav>
+  </div>
+</section>
+
+<!-- SECTION: POR QUE SEO ESPECIALIZADO -->
+<section class="why-section" id="por-que-especializado">
+  <div class="container">
+    <div class="why-inner">
+
+      <div class="reveal">
+        <div class="sec-label lt">POR QUE IMPORTA</div>
+        <h2 class="sec-h">SEO genérico<br>não basta</h2>
+        <div class="why-body" style="margin-top:28px">
+          <p>Quando um advogado busca um contador ou uma clínica decide contratar uma agência de marketing, as palavras que digitam no Google são muito específicas. <strong>Quem não fala a linguagem do segmento fica invisível.</strong></p>
+          <p>A Maturare mergulha em cada nicho: estudamos os termos reais que os decisores pesquisam, mapeamos os concorrentes do setor e construímos uma estratégia de conteúdo que só faz sentido para aquele mercado.</p>
+          <p>O resultado é tráfego qualificado — visitantes que já chegam ao seu site sabendo o que precisam e prontos para avançar na conversa.</p>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <div class="why-stat reveal d1">
+          <div class="why-stat-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#6fcf97" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"/>
+              <path d="m21 21-4.35-4.35"/>
+            </svg>
+          </div>
+          <div class="why-stat-body">
+            <div class="why-stat-label">Palavras-chave do nicho</div>
+            <div class="why-stat-desc">Cada segmento tem um vocabulário próprio que o cliente usa ao buscar.</div>
+          </div>
+        </div>
+
+        <div class="why-stat reveal d2">
+          <div class="why-stat-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#6fcf97" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </div>
+          <div class="why-stat-body">
+            <div class="why-stat-label">Concorrentes reais do mercado</div>
+            <div class="why-stat-desc">Analisamos quem domina o Google no seu setor específico.</div>
+          </div>
+        </div>
+
+        <div class="why-stat reveal d3">
+          <div class="why-stat-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#6fcf97" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+            </svg>
+          </div>
+          <div class="why-stat-body">
+            <div class="why-stat-label">Comportamento de busca do segmento</div>
+            <div class="why-stat-desc">Como e quando o seu cliente ideal pesquisa — e como aparecer no momento certo.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SECTION: SEGMENTOS -->
+<section class="seg-section noise" id="segmentos">
+  <div class="container">
+    <div class="seg-head reveal">
+      <div class="sec-label lt">NICHOS QUE ATENDEMOS</div>
+      <h2 class="sec-h">Escolha o seu <em>segmento</em></h2>
+      <p class="sec-desc" style="margin-top:16px">Estratégias construídas do zero para cada tipo de negócio. Selecione o seu e descubra como a Maturare atua no seu mercado.</p>
+    </div>
+
+    <div class="seg-grid">
+
+      <!-- B2B -->
+      <a href="/seo-empresas-b2b" class="seg-card reveal d1">
+        <div class="seg-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#6fcf97" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="7" width="20" height="14" rx="2"/>
+            <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
+            <line x1="12" y1="12" x2="12" y2="16"/>
+            <line x1="10" y1="14" x2="14" y2="14"/>
+          </svg>
+        </div>
+        <div class="seg-card-title">SEO para Empresas B2B</div>
+        <p class="seg-card-desc">Ciclo de venda longo, decisores múltiplos. SEO que gera leads qualificados — o tipo de visitante que já chegou ao seu site com intenção de compra.</p>
+        <div class="seg-card-link">Saiba mais <span aria-hidden="true">→</span></div>
+      </a>
+
+      <!-- Negócios Locais -->
+      <a href="/seo-negocios-locais" class="seg-card reveal d2">
+        <div class="seg-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#6fcf97" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+        </div>
+        <div class="seg-card-title">SEO para Negócios Locais</div>
+        <p class="seg-card-desc">Apareça no mapa e nas buscas da sua cidade. Clientes que estão perto e prontos para comprar — o SEO local certo coloca você na frente de quem já está decidido.</p>
+        <div class="seg-card-link">Saiba mais <span aria-hidden="true">→</span></div>
+      </a>
+
+      <!-- SaaS -->
+      <a href="/seo-saas" class="seg-card reveal d3">
+        <div class="seg-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#6fcf97" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="3" width="20" height="14" rx="2"/>
+            <path d="M8 21h8M12 17v4"/>
+            <path d="M6 9h.01M9 9h6"/>
+          </svg>
+        </div>
+        <div class="seg-card-title">SEO para SaaS</div>
+        <p class="seg-card-desc">Reduza o CAC e escale com tráfego orgânico. Conteúdo que converte trial em cliente — do topo do funil ao momento de decisão de compra.</p>
+        <div class="seg-card-link">Saiba mais <span aria-hidden="true">→</span></div>
+      </a>
+
+      <!-- Contadores -->
+      <a href="/seo-contadores" class="seg-card reveal d4">
+        <div class="seg-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#6fcf97" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+            <polyline points="14,2 14,8 20,8"/>
+            <line x1="16" y1="13" x2="8" y2="13"/>
+            <line x1="16" y1="17" x2="8" y2="17"/>
+          </svg>
+        </div>
+        <div class="seg-card-title">SEO para Contadores</div>
+        <p class="seg-card-desc">Escritórios contábeis que aparecem quando o empresário busca contador na sua cidade. Domine as buscas do seu nicho antes que o concorrente descubra este caminho.</p>
+        <div class="seg-card-link">Saiba mais <span aria-hidden="true">→</span></div>
+      </a>
+
+      <!-- Clínicas -->
+      <a href="/seo-clinicas" class="seg-card reveal d5">
+        <div class="seg-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#6fcf97" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/>
+            <path d="M12 14v-4M10 12h4"/>
+          </svg>
+        </div>
+        <div class="seg-card-title">SEO para Clínicas</div>
+        <p class="seg-card-desc">Pacientes buscam sintomas e tratamentos online antes de agendar. Esteja lá quando procurarem — com autoridade, confiança e a agenda cheia de consultas.</p>
+        <div class="seg-card-link">Saiba mais <span aria-hidden="true">→</span></div>
+      </a>
+
+      <!-- Advogados -->
+      <a href="/seo-advogados" class="seg-card reveal d6">
+        <div class="seg-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#6fcf97" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <path d="M9 12l2 2 4-4"/>
+          </svg>
+        </div>
+        <div class="seg-card-title">SEO para Advogados</div>
+        <p class="seg-card-desc">Escritórios de advocacia que aparecem para quem precisa de ajuda jurídica agora. Tráfego de alta intenção, com respaldo das restrições do Código de Ética da OAB.</p>
+        <div class="seg-card-link">Saiba mais <span aria-hidden="true">→</span></div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- SECTION: ABORDAGEM -->
+<section class="approach-section" id="abordagem">
+  <div class="container">
+    <div class="approach-head reveal">
+      <div class="sec-label lt">METODOLOGIA</div>
+      <h2 class="sec-h">Mesmo método,<br><em>execução personalizada</em></h2>
+      <p class="sec-desc" style="margin-top:18px">Nossa metodologia é consistente. A aplicação muda para cada nicho. Não existe cópia de estratégia de um cliente para outro.</p>
+    </div>
+
+    <div class="approach-grid">
+
+      <div class="approach-card reveal d1">
+        <div class="approach-num">01</div>
+        <div class="approach-title">Pesquisa de mercado do nicho</div>
+        <p class="approach-desc">Antes de escrever uma linha, estudamos o vocabulário real do segmento, o volume de busca das palavras-chave específicas e as lacunas que os concorrentes do setor ainda não preencheram.</p>
+      </div>
+
+      <div class="approach-card reveal d2">
+        <div class="approach-num">02</div>
+        <div class="approach-title">Conteúdo especializado</div>
+        <p class="approach-desc">Criamos conteúdo que só faz sentido para aquele segmento — com a profundidade técnica que o Google valoriza e a linguagem que o leitor da área reconhece como autoridade.</p>
+      </div>
+
+      <div class="approach-card reveal d3">
+        <div class="approach-num">03</div>
+        <div class="approach-title">Monitoramento de concorrentes do segmento</div>
+        <p class="approach-desc">Acompanhamos continuamente quem avança e recua no seu nicho. Cada movimento do concorrente vira inteligência para ajustar a estratégia antes que você perca posição.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SECTION: CTA -->
+<section class="cta-section noise" id="orcamento">
+  <div class="container">
+    <div class="cta-inner reveal">
+      <div class="cta-tag">Próximo passo</div>
+      <h2 class="cta-h">Qual é o seu <em>segmento?</em></h2>
+      <p class="cta-desc">Fale com um especialista da Maturare. Em 30 minutos entendemos o seu mercado, mapeamos as principais oportunidades e mostramos o que é possível para o seu negócio.</p>
+      <a href="/#orcamento" class="cta-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        Fale Com Especialista
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-in">
+    <div class="foot-top">
+      <div>
+        <div class="foot-brand">Maturare</div>
+        <p class="foot-tag">SEO, GEO e presença digital para empresas que querem ser encontradas — e recomendadas.</p>
+        <div class="foot-live">Aceitando clientes</div>
+      </div>
+      <div>
+        <div class="fcol-h">Serviços</div>
+        <ul class="flinks">
+          <li><a href="/consultoria-seo">Consultoria de SEO</a></li>
+          <li><a href="/criacao-sites-seo-ia">Criação de Sites</a></li>
+          <li><a href="/arquitetura-digital">Arquitetura Digital</a></li>
+          <li><a href="/google-meu-negocio">Google Meu Negócio</a></li>
+          <li><a href="/agencia-geo-aeo">GEO e AEO</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="fcol-h">Segmentos</div>
+        <ul class="flinks">
+          <li><a href="/seo-empresas-b2b">SEO B2B</a></li>
+          <li><a href="/seo-negocios-locais">Negócios Locais</a></li>
+          <li><a href="/seo-saas">SaaS</a></li>
+          <li><a href="/seo-contadores">Contadores</a></li>
+          <li><a href="/seo-clinicas">Clínicas</a></li>
+          <li><a href="/seo-advogados">Advogados</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="fcol-h">Empresa</div>
+        <ul class="flinks">
+          <li><a href="/#sobre">Sobre</a></li>
+          <li><a href="/#resultados">Resultados</a></li>
+          <li><a href="/blog">Blog</a></li>
+          <li><a href="/#faq">FAQ</a></li>
+          <li><a href="/contato">Contato</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <div class="foot-copy">© 2025 Maturare. Todos os direitos reservados.</div>
+      <div class="foot-socs">
+        <a href="https://instagram.com/maturare" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://linkedin.com/company/maturare" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://youtube.com/@maturare" target="_blank" rel="noopener">YouTube</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- BOTTOM BAR -->
+<div class="bottom-bar" id="bottomBar">
+  <div class="bb-desktop">
+    <span class="bb-info">Qual é o seu segmento?</span>
+    <div class="bb-sep"></div>
+    <a href="/#orcamento" class="bb-cta">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      Fale Com Especialista
+    </a>
+  </div>
+  <div class="bb-mobile">
+    <div class="bb-mobile-top">Estratégia para o seu nicho</div>
+    <button class="bb-mobile-cta" onclick="location.href='/#orcamento'">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      Fale Com Especialista
+    </button>
+  </div>
+</div>
+
+<script>
+/* === LOADER === */
+(function() {
+  const phrase = "Cada nicho tem suas regras. Nós conhecemos todas.";
+  const container = document.getElementById('loaderPhrase');
+  const line = document.getElementById('loaderLine');
+  const brand = document.getElementById('loaderBrand');
+
+  const words = phrase.split(' ');
+  words.forEach((word, i) => {
+    const span = document.createElement('span');
+    span.textContent = (i < words.length - 1 ? word + '\u00a0' : word);
+    span.style.transitionDelay = (50 + i * 55) + 'ms';
+    container.appendChild(span);
+  });
+
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      line.classList.add('active');
+      brand.classList.add('visible');
+      container.querySelectorAll('span').forEach(s => s.classList.add('visible'));
+    });
+  });
+
+  const minWait = 1600;
+  const start = Date.now();
+
+  window.addEventListener('load', () => {
+    const elapsed = Date.now() - start;
+    const remaining = Math.max(0, minWait - elapsed);
+    setTimeout(() => {
+      const loader = document.getElementById('loader');
+      loader.classList.add('done');
+      setTimeout(() => { loader.style.display = 'none'; }, 700);
+    }, remaining);
+  });
+})();
+
+/* === SCROLL PROGRESS === */
+const prog = document.getElementById('scrollProg');
+function updateProg() {
+  const max = document.documentElement.scrollHeight - window.innerHeight;
+  prog.style.width = (max > 0 ? (window.scrollY / max) * 100 : 0) + '%';
+}
+window.addEventListener('scroll', updateProg, { passive: true });
+
+/* === NAV SCROLL === */
+const navEl = document.getElementById('nav');
+function updateNav() {
+  navEl.classList.toggle('scrolled', window.scrollY > 30);
+}
+window.addEventListener('scroll', updateNav, { passive: true });
+updateNav();
+
+/* === HAMBURGER === */
+const hambBtn = document.getElementById('hambBtn');
+const mobMenu = document.getElementById('mobMenu');
+hambBtn.addEventListener('click', () => {
+  const open = mobMenu.classList.toggle('open');
+  hambBtn.setAttribute('aria-expanded', open);
+  const spans = hambBtn.querySelectorAll('span');
+  if (open) {
+    spans[0].style.transform = 'translateY(6.5px) rotate(45deg)';
+    spans[1].style.opacity = '0';
+    spans[2].style.transform = 'translateY(-6.5px) rotate(-45deg)';
+  } else {
+    spans.forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
+  }
+});
+document.addEventListener('click', (e) => {
+  if (!mobMenu.contains(e.target) && !hambBtn.contains(e.target)) {
+    mobMenu.classList.remove('open');
+    hambBtn.setAttribute('aria-expanded', 'false');
+    hambBtn.querySelectorAll('span').forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
+  }
+});
+
+/* === BOTTOM BAR === */
+const bottomBar = document.getElementById('bottomBar');
+let barShown = false;
+function updateBar() {
+  const show = window.scrollY > 320;
+  if (show !== barShown) {
+    barShown = show;
+    bottomBar.classList.toggle('visible', show);
+  }
+}
+window.addEventListener('scroll', updateBar, { passive: true });
+updateBar();
+
+/* === INTERSECTION OBSERVER (REVEAL) === */
+const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('in');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+revealEls.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

@@ -1,0 +1,2027 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0e0f0d">
+<title>Agência de SEO no Rio de Janeiro — Maturare | RJ</title>
+<meta name="description" content="Agência de SEO no Rio de Janeiro com resultados reais. A Maturare atende toda a Região Metropolitana do RJ — Zona Sul, Zona Norte, Zona Oeste, Centro, Baixada e Niterói. Análise gratuita.">
+<meta property="og:title" content="Agência de SEO no Rio de Janeiro — Maturare | RJ">
+<meta property="og:description" content="SEO especializado para empresas cariocas. A Maturare faz sua empresa aparecer no Google e ser recomendada pelas IAs em todo o Rio de Janeiro.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<link rel="canonical" href="https://maturare.com.br/agencia-seo-rio-de-janeiro">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://maturare.com.br/#org",
+      "name": "Maturare",
+      "description": "Agência de SEO no Rio de Janeiro especializada em SEO Local, GEO e AEO para negócios da Região Metropolitana do RJ.",
+      "url": "https://maturare.com.br",
+      "telephone": "+55-21-99999-0000",
+      "email": "contato@maturare.com.br",
+      "taxID": "47.336.340/0001-51",
+      "image": "https://maturare.com.br/logo.png",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Niterói",
+        "addressRegion": "RJ",
+        "addressCountry": "BR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -22.8838,
+        "longitude": -43.1044
+      },
+      "areaServed": [
+        { "@type": "City", "name": "Rio de Janeiro" },
+        { "@type": "City", "name": "Niterói" },
+        { "@type": "City", "name": "São Gonçalo" },
+        { "@type": "City", "name": "Duque de Caxias" },
+        { "@type": "City", "name": "Nova Iguaçu" },
+        { "@type": "City", "name": "Belford Roxo" }
+      ],
+      "serviceType": ["SEO Local", "SEO Técnico", "Criação de Conteúdo", "GEO", "AEO", "Google Meu Negócio"],
+      "founder": {
+        "@type": "Person",
+        "name": "Daniel Batista Rios",
+        "jobTitle": "Founder & SEO Specialist"
+      },
+      "sameAs": [
+        "https://www.instagram.com/maturare.com.br/",
+        "https://www.youtube.com/@googledominado1",
+        "https://br.linkedin.com/in/daniel-batista-674b62140"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://maturare.com.br" },
+        { "@type": "ListItem", "position": 2, "name": "Agência de SEO no Rio de Janeiro", "item": "https://maturare.com.br/agencia-seo-rio-de-janeiro" }
+      ]
+    }
+  ]
+}
+</script>
+
+<style>
+/* === LOADER === */
+.loader {
+  position: fixed;
+  inset: 0;
+  background: var(--z0, #0e0f0d);
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 32px;
+}
+.loader-phrase {
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-size: clamp(22px, 4.5vw, 42px);
+  font-style: italic;
+  color: rgba(255,255,255,.9);
+  letter-spacing: .01em;
+  text-align: center;
+  max-width: 600px;
+  padding: 0 24px;
+  overflow: hidden;
+}
+.loader-phrase span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity .4s ease, transform .4s ease;
+}
+.loader-phrase span.visible { opacity: 1; transform: none; }
+.loader-brand {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: #6fcf97;
+  opacity: 0;
+  transition: opacity .6s ease .3s;
+}
+.loader-brand.visible { opacity: 1; }
+.loader-line {
+  width: 48px;
+  height: 1px;
+  background: rgba(255,255,255,.12);
+  position: relative;
+  overflow: hidden;
+}
+.loader-line::after {
+  content: '';
+  position: absolute;
+  left: 0; top: 0;
+  height: 100%;
+  width: 0%;
+  background: #1a7a4a;
+  transition: width 1.8s cubic-bezier(.16,1,.3,1);
+}
+.loader-line.active::after { width: 100%; }
+.loader.done {
+  opacity: 0;
+  transition: opacity .6s ease;
+  pointer-events: none;
+}
+
+/* === VARIABLES === */
+:root {
+  --ink: #111210;
+  --ink2: #1c1b19;
+  --paper: #f5f4f0;
+  --paper2: #edebe3;
+  --paper3: #e2dfd6;
+  --dim: #5a5a56;
+  --faint: #d6d4ce;
+  --green: #1a7a4a;
+  --green2: #6fcf97;
+  --green-bg: #e8f5ee;
+  --orange: #e07b39;
+  --serif: 'Instrument Serif', Georgia, serif;
+  --sans: 'DM Sans', system-ui, sans-serif;
+  --radius: 16px;
+  --radius-sm: 8px;
+  --sec-pad: clamp(100px, 12vw, 160px);
+  --spring: cubic-bezier(.16, 1, .3, 1);
+  --z0: #0e0f0d;
+  --z1: #141513;
+  --z2: #1a1b18;
+  --z3: #21221f;
+  --z4: #292a26;
+  --glow-green: rgba(26, 122, 74, .14);
+  --glow-green-edge: rgba(111, 207, 151, .07);
+  --glow-orange: rgba(224, 123, 57, .06);
+  --border-z1: rgba(255, 255, 255, .055);
+  --border-z2: rgba(255, 255, 255, .08);
+  --border-z3: rgba(255, 255, 255, .11);
+  --toplight: inset 0 1px 0 rgba(255, 255, 255, .06);
+  --toplight-strong: inset 0 1px 0 rgba(255, 255, 255, .1);
+  --sp-2: 8px; --sp-3: 12px; --sp-4: 16px; --sp-6: 24px; --sp-8: 32px; --sp-10: 40px; --sp-12: 48px; --sp-16: 64px;
+  --r-sharp: 0px; --r-subtle: 4px; --r-card: 12px; --r-soft: 16px; --r-pill: 999px;
+  --zi-nav: 300; --zi-bar: 301; --zi-prog: 999;
+  --t-fast: 150ms; --t-normal: 250ms; --t-slow: 400ms; --t-slower: 750ms;
+  --shadow-2: 0 4px 12px rgba(0,0,0,.25), 0 2px 4px rgba(0,0,0,.2);
+  --shadow-3: 0 8px 24px rgba(0,0,0,.3), 0 4px 8px rgba(0,0,0,.2);
+  --shadow-5: 0 24px 80px rgba(0,0,0,.45), 0 12px 24px rgba(0,0,0,.25);
+}
+
+/* === RESET === */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+/* === GLOBAL === */
+body {
+  background: var(--z0);
+  color: var(--paper);
+  font-family: var(--sans);
+  font-size: 16px;
+  letter-spacing: -.008em;
+  line-height: 1.75;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  padding-bottom: 60px;
+}
+a { text-decoration: none; color: inherit; }
+img { display: block; max-width: 100%; }
+
+/* === UTILITIES === */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(24px, 5vw, 80px);
+}
+
+/* Reveal animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .8s var(--spring), transform .8s var(--spring);
+  will-change: opacity, transform;
+}
+.reveal.in { opacity: 1; transform: none; will-change: auto; }
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity .8s var(--spring), transform .8s var(--spring);
+}
+.reveal-left.in { opacity: 1; transform: none; }
+.reveal-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity .8s var(--spring), transform .8s var(--spring);
+}
+.reveal-right.in { opacity: 1; transform: none; }
+.reveal-scale {
+  opacity: 0;
+  transform: scale(.88);
+  transition: opacity .7s var(--spring), transform .7s var(--spring);
+}
+.reveal-scale.in { opacity: 1; transform: none; }
+
+/* Stagger delays */
+.d1 { transition-delay: .08s; }
+.d2 { transition-delay: .16s; }
+.d3 { transition-delay: .24s; }
+.d4 { transition-delay: .32s; }
+.d5 { transition-delay: .40s; }
+.d6 { transition-delay: .48s; }
+.d7 { transition-delay: .56s; }
+
+/* Section labels */
+.sec-label {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.sec-label.lt { color: var(--dim); }
+.sec-label.dk { color: #5a5a54; }
+.sec-h {
+  font-family: var(--serif);
+  font-size: clamp(32px, 4.5vw, 52px);
+  line-height: 1.1;
+  letter-spacing: -.02em;
+}
+.sec-h.lt { color: var(--paper); }
+.sec-h.dk { color: var(--ink); }
+.sec-h em { font-style: italic; }
+.sec-desc {
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1.8;
+  max-width: 640px;
+}
+.sec-desc.lt { color: rgba(255, 255, 255, .6); }
+.sec-desc.dk { color: var(--dim); }
+
+/* Primary button */
+.btn-p {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  padding: 14px 32px;
+  border: none;
+  cursor: pointer;
+  transition: transform var(--t-normal) var(--spring), box-shadow var(--t-normal);
+  font-family: var(--sans);
+}
+.btn-p:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 32px rgba(244, 243, 239, .14), 0 2px 8px rgba(244, 243, 239, .08);
+}
+.btn-p:active { transform: translateY(0) scale(.98); transition-duration: .1s; }
+
+.btn-green {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--green);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  padding: 14px 32px;
+  border: none;
+  cursor: pointer;
+  transition: transform var(--t-normal) var(--spring), background var(--t-normal);
+  font-family: var(--sans);
+  border-radius: var(--r-pill);
+}
+.btn-green:hover {
+  background: #1f8f55;
+  transform: translateY(-2px);
+}
+
+/* Noise overlay */
+.noise { position: relative; }
+.noise::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.045'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  mix-blend-mode: screen;
+  opacity: .5;
+  transform: translate3d(0, 0, 0);
+}
+.noise > * { position: relative; z-index: 1; }
+
+/* === SCROLL PROGRESS === */
+.scroll-prog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--green) 0%, var(--green2) 60%, var(--orange) 100%);
+  z-index: var(--zi-prog);
+  width: 0%;
+  pointer-events: none;
+  will-change: width;
+}
+
+/* === BAR === */
+#bar {
+  background: #0f100e;
+  border-bottom: 1px solid #22231f;
+  padding: 9px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  font-size: 13px;
+  color: #8a8a82;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--zi-bar);
+}
+.bar-pill {
+  background: transparent;
+  border: 1px solid #302f29;
+  color: var(--green2);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  padding: 2px 10px;
+  border-radius: 99px;
+}
+#bar a {
+  color: var(--green2);
+  border-bottom: 1px solid rgba(111, 207, 151, .25);
+  transition: color .2s;
+}
+#bar a:hover { color: #a8f0c8; }
+.bar-x {
+  position: absolute;
+  right: 40px;
+  background: none;
+  border: none;
+  color: #5a5a54;
+  font-size: 18px;
+  cursor: pointer;
+  transition: color .2s;
+}
+.bar-x:hover { color: #888; }
+
+/* === NAV === */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--zi-nav);
+  height: 62px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  background: transparent;
+  backdrop-filter: none;
+  border-bottom: 1px solid transparent;
+  transition: top .3s, background .3s, border-color .3s, backdrop-filter .3s;
+  will-change: background, backdrop-filter;
+}
+nav.scrolled {
+  background: rgba(7, 7, 9, .9);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  border-bottom-color: rgba(255, 255, 255, .07);
+  box-shadow: var(--toplight), 0 1px 20px rgba(0, 0, 0, .3);
+}
+.logo {
+  font-family: var(--serif);
+  font-size: 19px;
+  letter-spacing: .05em;
+  color: var(--paper);
+  transition: opacity .2s;
+}
+.logo:hover { opacity: .6; }
+.nav-links { display: flex; list-style: none; align-items: center; }
+.nav-btn {
+  background: none;
+  border: none;
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, .55);
+  padding: 8px 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: color .2s;
+  white-space: nowrap;
+}
+.nav-btn:hover, .nav-btn.active { color: var(--paper); }
+.nav-btn.active {
+  color: var(--green2);
+}
+.nav-r { display: flex; align-items: center; gap: 12px; }
+.nav-cta {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  background: var(--paper);
+  color: var(--ink);
+  padding: 10px 24px;
+  border: none;
+  cursor: pointer;
+  font-family: var(--sans);
+  transition: transform .2s, box-shadow .2s;
+}
+.nav-cta:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(244, 243, 239, .15);
+}
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+.hamburger span { display: block; width: 22px; height: 1.5px; background: var(--paper); }
+
+/* Mobile menu */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: var(--z0);
+  z-index: 9998;
+  flex-direction: column;
+  padding: 80px 40px 40px;
+  gap: 8px;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  font-family: var(--serif);
+  font-size: 28px;
+  font-style: italic;
+  color: var(--paper);
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+  transition: color .2s;
+}
+.mobile-menu a:hover { color: var(--green2); }
+.mobile-close {
+  position: absolute;
+  top: 20px; right: 24px;
+  background: none; border: none;
+  color: var(--dim); font-size: 28px; cursor: pointer;
+}
+
+/* === HERO === */
+.hero-loc {
+  min-height: auto;
+  display: flex;
+  align-items: center;
+  padding: 160px 0 80px;
+  position: relative;
+  overflow: hidden;
+  background: var(--z1);
+}
+.hero-loc::before {
+  content: '';
+  position: absolute;
+  bottom: -10%;
+  left: -5%;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--glow-orange) 0%, transparent 65%);
+  pointer-events: none;
+}
+.hero-glow {
+  position: absolute;
+  top: -15%;
+  right: -5%;
+  width: 700px;
+  height: 700px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse 70% 60% at 75% 20%, var(--glow-green) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-loc-inner {
+  max-width: 860px;
+}
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 28px;
+  font-size: 13px;
+  color: var(--dim);
+  flex-wrap: wrap;
+}
+.breadcrumb a { transition: color .2s; }
+.breadcrumb a:hover { color: var(--paper); }
+.breadcrumb-sep { color: rgba(255,255,255,.2); font-size: 11px; }
+.breadcrumb span { color: rgba(255,255,255,.45); }
+.hero-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(26, 122, 74, .08);
+  border: 1px solid rgba(26, 122, 74, .18);
+  border-radius: var(--r-pill);
+  padding: 4px 14px 4px 10px;
+  color: var(--green2);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+}
+.hero-kicker::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--green2);
+  animation: pulse 2s infinite;
+}
+.hero-h1 {
+  font-family: var(--serif);
+  font-size: clamp(34px, 5vw, 58px);
+  line-height: 1.02;
+  letter-spacing: -.026em;
+  margin-bottom: 28px;
+  color: var(--paper);
+}
+.hero-h1 em { font-style: italic; color: rgba(255,255,255,.75); }
+.hero-lead {
+  font-size: 19px;
+  font-weight: 300;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, .58);
+  max-width: 620px;
+  margin-bottom: 40px;
+}
+.hero-lead strong { color: rgba(255,255,255,.7); font-weight: 500; }
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.hero-link {
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(255,255,255,.5);
+  border-bottom: 1px solid rgba(255,255,255,.15);
+  padding-bottom: 2px;
+  transition: color .2s;
+}
+.hero-link:hover { color: var(--paper); }
+.hero-stats {
+  display: flex;
+  gap: 40px;
+  margin-top: 56px;
+  padding-top: 40px;
+  border-top: 1px solid rgba(255,255,255,.06);
+  flex-wrap: wrap;
+}
+.hero-stat-val {
+  font-family: var(--serif);
+  font-size: clamp(28px, 4vw, 42px);
+  font-style: italic;
+  color: var(--green2);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.hero-stat-lbl {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--dim);
+}
+
+/* === MARQUEE === */
+.mq-gold {
+  overflow: hidden;
+  padding: 18px 0;
+  background: linear-gradient(135deg, var(--green) 0%, #145c38 100%);
+}
+.mq-gold .mq-track {
+  display: flex;
+  width: max-content;
+  animation: mqs 30s linear infinite;
+}
+.mq-gold .mq-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 40px;
+  padding: 0 40px;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(18px, 2.5vw, 26px);
+  color: rgba(255, 255, 255, .85);
+  white-space: nowrap;
+}
+.mq-gold .mq-sep { color: rgba(255, 255, 255, .35); font-size: 14px; }
+
+/* === SECTION: MERCADO RJ === */
+.mkt-sec {
+  background: var(--paper);
+  padding: var(--sec-pad) 0;
+  position: relative;
+  overflow: hidden;
+}
+.mkt-sec::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: var(--faint);
+}
+.mkt-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.mkt-body {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.mkt-p {
+  font-size: 17px;
+  font-weight: 300;
+  color: var(--dim);
+  line-height: 1.85;
+}
+.mkt-p strong { color: var(--ink); font-weight: 600; }
+.mkt-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 8px;
+}
+.mkt-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--green);
+  background: var(--green-bg);
+  border: 1px solid rgba(26, 122, 74, .18);
+  padding: 5px 14px;
+  border-radius: var(--r-pill);
+}
+.mkt-visual {
+  background: var(--ink);
+  border-radius: var(--r-card);
+  padding: 40px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-5);
+}
+.mkt-visual::before {
+  content: '';
+  position: absolute;
+  top: -40%;
+  right: -20%;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--glow-green) 0%, transparent 70%);
+  pointer-events: none;
+}
+.mkt-stat-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.mkt-stat-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(255,255,255,.05);
+  position: relative;
+}
+.mkt-stat-item:last-child { border-bottom: none; padding-bottom: 0; }
+.mkt-stat-item:first-child { padding-top: 0; }
+.mkt-stat-num {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(32px, 4vw, 44px);
+  color: var(--green2);
+  line-height: 1;
+  min-width: 90px;
+  flex-shrink: 0;
+}
+.mkt-stat-info {}
+.mkt-stat-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--paper);
+  margin-bottom: 2px;
+}
+.mkt-stat-sub {
+  font-size: 13px;
+  font-weight: 300;
+  color: rgba(255,255,255,.4);
+}
+
+/* === SECTION: REGIÕES === */
+.regioes-sec {
+  background: var(--z1);
+  padding: var(--sec-pad) 0;
+  position: relative;
+  overflow: hidden;
+}
+.regioes-sec::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  right: -10%;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(26, 122, 74, .06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.regioes-header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+.regioes-header .sec-desc { margin: 16px auto 0; text-align: center; }
+.regioes-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.regiao-card {
+  background: var(--z2);
+  border: 1px solid var(--border-z2);
+  border-radius: var(--r-card);
+  padding: 28px 28px 32px;
+  transition: border-color .3s, box-shadow .3s, transform .3s var(--spring);
+  box-shadow: var(--toplight);
+  cursor: default;
+}
+.regiao-card:hover {
+  border-color: rgba(111, 207, 151, .18);
+  box-shadow: var(--toplight), 0 8px 32px rgba(0,0,0,.3), 0 0 24px rgba(26, 122, 74, .08);
+  transform: translateY(-4px);
+}
+.regiao-icon {
+  width: 40px;
+  height: 40px;
+  background: rgba(26, 122, 74, .12);
+  border: 1px solid rgba(26, 122, 74, .2);
+  border-radius: var(--r-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+.regiao-icon svg { width: 18px; height: 18px; }
+.regiao-name {
+  font-family: var(--serif);
+  font-size: 20px;
+  font-style: italic;
+  color: var(--paper);
+  margin-bottom: 6px;
+}
+.regiao-tag {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--green2);
+  margin-bottom: 14px;
+}
+.regiao-bairros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 14px;
+}
+.bairro-chip {
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(255,255,255,.45);
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.07);
+  padding: 3px 10px;
+  border-radius: var(--r-pill);
+}
+.regiao-desc {
+  font-size: 14px;
+  font-weight: 300;
+  color: rgba(255,255,255,.45);
+  line-height: 1.7;
+}
+
+/* === SECTION: SERVIÇOS === */
+.svc-sec {
+  background: var(--paper);
+  padding: var(--sec-pad) 0;
+}
+.svc-header { margin-bottom: 48px; }
+.svc-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+.svc-card {
+  background: #fff;
+  border: 1px solid var(--faint);
+  border-radius: var(--r-card);
+  padding: 28px 24px 32px;
+  transition: border-color .3s, box-shadow .3s, transform .3s var(--spring);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.svc-card:hover {
+  border-color: rgba(26, 122, 74, .22);
+  box-shadow: 0 8px 32px rgba(0,0,0,.07), 0 2px 8px rgba(0,0,0,.04);
+  transform: translateY(-4px);
+}
+.svc-ic {
+  width: 40px;
+  height: 40px;
+  background: var(--green-bg);
+  border-radius: var(--r-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 6px;
+}
+.svc-ic svg { width: 20px; height: 20px; color: var(--green); }
+.svc-name {
+  font-family: var(--serif);
+  font-size: 18px;
+  font-style: italic;
+  color: var(--ink);
+  line-height: 1.2;
+}
+.svc-desc {
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--dim);
+  line-height: 1.7;
+  flex: 1;
+}
+.svc-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--green);
+  margin-top: 8px;
+  transition: gap .2s;
+}
+.svc-link:hover { gap: 10px; }
+.svc-link svg { width: 14px; height: 14px; }
+
+/* === SECTION: POR QUE MATURARE === */
+.pq-sec {
+  background: var(--z2);
+  padding: var(--sec-pad) 0;
+  position: relative;
+  overflow: hidden;
+}
+.pq-sec::before {
+  content: '';
+  position: absolute;
+  bottom: -20%;
+  left: -10%;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(224, 123, 57, .05) 0%, transparent 70%);
+  pointer-events: none;
+}
+.pq-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+.pq-items {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.pq-item {
+  display: flex;
+  gap: 20px;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--border-z1);
+}
+.pq-item:first-child { padding-top: 0; }
+.pq-item:last-child { border-bottom: none; }
+.pq-num {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 36px;
+  color: rgba(26, 122, 74, .3);
+  line-height: 1;
+  min-width: 44px;
+  flex-shrink: 0;
+  padding-top: 2px;
+}
+.pq-content {}
+.pq-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--paper);
+  margin-bottom: 6px;
+}
+.pq-text {
+  font-size: 14px;
+  font-weight: 300;
+  color: rgba(255,255,255,.45);
+  line-height: 1.75;
+}
+.pq-sidebar {}
+.pq-quote-card {
+  background: var(--z3);
+  border: 1px solid var(--border-z2);
+  border-radius: var(--r-card);
+  padding: 32px;
+  box-shadow: var(--toplight);
+  position: sticky;
+  top: 100px;
+}
+.pq-quote-mark {
+  font-family: var(--serif);
+  font-size: 64px;
+  color: rgba(26, 122, 74, .18);
+  line-height: .7;
+  margin-bottom: 16px;
+}
+.pq-quote-txt {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 20px;
+  color: rgba(255,255,255,.75);
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+.pq-quote-attr {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.pq-av {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--z4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--green2);
+  flex-shrink: 0;
+}
+.pq-av-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255,255,255,.6);
+}
+.pq-av-role {
+  font-size: 12px;
+  color: var(--dim);
+}
+.pq-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 28px;
+}
+.pq-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--green2);
+  background: rgba(26, 122, 74, .1);
+  border: 1px solid rgba(26, 122, 74, .18);
+  padding: 4px 12px;
+  border-radius: var(--r-pill);
+}
+.pq-tag::before {
+  content: '';
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--green2);
+}
+
+/* === SECTION: CTA === */
+.cta-sec {
+  background: var(--ink);
+  padding: var(--sec-pad) 0;
+  position: relative;
+  overflow: hidden;
+}
+.cta-sec::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(26, 122, 74, .1) 0%, transparent 70%);
+  pointer-events: none;
+}
+.cta-inner {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+.cta-eyebrow {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--green2);
+  margin-bottom: 20px;
+}
+.cta-h {
+  font-family: var(--serif);
+  font-size: clamp(30px, 5vw, 52px);
+  line-height: 1.05;
+  letter-spacing: -.022em;
+  color: var(--paper);
+  margin-bottom: 20px;
+}
+.cta-h em { font-style: italic; }
+.cta-sub {
+  font-size: 17px;
+  font-weight: 300;
+  color: rgba(255,255,255,.5);
+  line-height: 1.8;
+  margin-bottom: 40px;
+}
+.cta-sub strong { color: rgba(255,255,255,.65); font-weight: 500; }
+.cta-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.cta-note {
+  margin-top: 20px;
+  font-size: 13px;
+  color: rgba(255,255,255,.3);
+}
+
+/* === FOOTER === */
+footer {
+  background: #0d0e0c;
+  border-top: 1px solid #111;
+  padding: 64px 40px 32px;
+}
+.foot-in { max-width: 1200px; margin: 0 auto; }
+.foot-top {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 64px;
+}
+.foot-brand {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-style: italic;
+  color: var(--paper);
+  margin-bottom: 8px;
+}
+.foot-tag {
+  font-size: 14px;
+  font-weight: 300;
+  color: #4a4a44;
+  line-height: 1.7;
+  max-width: 220px;
+  margin-bottom: 32px;
+}
+.foot-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: #24251f;
+  border: 1px solid #1e1f1c;
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+.foot-live::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #1a7a4a;
+  animation: pulse 2.5s infinite;
+}
+.fcol-h {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: #4a4a44;
+  margin-bottom: 16px;
+}
+.flinks { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.flinks a { font-size: 14px; font-weight: 300; color: #4a4a44; transition: color .2s; }
+.flinks a:hover { color: var(--paper); }
+.foot-bot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 32px;
+  border-top: 1px solid #111;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+.foot-copy { font-size: 13px; color: #24251f; }
+.foot-socs { display: flex; gap: 24px; }
+.foot-socs a {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: #24251f;
+  transition: color .2s;
+}
+.foot-socs a:hover { color: var(--paper); }
+
+/* === BOTTOM BAR === */
+.bottom-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 95;
+  background: rgba(244, 243, 239, .92);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  box-shadow: 0 -1px 0 rgba(0, 0, 0, .06);
+  transform: translateY(100%);
+  transition: transform .5s var(--spring);
+}
+.bottom-bar.visible { transform: translateY(0); }
+.bb-desktop {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  padding: 14px 40px;
+}
+.bb-info { font-size: 14px; font-weight: 500; color: var(--dim); }
+.bb-sep { width: 1px; height: 20px; background: var(--faint); }
+.bb-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 28px;
+  border-radius: 50px;
+  background: var(--green);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background .2s;
+}
+.bb-cta:hover { background: #1f8f55; }
+.bb-cta svg { width: 16px; height: 16px; }
+.bb-mobile { display: none; }
+
+/* === KEYFRAMES === */
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: .5; transform: scale(.85); }
+}
+@keyframes mqs {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@keyframes up {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes scrollLine {
+  0% { top: -100%; }
+  50%, 100% { top: 100%; }
+}
+
+/* === TYPOGRAPHY === */
+.sec-h, .hero-h1 { text-wrap: balance; }
+p, .hero-lead, .mkt-p, .pq-text { text-wrap: pretty; }
+
+/* Performance */
+.reveal { will-change: opacity, transform; }
+.reveal.in { will-change: auto; }
+
+/* Retina noise */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .noise::after { background-size: 150px 150px; opacity: .38; }
+}
+
+/* === RESPONSIVE: TABLET (768px) === */
+@media (max-width: 768px) {
+  nav { top: 0 !important; }
+  body { padding-bottom: 66px; }
+  :root { --sec-pad: clamp(64px, 10vw, 100px); }
+
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .nav-cta { display: none; }
+
+  .hero-loc { padding: 100px 0 56px; }
+  .hero-stats { gap: 24px; }
+
+  .mkt-grid, .pq-grid { grid-template-columns: 1fr; gap: 48px; }
+  .regioes-grid { grid-template-columns: 1fr 1fr; }
+  .svc-grid { grid-template-columns: 1fr 1fr; }
+  .foot-top { grid-template-columns: 1fr 1fr; }
+
+  .bb-desktop { display: none; }
+  .bb-mobile {
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    padding: 8px 16px calc(8px + env(safe-area-inset-bottom, 4px));
+  }
+  .bb-mobile-top { font-size: 11px; font-weight: 500; color: var(--dim); flex: 1; line-height: 1.3; }
+  .bb-mobile-cta {
+    display: flex; align-items: center; justify-content: center; gap: 5px;
+    padding: 8px 16px; border-radius: 50px;
+    background: var(--green); color: #fff; font-size: 11px; font-weight: 600;
+    border: none; cursor: pointer; white-space: nowrap; flex-shrink: 0;
+  }
+
+  .hero-loc { padding-left: 20px; padding-right: 20px; }
+  .mkt-sec .container, .regioes-sec .container,
+  .svc-sec .container, .pq-sec .container, .cta-sec .container { padding: 0 20px; }
+}
+
+/* === RESPONSIVE: MOBILE (480px) === */
+@media (max-width: 480px) {
+  .hero-h1 { font-size: 28px; }
+  .regioes-grid { grid-template-columns: 1fr; }
+  .svc-grid { grid-template-columns: 1fr; }
+  .foot-top { grid-template-columns: 1fr; }
+  .hero-actions { flex-direction: column; align-items: flex-start; gap: 14px; }
+  .cta-actions { flex-direction: column; }
+  .bar-x { display: none; }
+  #bar { padding: 9px 16px; text-align: center; font-size: 12px; }
+}
+</style>
+</head>
+<body>
+
+<!-- SCROLL PROGRESS -->
+<div class="scroll-prog" id="scrollProg"></div>
+
+<!-- LOADER -->
+<div class="loader" id="loader">
+  <p class="loader-phrase" id="loaderPhrase"></p>
+  <div class="loader-line" id="loaderLine"></div>
+  <span class="loader-brand" id="loaderBrand">Maturare · SEO Rio de Janeiro</span>
+</div>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="closeMobile()">&#215;</button>
+  <a href="/" onclick="closeMobile()">Home</a>
+  <a href="/servicos" onclick="closeMobile()">Serviços</a>
+  <a href="/metodologia" onclick="closeMobile()">Como funciona</a>
+  <a href="/nossos-clientes" onclick="closeMobile()">Resultados</a>
+  <a href="/sobre" onclick="closeMobile()">Sobre</a>
+  <a href="/blog" onclick="closeMobile()">Conteúdo</a>
+  <a href="/analise-gratuita" onclick="closeMobile()" style="color:var(--green2);margin-top:8px;">Análise Gratuita</a>
+</div>
+
+<!-- ANNOUNCEMENT BAR -->
+<div id="bar">
+  <span class="bar-pill">Rio de Janeiro</span>
+  &nbsp;Análise gratuita para empresas do RJ —&nbsp;<a href="/analise-gratuita">Quero aparecer no Google</a>
+  <button class="bar-x" onclick="this.parentElement.remove();updateNavTop()">&#215;</button>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="/" class="logo">Maturare</a>
+  <ul class="nav-links">
+    <li><a href="/servicos" class="nav-btn active">Serviços</a></li>
+    <li><a href="/metodologia" class="nav-btn">Como funciona</a></li>
+    <li><a href="/nossos-clientes" class="nav-btn">Resultados</a></li>
+    <li><a href="/sobre" class="nav-btn">Sobre</a></li>
+    <li><a href="/blog" class="nav-btn">Conteúdo</a></li>
+  </ul>
+  <div class="nav-r">
+    <a href="/analise-gratuita" class="nav-cta">Análise Gratuita</a>
+    <button class="hamburger" id="hambBtn" onclick="openMobile()"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero-loc noise">
+  <div class="hero-glow"></div>
+  <div class="container">
+    <div class="hero-loc-inner">
+
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="/servicos">Serviços</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>Agência de SEO no Rio de Janeiro</span>
+      </nav>
+
+      <div class="hero-kicker">SEO no Rio de Janeiro</div>
+
+      <h1 class="hero-h1 reveal">
+        Agência de SEO no Rio de Janeiro — Sua empresa<br>
+        precisa aparecer. <em>Nós fazemos acontecer.</em>
+      </h1>
+
+      <p class="hero-lead reveal d1">
+        O Rio tem milhões de empresas disputando atenção online. De Ipanema à Baixada, de Niterói a Campo Grande — posicionamos seu negócio no topo do Google e nas recomendações das IAs, para que o cliente te encontre antes do concorrente.
+      </p>
+
+      <div class="hero-actions reveal d2">
+        <a href="/analise-gratuita" class="btn-green">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          Quero uma análise gratuita
+        </a>
+        <a href="#servicos" class="hero-link">Ver nossos serviços</a>
+      </div>
+
+      <div class="hero-stats reveal d3">
+        <div>
+          <div class="hero-stat-val">+47</div>
+          <div class="hero-stat-lbl">Empresas no RJ atendidas</div>
+        </div>
+        <div>
+          <div class="hero-stat-val">100%</div>
+          <div class="hero-stat-lbl">Região Metropolitana coberta</div>
+        </div>
+        <div>
+          <div class="hero-stat-val">30–90d</div>
+          <div class="hero-stat-lbl">Para primeiros resultados</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="mq-gold" aria-hidden="true">
+  <div class="mq-track">
+    <span class="mq-item">SEO Local no Rio de Janeiro</span><span class="mq-sep">&#10022;</span>
+    <span class="mq-item">Apareça na Zona Sul</span><span class="mq-sep">&#10022;</span>
+    <span class="mq-item">Domine o Centro do Rio</span><span class="mq-sep">&#10022;</span>
+    <span class="mq-item">Niterói e São Gonçalo</span><span class="mq-sep">&#10022;</span>
+    <span class="mq-item">Baixada Fluminense</span><span class="mq-sep">&#10022;</span>
+    <span class="mq-item">Recomendado pelo ChatGPT</span><span class="mq-sep">&#10022;</span>
+    <span class="mq-item">Google Meu Negócio</span><span class="mq-sep">&#10022;</span>
+    <span class="mq-item">SEO Local no Rio de Janeiro</span><span class="mq-sep">&#10022;</span>
+    <span class="mq-item">Apareça na Zona Sul</span><span class="mq-sep">&#10022;</span>
+    <span class="mq-item">Domine o Centro do Rio</span><span class="mq-sep">&#10022;</span>
+    <span class="mq-item">Niterói e São Gonçalo</span><span class="mq-sep">&#10022;</span>
+    <span class="mq-item">Baixada Fluminense</span><span class="mq-sep">&#10022;</span>
+    <span class="mq-item">Recomendado pelo ChatGPT</span><span class="mq-sep">&#10022;</span>
+    <span class="mq-item">Google Meu Negócio</span><span class="mq-sep">&#10022;</span>
+  </div>
+</div>
+
+<!-- SEO NO RIO -->
+<section class="mkt-sec" id="mercado-rj">
+  <div class="container">
+    <div class="mkt-grid">
+
+      <div class="mkt-body">
+        <div class="reveal">
+          <p class="sec-label dk">O mercado carioca</p>
+          <h2 class="sec-h dk">SEO no Rio de Janeiro:<br><em>o mercado mais disputado do Brasil</em></h2>
+        </div>
+
+        <p class="mkt-p reveal d1">
+          O Rio de Janeiro concentra <strong>mais de 500 mil empresas ativas</strong> na Região Metropolitana. A competição por visibilidade orgânica no Google nunca foi tão intensa — e quem não investe em SEO perde clientes para concorrentes menos qualificados que simplesmente aparecem primeiro.
+        </p>
+
+        <p class="mkt-p reveal d2">
+          A Maturare nasceu em Niterói com um único objetivo: fazer empresas cariocas serem <strong>encontradas no Google e recomendadas pelas IAs</strong>. Conhecemos o comportamento de busca local do Rio — os bairros, os hábitos, as palavras que seu cliente realmente digita.
+        </p>
+
+        <p class="mkt-p reveal d3">
+          Não fazemos Google Ads. Não vendemos posts de Instagram. Construímos <strong>ativos digitais permanentes</strong> — páginas que trabalham por você 24h por dia, 7 dias por semana, sem custo por clique.
+        </p>
+
+        <div class="mkt-pills reveal d4">
+          <span class="mkt-pill">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+            SEO Local RJ
+          </span>
+          <span class="mkt-pill">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+            GEO &amp; AEO
+          </span>
+          <span class="mkt-pill">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+            Google Meu Negócio
+          </span>
+          <span class="mkt-pill">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+            Sem custo por clique
+          </span>
+        </div>
+      </div>
+
+      <div class="mkt-visual reveal-right d1">
+        <div class="mkt-stat-list">
+          <div class="mkt-stat-item">
+            <div class="mkt-stat-num">7,4M</div>
+            <div class="mkt-stat-info">
+              <div class="mkt-stat-name">Habitantes na Região Metropolitana</div>
+              <div class="mkt-stat-sub">Um mercado enorme, pouco explorado organicamente</div>
+            </div>
+          </div>
+          <div class="mkt-stat-item">
+            <div class="mkt-stat-num">92%</div>
+            <div class="mkt-stat-info">
+              <div class="mkt-stat-name">Das buscas locais não passam da 1ª página</div>
+              <div class="mkt-stat-sub">Se você não está no top 10, é invisível</div>
+            </div>
+          </div>
+          <div class="mkt-stat-item">
+            <div class="mkt-stat-num">78%</div>
+            <div class="mkt-stat-info">
+              <div class="mkt-stat-name">Das buscas "perto de mim" resultam em visita</div>
+              <div class="mkt-stat-sub">SEO local = clientes na porta</div>
+            </div>
+          </div>
+          <div class="mkt-stat-item">
+            <div class="mkt-stat-num">3×</div>
+            <div class="mkt-stat-info">
+              <div class="mkt-stat-name">Mais leads que tráfego pago a longo prazo</div>
+              <div class="mkt-stat-sub">O orgânico cresce — o Ads para quando você para de pagar</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- REGIÕES ATENDIDAS -->
+<section class="regioes-sec" id="regioes">
+  <div class="container">
+    <div class="regioes-header reveal">
+      <p class="sec-label lt" style="text-align:center">Cobertura completa do RJ</p>
+      <h2 class="sec-h lt">Regiões atendidas <em>em todo o Rio</em></h2>
+      <p class="sec-desc lt" style="text-align:center">Da Zona Sul à Baixada, atendemos toda a Região Metropolitana com estratégias SEO calibradas para cada território e perfil de cliente.</p>
+    </div>
+
+    <div class="regioes-grid">
+
+      <!-- Zona Sul -->
+      <div class="regiao-card reveal d1">
+        <div class="regiao-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#6fcf97" stroke-width="1.8"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        </div>
+        <div class="regiao-tag">Zona Sul</div>
+        <div class="regiao-name">Zona Sul do Rio</div>
+        <p class="regiao-desc">Mercado premium de alta demanda por serviços especializados. Forte concorrência, alto ticket médio.</p>
+        <div class="regiao-bairros">
+          <span class="bairro-chip">Ipanema</span>
+          <span class="bairro-chip">Leblon</span>
+          <span class="bairro-chip">Copacabana</span>
+          <span class="bairro-chip">Botafogo</span>
+          <span class="bairro-chip">Flamengo</span>
+          <span class="bairro-chip">Laranjeiras</span>
+          <span class="bairro-chip">Gávea</span>
+        </div>
+      </div>
+
+      <!-- Zona Norte -->
+      <div class="regiao-card reveal d2">
+        <div class="regiao-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#6fcf97" stroke-width="1.8"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        </div>
+        <div class="regiao-tag">Zona Norte</div>
+        <div class="regiao-name">Zona Norte do Rio</div>
+        <p class="regiao-desc">Mercado populoso com grande volume de buscas locais e enorme potencial subexplorado em SEO.</p>
+        <div class="regiao-bairros">
+          <span class="bairro-chip">Tijuca</span>
+          <span class="bairro-chip">Vila Isabel</span>
+          <span class="bairro-chip">Méier</span>
+          <span class="bairro-chip">Madureira</span>
+          <span class="bairro-chip">Penha</span>
+          <span class="bairro-chip">Ilha do Governador</span>
+        </div>
+      </div>
+
+      <!-- Zona Oeste -->
+      <div class="regiao-card reveal d3">
+        <div class="regiao-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#6fcf97" stroke-width="1.8"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        </div>
+        <div class="regiao-tag">Zona Oeste</div>
+        <div class="regiao-name">Zona Oeste do Rio</div>
+        <p class="regiao-desc">Região de expansão acelerada. Bairros em crescimento com demanda digital crescente e baixa concorrência no SEO.</p>
+        <div class="regiao-bairros">
+          <span class="bairro-chip">Barra da Tijuca</span>
+          <span class="bairro-chip">Recreio</span>
+          <span class="bairro-chip">Campo Grande</span>
+          <span class="bairro-chip">Santa Cruz</span>
+          <span class="bairro-chip">Bangu</span>
+        </div>
+      </div>
+
+      <!-- Centro -->
+      <div class="regiao-card reveal d1">
+        <div class="regiao-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#6fcf97" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <div class="regiao-tag">Centro</div>
+        <div class="regiao-name">Centro do Rio</div>
+        <p class="regiao-desc">Hub corporativo e comercial do RJ. Escritórios, serviços B2B e varejo especializado com alta intenção de compra.</p>
+        <div class="regiao-bairros">
+          <span class="bairro-chip">Centro</span>
+          <span class="bairro-chip">Lapa</span>
+          <span class="bairro-chip">Santa Teresa</span>
+          <span class="bairro-chip">Saúde</span>
+          <span class="bairro-chip">Gamboa</span>
+          <span class="bairro-chip">Glória</span>
+        </div>
+      </div>
+
+      <!-- Baixada Fluminense -->
+      <div class="regiao-card reveal d2">
+        <div class="regiao-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#6fcf97" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
+        </div>
+        <div class="regiao-tag">Baixada Fluminense</div>
+        <div class="regiao-name">Baixada Fluminense</div>
+        <p class="regiao-desc">Mais de 3 milhões de habitantes. Mercado com grande demanda, pouca oferta de SEO qualificado e oportunidade enorme.</p>
+        <div class="regiao-bairros">
+          <span class="bairro-chip">Duque de Caxias</span>
+          <span class="bairro-chip">Nova Iguaçu</span>
+          <span class="bairro-chip">Belford Roxo</span>
+          <span class="bairro-chip">São João de Meriti</span>
+          <span class="bairro-chip">Nilópolis</span>
+        </div>
+      </div>
+
+      <!-- Niterói e São Gonçalo -->
+      <div class="regiao-card reveal d3" style="border-color:rgba(111,207,151,.18);">
+        <div class="regiao-icon" style="background:rgba(26,122,74,.2);border-color:rgba(26,122,74,.35);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#6fcf97" stroke-width="1.8"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <div class="regiao-tag" style="color:var(--green2)">Nossa sede · Niterói &amp; São Gonçalo</div>
+        <div class="regiao-name">Niterói e São Gonçalo</div>
+        <p class="regiao-desc">Nossa cidade-base. Conhecemos cada bairro, cada segmento, cada comportamento de busca. Resultado: nosso melhor índice de sucesso.</p>
+        <div class="regiao-bairros">
+          <span class="bairro-chip">Icaraí</span>
+          <span class="bairro-chip">Centro-Niterói</span>
+          <span class="bairro-chip">Ingá</span>
+          <span class="bairro-chip">Pendotiba</span>
+          <span class="bairro-chip">São Gonçalo</span>
+          <span class="bairro-chip">Alcântara</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SERVIÇOS NO RIO -->
+<section class="svc-sec" id="servicos">
+  <div class="container">
+    <div class="svc-header">
+      <div class="reveal">
+        <p class="sec-label dk">O que oferecemos</p>
+        <h2 class="sec-h dk">Nossos serviços de SEO <em>para o Rio de Janeiro</em></h2>
+      </div>
+      <p class="sec-desc dk reveal d1" style="margin-top:16px">Estratégias completas de visibilidade orgânica. Do SEO técnico ao conteúdo otimizado, do Google Meu Negócio à presença nas IAs.</p>
+    </div>
+
+    <div class="svc-grid">
+
+      <a href="/servicos/seo-local" class="svc-card reveal d1">
+        <div class="svc-ic">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        </div>
+        <div class="svc-name">SEO Local</div>
+        <p class="svc-desc">Apareça quando seu cliente pesquisar "serviço + bairro + RJ". Mapeamento completo de palavras-chave locais e otimização de páginas por região.</p>
+        <span class="svc-link">
+          Ver serviço
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </span>
+      </a>
+
+      <a href="/servicos/google-meu-negocio" class="svc-card reveal d2">
+        <div class="svc-ic">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        </div>
+        <div class="svc-name">Google Meu Negócio</div>
+        <p class="svc-desc">Otimização completa do seu perfil no Google Maps. Apareça no Google Pack, gere avaliações e domine as buscas "perto de mim" no Rio.</p>
+        <span class="svc-link">
+          Ver serviço
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </span>
+      </a>
+
+      <a href="/servicos/seo-tecnico" class="svc-card reveal d3">
+        <div class="svc-ic">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        </div>
+        <div class="svc-name">SEO Técnico</div>
+        <p class="svc-desc">Auditoria e correção dos fundamentos do seu site. Velocidade, Core Web Vitals, estrutura de URLs, schema.org e indexação correta.</p>
+        <span class="svc-link">
+          Ver serviço
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </span>
+      </a>
+
+      <a href="/servicos/criacao-de-conteudo" class="svc-card reveal d4">
+        <div class="svc-ic">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        </div>
+        <div class="svc-name">Conteúdo SEO</div>
+        <p class="svc-desc">Páginas e artigos estratégicos que respondem às perguntas do seu cliente carioca. Conteúdo que ranqueia e converte.</p>
+        <span class="svc-link">
+          Ver serviço
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </span>
+      </a>
+
+      <a href="/servicos/geo-aeo" class="svc-card reveal d1">
+        <div class="svc-ic">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        </div>
+        <div class="svc-name">GEO &amp; AEO</div>
+        <p class="svc-desc">Faça sua empresa ser recomendada pelo ChatGPT, Perplexity e Gemini. Somos pioneiros em Generative Engine Optimization no Brasil.</p>
+        <span class="svc-link">
+          Ver serviço
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </span>
+      </a>
+
+      <a href="/servicos/link-building" class="svc-card reveal d2">
+        <div class="svc-ic">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+        </div>
+        <div class="svc-name">Link Building</div>
+        <p class="svc-desc">Autoridade de domínio construída com links relevantes de portais, blogs e mídias do Rio de Janeiro e do Brasil.</p>
+        <span class="svc-link">
+          Ver serviço
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </span>
+      </a>
+
+      <a href="/servicos/criacao-de-sites" class="svc-card reveal d3">
+        <div class="svc-ic">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+        </div>
+        <div class="svc-name">Sites que Ranqueiam</div>
+        <p class="svc-desc">Criação de sites otimizados para SEO desde a fundação. Rápidos, bonitos e construídos para aparecer no Google.</p>
+        <span class="svc-link">
+          Ver serviço
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </span>
+      </a>
+
+      <a href="/analise-gratuita" class="svc-card reveal d4" style="background:var(--green-bg);border-color:rgba(26,122,74,.22);">
+        <div class="svc-ic" style="background:rgba(26,122,74,.15);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.8"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <div class="svc-name" style="color:var(--ink)">Análise Gratuita</div>
+        <p class="svc-desc" style="color:#4a6e5a">Diagnóstico completo da sua presença digital no Rio. Sem compromisso. Descubra por que você não aparece no Google.</p>
+        <span class="svc-link" style="color:var(--green)">
+          Solicitar análise
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- POR QUE A MATURARE -->
+<section class="pq-sec" id="por-que-maturare">
+  <div class="container">
+    <div class="pq-grid">
+
+      <div>
+        <div class="reveal">
+          <p class="sec-label lt">Por que a Maturare</p>
+          <h2 class="sec-h lt">A agência de SEO <em>que nasceu no Rio</em></h2>
+        </div>
+        <p class="sec-desc lt reveal d1" style="margin-top:16px;margin-bottom:40px">Não somos uma agência de São Paulo que atende o Rio remotamente. Estamos aqui, conhecemos o mercado, e construímos resultados reais.</p>
+
+        <div class="pq-items">
+
+          <div class="pq-item reveal d1">
+            <div class="pq-num">01</div>
+            <div class="pq-content">
+              <div class="pq-title">Sediados em Niterói, atendemos todo o RJ</div>
+              <p class="pq-text">Conhecemos os bairros, os comportamentos de busca e os segmentos locais. Nossa estratégia é calibrada para o mercado carioca, não replicada de um template genérico.</p>
+            </div>
+          </div>
+
+          <div class="pq-item reveal d2">
+            <div class="pq-num">02</div>
+            <div class="pq-content">
+              <div class="pq-title">Especialistas em SEO Local desde 2019</div>
+              <p class="pq-text">Antes das IAs, antes do Google SGE, já construíamos presença orgânica para empresas cariocas. Anos de experiência acumulada em ranking local no RJ.</p>
+            </div>
+          </div>
+
+          <div class="pq-item reveal d3">
+            <div class="pq-num">03</div>
+            <div class="pq-content">
+              <div class="pq-title">Pioneiros em GEO e AEO no Brasil</div>
+              <p class="pq-text">Fomos dos primeiros a estudar como o ChatGPT, Perplexity e Gemini recomendam empresas. Enquanto outros ainda descobriam o GEO, já tínhamos clientes sendo citados pelas IAs.</p>
+            </div>
+          </div>
+
+          <div class="pq-item reveal d4">
+            <div class="pq-num">04</div>
+            <div class="pq-content">
+              <div class="pq-title">Construímos ativos — não dependências</div>
+              <p class="pq-text">Cada página, cada conteúdo, cada link que criamos pertence a você. Quando paramos de trabalhar juntos, você fica com tudo. Ativos permanentes, não aluguéis de visibilidade.</p>
+            </div>
+          </div>
+
+          <div class="pq-item reveal d5">
+            <div class="pq-num">05</div>
+            <div class="pq-content">
+              <div class="pq-title">Transparência total — sem enrolação</div>
+              <p class="pq-text">Relatórios mensais com métricas reais: posicionamento no Google, tráfego orgânico, conversões. Você sabe exatamente o que está pagando e o que está recebendo.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="pq-sidebar reveal-right d1">
+        <div class="pq-quote-card">
+          <div class="pq-quote-mark">"</div>
+          <p class="pq-quote-txt">Em 4 meses, nossa clínica passou da 3ª página para o 1º lugar no Google para 'clínica estética Niterói'. Hoje recebemos 3× mais ligações orgânicas do que antes.</p>
+          <div class="pq-quote-attr">
+            <div class="pq-av">AM</div>
+            <div>
+              <div class="pq-av-name">Amanda M.</div>
+              <div class="pq-av-role">Clínica Estética · Icaraí, Niterói</div>
+            </div>
+          </div>
+          <div class="pq-tags">
+            <span class="pq-tag">SEO Local</span>
+            <span class="pq-tag">+3× leads</span>
+            <span class="pq-tag">4 meses</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-sec noise" id="analise-gratuita">
+  <div class="container">
+    <div class="cta-inner">
+      <p class="cta-eyebrow reveal">Pronto para aparecer no Google?</p>
+      <h2 class="cta-h reveal d1">
+        Sua empresa no topo do Google<br>
+        <em>em até 90 dias</em>
+      </h2>
+      <p class="cta-sub reveal d2">
+        Diagnóstico gratuito da sua presença digital no Rio de Janeiro. <strong>Sem compromisso.</strong> Descubra exatamente por que você não está aparecendo e o que fazer para mudar isso.
+      </p>
+      <div class="cta-actions reveal d3">
+        <a href="/analise-gratuita" class="btn-green" style="font-size:14px;padding:16px 36px">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          Quero minha análise gratuita
+        </a>
+      </div>
+      <p class="cta-note reveal d4">Análise 100% gratuita · Sem cartão de crédito · Resposta em até 24h</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-in">
+    <div class="foot-top">
+      <div>
+        <div class="foot-brand">Maturare</div>
+        <p class="foot-tag">Construímos ativos digitais que vendem por você.</p>
+        <div class="foot-live">Monitoramento ativo</div>
+      </div>
+      <div>
+        <div class="fcol-h">Serviços</div>
+        <ul class="flinks">
+          <li><a href="/servicos/seo-local">SEO Local</a></li>
+          <li><a href="/servicos/google-meu-negocio">Google Meu Negócio</a></li>
+          <li><a href="/servicos/criacao-de-sites">Criação de Sites</a></li>
+          <li><a href="/servicos/geo-aeo">GEO &amp; AEO</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="fcol-h">Regiões</div>
+        <ul class="flinks">
+          <li><a href="/agencia-seo-rio-de-janeiro">Rio de Janeiro</a></li>
+          <li><a href="/agencia-seo-niteroi">Niterói</a></li>
+          <li><a href="/agencia-seo-baixada-fluminense">Baixada Fluminense</a></li>
+          <li><a href="/agencia-seo-zona-sul">Zona Sul RJ</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="fcol-h">Empresa</div>
+        <ul class="flinks">
+          <li><a href="/sobre">Sobre</a></li>
+          <li><a href="/blog">Blog</a></li>
+          <li><a href="/nossos-clientes">Resultados</a></li>
+          <li><a href="/metodologia">Metodologia</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="fcol-h">Contato</div>
+        <ul class="flinks">
+          <li><a href="/analise-gratuita">Análise gratuita</a></li>
+          <li><a href="/contato">Falar com Daniel</a></li>
+          <li><a href="mailto:contato@maturare.com.br">contato@maturare.com.br</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <div class="foot-copy">&#169; 2026 Maturare · CNPJ 47.336.340/0001-51 · Niterói, RJ</div>
+      <div class="foot-socs">
+        <a href="https://br.linkedin.com/in/daniel-batista-674b62140" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://www.instagram.com/maturare.com.br/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.youtube.com/@googledominado1" target="_blank" rel="noopener">YouTube</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- BOTTOM BAR -->
+<div class="bottom-bar" id="bottomBar">
+  <div class="bb-desktop">
+    <div class="bb-info">Agência de SEO sediada em Niterói</div>
+    <div class="bb-sep"></div>
+    <div class="bb-info">Atendemos todo o Rio de Janeiro</div>
+    <div class="bb-sep"></div>
+    <div class="bb-info">+47 empresas cariocas atendidas</div>
+    <a href="/analise-gratuita" class="bb-cta">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>
+      Análise Gratuita
+    </a>
+  </div>
+  <div class="bb-mobile">
+    <div class="bb-mobile-top">SEO no RJ · +47 empresas · Niterói &amp; toda a Baixada</div>
+    <a href="/analise-gratuita" class="bb-mobile-cta">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2.5" fill="none"/></svg>
+      Análise Grátis
+    </a>
+  </div>
+</div>
+
+<script>
+/* === LOADER === */
+(function() {
+  var loader = document.getElementById('loader');
+  var phrase = document.getElementById('loaderPhrase');
+  var line = document.getElementById('loaderLine');
+  var brand = document.getElementById('loaderBrand');
+  if (!loader || !phrase) return;
+  var text = 'O Rio é gigante. Sua empresa precisa ser encontrada nele.';
+  var words = text.split(' ');
+  phrase.innerHTML = words.map(function(w) { return '<span>' + w + '</span>'; }).join(' ');
+  var spans = phrase.querySelectorAll('span');
+  document.body.style.overflow = 'hidden';
+  requestAnimationFrame(function() { if (line) line.classList.add('active'); });
+  spans.forEach(function(s, i) {
+    setTimeout(function() { s.classList.add('visible'); }, 180 + i * 160);
+  });
+  var total = 180 + words.length * 160;
+  setTimeout(function() { if (brand) brand.classList.add('visible'); }, total + 200);
+  setTimeout(function() {
+    loader.classList.add('done');
+    document.body.style.overflow = '';
+    setTimeout(function() { loader.style.display = 'none'; }, 700);
+  }, total + 900);
+})();
+
+/* === SCROLL PROGRESS === */
+var prog = document.getElementById('scrollProg');
+window.addEventListener('scroll', function() {
+  var scrollTop = window.scrollY || document.documentElement.scrollTop;
+  var docH = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  if (prog && docH > 0) prog.style.width = (scrollTop / docH * 100) + '%';
+}, { passive: true });
+
+/* === NAV BAR OFFSET + SCROLL === */
+function updateNavTop() {
+  var bar = document.getElementById('bar');
+  var nav = document.getElementById('nav');
+  if (!nav) return;
+  var barH = bar ? bar.offsetHeight : 0;
+  nav.style.top = barH + 'px';
+}
+updateNavTop();
+window.addEventListener('resize', updateNavTop, { passive: true });
+
+var nav = document.getElementById('nav');
+var lastY = 0;
+window.addEventListener('scroll', function() {
+  var y = window.scrollY;
+  if (nav) {
+    if (y > 60) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
+  }
+  lastY = y;
+}, { passive: true });
+
+/* === BOTTOM BAR === */
+var bottomBar = document.getElementById('bottomBar');
+var shown = false;
+window.addEventListener('scroll', function() {
+  if (!shown && window.scrollY > 400) {
+    shown = true;
+    if (bottomBar) bottomBar.classList.add('visible');
+  }
+}, { passive: true });
+
+/* === MOBILE MENU === */
+function openMobile() {
+  var m = document.getElementById('mobileMenu');
+  if (m) m.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeMobile() {
+  var m = document.getElementById('mobileMenu');
+  if (m) m.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+/* === INTERSECTION OBSERVER (reveal) === */
+var observer = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('in');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(function(el) {
+  observer.observe(el);
+});
+</script>
+</body>
+</html>

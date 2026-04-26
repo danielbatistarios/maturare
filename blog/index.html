@@ -1,0 +1,2250 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0e0f0d">
+<title>Blog Maturare | SEO, GEO e Marketing Digital para Negócios Locais</title>
+<meta name="description" content="Artigos da Maturare sobre SEO local, GEO, Google Meu Negócio e IA para negócios locais. Estratégias reais que posicionam no Google e nas IAs.">
+<meta property="og:title" content="Blog Maturare | SEO, GEO e Marketing Digital para Negócios Locais">
+<meta property="og:description" content="Artigos sobre SEO local, Google Meu Negócio, IA e estratégias para negócios locais.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,350;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<style>
+/* === LOADER === */
+.loader {
+  position: fixed;
+  inset: 0;
+  background: var(--z0, #0e0f0d);
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 32px;
+}
+.loader-phrase {
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-size: clamp(22px, 4.5vw, 42px);
+  font-style: italic;
+  color: rgba(255,255,255,.9);
+  letter-spacing: .01em;
+  text-align: center;
+  max-width: 600px;
+  padding: 0 24px;
+  overflow: hidden;
+}
+.loader-phrase span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity .4s ease, transform .4s ease;
+}
+.loader-phrase span.visible { opacity: 1; transform: none; }
+.loader-brand {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: #6fcf97;
+  opacity: 0;
+  transition: opacity .6s ease .3s;
+}
+.loader-brand.visible { opacity: 1; }
+.loader-line {
+  width: 48px;
+  height: 1px;
+  background: rgba(255,255,255,.12);
+  position: relative;
+  overflow: hidden;
+}
+.loader-line::after {
+  content: '';
+  position: absolute;
+  left: 0; top: 0;
+  height: 100%;
+  width: 0%;
+  background: #1a7a4a;
+  transition: width 1.8s cubic-bezier(.16,1,.3,1);
+}
+.loader-line.active::after { width: 100%; }
+.loader.done {
+  opacity: 0;
+  transition: opacity .6s ease;
+  pointer-events: none;
+}
+
+/* === VARIABLES === */
+:root {
+  --ink: #111210;
+  --ink2: #1c1b19;
+  --paper: #f5f4f0;
+  --paper2: #edebe3;
+  --paper3: #e2dfd6;
+  --dim: #5a5a56;
+  --faint: #d6d4ce;
+  --green: #1a7a4a;
+  --green2: #6fcf97;
+  --green-bg: #e8f5ee;
+  --orange: #e07b39;
+  --chatgpt: #10a37f;
+  --perplexity: #6366f1;
+  --gemini: #4285f4;
+  --claude: #c96442;
+  --copilot: #0078d4;
+  --serif: 'Instrument Serif', Georgia, serif;
+  --sans: 'DM Sans', system-ui, sans-serif;
+  --radius: 16px;
+  --radius-sm: 8px;
+  --sec-pad: clamp(100px, 12vw, 160px);
+  --spring: cubic-bezier(.16, 1, .3, 1);
+  --z0: #0e0f0d;
+  --z1: #141513;
+  --z2: #1a1b18;
+  --z3: #21221f;
+  --z4: #292a26;
+  --glow-green: rgba(26, 122, 74, .14);
+  --glow-green-edge: rgba(111, 207, 151, .07);
+  --glow-orange: rgba(224, 123, 57, .06);
+  --border-z1: rgba(255, 255, 255, .055);
+  --border-z2: rgba(255, 255, 255, .08);
+  --border-z3: rgba(255, 255, 255, .11);
+  --toplight: inset 0 1px 0 rgba(255, 255, 255, .06);
+  --toplight-strong: inset 0 1px 0 rgba(255, 255, 255, .1);
+  --sp-2: 8px; --sp-3: 12px; --sp-4: 16px; --sp-6: 24px; --sp-8: 32px; --sp-10: 40px; --sp-12: 48px; --sp-16: 64px;
+  --r-sharp: 0px; --r-subtle: 4px; --r-card: 12px; --r-soft: 16px; --r-pill: 999px;
+  --zi-nav: 300; --zi-bar: 301; --zi-prog: 999;
+  --t-fast: 150ms; --t-normal: 250ms; --t-slow: 400ms; --t-slower: 750ms;
+  --shadow-2: 0 4px 12px rgba(0,0,0,.25), 0 2px 4px rgba(0,0,0,.2);
+  --shadow-3: 0 8px 24px rgba(0,0,0,.3), 0 4px 8px rgba(0,0,0,.2);
+  --shadow-5: 0 24px 80px rgba(0,0,0,.45), 0 12px 24px rgba(0,0,0,.25);
+  --color-warmth: #1a1812;
+  --color-warmth-border: rgba(224, 123, 57, .08);
+
+  /* Category colors */
+  --cat-google: #4285f4;
+  --cat-ia: #10a37f;
+  --cat-local: #e07b39;
+  --cat-cases: #6fcf97;
+  --cat-guias: #6366f1;
+  --cat-novidades: #c96442;
+}
+
+/* === RESET === */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+/* === GLOBAL === */
+body {
+  background: var(--z0);
+  color: var(--paper);
+  font-family: var(--sans);
+  font-size: 16px;
+  letter-spacing: -.008em;
+  line-height: 1.75;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  padding-bottom: 0;
+}
+a { text-decoration: none; color: inherit; }
+img { display: block; max-width: 100%; }
+
+/* === UTILITIES === */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(24px, 5vw, 80px);
+}
+
+/* Reveal animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .8s var(--spring), transform .8s var(--spring);
+}
+.reveal.in { opacity: 1; transform: none; }
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity .8s var(--spring), transform .8s var(--spring);
+}
+.reveal-left.in { opacity: 1; transform: none; }
+.reveal-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity .8s var(--spring), transform .8s var(--spring);
+}
+.reveal-right.in { opacity: 1; transform: none; }
+.reveal-scale {
+  opacity: 0;
+  transform: scale(.85);
+  transition: opacity .7s var(--spring), transform .7s var(--spring);
+}
+.reveal-scale.in { opacity: 1; transform: none; }
+.reveal-blur {
+  opacity: 0;
+  filter: blur(8px);
+  transform: translateY(12px);
+  transition: opacity .9s var(--spring), filter .9s var(--spring), transform .9s var(--spring);
+}
+.reveal-blur.in { opacity: 1; filter: blur(0); transform: none; }
+.reveal-3d {
+  opacity: 0;
+  transform: translateY(16px) rotateX(6deg);
+  transform-origin: top center;
+  transform-style: preserve-3d;
+  transition: opacity var(--t-slower) var(--spring), transform var(--t-slower) var(--spring);
+  will-change: opacity, transform;
+}
+.reveal-3d.in { opacity: 1; transform: none; will-change: auto; }
+
+/* Stagger delays */
+.d1 { transition-delay: .08s; }
+.d2 { transition-delay: .16s; }
+.d3 { transition-delay: .24s; }
+.d4 { transition-delay: .24s; }
+.d5 { transition-delay: .30s; }
+.d6 { transition-delay: .36s; }
+
+/* Section labels */
+.sec-label {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.sec-label.lt { color: var(--dim); }
+.sec-h {
+  font-family: var(--serif);
+  font-size: clamp(32px, 4.5vw, 52px);
+  line-height: 1.1;
+  letter-spacing: -.02em;
+}
+.sec-h.lt { color: var(--paper); }
+.sec-h em { font-style: italic; }
+
+/* Primary button */
+.btn-p {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  padding: 14px 32px;
+  border: none;
+  cursor: pointer;
+  transition: transform var(--t-normal) var(--spring), box-shadow var(--t-normal);
+  font-family: var(--sans);
+}
+.btn-p:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 32px rgba(244, 243, 239, .14), 0 2px 8px rgba(244, 243, 239, .08);
+}
+.btn-p:active { transform: translateY(0) scale(.98); transition-duration: .1s; }
+
+/* Noise overlay */
+.noise { position: relative; }
+.noise::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.045'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  mix-blend-mode: screen;
+  opacity: .5;
+  transform: translate3d(0, 0, 0);
+}
+.noise > * { position: relative; z-index: 1; }
+
+/* === SCROLL PROGRESS === */
+.scroll-prog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--green) 0%, var(--green2) 60%, var(--orange) 100%);
+  z-index: var(--zi-prog);
+  width: 0%;
+  pointer-events: none;
+  will-change: width;
+}
+
+/* === READING PROGRESS BAR === */
+.reading-prog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--green) 0%, var(--green2) 50%, var(--orange) 100%);
+  z-index: 1000;
+  width: 0%;
+  pointer-events: none;
+  will-change: width;
+  transition: width .1s linear;
+}
+
+/* === BAR (announcement) === */
+#bar {
+  background: #0f100e;
+  border-bottom: 1px solid #22231f;
+  padding: 9px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  font-size: 13px;
+  color: #8a8a82;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--zi-bar);
+}
+.bar-pill {
+  background: transparent;
+  border: 1px solid #302f29;
+  color: var(--green2);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  padding: 2px 10px;
+  border-radius: 99px;
+}
+#bar a {
+  color: var(--green2);
+  border-bottom: 1px solid rgba(111, 207, 151, .25);
+  transition: color .2s;
+}
+#bar a:hover { color: #a8f0c8; }
+.bar-x {
+  position: absolute;
+  right: 40px;
+  background: none;
+  border: none;
+  color: #5a5a54;
+  font-size: 18px;
+  cursor: pointer;
+  transition: color .2s;
+}
+.bar-x:hover { color: #888; }
+
+/* === NAV === */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--zi-nav);
+  height: 62px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  background: transparent;
+  backdrop-filter: none;
+  border-bottom: 1px solid transparent;
+  transition: top .3s, background .3s, border-color .3s, backdrop-filter .3s;
+  will-change: background, backdrop-filter;
+}
+nav.scrolled {
+  background: rgba(7, 7, 9, .9);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  border-bottom-color: rgba(255, 255, 255, .07);
+  box-shadow: var(--toplight), 0 1px 20px rgba(0, 0, 0, .3);
+}
+.logo {
+  font-family: var(--serif);
+  font-size: 19px;
+  letter-spacing: .05em;
+  color: var(--paper);
+  transition: opacity .2s;
+}
+.logo:hover { opacity: .6; }
+.nav-links { display: flex; list-style: none; align-items: center; }
+.nav-btn {
+  background: none;
+  border: none;
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, .55);
+  padding: 8px 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: color .2s;
+  white-space: nowrap;
+}
+.nav-btn:hover { color: var(--paper); }
+.nav-btn.active { color: var(--paper); }
+.nav-r { display: flex; align-items: center; gap: 12px; }
+.nav-cta {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  background: var(--paper);
+  color: var(--ink);
+  padding: 10px 24px;
+  border: none;
+  cursor: pointer;
+  font-family: var(--sans);
+  transition: transform .2s, box-shadow .2s;
+}
+.nav-cta:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(244, 243, 239, .15);
+}
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+.hamburger span { display: block; width: 22px; height: 1.5px; background: var(--paper); }
+.skip-link { position: absolute; top: -100%; left: 16px; background: var(--green); color: #fff; padding: 8px 16px; border-radius: 4px; z-index: 100000; font-size: 14px; transition: top .2s; }
+.skip-link:focus { top: 8px; }
+
+/* === MOBILE MENU === */
+.mob-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.6);
+  z-index: 298;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s;
+}
+.mob-overlay.open { opacity: 1; pointer-events: auto; }
+.mob-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 280px;
+  height: 100%;
+  background: var(--z1);
+  border-left: 1px solid var(--border-z2);
+  z-index: 299;
+  transform: translateX(100%);
+  transition: transform .4s var(--spring);
+  padding: 80px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.mob-menu.open { transform: translateX(0); }
+.mob-menu a {
+  display: block;
+  font-size: 15px;
+  font-weight: 500;
+  color: rgba(255,255,255,.6);
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border-z1);
+  transition: color .2s;
+}
+.mob-menu a:hover { color: var(--paper); }
+.mob-menu a.active { color: var(--paper); }
+.mob-menu-cta {
+  margin-top: auto;
+  display: block;
+  text-align: center;
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: 14px 24px;
+}
+
+/* === BLOG HERO === */
+.blog-hero {
+  background: var(--z1);
+  padding: 140px 0 64px;
+  position: relative;
+  overflow: hidden;
+}
+.blog-hero::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  right: -10%;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--glow-green) 0%, transparent 65%);
+  pointer-events: none;
+}
+.blog-hero::after {
+  content: '';
+  position: absolute;
+  bottom: -15%;
+  left: -5%;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--glow-orange) 0%, transparent 65%);
+  pointer-events: none;
+}
+.blog-hero .container { position: relative; z-index: 1; text-align: center; }
+.blog-hero-h1 {
+  font-family: var(--serif);
+  font-size: clamp(36px, 5vw, 60px);
+  line-height: 1;
+  letter-spacing: -.028em;
+  margin-bottom: 16px;
+  opacity: 0;
+  animation: up .9s .18s var(--spring) forwards;
+}
+.blog-hero-h1 em {
+  font-style: italic;
+  color: var(--green2);
+}
+.blog-hero-sub {
+  font-size: 18px;
+  font-weight: 350;
+  line-height: 1.7;
+  color: rgba(255,255,255,.6);
+  max-width: 580px;
+  margin: 0 auto 40px;
+  opacity: 0;
+  animation: up .9s .35s var(--spring) forwards;
+}
+
+/* Search bar */
+.blog-search {
+  max-width: 560px;
+  margin: 0 auto 20px;
+  position: relative;
+  opacity: 0;
+  animation: up .8s .5s var(--spring) forwards;
+}
+.blog-search input {
+  width: 100%;
+  background: var(--z2);
+  border: 1px solid var(--border-z2);
+  border-radius: var(--r-pill);
+  padding: 16px 60px 16px 24px;
+  font-family: var(--sans);
+  font-size: 15px;
+  color: var(--paper);
+  outline: none;
+  transition: border-color .2s, box-shadow .2s;
+}
+.blog-search input::placeholder { color: rgba(255,255,255,.3); }
+.blog-search input:focus {
+  border-color: var(--green);
+  box-shadow: 0 0 0 3px rgba(26,122,74,.15);
+}
+.blog-search-btn {
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--green);
+  border: none;
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background .2s;
+}
+.blog-search-btn:hover { background: #1f8f55; }
+.blog-search-btn svg { width: 18px; height: 18px; color: #fff; }
+.blog-trust {
+  font-size: 13px;
+  color: rgba(255,255,255,.35);
+  opacity: 0;
+  animation: up .8s .65s var(--spring) forwards;
+}
+
+/* === FEATURED SECTION === */
+.featured-sec {
+  padding: 64px 0 48px;
+  background: var(--z0);
+}
+.featured-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 24px;
+  align-items: stretch;
+}
+.featured-main {
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--z3);
+  aspect-ratio: 16/9;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  transition: transform .4s var(--spring);
+}
+.featured-main:hover { transform: translateY(-4px); }
+.featured-main-img {
+  position: absolute;
+  inset: 0;
+  background: var(--z3);
+  background-image: linear-gradient(135deg, var(--z2) 0%, var(--z3) 50%, var(--z4) 100%);
+}
+.featured-main-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(14,15,13,.95) 0%, rgba(14,15,13,.4) 50%, transparent 100%);
+}
+.featured-main-content {
+  position: relative;
+  z-index: 2;
+  padding: 32px;
+}
+.featured-main .cat-badge {
+  margin-bottom: 12px;
+}
+.featured-main-title {
+  font-family: var(--serif);
+  font-size: clamp(24px, 3vw, 32px);
+  line-height: 1.15;
+  letter-spacing: -.02em;
+  color: var(--paper);
+  margin-bottom: 10px;
+}
+.featured-main-excerpt {
+  font-size: 15px;
+  font-weight: 350;
+  color: rgba(255,255,255,.55);
+  line-height: 1.6;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-bottom: 16px;
+  max-width: 480px;
+}
+.featured-main-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+  color: rgba(255,255,255,.4);
+}
+.featured-main-meta .author {
+  font-weight: 600;
+  color: rgba(255,255,255,.6);
+}
+.featured-main-meta .sep { color: rgba(255,255,255,.2); }
+
+/* Featured side cards */
+.featured-side {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.featured-side-card {
+  display: flex;
+  gap: 16px;
+  background: var(--z2);
+  border: 1px solid var(--border-z2);
+  border-radius: var(--radius);
+  padding: 16px;
+  flex: 1;
+  transition: transform .3s var(--spring), border-color .3s;
+}
+.featured-side-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--green);
+}
+.featured-side-thumb {
+  width: 140px;
+  min-height: 100px;
+  border-radius: var(--radius-sm);
+  background: var(--z3);
+  background-image: linear-gradient(135deg, var(--z2) 0%, var(--z3) 100%);
+  flex-shrink: 0;
+}
+.featured-side-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+}
+.featured-side-title {
+  font-family: var(--serif);
+  font-size: 17px;
+  line-height: 1.25;
+  color: var(--paper);
+}
+.featured-side-date {
+  font-size: 13px;
+  color: var(--dim);
+}
+
+/* === CATEGORY BADGE === */
+.cat-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: var(--r-subtle);
+  color: #fff;
+}
+.cat-badge[data-cat="google"] { background: var(--cat-google); }
+.cat-badge[data-cat="ia"] { background: var(--cat-ia); }
+.cat-badge[data-cat="local"] { background: var(--cat-local); }
+.cat-badge[data-cat="cases"] { background: var(--cat-cases); color: var(--ink); }
+.cat-badge[data-cat="guias"] { background: var(--cat-guias); }
+.cat-badge[data-cat="novidades"] { background: var(--cat-novidades); }
+
+/* === STICKY CATEGORY FILTER === */
+.cat-filter {
+  position: sticky;
+  top: 62px;
+  z-index: 90;
+  background: var(--z0);
+  border-bottom: 1px solid var(--border-z1);
+  padding: 16px 0;
+  transition: top .3s;
+}
+.cat-filter-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(24px, 5vw, 80px);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.cat-chips {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  flex: 1;
+}
+.cat-chips::-webkit-scrollbar { display: none; }
+.cat-chip {
+  scroll-snap-align: start;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--border-z2);
+  background: var(--z2);
+  color: rgba(255,255,255,.55);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all .2s;
+  font-family: var(--sans);
+}
+.cat-chip:hover { color: var(--paper); border-color: var(--border-z3); }
+.cat-chip.active {
+  color: #fff;
+  border-color: transparent;
+}
+.cat-chip.active[data-cat="todos"] { background: var(--green); }
+.cat-chip.active[data-cat="google"] { background: var(--cat-google); }
+.cat-chip.active[data-cat="ia"] { background: var(--cat-ia); }
+.cat-chip.active[data-cat="local"] { background: var(--cat-local); }
+.cat-chip.active[data-cat="cases"] { background: var(--cat-cases); color: var(--ink); }
+.cat-chip.active[data-cat="guias"] { background: var(--cat-guias); }
+.cat-chip.active[data-cat="novidades"] { background: var(--cat-novidades); }
+.cat-counter {
+  font-size: 13px;
+  color: var(--dim);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* === MAIN CONTENT LAYOUT === */
+.blog-main {
+  padding: 48px 0;
+}
+.blog-layout {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(24px, 5vw, 80px);
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 48px;
+  align-items: start;
+}
+
+/* === ARTICLE CARDS GRID === */
+.articles-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+.article-card {
+  background: var(--z2);
+  border: 1px solid var(--border-z2);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: transform .4s var(--spring), border-color .3s, box-shadow .3s;
+}
+.article-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--green);
+  box-shadow: 0 12px 40px rgba(26,122,74,.1), 0 4px 12px rgba(0,0,0,.3);
+}
+.article-card-img {
+  position: relative;
+  aspect-ratio: 16/10;
+  background: var(--z3);
+  background-image: linear-gradient(135deg, var(--z2) 0%, var(--z3) 50%, var(--z4) 100%);
+  overflow: hidden;
+}
+.article-card-img .cat-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 2;
+}
+.article-card-body { padding: 20px; }
+.article-card-title {
+  font-family: var(--serif);
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: -.01em;
+  color: var(--paper);
+  margin-bottom: 8px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.article-card-excerpt {
+  font-size: 15px;
+  font-weight: 350;
+  color: var(--dim);
+  line-height: 1.6;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+.article-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+  color: var(--dim);
+}
+
+/* === SIDEBAR === */
+.sidebar {
+  position: sticky;
+  top: 140px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* Mais Lidos */
+.sidebar-box {
+  background: var(--z2);
+  border: 1px solid var(--border-z2);
+  border-radius: var(--radius);
+  padding: 24px;
+}
+.sidebar-box-title {
+  font-family: var(--serif);
+  font-size: 20px;
+  color: var(--paper);
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-z2);
+}
+.top-list { list-style: none; display: flex; flex-direction: column; gap: 16px; }
+.top-item {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  transition: opacity .2s;
+}
+.top-item:hover { opacity: .7; }
+.top-num {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 28px;
+  color: var(--green);
+  line-height: 1;
+  min-width: 28px;
+  flex-shrink: 0;
+}
+.top-info { display: flex; flex-direction: column; gap: 4px; }
+.top-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--paper);
+  line-height: 1.35;
+}
+.top-cat {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+/* Newsletter sidebar */
+.sidebar-nl {
+  background: var(--z2);
+  border: 1px solid var(--border-z2);
+  border-radius: var(--radius);
+  padding: 24px;
+}
+.sidebar-nl-title {
+  font-family: var(--serif);
+  font-size: 20px;
+  color: var(--paper);
+  margin-bottom: 8px;
+}
+.sidebar-nl-desc {
+  font-size: 14px;
+  font-weight: 350;
+  color: var(--dim);
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+.sidebar-nl input {
+  width: 100%;
+  background: var(--z3);
+  border: 1px solid var(--border-z2);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  font-family: var(--sans);
+  font-size: 14px;
+  color: var(--paper);
+  outline: none;
+  margin-bottom: 10px;
+  transition: border-color .2s;
+}
+.sidebar-nl input::placeholder { color: rgba(255,255,255,.3); }
+.sidebar-nl input:focus { border-color: var(--green); }
+.sidebar-nl-btn {
+  width: 100%;
+  padding: 12px;
+  background: var(--green);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background .2s;
+}
+.sidebar-nl-btn:hover { background: #1f8f55; }
+
+/* CTA sidebar */
+.sidebar-cta {
+  background: linear-gradient(135deg, var(--z2) 0%, rgba(26,122,74,.08) 100%);
+  border: 1px solid rgba(26,122,74,.2);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  text-align: center;
+}
+.sidebar-cta-title {
+  font-family: var(--serif);
+  font-size: 22px;
+  color: var(--paper);
+  margin-bottom: 10px;
+  line-height: 1.2;
+}
+.sidebar-cta-desc {
+  font-size: 14px;
+  font-weight: 350;
+  color: var(--dim);
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+.sidebar-cta .btn-p {
+  width: 100%;
+  justify-content: center;
+  font-size: 12px;
+  padding: 12px 20px;
+}
+
+/* === MID-PAGE CTA === */
+.mid-cta {
+  background: var(--green);
+  padding: 80px 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.mid-cta::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -10%;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(111,207,151,.2) 0%, transparent 70%);
+  pointer-events: none;
+}
+.mid-cta .container { position: relative; z-index: 1; }
+.mid-cta-h {
+  font-family: var(--serif);
+  font-size: clamp(28px, 4vw, 44px);
+  line-height: 1.1;
+  letter-spacing: -.02em;
+  color: #fff;
+  margin-bottom: 16px;
+}
+.mid-cta-p {
+  font-size: 17px;
+  font-weight: 350;
+  color: rgba(255,255,255,.75);
+  max-width: 540px;
+  margin: 0 auto 32px;
+  line-height: 1.7;
+}
+.mid-cta .btn-p {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+/* === HUB SECTION === */
+.hub-sec {
+  padding: 80px 0;
+  background: var(--z0);
+}
+.hub-sec .sec-h { text-align: center; margin-bottom: 48px; }
+.hub-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.hub-card {
+  background: var(--z1);
+  border: 1px solid var(--border-z2);
+  border-radius: var(--radius);
+  padding: 28px;
+  transition: border-color .3s;
+}
+.hub-card:hover { border-color: var(--border-z3); }
+.hub-card-bar {
+  width: 40px;
+  height: 3px;
+  border-radius: 2px;
+  margin-bottom: 16px;
+}
+.hub-card-name {
+  font-family: var(--serif);
+  font-size: 20px;
+  color: var(--paper);
+  margin-bottom: 20px;
+}
+.hub-links { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px; }
+.hub-links li a {
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(255,255,255,.5);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: color .2s;
+}
+.hub-links li a::before {
+  content: '';
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.hub-links li a:hover { color: var(--paper); }
+.hub-card-more {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--green2);
+  transition: opacity .2s;
+}
+.hub-card-more:hover { opacity: .7; }
+
+/* === FULL WIDTH NEWSLETTER === */
+.nl-full {
+  background: var(--green);
+  padding: 80px 0;
+  position: relative;
+  overflow: hidden;
+}
+.nl-full::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  pointer-events: none;
+}
+.nl-full .container { position: relative; z-index: 1; text-align: center; }
+.nl-full-h {
+  font-family: var(--serif);
+  font-size: clamp(28px, 4vw, 44px);
+  line-height: 1.1;
+  letter-spacing: -.02em;
+  color: #fff;
+  margin-bottom: 12px;
+}
+.nl-full-p {
+  font-size: 16px;
+  font-weight: 350;
+  color: rgba(255,255,255,.7);
+  max-width: 500px;
+  margin: 0 auto 32px;
+  line-height: 1.7;
+}
+.nl-full-form {
+  display: flex;
+  gap: 12px;
+  max-width: 480px;
+  margin: 0 auto;
+}
+.nl-full-form input {
+  flex: 1;
+  padding: 14px 20px;
+  border-radius: var(--r-pill);
+  border: 1px solid rgba(255,255,255,.2);
+  background: rgba(255,255,255,.1);
+  font-family: var(--sans);
+  font-size: 15px;
+  color: #fff;
+  outline: none;
+  transition: border-color .2s, background .2s;
+}
+.nl-full-form input::placeholder { color: rgba(255,255,255,.45); }
+.nl-full-form input:focus { border-color: rgba(255,255,255,.5); background: rgba(255,255,255,.15); }
+.nl-full-form button {
+  padding: 14px 28px;
+  border-radius: var(--r-pill);
+  border: none;
+  background: var(--orange);
+  color: #fff;
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background .2s, transform .2s;
+}
+.nl-full-form button:hover { background: #c96a2e; transform: translateY(-2px); }
+
+/* === YOUTUBE VIDEOS === */
+.yt-sec {
+  background: var(--z0);
+  padding: var(--sec-pad) clamp(24px, 4vw, 64px);
+  border-top: 1px solid var(--border-z1);
+}
+.yt-sec-in { max-width: 1200px; margin: 0 auto; }
+.yt-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 48px;
+}
+.yt-card {
+  background: var(--z2);
+  border: 1px solid var(--border-z2);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: all .3s var(--spring);
+}
+.yt-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255,255,255,.12);
+  box-shadow: 0 12px 40px rgba(0,0,0,.3);
+}
+.yt-thumb {
+  position: relative;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  cursor: pointer;
+}
+.yt-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .4s var(--spring);
+}
+.yt-card:hover .yt-thumb img { transform: scale(1.04); }
+.yt-play {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,.3);
+  transition: background .3s ease;
+}
+.yt-card:hover .yt-play { background: rgba(0,0,0,.15); }
+.yt-play svg {
+  width: 56px;
+  height: 56px;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,.4));
+  transition: transform .3s var(--spring);
+}
+.yt-card:hover .yt-play svg { transform: scale(1.1); }
+.yt-body {
+  padding: 20px;
+}
+.yt-title {
+  font-family: var(--sans);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--paper);
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.yt-channel {
+  font-size: 13px;
+  color: var(--dim);
+  margin-top: 8px;
+}
+/* Iframe state */
+.yt-thumb.playing { aspect-ratio: 16/9; }
+.yt-thumb.playing iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* === FOOTER === */
+footer {
+  background: #0d0e0c;
+  border-top: 1px solid #111;
+  padding: 64px 40px 32px;
+}
+.foot-in { max-width: 1200px; margin: 0 auto; }
+.foot-top {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 64px;
+}
+.foot-brand {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-style: italic;
+  color: var(--paper);
+  margin-bottom: 8px;
+}
+.foot-tag {
+  font-size: 14px;
+  font-weight: 300;
+  color: #4a4a44;
+  line-height: 1.7;
+  max-width: 220px;
+  margin-bottom: 32px;
+}
+.foot-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: #24251f;
+  border: 1px solid #1e1f1c;
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+.foot-live::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #1a7a4a;
+  animation: pulse 2.5s infinite;
+}
+.fcol-h {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: #4a4a44;
+  margin-bottom: 16px;
+}
+.flinks { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.flinks a { font-size: 14px; font-weight: 300; color: #4a4a44; transition: color .2s; }
+.flinks a:hover { color: var(--paper); }
+.foot-bot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 32px;
+  border-top: 1px solid #111;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+.foot-copy { font-size: 13px; color: #24251f; }
+.foot-socs { display: flex; gap: 24px; }
+.foot-socs a {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: #24251f;
+  transition: color .2s;
+}
+.foot-socs a:hover { color: var(--paper); }
+.foot-legal { width: 100%; display: flex; gap: 24px; flex-wrap: wrap; margin-bottom: 8px; }
+.foot-legal a { font-size: 12px; color: #24251f; text-decoration: underline; text-underline-offset: 2px; transition: color .2s; }
+.foot-legal a:hover { color: var(--paper); }
+
+/* === BOTTOM BAR === */
+.bottom-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 95;
+  background: rgba(244, 243, 239, .92);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  box-shadow: 0 -1px 0 rgba(0, 0, 0, .06);
+  transform: translateY(100%);
+  transition: transform .5s var(--spring);
+}
+.bottom-bar.visible { transform: translateY(0); }
+.bb-desktop {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  padding: 14px 40px;
+}
+.bb-info { font-size: 14px; font-weight: 500; color: var(--dim); }
+.bb-sep { width: 1px; height: 20px; background: var(--faint); }
+.bb-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 28px;
+  border-radius: 50px;
+  background: var(--green);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background .2s;
+}
+.bb-cta:hover { background: #1f8f55; }
+.bb-cta svg { width: 16px; height: 16px; }
+.bb-mobile { display: none; }
+
+/* === TYPOGRAPHY === */
+.sec-h, .blog-hero-h1 { text-wrap: balance; }
+p, .blog-hero-sub { text-wrap: pretty; }
+.blog-hero-sub { font-variation-settings: 'opsz' 18, 'wght' 350; }
+
+/* Performance */
+.reveal { will-change: opacity, transform; }
+.reveal.in, .reveal-left.in, .reveal-right.in, .reveal-scale.in, .reveal-blur.in { will-change: auto; }
+
+/* Retina noise */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .noise::after { background-size: 150px 150px; opacity: .38; }
+}
+
+/* === KEYFRAMES === */
+@keyframes up {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: .4; transform: scale(.75); }
+}
+@keyframes blink { 50% { opacity: 0; } }
+
+/* === REDUCED MOTION === */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+  .reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-blur, .reveal-3d { opacity: 1 !important; transform: none !important; filter: none !important; }
+}
+
+/* === RESPONSIVE: TABLET (1024px) === */
+@media (max-width: 1024px) {
+  .blog-layout {
+    grid-template-columns: 1fr;
+  }
+  .sidebar {
+    position: static;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+  .sidebar-cta {
+    grid-column: 1 / -1;
+  }
+  .hub-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .featured-grid {
+    grid-template-columns: 1fr;
+  }
+  .featured-side {
+    flex-direction: row;
+  }
+  .featured-side-card {
+    flex: 1;
+  }
+}
+
+/* === RESPONSIVE: TABLET (960px) === */
+@media (max-width: 960px) {
+  nav { padding: 0 20px; }
+  .nav-links, .nav-cta { display: none; }
+  .hamburger { display: flex; }
+  #bar { display: none; }
+  nav { top: 0 !important; }
+  body { padding-bottom: 66px; }
+  :root { --sec-pad: clamp(64px, 10vw, 100px); }
+
+  .bb-desktop { display: none; }
+  .bb-mobile {
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    padding: 8px 16px calc(8px + env(safe-area-inset-bottom, 4px));
+  }
+  .bb-mobile-top { font-size: 11px; font-weight: 500; color: var(--dim); flex: 1; line-height: 1.3; }
+  .bb-mobile-cta {
+    display: flex; align-items: center; justify-content: center; gap: 5px;
+    padding: 8px 16px; border-radius: 50px;
+    background: var(--green); color: #fff; font-size: 11px; font-weight: 600;
+    border: none; cursor: pointer; white-space: nowrap; flex-shrink: 0;
+  }
+
+  .blog-hero { padding: 90px 20px 48px; }
+  .cat-filter { top: 62px; }
+
+  .foot-top { grid-template-columns: 1fr 1fr; }
+
+  .blog-hero, .featured-sec, .blog-main, .mid-cta, .hub-sec, .nl-full,
+  footer { padding-left: 20px !important; padding-right: 20px !important; }
+}
+
+/* === RESPONSIVE: MOBILE (768px) === */
+@media (max-width: 768px) {
+  .articles-grid {
+    grid-template-columns: 1fr;
+  }
+  .sidebar {
+    grid-template-columns: 1fr;
+  }
+  .featured-side {
+    flex-direction: column;
+  }
+  .hub-grid {
+    grid-template-columns: 1fr;
+  }
+  .cat-chip {
+    min-height: 48px;
+    padding: 12px 18px;
+  }
+  .nl-full-form {
+    flex-direction: column;
+  }
+  .nl-full-form input, .nl-full-form button {
+    width: 100%;
+  }
+  .mid-cta { padding: 60px 0; }
+  .yt-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  body { padding-bottom: 0; }
+}
+
+/* === RESPONSIVE: SMALL MOBILE (480px) === */
+@media (max-width: 480px) {
+  .blog-hero-h1 { font-size: 28px; line-height: 1.1; }
+  .blog-hero-sub { font-size: 16px; }
+  .sec-h { font-size: clamp(24px, 6.5vw, 32px); }
+  .foot-top { grid-template-columns: 1fr; }
+  .featured-side-thumb { width: 100px; min-height: 80px; }
+  .featured-main-title { font-size: 22px; }
+  .loader-phrase { font-size: clamp(18px, 5vw, 28px); }
+  .yt-grid { grid-template-columns: 1fr; }
+}
+
+/* === NO RESULTS === */
+.no-results {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 64px 20px;
+  color: var(--dim);
+}
+.no-results-h {
+  font-family: var(--serif);
+  font-size: 24px;
+  color: var(--paper);
+  margin-bottom: 8px;
+}
+</style>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Blog","name":"Blog Maturare","description":"Artigos da Maturare sobre SEO local, GEO, Google Meu Negócio e IA para negócios locais.","url":"https://maturare.com.br/blog","publisher":{"@type":"Organization","name":"Maturare","url":"https://maturare.com.br","logo":{"@type":"ImageObject","url":"https://maturare.com.br/assets/logo-maturare.png"}},"blogPost":[{"@type":"BlogPosting","headline":"Como aparecer no Google quando o cliente pesquisar seu serviço","datePublished":"2026-03-25","author":{"@type":"Person","name":"Daniel Batista Rios"},"publisher":{"@type":"Organization","name":"Maturare"}},{"@type":"BlogPosting","headline":"O que é GEO e por que o ChatGPT pode recomendar seu concorrente","datePublished":"2026-03-22","author":{"@type":"Person","name":"Daniel Batista Rios"},"publisher":{"@type":"Organization","name":"Maturare"}},{"@type":"BlogPosting","headline":"PHD Playground: 2 anos sem pagar Google Ads","datePublished":"2026-03-18","author":{"@type":"Person","name":"Daniel Batista Rios"},"publisher":{"@type":"Organization","name":"Maturare"}},{"@type":"BlogPosting","headline":"Google Meu Negócio: o guia definitivo para negócios locais","datePublished":"2026-03-15","author":{"@type":"Person","name":"Daniel Batista Rios"},"publisher":{"@type":"Organization","name":"Maturare"}},{"@type":"BlogPosting","headline":"Perplexity, Gemini, ChatGPT: qual IA já recomenda empresas?","datePublished":"2026-03-08","author":{"@type":"Person","name":"Daniel Batista Rios"},"publisher":{"@type":"Organization","name":"Maturare"}}]}
+</script>
+</head>
+<body>
+
+<!-- 1. LOADER -->
+<div class="loader" id="loader">
+  <div class="loader-phrase" id="loaderPhrase"></div>
+  <div class="loader-line" id="loaderLine"></div>
+  <div class="loader-brand" id="loaderBrand">Maturare</div>
+</div>
+
+<!-- 2. READING PROGRESS -->
+<div class="reading-prog" id="readingProg"></div>
+
+<!-- 3. BAR (FIXED) -->
+<div id="bar">
+  <span class="bar-pill">Novo</span>
+  &nbsp;Até 2028, 90% das compras B2B passarão por agentes de IA (US$ 15 trilhões) —&nbsp;<a href="contato.html">Sua empresa está preparada?</a>
+  <button class="bar-x" onclick="this.parentElement.remove();updateNavTop()">&#215;</button>
+</div>
+
+<!-- 4. NAV (FIXED) -->
+<a href="#main-content" class="skip-link">Pular para conteúdo</a>
+<nav id="nav">
+  <a href="home-maturare-final.html" class="logo">Maturare</a>
+  <ul class="nav-links">
+    <li><a href="home-maturare-final.html" class="nav-btn">Home</a></li>
+    <li><a href="metodologia.html" class="nav-btn">Metodologia</a></li>
+    <li><a href="projetos.html" class="nav-btn">Projetos</a></li>
+    <li><a href="blog.html" class="nav-btn active">Blog</a></li>
+    <li><a href="contato.html" class="nav-btn">Contato</a></li>
+  </ul>
+  <div class="nav-r">
+    <a href="contato.html" class="nav-cta">Fale Com Especialista</a>
+    <button class="hamburger" id="hambBtn" aria-label="Abrir menu de navegação"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mob-overlay" id="mobOverlay"></div>
+<div class="mob-menu" id="mobMenu">
+  <a href="home-maturare-final.html">Home</a>
+  <a href="sobre.html">Sobre</a>
+  <a href="metodologia.html">Metodologia</a>
+  <a href="projetos.html">Projetos</a>
+  <a href="blog.html" class="active">Blog</a>
+  <a href="daniel-rios.html">Daniel Rios</a>
+  <a href="nossos-clientes.html">Clientes</a>
+  <a href="depoimentos.html">Depoimentos</a>
+  <a href="faq-maturare.html">FAQ</a>
+  <a href="contato.html" class="mob-menu-cta">Fale Com Especialista</a>
+</div>
+
+<!-- 5. BLOG HERO -->
+<section class="blog-hero noise" id="main-content" data-funnel="awareness">
+  <div class="container">
+    <h1 class="blog-hero-h1">Blog Maturare — SEO, GEO e Marketing Digital <em>para Negócios Locais</em></h1>
+    <p class="blog-hero-sub">Conteúdo da Maturare para quem quer ser encontrado no Google e recomendado pelas IAs — não apenas ranqueado. <span style="font-size:13px;color:rgba(255,255,255,.35);">Atualizado em abril de 2026</span></p>
+    <div class="blog-search" id="searchWrap">
+      <input type="text" id="searchInput" placeholder="Buscar artigo..." autocomplete="off">
+      <button class="blog-search-btn" aria-label="Buscar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      </button>
+    </div>
+    <p class="blog-trust">Artigos escritos pela equipe Maturare — quem faz SEO e GEO de verdade para negócios locais no mercado digital brasileiro.</p>
+  </div>
+</section>
+
+<!-- 6. FEATURED SECTION -->
+<section class="featured-sec" data-funnel="awareness">
+  <div class="container">
+    <div class="featured-grid reveal">
+      <!-- Featured main card -->
+      <a href="#" class="featured-main" data-cat="google" data-title="Como aparecer no Google quando o cliente pesquisar seu serviço" data-excerpt="Descubra as estratégias que fazem negócios locais aparecerem nas primeiras posições do Google quando o cliente pesquisa o serviço na sua cidade.">
+        <div class="featured-main-img"></div>
+        <div class="featured-main-overlay"></div>
+        <div class="featured-main-content">
+          <span class="cat-badge" data-cat="google">Google</span>
+          <h2 class="featured-main-title">Como aparecer no Google quando o cliente pesquisar seu serviço?</h2>
+          <p class="featured-main-excerpt">Descubra as estratégias que fazem negócios locais aparecerem nas primeiras posições do Google quando o cliente pesquisa o serviço na sua cidade.</p>
+          <div class="featured-main-meta">
+            <span class="author">Daniel Rios</span>
+            <span class="sep">·</span>
+            <span>25 Mar 2026</span>
+            <span class="sep">·</span>
+            <span>8 min de leitura</span>
+          </div>
+        </div>
+      </a>
+      <!-- Featured side -->
+      <div class="featured-side">
+        <a href="#" class="featured-side-card" data-cat="ia">
+          <div class="featured-side-thumb"></div>
+          <div class="featured-side-content">
+            <span class="cat-badge" data-cat="ia">Inteligência Artificial</span>
+            <h3 class="featured-side-title">O que é GEO e por que o ChatGPT pode recomendar seu concorrente</h3>
+            <span class="featured-side-date">22 Mar 2026 · 6 min</span>
+          </div>
+        </a>
+        <a href="#" class="featured-side-card" data-cat="cases">
+          <div class="featured-side-thumb"></div>
+          <div class="featured-side-content">
+            <span class="cat-badge" data-cat="cases">Cases</span>
+            <h3 class="featured-side-title">PHD Playground: 2 anos sem pagar Google Ads</h3>
+            <span class="featured-side-date">18 Mar 2026 · 5 min</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. STICKY CATEGORY FILTER -->
+<div class="cat-filter" id="catFilter">
+  <div class="cat-filter-inner">
+    <div class="cat-chips" id="catChips">
+      <button class="cat-chip active" data-cat="todos">Todos</button>
+      <button class="cat-chip" data-cat="google">
+        <span style="width:8px;height:8px;border-radius:50%;background:var(--cat-google);flex-shrink:0"></span>
+        Google
+      </button>
+      <button class="cat-chip" data-cat="ia">
+        <span style="width:8px;height:8px;border-radius:50%;background:var(--cat-ia);flex-shrink:0"></span>
+        Inteligência Artificial
+      </button>
+      <button class="cat-chip" data-cat="local">
+        <span style="width:8px;height:8px;border-radius:50%;background:var(--cat-local);flex-shrink:0"></span>
+        Negócio Local
+      </button>
+      <button class="cat-chip" data-cat="cases">
+        <span style="width:8px;height:8px;border-radius:50%;background:var(--cat-cases);flex-shrink:0"></span>
+        Cases
+      </button>
+      <button class="cat-chip" data-cat="guias">
+        <span style="width:8px;height:8px;border-radius:50%;background:var(--cat-guias);flex-shrink:0"></span>
+        Guias
+      </button>
+      <button class="cat-chip" data-cat="novidades">
+        <span style="width:8px;height:8px;border-radius:50%;background:var(--cat-novidades);flex-shrink:0"></span>
+        Novidades
+      </button>
+    </div>
+    <span class="cat-counter" id="catCounter">12 artigos</span>
+  </div>
+</div>
+
+<!-- 8. MAIN CONTENT -->
+<section class="blog-main" data-funnel="consideration">
+  <div class="blog-layout">
+    <!-- ARTICLES GRID -->
+    <div class="articles-grid" id="articlesGrid">
+
+      <!-- Article 1 -->
+      <a href="#" class="article-card reveal d1" data-cat="google" data-title="Como aparecer no Google quando o cliente pesquisar seu serviço" data-excerpt="Descubra as estratégias que fazem negócios locais aparecerem nas primeiras posições do Google.">
+        <div class="article-card-img">
+          <span class="cat-badge" data-cat="google">Google</span>
+        </div>
+        <div class="article-card-body">
+          <h3 class="article-card-title">Como aparecer no Google quando o cliente pesquisar seu serviço</h3>
+          <p class="article-card-excerpt">Descubra as estratégias que fazem negócios locais aparecerem nas primeiras posições do Google quando o cliente pesquisa o serviço na sua cidade.</p>
+          <div class="article-card-footer">
+            <span>8 min de leitura</span>
+            <span>25 Mar 2026</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Article 2 -->
+      <a href="#" class="article-card reveal d2" data-cat="ia" data-title="O que é GEO e por que o ChatGPT pode recomendar seu concorrente" data-excerpt="Entenda como funciona a otimização para motores de busca generativos e como se posicionar nas respostas das IAs.">
+        <div class="article-card-img">
+          <span class="cat-badge" data-cat="ia">Inteligência Artificial</span>
+        </div>
+        <div class="article-card-body">
+          <h3 class="article-card-title">O que é GEO e por que o ChatGPT pode recomendar seu concorrente</h3>
+          <p class="article-card-excerpt">Entenda como funciona a otimização para motores de busca generativos e como se posicionar nas respostas das IAs.</p>
+          <div class="article-card-footer">
+            <span>6 min de leitura</span>
+            <span>22 Mar 2026</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Article 3 -->
+      <a href="#" class="article-card reveal d3" data-cat="cases" data-title="PHD Playground: 2 anos sem pagar Google Ads" data-excerpt="Como um playground artesanal em Niterói conquistou o topo do Google de forma orgânica e sustentável.">
+        <div class="article-card-img">
+          <span class="cat-badge" data-cat="cases">Cases</span>
+        </div>
+        <div class="article-card-body">
+          <h3 class="article-card-title">PHD Playground: 2 anos sem pagar Google Ads</h3>
+          <p class="article-card-excerpt">Como um playground artesanal em Niterói conquistou o topo do Google de forma orgânica e sustentável.</p>
+          <div class="article-card-footer">
+            <span>5 min de leitura</span>
+            <span>18 Mar 2026</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Article 4 -->
+      <a href="#" class="article-card reveal d4" data-cat="local" data-title="Google Meu Negócio: o guia definitivo para negócios locais" data-excerpt="Tudo que você precisa saber para otimizar seu perfil no Google e atrair clientes da sua região.">
+        <div class="article-card-img">
+          <span class="cat-badge" data-cat="local">Negócio Local</span>
+        </div>
+        <div class="article-card-body">
+          <h3 class="article-card-title">Google Meu Negócio: o guia definitivo para negócios locais</h3>
+          <p class="article-card-excerpt">Tudo que você precisa saber para otimizar seu perfil no Google e atrair clientes da sua região.</p>
+          <div class="article-card-footer">
+            <span>12 min de leitura</span>
+            <span>15 Mar 2026</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Article 5 -->
+      <a href="#" class="article-card reveal d5" data-cat="guias" data-title="5 sinais de que sua agência de marketing não está funcionando" data-excerpt="Se você investe em marketing digital e não vê retorno, confira estes sinais de alerta.">
+        <div class="article-card-img">
+          <span class="cat-badge" data-cat="guias">Guias</span>
+        </div>
+        <div class="article-card-body">
+          <h3 class="article-card-title">5 sinais de que sua agência de marketing não está funcionando</h3>
+          <p class="article-card-excerpt">Se você investe em marketing digital e não vê retorno, confira estes sinais de alerta que indicam que está na hora de mudar.</p>
+          <div class="article-card-footer">
+            <span>7 min de leitura</span>
+            <span>12 Mar 2026</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Article 6 -->
+      <a href="#" class="article-card reveal d6" data-cat="ia" data-title="Perplexity, Gemini, ChatGPT: qual IA já recomenda empresas?" data-excerpt="Testamos as principais IAs e descobrimos quais já citam negócios locais nas respostas.">
+        <div class="article-card-img">
+          <span class="cat-badge" data-cat="ia">Inteligência Artificial</span>
+        </div>
+        <div class="article-card-body">
+          <h3 class="article-card-title">Perplexity, Gemini, ChatGPT: qual IA já recomenda empresas?</h3>
+          <p class="article-card-excerpt">Testamos as principais IAs e descobrimos quais já citam negócios locais nas respostas. O resultado pode surpreender você.</p>
+          <div class="article-card-footer">
+            <span>9 min de leitura</span>
+            <span>8 Mar 2026</span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <!-- Mais Lidos -->
+      <div class="sidebar-box">
+        <h3 class="sidebar-box-title">Mais Lidos</h3>
+        <ul class="top-list">
+          <li><a href="#" class="top-item">
+            <span class="top-num">1</span>
+            <div class="top-info">
+              <span class="top-title">Como aparecer no Google quando o cliente pesquisar seu serviço</span>
+              <span class="top-cat" style="color:var(--cat-google)">Google</span>
+            </div>
+          </a></li>
+          <li><a href="#" class="top-item">
+            <span class="top-num">2</span>
+            <div class="top-info">
+              <span class="top-title">Google Meu Negócio: o guia definitivo para negócios locais</span>
+              <span class="top-cat" style="color:var(--cat-local)">Negócio Local</span>
+            </div>
+          </a></li>
+          <li><a href="#" class="top-item">
+            <span class="top-num">3</span>
+            <div class="top-info">
+              <span class="top-title">O que é GEO e por que o ChatGPT pode recomendar seu concorrente</span>
+              <span class="top-cat" style="color:var(--cat-ia)">Inteligência Artificial</span>
+            </div>
+          </a></li>
+          <li><a href="#" class="top-item">
+            <span class="top-num">4</span>
+            <div class="top-info">
+              <span class="top-title">PHD Playground: 2 anos sem pagar Google Ads</span>
+              <span class="top-cat" style="color:var(--cat-cases)">Cases</span>
+            </div>
+          </a></li>
+          <li><a href="#" class="top-item">
+            <span class="top-num">5</span>
+            <div class="top-info">
+              <span class="top-title">Por que seu site bonito não aparece no Google</span>
+              <span class="top-cat" style="color:var(--cat-google)">Google</span>
+            </div>
+          </a></li>
+        </ul>
+      </div>
+
+      <!-- Newsletter -->
+      <div class="sidebar-nl">
+        <h3 class="sidebar-nl-title">Newsletter Maturare</h3>
+        <p class="sidebar-nl-desc">Receba toda semana 1 estratégia da Maturare que fez nossos clientes aparecerem no Google e serem recomendados pelas IAs como ChatGPT e Perplexity.</p>
+        <input type="email" placeholder="Seu melhor e-mail">
+        <button class="sidebar-nl-btn">Quero Receber</button>
+      </div>
+
+      <!-- CTA -->
+      <div class="sidebar-cta">
+        <h3 class="sidebar-cta-title">Sua empresa está invisível?</h3>
+        <p class="sidebar-cta-desc">Descubra como a Maturare faz negócios locais aparecerem no Google e serem recomendados pelas IAs. Conheça o <a href="metodologia.html" style="color:var(--green);text-decoration:underline;text-underline-offset:2px;">método Maturare</a>, veja os <a href="projetos.html" style="color:var(--green);text-decoration:underline;text-underline-offset:2px;">projetos</a> e conheça <a href="daniel-rios.html" style="color:var(--green);text-decoration:underline;text-underline-offset:2px;">Daniel Rios</a>, o fundador.</p>
+        <button class="btn-p" onclick="location.href='contato.html'">Fale Com Especialista</button>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- 9. MID-PAGE CTA -->
+<section class="mid-cta noise" data-funnel="decision">
+  <div class="container">
+    <h2 class="mid-cta-h reveal">Sua empresa aparece quando o cliente pesquisa no Google?</h2>
+    <p class="mid-cta-p reveal d1">A Maturare nasceu em Niterói para resolver um problema que 89% das empresas locais no Brasil enfrentam: ser invisível no Google e nas IAs que já influenciam decisões de compra. Descubra como a Maturare posiciona negócios locais com SEO e GEO.</p>
+    <a href="contato.html" class="btn-p reveal d2">Quero Ser Encontrado &rarr;</a>
+  </div>
+</section>
+
+
+<!-- 11. HUB SECTION -->
+<section class="hub-sec" data-funnel="awareness">
+  <div class="container">
+    <h2 class="sec-h lt reveal">Explore por Tema</h2>
+    <div class="hub-grid">
+
+      <!-- Google -->
+      <div class="hub-card reveal d1">
+        <div class="hub-card-bar" style="background:var(--cat-google)"></div>
+        <h3 class="hub-card-name">Google</h3>
+        <ul class="hub-links">
+          <li><a href="#" style="--dot:var(--cat-google)"><span style="background:var(--cat-google);width:4px;height:4px;border-radius:50%;flex-shrink:0;display:inline-block"></span>Como aparecer no Google quando o cliente pesquisar</a></li>
+          <li><a href="#"><span style="background:var(--cat-google);width:4px;height:4px;border-radius:50%;flex-shrink:0;display:inline-block"></span>Por que seu site bonito não aparece no Google</a></li>
+          <li><a href="#"><span style="background:var(--cat-google);width:4px;height:4px;border-radius:50%;flex-shrink:0;display:inline-block"></span>Google Meu Negócio: guia completo</a></li>
+          <li><a href="#"><span style="background:var(--cat-google);width:4px;height:4px;border-radius:50%;flex-shrink:0;display:inline-block"></span>SEO técnico para sites locais</a></li>
+        </ul>
+        <a href="#" class="hub-card-more">Ver todos &rarr;</a>
+      </div>
+
+      <!-- Inteligência Artificial -->
+      <div class="hub-card reveal d2">
+        <div class="hub-card-bar" style="background:var(--cat-ia)"></div>
+        <h3 class="hub-card-name">Inteligência Artificial</h3>
+        <ul class="hub-links">
+          <li><a href="#"><span style="background:var(--cat-ia);width:4px;height:4px;border-radius:50%;flex-shrink:0;display:inline-block"></span>O que é GEO e por que importa</a></li>
+          <li><a href="#"><span style="background:var(--cat-ia);width:4px;height:4px;border-radius:50%;flex-shrink:0;display:inline-block"></span>Perplexity, Gemini, ChatGPT: qual recomenda</a></li>
+          <li><a href="#"><span style="background:var(--cat-ia);width:4px;height:4px;border-radius:50%;flex-shrink:0;display:inline-block"></span>Como ser citado pelo ChatGPT</a></li>
+          <li><a href="#"><span style="background:var(--cat-ia);width:4px;height:4px;border-radius:50%;flex-shrink:0;display:inline-block"></span>AEO vs SEO: o que muda</a></li>
+        </ul>
+        <a href="#" class="hub-card-more">Ver todos &rarr;</a>
+      </div>
+
+      <!-- Negócio Local -->
+      <div class="hub-card reveal d3">
+        <div class="hub-card-bar" style="background:var(--cat-local)"></div>
+        <h3 class="hub-card-name">Negócio Local</h3>
+        <ul class="hub-links">
+          <li><a href="#"><span style="background:var(--cat-local);width:4px;height:4px;border-radius:50%;flex-shrink:0;display:inline-block"></span>Google Meu Negócio: guia definitivo</a></li>
+          <li><a href="#"><span style="background:var(--cat-local);width:4px;height:4px;border-radius:50%;flex-shrink:0;display:inline-block"></span>Como aparecer no Google Maps da sua cidade</a></li>
+          <li><a href="#"><span style="background:var(--cat-local);width:4px;height:4px;border-radius:50%;flex-shrink:0;display:inline-block"></span>Marketing local sem gastar com Ads</a></li>
+          <li><a href="#"><span style="background:var(--cat-local);width:4px;height:4px;border-radius:50%;flex-shrink:0;display:inline-block"></span>Avaliações Google: como conseguir mais</a></li>
+        </ul>
+        <a href="#" class="hub-card-more">Ver todos &rarr;</a>
+      </div>
+
+      <!-- Cases -->
+      <div class="hub-card reveal d4">
+        <div class="hub-card-bar" style="background:var(--cat-cases)"></div>
+        <h3 class="hub-card-name">Cases</h3>
+        <ul class="hub-links">
+          <li><a href="#"><span style="background:var(--cat-cases);width:4px;height:4px;border-radius:50%;flex-shrink:0;display:inline-block"></span>PHD Playground: 2 anos sem Ads</a></li>
+          <li><a href="#"><span style="background:var(--cat-cases);width:4px;height:4px;border-radius:50%;flex-shrink:0;display:inline-block"></span>Ambiental Wash: referência em Copacabana</a></li>
+          <li><a href="#"><span style="background:var(--cat-cases);width:4px;height:4px;border-radius:50%;flex-shrink:0;display:inline-block"></span>Move Máquinas: 78 páginas em 90 dias</a></li>
+          <li><a href="#"><span style="background:var(--cat-cases);width:4px;height:4px;border-radius:50%;flex-shrink:0;display:inline-block"></span>Resultados reais de SEO local</a></li>
+        </ul>
+        <a href="#" class="hub-card-more">Ver todos &rarr;</a>
+      </div>
+
+      <!-- Guias -->
+      <div class="hub-card reveal d5">
+        <div class="hub-card-bar" style="background:var(--cat-guias)"></div>
+        <h3 class="hub-card-name">Guias</h3>
+        <ul class="hub-links">
+          <li><a href="#"><span style="background:var(--cat-guias);width:4px;height:4px;border-radius:50%;flex-shrink:0;display:inline-block"></span>5 sinais da agência que não funciona</a></li>
+          <li><a href="#"><span style="background:var(--cat-guias);width:4px;height:4px;border-radius:50%;flex-shrink:0;display:inline-block"></span>Páginas que vendem enquanto você dorme</a></li>
+          <li><a href="#"><span style="background:var(--cat-guias);width:4px;height:4px;border-radius:50%;flex-shrink:0;display:inline-block"></span>Como escolher palavras-chave locais</a></li>
+          <li><a href="#"><span style="background:var(--cat-guias);width:4px;height:4px;border-radius:50%;flex-shrink:0;display:inline-block"></span>Checklist SEO para páginas de serviço</a></li>
+        </ul>
+        <a href="#" class="hub-card-more">Ver todos &rarr;</a>
+      </div>
+
+      <!-- Novidades -->
+      <div class="hub-card reveal d6">
+        <div class="hub-card-bar" style="background:var(--cat-novidades)"></div>
+        <h3 class="hub-card-name">Novidades</h3>
+        <ul class="hub-links">
+          <li><a href="#"><span style="background:var(--cat-novidades);width:4px;height:4px;border-radius:50%;flex-shrink:0;display:inline-block"></span>Core Update 2026: o que mudou</a></li>
+          <li><a href="#"><span style="background:var(--cat-novidades);width:4px;height:4px;border-radius:50%;flex-shrink:0;display:inline-block"></span>AI Overviews no Brasil: status</a></li>
+          <li><a href="#"><span style="background:var(--cat-novidades);width:4px;height:4px;border-radius:50%;flex-shrink:0;display:inline-block"></span>Novas métricas do Search Console</a></li>
+          <li><a href="#"><span style="background:var(--cat-novidades);width:4px;height:4px;border-radius:50%;flex-shrink:0;display:inline-block"></span>Google SGE: impacto para negócios locais</a></li>
+        </ul>
+        <a href="#" class="hub-card-more">Ver todos &rarr;</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- 12. FULL WIDTH NEWSLETTER -->
+<section class="nl-full">
+  <div class="container">
+    <h2 class="nl-full-h reveal">Quais estratégias de SEO da Maturare funcionam para negócios locais?<br><em>Toda semana no seu email.</em></h2>
+    <p class="nl-full-p reveal d1">Sem spam. Sem teoria vazia. Só o que fez nossos clientes aparecerem no Google.</p>
+    <div class="nl-full-form reveal d2">
+      <input type="email" placeholder="Seu melhor e-mail">
+      <button>Inscrever-se</button>
+    </div>
+  </div>
+</section>
+
+<!-- YOUTUBE VIDEOS -->
+<section class="yt-sec">
+  <div class="yt-sec-in">
+    <div class="reveal">
+      <div class="sec-label lt">No YouTube</div>
+      <h2 class="sec-h lt" style="max-width:700px;">Assista no canal <em>Google Dominado</em></h2>
+      <p style="color:var(--dim);margin-top:12px;font-size:15px;max-width:520px;">SEO na prática. Sem enrolação. Direto de <a href="daniel-rios.html" style="color:var(--green);text-decoration:underline;text-underline-offset:2px;">Daniel Rios</a>, fundador da Maturare. Veja também os <a href="nossos-clientes.html" style="color:var(--green);text-decoration:underline;text-underline-offset:2px;">nossos clientes</a>.</p>
+    </div>
+    <div class="yt-grid">
+      <div class="yt-card reveal">
+        <div class="yt-thumb" data-id="malcB_gQ6n8">
+          <img src="https://i.ytimg.com/vi/malcB_gQ6n8/hqdefault.jpg" alt="Como a IA está transformando a jornada de compra B2B" loading="lazy">
+          <div class="yt-play"><svg viewBox="0 0 68 48"><path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55c-2.93.78-4.63 3.26-5.42 6.19C.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z" fill="red"/><path d="M45 24L27 14v20" fill="#fff"/></svg></div>
+        </div>
+        <div class="yt-body">
+          <div class="yt-title">Como a IA está transformando a jornada de compra B2B</div>
+          <div class="yt-channel">Google Dominado | SEO Inteligente com IA</div>
+        </div>
+      </div>
+      <div class="yt-card reveal d1">
+        <div class="yt-thumb" data-id="015QcBj3PDM">
+          <img src="https://i.ytimg.com/vi/015QcBj3PDM/hqdefault.jpg" alt="Plugin gratuito de SEO que está ajudando empresas a dominar o Google" loading="lazy">
+          <div class="yt-play"><svg viewBox="0 0 68 48"><path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55c-2.93.78-4.63 3.26-5.42 6.19C.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z" fill="red"/><path d="M45 24L27 14v20" fill="#fff"/></svg></div>
+        </div>
+        <div class="yt-body">
+          <div class="yt-title">Plugin gratuito de SEO que está ajudando empresas a dominar o Google</div>
+          <div class="yt-channel">Google Dominado | SEO Inteligente com IA</div>
+        </div>
+      </div>
+      <div class="yt-card reveal d2">
+        <div class="yt-thumb" data-id="TqsqddD0TVw">
+          <img src="https://i.ytimg.com/vi/TqsqddD0TVw/hqdefault.jpg" alt="O que é o Checklist Dominando o Google?" loading="lazy">
+          <div class="yt-play"><svg viewBox="0 0 68 48"><path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55c-2.93.78-4.63 3.26-5.42 6.19C.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z" fill="red"/><path d="M45 24L27 14v20" fill="#fff"/></svg></div>
+        </div>
+        <div class="yt-body">
+          <div class="yt-title">O que é o Checklist Dominando o Google? Entenda..</div>
+          <div class="yt-channel">Google Dominado | SEO Inteligente com IA</div>
+        </div>
+      </div>
+      <div class="yt-card reveal d3">
+        <div class="yt-thumb" data-id="U3qtHsKmB9g">
+          <img src="https://i.ytimg.com/vi/U3qtHsKmB9g/hqdefault.jpg" alt="Topic Cluster vs Sillos: Estratégia para ficar no topo do Google" loading="lazy">
+          <div class="yt-play"><svg viewBox="0 0 68 48"><path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55c-2.93.78-4.63 3.26-5.42 6.19C.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z" fill="red"/><path d="M45 24L27 14v20" fill="#fff"/></svg></div>
+        </div>
+        <div class="yt-body">
+          <div class="yt-title">Topic Cluster vs Sillos: Estratégia para ficar no topo do Google</div>
+          <div class="yt-channel">Google Dominado | SEO Inteligente com IA</div>
+        </div>
+      </div>
+      <div class="yt-card reveal d4">
+        <div class="yt-thumb" data-id="lZ57V37BwPI">
+          <img src="https://i.ytimg.com/vi/lZ57V37BwPI/hqdefault.jpg" alt="Semrush: Filtros para criar um cluster de SEO e ter autoridade tópica" loading="lazy">
+          <div class="yt-play"><svg viewBox="0 0 68 48"><path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55c-2.93.78-4.63 3.26-5.42 6.19C.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z" fill="red"/><path d="M45 24L27 14v20" fill="#fff"/></svg></div>
+        </div>
+        <div class="yt-body">
+          <div class="yt-title">Semrush: Filtros para criar um cluster de SEO e ter autoridade tópica</div>
+          <div class="yt-channel">Google Dominado | SEO Inteligente com IA</div>
+        </div>
+      </div>
+      <div class="yt-card reveal d5">
+        <div class="yt-thumb" data-id="PfWbA04jVBY">
+          <img src="https://i.ytimg.com/vi/PfWbA04jVBY/hqdefault.jpg" alt="Checklist de SEO: Como aumentar o tráfego orgânico do seu site (Parte 1)" loading="lazy">
+          <div class="yt-play"><svg viewBox="0 0 68 48"><path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55c-2.93.78-4.63 3.26-5.42 6.19C.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z" fill="red"/><path d="M45 24L27 14v20" fill="#fff"/></svg></div>
+        </div>
+        <div class="yt-body">
+          <div class="yt-title">Checklist de SEO: Como aumentar o tráfego orgânico do seu site (Parte 1)</div>
+          <div class="yt-channel">Google Dominado | SEO Inteligente com IA</div>
+        </div>
+      </div>
+    </div>
+    <div class="reveal" style="text-align:center;margin-top:40px;">
+      <a href="https://www.youtube.com/@googledominado1" target="_blank" rel="noopener" class="btn-p" style="background:transparent;border:1px solid var(--border-z3);color:var(--paper);">Ver todos os vídeos no YouTube &#8594;</a>
+    </div>
+  </div>
+</section>
+
+<!-- 13. FOOTER -->
+<footer>
+  <div class="foot-in">
+    <div class="foot-top">
+      <div>
+        <div class="foot-brand">Maturare</div>
+        <p class="foot-tag">Aceleradora de negócios que faz empresas locais serem encontradas no Google e recomendadas pelas IAs.</p>
+        <div class="foot-live">Monitoramento ativo</div>
+      </div>
+      <div>
+        <div class="fcol-h">Principal</div>
+        <ul class="flinks">
+          <li><a href="home-maturare-final.html">Home</a></li>
+          <li><a href="sobre.html">Sobre</a></li>
+          <li><a href="metodologia.html">Metodologia</a></li>
+          <li><a href="projetos.html">Projetos</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="fcol-h">Empresa</div>
+        <ul class="flinks">
+          <li><a href="nossos-clientes.html">Nossos Clientes</a></li>
+          <li><a href="depoimentos.html">Depoimentos</a></li>
+          <li><a href="contato.html">Contato</a></li>
+          <li><a href="faq-maturare.html">FAQ</a></li>
+          <li><a href="daniel-rios.html">Daniel Rios</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="fcol-h">Contato</div>
+        <ul class="flinks">
+          <li><a href="contato.html">Diagnóstico grátis</a></li>
+          <li><a href="contato.html">Falar com Daniel</a></li>
+          <li><a href="mailto:contato@maturare.com.br">contato@maturare.com.br</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <div class="foot-legal">
+        <a href="termos-de-privacidade.html">Termos de Privacidade</a>
+        <a href="politica-de-cookies.html">Política de Cookies</a>
+        <a href="termos-de-uso.html">Termos de Uso</a>
+      </div>
+      <div class="foot-copy">&#169; 2026 Maturare · CNPJ 47.336.340/0001-51 · Niterói, RJ</div>
+      <div class="foot-socs">
+        <a href="https://br.linkedin.com/in/daniel-batista-674b62140" target="_blank" aria-label="LinkedIn da Maturare">LinkedIn</a>
+        <a href="https://www.instagram.com/maturare.com.br/" target="_blank" aria-label="Instagram da Maturare">Instagram</a>
+        <a href="https://www.youtube.com/@googledominado1" target="_blank" aria-label="YouTube da Maturare">YouTube</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+/* === LOADER === */
+(function() {
+  var loader = document.getElementById('loader');
+  var phrase = document.getElementById('loaderPhrase');
+  var line = document.getElementById('loaderLine');
+  var brand = document.getElementById('loaderBrand');
+  if (!loader || !phrase) return;
+  var words = 'Conhecimento que posiciona. Conteúdo que constrói.'.split(' ');
+  phrase.innerHTML = words.map(function(w) { return '<span>' + w + '</span>'; }).join(' ');
+  var spans = phrase.querySelectorAll('span');
+  document.body.style.overflow = 'hidden';
+  requestAnimationFrame(function() { if (line) line.classList.add('active'); });
+  spans.forEach(function(s, i) {
+    setTimeout(function() { s.classList.add('visible'); }, 200 + i * 200);
+  });
+  setTimeout(function() { if (brand) brand.classList.add('visible'); }, 200 + words.length * 200 + 200);
+  setTimeout(function() {
+    loader.classList.add('done');
+    document.body.style.overflow = '';
+    setTimeout(function() { loader.style.display = 'none'; }, 700);
+  }, 200 + words.length * 200 + 800);
+})();
+
+/* === READING PROGRESS BAR === */
+window.addEventListener('scroll', function() {
+  var h = document.documentElement.scrollHeight - window.innerHeight;
+  var prog = document.getElementById('readingProg');
+  if (prog && h > 0) prog.style.width = (window.scrollY / h * 100) + '%';
+}, {passive: true});
+
+/* === NAV SCROLL + BAR === */
+var navEl = document.getElementById('nav');
+function updateNavTop() {
+  var b = document.getElementById('bar');
+  if (navEl) navEl.style.top = b ? b.offsetHeight + 'px' : '0px';
+  // Update category filter top position
+  var catFilter = document.getElementById('catFilter');
+  if (catFilter) {
+    var navBottom = navEl ? (parseInt(navEl.style.top || '0') + navEl.offsetHeight) : 62;
+    catFilter.style.top = navBottom + 'px';
+  }
+}
+updateNavTop();
+var bottomBar = null;
+window.addEventListener('scroll', function() {
+  if (navEl) navEl.classList.toggle('scrolled', window.scrollY > 80);
+  if (bottomBar) bottomBar.classList.toggle('visible', window.scrollY > window.innerHeight * 0.5);
+}, {passive: true});
+
+/* === MOBILE MENU === */
+var hambBtn = document.getElementById('hambBtn');
+var mobMenu = document.getElementById('mobMenu');
+var mobOverlay = document.getElementById('mobOverlay');
+if (hambBtn && mobMenu && mobOverlay) {
+  hambBtn.addEventListener('click', function() {
+    var isOpen = mobMenu.classList.contains('open');
+    mobMenu.classList.toggle('open');
+    mobOverlay.classList.toggle('open');
+    document.body.style.overflow = isOpen ? '' : 'hidden';
+  });
+  mobOverlay.addEventListener('click', function() {
+    mobMenu.classList.remove('open');
+    mobOverlay.classList.remove('open');
+    document.body.style.overflow = '';
+  });
+  mobMenu.querySelectorAll('a').forEach(function(a) {
+    a.addEventListener('click', function() {
+      mobMenu.classList.remove('open');
+      mobOverlay.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+}
+
+/* === REVEAL ON SCROLL === */
+document.querySelectorAll('.reveal, .reveal-3d, .reveal-left, .reveal-right, .reveal-scale, .reveal-blur').forEach(function(el) {
+  if (el) {
+    new IntersectionObserver(function(e) {
+      if (e[0].isIntersecting) { el.classList.add('in'); this.unobserve(el); }
+    }, {threshold: .1, rootMargin: '0px 0px -40px 0px'}).observe(el);
+  }
+});
+
+/* === YOUTUBE CLICK-TO-PLAY === */
+document.querySelectorAll('.yt-thumb[data-id]').forEach(function(thumb) {
+  thumb.addEventListener('click', function() {
+    var id = this.getAttribute('data-id');
+    this.classList.add('playing');
+    this.innerHTML = '<iframe src="https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0" allow="autoplay;encrypted-media" allowfullscreen></iframe>';
+  });
+});
+
+/* === SEARCH (debounced 200ms) === */
+var searchInput = document.getElementById('searchInput');
+var searchTimer = null;
+function getAllArticleCards() {
+  var cards1 = document.querySelectorAll('#articlesGrid .article-card');
+  var cards2 = document.querySelectorAll('#articlesGrid2 .article-card');
+  return Array.from(cards1).concat(Array.from(cards2));
+}
+function doSearch() {
+  var q = searchInput.value.trim().toLowerCase();
+  var cards = getAllArticleCards();
+  var count = 0;
+  cards.forEach(function(card) {
+    var title = (card.getAttribute('data-title') || '').toLowerCase();
+    var excerpt = (card.getAttribute('data-excerpt') || '').toLowerCase();
+    var match = !q || title.indexOf(q) !== -1 || excerpt.indexOf(q) !== -1;
+    card.style.display = match ? '' : 'none';
+    if (match) count++;
+  });
+  updateCounter(count);
+  // Also filter featured
+  var featured = document.querySelectorAll('.featured-main, .featured-side-card');
+  featured.forEach(function(el) {
+    var title = (el.getAttribute('data-title') || '').toLowerCase();
+    var excerpt = (el.getAttribute('data-excerpt') || '').toLowerCase();
+    var match = !q || title.indexOf(q) !== -1 || excerpt.indexOf(q) !== -1;
+    el.style.display = match ? '' : 'none';
+  });
+}
+if (searchInput) {
+  searchInput.addEventListener('input', function() {
+    clearTimeout(searchTimer);
+    searchTimer = setTimeout(doSearch, 200);
+  });
+}
+
+/* === CATEGORY FILTER === */
+var catChips = document.querySelectorAll('.cat-chip');
+var activeCat = 'todos';
+
+function updateCounter(count) {
+  var counter = document.getElementById('catCounter');
+  if (counter) counter.textContent = count + ' artigo' + (count !== 1 ? 's' : '');
+}
+
+function filterByCategory(cat) {
+  activeCat = cat;
+  catChips.forEach(function(c) {
+    c.classList.toggle('active', c.getAttribute('data-cat') === cat);
+  });
+  var cards = getAllArticleCards();
+  var count = 0;
+  var q = searchInput ? searchInput.value.trim().toLowerCase() : '';
+  cards.forEach(function(card) {
+    var cardCat = card.getAttribute('data-cat');
+    var catMatch = cat === 'todos' || cardCat === cat;
+    var title = (card.getAttribute('data-title') || '').toLowerCase();
+    var excerpt = (card.getAttribute('data-excerpt') || '').toLowerCase();
+    var searchMatch = !q || title.indexOf(q) !== -1 || excerpt.indexOf(q) !== -1;
+    var show = catMatch && searchMatch;
+    card.style.display = show ? '' : 'none';
+    if (show) count++;
+  });
+  updateCounter(count);
+  // Also filter featured section
+  var featuredMain = document.querySelector('.featured-main');
+  var featuredSides = document.querySelectorAll('.featured-side-card');
+  if (featuredMain) {
+    var fCat = featuredMain.getAttribute('data-cat');
+    featuredMain.style.display = (cat === 'todos' || fCat === cat) ? '' : 'none';
+  }
+  featuredSides.forEach(function(el) {
+    var fCat = el.getAttribute('data-cat');
+    el.style.display = (cat === 'todos' || fCat === cat) ? '' : 'none';
+  });
+}
+
+catChips.forEach(function(chip) {
+  chip.addEventListener('click', function() {
+    filterByCategory(this.getAttribute('data-cat'));
+  });
+});
+
+/* === REDUCED MOTION === */
+if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  document.querySelectorAll('[style*="animation"]').forEach(function(e) {
+    if (e) { e.style.animation = 'none'; e.style.opacity = '1'; }
+  });
+}
+</script>
+</body>
+</html>
