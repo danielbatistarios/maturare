@@ -413,7 +413,16 @@ nav.scrolled {
   padding: 36px 32px;
   border-right: 1px solid rgba(255,255,255,.05);
   display: flex; flex-direction: column; justify-content: space-between;
+  position: relative; overflow: hidden;
 }
+.mm-aside-bg {
+  position: absolute; inset: 0;
+  background-size: cover; background-position: center;
+  opacity: .18;
+  transition: opacity .3s;
+}
+.mm-panel.open .mm-aside-bg { opacity: .22; }
+.mm-aside > *:not(.mm-aside-bg) { position: relative; z-index: 1; }
 .mm-aside-tag {
   font-family: var(--sans); font-size: 10px; font-weight: 700;
   letter-spacing: .14em; text-transform: uppercase;
@@ -2557,6 +2566,7 @@ p, .hero-sub, .sim-desc, .why-desc { text-wrap: pretty; }
 <div class="mm-panel" id="mm-sobre" role="region" aria-label="Menu Sobre">
   <div class="mm-inner">
     <div class="mm-aside">
+      <div class="mm-aside-bg" style="background-image:url('https://images.unsplash.com/photo-1642621859598-79bc9a87fd77?w=600&auto=format&fit=crop&q=80')"></div>
       <div>
         <p class="mm-aside-tag">A Maturare</p>
         <h2 class="mm-aside-title">Não é sobre crescer rápido. É sobre crescer certo.</h2>
@@ -2590,6 +2600,7 @@ p, .hero-sub, .sim-desc, .why-desc { text-wrap: pretty; }
 <div class="mm-panel" id="mm-servicos" role="region" aria-label="Menu Serviços">
   <div class="mm-inner">
     <div class="mm-aside">
+      <div class="mm-aside-bg" style="background-image:url('https://images.unsplash.com/photo-1548123325-525b8e0cde7c?w=600&auto=format&fit=crop&q=80')"></div>
       <div>
         <p class="mm-aside-tag">Nossos Serviços</p>
         <h2 class="mm-aside-title">Pare de pagar por clique e comece a aparecer de graça.</h2>
@@ -2623,6 +2634,7 @@ p, .hero-sub, .sim-desc, .why-desc { text-wrap: pretty; }
 <div class="mm-panel" id="mm-blog" role="region" aria-label="Menu Blog">
   <div class="mm-inner" style="grid-template-columns:260px 1fr;">
     <div class="mm-aside">
+      <div class="mm-aside-bg" style="background-image:url('https://images.unsplash.com/photo-1643148636630-0b0fb138fc74?w=600&auto=format&fit=crop&q=80')"></div>
       <div>
         <p class="mm-aside-tag">Blog Maturare</p>
         <h2 class="mm-aside-title">Visibilidade não é sorte. É método.</h2>
@@ -2665,6 +2677,7 @@ p, .hero-sub, .sim-desc, .why-desc { text-wrap: pretty; }
 <div class="mm-panel" id="mm-academy" role="region" aria-label="Menu Academy">
   <div class="mm-inner">
     <div class="mm-aside">
+      <div class="mm-aside-bg" style="background-image:url('https://images.unsplash.com/photo-1651714082815-86618e06f77d?w=600&auto=format&fit=crop&q=80')"></div>
       <div>
         <p class="mm-aside-tag">Maturare Academy</p>
         <h2 class="mm-aside-title">Aprenda a fazer sua empresa aparecer.</h2>
