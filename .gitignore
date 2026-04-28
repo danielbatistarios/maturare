@@ -1,0 +1,7 @@
+node_modules/
+research-output/
+briefs/
+*.json
+*.py
+*.sh
+package-lock.json

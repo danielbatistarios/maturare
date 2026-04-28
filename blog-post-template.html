@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{TITLE}} | Maturare</title>
+  <meta name="description" content="{{META_DESCRIPTION}}">
+  <link rel="canonical" href="https://maturare.com.br/blog/{{SLUG}}/">
+  <meta property="og:title" content="{{TITLE}}">
+  <meta property="og:description" content="{{META_DESCRIPTION}}">
+  <meta property="og:image" content="https://maturare.com.br/blog/{{SLUG}}/images/img-1-hero.webp">
+  <meta property="og:type" content="article">
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">{{JSON_LD}}</script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      /* === MATURARE DESIGN SYSTEM v1.0 === */
+      --deep-green: #1B3A2A;
+      --mid-green: #2D6B45;
+      --green: #1a7a4a;
+      --green2: #6fcf97;
+      --gold: #C4A035;
+      --gold-light: #E8C84A;
+      --cream: #F5F1E8;
+      --graphite: #2D3440;
+      --bronze: #7D6535;
+      --ink: #111210;
+      --paper: #f5f4f0;
+      --orange: #e07b39;
+      --serif: 'Instrument Serif', Georgia, serif;
+      --display: 'Montserrat', sans-serif;
+      --sans: 'DM Sans', system-ui, sans-serif;
+      --z0: #0e0f0d; --z1: #141513; --z2: #1a1b18; --z3: #21221f; --z4: #292a26;
+      --border-z1: rgba(255,255,255,.055);
+      --border-z2: rgba(255,255,255,.08);
+      --toplight: inset 0 1px 0 rgba(255,255,255,.06);
+      --spring: cubic-bezier(.16,1,.3,1);
+      --t-fast: 150ms; --t-normal: 250ms; --t-slow: 400ms;
+      --zi-nav: 300; --zi-bar: 301;
+      /* legacy aliases */
+      --maturare-green: #2D6B45;
+      --harvest-gold: #C4A035;
+      --organic-cream: #F5F1E8;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--graphite);
+      background: #fff;
+      -webkit-font-smoothing: antialiased;
+      padding-top: 64px;
+    }
+
+    /* ── NAV ── */
+    #mainNav {
+      position: fixed; top: 0; left: 0; right: 0; height: 64px;
+      background: rgba(14,15,13,.92);
+      backdrop-filter: blur(18px) saturate(180%);
+      -webkit-backdrop-filter: blur(18px) saturate(180%);
+      border-bottom: 1px solid var(--border-z1);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2rem; z-index: var(--zi-nav);
+      transition: box-shadow var(--t-normal) ease;
+    }
+    #mainNav.scrolled { box-shadow: 0 4px 32px rgba(0,0,0,.4); }
+    .nav-logo {
+      font-family: var(--serif); font-size: 1.35rem; font-weight: 400;
+      color: #fff; text-decoration: none; letter-spacing: .01em; flex-shrink: 0;
+    }
+    .nav-logo em { color: var(--gold); font-style: italic; }
+    .nav-links { display: flex; gap: 0; list-style: none; margin: 0; padding: 0; }
+    .nav-links > li { position: relative; }
+    .nav-links > li > a {
+      display: flex; align-items: center; gap: .3rem;
+      padding: 0 1rem; height: 64px;
+      font-family: var(--sans); font-size: .8rem; font-weight: 500;
+      letter-spacing: .06em; text-transform: uppercase;
+      color: rgba(255,255,255,.72); text-decoration: none;
+      transition: color var(--t-fast);
+    }
+    .nav-links > li > a:hover,
+    .nav-links > li > a.active { color: #fff; }
+    .nav-links > li > a svg { opacity: .5; transition: transform var(--t-fast); }
+    .nav-links > li:hover > a svg { transform: rotate(180deg); opacity: 1; }
+    .nav-r { display: flex; align-items: center; gap: 1rem; }
+    .nav-cta {
+      font-family: var(--sans); font-size: .78rem; font-weight: 600;
+      letter-spacing: .05em; text-transform: uppercase;
+      background: var(--gold); color: var(--ink);
+      padding: .45rem 1.1rem; border-radius: 4px;
+      text-decoration: none; transition: opacity var(--t-fast);
+    }
+    .nav-cta:hover { opacity: .85; }
+    #hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      background: none; border: none; cursor: pointer; padding: 4px;
+    }
+    #hamburger span { display: block; width: 22px; height: 2px; background: #fff; border-radius: 2px; }
+
+    /* Megamenu */
+    .mega-panel {
+      position: fixed; top: 64px; left: 0; right: 0;
+      background: var(--z1); border-top: 1px solid var(--border-z1);
+      border-bottom: 1px solid var(--border-z1);
+      display: grid; grid-template-columns: 260px 1fr;
+      padding: 2.5rem 3rem; gap: 2.5rem;
+      opacity: 0; visibility: hidden; pointer-events: none;
+      transform: translateY(-6px);
+      transition: opacity var(--t-normal) var(--spring),
+                  transform var(--t-normal) var(--spring),
+                  visibility var(--t-normal);
+      z-index: calc(var(--zi-nav) - 1);
+    }
+    .mega-panel.open { opacity: 1; visibility: visible; pointer-events: auto; transform: none; }
+    .mega-aside { border-right: 1px solid var(--border-z1); padding-right: 2rem; }
+    .mega-aside h3 { font-family: var(--serif); font-size: 1.3rem; font-weight: 400; color: #fff; margin: 0 0 .5rem; }
+    .mega-aside p { font-size: .82rem; color: rgba(255,255,255,.5); line-height: 1.55; margin: 0 0 1.25rem; }
+    .mega-aside .mega-cta {
+      font-size: .75rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase;
+      color: var(--gold); text-decoration: none;
+    }
+    .mega-aside .mega-cta:hover { color: var(--gold-light); }
+    .mega-links { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: .25rem; align-content: start; }
+    .mega-links a {
+      display: block; padding: .6rem .75rem; border-radius: 6px;
+      font-size: .83rem; color: rgba(255,255,255,.7); text-decoration: none;
+      transition: background var(--t-fast), color var(--t-fast);
+    }
+    .mega-links a:hover { background: rgba(255,255,255,.06); color: #fff; }
+    .mega-links a strong { display: block; font-weight: 600; color: #fff; font-size: .85rem; }
+    .mega-links a span { font-size: .75rem; color: rgba(255,255,255,.45); }
+
+    /* Mobile overlay */
+    #mobOverlay {
+      display: none; position: fixed; inset: 0; background: rgba(0,0,0,.6);
+      z-index: calc(var(--zi-nav) + 1); opacity: 0;
+      transition: opacity var(--t-normal);
+    }
+    #mobOverlay.open { display: flex; opacity: 1; }
+    #mobMenu {
+      background: var(--z1); width: min(340px, 92vw); height: 100%;
+      overflow-y: auto; padding: 1.5rem; display: flex; flex-direction: column; gap: 1rem;
+      transform: translateX(-100%); transition: transform var(--t-slow) var(--spring);
+    }
+    #mobOverlay.open #mobMenu { transform: translateX(0); }
+    .mob-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: .5rem; }
+    .mob-logo { font-family: var(--serif); font-size: 1.2rem; color: #fff; text-decoration: none; }
+    .mob-logo em { color: var(--gold); font-style: italic; }
+    #mobClose {
+      background: none; border: none; color: rgba(255,255,255,.6);
+      font-size: 1.4rem; cursor: pointer; line-height: 1; padding: 4px;
+    }
+    .mob-nav { list-style: none; margin: 0; padding: 0; }
+    .mob-nav > li { border-bottom: 1px solid var(--border-z1); }
+    .mob-toggle {
+      width: 100%; background: none; border: none; padding: .85rem 0;
+      display: flex; justify-content: space-between; align-items: center;
+      font-family: var(--sans); font-size: .85rem; font-weight: 500;
+      color: rgba(255,255,255,.8); cursor: pointer; text-align: left;
+    }
+    .mob-toggle.active { color: var(--gold); }
+    .mob-toggle::after { content: '+'; font-size: 1rem; color: rgba(255,255,255,.4); }
+    .mob-toggle.active::after { content: '−'; color: var(--gold); }
+    .mob-sub { display: none; padding: 0 0 .75rem .75rem; }
+    .mob-sub a {
+      display: block; padding: .45rem 0; font-size: .82rem;
+      color: rgba(255,255,255,.55); text-decoration: none;
+    }
+    .mob-sub a:hover { color: #fff; }
+    .mob-footer { margin-top: auto; padding-top: 1rem; }
+    .mob-footer-cta {
+      display: block; text-align: center; background: var(--gold); color: var(--ink);
+      font-family: var(--sans); font-size: .82rem; font-weight: 700;
+      letter-spacing: .05em; text-transform: uppercase;
+      padding: .8rem; border-radius: 6px; text-decoration: none;
+    }
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta { display: none; }
+      #hamburger { display: flex; }
+    }
+
+    /* HERO */
+    .article-hero {
+      background: var(--deep-green);
+      color: #fff;
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+    .article-hero .breadcrumb {
+      font-size: 0.75rem;
+      font-family: var(--sans);
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--harvest-gold);
+      margin-bottom: 1.5rem;
+    }
+    .article-hero h1 {
+      font-family: var(--display);
+      font-weight: 900;
+      font-size: clamp(1.75rem, 4vw, 2.75rem);
+      line-height: 1.2;
+      max-width: 800px;
+      margin: 0 auto 1.5rem;
+    }
+    .article-hero .lead {
+      font-size: 1.125rem;
+      color: rgba(255,255,255,0.85);
+      max-width: 680px;
+      margin: 0 auto 2rem;
+      line-height: 1.65;
+    }
+    .article-meta {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.6);
+      font-family: var(--sans);
+      font-weight: 500;
+      letter-spacing: 0.05em;
+    }
+    .article-meta .author { color: var(--harvest-gold); }
+
+    /* LAYOUT */
+    .article-container {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 5rem;
+    }
+
+    /* TIPOGRAFIA */
+    h2 {
+      font-family: var(--display);
+      font-weight: 800;
+      font-size: clamp(1.3rem, 2.5vw, 1.65rem);
+      color: var(--deep-green);
+      margin: 2.5rem 0 1rem;
+      line-height: 1.3;
+    }
+    h3 {
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--maturare-green);
+      margin: 1.75rem 0 0.75rem;
+    }
+    p { margin-bottom: 1.25rem; }
+    strong { font-weight: 600; }
+    a { color: var(--maturare-green); }
+    a:hover { color: var(--deep-green); }
+
+    ul, ol {
+      margin: 1rem 0 1.5rem 1.5rem;
+    }
+    li { margin-bottom: 0.5rem; }
+
+    /* CHUNKS */
+    [data-chunk] {
+      border-left: 3px solid var(--organic-cream);
+      padding-left: 1.5rem;
+      margin: 2.5rem 0;
+    }
+    [data-chunk]:hover {
+      border-left-color: var(--maturare-green);
+    }
+
+    /* RESUMO CITÁVEL */
+    .geo-summary {
+      background: var(--organic-cream);
+      border-left: 4px solid var(--harvest-gold);
+      border-radius: 0 8px 8px 0;
+      padding: 2rem 2rem 2rem 2.5rem;
+      margin: 3rem 0;
+    }
+    .geo-summary h2 {
+      margin-top: 0;
+      color: var(--deep-green);
+    }
+    .geo-summary ul {
+      margin-left: 1.25rem;
+    }
+    .geo-summary li {
+      font-weight: 500;
+    }
+
+    /* FAQ */
+    .faq-section {
+      margin: 3rem 0;
+    }
+    .faq-item {
+      border-bottom: 1px solid #e5e7eb;
+      padding: 1.25rem 0;
+    }
+    .faq-item h3 {
+      font-size: 1rem;
+      margin: 0 0 0.75rem;
+      color: var(--deep-green);
+    }
+    .faq-item p {
+      margin: 0;
+      font-size: 0.95rem;
+    }
+
+    /* CTA */
+    .cta-block {
+      background: var(--deep-green);
+      color: #fff;
+      border-radius: 12px;
+      padding: 2.5rem 2rem;
+      text-align: center;
+      margin: 3rem 0;
+    }
+    .cta-block h2 {
+      color: #fff;
+      margin-top: 0;
+      font-size: 1.4rem;
+    }
+    .cta-block p {
+      color: rgba(255,255,255,0.8);
+      max-width: 480px;
+      margin: 0 auto 1.75rem;
+    }
+    .cta-btn {
+      display: inline-block;
+      background: var(--harvest-gold);
+      color: var(--deep-green);
+      font-family: var(--display);
+      font-weight: 800;
+      font-size: 0.95rem;
+      padding: 0.9rem 2.25rem;
+      border-radius: 6px;
+      text-decoration: none;
+      letter-spacing: 0.03em;
+      transition: opacity 0.2s;
+    }
+    .cta-btn:hover { opacity: 0.88; color: var(--deep-green); }
+
+    /* IMAGENS */
+    figure {
+      margin: 2.5rem 0;
+    }
+    figure img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+    figcaption {
+      font-family: var(--sans);
+      font-size: 0.8rem;
+      color: var(--bronze);
+      margin-top: 0.5rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    /* DESTAQUE */
+    .highlight-box {
+      background: rgba(44, 107, 69, 0.07);
+      border-left: 3px solid var(--maturare-green);
+      padding: 1.25rem 1.5rem;
+      border-radius: 0 6px 6px 0;
+      margin: 1.5rem 0;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--deep-green);
+      color: rgba(255,255,255,0.6);
+      text-align: center;
+      padding: 2.5rem 1.5rem;
+      font-size: 0.85rem;
+    }
+    footer a { color: var(--harvest-gold); }
+    footer .footer-logo {
+      font-family: var(--display);
+      font-weight: 900;
+      font-size: 1.1rem;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+    footer .footer-logo span { color: var(--harvest-gold); }
+
+    /* MOBILE */
+    @media (max-width: 640px) {
+      .article-container { padding: 2rem 1.25rem 4rem; }
+      .article-hero { padding: 2.5rem 1.25rem; }
+      [data-chunk] { padding-left: 1rem; }
+      .cta-block { padding: 2rem 1.25rem; }
+      .geo-summary { padding: 1.5rem 1.25rem 1.5rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav id="mainNav">
+  <a href="https://maturare.com.br/" class="nav-logo">Matu<em>rare</em></a>
+  <ul class="nav-links">
+    <li class="has-mega">
+      <a href="/sobre/">Sobre <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
+      <div class="mega-panel">
+        <div class="mega-aside">
+          <h3>A Maturare</h3>
+          <p>Agência de SEO, GEO e AEO fundada por Daniel Rios para negócios com propósito.</p>
+          <a href="/sobre/" class="mega-cta">Conheça a história →</a>
+        </div>
+        <div class="mega-links">
+          <a href="/sobre/"><strong>Quem somos</strong><span>Propósito e método</span></a>
+          <a href="/sobre/daniel-rios/"><strong>Daniel Rios</strong><span>Fundador e estrategista</span></a>
+          <a href="/manifesto/"><strong>Manifesto</strong><span>O que acreditamos</span></a>
+          <a href="/casos/"><strong>Casos</strong><span>Resultados reais</span></a>
+        </div>
+      </div>
+    </li>
+    <li class="has-mega">
+      <a href="/servicos/">Serviços <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
+      <div class="mega-panel">
+        <div class="mega-aside">
+          <h3>Ser encontrado</h3>
+          <p>Do Google ao ChatGPT, seu negócio precisa aparecer onde o cliente está buscando agora.</p>
+          <a href="/servicos/" class="mega-cta">Ver todos os serviços →</a>
+        </div>
+        <div class="mega-links">
+          <a href="/servicos/seo/"><strong>SEO</strong><span>Orgânico no Google</span></a>
+          <a href="/servicos/geo/"><strong>GEO</strong><span>Visibilidade em IAs generativas</span></a>
+          <a href="/servicos/aeo/"><strong>AEO</strong><span>Respostas nos motores de resposta</span></a>
+          <a href="/servicos/seo-local/"><strong>SEO Local</strong><span>Google Maps e perfil da empresa</span></a>
+          <a href="/servicos/conteudo/"><strong>Conteúdo Estratégico</strong><span>Artigos e páginas de autoridade</span></a>
+          <a href="/servicos/auditoria/"><strong>Auditoria SEO</strong><span>Diagnóstico completo</span></a>
+        </div>
+      </div>
+    </li>
+    <li class="has-mega">
+      <a href="/blog/">Blog <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
+      <div class="mega-panel">
+        <div class="mega-aside">
+          <h3>Conhecimento prático</h3>
+          <p>Guias, análises e táticas para quem quer crescer com consistência, não com atalhos.</p>
+          <a href="/blog/" class="mega-cta">Ver todos os artigos →</a>
+        </div>
+        <div class="mega-links">
+          <a href="/blog/categoria/seo/"><strong>SEO</strong><span>Técnicas e estratégias</span></a>
+          <a href="/blog/categoria/geo/"><strong>GEO</strong><span>IAs e busca generativa</span></a>
+          <a href="/blog/categoria/seo-local/"><strong>SEO Local</strong><span>Google Maps e visibilidade</span></a>
+          <a href="/blog/categoria/conteudo/"><strong>Conteúdo</strong><span>Escrita e autoridade</span></a>
+        </div>
+      </div>
+    </li>
+    <li class="has-mega">
+      <a href="/academy/">Academy <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
+      <div class="mega-panel">
+        <div class="mega-aside">
+          <h3>Academy Maturare</h3>
+          <p>Cursos práticos para donos de negócio que querem aprender a crescer no digital.</p>
+          <a href="/academy/" class="mega-cta">Explorar Academy →</a>
+        </div>
+        <div class="mega-links">
+          <a href="/academy/curso-google-meu-negocio/"><strong>Google Meu Negócio</strong><span>Perfil que vende</span></a>
+        </div>
+      </div>
+    </li>
+  </ul>
+  <div class="nav-r">
+    <a href="https://maturare.com.br/#orcamento" class="nav-cta">Análise Gratuita →</a>
+    <button id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile overlay -->
+<div id="mobOverlay">
+  <div id="mobMenu">
+    <div class="mob-header">
+      <a href="https://maturare.com.br/" class="mob-logo">Matu<em>rare</em></a>
+      <button id="mobClose" aria-label="Fechar menu">✕</button>
+    </div>
+    <ul class="mob-nav">
+      <li>
+        <button class="mob-toggle" data-target="mobSobreSub">Sobre</button>
+        <div class="mob-sub" id="mobSobreSub">
+          <a href="/sobre/">Quem somos</a>
+          <a href="/sobre/daniel-rios/">Daniel Rios</a>
+          <a href="/manifesto/">Manifesto</a>
+          <a href="/casos/">Casos</a>
+        </div>
+      </li>
+      <li>
+        <button class="mob-toggle" data-target="mobServSub">Serviços</button>
+        <div class="mob-sub" id="mobServSub">
+          <a href="/servicos/seo/">SEO</a>
+          <a href="/servicos/geo/">GEO</a>
+          <a href="/servicos/aeo/">AEO</a>
+          <a href="/servicos/seo-local/">SEO Local</a>
+          <a href="/servicos/conteudo/">Conteúdo</a>
+          <a href="/servicos/auditoria/">Auditoria SEO</a>
+        </div>
+      </li>
+      <li>
+        <button class="mob-toggle" data-target="mobBlogSub">Blog</button>
+        <div class="mob-sub" id="mobBlogSub">
+          <a href="/blog/categoria/seo/">SEO</a>
+          <a href="/blog/categoria/geo/">GEO</a>
+          <a href="/blog/categoria/seo-local/">SEO Local</a>
+          <a href="/blog/categoria/conteudo/">Conteúdo</a>
+        </div>
+      </li>
+      <li>
+        <button class="mob-toggle" data-target="mobAcadSub">Academy</button>
+        <div class="mob-sub" id="mobAcadSub">
+          <a href="/academy/curso-google-meu-negocio/">Google Meu Negócio</a>
+        </div>
+      </li>
+    </ul>
+    <div class="mob-footer">
+      <a href="https://maturare.com.br/#orcamento" class="mob-footer-cta">Análise Gratuita →</a>
+    </div>
+  </div>
+</div>
+
+{{ARTICLE_CONTENT}}
+
+<footer>
+  <div class="footer-logo">Matu<span>rare</span></div>
+  <p>Negócio é ministério. Maturidade precede colheita.</p>
+  <p style="margin-top:0.5rem"><a href="https://maturare.com.br/">maturare.com.br</a></p>
+</footer>
+
+<script>
+(function(){
+  /* ── Megamenu desktop ── */
+  var nav = document.getElementById('mainNav');
+  document.querySelectorAll('.has-mega').forEach(function(item){
+    var panel = item.querySelector('.mega-panel');
+    if(!panel) return;
+    var timer;
+    item.addEventListener('mouseenter', function(){
+      clearTimeout(timer);
+      document.querySelectorAll('.mega-panel').forEach(function(p){ p.classList.remove('open'); });
+      panel.classList.add('open');
+      nav && nav.classList.add('mega-open');
+    });
+    item.addEventListener('mouseleave', function(){
+      timer = setTimeout(function(){
+        panel.classList.remove('open');
+        if(!document.querySelector('.mega-panel.open')) nav && nav.classList.remove('mega-open');
+      }, 120);
+    });
+    panel.addEventListener('mouseenter', function(){ clearTimeout(timer); });
+    panel.addEventListener('mouseleave', function(){
+      timer = setTimeout(function(){
+        panel.classList.remove('open');
+        if(!document.querySelector('.mega-panel.open')) nav && nav.classList.remove('mega-open');
+      }, 120);
+    });
+  });
+  document.addEventListener('click', function(e){
+    if(!e.target.closest('.has-mega')){
+      document.querySelectorAll('.mega-panel').forEach(function(p){ p.classList.remove('open'); });
+      nav && nav.classList.remove('mega-open');
+    }
+  });
+
+  /* ── Scroll: nav shadow ── */
+  if(nav){
+    window.addEventListener('scroll', function(){
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    }, {passive:true});
+  }
+
+  /* ── Mobile overlay ── */
+  var hamburger = document.getElementById('hamburger');
+  var mobOverlay = document.getElementById('mobOverlay');
+  var mobClose = document.getElementById('mobClose');
+  if(hamburger && mobOverlay){
+    hamburger.addEventListener('click', function(){
+      mobOverlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+  }
+  function closeMob(){
+    if(mobOverlay) mobOverlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  if(mobClose) mobClose.addEventListener('click', closeMob);
+  if(mobOverlay) mobOverlay.addEventListener('click', function(e){
+    if(e.target === mobOverlay) closeMob();
+  });
+
+  /* ── Mobile accordion ── */
+  document.querySelectorAll('.mob-toggle').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var targetId = btn.getAttribute('data-target');
+      var sub = document.getElementById(targetId);
+      if(!sub) return;
+      var isOpen = sub.style.display === 'block';
+      document.querySelectorAll('.mob-sub').forEach(function(s){ s.style.display = 'none'; });
+      document.querySelectorAll('.mob-toggle').forEach(function(b){ b.classList.remove('active'); });
+      if(!isOpen){
+        sub.style.display = 'block';
+        btn.classList.add('active');
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>
