@@ -1264,17 +1264,18 @@ nav.scrolled {
 .logo-marquee-item img {
   height: 48px;
   width: auto;
-  opacity: .8;
+  opacity: .7;
   transition: opacity .3s;
+  filter: grayscale(30%);
 }
-.logo-marquee-item img:hover { opacity: 1; }
+.logo-marquee-item img:hover { opacity: 1; filter: grayscale(0%); }
 .logo-marquee-text {
   font-family: var(--sans); font-size: 16px; font-weight: 700;
-  letter-spacing: .04em; color: rgba(255,255,255,.65);
+  letter-spacing: .04em; color: var(--dim);
   white-space: nowrap;
   transition: color .3s;
 }
-.logo-marquee-item:hover .logo-marquee-text { color: var(--paper); }
+.logo-marquee-item:hover .logo-marquee-text { color: var(--ink); }
 
 /* === RESULTS === */
 .results {
@@ -2939,7 +2940,7 @@ p, .hero-sub, .sim-desc, .why-desc { text-wrap: pretty; }
     <div class="logo-marquee-item"><img src="https://framerusercontent.com/images/912Bk5uKdxMx0IggmgUKAE201Q.svg" alt="Mundpay" loading="lazy"></div>
     <div class="logo-marquee-item"><span class="logo-marquee-text">Agita Morango</span></div>
     <div class="logo-marquee-item"><span class="logo-marquee-text">Keysfan</span></div>
-    <div class="logo-marquee-item"><span class="logo-marquee-text">Soft Everest</span></div>
+    <div class="logo-marquee-item"><img src="/assets/soft-everest-logo.svg" alt="Soft Everest" loading="lazy"></div>
     <div class="logo-marquee-item"><span class="logo-marquee-text">Amanda Cabral Contadora</span></div>
     <div class="logo-marquee-item"><span class="logo-marquee-text">AM Cabral Blindagem</span></div>
     <div class="logo-marquee-item"><img src="https://movemaquinas.com.br/assets/logo-move-maquinas.png" alt="Move Máquinas" loading="lazy"></div>
@@ -2950,7 +2951,7 @@ p, .hero-sub, .sim-desc, .why-desc { text-wrap: pretty; }
     <div class="logo-marquee-item"><img src="https://framerusercontent.com/images/912Bk5uKdxMx0IggmgUKAE201Q.svg" alt="Mundpay" loading="lazy"></div>
     <div class="logo-marquee-item"><span class="logo-marquee-text">Agita Morango</span></div>
     <div class="logo-marquee-item"><span class="logo-marquee-text">Keysfan</span></div>
-    <div class="logo-marquee-item"><span class="logo-marquee-text">Soft Everest</span></div>
+    <div class="logo-marquee-item"><img src="/assets/soft-everest-logo.svg" alt="Soft Everest" loading="lazy"></div>
     <div class="logo-marquee-item"><span class="logo-marquee-text">Amanda Cabral Contadora</span></div>
   </div>
 </div>
