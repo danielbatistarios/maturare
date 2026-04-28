@@ -1499,126 +1499,83 @@ nav.scrolled {
 
 /* === SERVICES === */
 .svc-list {
-  background: linear-gradient(180deg, var(--z0) 0%, #0a120d 50%, var(--z0) 100%);
+  background: var(--paper);
   padding: var(--sec-pad) clamp(24px, 4vw, 64px);
   position: relative;
   overflow: hidden;
-}
-.svc-list::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 800px;
-  height: 500px;
-  border-radius: 50%;
-  background: radial-gradient(ellipse, rgba(26, 122, 74, .08) 0%, transparent 70%);
-  pointer-events: none;
 }
 .svc-list-in { max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
 .svc-list-head { text-align: center; }
 .svc-4 {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
+  gap: 1px;
   margin-top: 56px;
+  border: 1px solid #e2dfd6;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: #e2dfd6;
 }
 .s4 {
-  background: rgba(255, 255, 255, .025);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, .06);
-  border-radius: var(--radius);
-  padding: clamp(28px, 3vw, 40px);
+  background: #fff;
+  padding: clamp(28px, 3vw, 36px);
   position: relative;
   overflow: hidden;
-  transition: all .5s var(--spring);
-  contain: layout style;
+  transition: background .3s ease;
+  display: flex;
+  flex-direction: column;
 }
-.s4::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--green), var(--green2));
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform .5s var(--spring);
-}
-.s4:hover::before { transform: scaleX(1); }
-.s4:hover {
-  background: rgba(255, 255, 255, .05);
-  border-color: rgba(111, 207, 151, .15);
-  transform: translateY(-6px);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, .08),
-    0 20px 60px rgba(0, 0, 0, .3),
-    0 0 40px rgba(26, 122, 74, .08);
-}
+.s4:hover { background: #fafaf8; }
 .s4-ic {
-  width: 48px;
-  height: 48px;
-  border-radius: 12px;
-  background: rgba(26, 122, 74, .1);
-  border: 1px solid rgba(26, 122, 74, .15);
+  width: 120px;
+  height: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 20px;
-  transition: all .4s var(--spring);
+  margin-bottom: 28px;
 }
-.s4:hover .s4-ic {
-  background: rgba(26, 122, 74, .2);
-  border-color: rgba(111, 207, 151, .3);
-  transform: scale(1.05);
-}
-.s4-num {
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 36px;
-  color: rgba(255, 255, 255, .15);
-  line-height: 1;
-  margin-bottom: 16px;
-  transition: color .4s;
-}
-.s4:hover .s4-num { color: rgba(111, 207, 151, .4); }
+.s4-ic svg { width: 100%; height: 100%; }
+.s4-num { display: none; }
 .s4 h3 {
-  font-family: var(--serif);
-  font-size: 20px;
-  color: var(--paper);
+  font-family: var(--sans);
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--ink);
   margin-bottom: 10px;
   line-height: 1.3;
 }
-.s4 p { font-size: 15px; color: rgba(255, 255, 255, .6); line-height: 1.7; }
+.s4 p { font-size: 14px; color: #6b6b6b; line-height: 1.65; margin: 0; }
 .s4-includes {
   list-style: none;
   padding: 0;
-  margin: 12px 0 0;
+  margin: 14px 0 0;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 5px;
 }
 .s4-includes li { display: flex; align-items: flex-start; gap: 6px; }
-.s4-includes li::before { content: "–"; color: var(--green2); flex-shrink: 0; margin-top: 1px; }
+.s4-includes li::before { content: "–"; color: #1a7a4a; flex-shrink: 0; margin-top: 1px; font-size: 12px; }
 .s4-includes h4 {
   font-size: 12px;
   font-weight: 400;
-  color: rgba(255, 255, 255, .45);
+  color: #8a8a8a;
   line-height: 1.5;
   margin: 0;
 }
 .s4-tag {
   display: inline-block;
-  font-size: 13px;
+  font-size: 11px;
   font-weight: 700;
-  letter-spacing: .1em;
+  letter-spacing: .08em;
   text-transform: uppercase;
-  color: var(--green2);
-  background: rgba(26, 122, 74, .1);
-  padding: 2px 8px;
+  color: #1a7a4a;
+  background: #e8f5ee;
+  padding: 3px 8px;
   border-radius: 4px;
-  margin-top: 12px;
+  margin-top: auto;
+  padding-top: 16px;
+  background: transparent;
+  color: #8a8a8a;
 }
 
 /* === COMPARISON === */
@@ -3090,17 +3047,34 @@ p, .hero-sub, .sim-desc, .why-desc { text-wrap: pretty; }
   </div>
 </div>
 
-<!-- 13. SERVIÇOS [DARK] -->
+<!-- 13. SERVIÇOS [LIGHT] -->
 <section class="svc-list" id="servicos" data-funnel="consideration">
   <div class="svc-list-in">
     <div class="reveal svc-list-head">
-      <div class="sec-label lt">Nossos serviços</div>
-      <h2 class="sec-h lt">Tudo que sua empresa precisa<br><em>para aparecer no Google e ser recomendada pela IA</em></h2>
+      <div class="sec-label dk">Nossos serviços</div>
+      <h2 class="sec-h dk">Tudo que sua empresa precisa<br><em>para aparecer no Google e ser recomendada pela IA</em></h2>
     </div>
     <div class="svc-4 reveal">
       <div class="s4 reveal d1">
-        <div class="s4-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green2)" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg></div>
-        <div class="s4-num">01</div>
+        <div class="s4-ic">
+          <!-- Isometric: browser/site window -->
+          <svg viewBox="0 0 120 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="18" y="12" width="84" height="60" rx="6" stroke="#c8c8c8" stroke-width="1.5" fill="#fafafa"/>
+            <rect x="18" y="12" width="84" height="16" rx="6" stroke="#c8c8c8" stroke-width="1.5" fill="#f0f0f0"/>
+            <rect x="18" y="22" width="84" height="6" fill="#f0f0f0"/>
+            <circle cx="29" cy="20" r="3" fill="#e0e0e0"/>
+            <circle cx="38" cy="20" r="3" fill="#e0e0e0"/>
+            <circle cx="47" cy="20" r="3" fill="#e0e0e0"/>
+            <rect x="28" y="36" width="24" height="3" rx="1.5" fill="#d8d8d8"/>
+            <rect x="28" y="43" width="40" height="2" rx="1" fill="#e8e8e8"/>
+            <rect x="28" y="49" width="34" height="2" rx="1" fill="#e8e8e8"/>
+            <rect x="28" y="55" width="44" height="2" rx="1" fill="#e8e8e8"/>
+            <rect x="76" y="36" width="16" height="10" rx="3" fill="#1a7a4a" opacity=".15"/>
+            <path d="M38 84 L60 92 L82 84 L60 76 Z" fill="#f0f0f0" stroke="#d0d0d0" stroke-width="1"/>
+            <path d="M38 84 L38 90 L60 98 L60 92 Z" fill="#e0e0e0" stroke="#d0d0d0" stroke-width="1"/>
+            <path d="M82 84 L82 90 L60 98 L60 92 Z" fill="#d4d4d4" stroke="#c4c4c4" stroke-width="1"/>
+          </svg>
+        </div>
         <h3>Criação de Sites Otimizados para SEO, GEO e AEO</h3>
         <p>Seu site pensado para ser encontrado no Google. A Maturare cria a arquitetura que ranqueia, não só design bonito.</p>
         <ul class="s4-includes">
@@ -3111,8 +3085,24 @@ p, .hero-sub, .sim-desc, .why-desc { text-wrap: pretty; }
         <span class="s4-tag">Setup</span>
       </div>
       <div class="s4 reveal d2">
-        <div class="s4-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green2)" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></div>
-        <div class="s4-num">02</div>
+        <div class="s4-ic">
+          <!-- Isometric: search/magnifier + grid -->
+          <svg viewBox="0 0 120 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="42" r="22" stroke="#c8c8c8" stroke-width="1.5" fill="#fafafa"/>
+            <circle cx="50" cy="42" r="14" stroke="#e0e0e0" stroke-width="1.5" fill="none"/>
+            <line x1="67" y1="58" x2="82" y2="73" stroke="#c8c8c8" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="44" y1="36" x2="56" y2="36" stroke="#d8d8d8" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="44" y1="41" x2="60" y2="41" stroke="#d8d8d8" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="44" y1="46" x2="53" y2="46" stroke="#d8d8d8" stroke-width="1.5" stroke-linecap="round"/>
+            <rect x="72" y="20" width="30" height="5" rx="2.5" fill="#e8e8e8"/>
+            <rect x="72" y="29" width="22" height="4" rx="2" fill="#f0f0f0"/>
+            <rect x="72" y="37" width="26" height="4" rx="2" fill="#f0f0f0"/>
+            <rect x="72" y="45" width="18" height="4" rx="2" fill="#1a7a4a" opacity=".2"/>
+            <path d="M32 80 L60 92 L88 80 L60 68 Z" fill="#f0f0f0" stroke="#d0d0d0" stroke-width="1"/>
+            <path d="M32 80 L32 86 L60 98 L60 92 Z" fill="#e0e0e0" stroke="#d0d0d0" stroke-width="1"/>
+            <path d="M88 80 L88 86 L60 98 L60 92 Z" fill="#d4d4d4" stroke="#c4c4c4" stroke-width="1"/>
+          </svg>
+        </div>
         <h3>Consultoria de SEO</h3>
         <p>Analisamos seu negócio, site e concorrentes. Você entende o que precisa mudar.</p>
         <ul class="s4-includes">
@@ -3123,10 +3113,24 @@ p, .hero-sub, .sim-desc, .why-desc { text-wrap: pretty; }
         <span class="s4-tag">Pontual</span>
       </div>
       <div class="s4 reveal d3">
-        <div class="s4-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green2)" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-        <div class="s4-num">03</div>
+        <div class="s4-ic">
+          <!-- Isometric: tag/label with connections -->
+          <svg viewBox="0 0 120 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M24 30 L24 56 L52 70 L80 56 L80 30 L52 16 Z" fill="#fafafa" stroke="#c8c8c8" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M24 30 L52 44 L80 30" stroke="#d8d8d8" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M52 44 L52 70" stroke="#d8d8d8" stroke-width="1.5"/>
+            <line x1="34" y1="37" x2="70" y2="37" stroke="#e0e0e0" stroke-width="1.2"/>
+            <line x1="34" y1="43" x2="62" y2="43" stroke="#e8e8e8" stroke-width="1.2"/>
+            <circle cx="88" cy="22" r="7" fill="#fafafa" stroke="#c8c8c8" stroke-width="1.5"/>
+            <line x1="80" y1="30" x2="82" y2="27" stroke="#d0d0d0" stroke-width="1.2"/>
+            <circle cx="98" cy="45" r="5" fill="#fafafa" stroke="#c8c8c8" stroke-width="1.5"/>
+            <line x1="80" y1="43" x2="93" y2="44" stroke="#d0d0d0" stroke-width="1.2"/>
+            <circle cx="88" cy="62" r="5" fill="#1a7a4a" opacity=".18" stroke="#1a7a4a" stroke-width="1.2" stroke-opacity=".3"/>
+            <line x1="80" y1="56" x2="83" y2="59" stroke="#d0d0d0" stroke-width="1.2"/>
+          </svg>
+        </div>
         <h3>Schema Markup e Entidades Digitais</h3>
-        <p>Sua ficha completa para aparecer no Maps quando pesquisarem na sua região.</p>
+        <p>Dados estruturados que fazem o Google e as IAs entenderem exatamente o que sua empresa faz.</p>
         <ul class="s4-includes">
           <li><h4>JSON-LD para Organização, Serviço e FAQ no Google</h4></li>
           <li><h4>Cadastro no Google Knowledge Graph e Wikidata</h4></li>
@@ -3135,10 +3139,29 @@ p, .hero-sub, .sim-desc, .why-desc { text-wrap: pretty; }
         <span class="s4-tag">Pontual</span>
       </div>
       <div class="s4 reveal d4">
-        <div class="s4-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green2)" stroke-width="1.5"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg></div>
-        <div class="s4-num">04</div>
-        <h3>Arquitetura Digital Mensal — GEO e AEO</h3>
-        <p>Todo mês a Maturare cria páginas e conteúdo que posicionam no Google e nas IAs. Veja <a href="projetos.html" style="color:var(--green2);text-decoration:underline;text-underline-offset:2px;">nossos resultados</a>.</p>
+        <div class="s4-ic">
+          <!-- Isometric: stacked blocks / growth -->
+          <svg viewBox="0 0 120 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- bottom block -->
+            <path d="M20 72 L60 88 L100 72 L60 56 Z" fill="#f0f0f0" stroke="#d0d0d0" stroke-width="1.2"/>
+            <path d="M20 72 L20 80 L60 96 L60 88 Z" fill="#e4e4e4" stroke="#d0d0d0" stroke-width="1.2"/>
+            <path d="M100 72 L100 80 L60 96 L60 88 Z" fill="#d8d8d8" stroke="#c8c8c8" stroke-width="1.2"/>
+            <!-- mid block -->
+            <path d="M30 57 L60 70 L90 57 L60 44 Z" fill="#f5f5f5" stroke="#d0d0d0" stroke-width="1.2"/>
+            <path d="M30 57 L30 65 L60 78 L60 70 Z" fill="#eaeaea" stroke="#d0d0d0" stroke-width="1.2"/>
+            <path d="M90 57 L90 65 L60 78 L60 70 Z" fill="#dcdcdc" stroke="#c8c8c8" stroke-width="1.2"/>
+            <!-- top block -->
+            <path d="M38 42 L60 52 L82 42 L60 32 Z" fill="#fff" stroke="#c8c8c8" stroke-width="1.2"/>
+            <path d="M38 42 L38 50 L60 60 L60 52 Z" fill="#f0f0f0" stroke="#d0d0d0" stroke-width="1.2"/>
+            <path d="M82 42 L82 50 L60 60 L60 52 Z" fill="#e4e4e4" stroke="#c8c8c8" stroke-width="1.2"/>
+            <!-- mini block top -->
+            <path d="M46 27 L60 34 L74 27 L60 20 Z" fill="#fff" stroke="#1a7a4a" stroke-width="1.2" stroke-opacity=".4"/>
+            <path d="M46 27 L46 33 L60 40 L60 34 Z" fill="#e8f5ee" stroke="#1a7a4a" stroke-width="1" stroke-opacity=".3"/>
+            <path d="M74 27 L74 33 L60 40 L60 34 Z" fill="#d8eee2" stroke="#1a7a4a" stroke-width="1" stroke-opacity=".3"/>
+          </svg>
+        </div>
+        <h3>Arquitetura Digital Mensal, GEO e AEO</h3>
+        <p>Todo mês a Maturare cria páginas e conteúdo que posicionam no Google e nas IAs. Veja <a href="projetos.html" style="color:#1a7a4a;text-decoration:underline;text-underline-offset:2px;">nossos resultados</a>.</p>
         <ul class="s4-includes">
           <li><h4>Monitoramento contínuo no Google Search Console e GA4</h4></li>
           <li><h4>Atualização de entidades para ChatGPT, Gemini e Perplexity</h4></li>
