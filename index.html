@@ -374,10 +374,22 @@ nav.scrolled {
   white-space: nowrap;
   text-decoration: none;
 }
-.nav-btn:hover, .nav-item.open .nav-btn { color: var(--paper); }
+.nav-btn:hover { color: rgba(255,255,255,.85); }
+.nav-item.open .nav-btn { color: var(--paper); }
+.nav-btn { position: relative; }
+.nav-btn::after {
+  content: '';
+  position: absolute; bottom: 2px; left: 14px; right: 14px; height: 2px;
+  background: var(--green2, #6fcf97);
+  border-radius: 2px;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform .2s ease;
+}
+.nav-item.open .nav-btn::after { transform: scaleX(1); }
 .nav-caret {
   width: 10px; height: 10px; flex-shrink: 0;
-  transition: transform .2s;
+  transition: transform .2s, opacity .2s;
   opacity: .45;
 }
 .nav-item.open .nav-caret { transform: rotate(180deg); opacity: .8; }
