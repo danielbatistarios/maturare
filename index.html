@@ -865,6 +865,48 @@ nav.scrolled {
 .hero-proof-txt { font-size: 13px; font-weight: 400; color: rgba(255, 255, 255, .5); }
 .hero-proof-txt strong { color: rgba(255, 255, 255, .58); font-weight: 600; }
 
+/* Hero CTAs */
+.hero-ctas {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+  opacity: 0;
+  animation: up .9s .5s var(--spring) forwards;
+}
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  padding: 14px 28px;
+  background: var(--green);
+  color: #fff;
+  font-family: var(--sans);
+  font-size: 15px;
+  font-weight: 700;
+  border-radius: 8px;
+  text-decoration: none;
+  letter-spacing: .01em;
+  transition: background .2s, transform .15s;
+}
+.btn-primary:hover { background: #145c38; transform: translateY(-1px); }
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  padding: 14px 28px;
+  background: transparent;
+  color: rgba(255,255,255,.85);
+  font-family: var(--sans);
+  font-size: 15px;
+  font-weight: 600;
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 8px;
+  text-decoration: none;
+  letter-spacing: .01em;
+  transition: border-color .2s, color .2s, transform .15s;
+}
+.btn-secondary:hover { border-color: rgba(255,255,255,.5); color: #fff; transform: translateY(-1px); }
+
 /* Scroll indicator */
 .hero-scroll {
   position: absolute;
@@ -2826,6 +2868,10 @@ p, .hero-sub, .sim-desc, .why-desc { text-wrap: pretty; }
           </div>
         </div>
         <p class="hero-sub">Nosso objetivo é fazer o seu negócio ser a resposta certa para quem já te procura. <strong>Desde 2020, mais de 300 clientes atendidos em indústria, saúde, finanças e tecnologia.</strong></p>
+        <div class="hero-ctas">
+          <a href="#orcamento" class="btn-primary">Diagnóstico Gratuito</a>
+          <a href="#servicos" class="btn-secondary">Conhecer Serviços</a>
+        </div>
         <div class="hero-proof">
           <div class="hero-proof-avatars">
             <span class="av">PM</span>
