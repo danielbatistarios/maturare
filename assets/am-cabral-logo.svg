@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 48" width="200" height="48">
+  <text
+    x="100"
+    y="30"
+    text-anchor="middle"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="17"
+    font-weight="400"
+    fill="#1a1a1a"
+    letter-spacing="4"
+  >AM CABRAL</text>
+  <text
+    x="100"
+    y="44"
+    text-anchor="middle"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="8"
+    font-weight="400"
+    fill="#888"
+    letter-spacing="5"
+  >BLINDAGEM</text>
+  <line x1="20" y1="36" x2="180" y2="36" stroke="#c4a035" stroke-width="0.6" opacity="0.6"/>
+</svg>
