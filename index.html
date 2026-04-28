@@ -699,10 +699,12 @@ nav.scrolled {
   pointer-events: none;
 }
 .hero-grid {
-  display: grid;
-  grid-template-columns: 1.1fr .9fr;
-  gap: 64px;
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  text-align: center;
+  max-width: 780px;
+  margin: 0 auto;
 }
 .hero-kicker {
   display: inline-flex;
@@ -717,7 +719,7 @@ nav.scrolled {
   font-weight: 600;
   letter-spacing: .12em;
   text-transform: uppercase;
-  margin-bottom: 32px;
+  margin-bottom: 24px;
   opacity: 0;
   animation: up .6s .1s var(--spring) forwards;
 }
@@ -731,7 +733,7 @@ nav.scrolled {
 }
 .hero-h1 {
   font-family: var(--serif);
-  font-size: clamp(36px, 4.5vw, 56px);
+  font-size: clamp(38px, 5.5vw, 68px);
   line-height: .96;
   letter-spacing: -.028em;
   opacity: 0;
@@ -797,8 +799,8 @@ nav.scrolled {
   font-weight: 300;
   line-height: 1.8;
   color: rgba(255, 255, 255, .6);
-  max-width: 480px;
-  margin: 32px 0 40px;
+  max-width: 580px;
+  margin: 24px 0 36px;
   opacity: 0;
   animation: up .9s .4s var(--spring) forwards;
 }
@@ -806,6 +808,7 @@ nav.scrolled {
 .hero-plat-badge {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
   margin: 12px 0 0;
   opacity: 0;
@@ -837,6 +840,7 @@ nav.scrolled {
 .hero-proof {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 12px;
   margin-top: 20px;
   opacity: 0;
@@ -2829,20 +2833,7 @@ p, .hero-sub, .sim-desc, .why-desc { text-wrap: pretty; }
             <span class="av">AW</span>
             <span class="av">+4</span>
           </div>
-          <p class="hero-proof-txt"><strong>47 empresas locais</strong> já aparecem no ChatGPT</p>
-        </div>
-      </div>
-      <div class="hero-mock">
-        <div class="hm-bar"><div class="hm-dot"></div><div class="hm-dot"></div><div class="hm-dot"></div><span class="hm-bar-url">perplexity.ai</span></div>
-        <div class="hm-q">melhor contadora em Niterói</div>
-        <div class="hm-body">
-          <div class="hm-ans-label">Resposta gerada por IA</div>
-          <div class="hm-txt" id="heroTyping"></div>
-        </div>
-        <div class="hm-srcs">
-          <div class="hm-src cited"><div class="hm-live on"></div><strong>amandacontabilidade.com</strong></div>
-          <div class="hm-src"><div class="hm-live"></div>google.com/maps</div>
-          <div class="hm-src cited"><div class="hm-live on"></div><strong>amandacontabilidade.com/blog</strong></div>
+          <p class="hero-proof-txt"><strong>47 empresas</strong> já aparecem no ChatGPT</p>
         </div>
       </div>
     </div>
