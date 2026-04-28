@@ -403,49 +403,47 @@ nav.scrolled {
 }
 .mm-inner {
   max-width: 1100px; margin: 0 auto;
-  display: grid; grid-template-columns: 260px 1fr;
+  display: grid; grid-template-columns: 300px 1fr;
   gap: 0;
   min-height: 260px;
 }
 
-/* Coluna esquerda — imagem + copy */
+/* Coluna esquerda — foto editorial */
 .mm-aside {
-  padding: 36px 32px;
-  border-right: 1px solid rgba(255,255,255,.05);
+  padding: 32px 28px;
   display: flex; flex-direction: column; justify-content: space-between;
   position: relative; overflow: hidden;
+  min-height: 260px;
 }
 .mm-aside-bg {
   position: absolute; inset: 0;
   background-size: cover; background-position: center;
-  opacity: .18;
-  transition: opacity .3s;
 }
-.mm-panel.open .mm-aside-bg { opacity: .22; }
+.mm-aside-bg::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(7,7,9,.92) 0%, rgba(7,7,9,.55) 50%, rgba(7,7,9,.35) 100%);
+}
 .mm-aside > *:not(.mm-aside-bg) { position: relative; z-index: 1; }
 .mm-aside-tag {
   font-family: var(--sans); font-size: 10px; font-weight: 700;
   letter-spacing: .14em; text-transform: uppercase;
-  color: var(--green2, #6fcf97); margin-bottom: 10px;
+  color: var(--green2, #6fcf97);
 }
 .mm-aside-title {
-  font-family: var(--serif); font-size: 22px; font-style: italic;
-  color: var(--paper); line-height: 1.3; margin: 0 0 8px;
-}
-.mm-aside-sub {
-  font-size: 12px; color: rgba(255,255,255,.4); line-height: 1.6; margin: 0 0 24px;
+  font-family: var(--serif); font-size: 21px; font-style: italic;
+  color: var(--paper); line-height: 1.35; margin: 0;
 }
 .mm-aside-cta {
-  display: inline-flex; align-items: center; gap: 6px;
-  font-family: var(--sans); font-size: 11px; font-weight: 700;
-  letter-spacing: .08em; text-transform: uppercase;
-  color: var(--ink, #0e0f0d);
-  background: var(--paper, #f4f3ef);
-  padding: 9px 18px; border-radius: 4px;
-  text-decoration: none; width: fit-content;
-  transition: opacity .2s;
+  display: inline-flex; align-items: center; gap: 5px;
+  font-family: var(--sans); font-size: 11px; font-weight: 600;
+  letter-spacing: .06em;
+  color: rgba(255,255,255,.7);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,.25);
+  padding-bottom: 1px; width: fit-content;
+  transition: color .2s, border-color .2s;
 }
-.mm-aside-cta:hover { opacity: .85; }
+.mm-aside-cta:hover { color: var(--paper); border-color: rgba(255,255,255,.6); }
 
 /* Coluna direita — links */
 .mm-links {
@@ -2570,12 +2568,10 @@ p, .hero-sub, .sim-desc, .why-desc { text-wrap: pretty; }
       <div>
         <p class="mm-aside-tag">A Maturare</p>
         <h2 class="mm-aside-title">Não é sobre crescer rápido. É sobre crescer certo.</h2>
-        <p class="mm-aside-sub">Ajudamos empreendedores a construir presença digital com fundação, não com atalho.</p>
       </div>
       <a href="/sobre" class="mm-aside-cta">Conheça nossa história →</a>
     </div>
     <div class="mm-links mm-links--single">
-      <p class="mm-col-label">Conheça a Maturare</p>
       <a href="/sobre" class="mm-link">
         <strong>Sobre a Maturare</strong>
         <span>Quem somos, o que acreditamos e por que fazemos o que fazemos</span>
@@ -2604,7 +2600,6 @@ p, .hero-sub, .sim-desc, .why-desc { text-wrap: pretty; }
       <div>
         <p class="mm-aside-tag">Nossos Serviços</p>
         <h2 class="mm-aside-title">Pare de pagar por clique e comece a aparecer de graça.</h2>
-        <p class="mm-aside-sub">Cada serviço tem um propósito claro: fazer sua empresa aparecer para quem está procurando agora.</p>
       </div>
       <a href="#orcamento" class="mm-aside-cta">Diagnóstico gratuito →</a>
     </div>
@@ -2638,7 +2633,6 @@ p, .hero-sub, .sim-desc, .why-desc { text-wrap: pretty; }
       <div>
         <p class="mm-aside-tag">Blog Maturare</p>
         <h2 class="mm-aside-title">Visibilidade não é sorte. É método.</h2>
-        <p class="mm-aside-sub">Conteúdo para quem quer entender como aparecer, não só ouvir promessa.</p>
       </div>
       <a href="/blog" class="mm-aside-cta">Ver todos os artigos →</a>
     </div>
@@ -2681,7 +2675,6 @@ p, .hero-sub, .sim-desc, .why-desc { text-wrap: pretty; }
       <div>
         <p class="mm-aside-tag">Maturare Academy</p>
         <h2 class="mm-aside-title">Aprenda a fazer sua empresa aparecer.</h2>
-        <p class="mm-aside-sub">Formação prática para quem quer entender o processo, não só delegar.</p>
       </div>
       <a href="/academy" class="mm-aside-cta">Ver todos os cursos →</a>
     </div>
