@@ -373,6 +373,70 @@ nav.scrolled {
 .cmc-where { font-size: 13px; font-weight: 600; color: var(--green2); }
 .cmc-equiv { font-size: 12px; font-weight: 600; color: var(--orange); }
 
+/* === SERVIÇOS === */
+.svc-section {
+  background: linear-gradient(180deg, var(--z0) 0%, #0a120d 50%, var(--z0) 100%);
+  padding: 100px clamp(24px,4vw,64px);
+  position: relative; overflow: hidden;
+}
+.svc-section::before {
+  content: ''; position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  width: 800px; height: 500px; border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(26,122,74,.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.svc-section-in { max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
+.svc-section-head { text-align: center; margin-bottom: 56px; }
+.svc-4 {
+  display: grid; grid-template-columns: repeat(4,1fr); gap: 16px;
+}
+.s4 {
+  background: rgba(255,255,255,.025);
+  border: 1px solid rgba(255,255,255,.06);
+  border-radius: var(--radius,16px);
+  padding: clamp(28px,3vw,40px);
+  position: relative; overflow: hidden;
+  transition: all .5s var(--spring);
+}
+.s4::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--green), var(--green2));
+  transform: scaleX(0); transform-origin: left;
+  transition: transform .5s var(--spring);
+}
+.s4:hover::before { transform: scaleX(1); }
+.s4:hover {
+  background: rgba(255,255,255,.05);
+  border-color: rgba(111,207,151,.15);
+  transform: translateY(-6px);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.08), 0 20px 60px rgba(0,0,0,.3), 0 0 40px rgba(26,122,74,.08);
+}
+.s4-ic {
+  width: 48px; height: 48px; border-radius: 12px;
+  background: rgba(26,122,74,.1); border: 1px solid rgba(26,122,74,.15);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 20px; transition: all .4s var(--spring);
+}
+.s4:hover .s4-ic { background: rgba(26,122,74,.2); border-color: rgba(111,207,151,.3); transform: scale(1.05); }
+.s4-num {
+  font-family: var(--serif); font-style: italic; font-size: 36px;
+  color: rgba(255,255,255,.15); line-height: 1; margin-bottom: 16px; transition: color .4s;
+}
+.s4:hover .s4-num { color: rgba(111,207,151,.4); }
+.s4 h3 { font-family: var(--serif); font-size: 20px; color: var(--paper); margin-bottom: 10px; line-height: 1.3; }
+.s4 p { font-size: 15px; color: rgba(255,255,255,.6); line-height: 1.7; }
+.s4-includes { list-style: none; padding: 0; margin: 12px 0 0; display: flex; flex-direction: column; gap: 6px; }
+.s4-includes li { display: flex; align-items: flex-start; gap: 6px; }
+.s4-includes li::before { content: "–"; color: var(--green2); flex-shrink: 0; margin-top: 1px; }
+.s4-includes h4 { font-size: 12px; font-weight: 400; color: rgba(255,255,255,.45); line-height: 1.5; margin: 0; }
+.s4-tag {
+  display: inline-block; font-size: 13px; font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: var(--green2); background: rgba(26,122,74,.1);
+  padding: 2px 8px; border-radius: 4px; margin-top: 12px;
+}
+
 /* === FILTER TABS === */
 .filter-bar {
   background: var(--z2);
@@ -533,6 +597,11 @@ footer a:hover { opacity: .7; }
 /* === MOBILE === */
 @media (max-width: 768px) {
   .cases-grid { grid-template-columns: 1fr 1fr; }
+  .svc-4 { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 480px) {
+  .svc-4 { grid-template-columns: 1fr; }
+  .s4-num { display: none; }
 }
 @media (max-width: 640px) {
   .hero { padding: 96px 0 56px; }
@@ -666,8 +735,8 @@ footer a:hover { opacity: .7; }
         <span>Cidades Atendidas</span>
       </nav>
       <div class="hero-label">Atendimento 100% digital</div>
-      <h1>SEO, GEO e AEO para empresas<br><em>em todo o Brasil</em></h1>
-      <p class="hero-desc">Sede em Niterói, RJ. Clientes do Norte ao Sul. O trabalho é remoto, os resultados são locais: aparecer no Google e nas IAs onde o seu cliente está buscando.</p>
+      <h1>Cidades Atendidas<br><em>pela Maturare</em></h1>
+      <p class="hero-desc">Sede em Niterói, RJ. Clientes do Norte ao Sul. O trabalho é remoto, os resultados são locais: sua empresa aparecendo no Google e sendo recomendada pelas IAs onde o seu cliente busca.</p>
       <div class="hero-stats">
         <div class="hero-stat">
           <span class="num"><em>5</em></span>
@@ -719,6 +788,69 @@ footer a:hover { opacity: .7; }
     </div>
   </div>
 </div>
+
+<!-- SERVIÇOS -->
+<section class="svc-section">
+  <div class="svc-section-in">
+    <div class="svc-section-head reveal">
+      <p class="sec-label lt">Nossos serviços</p>
+      <h2 class="sec-h lt">Tudo que sua empresa precisa<br><em>para aparecer no Google e ser recomendada pela IA</em></h2>
+    </div>
+    <div class="svc-4">
+      <div class="s4 reveal d1">
+        <div class="s4-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green2)" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg></div>
+        <div class="s4-num">01</div>
+        <h3>Criação de Sites Otimizados para SEO, GEO e AEO</h3>
+        <p>Seu site pensado para ser encontrado no Google. A Maturare cria a arquitetura que ranqueia, não só design bonito.</p>
+        <ul class="s4-includes">
+          <li><h4>Arquitetura semântica com HTML5 e dados estruturados JSON-LD</h4></li>
+          <li><h4>Core Web Vitals, PageSpeed Insights e indexação mobile-first</h4></li>
+          <li><h4>Hierarquia de URLs, breadcrumb e sitemap para Google Search Console</h4></li>
+        </ul>
+        <span class="s4-tag">Setup</span>
+      </div>
+      <div class="s4 reveal d2">
+        <div class="s4-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green2)" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></div>
+        <div class="s4-num">02</div>
+        <h3>Consultoria de SEO</h3>
+        <p>Analisamos seu negócio, site e concorrentes. Você entende o que precisa mudar.</p>
+        <ul class="s4-includes">
+          <li><h4>Auditoria técnica com Google Search Console e Screaming Frog</h4></li>
+          <li><h4>Pesquisa de palavras-chave e arquitetura de clusters de conteúdo</h4></li>
+          <li><h4>Link building e autoridade de domínio no Google Search</h4></li>
+        </ul>
+        <span class="s4-tag">Pontual</span>
+      </div>
+      <div class="s4 reveal d3">
+        <div class="s4-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green2)" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <div class="s4-num">03</div>
+        <h3>Schema Markup e Entidades Digitais</h3>
+        <p>Sua ficha completa para aparecer no Maps quando pesquisarem na sua região.</p>
+        <ul class="s4-includes">
+          <li><h4>JSON-LD para Organização, Serviço e FAQ no Google</h4></li>
+          <li><h4>Cadastro no Google Knowledge Graph e Wikidata</h4></li>
+          <li><h4>Rich results e elegibilidade para AI Overviews e Featured Snippets</h4></li>
+        </ul>
+        <span class="s4-tag">Pontual</span>
+      </div>
+      <div class="s4 reveal d4">
+        <div class="s4-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green2)" stroke-width="1.5"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg></div>
+        <div class="s4-num">04</div>
+        <h3>Arquitetura Digital Mensal, GEO e AEO</h3>
+        <p>Todo mês a Maturare cria páginas e conteúdo que posicionam no Google e nas IAs.</p>
+        <ul class="s4-includes">
+          <li><h4>Monitoramento contínuo no Google Search Console e GA4</h4></li>
+          <li><h4>Atualização de entidades para ChatGPT, Gemini e Perplexity</h4></li>
+          <li><h4>Relatório mensal de posicionamento orgânico e menções em LLMs</h4></li>
+        </ul>
+        <span class="s4-tag">Mais popular</span>
+      </div>
+    </div>
+    <div class="reveal" style="text-align:center;margin-top:48px;">
+      <a href="/#orcamento" class="btn-p">Fale Com Especialista &#8594;</a>
+    </div>
+  </div>
+</section>
 
 <!-- FILTER TABS -->
 <div class="filter-bar" id="filterBar">
