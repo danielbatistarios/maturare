@@ -1303,8 +1303,7 @@ nav.scrolled {
 
 /* === CLIENT STRIP === */
 .client-strip {
-  overflow: hidden;
-  padding: 64px 0 48px;
+  padding: 64px clamp(24px,4vw,80px) 56px;
   border-top: 1px solid var(--faint);
   border-bottom: 1px solid var(--faint);
   background: #ffffff;
@@ -1313,30 +1312,114 @@ nav.scrolled {
   text-align: center;
   font-size: 15px;
   color: var(--dim);
-  margin-bottom: 36px;
+  margin-bottom: 48px;
   padding: 0 24px;
 }
-.clients-track-wrapper {
-  overflow: hidden;
-  width: 100%;
-  mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent);
-  -webkit-mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent);
+.clients-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  max-width: 1100px;
+  margin: 0 auto;
+  border: 1px solid #eaecf0;
+  border-radius: 12px;
+  overflow: visible;
 }
-.clients-track {
+.cl-item {
+  position: relative;
   display: flex;
-  width: max-content;
-  animation: mqs 55s linear infinite;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 20px;
+  border-right: 1px solid #eaecf0;
+  border-bottom: 1px solid #eaecf0;
+  cursor: pointer;
+  transition: background .18s;
 }
-.clients-track img {
-  height: 48px;
+.cl-item:nth-child(5n) { border-right: none; }
+.cl-item:nth-last-child(-n+5) { border-bottom: none; }
+/* tooltip: empurrar para direita nos itens da borda esquerda */
+.cl-item:nth-child(5n+1) .cl-tip { left: 0; transform: none; }
+.cl-item:nth-child(5n+1) .cl-tip::after { left: 20%; }
+/* tooltip: empurrar para esquerda nos itens da borda direita */
+.cl-item:nth-child(5n) .cl-tip { left: auto; right: 0; transform: none; }
+.cl-item:nth-child(5n) .cl-tip::after { left: 80%; }
+.cl-item:hover { background: #f8faf9; }
+.cl-item img {
+  height: 40px;
   width: auto;
-  opacity: .65;
-  transition: opacity .3s;
-  filter: grayscale(25%);
-  flex-shrink: 0;
-  margin: 0 40px;
+  max-width: 120px;
+  opacity: .55;
+  filter: grayscale(100%);
+  transition: opacity .2s, filter .2s;
+  object-fit: contain;
 }
-.clients-track img:hover { opacity: 1; filter: grayscale(0%); }
+.cl-item:hover img { opacity: 1; filter: grayscale(0%); }
+/* tooltip card */
+.cl-tip {
+  display: none;
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 240px;
+  background: #fff;
+  border: 1px solid #e0e3e8;
+  border-radius: 10px;
+  box-shadow: 0 8px 32px rgba(0,0,0,.12);
+  padding: 16px;
+  z-index: 100;
+  pointer-events: none;
+  text-align: left;
+}
+.cl-tip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: #fff;
+  filter: drop-shadow(0 1px 0 #e0e3e8);
+}
+.cl-item:hover .cl-tip { display: block; }
+.cl-tip-name {
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 2px;
+}
+.cl-tip-meta {
+  font-size: 11px;
+  color: #888;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+.cl-tip-row {
+  font-size: 12px;
+  color: #444;
+  line-height: 1.5;
+  margin-bottom: 6px;
+}
+.cl-tip-row strong {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  color: #aaa;
+  margin-bottom: 1px;
+}
+.cl-tip-result {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid #f0f0f0;
+  font-size: 12px;
+  font-weight: 600;
+  color: #1a7a4a;
+  line-height: 1.4;
+}
 
 /* === RESULTS === */
 .results {
@@ -2929,31 +3012,109 @@ p, .hero-sub, .sim-desc, .why-desc { text-wrap: pretty; }
 <!-- 10. CLIENT STRIP [LIGHT] -->
 <div class="client-strip">
   <h2 class="sec-h dk" style="text-align:center">Quem Confia na <em>Maturare</em></h2>
-  <p class="client-strip-sub">De empresários locais a marcas nacionais: negócios que escolheram aparecer.</p>
-  <div class="clients-track-wrapper">
-    <div class="clients-track">
-      <img src="/assets/am-cabral-logo.svg" alt="AM Cabral" loading="lazy" height="48">
-      <img src="/assets/move-maquinas-logo.png" alt="Move Máquinas" loading="lazy" height="48">
-      <img src="/assets/inpress-brasil-logo.jpeg" alt="Inpress Brasil" loading="lazy" height="48">
-      <img src="/assets/inled-brasil-logo.png" alt="Inled Brasil" loading="lazy" height="48">
-      <img src="/assets/phd-playground-logo.png" alt="PHD Playground" loading="lazy" height="48">
-      <img src="/assets/ambiental-wash-logo.webp" alt="Ambiental Wash" loading="lazy" height="48">
-      <img src="/assets/mundpay-logo.png" alt="Mundpay" loading="lazy" height="48">
-      <img src="/assets/agita-morango-logo.png" alt="Agita Morango" loading="lazy" height="48">
-      <img src="/assets/keysfan-logo.webp" alt="Keysfan" loading="lazy" height="48">
-      <img src="/assets/soft-everest-logo.png" alt="Soft Everest" loading="lazy" height="48">
-      <!-- duplicado para loop contínuo -->
-      <img src="/assets/am-cabral-logo.svg" alt="AM Cabral" loading="lazy" height="48">
-      <img src="/assets/move-maquinas-logo.png" alt="Move Máquinas" loading="lazy" height="48">
-      <img src="/assets/inpress-brasil-logo.jpeg" alt="Inpress Brasil" loading="lazy" height="48">
-      <img src="/assets/inled-brasil-logo.png" alt="Inled Brasil" loading="lazy" height="48">
-      <img src="/assets/phd-playground-logo.png" alt="PHD Playground" loading="lazy" height="48">
-      <img src="/assets/ambiental-wash-logo.webp" alt="Ambiental Wash" loading="lazy" height="48">
-      <img src="/assets/mundpay-logo.png" alt="Mundpay" loading="lazy" height="48">
-      <img src="/assets/agita-morango-logo.png" alt="Agita Morango" loading="lazy" height="48">
-      <img src="/assets/keysfan-logo.webp" alt="Keysfan" loading="lazy" height="48">
-      <img src="/assets/soft-everest-logo.png" alt="Soft Everest" loading="lazy" height="48">
+  <p class="client-strip-sub">De empresários locais a marcas nacionais. Passe o mouse para ver o resultado.</p>
+  <div class="clients-grid">
+
+    <div class="cl-item">
+      <img src="/assets/phd-playground-logo.png" alt="PHD Playground">
+      <div class="cl-tip">
+        <div class="cl-tip-name">PHD Playground</div>
+        <div class="cl-tip-meta">Playground de Madeira · RJ</div>
+        <div class="cl-tip-row"><strong>O que fizemos</strong>78 páginas SEO + GEO cobrindo Rio de Janeiro e região</div>
+        <div class="cl-tip-result">Recomendado pelo Perplexity. 2 anos sem investir em anúncios.</div>
+      </div>
     </div>
+
+    <div class="cl-item">
+      <img src="/assets/move-maquinas-logo.png" alt="Move Máquinas">
+      <div class="cl-tip">
+        <div class="cl-tip-name">Move Máquinas</div>
+        <div class="cl-tip-meta">Aluguel de Equipamentos · Goiânia, GO</div>
+        <div class="cl-tip-row"><strong>O que fizemos</strong>78 páginas em 90 dias cobrindo 63 cidades de Goiás</div>
+        <div class="cl-tip-result">Google + ChatGPT + Perplexity. Economia de R$96k/ano em ads.</div>
+      </div>
+    </div>
+
+    <div class="cl-item">
+      <img src="/assets/ambiental-wash-logo.webp" alt="Ambiental Wash">
+      <div class="cl-tip">
+        <div class="cl-tip-name">Ambiental Wash</div>
+        <div class="cl-tip-meta">Lavanderia · Barra e Copacabana, RJ</div>
+        <div class="cl-tip-row"><strong>O que fizemos</strong>SEO local, Google Meu Negócio e arquitetura de conteúdo</div>
+        <div class="cl-tip-result">Topo do Google nas duas buscas. R$48k/ano economizados em ads.</div>
+      </div>
+    </div>
+
+    <div class="cl-item">
+      <img src="/assets/keysfan-logo.webp" alt="Keysfan">
+      <div class="cl-tip">
+        <div class="cl-tip-name">Keysfan</div>
+        <div class="cl-tip-meta">Licenças de Software · Nacional</div>
+        <div class="cl-tip-row"><strong>O que fizemos</strong>SEO programático para principais keywords de licença Windows</div>
+        <div class="cl-tip-result">R$12k/mês em vendas orgânicas. R$0 investido em anúncios.</div>
+      </div>
+    </div>
+
+    <div class="cl-item">
+      <img src="/assets/am-cabral-logo.svg" alt="Amanda Cabral">
+      <div class="cl-tip">
+        <div class="cl-tip-name">Amanda Cabral</div>
+        <div class="cl-tip-meta">Contabilidade · Minas Gerais</div>
+        <div class="cl-tip-row"><strong>O que fizemos</strong>Site, SEO local e conteúdo para 15 cidades de MG</div>
+        <div class="cl-tip-result">Posicionada nas principais cidades da carteira. Leads sem ads.</div>
+      </div>
+    </div>
+
+    <div class="cl-item">
+      <img src="/assets/mundpay-logo.png" alt="Mundpay">
+      <div class="cl-tip">
+        <div class="cl-tip-name">Mundpay</div>
+        <div class="cl-tip-meta">Pagamentos Globais · Nacional</div>
+        <div class="cl-tip-row"><strong>O que fizemos</strong>Arquitetura de conhecimento e posicionamento GEO/AEO</div>
+        <div class="cl-tip-result">Entidade reconhecida pelas IAs no segmento de pagamentos digitais.</div>
+      </div>
+    </div>
+
+    <div class="cl-item">
+      <img src="/assets/agita-morango-logo.png" alt="Agita Morango">
+      <div class="cl-tip">
+        <div class="cl-tip-name">Agita Morango</div>
+        <div class="cl-tip-meta">Recreação Infantil · São Paulo, SP</div>
+        <div class="cl-tip-row"><strong>O que fizemos</strong>48 páginas SEO cobrindo bairros e segmentos de SP</div>
+        <div class="cl-tip-result">Domínio local no Google para recreação infantil em SP.</div>
+      </div>
+    </div>
+
+    <div class="cl-item">
+      <img src="/assets/inpress-brasil-logo.jpeg" alt="Inpress Brasil">
+      <div class="cl-tip">
+        <div class="cl-tip-name">Inpress Brasil</div>
+        <div class="cl-tip-meta">Comunicação e Relações Públicas · RJ</div>
+        <div class="cl-tip-row"><strong>O que fizemos</strong>SEO institucional e otimização de presença orgânica</div>
+        <div class="cl-tip-result">Maior visibilidade orgânica no segmento de comunicação corporativa.</div>
+      </div>
+    </div>
+
+    <div class="cl-item">
+      <img src="/assets/inled-brasil-logo.png" alt="Inled Brasil">
+      <div class="cl-tip">
+        <div class="cl-tip-name">Inled Brasil</div>
+        <div class="cl-tip-meta">Iluminação LED · Nacional</div>
+        <div class="cl-tip-row"><strong>O que fizemos</strong>SEO técnico e conteúdo para keywords de iluminação</div>
+        <div class="cl-tip-result">Posicionado nas principais buscas do segmento de LED no Brasil.</div>
+      </div>
+    </div>
+
+    <div class="cl-item">
+      <img src="/assets/soft-everest-logo.png" alt="Soft Everest">
+      <div class="cl-tip">
+        <div class="cl-tip-name">Soft Everest</div>
+        <div class="cl-tip-meta">Tecnologia e Software · Nacional</div>
+        <div class="cl-tip-row"><strong>O que fizemos</strong>Posicionamento orgânico e arquitetura digital</div>
+        <div class="cl-tip-result">Visibilidade ampliada no Google para soluções de software.</div>
+      </div>
+    </div>
+
   </div>
 </div>
 
