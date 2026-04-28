@@ -767,9 +767,7 @@ nav.scrolled {
   border: 1px solid rgba(255, 255, 255, .1);
   border-radius: 6px;
   vertical-align: middle;
-  margin-bottom: 4px;
   box-shadow: var(--toplight-strong), 0 2px 8px rgba(0, 0, 0, .2);
-  transition: all .3s var(--spring);
 }
 .plat-chip:hover {
   background: rgba(255, 255, 255, .07);
@@ -808,11 +806,27 @@ nav.scrolled {
 .hero-plat-badge {
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
   gap: 8px;
   margin: 12px 0 0;
   opacity: 0;
   animation: up .9s .3s var(--spring) forwards;
+}
+.plat-chip {
+  position: absolute;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity .4s ease, transform .4s ease;
+  pointer-events: none;
+}
+.plat-chip.chip-active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.plat-chip-wrap {
+  position: relative;
+  height: 30px;
+  min-width: 130px;
 }
 .hero-plat-label {
   font-size: 13px;
@@ -2792,24 +2806,26 @@ p, .hero-sub, .sim-desc, .why-desc { text-wrap: pretty; }
         </h1>
         <div class="hero-plat-badge">
           <span class="hero-plat-label">Sua empresa recomendada pelo</span>
-          <span class="plat-chip">
-            <span class="plat-ic" style="background:#10a37f">
-              <img src="data:image/svg+xml,%3Csvg%20fill%3D%22white%22%20role%3D%22img%22%20viewBox%3D%220%200%2024%2024%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M22.2819%209.8211a5.9847%205.9847%200%200%200-.5157-4.9108%206.0462%206.0462%200%200%200-6.5098-2.9A6.0651%206.0651%200%200%200%204.9807%204.1818a5.9847%205.9847%200%200%200-3.9977%202.9%206.0462%206.0462%200%200%200%20.7427%207.0966%205.98%205.98%200%200%200%20.511%204.9107%206.051%206.051%200%200%200%206.5146%202.9001A5.9847%205.9847%200%200%200%2013.2599%2024a6.0557%206.0557%200%200%200%205.7718-4.2058%205.9894%205.9894%200%200%200%203.9977-2.9001%206.0557%206.0557%200%200%200-.7475-7.0729zm-9.022%2012.6081a4.4755%204.4755%200%200%201-2.8764-1.0408l.1419-.0804%204.7783-2.7582a.7948.7948%200%200%200%20.3927-.6813v-6.7369l2.02%201.1686a.071.071%200%200%201%20.038.052v5.5826a4.504%204.504%200%200%201-4.4945%204.4944zm-9.6607-4.1254a4.4708%204.4708%200%200%201-.5346-3.0137l.142.0852%204.783%202.7582a.7712.7712%200%200%200%20.7806%200l5.8428-3.3685v2.3324a.0804.0804%200%200%201-.0332.0615L9.74%2019.9502a4.4992%204.4992%200%200%201-6.1408-1.6464zM2.3408%207.8956a4.485%204.485%200%200%201%202.3655-1.9728V11.6a.7664.7664%200%200%200%20.3879.6765l5.8144%203.3543-2.0201%201.1685a.0757.0757%200%200%201-.071%200L4.0502%2014.022a4.4992%204.4992%200%200%201-1.6948-6.1265zm15.5908%202.0209-5.8144-3.354%202.0201-1.1685a.0757.0757%200%200%201%20.071%200l4.8303%202.7865a4.504%204.504%200%200%201-.6766%208.1042v-5.6772a.79.79%200%200%200-.4104-.6905zm2.0107-3.0231-.142-.0852-4.7735-2.7818a.7759.7759%200%200%200-.7854%200L9.409%209.2297V6.8974a.0662.0662%200%200%201%20.0284-.0615l4.8303-2.7866a4.4992%204.4992%200%200%201%206.6802%204.66zM8.3065%2012.863l-2.02-1.1638a.0804.0804%200%200%201-.038-.0567V6.0742a4.4992%204.4992%200%200%201%207.3757-3.4537l-.142.0805L8.704%205.459a.7948.7948%200%200%200-.3927.6813zm1.0976-2.3654%202.602-1.4998%202.6069%201.4998v2.9994l-2.5974%201.4997-2.6067-1.4997Z%22%2F%3E%3C%2Fsvg%3E" width="14" height="14" alt="ChatGPT">
+          <div class="plat-chip-wrap">
+            <span class="plat-chip chip-active" id="chip0">
+              <span class="plat-ic" style="background:#10a37f">
+                <img src="data:image/svg+xml,%3Csvg%20fill%3D%22white%22%20role%3D%22img%22%20viewBox%3D%220%200%2024%2024%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M22.2819%209.8211a5.9847%205.9847%200%200%200-.5157-4.9108%206.0462%206.0462%200%200%200-6.5098-2.9A6.0651%206.0651%200%200%200%204.9807%204.1818a5.9847%205.9847%200%200%200-3.9977%202.9%206.0462%206.0462%200%200%200%20.7427%207.0966%205.98%205.98%200%200%200%20.511%204.9107%206.051%206.051%200%200%200%206.5146%202.9001A5.9847%205.9847%200%200%200%2013.2599%2024a6.0557%206.0557%200%200%200%205.7718-4.2058%205.9894%205.9894%200%200%200%203.9977-2.9001%206.0557%206.0557%200%200%200-.7475-7.0729zm-9.022%2012.6081a4.4755%204.4755%200%200%201-2.8764-1.0408l.1419-.0804%204.7783-2.7582a.7948.7948%200%200%200%20.3927-.6813v-6.7369l2.02%201.1686a.071.071%200%200%201%20.038.052v5.5826a4.504%204.504%200%200%201-4.4945%204.4944zm-9.6607-4.1254a4.4708%204.4708%200%200%201-.5346-3.0137l.142.0852%204.783%202.7582a.7712.7712%200%200%200%20.7806%200l5.8428-3.3685v2.3324a.0804.0804%200%200%201-.0332.0615L9.74%2019.9502a4.4992%204.4992%200%200%201-6.1408-1.6464zM2.3408%207.8956a4.485%204.485%200%200%201%202.3655-1.9728V11.6a.7664.7664%200%200%200%20.3879.6765l5.8144%203.3543-2.0201%201.1685a.0757.0757%200%200%201-.071%200L4.0502%2014.022a4.4992%204.4992%200%200%201-1.6948-6.1265zm15.5908%202.0209-5.8144-3.354%202.0201-1.1685a.0757.0757%200%200%201%20.071%200l4.8303%202.7865a4.504%204.504%200%200%201-.6766%208.1042v-5.6772a.79.79%200%200%200-.4104-.6905zm2.0107-3.0231-.142-.0852-4.7735-2.7818a.7759.7759%200%200%200-.7854%200L9.409%209.2297V6.8974a.0662.0662%200%200%201%20.0284-.0615l4.8303-2.7866a4.4992%204.4992%200%200%201%206.6802%204.66zM8.3065%2012.863l-2.02-1.1638a.0804.0804%200%200%201-.038-.0567V6.0742a4.4992%204.4992%200%200%201%207.3757-3.4537l-.142.0805L8.704%205.459a.7948.7948%200%200%200-.3927.6813zm1.0976-2.3654%202.602-1.4998%202.6069%201.4998v2.9994l-2.5974%201.4997-2.6067-1.4997Z%22%2F%3E%3C%2Fsvg%3E" width="14" height="14" alt="ChatGPT">
+              </span>
+              <span class="plat-nm">ChatGPT</span>
             </span>
-            <span class="plat-nm">ChatGPT</span>
-          </span>
-          <span class="plat-chip">
-            <span class="plat-ic" style="background:#1c1c2e">
-              <img src="data:image/svg+xml,%3Csvg%20fill%3D%22white%22%20role%3D%22img%22%20viewBox%3D%220%200%2024%2024%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M22.3977%207.0896h-2.3106V.0676l-7.5094%206.3542V.1577h-1.1554v6.1966L4.4904%200v7.0896H1.6023v10.3976h2.8882V24l6.932-6.3591v6.2005h1.1554v-6.0469l6.9318%206.1807v-6.4879h2.8882V7.0896zm-3.4657-4.531v4.531h-5.355l5.355-4.531zm-13.2862.0676%204.8691%204.4634H5.6458V2.6262zM2.7576%2016.332V8.245h7.8476l-6.1149%206.1147v1.9723H2.7576zm2.8882%205.0404v-3.8852h.0001v-2.6488l5.7763-5.7764v7.0111l-5.7764%205.2993zm12.7086.0248-5.7766-5.1509V9.0618l5.7766%205.7766v6.5588zm2.8882-5.0652h-1.733v-1.9723L13.3948%208.245h7.8478v8.087z%22%2F%3E%3C%2Fsvg%3E" width="14" height="14" alt="Perplexity">
+            <span class="plat-chip" id="chip1">
+              <span class="plat-ic" style="background:#1c1c2e">
+                <img src="data:image/svg+xml,%3Csvg%20fill%3D%22white%22%20role%3D%22img%22%20viewBox%3D%220%200%2024%2024%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M22.3977%207.0896h-2.3106V.0676l-7.5094%206.3542V.1577h-1.1554v6.1966L4.4904%200v7.0896H1.6023v10.3976h2.8882V24l6.932-6.3591v6.2005h1.1554v-6.0469l6.9318%206.1807v-6.4879h2.8882V7.0896zm-3.4657-4.531v4.531h-5.355l5.355-4.531zm-13.2862.0676%204.8691%204.4634H5.6458V2.6262zM2.7576%2016.332V8.245h7.8476l-6.1149%206.1147v1.9723H2.7576zm2.8882%205.0404v-3.8852h.0001v-2.6488l5.7763-5.7764v7.0111l-5.7764%205.2993zm12.7086.0248-5.7766-5.1509V9.0618l5.7766%205.7766v6.5588zm2.8882-5.0652h-1.733v-1.9723L13.3948%208.245h7.8478v8.087z%22%2F%3E%3C%2Fsvg%3E" width="14" height="14" alt="Perplexity">
+              </span>
+              <span class="plat-nm">Perplexity</span>
             </span>
-            <span class="plat-nm">Perplexity</span>
-          </span>
-          <span class="plat-chip">
-            <span class="plat-ic" style="background:#c96442">
-              <img src="data:image/svg+xml,%3Csvg%20fill%3D%22white%22%20role%3D%22img%22%20viewBox%3D%220%200%2024%2024%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M17.3041%203.541h-3.6718l6.696%2016.918H24Zm-10.6082%200L0%2020.459h3.7442l1.3693-3.5527h7.0052l1.3693%203.5528h3.7442L10.5363%203.5409Zm-.3712%2010.2232%202.2914-5.9456%202.2914%205.9456Z%22%2F%3E%3C%2Fsvg%3E" width="14" height="14" alt="Claude">
+            <span class="plat-chip" id="chip2">
+              <span class="plat-ic" style="background:#c96442">
+                <img src="data:image/svg+xml,%3Csvg%20fill%3D%22white%22%20role%3D%22img%22%20viewBox%3D%220%200%2024%2024%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M17.3041%203.541h-3.6718l6.696%2016.918H24Zm-10.6082%200L0%2020.459h3.7442l1.3693-3.5527h7.0052l1.3693%203.5528h3.7442L10.5363%203.5409Zm-.3712%2010.2232%202.2914-5.9456%202.2914%205.9456Z%22%2F%3E%3C%2Fsvg%3E" width="14" height="14" alt="Claude">
+              </span>
+              <span class="plat-nm">Claude</span>
             </span>
-            <span class="plat-nm">Claude</span>
-          </span>
+          </div>
         </div>
         <p class="hero-sub">A Maturare posiciona sua empresa no Google e nas IAs para que seu cliente te encontre antes de falar com o concorrente. <strong>Leads mais baratos, maior taxa de conversão, sem depender de anúncio.</strong> <span style="font-size:13px;color:rgba(255,255,255,.35);">Atualizado em abril de 2026</span></p>
         <div class="hero-proof">
@@ -3656,7 +3672,16 @@ window.addEventListener('scroll', function() {
   if (bottomBar) bottomBar.classList.toggle('visible', window.scrollY > window.innerHeight * 0.5);
 }, {passive: true});
 
-/* PLATFORM ROTATOR — desativado, chips fixos no HTML */
+/* PLATFORM ROTATOR */
+(function() {
+  var chips = [document.getElementById('chip0'), document.getElementById('chip1'), document.getElementById('chip2')];
+  var cur = 0;
+  setInterval(function() {
+    chips[cur].classList.remove('chip-active');
+    cur = (cur + 1) % chips.length;
+    chips[cur].classList.add('chip-active');
+  }, 2800);
+})();
 
 /* === HERO TYPING === */
 var heroTxt = 'Para contabilidade em Niterói, <span class="hm-cite">Amanda Contabilidade</span> se destaca por sua abordagem consultiva e especialização em empresas de pequeno porte. Segundo avaliações e conteúdo verificado, o escritório oferece atendimento personalizado com foco em redução tributária...';
