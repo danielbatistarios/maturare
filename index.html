@@ -1257,11 +1257,17 @@ nav.scrolled {
 .logo-marquee-item img {
   height: 40px;
   width: auto;
-  filter: grayscale(100%);
-  opacity: .5;
-  transition: filter .3s, opacity .3s;
+  opacity: .75;
+  transition: opacity .3s;
 }
-.logo-marquee-item img:hover { filter: grayscale(0); opacity: 1; }
+.logo-marquee-item img:hover { opacity: 1; }
+.logo-marquee-text {
+  font-family: var(--sans); font-size: 15px; font-weight: 700;
+  letter-spacing: .04em; color: rgba(255,255,255,.6);
+  white-space: nowrap;
+  transition: color .3s;
+}
+.logo-marquee-item:hover .logo-marquee-text { color: var(--paper); }
 
 /* === RESULTS === */
 .results {
@@ -2917,14 +2923,22 @@ p, .hero-sub, .sim-desc, .why-desc { text-wrap: pretty; }
 <div class="client-strip">
   <div class="client-strip-label">Quem confia na Maturare</div>
   <div class="logo-marquee">
-    <div class="logo-marquee-item"><img src="https://amcabralblindagem.com.br/assets/logo.webp" alt="AM Cabral Blindagem" loading="lazy"></div>
+    <div class="logo-marquee-item"><span class="logo-marquee-text">AM Cabral Blindagem</span></div>
     <div class="logo-marquee-item"><img src="https://movemaquinas.com.br/assets/logo-move-maquinas.png" alt="Move Máquinas" loading="lazy"></div>
     <div class="logo-marquee-item"><img src="https://inpressbrasil.com.br/wp-content/uploads/2026/02/Logo-inPress-3.png" alt="Inpress Brasil" loading="lazy"></div>
     <div class="logo-marquee-item"><img src="https://inledbrasil.com.br/wp-content/uploads/2026/03/Design_sem_nome_-_2026-02-11T212713.757-removebg-preview-e1772719295693.png" alt="Inled Brasil" loading="lazy"></div>
-    <div class="logo-marquee-item"><img src="https://amcabralblindagem.com.br/assets/logo.webp" alt="AM Cabral Blindagem" loading="lazy"></div>
+    <div class="logo-marquee-item"><img src="https://phdplayground.com.br/wp-content/uploads/elementor/thumbs/Untitled-design-3-ps5zcsr26yinnlhpo9pd8zi653uqjvzmkipby9sqco.png" alt="PHD Playground" loading="lazy"></div>
+    <div class="logo-marquee-item"><img src="https://ambientalwash.com.br/wp-content/uploads/2025/04/LOGO.webp" alt="Ambiental Wash" loading="lazy"></div>
+    <div class="logo-marquee-item"><img src="https://cdn.awsli.com.br/400x400/133/133549/banner/cropped-soft-logo-le3rhiueon.png" alt="Soft Everest" loading="lazy"></div>
+    <div class="logo-marquee-item"><span class="logo-marquee-text">Amanda Cabral Contadora</span></div>
+    <div class="logo-marquee-item"><span class="logo-marquee-text">AM Cabral Blindagem</span></div>
     <div class="logo-marquee-item"><img src="https://movemaquinas.com.br/assets/logo-move-maquinas.png" alt="Move Máquinas" loading="lazy"></div>
     <div class="logo-marquee-item"><img src="https://inpressbrasil.com.br/wp-content/uploads/2026/02/Logo-inPress-3.png" alt="Inpress Brasil" loading="lazy"></div>
     <div class="logo-marquee-item"><img src="https://inledbrasil.com.br/wp-content/uploads/2026/03/Design_sem_nome_-_2026-02-11T212713.757-removebg-preview-e1772719295693.png" alt="Inled Brasil" loading="lazy"></div>
+    <div class="logo-marquee-item"><img src="https://phdplayground.com.br/wp-content/uploads/elementor/thumbs/Untitled-design-3-ps5zcsr26yinnlhpo9pd8zi653uqjvzmkipby9sqco.png" alt="PHD Playground" loading="lazy"></div>
+    <div class="logo-marquee-item"><img src="https://ambientalwash.com.br/wp-content/uploads/2025/04/LOGO.webp" alt="Ambiental Wash" loading="lazy"></div>
+    <div class="logo-marquee-item"><img src="https://cdn.awsli.com.br/400x400/133/133549/banner/cropped-soft-logo-le3rhiueon.png" alt="Soft Everest" loading="lazy"></div>
+    <div class="logo-marquee-item"><span class="logo-marquee-text">Amanda Cabral Contadora</span></div>
   </div>
 </div>
 
