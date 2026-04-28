@@ -328,13 +328,12 @@ img { display: block; max-width: 100%; }
 .bar-x:hover { color: #888; }
 
 /* === NAV === */
+/* ── NAV BASE ── */
 nav {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  top: 0; left: 0; right: 0;
   z-index: var(--zi-nav);
-  height: 62px;
+  height: 64px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -342,15 +341,14 @@ nav {
   background: transparent;
   backdrop-filter: none;
   border-bottom: 1px solid transparent;
-  transition: top .3s, background .3s, border-color .3s, backdrop-filter .3s;
-  will-change: background, backdrop-filter;
+  transition: background .3s, border-color .3s, backdrop-filter .3s;
 }
 nav.scrolled {
-  background: rgba(7, 7, 9, .9);
+  background: rgba(7,7,9,.92);
   backdrop-filter: blur(28px) saturate(180%);
   -webkit-backdrop-filter: blur(28px) saturate(180%);
-  border-bottom-color: rgba(255, 255, 255, .07);
-  box-shadow: var(--toplight), 0 1px 20px rgba(0, 0, 0, .3);
+  border-bottom-color: rgba(255,255,255,.07);
+  box-shadow: var(--toplight), 0 1px 20px rgba(0,0,0,.3);
 }
 .logo {
   font-family: var(--serif);
@@ -358,62 +356,289 @@ nav.scrolled {
   letter-spacing: .05em;
   color: var(--paper);
   transition: opacity .2s;
+  flex-shrink: 0;
 }
 .logo:hover { opacity: .6; }
-.nav-links { display: flex; list-style: none; align-items: center; }
+
+/* ── NAV LINKS ── */
+.nav-links { display: flex; list-style: none; align-items: center; gap: 0; }
+.nav-item { position: relative; }
 .nav-btn {
-  background: none;
-  border: none;
-  font-family: var(--sans);
-  font-size: 13px;
-  font-weight: 500;
-  color: rgba(255, 255, 255, .55);
+  background: none; border: none;
+  font-family: var(--sans); font-size: 13px; font-weight: 500;
+  color: rgba(255,255,255,.55);
   padding: 8px 14px;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 4px;
+  display: flex; align-items: center; gap: 5px;
   transition: color .2s;
   white-space: nowrap;
+  text-decoration: none;
 }
-.nav-btn:hover { color: var(--paper); }
+.nav-btn:hover, .nav-item.open .nav-btn { color: var(--paper); }
+.nav-caret {
+  width: 10px; height: 10px; flex-shrink: 0;
+  transition: transform .2s;
+  opacity: .45;
+}
+.nav-item.open .nav-caret { transform: rotate(180deg); opacity: .8; }
+
+/* ── MEGAMENU PANEL ── */
+.mm-panel {
+  position: fixed;
+  top: 64px; left: 0; right: 0;
+  background: rgba(10,11,9,.97);
+  border-top: 1px solid rgba(255,255,255,.06);
+  border-bottom: 1px solid rgba(255,255,255,.04);
+  backdrop-filter: blur(24px) saturate(1.5);
+  -webkit-backdrop-filter: blur(24px) saturate(1.5);
+  box-shadow: 0 24px 80px rgba(0,0,0,.55);
+  z-index: 290;
+  opacity: 0; visibility: hidden; pointer-events: none;
+  transform: translateY(-6px);
+  transition: opacity .2s ease, transform .2s ease, visibility .2s;
+}
+.mm-panel.open {
+  opacity: 1; visibility: visible; pointer-events: auto;
+  transform: translateY(0);
+}
+.mm-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: grid; grid-template-columns: 260px 1fr;
+  gap: 0;
+  min-height: 260px;
+}
+
+/* Coluna esquerda — imagem + copy */
+.mm-aside {
+  padding: 36px 32px;
+  border-right: 1px solid rgba(255,255,255,.05);
+  display: flex; flex-direction: column; justify-content: space-between;
+}
+.mm-aside-tag {
+  font-family: var(--sans); font-size: 10px; font-weight: 700;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: var(--green2, #6fcf97); margin-bottom: 10px;
+}
+.mm-aside-title {
+  font-family: var(--serif); font-size: 22px; font-style: italic;
+  color: var(--paper); line-height: 1.3; margin: 0 0 8px;
+}
+.mm-aside-sub {
+  font-size: 12px; color: rgba(255,255,255,.4); line-height: 1.6; margin: 0 0 24px;
+}
+.mm-aside-cta {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--sans); font-size: 11px; font-weight: 700;
+  letter-spacing: .08em; text-transform: uppercase;
+  color: var(--ink, #0e0f0d);
+  background: var(--paper, #f4f3ef);
+  padding: 9px 18px; border-radius: 4px;
+  text-decoration: none; width: fit-content;
+  transition: opacity .2s;
+}
+.mm-aside-cta:hover { opacity: .85; }
+
+/* Coluna direita — links */
+.mm-links {
+  padding: 36px 40px;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 0 48px; align-content: start;
+}
+.mm-links--single { grid-template-columns: 1fr; max-width: 420px; }
+.mm-col-label {
+  font-family: var(--sans); font-size: 10px; font-weight: 700;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: rgba(255,255,255,.25);
+  margin: 0 0 8px; grid-column: 1/-1;
+}
+.mm-link {
+  display: flex; flex-direction: column; gap: 2px;
+  padding: 11px 0;
+  border-bottom: 1px solid rgba(255,255,255,.05);
+  text-decoration: none;
+  transition: padding-left .15s;
+}
+.mm-link:last-of-type { border-bottom: none; }
+.mm-link:hover { padding-left: 5px; }
+.mm-link strong {
+  font-family: var(--sans); font-size: 13.5px; font-weight: 600;
+  color: rgba(255,255,255,.8);
+  transition: color .15s;
+}
+.mm-link span {
+  font-size: 11.5px; color: rgba(255,255,255,.35);
+  line-height: 1.45; transition: color .15s;
+}
+.mm-link:hover strong { color: var(--paper); }
+.mm-link:hover span { color: rgba(255,255,255,.6); }
+
+/* Blog panel: 2 colunas de artigos sem aside */
+.mm-blog { max-width: 1100px; margin: 0 auto; padding: 32px 40px; }
+.mm-blog-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 0 40px;
+}
+.mm-blog-link {
+  display: flex; flex-direction: column; gap: 4px;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255,255,255,.05);
+  text-decoration: none;
+  transition: padding-left .15s;
+}
+.mm-blog-link:hover { padding-left: 5px; }
+.mm-blog-tag {
+  font-size: 10px; font-weight: 700; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--green2, #6fcf97);
+}
+.mm-blog-title {
+  font-size: 13px; font-weight: 600;
+  color: rgba(255,255,255,.75); line-height: 1.4;
+  transition: color .15s;
+}
+.mm-blog-link:hover .mm-blog-title { color: var(--paper); }
+.mm-blog-footer {
+  margin-top: 20px; padding-top: 16px;
+  border-top: 1px solid rgba(255,255,255,.06);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.mm-blog-all {
+  font-family: var(--sans); font-size: 11px; font-weight: 700;
+  letter-spacing: .08em; text-transform: uppercase;
+  color: var(--paper); text-decoration: none; opacity: .6;
+  transition: opacity .2s;
+}
+.mm-blog-all:hover { opacity: 1; }
+
+/* ── NAV RIGHT ── */
 .nav-r { display: flex; align-items: center; gap: 12px; }
 .nav-cta {
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  background: var(--paper);
-  color: var(--ink);
-  padding: 10px 24px;
-  border: none;
-  cursor: pointer;
-  font-family: var(--sans);
-  transition: transform .2s, box-shadow .2s;
+  font-family: var(--sans); font-size: 12px; font-weight: 700;
+  letter-spacing: .08em; text-transform: uppercase;
+  background: var(--paper); color: var(--ink);
+  padding: 10px 22px; border: none; cursor: pointer;
+  border-radius: 4px; text-decoration: none;
+  transition: transform .2s, box-shadow .2s; white-space: nowrap;
 }
-.nav-cta:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 20px rgba(244, 243, 239, .15);
-}
+.nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 20px rgba(244,243,239,.15); }
+
+/* ── HAMBURGER ── */
 .hamburger {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 4px;
+  display: none; flex-direction: column; gap: 5px;
+  background: none; border: none; cursor: pointer; padding: 4px;
 }
 .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--paper); }
+
+/* ── SKIP LINK ── */
 .skip-link { position: absolute; top: -100%; left: 16px; background: var(--green); color: #fff; padding: 8px 16px; border-radius: 4px; z-index: 100000; font-size: 14px; transition: top .2s; }
 .skip-link:focus { top: 8px; }
-.mob-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.6); z-index: 998; }
+
+/* ── MOBILE OVERLAY ── */
+.mob-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.5); z-index: 590; }
 .mob-overlay.open { display: block; }
-.mob-menu { position: fixed; top: 0; right: 0; width: 280px; height: 100vh; background: var(--z1, #141513); z-index: 999; display: flex; flex-direction: column; padding: 80px 24px 32px; gap: 4px; transform: translateX(100%); transition: transform .3s cubic-bezier(.16,1,.3,1); overflow-y: auto; }
+.mob-menu {
+  position: fixed; top: 0; right: 0;
+  width: 300px; height: 100vh;
+  background: var(--z1, #141513);
+  z-index: 600;
+  display: flex; flex-direction: column;
+  overflow-y: auto;
+  transform: translateX(100%);
+  transition: transform .3s cubic-bezier(.16,1,.3,1);
+}
 .mob-menu.open { transform: translateX(0); }
-.mob-menu a { color: rgba(255,255,255,.6); font-size: 15px; font-weight: 500; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,.06); transition: color .2s; }
-.mob-menu a:hover, .mob-menu a.active { color: var(--paper); }
-.mob-menu-cta { margin-top: 16px; background: var(--green); color: #fff !important; text-align: center; padding: 12px 24px !important; border-radius: 8px; border: none !important; font-weight: 600; }
+.mob-menu a {
+  display: block; padding: 15px 22px;
+  font-family: var(--sans); font-size: 14px; font-weight: 500;
+  color: rgba(255,255,255,.6); text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+  transition: color .15s, background .15s;
+}
+.mob-menu a:hover { color: var(--paper); background: rgba(255,255,255,.03); }
+.mob-menu .mob-menu-cta {
+  margin: 12px 16px 16px; padding: 14px 20px; text-align: center;
+  background: var(--paper); color: var(--ink);
+  font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+  border-radius: 4px; border-bottom: none;
+}
+.mob-menu .mob-menu-cta:hover { opacity: .88; background: var(--paper); color: var(--ink); }
+.mob-section { border-bottom: 1px solid rgba(255,255,255,.06); }
+.mob-section-btn {
+  display: flex; justify-content: space-between; align-items: center; gap: 8px;
+  width: 100%; padding: 15px 22px;
+  background: none; border: none; cursor: pointer;
+  font-family: var(--sans); font-size: 14px; font-weight: 500;
+  color: rgba(255,255,255,.6);
+  transition: color .15s;
+}
+.mob-section-btn:hover { color: var(--paper); }
+.mob-sub {
+  max-height: 0; overflow: hidden;
+  background: rgba(255,255,255,.02);
+  transition: max-height .3s ease;
+}
+.mob-sub.open { max-height: 600px; }
+.mob-sub a {
+  padding: 11px 22px 11px 34px;
+  font-size: 13px; color: rgba(255,255,255,.4);
+  border-bottom: 1px solid rgba(255,255,255,.04);
+}
+.mob-sub a:last-child { border-bottom: none; }
+.mob-sub a:hover { color: rgba(255,255,255,.8); }
+.mob-head {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px 22px;
+  border-bottom: 1px solid rgba(255,255,255,.07);
+}
+.mob-head-logo {
+  font-family: var(--serif); font-size: 17px; letter-spacing: .05em;
+  color: var(--paper); text-decoration: none;
+}
+.mob-close {
+  background: none; border: none; cursor: pointer; padding: 6px;
+  color: rgba(255,255,255,.5);
+}
+.mob-close svg { display: block; }
+.mob-list { list-style: none; padding: 8px 0; flex: 1; }
+.mob-list li { border-bottom: 1px solid rgba(255,255,255,.05); }
+.mob-list-link {
+  display: block; padding: 15px 22px;
+  font-family: var(--sans); font-size: 14px; font-weight: 600;
+  color: rgba(255,255,255,.65); text-decoration: none;
+  transition: color .15s, background .15s;
+}
+.mob-list-link:hover { color: var(--paper); background: rgba(255,255,255,.03); }
+.mob-list-link.active { color: var(--paper); }
+.mob-trigger {
+  width: 100%; text-align: left; background: none; border: none; cursor: pointer;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.mob-caret { width: 16px; height: 16px; transition: transform .2s; flex-shrink: 0; }
+.mob-trigger[aria-expanded="true"] .mob-caret { transform: rotate(180deg); }
+.mob-sub { max-height: 0; overflow: hidden; list-style: none; background: rgba(255,255,255,.02); transition: max-height .3s ease; }
+.mob-sub.open { max-height: 800px; }
+.mob-sub-link {
+  display: block; padding: 12px 22px 12px 34px;
+  font-size: 13px; color: rgba(255,255,255,.45);
+  text-decoration: none; transition: color .15s;
+}
+.mob-sub-link:hover { color: var(--paper); }
+.mob-footer { padding: 20px 22px 28px; }
+.mob-footer-cta {
+  display: block; width: 100%; padding: 14px 20px; text-align: center;
+  background: var(--paper); color: var(--ink);
+  font-family: var(--sans); font-size: 13px; font-weight: 700;
+  letter-spacing: .07em; text-transform: uppercase;
+  text-decoration: none; border-radius: 4px;
+  transition: opacity .2s;
+}
+.mob-footer-cta:hover { opacity: .88; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .nav-links, .nav-cta { display: none; }
+  .hamburger { display: flex; }
+  nav { padding: 0 20px; }
+}
 
 /* === HERO === */
 .hero {
@@ -2284,31 +2509,134 @@ p, .hero-sub, .sim-desc, .why-desc { text-wrap: pretty; }
 <!-- 4. NAV (FIXED) -->
 <a href="#main-content" class="skip-link">Pular para conteúdo</a>
 <nav id="nav">
-  <a href="home-maturare-final.html" class="logo">Maturare</a>
+  <a href="/" class="logo">Maturare</a>
   <ul class="nav-links">
-    <li><a href="home-maturare-final.html" class="nav-btn active">Home</a></li>
-    <li><a href="metodologia.html" class="nav-btn">Metodologia</a></li>
-    <li><a href="projetos.html" class="nav-btn">Projetos</a></li>
-    <li><a href="blog.html" class="nav-btn">Blog</a></li>
-    <li><a href="contato.html" class="nav-btn">Contato</a></li>
+    <li class="nav-item" id="ni-servicos">
+      <button class="nav-btn" aria-haspopup="true" aria-expanded="false" aria-controls="mm-servicos">
+        Serviços
+        <svg class="nav-caret" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+          <path d="M2 3.5 5 6.5 8 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </li>
+    <li class="nav-item" id="ni-blog">
+      <button class="nav-btn" aria-haspopup="true" aria-expanded="false" aria-controls="mm-blog">
+        Blog
+        <svg class="nav-caret" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+          <path d="M2 3.5 5 6.5 8 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </li>
+    <li class="nav-item">
+      <a href="/daniel-rios" class="nav-btn">Daniel Rios</a>
+    </li>
   </ul>
   <div class="nav-r">
-    <a href="contato.html" class="nav-cta">Fale Com Especialista</a>
+    <a href="#orcamento" class="nav-cta">Análise Gratuita →</a>
     <button class="hamburger" id="hambBtn" aria-label="Abrir menu de navegação"><span></span><span></span><span></span></button>
   </div>
 </nav>
+
+<!-- MEGAMENU: Serviços -->
+<div class="mm-panel" id="mm-servicos" role="region" aria-label="Menu Serviços">
+  <div class="mm-inner">
+    <div class="mm-aside">
+      <div>
+        <p class="mm-aside-tag">Nossos Serviços</p>
+        <h2 class="mm-aside-title">Visibilidade no Google e nas IAs</h2>
+        <p class="mm-aside-sub">Da fundação técnica ao posicionamento em ChatGPT, Perplexity e Gemini.</p>
+      </div>
+      <a href="#orcamento" class="mm-aside-cta">Diagnóstico gratuito →</a>
+    </div>
+    <div class="mm-links mm-links--single">
+      <p class="mm-col-label">O que fazemos</p>
+      <a href="/criacao-de-sites-para-seo" class="mm-link">
+        <strong>Criação de Sites para SEO</strong>
+        <span>Sites otimizados para Google, GEO e AEO desde a fundação</span>
+      </a>
+      <a href="/consultoria-de-seo" class="mm-link">
+        <strong>Consultoria de SEO</strong>
+        <span>Auditoria técnica, estratégia de conteúdo e posicionamento orgânico</span>
+      </a>
+      <a href="/google-meu-negocio" class="mm-link">
+        <strong>Google Meu Negócio</strong>
+        <span>Local Pack, Google Maps e buscas por proximidade</span>
+      </a>
+      <a href="/arquitetura-digital-mensal" class="mm-link">
+        <strong>Arquitetura Digital Mensal</strong>
+        <span>GEO + AEO + monitoramento contínuo no Google e nas IAs</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- MEGAMENU: Blog -->
+<div class="mm-panel" id="mm-blog" role="region" aria-label="Menu Blog">
+  <div class="mm-blog">
+    <div class="mm-blog-grid">
+      <a href="/blog/como-aparecer-no-google" class="mm-blog-link">
+        <span class="mm-blog-tag">SEO</span>
+        <span class="mm-blog-title">Como aparecer no Google quando o cliente pesquisar seu serviço</span>
+      </a>
+      <a href="/blog/o-que-e-geo" class="mm-blog-link">
+        <span class="mm-blog-tag">GEO</span>
+        <span class="mm-blog-title">O que é GEO e por que o ChatGPT pode recomendar seu concorrente</span>
+      </a>
+      <a href="/blog/phd-playground-sem-google-ads" class="mm-blog-link">
+        <span class="mm-blog-tag">Case</span>
+        <span class="mm-blog-title">PHD Playground: 2 anos sem pagar Google Ads</span>
+      </a>
+      <a href="/blog/google-meu-negocio-guia" class="mm-blog-link">
+        <span class="mm-blog-tag">Local SEO</span>
+        <span class="mm-blog-title">Google Meu Negócio: o guia definitivo para negócios locais</span>
+      </a>
+      <a href="/blog/5-sinais-agencia-nao-funciona" class="mm-blog-link">
+        <span class="mm-blog-tag">Estratégia</span>
+        <span class="mm-blog-title">5 sinais de que sua agência não está funcionando</span>
+      </a>
+      <a href="/blog/ia-recomenda-empresas" class="mm-blog-link">
+        <span class="mm-blog-tag">AEO</span>
+        <span class="mm-blog-title">Perplexity, Gemini, ChatGPT: qual IA já recomenda empresas?</span>
+      </a>
+    </div>
+    <div class="mm-blog-footer">
+      <a href="/blog" class="mm-blog-all">Ver todos os artigos →</a>
+    </div>
+  </div>
+</div>
+
+<!-- MOBILE OVERLAY + MENU -->
 <div class="mob-overlay" id="mobOverlay"></div>
 <div class="mob-menu" id="mobMenu">
-  <a href="home-maturare-final.html" class="active">Home</a>
-  <a href="sobre.html">Sobre</a>
-  <a href="metodologia.html">Metodologia</a>
-  <a href="projetos.html">Projetos</a>
-  <a href="blog.html">Blog</a>
-  <a href="daniel-rios.html">Daniel Rios</a>
-  <a href="nossos-clientes.html">Clientes</a>
-  <a href="depoimentos.html">Depoimentos</a>
-  <a href="faq-maturare.html">FAQ</a>
-  <a href="contato.html" class="mob-menu-cta">Fale Com Especialista</a>
+  <div class="mob-section">
+    <button class="mob-section-btn" id="mobServBtn">
+      Serviços
+      <svg viewBox="0 0 10 10" fill="none" width="10" height="10" style="transition:transform .2s"><path d="M2 3.5 5 6.5 8 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="mob-sub" id="mobServSub">
+      <a href="/criacao-de-sites-para-seo">Criação de Sites para SEO</a>
+      <a href="/consultoria-de-seo">Consultoria de SEO</a>
+      <a href="/google-meu-negocio">Google Meu Negócio</a>
+      <a href="/arquitetura-digital-mensal">Arquitetura Digital Mensal</a>
+    </div>
+  </div>
+  <div class="mob-section">
+    <button class="mob-section-btn" id="mobBlogBtn">
+      Blog
+      <svg viewBox="0 0 10 10" fill="none" width="10" height="10" style="transition:transform .2s"><path d="M2 3.5 5 6.5 8 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="mob-sub" id="mobBlogSub">
+      <a href="/blog/como-aparecer-no-google">Como aparecer no Google</a>
+      <a href="/blog/o-que-e-geo">O que é GEO</a>
+      <a href="/blog/phd-playground-sem-google-ads">Case PHD Playground</a>
+      <a href="/blog/google-meu-negocio-guia">Guia Google Meu Negócio</a>
+      <a href="/blog/5-sinais-agencia-nao-funciona">5 sinais da agência ruim</a>
+      <a href="/blog/ia-recomenda-empresas">Qual IA recomenda empresas?</a>
+      <a href="/blog">Ver todos →</a>
+    </div>
+  </div>
+  <a href="/daniel-rios">Daniel Rios</a>
+  <a href="#orcamento" class="mob-menu-cta">Análise Gratuita →</a>
 </div>
 
 <!-- 5. HERO [DARK z1] -->
@@ -3321,13 +3649,73 @@ function fSubmit() {
   window.open('https://wa.me/5521990770731?text=' + encodeURIComponent(msg), '_blank');
 }
 
+/* === MEGAMENU === */
+(function() {
+  var panels = { servicos: 'ni-servicos', blog: 'ni-blog' };
+  var openId = null;
+
+  function openPanel(id) {
+    if (openId === id) { closeAll(); return; }
+    closeAll();
+    var ni = document.getElementById('ni-' + id);
+    var mm = document.getElementById('mm-' + id);
+    if (!ni || !mm) return;
+    ni.classList.add('open');
+    mm.classList.add('open');
+    ni.querySelector('.nav-btn').setAttribute('aria-expanded', 'true');
+    openId = id;
+  }
+
+  function closeAll() {
+    if (!openId) return;
+    var ni = document.getElementById('ni-' + openId);
+    var mm = document.getElementById('mm-' + openId);
+    if (ni) { ni.classList.remove('open'); ni.querySelector('.nav-btn').setAttribute('aria-expanded', 'false'); }
+    if (mm) mm.classList.remove('open');
+    openId = null;
+  }
+
+  var niServicos = document.getElementById('ni-servicos');
+  var niBlog = document.getElementById('ni-blog');
+  if (niServicos) niServicos.querySelector('.nav-btn').addEventListener('click', function() { openPanel('servicos'); });
+  if (niBlog) niBlog.querySelector('.nav-btn').addEventListener('click', function() { openPanel('blog'); });
+
+  document.addEventListener('click', function(e) {
+    if (!openId) return;
+    var ni = document.getElementById('ni-' + openId);
+    var mm = document.getElementById('mm-' + openId);
+    if (ni && !ni.contains(e.target) && mm && !mm.contains(e.target)) closeAll();
+  });
+
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeAll(); });
+})();
+
 /* === MOBILE MENU === */
 var hambBtn = document.getElementById('hambBtn');
 var mobMenu = document.getElementById('mobMenu');
 var mobOverlay = document.getElementById('mobOverlay');
-function toggleMob() { mobMenu.classList.toggle('open'); mobOverlay.classList.toggle('open'); }
+
+function toggleMob() {
+  var isOpen = mobMenu.classList.toggle('open');
+  mobOverlay.classList.toggle('open');
+  hambBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+}
 if (hambBtn) hambBtn.addEventListener('click', toggleMob);
 if (mobOverlay) mobOverlay.addEventListener('click', toggleMob);
+
+/* Mobile accordion */
+function setupMobAccordion(btnId, subId) {
+  var btn = document.getElementById(btnId);
+  var sub = document.getElementById(subId);
+  if (!btn || !sub) return;
+  btn.addEventListener('click', function() {
+    var isOpen = sub.classList.toggle('open');
+    var caret = btn.querySelector('svg');
+    if (caret) caret.style.transform = isOpen ? 'rotate(180deg)' : '';
+  });
+}
+setupMobAccordion('mobServBtn', 'mobServSub');
+setupMobAccordion('mobBlogBtn', 'mobBlogSub');
 
 /* === REDUCED MOTION === */
 if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
