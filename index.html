@@ -2511,6 +2511,17 @@ p, .hero-sub, .sim-desc, .why-desc { text-wrap: pretty; }
 <nav id="nav">
   <a href="/" class="logo">Maturare</a>
   <ul class="nav-links">
+    <li class="nav-item">
+      <a href="/" class="nav-btn">Início</a>
+    </li>
+    <li class="nav-item" id="ni-sobre">
+      <button class="nav-btn" aria-haspopup="true" aria-expanded="false" aria-controls="mm-sobre">
+        Sobre
+        <svg class="nav-caret" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+          <path d="M2 3.5 5 6.5 8 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </li>
     <li class="nav-item" id="ni-servicos">
       <button class="nav-btn" aria-haspopup="true" aria-expanded="false" aria-controls="mm-servicos">
         Serviços
@@ -2527,8 +2538,13 @@ p, .hero-sub, .sim-desc, .why-desc { text-wrap: pretty; }
         </svg>
       </button>
     </li>
-    <li class="nav-item">
-      <a href="/daniel-rios" class="nav-btn">Daniel Rios</a>
+    <li class="nav-item" id="ni-academy">
+      <button class="nav-btn" aria-haspopup="true" aria-expanded="false" aria-controls="mm-academy">
+        Academy
+        <svg class="nav-caret" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+          <path d="M2 3.5 5 6.5 8 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
     </li>
   </ul>
   <div class="nav-r">
@@ -2536,6 +2552,39 @@ p, .hero-sub, .sim-desc, .why-desc { text-wrap: pretty; }
     <button class="hamburger" id="hambBtn" aria-label="Abrir menu de navegação"><span></span><span></span><span></span></button>
   </div>
 </nav>
+
+<!-- MEGAMENU: Sobre -->
+<div class="mm-panel" id="mm-sobre" role="region" aria-label="Menu Sobre">
+  <div class="mm-inner">
+    <div class="mm-aside">
+      <div>
+        <p class="mm-aside-tag">A Maturare</p>
+        <h2 class="mm-aside-title">Negócio é ministério. O método é o fruto.</h2>
+        <p class="mm-aside-sub">Ajudamos empreendedores a construir presença digital com fundação, não com atalho.</p>
+      </div>
+      <a href="/sobre" class="mm-aside-cta">Conheça nossa história →</a>
+    </div>
+    <div class="mm-links mm-links--single">
+      <p class="mm-col-label">Conheça a Maturare</p>
+      <a href="/sobre" class="mm-link">
+        <strong>Sobre a Maturare</strong>
+        <span>Quem somos, o que acreditamos e por que fazemos o que fazemos</span>
+      </a>
+      <a href="/perguntas-frequentes" class="mm-link">
+        <strong>Perguntas Frequentes</strong>
+        <span>Tira as dúvidas mais comuns antes de conversar com a gente</span>
+      </a>
+      <a href="/casos-de-sucesso" class="mm-link">
+        <strong>Casos de Sucesso</strong>
+        <span>Empresas reais que aparecem no Google e nas IAs hoje</span>
+      </a>
+      <a href="/cidades-atendidas" class="mm-link">
+        <strong>Cidades Atendidas</strong>
+        <span>Atuamos em todo o Brasil, com foco em negócios locais</span>
+      </a>
+    </div>
+  </div>
+</div>
 
 <!-- MEGAMENU: Serviços -->
 <div class="mm-panel" id="mm-servicos" role="region" aria-label="Menu Serviços">
@@ -2605,19 +2654,53 @@ p, .hero-sub, .sim-desc, .why-desc { text-wrap: pretty; }
   </div>
 </div>
 
+<!-- MEGAMENU: Academy -->
+<div class="mm-panel" id="mm-academy" role="region" aria-label="Menu Academy">
+  <div class="mm-inner">
+    <div class="mm-aside">
+      <div>
+        <p class="mm-aside-tag">Maturare Academy</p>
+        <h2 class="mm-aside-title">Aprenda a fazer sua empresa aparecer.</h2>
+        <p class="mm-aside-sub">Formação prática para quem quer entender o processo, não só delegar.</p>
+      </div>
+      <a href="/academy" class="mm-aside-cta">Ver todos os cursos →</a>
+    </div>
+    <div class="mm-links mm-links--single">
+      <p class="mm-col-label">Cursos disponíveis</p>
+      <a href="/academy/curso-google-meu-negocio" class="mm-link">
+        <strong>Curso de Google Meu Negócio</strong>
+        <span>Do zero ao perfil otimizado: apareça no mapa e atraia clientes da sua cidade</span>
+      </a>
+    </div>
+  </div>
+</div>
+
 <!-- MOBILE OVERLAY + MENU -->
 <div class="mob-overlay" id="mobOverlay"></div>
 <div class="mob-menu" id="mobMenu">
+  <a href="/">Início</a>
+  <div class="mob-section">
+    <button class="mob-section-btn" id="mobSobreBtn">
+      Sobre
+      <svg viewBox="0 0 10 10" fill="none" width="10" height="10" style="transition:transform .2s"><path d="M2 3.5 5 6.5 8 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="mob-sub" id="mobSobreSub">
+      <a href="/sobre">Sobre a Maturare</a>
+      <a href="/perguntas-frequentes">Perguntas Frequentes</a>
+      <a href="/casos-de-sucesso">Casos de Sucesso</a>
+      <a href="/cidades-atendidas">Cidades Atendidas</a>
+    </div>
+  </div>
   <div class="mob-section">
     <button class="mob-section-btn" id="mobServBtn">
       Serviços
       <svg viewBox="0 0 10 10" fill="none" width="10" height="10" style="transition:transform .2s"><path d="M2 3.5 5 6.5 8 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
     <div class="mob-sub" id="mobServSub">
-      <a href="/criacao-de-sites-para-seo">Criação de Sites para SEO</a>
+      <a href="/criacao-de-sites-para-seo">Criação de Sites</a>
       <a href="/consultoria-de-seo">Consultoria de SEO</a>
       <a href="/google-meu-negocio">Google Meu Negócio</a>
-      <a href="/arquitetura-digital-mensal">Arquitetura Digital Mensal</a>
+      <a href="/arquitetura-digital-mensal">Presença Digital Mensal</a>
     </div>
   </div>
   <div class="mob-section">
@@ -2635,7 +2718,15 @@ p, .hero-sub, .sim-desc, .why-desc { text-wrap: pretty; }
       <a href="/blog">Ver todos →</a>
     </div>
   </div>
-  <a href="/daniel-rios">Daniel Rios</a>
+  <div class="mob-section">
+    <button class="mob-section-btn" id="mobAcadBtn">
+      Academy
+      <svg viewBox="0 0 10 10" fill="none" width="10" height="10" style="transition:transform .2s"><path d="M2 3.5 5 6.5 8 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="mob-sub" id="mobAcadSub">
+      <a href="/academy/curso-google-meu-negocio">Curso de Google Meu Negócio</a>
+    </div>
+  </div>
   <a href="#orcamento" class="mob-menu-cta">Análise Gratuita →</a>
 </div>
 
@@ -3675,10 +3766,10 @@ function fSubmit() {
     openId = null;
   }
 
-  var niServicos = document.getElementById('ni-servicos');
-  var niBlog = document.getElementById('ni-blog');
-  if (niServicos) niServicos.querySelector('.nav-btn').addEventListener('click', function() { openPanel('servicos'); });
-  if (niBlog) niBlog.querySelector('.nav-btn').addEventListener('click', function() { openPanel('blog'); });
+  ['sobre', 'servicos', 'blog', 'academy'].forEach(function(id) {
+    var ni = document.getElementById('ni-' + id);
+    if (ni) ni.querySelector('.nav-btn').addEventListener('click', function() { openPanel(id); });
+  });
 
   document.addEventListener('click', function(e) {
     if (!openId) return;
@@ -3714,8 +3805,10 @@ function setupMobAccordion(btnId, subId) {
     if (caret) caret.style.transform = isOpen ? 'rotate(180deg)' : '';
   });
 }
+setupMobAccordion('mobSobreBtn', 'mobSobreSub');
 setupMobAccordion('mobServBtn', 'mobServSub');
 setupMobAccordion('mobBlogBtn', 'mobBlogSub');
+setupMobAccordion('mobAcadBtn', 'mobAcadSub');
 
 /* === REDUCED MOTION === */
 if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
