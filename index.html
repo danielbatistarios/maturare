@@ -816,20 +816,23 @@ nav.scrolled {
 }
 .plat-chip {
   position: absolute;
+  left: 0;
   opacity: 0;
-  transform: translateY(6px);
-  transition: opacity .4s ease, transform .4s ease;
+  transform: scale(.93);
+  filter: blur(5px);
+  transition: opacity .65s ease-out, transform .65s ease-out, filter .65s ease-out;
   pointer-events: none;
 }
 .plat-chip.chip-active {
   opacity: 1;
-  transform: translateY(0);
+  transform: scale(1);
+  filter: blur(0);
   pointer-events: auto;
 }
 .plat-chip-wrap {
   position: relative;
   height: 30px;
-  min-width: 130px;
+  min-width: 145px;
 }
 .hero-plat-label {
   font-size: 13px;
@@ -1509,74 +1512,62 @@ nav.scrolled {
 .svc-4 {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1px;
+  gap: 10px;
   margin-top: 56px;
-  border: 1px solid #e2dfd6;
-  border-radius: var(--radius);
-  overflow: hidden;
-  background: #e2dfd6;
 }
 .s4 {
   background: #fff;
-  padding: clamp(28px, 3vw, 36px);
+  border: 1px solid #eaecf0;
+  border-radius: 12px;
+  padding: 25px;
   position: relative;
-  overflow: hidden;
-  transition: background .3s ease;
   display: flex;
   flex-direction: column;
+  cursor: pointer;
+  transition: transform .2s ease-out, box-shadow .2s ease-out, border-color .2s ease-out;
 }
-.s4:hover { background: #fafaf8; }
+.s4:hover {
+  transform: scale(1.01);
+  box-shadow: 0 5px 20px rgba(0,0,0,.05);
+  border-color: #d4d7dc;
+}
+.s4:hover h3 { color: #1a7a4a; }
 .s4-ic {
-  width: 120px;
-  height: 100px;
+  width: 100%;
+  height: 110px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 28px;
+  margin-bottom: 24px;
+  position: relative;
 }
-.s4-ic svg { width: 100%; height: 100%; }
+.s4-ic .s4-svg-base,
+.s4-ic .s4-svg-hover {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity .2s ease-out;
+}
+.s4-ic .s4-svg-hover { opacity: 0; }
+.s4:hover .s4-ic .s4-svg-base { opacity: 0; }
+.s4:hover .s4-ic .s4-svg-hover { opacity: 1; }
+.s4-ic svg { width: 100px; height: 100px; }
 .s4-num { display: none; }
 .s4 h3 {
   font-family: var(--sans);
   font-size: 17px;
   font-weight: 700;
   color: var(--ink);
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   line-height: 1.3;
+  transition: color .2s ease-out;
 }
-.s4 p { font-size: 14px; color: #6b6b6b; line-height: 1.65; margin: 0; }
-.s4-includes {
-  list-style: none;
-  padding: 0;
-  margin: 14px 0 0;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-.s4-includes li { display: flex; align-items: flex-start; gap: 6px; }
-.s4-includes li::before { content: "–"; color: #1a7a4a; flex-shrink: 0; margin-top: 1px; font-size: 12px; }
-.s4-includes h4 {
-  font-size: 12px;
-  font-weight: 400;
-  color: #8a8a8a;
-  line-height: 1.5;
-  margin: 0;
-}
-.s4-tag {
-  display: inline-block;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  color: #1a7a4a;
-  background: #e8f5ee;
-  padding: 3px 8px;
-  border-radius: 4px;
-  margin-top: auto;
-  padding-top: 16px;
-  background: transparent;
-  color: #8a8a8a;
-}
+.s4 p { font-size: 14px; color: #6b6b6b; line-height: 1.6; margin: 0; }
+.s4-includes { display: none; }
+.s4-tag { display: none; }
 
 /* === COMPARISON === */
 .comparison {
@@ -3057,117 +3048,137 @@ p, .hero-sub, .sim-desc, .why-desc { text-wrap: pretty; }
     <div class="svc-4 reveal">
       <div class="s4 reveal d1">
         <div class="s4-ic">
-          <!-- Isometric: browser/site window -->
-          <svg viewBox="0 0 120 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="18" y="12" width="84" height="60" rx="6" stroke="#c8c8c8" stroke-width="1.5" fill="#fafafa"/>
-            <rect x="18" y="12" width="84" height="16" rx="6" stroke="#c8c8c8" stroke-width="1.5" fill="#f0f0f0"/>
-            <rect x="18" y="22" width="84" height="6" fill="#f0f0f0"/>
-            <circle cx="29" cy="20" r="3" fill="#e0e0e0"/>
-            <circle cx="38" cy="20" r="3" fill="#e0e0e0"/>
-            <circle cx="47" cy="20" r="3" fill="#e0e0e0"/>
-            <rect x="28" y="36" width="24" height="3" rx="1.5" fill="#d8d8d8"/>
-            <rect x="28" y="43" width="40" height="2" rx="1" fill="#e8e8e8"/>
-            <rect x="28" y="49" width="34" height="2" rx="1" fill="#e8e8e8"/>
-            <rect x="28" y="55" width="44" height="2" rx="1" fill="#e8e8e8"/>
-            <rect x="76" y="36" width="16" height="10" rx="3" fill="#1a7a4a" opacity=".15"/>
-            <path d="M38 84 L60 92 L82 84 L60 76 Z" fill="#f0f0f0" stroke="#d0d0d0" stroke-width="1"/>
-            <path d="M38 84 L38 90 L60 98 L60 92 Z" fill="#e0e0e0" stroke="#d0d0d0" stroke-width="1"/>
-            <path d="M82 84 L82 90 L60 98 L60 92 Z" fill="#d4d4d4" stroke="#c4c4c4" stroke-width="1"/>
-          </svg>
+          <div class="s4-svg-base">
+            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="10" y="14" width="80" height="58" rx="6" stroke="#d0d0d0" stroke-width="1.5" fill="#fafafa"/>
+              <rect x="10" y="14" width="80" height="16" rx="6" stroke="#d0d0d0" stroke-width="1.5" fill="#f2f2f2"/>
+              <rect x="10" y="24" width="80" height="6" fill="#f2f2f2"/>
+              <circle cx="21" cy="22" r="3" fill="#e0e0e0"/>
+              <circle cx="30" cy="22" r="3" fill="#e0e0e0"/>
+              <circle cx="39" cy="22" r="3" fill="#e0e0e0"/>
+              <rect x="20" y="38" width="22" height="3" rx="1.5" fill="#dedede"/>
+              <rect x="20" y="45" width="38" height="2" rx="1" fill="#ebebeb"/>
+              <rect x="20" y="51" width="30" height="2" rx="1" fill="#ebebeb"/>
+              <rect x="20" y="57" width="42" height="2" rx="1" fill="#ebebeb"/>
+              <rect x="68" y="38" width="14" height="10" rx="3" fill="#d0d0d0"/>
+            </svg>
+          </div>
+          <div class="s4-svg-hover">
+            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="10" y="14" width="80" height="58" rx="6" stroke="#999" stroke-width="1.5" fill="#f5f5f5"/>
+              <rect x="10" y="14" width="80" height="16" rx="6" stroke="#999" stroke-width="1.5" fill="#eaeaea"/>
+              <rect x="10" y="24" width="80" height="6" fill="#eaeaea"/>
+              <circle cx="21" cy="22" r="3" fill="#bbb"/>
+              <circle cx="30" cy="22" r="3" fill="#bbb"/>
+              <circle cx="39" cy="22" r="3" fill="#bbb"/>
+              <rect x="20" y="38" width="22" height="3" rx="1.5" fill="#1a7a4a" opacity=".7"/>
+              <rect x="20" y="45" width="38" height="2" rx="1" fill="#bbb"/>
+              <rect x="20" y="51" width="30" height="2" rx="1" fill="#bbb"/>
+              <rect x="20" y="57" width="42" height="2" rx="1" fill="#bbb"/>
+              <rect x="68" y="38" width="14" height="10" rx="3" fill="#1a7a4a" opacity=".5"/>
+            </svg>
+          </div>
         </div>
-        <h3>Criação de Sites Otimizados para SEO, GEO e AEO</h3>
-        <p>Seu site pensado para ser encontrado no Google. A Maturare cria a arquitetura que ranqueia, não só design bonito.</p>
-        <ul class="s4-includes">
-          <li><h4>Arquitetura semântica com HTML5 e dados estruturados JSON-LD</h4></li>
-          <li><h4>Core Web Vitals, PageSpeed Insights e indexação mobile-first</h4></li>
-          <li><h4>Hierarquia de URLs, breadcrumb e sitemap para Google Search Console</h4></li>
-        </ul>
-        <span class="s4-tag">Setup</span>
+        <h3>Criação de Sites</h3>
+        <p>Sites que ranqueiam no Google desde o primeiro dia.</p>
       </div>
       <div class="s4 reveal d2">
         <div class="s4-ic">
-          <!-- Isometric: search/magnifier + grid -->
-          <svg viewBox="0 0 120 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="50" cy="42" r="22" stroke="#c8c8c8" stroke-width="1.5" fill="#fafafa"/>
-            <circle cx="50" cy="42" r="14" stroke="#e0e0e0" stroke-width="1.5" fill="none"/>
-            <line x1="67" y1="58" x2="82" y2="73" stroke="#c8c8c8" stroke-width="2.5" stroke-linecap="round"/>
-            <line x1="44" y1="36" x2="56" y2="36" stroke="#d8d8d8" stroke-width="1.5" stroke-linecap="round"/>
-            <line x1="44" y1="41" x2="60" y2="41" stroke="#d8d8d8" stroke-width="1.5" stroke-linecap="round"/>
-            <line x1="44" y1="46" x2="53" y2="46" stroke="#d8d8d8" stroke-width="1.5" stroke-linecap="round"/>
-            <rect x="72" y="20" width="30" height="5" rx="2.5" fill="#e8e8e8"/>
-            <rect x="72" y="29" width="22" height="4" rx="2" fill="#f0f0f0"/>
-            <rect x="72" y="37" width="26" height="4" rx="2" fill="#f0f0f0"/>
-            <rect x="72" y="45" width="18" height="4" rx="2" fill="#1a7a4a" opacity=".2"/>
-            <path d="M32 80 L60 92 L88 80 L60 68 Z" fill="#f0f0f0" stroke="#d0d0d0" stroke-width="1"/>
-            <path d="M32 80 L32 86 L60 98 L60 92 Z" fill="#e0e0e0" stroke="#d0d0d0" stroke-width="1"/>
-            <path d="M88 80 L88 86 L60 98 L60 92 Z" fill="#d4d4d4" stroke="#c4c4c4" stroke-width="1"/>
-          </svg>
+          <div class="s4-svg-base">
+            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="44" cy="44" r="24" stroke="#d0d0d0" stroke-width="1.5" fill="#fafafa"/>
+              <circle cx="44" cy="44" r="14" stroke="#e8e8e8" stroke-width="1.5" fill="none"/>
+              <line x1="62" y1="60" x2="78" y2="76" stroke="#c8c8c8" stroke-width="2.5" stroke-linecap="round"/>
+              <line x1="38" y1="38" x2="50" y2="38" stroke="#dedede" stroke-width="1.5" stroke-linecap="round"/>
+              <line x1="38" y1="44" x2="54" y2="44" stroke="#dedede" stroke-width="1.5" stroke-linecap="round"/>
+              <line x1="38" y1="50" x2="46" y2="50" stroke="#dedede" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="s4-svg-hover">
+            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="44" cy="44" r="24" stroke="#999" stroke-width="1.5" fill="#f5f5f5"/>
+              <circle cx="44" cy="44" r="14" stroke="#bbb" stroke-width="1.5" fill="none"/>
+              <line x1="62" y1="60" x2="78" y2="76" stroke="#888" stroke-width="2.5" stroke-linecap="round"/>
+              <line x1="38" y1="38" x2="50" y2="38" stroke="#1a7a4a" stroke-width="1.5" stroke-linecap="round" opacity=".7"/>
+              <line x1="38" y1="44" x2="54" y2="44" stroke="#bbb" stroke-width="1.5" stroke-linecap="round"/>
+              <line x1="38" y1="50" x2="46" y2="50" stroke="#bbb" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
         </div>
         <h3>Consultoria de SEO</h3>
-        <p>Analisamos seu negócio, site e concorrentes. Você entende o que precisa mudar.</p>
-        <ul class="s4-includes">
-          <li><h4>Auditoria técnica com Google Search Console e Screaming Frog</h4></li>
-          <li><h4>Pesquisa de palavras-chave e arquitetura de clusters de conteúdo</h4></li>
-          <li><h4>Link building e autoridade de domínio no Google Search</h4></li>
-        </ul>
-        <span class="s4-tag">Pontual</span>
+        <p>Auditoria completa do seu site e plano de ação para crescer no orgânico.</p>
       </div>
       <div class="s4 reveal d3">
         <div class="s4-ic">
-          <!-- Isometric: tag/label with connections -->
-          <svg viewBox="0 0 120 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M24 30 L24 56 L52 70 L80 56 L80 30 L52 16 Z" fill="#fafafa" stroke="#c8c8c8" stroke-width="1.5" stroke-linejoin="round"/>
-            <path d="M24 30 L52 44 L80 30" stroke="#d8d8d8" stroke-width="1.5" stroke-linejoin="round"/>
-            <path d="M52 44 L52 70" stroke="#d8d8d8" stroke-width="1.5"/>
-            <line x1="34" y1="37" x2="70" y2="37" stroke="#e0e0e0" stroke-width="1.2"/>
-            <line x1="34" y1="43" x2="62" y2="43" stroke="#e8e8e8" stroke-width="1.2"/>
-            <circle cx="88" cy="22" r="7" fill="#fafafa" stroke="#c8c8c8" stroke-width="1.5"/>
-            <line x1="80" y1="30" x2="82" y2="27" stroke="#d0d0d0" stroke-width="1.2"/>
-            <circle cx="98" cy="45" r="5" fill="#fafafa" stroke="#c8c8c8" stroke-width="1.5"/>
-            <line x1="80" y1="43" x2="93" y2="44" stroke="#d0d0d0" stroke-width="1.2"/>
-            <circle cx="88" cy="62" r="5" fill="#1a7a4a" opacity=".18" stroke="#1a7a4a" stroke-width="1.2" stroke-opacity=".3"/>
-            <line x1="80" y1="56" x2="83" y2="59" stroke="#d0d0d0" stroke-width="1.2"/>
-          </svg>
+          <div class="s4-svg-base">
+            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="18" y="22" width="46" height="56" rx="4" stroke="#d0d0d0" stroke-width="1.5" fill="#fafafa"/>
+              <line x1="26" y1="36" x2="56" y2="36" stroke="#e4e4e4" stroke-width="1.5"/>
+              <line x1="26" y1="44" x2="50" y2="44" stroke="#ebebeb" stroke-width="1.2"/>
+              <line x1="26" y1="51" x2="54" y2="51" stroke="#ebebeb" stroke-width="1.2"/>
+              <line x1="26" y1="58" x2="48" y2="58" stroke="#ebebeb" stroke-width="1.2"/>
+              <circle cx="72" cy="30" r="9" stroke="#d0d0d0" stroke-width="1.5" fill="#fafafa"/>
+              <line x1="64" y1="38" x2="68" y2="42" stroke="#d0d0d0" stroke-width="1.2"/>
+              <circle cx="76" cy="55" r="7" stroke="#d0d0d0" stroke-width="1.5" fill="#fafafa"/>
+              <line x1="64" y1="50" x2="69" y2="51" stroke="#d0d0d0" stroke-width="1.2"/>
+              <circle cx="74" cy="74" r="6" stroke="#d0d0d0" stroke-width="1.5" fill="#fafafa"/>
+              <line x1="64" y1="64" x2="68" y2="67" stroke="#d0d0d0" stroke-width="1.2"/>
+            </svg>
+          </div>
+          <div class="s4-svg-hover">
+            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="18" y="22" width="46" height="56" rx="4" stroke="#999" stroke-width="1.5" fill="#f5f5f5"/>
+              <line x1="26" y1="36" x2="56" y2="36" stroke="#1a7a4a" stroke-width="1.5" opacity=".6"/>
+              <line x1="26" y1="44" x2="50" y2="44" stroke="#bbb" stroke-width="1.2"/>
+              <line x1="26" y1="51" x2="54" y2="51" stroke="#bbb" stroke-width="1.2"/>
+              <line x1="26" y1="58" x2="48" y2="58" stroke="#bbb" stroke-width="1.2"/>
+              <circle cx="72" cy="30" r="9" stroke="#888" stroke-width="1.5" fill="#f5f5f5"/>
+              <line x1="64" y1="38" x2="68" y2="42" stroke="#999" stroke-width="1.2"/>
+              <circle cx="76" cy="55" r="7" stroke="#888" stroke-width="1.5" fill="#f5f5f5"/>
+              <line x1="64" y1="50" x2="69" y2="51" stroke="#999" stroke-width="1.2"/>
+              <circle cx="74" cy="74" r="6" stroke="#1a7a4a" stroke-width="1.5" fill="#e8f5ee" opacity=".8"/>
+              <line x1="64" y1="64" x2="68" y2="67" stroke="#999" stroke-width="1.2"/>
+            </svg>
+          </div>
         </div>
-        <h3>Schema Markup e Entidades Digitais</h3>
-        <p>Dados estruturados que fazem o Google e as IAs entenderem exatamente o que sua empresa faz.</p>
-        <ul class="s4-includes">
-          <li><h4>JSON-LD para Organização, Serviço e FAQ no Google</h4></li>
-          <li><h4>Cadastro no Google Knowledge Graph e Wikidata</h4></li>
-          <li><h4>Rich results e elegibilidade para AI Overviews e Featured Snippets</h4></li>
-        </ul>
-        <span class="s4-tag">Pontual</span>
+        <h3>Schema Markup e Entidades</h3>
+        <p>Dados estruturados que fazem o Google e as IAs entenderem sua empresa.</p>
       </div>
       <div class="s4 reveal d4">
         <div class="s4-ic">
-          <!-- Isometric: stacked blocks / growth -->
-          <svg viewBox="0 0 120 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <!-- bottom block -->
-            <path d="M20 72 L60 88 L100 72 L60 56 Z" fill="#f0f0f0" stroke="#d0d0d0" stroke-width="1.2"/>
-            <path d="M20 72 L20 80 L60 96 L60 88 Z" fill="#e4e4e4" stroke="#d0d0d0" stroke-width="1.2"/>
-            <path d="M100 72 L100 80 L60 96 L60 88 Z" fill="#d8d8d8" stroke="#c8c8c8" stroke-width="1.2"/>
-            <!-- mid block -->
-            <path d="M30 57 L60 70 L90 57 L60 44 Z" fill="#f5f5f5" stroke="#d0d0d0" stroke-width="1.2"/>
-            <path d="M30 57 L30 65 L60 78 L60 70 Z" fill="#eaeaea" stroke="#d0d0d0" stroke-width="1.2"/>
-            <path d="M90 57 L90 65 L60 78 L60 70 Z" fill="#dcdcdc" stroke="#c8c8c8" stroke-width="1.2"/>
-            <!-- top block -->
-            <path d="M38 42 L60 52 L82 42 L60 32 Z" fill="#fff" stroke="#c8c8c8" stroke-width="1.2"/>
-            <path d="M38 42 L38 50 L60 60 L60 52 Z" fill="#f0f0f0" stroke="#d0d0d0" stroke-width="1.2"/>
-            <path d="M82 42 L82 50 L60 60 L60 52 Z" fill="#e4e4e4" stroke="#c8c8c8" stroke-width="1.2"/>
-            <!-- mini block top -->
-            <path d="M46 27 L60 34 L74 27 L60 20 Z" fill="#fff" stroke="#1a7a4a" stroke-width="1.2" stroke-opacity=".4"/>
-            <path d="M46 27 L46 33 L60 40 L60 34 Z" fill="#e8f5ee" stroke="#1a7a4a" stroke-width="1" stroke-opacity=".3"/>
-            <path d="M74 27 L74 33 L60 40 L60 34 Z" fill="#d8eee2" stroke="#1a7a4a" stroke-width="1" stroke-opacity=".3"/>
-          </svg>
+          <div class="s4-svg-base">
+            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M14 76 L50 90 L86 76 L50 62 Z" fill="#f0f0f0" stroke="#d0d0d0" stroke-width="1.2"/>
+              <path d="M14 76 L14 83 L50 97 L50 90 Z" fill="#e4e4e4" stroke="#d0d0d0" stroke-width="1.2"/>
+              <path d="M86 76 L86 83 L50 97 L50 90 Z" fill="#d8d8d8" stroke="#c8c8c8" stroke-width="1.2"/>
+              <path d="M22 60 L50 72 L78 60 L50 48 Z" fill="#f6f6f6" stroke="#d0d0d0" stroke-width="1.2"/>
+              <path d="M22 60 L22 67 L50 79 L50 72 Z" fill="#ebebeb" stroke="#d0d0d0" stroke-width="1.2"/>
+              <path d="M78 60 L78 67 L50 79 L50 72 Z" fill="#e0e0e0" stroke="#c8c8c8" stroke-width="1.2"/>
+              <path d="M30 44 L50 54 L70 44 L50 34 Z" fill="#fff" stroke="#c8c8c8" stroke-width="1.2"/>
+              <path d="M30 44 L30 51 L50 61 L50 54 Z" fill="#f2f2f2" stroke="#d0d0d0" stroke-width="1.2"/>
+              <path d="M70 44 L70 51 L50 61 L50 54 Z" fill="#e6e6e6" stroke="#c8c8c8" stroke-width="1.2"/>
+              <path d="M38 28 L50 34 L62 28 L50 22 Z" fill="#fff" stroke="#d0d0d0" stroke-width="1" stroke-dasharray="2 2"/>
+            </svg>
+          </div>
+          <div class="s4-svg-hover">
+            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M14 76 L50 90 L86 76 L50 62 Z" fill="#e8e8e8" stroke="#aaa" stroke-width="1.2"/>
+              <path d="M14 76 L14 83 L50 97 L50 90 Z" fill="#ddd" stroke="#aaa" stroke-width="1.2"/>
+              <path d="M86 76 L86 83 L50 97 L50 90 Z" fill="#d0d0d0" stroke="#999" stroke-width="1.2"/>
+              <path d="M22 60 L50 72 L78 60 L50 48 Z" fill="#eee" stroke="#aaa" stroke-width="1.2"/>
+              <path d="M22 60 L22 67 L50 79 L50 72 Z" fill="#e3e3e3" stroke="#aaa" stroke-width="1.2"/>
+              <path d="M78 60 L78 67 L50 79 L50 72 Z" fill="#d6d6d6" stroke="#999" stroke-width="1.2"/>
+              <path d="M30 44 L50 54 L70 44 L50 34 Z" fill="#fff" stroke="#999" stroke-width="1.2"/>
+              <path d="M30 44 L30 51 L50 61 L50 54 Z" fill="#eee" stroke="#aaa" stroke-width="1.2"/>
+              <path d="M70 44 L70 51 L50 61 L50 54 Z" fill="#e0e0e0" stroke="#999" stroke-width="1.2"/>
+              <path d="M38 28 L50 34 L62 28 L50 22 Z" fill="#e8f5ee" stroke="#1a7a4a" stroke-width="1.2" stroke-opacity=".6"/>
+              <path d="M38 28 L38 34 L50 40 L50 34 Z" fill="#d0ecdb" stroke="#1a7a4a" stroke-width="1" stroke-opacity=".5"/>
+              <path d="M62 28 L62 34 L50 40 L50 34 Z" fill="#c4e4d0" stroke="#1a7a4a" stroke-width="1" stroke-opacity=".4"/>
+            </svg>
+          </div>
         </div>
-        <h3>Arquitetura Digital Mensal, GEO e AEO</h3>
-        <p>Todo mês a Maturare cria páginas e conteúdo que posicionam no Google e nas IAs. Veja <a href="projetos.html" style="color:#1a7a4a;text-decoration:underline;text-underline-offset:2px;">nossos resultados</a>.</p>
-        <ul class="s4-includes">
-          <li><h4>Monitoramento contínuo no Google Search Console e GA4</h4></li>
-          <li><h4>Atualização de entidades para ChatGPT, Gemini e Perplexity</h4></li>
-          <li><h4>Relatório mensal de posicionamento orgânico e menções em LLMs</h4></li>
-        </ul>
-        <span class="s4-tag">Mais popular</span>
+        <h3>Arquitetura Digital Mensal</h3>
+        <p>SEO, GEO e AEO todo mês. Sua empresa cresce enquanto você foca no negócio.</p>
       </div>
     </div>
     <div class="reveal" style="text-align:center;margin-top:48px;">
