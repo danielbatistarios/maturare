@@ -1235,47 +1235,47 @@ nav.scrolled {
 /* === CLIENT STRIP === */
 .client-strip {
   overflow: hidden;
-  padding: 48px 0;
+  padding: 64px 0 48px;
   border-top: 1px solid var(--faint);
   border-bottom: 1px solid var(--faint);
   background: #ffffff;
 }
-.client-strip-label {
+.client-strip-head {
   text-align: center;
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: .15em;
-  text-transform: uppercase;
-  color: var(--dim);
-  margin-bottom: 28px;
+  margin-bottom: 12px;
+  font-family: var(--serif);
+  font-size: clamp(22px, 2.8vw, 32px);
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -.01em;
 }
-.logo-marquee {
+.client-strip-head em { color: var(--green2); font-style: normal; }
+.client-strip-sub {
+  text-align: center;
+  font-size: 15px;
+  color: var(--dim);
+  margin-bottom: 36px;
+  padding: 0 24px;
+}
+.clients-track-wrapper {
+  overflow: hidden;
+  width: 100%;
+}
+.clients-track {
   display: flex;
   width: max-content;
-  animation: mqs 25s linear infinite;
+  animation: mqs 55s linear infinite;
 }
-.logo-marquee-item {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 40px;
-  flex-shrink: 0;
-}
-.logo-marquee-item img {
+.clients-track img {
   height: 48px;
   width: auto;
-  opacity: .7;
+  opacity: .65;
   transition: opacity .3s;
-  filter: grayscale(30%);
+  filter: grayscale(25%);
+  flex-shrink: 0;
+  margin: 0 40px;
 }
-.logo-marquee-item img:hover { opacity: 1; filter: grayscale(0%); }
-.logo-marquee-text {
-  font-family: var(--sans); font-size: 16px; font-weight: 700;
-  letter-spacing: .04em; color: var(--dim);
-  white-space: nowrap;
-  transition: color .3s;
-}
-.logo-marquee-item:hover .logo-marquee-text { color: var(--ink); }
+.clients-track img:hover { opacity: 1; filter: grayscale(0%); }
 
 /* === RESULTS === */
 .results {
@@ -2929,55 +2929,32 @@ p, .hero-sub, .sim-desc, .why-desc { text-wrap: pretty; }
 
 <!-- 10. CLIENT STRIP [LIGHT] -->
 <div class="client-strip">
-  <div class="client-strip-label">Quem confia na Maturare</div>
-  <div class="logo-marquee">
-<<<<<<< Updated upstream
-    <div class="logo-marquee-item"><img src="/assets/am-cabral-logo.svg" alt="AM Cabral Blindagem" loading="lazy"></div>
-    <div class="logo-marquee-item"><img src="/assets/move-maquinas-logo.png" alt="Move Máquinas" loading="lazy"></div>
-    <div class="logo-marquee-item"><img src="/assets/inpress-brasil-logo.jpeg" alt="Inpress Brasil" loading="lazy"></div>
-    <div class="logo-marquee-item"><img src="/assets/inled-brasil-logo.png" alt="Inled Brasil" loading="lazy"></div>
-    <div class="logo-marquee-item"><img src="/assets/phd-playground-logo.png" alt="PHD Playground" loading="lazy"></div>
-    <div class="logo-marquee-item"><img src="/assets/ambiental-wash-logo.webp" alt="Ambiental Wash" loading="lazy"></div>
-    <div class="logo-marquee-item"><img src="/assets/mundpay-logo.png" alt="Mundpay" loading="lazy"></div>
-    <div class="logo-marquee-item"><img src="/assets/agita-morango-logo.png" alt="Agita Morango" loading="lazy"></div>
-    <div class="logo-marquee-item"><img src="/assets/keysfan-logo.webp" alt="Keysfan" loading="lazy"></div>
-    <div class="logo-marquee-item"><img src="/assets/soft-everest-logo.png" alt="Soft Everest" loading="lazy"></div>
-    <div class="logo-marquee-item"><img src="/assets/am-cabral-logo.svg" alt="Amanda Cabral Contadora" loading="lazy"></div>
-    <div class="logo-marquee-item"><img src="/assets/am-cabral-logo.svg" alt="AM Cabral Blindagem" loading="lazy"></div>
-    <div class="logo-marquee-item"><img src="/assets/move-maquinas-logo.png" alt="Move Máquinas" loading="lazy"></div>
-    <div class="logo-marquee-item"><img src="/assets/inpress-brasil-logo.jpeg" alt="Inpress Brasil" loading="lazy"></div>
-    <div class="logo-marquee-item"><img src="/assets/inled-brasil-logo.png" alt="Inled Brasil" loading="lazy"></div>
-    <div class="logo-marquee-item"><img src="/assets/phd-playground-logo.png" alt="PHD Playground" loading="lazy"></div>
-    <div class="logo-marquee-item"><img src="/assets/ambiental-wash-logo.webp" alt="Ambiental Wash" loading="lazy"></div>
-    <div class="logo-marquee-item"><img src="/assets/mundpay-logo.png" alt="Mundpay" loading="lazy"></div>
-    <div class="logo-marquee-item"><img src="/assets/agita-morango-logo.png" alt="Agita Morango" loading="lazy"></div>
-    <div class="logo-marquee-item"><img src="/assets/keysfan-logo.webp" alt="Keysfan" loading="lazy"></div>
-    <div class="logo-marquee-item"><img src="/assets/soft-everest-logo.png" alt="Soft Everest" loading="lazy"></div>
-    <div class="logo-marquee-item"><img src="/assets/am-cabral-logo.svg" alt="Amanda Cabral Contadora" loading="lazy"></div>
-=======
-    <div class="logo-marquee-item"><span class="logo-marquee-text">AM Cabral Blindagem</span></div>
-    <div class="logo-marquee-item"><img src="/assets/move-maquinas-logo.png" alt="Move Máquinas" loading="lazy"></div>
-    <div class="logo-marquee-item"><span class="logo-marquee-text">Inpress Brasil</span></div>
-    <div class="logo-marquee-item"><img src="/assets/inled-brasil-logo.png" alt="Inled Brasil" loading="lazy"></div>
-    <div class="logo-marquee-item"><img src="/assets/phd-playground-logo.png" alt="PHD Playground" loading="lazy"></div>
-    <div class="logo-marquee-item"><img src="/assets/ambiental-wash-logo.webp" alt="Ambiental Wash" loading="lazy"></div>
-    <div class="logo-marquee-item"><img src="/assets/mundpay-logo.png" alt="Mundpay" loading="lazy"></div>
-    <div class="logo-marquee-item"><span class="logo-marquee-text">Agita Morango</span></div>
-    <div class="logo-marquee-item"><span class="logo-marquee-text">Keysfan</span></div>
-    <div class="logo-marquee-item"><img src="/assets/soft-everest-logo.png" alt="Soft Everest" loading="lazy"></div>
-    <div class="logo-marquee-item"><span class="logo-marquee-text">Amanda Cabral Contadora</span></div>
-    <div class="logo-marquee-item"><span class="logo-marquee-text">AM Cabral Blindagem</span></div>
-    <div class="logo-marquee-item"><img src="/assets/move-maquinas-logo.png" alt="Move Máquinas" loading="lazy"></div>
-    <div class="logo-marquee-item"><span class="logo-marquee-text">Inpress Brasil</span></div>
-    <div class="logo-marquee-item"><img src="/assets/inled-brasil-logo.png" alt="Inled Brasil" loading="lazy"></div>
-    <div class="logo-marquee-item"><img src="/assets/phd-playground-logo.png" alt="PHD Playground" loading="lazy"></div>
-    <div class="logo-marquee-item"><img src="/assets/ambiental-wash-logo.webp" alt="Ambiental Wash" loading="lazy"></div>
-    <div class="logo-marquee-item"><img src="/assets/mundpay-logo.png" alt="Mundpay" loading="lazy"></div>
-    <div class="logo-marquee-item"><span class="logo-marquee-text">Agita Morango</span></div>
-    <div class="logo-marquee-item"><span class="logo-marquee-text">Keysfan</span></div>
-    <div class="logo-marquee-item"><img src="/assets/soft-everest-logo.png" alt="Soft Everest" loading="lazy"></div>
-    <div class="logo-marquee-item"><span class="logo-marquee-text">Amanda Cabral Contadora</span></div>
->>>>>>> Stashed changes
+  <h2 class="client-strip-head">Quem Confia na <em>Maturare</em></h2>
+  <p class="client-strip-sub">De empresários locais a marcas nacionais: negócios que escolheram aparecer.</p>
+  <div class="clients-track-wrapper">
+    <div class="clients-track">
+      <img src="/assets/am-cabral-logo.svg" alt="AM Cabral" loading="lazy" height="48">
+      <img src="/assets/move-maquinas-logo.png" alt="Move Máquinas" loading="lazy" height="48">
+      <img src="/assets/inpress-brasil-logo.jpeg" alt="Inpress Brasil" loading="lazy" height="48">
+      <img src="/assets/inled-brasil-logo.png" alt="Inled Brasil" loading="lazy" height="48">
+      <img src="/assets/phd-playground-logo.png" alt="PHD Playground" loading="lazy" height="48">
+      <img src="/assets/ambiental-wash-logo.webp" alt="Ambiental Wash" loading="lazy" height="48">
+      <img src="/assets/mundpay-logo.png" alt="Mundpay" loading="lazy" height="48">
+      <img src="/assets/agita-morango-logo.png" alt="Agita Morango" loading="lazy" height="48">
+      <img src="/assets/keysfan-logo.webp" alt="Keysfan" loading="lazy" height="48">
+      <img src="/assets/soft-everest-logo.png" alt="Soft Everest" loading="lazy" height="48">
+      <!-- duplicado para loop contínuo -->
+      <img src="/assets/am-cabral-logo.svg" alt="AM Cabral" loading="lazy" height="48">
+      <img src="/assets/move-maquinas-logo.png" alt="Move Máquinas" loading="lazy" height="48">
+      <img src="/assets/inpress-brasil-logo.jpeg" alt="Inpress Brasil" loading="lazy" height="48">
+      <img src="/assets/inled-brasil-logo.png" alt="Inled Brasil" loading="lazy" height="48">
+      <img src="/assets/phd-playground-logo.png" alt="PHD Playground" loading="lazy" height="48">
+      <img src="/assets/ambiental-wash-logo.webp" alt="Ambiental Wash" loading="lazy" height="48">
+      <img src="/assets/mundpay-logo.png" alt="Mundpay" loading="lazy" height="48">
+      <img src="/assets/agita-morango-logo.png" alt="Agita Morango" loading="lazy" height="48">
+      <img src="/assets/keysfan-logo.webp" alt="Keysfan" loading="lazy" height="48">
+      <img src="/assets/soft-everest-logo.png" alt="Soft Everest" loading="lazy" height="48">
+    </div>
   </div>
 </div>
 
