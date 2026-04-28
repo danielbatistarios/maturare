@@ -2629,7 +2629,7 @@ p, .hero-sub, .sim-desc, .why-desc { text-wrap: pretty; }
 <div class="mm-panel" id="mm-blog" role="region" aria-label="Menu Blog">
   <div class="mm-inner" style="grid-template-columns:260px 1fr;">
     <div class="mm-aside">
-      <div class="mm-aside-bg" style="background-image:url('https://images.unsplash.com/photo-1643148636630-0b0fb138fc74?w=600&auto=format&fit=crop&q=80')"></div>
+      <div class="mm-aside-bg" style="background-image:url('https://images.unsplash.com/photo-1643148636630-0b0fb138fc74?w=600&auto=format&fit=crop&q=80'); filter:grayscale(100%);"></div>
       <div>
         <p class="mm-aside-tag">Blog Maturare</p>
         <h2 class="mm-aside-title">Visibilidade não é sorte. É método.</h2>
@@ -2671,7 +2671,7 @@ p, .hero-sub, .sim-desc, .why-desc { text-wrap: pretty; }
 <div class="mm-panel" id="mm-academy" role="region" aria-label="Menu Academy">
   <div class="mm-inner">
     <div class="mm-aside">
-      <div class="mm-aside-bg" style="background-image:url('https://images.unsplash.com/photo-1651714082815-86618e06f77d?w=600&auto=format&fit=crop&q=80')"></div>
+      <div class="mm-aside-bg" style="background-image:url('https://images.unsplash.com/photo-1651714082815-86618e06f77d?w=600&auto=format&fit=crop&q=80'); filter:grayscale(100%);"></div>
       <div>
         <p class="mm-aside-tag">Maturare Academy</p>
         <h2 class="mm-aside-title">Aprenda a fazer sua empresa aparecer.</h2>
@@ -3755,12 +3755,13 @@ function fSubmit() {
 
 /* === MEGAMENU === */
 (function() {
-  var panels = { servicos: 'ni-servicos', blog: 'ni-blog' };
   var openId = null;
+  var closeTimer = null;
 
   function openPanel(id) {
-    if (openId === id) { closeAll(); return; }
-    closeAll();
+    clearTimeout(closeTimer);
+    if (openId === id) return;
+    closeImmediate();
     var ni = document.getElementById('ni-' + id);
     var mm = document.getElementById('mm-' + id);
     if (!ni || !mm) return;
@@ -3770,7 +3771,12 @@ function fSubmit() {
     openId = id;
   }
 
-  function closeAll() {
+  function scheduleClose() {
+    closeTimer = setTimeout(closeImmediate, 120);
+  }
+
+  function closeImmediate() {
+    clearTimeout(closeTimer);
     if (!openId) return;
     var ni = document.getElementById('ni-' + openId);
     var mm = document.getElementById('mm-' + openId);
@@ -3781,17 +3787,24 @@ function fSubmit() {
 
   ['sobre', 'servicos', 'blog', 'academy'].forEach(function(id) {
     var ni = document.getElementById('ni-' + id);
-    if (ni) ni.querySelector('.nav-btn').addEventListener('click', function() { openPanel(id); });
+    var mm = document.getElementById('mm-' + id);
+    if (!ni || !mm) return;
+
+    /* hover abre */
+    ni.addEventListener('mouseenter', function() { openPanel(id); });
+    ni.addEventListener('mouseleave', scheduleClose);
+
+    /* passar mouse no painel mantém aberto */
+    mm.addEventListener('mouseenter', function() { clearTimeout(closeTimer); });
+    mm.addEventListener('mouseleave', scheduleClose);
+
+    /* click no botão também funciona (acessibilidade / touch) */
+    ni.querySelector('.nav-btn').addEventListener('click', function() {
+      if (openId === id) { closeImmediate(); } else { openPanel(id); }
+    });
   });
 
-  document.addEventListener('click', function(e) {
-    if (!openId) return;
-    var ni = document.getElementById('ni-' + openId);
-    var mm = document.getElementById('mm-' + openId);
-    if (ni && !ni.contains(e.target) && mm && !mm.contains(e.target)) closeAll();
-  });
-
-  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeAll(); });
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeImmediate(); });
 })();
 
 /* === MOBILE MENU === */
