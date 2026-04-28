@@ -807,9 +807,9 @@ nav.scrolled {
 .hero-sub strong { color: rgba(255, 255, 255, .7); font-weight: 500; }
 .hero-plat-badge {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
-  gap: 8px;
+  gap: 6px 6px;
   margin: 12px 0 0;
   opacity: 0;
   animation: up .9s .3s var(--spring) forwards;
@@ -2793,7 +2793,7 @@ p, .hero-sub, .sim-desc, .why-desc { text-wrap: pretty; }
           <span class="word wd8">GEO</span>
         </h1>
         <div class="hero-plat-badge">
-          <span class="hero-plat-label">Sua empresa recomendada pelo</span>
+          <span class="hero-plat-label">Capture milhões de cliques de clientes descobrindo novos produtos e marcas através de</span>
           <div class="plat-chip-wrap">
             <span class="plat-chip chip-active" id="chip0">
               <span class="plat-ic" style="background:#10a37f">
@@ -3046,139 +3046,121 @@ p, .hero-sub, .sim-desc, .why-desc { text-wrap: pretty; }
       <h2 class="sec-h dk">Tudo que sua empresa precisa<br><em>para aparecer no Google e ser recomendada pela IA</em></h2>
     </div>
     <div class="svc-4 reveal">
+      <!-- Card 1: Criação de Sites (ícone: lupa sobre browser) -->
       <div class="s4 reveal d1">
         <div class="s4-ic">
           <div class="s4-svg-base">
             <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="10" y="14" width="80" height="58" rx="6" stroke="#d0d0d0" stroke-width="1.5" fill="#fafafa"/>
-              <rect x="10" y="14" width="80" height="16" rx="6" stroke="#d0d0d0" stroke-width="1.5" fill="#f2f2f2"/>
-              <rect x="10" y="24" width="80" height="6" fill="#f2f2f2"/>
-              <circle cx="21" cy="22" r="3" fill="#e0e0e0"/>
-              <circle cx="30" cy="22" r="3" fill="#e0e0e0"/>
-              <circle cx="39" cy="22" r="3" fill="#e0e0e0"/>
-              <rect x="20" y="38" width="22" height="3" rx="1.5" fill="#dedede"/>
-              <rect x="20" y="45" width="38" height="2" rx="1" fill="#ebebeb"/>
-              <rect x="20" y="51" width="30" height="2" rx="1" fill="#ebebeb"/>
-              <rect x="20" y="57" width="42" height="2" rx="1" fill="#ebebeb"/>
-              <rect x="68" y="38" width="14" height="10" rx="3" fill="#d0d0d0"/>
+              <rect x="15" y="20" width="70" height="52" rx="5" stroke="#d0d0d0" stroke-width="1.5" fill="#fafafa"/>
+              <rect x="15" y="20" width="70" height="14" rx="5" fill="#f2f2f2" stroke="#d0d0d0" stroke-width="1.5"/>
+              <rect x="15" y="28" width="70" height="6" fill="#f2f2f2"/>
+              <circle cx="25" cy="27" r="2.5" fill="#e0e0e0"/>
+              <circle cx="33" cy="27" r="2.5" fill="#e0e0e0"/>
+              <circle cx="41" cy="27" r="2.5" fill="#e0e0e0"/>
+              <circle cx="46" cy="52" r="13" stroke="#d0d0d0" stroke-width="1.5" fill="none"/>
+              <line x1="56" y1="62" x2="68" y2="74" stroke="#c8c8c8" stroke-width="2.5" stroke-linecap="round"/>
+              <line x1="40" y1="48" x2="52" y2="48" stroke="#e0e0e0" stroke-width="1.5" stroke-linecap="round"/>
+              <line x1="40" y1="54" x2="55" y2="54" stroke="#e0e0e0" stroke-width="1.5" stroke-linecap="round"/>
             </svg>
           </div>
           <div class="s4-svg-hover">
             <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="10" y="14" width="80" height="58" rx="6" stroke="#999" stroke-width="1.5" fill="#f5f5f5"/>
-              <rect x="10" y="14" width="80" height="16" rx="6" stroke="#999" stroke-width="1.5" fill="#eaeaea"/>
-              <rect x="10" y="24" width="80" height="6" fill="#eaeaea"/>
-              <circle cx="21" cy="22" r="3" fill="#bbb"/>
-              <circle cx="30" cy="22" r="3" fill="#bbb"/>
-              <circle cx="39" cy="22" r="3" fill="#bbb"/>
-              <rect x="20" y="38" width="22" height="3" rx="1.5" fill="#1a7a4a" opacity=".7"/>
-              <rect x="20" y="45" width="38" height="2" rx="1" fill="#bbb"/>
-              <rect x="20" y="51" width="30" height="2" rx="1" fill="#bbb"/>
-              <rect x="20" y="57" width="42" height="2" rx="1" fill="#bbb"/>
-              <rect x="68" y="38" width="14" height="10" rx="3" fill="#1a7a4a" opacity=".5"/>
+              <rect x="15" y="20" width="70" height="52" rx="5" stroke="#aaa" stroke-width="1.5" fill="#f5f5f5"/>
+              <rect x="15" y="20" width="70" height="14" rx="5" fill="#eaeaea" stroke="#aaa" stroke-width="1.5"/>
+              <rect x="15" y="28" width="70" height="6" fill="#eaeaea"/>
+              <circle cx="25" cy="27" r="2.5" fill="#bbb"/>
+              <circle cx="33" cy="27" r="2.5" fill="#bbb"/>
+              <circle cx="41" cy="27" r="2.5" fill="#bbb"/>
+              <circle cx="46" cy="52" r="13" stroke="#1a7a4a" stroke-width="1.5" fill="none" opacity=".7"/>
+              <line x1="56" y1="62" x2="68" y2="74" stroke="#1a7a4a" stroke-width="2.5" stroke-linecap="round" opacity=".6"/>
+              <line x1="40" y1="48" x2="52" y2="48" stroke="#bbb" stroke-width="1.5" stroke-linecap="round"/>
+              <line x1="40" y1="54" x2="55" y2="54" stroke="#bbb" stroke-width="1.5" stroke-linecap="round"/>
             </svg>
           </div>
         </div>
-        <h3>Criação de Sites</h3>
-        <p>Sites que ranqueiam no Google desde o primeiro dia.</p>
+        <h3>Criação de Sites para SEO</h3>
+        <p>Seu site pensado para ser encontrado no Google. A Maturare cria a arquitetura que ranqueia, não só design bonito.</p>
       </div>
+      <!-- Card 2: Marketing de Conteúdo (ícone: "A" tipográfico com setas) -->
       <div class="s4 reveal d2">
         <div class="s4-ic">
           <div class="s4-svg-base">
             <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="44" cy="44" r="24" stroke="#d0d0d0" stroke-width="1.5" fill="#fafafa"/>
-              <circle cx="44" cy="44" r="14" stroke="#e8e8e8" stroke-width="1.5" fill="none"/>
-              <line x1="62" y1="60" x2="78" y2="76" stroke="#c8c8c8" stroke-width="2.5" stroke-linecap="round"/>
-              <line x1="38" y1="38" x2="50" y2="38" stroke="#dedede" stroke-width="1.5" stroke-linecap="round"/>
-              <line x1="38" y1="44" x2="54" y2="44" stroke="#dedede" stroke-width="1.5" stroke-linecap="round"/>
-              <line x1="38" y1="50" x2="46" y2="50" stroke="#dedede" stroke-width="1.5" stroke-linecap="round"/>
+              <rect x="22" y="18" width="56" height="64" rx="4" stroke="#d0d0d0" stroke-width="1.5" fill="#fafafa"/>
+              <text x="50" y="64" text-anchor="middle" font-family="Georgia,serif" font-size="36" fill="#d8d8d8">A</text>
+              <line x1="12" y1="50" x2="22" y2="50" stroke="#d0d0d0" stroke-width="1.2"/>
+              <polyline points="16,46 12,50 16,54" fill="none" stroke="#d0d0d0" stroke-width="1.2" stroke-linejoin="round"/>
+              <line x1="78" y1="50" x2="88" y2="50" stroke="#d0d0d0" stroke-width="1.2"/>
+              <polyline points="84,46 88,50 84,54" fill="none" stroke="#d0d0d0" stroke-width="1.2" stroke-linejoin="round"/>
+              <line x1="50" y1="8" x2="50" y2="18" stroke="#d0d0d0" stroke-width="1.2"/>
+              <polyline points="46,12 50,8 54,12" fill="none" stroke="#d0d0d0" stroke-width="1.2" stroke-linejoin="round"/>
+              <line x1="50" y1="82" x2="50" y2="92" stroke="#d0d0d0" stroke-width="1.2"/>
+              <polyline points="46,88 50,92 54,88" fill="none" stroke="#d0d0d0" stroke-width="1.2" stroke-linejoin="round"/>
             </svg>
           </div>
           <div class="s4-svg-hover">
             <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="44" cy="44" r="24" stroke="#999" stroke-width="1.5" fill="#f5f5f5"/>
-              <circle cx="44" cy="44" r="14" stroke="#bbb" stroke-width="1.5" fill="none"/>
-              <line x1="62" y1="60" x2="78" y2="76" stroke="#888" stroke-width="2.5" stroke-linecap="round"/>
-              <line x1="38" y1="38" x2="50" y2="38" stroke="#1a7a4a" stroke-width="1.5" stroke-linecap="round" opacity=".7"/>
-              <line x1="38" y1="44" x2="54" y2="44" stroke="#bbb" stroke-width="1.5" stroke-linecap="round"/>
-              <line x1="38" y1="50" x2="46" y2="50" stroke="#bbb" stroke-width="1.5" stroke-linecap="round"/>
+              <rect x="22" y="18" width="56" height="64" rx="4" stroke="#999" stroke-width="1.5" fill="#f5f5f5"/>
+              <text x="50" y="64" text-anchor="middle" font-family="Georgia,serif" font-size="36" fill="#1a7a4a" opacity=".55">A</text>
+              <line x1="12" y1="50" x2="22" y2="50" stroke="#1a7a4a" stroke-width="1.2" opacity=".6"/>
+              <polyline points="16,46 12,50 16,54" fill="none" stroke="#1a7a4a" stroke-width="1.2" stroke-linejoin="round" opacity=".6"/>
+              <line x1="78" y1="50" x2="88" y2="50" stroke="#1a7a4a" stroke-width="1.2" opacity=".6"/>
+              <polyline points="84,46 88,50 84,54" fill="none" stroke="#1a7a4a" stroke-width="1.2" stroke-linejoin="round" opacity=".6"/>
+              <line x1="50" y1="8" x2="50" y2="18" stroke="#bbb" stroke-width="1.2"/>
+              <polyline points="46,12 50,8 54,12" fill="none" stroke="#bbb" stroke-width="1.2" stroke-linejoin="round"/>
+              <line x1="50" y1="82" x2="50" y2="92" stroke="#bbb" stroke-width="1.2"/>
+              <polyline points="46,88 50,92 54,88" fill="none" stroke="#bbb" stroke-width="1.2" stroke-linejoin="round"/>
             </svg>
           </div>
         </div>
-        <h3>Consultoria de SEO</h3>
-        <p>Auditoria completa do seu site e plano de ação para crescer no orgânico.</p>
+        <h3>Marketing de Conteúdo</h3>
+        <p>Todo mês a Maturare cria páginas e conteúdo que posicionam no Google e nas IAs.</p>
       </div>
+      <!-- Card 3: Otimização de Buscas para IA (ícone: nuvem com código) -->
       <div class="s4 reveal d3">
         <div class="s4-ic">
           <div class="s4-svg-base">
             <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="18" y="22" width="46" height="56" rx="4" stroke="#d0d0d0" stroke-width="1.5" fill="#fafafa"/>
-              <line x1="26" y1="36" x2="56" y2="36" stroke="#e4e4e4" stroke-width="1.5"/>
-              <line x1="26" y1="44" x2="50" y2="44" stroke="#ebebeb" stroke-width="1.2"/>
-              <line x1="26" y1="51" x2="54" y2="51" stroke="#ebebeb" stroke-width="1.2"/>
-              <line x1="26" y1="58" x2="48" y2="58" stroke="#ebebeb" stroke-width="1.2"/>
-              <circle cx="72" cy="30" r="9" stroke="#d0d0d0" stroke-width="1.5" fill="#fafafa"/>
-              <line x1="64" y1="38" x2="68" y2="42" stroke="#d0d0d0" stroke-width="1.2"/>
-              <circle cx="76" cy="55" r="7" stroke="#d0d0d0" stroke-width="1.5" fill="#fafafa"/>
-              <line x1="64" y1="50" x2="69" y2="51" stroke="#d0d0d0" stroke-width="1.2"/>
-              <circle cx="74" cy="74" r="6" stroke="#d0d0d0" stroke-width="1.5" fill="#fafafa"/>
-              <line x1="64" y1="64" x2="68" y2="67" stroke="#d0d0d0" stroke-width="1.2"/>
+              <path d="M32 65 C20 65 14 56 14 49 C14 40 21 33 30 33 C31 24 39 18 50 18 C61 18 69 25 70 34 C77 34 84 40 84 49 C84 58 77 65 68 65 Z" stroke="#d0d0d0" stroke-width="1.5" fill="#fafafa" stroke-linejoin="round"/>
+              <text x="49" y="56" text-anchor="middle" font-family="'Courier New',monospace" font-size="15" fill="#d0d0d0">&lt;/&gt;</text>
             </svg>
           </div>
           <div class="s4-svg-hover">
             <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="18" y="22" width="46" height="56" rx="4" stroke="#999" stroke-width="1.5" fill="#f5f5f5"/>
-              <line x1="26" y1="36" x2="56" y2="36" stroke="#1a7a4a" stroke-width="1.5" opacity=".6"/>
-              <line x1="26" y1="44" x2="50" y2="44" stroke="#bbb" stroke-width="1.2"/>
-              <line x1="26" y1="51" x2="54" y2="51" stroke="#bbb" stroke-width="1.2"/>
-              <line x1="26" y1="58" x2="48" y2="58" stroke="#bbb" stroke-width="1.2"/>
-              <circle cx="72" cy="30" r="9" stroke="#888" stroke-width="1.5" fill="#f5f5f5"/>
-              <line x1="64" y1="38" x2="68" y2="42" stroke="#999" stroke-width="1.2"/>
-              <circle cx="76" cy="55" r="7" stroke="#888" stroke-width="1.5" fill="#f5f5f5"/>
-              <line x1="64" y1="50" x2="69" y2="51" stroke="#999" stroke-width="1.2"/>
-              <circle cx="74" cy="74" r="6" stroke="#1a7a4a" stroke-width="1.5" fill="#e8f5ee" opacity=".8"/>
-              <line x1="64" y1="64" x2="68" y2="67" stroke="#999" stroke-width="1.2"/>
+              <path d="M32 65 C20 65 14 56 14 49 C14 40 21 33 30 33 C31 24 39 18 50 18 C61 18 69 25 70 34 C77 34 84 40 84 49 C84 58 77 65 68 65 Z" stroke="#1a7a4a" stroke-width="1.5" fill="#f5f5f5" stroke-linejoin="round" opacity=".7"/>
+              <text x="49" y="56" text-anchor="middle" font-family="'Courier New',monospace" font-size="15" fill="#1a7a4a" opacity=".65">&lt;/&gt;</text>
             </svg>
           </div>
         </div>
-        <h3>Schema Markup e Entidades</h3>
-        <p>Dados estruturados que fazem o Google e as IAs entenderem sua empresa.</p>
+        <h3>Otimização de Buscas para IA</h3>
+        <p>Estrutura de dados e entidades que fazem o ChatGPT, Gemini e Perplexity recomendarem sua empresa.</p>
       </div>
+      <!-- Card 4: SEO Programático (ícone: blocos isométricos empilhados) -->
       <div class="s4 reveal d4">
         <div class="s4-ic">
           <div class="s4-svg-base">
             <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M14 76 L50 90 L86 76 L50 62 Z" fill="#f0f0f0" stroke="#d0d0d0" stroke-width="1.2"/>
-              <path d="M14 76 L14 83 L50 97 L50 90 Z" fill="#e4e4e4" stroke="#d0d0d0" stroke-width="1.2"/>
-              <path d="M86 76 L86 83 L50 97 L50 90 Z" fill="#d8d8d8" stroke="#c8c8c8" stroke-width="1.2"/>
-              <path d="M22 60 L50 72 L78 60 L50 48 Z" fill="#f6f6f6" stroke="#d0d0d0" stroke-width="1.2"/>
-              <path d="M22 60 L22 67 L50 79 L50 72 Z" fill="#ebebeb" stroke="#d0d0d0" stroke-width="1.2"/>
-              <path d="M78 60 L78 67 L50 79 L50 72 Z" fill="#e0e0e0" stroke="#c8c8c8" stroke-width="1.2"/>
-              <path d="M30 44 L50 54 L70 44 L50 34 Z" fill="#fff" stroke="#c8c8c8" stroke-width="1.2"/>
-              <path d="M30 44 L30 51 L50 61 L50 54 Z" fill="#f2f2f2" stroke="#d0d0d0" stroke-width="1.2"/>
-              <path d="M70 44 L70 51 L50 61 L50 54 Z" fill="#e6e6e6" stroke="#c8c8c8" stroke-width="1.2"/>
-              <path d="M38 28 L50 34 L62 28 L50 22 Z" fill="#fff" stroke="#d0d0d0" stroke-width="1" stroke-dasharray="2 2"/>
+              <path d="M50 58 L72 46 L72 34 L50 46 Z" fill="#f0f0f0" stroke="#d0d0d0" stroke-width="1.2" stroke-linejoin="round"/>
+              <path d="M50 58 L28 46 L28 34 L50 46 Z" fill="#e4e4e4" stroke="#d0d0d0" stroke-width="1.2" stroke-linejoin="round"/>
+              <path d="M28 34 L50 22 L72 34 L50 46 Z" fill="#f8f8f8" stroke="#d0d0d0" stroke-width="1.2" stroke-linejoin="round"/>
+              <path d="M50 76 L72 64 L72 52 L50 64 Z" fill="#e8e8e8" stroke="#d0d0d0" stroke-width="1.2" stroke-linejoin="round"/>
+              <path d="M50 76 L28 64 L28 52 L50 64 Z" fill="#dedede" stroke="#d0d0d0" stroke-width="1.2" stroke-linejoin="round"/>
+              <path d="M28 52 L50 40 L72 52 L50 64 Z" fill="#f2f2f2" stroke="#d0d0d0" stroke-width="1.2" stroke-linejoin="round"/>
             </svg>
           </div>
           <div class="s4-svg-hover">
             <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M14 76 L50 90 L86 76 L50 62 Z" fill="#e8e8e8" stroke="#aaa" stroke-width="1.2"/>
-              <path d="M14 76 L14 83 L50 97 L50 90 Z" fill="#ddd" stroke="#aaa" stroke-width="1.2"/>
-              <path d="M86 76 L86 83 L50 97 L50 90 Z" fill="#d0d0d0" stroke="#999" stroke-width="1.2"/>
-              <path d="M22 60 L50 72 L78 60 L50 48 Z" fill="#eee" stroke="#aaa" stroke-width="1.2"/>
-              <path d="M22 60 L22 67 L50 79 L50 72 Z" fill="#e3e3e3" stroke="#aaa" stroke-width="1.2"/>
-              <path d="M78 60 L78 67 L50 79 L50 72 Z" fill="#d6d6d6" stroke="#999" stroke-width="1.2"/>
-              <path d="M30 44 L50 54 L70 44 L50 34 Z" fill="#fff" stroke="#999" stroke-width="1.2"/>
-              <path d="M30 44 L30 51 L50 61 L50 54 Z" fill="#eee" stroke="#aaa" stroke-width="1.2"/>
-              <path d="M70 44 L70 51 L50 61 L50 54 Z" fill="#e0e0e0" stroke="#999" stroke-width="1.2"/>
-              <path d="M38 28 L50 34 L62 28 L50 22 Z" fill="#e8f5ee" stroke="#1a7a4a" stroke-width="1.2" stroke-opacity=".6"/>
-              <path d="M38 28 L38 34 L50 40 L50 34 Z" fill="#d0ecdb" stroke="#1a7a4a" stroke-width="1" stroke-opacity=".5"/>
-              <path d="M62 28 L62 34 L50 40 L50 34 Z" fill="#c4e4d0" stroke="#1a7a4a" stroke-width="1" stroke-opacity=".4"/>
+              <path d="M50 58 L72 46 L72 34 L50 46 Z" fill="#e0ede5" stroke="#1a7a4a" stroke-width="1.2" stroke-linejoin="round" opacity=".5"/>
+              <path d="M50 58 L28 46 L28 34 L50 46 Z" fill="#d0e8d8" stroke="#1a7a4a" stroke-width="1.2" stroke-linejoin="round" opacity=".45"/>
+              <path d="M28 34 L50 22 L72 34 L50 46 Z" fill="#eaf4ee" stroke="#1a7a4a" stroke-width="1.2" stroke-linejoin="round" opacity=".6"/>
+              <path d="M50 76 L72 64 L72 52 L50 64 Z" fill="#e8e8e8" stroke="#bbb" stroke-width="1.2" stroke-linejoin="round"/>
+              <path d="M50 76 L28 64 L28 52 L50 64 Z" fill="#dedede" stroke="#bbb" stroke-width="1.2" stroke-linejoin="round"/>
+              <path d="M28 52 L50 40 L72 52 L50 64 Z" fill="#f0f0f0" stroke="#bbb" stroke-width="1.2" stroke-linejoin="round"/>
             </svg>
           </div>
         </div>
-        <h3>Arquitetura Digital Mensal</h3>
-        <p>SEO, GEO e AEO todo mês. Sua empresa cresce enquanto você foca no negócio.</p>
+        <h3>SEO Programático</h3>
+        <p>Centenas de páginas otimizadas geradas com escala. Mais presença no Google sem multiplicar o trabalho manual.</p>
       </div>
     </div>
     <div class="reveal" style="text-align:center;margin-top:48px;">
