@@ -2081,6 +2081,12 @@ textarea.finput { min-height: 90px; resize: vertical; }
   object-fit: contain;
   display: block;
 }
+/* Perplexity: app icon tem fundo próprio, remove border/shadow do wrapper */
+.si-mob-icon.si-mob-icon--dark {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
 /* centro: maior, quadrado arredondado */
 .si-mob-icon.si-mob-center {
   width: 72px;
@@ -5530,21 +5536,15 @@ footer {
           <div class="si-mob-icon si-mob-center">
             <img src="/assets/maturare-logo.png" alt="Maturare" width="26" height="32" style="object-fit:contain;">
           </div>
-          <div class="si-mob-icon">
-            <!-- Perplexity — ícone símbolo (estrela/asterisco estilizado) na cor original #1FB8CD -->
-            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12.001 2.25L9.04 7.154H2.25l5.416 4.346-2.07 7.25L12.001 15l6.404 3.75-2.07-7.25 5.415-4.346h-6.79L12.001 2.25z" fill="#1FB8CD"/>
-            </svg>
+          <div class="si-mob-icon si-mob-icon--dark">
+            <img src="/assets/perplexity-icon.webp" alt="Perplexity" width="44" height="44" style="object-fit:contain;border-radius:10px;">
           </div>
         </div>
 
         <!-- Linha 3: Bing | Gemini -->
         <div class="si-mob-row">
           <div class="si-mob-icon">
-            <!-- Bing — logo oficial Microsoft Search, azul #008373 -->
-            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M4.5 2v18.3l4.3 1.75V12.7l5.5 3.15-.02.01 1.56 3.2 3.66-2.1-6.96-4.01V3.64L4.5 2z" fill="#008373"/>
-            </svg>
+            <img src="/assets/bing-logo.png" alt="Bing" width="34" height="34" style="object-fit:contain;">
           </div>
           <div class="si-mob-icon">
             <!-- Gemini — degradê original azul→roxo -->
