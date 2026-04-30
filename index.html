@@ -2436,7 +2436,8 @@ textarea.finput { min-height: 90px; resize: vertical; }
     align-items: center;
     justify-content: center;
     gap: 16px;
-    margin-top: 8px;
+    margin-bottom: 16px;
+    padding: 4px 0;
   }
   .met-nav-btn {
     width: 40px; height: 40px;
@@ -5787,6 +5788,23 @@ footer {
     </div>
 
     <div class="met-steps">
+
+      <!-- Mobile navigation — above cards -->
+      <div class="met-nav" id="metNav" aria-label="Navegação da metodologia">
+        <button class="met-nav-btn" id="metPrev" aria-label="Etapa anterior">
+          <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <div class="met-nav-dots" id="metDots">
+          <div class="met-nav-dot active"></div>
+          <div class="met-nav-dot"></div>
+          <div class="met-nav-dot"></div>
+          <div class="met-nav-dot"></div>
+        </div>
+        <button class="met-nav-btn" id="metNext" aria-label="Próxima etapa">
+          <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+
       <div class="met-carousel-track" id="metTrack">
 
       <!-- 01 -->
@@ -5934,22 +5952,6 @@ footer {
       </div>
 
       </div><!-- /met-carousel-track -->
-    </div>
-
-    <!-- Mobile navigation -->
-    <div class="met-nav" id="metNav" aria-label="Navegação da metodologia">
-      <button class="met-nav-btn" id="metPrev" aria-label="Etapa anterior">
-        <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
-      </button>
-      <div class="met-nav-dots" id="metDots">
-        <div class="met-nav-dot active"></div>
-        <div class="met-nav-dot"></div>
-        <div class="met-nav-dot"></div>
-        <div class="met-nav-dot"></div>
-      </div>
-      <button class="met-nav-btn" id="metNext" aria-label="Próxima etapa">
-        <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
-      </button>
     </div>
 
   </div>
