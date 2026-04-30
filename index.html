@@ -2744,6 +2744,15 @@ footer {
   .quote-txt { font-size: clamp(18px, 5vw, 26px); }
   .location-map iframe { aspect-ratio: 16/9; }
   .loader-phrase { font-size: clamp(18px, 5vw, 28px); }
+
+  /* Hero: mais espaço no topo + texto legível */
+  .hero-sub { font-size: 15px; color: rgba(255,255,255,.65); }
+
+  /* Chip AI (ChatGPT/Gemini/etc) menor em mobile */
+  .plat-chip-inline { width: 130px; height: 32px; }
+  .plat-chip-inline .plat-chip { font-size: 20px; padding: 3px 10px 3px 5px; border-radius: 7px; gap: 6px; }
+  .plat-chip-inline .plat-ic { width: 22px; height: 22px; border-radius: 5px; }
+  .plat-chip-inline .plat-ic img { width: 14px; height: 14px; }
 }
 
 /* ================================================
@@ -2756,9 +2765,17 @@ footer {
   :root { --sec-pad: clamp(48px, 10vw, 64px); }
 }
 
-/* P0: clients-grid colapsa para 3 colunas em mobile */
+/* P0: clients-grid — 2 colunas em mobile com bordas corretas */
 @media (max-width: 480px) {
-  .clients-grid { grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .clients-grid {
+    grid-template-columns: repeat(2, 1fr);
+    border-radius: 10px;
+  }
+  /* Reset do nth-child original (feito para 5 colunas) */
+  .cl-item:nth-child(5n) { border-right: 1px solid #eaecf0; }
+  /* Remove borda direita na segunda coluna */
+  .cl-item:nth-child(2n) { border-right: none; }
+  .cl-item { padding: 20px 12px; }
 }
 
 /* P0: footer grid colapsa para 1 coluna em mobile pequeno */
@@ -2797,9 +2814,9 @@ footer {
   .cmp2-tl-cols:has(.cmp2-tl-col:hover) .cmp2-tl-col:not(:hover) { opacity: 1 !important; }
 }
 
-/* P1: hero padding excessivo em mobile */
+/* P1: hero padding — +30px no topo para SCROLL ficar mais abaixo */
 @media (max-width: 480px) {
-  .hero-inner { padding-top: 80px; padding-bottom: 60px; }
+  .hero-inner { padding-top: 110px; padding-bottom: 80px; }
 }
 
 /* P2: machine modal padding mobile */
