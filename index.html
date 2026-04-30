@@ -2453,6 +2453,11 @@ textarea.finput { min-height: 90px; resize: vertical; }
   .met-header { margin-bottom: 40px; }
 
   /* Navigation bar — below carousel */
+  .met-nav-counter {
+    display: block;
+    text-align: center;
+    margin-bottom: 10px;
+  }
   .met-nav {
     display: flex;
     align-items: center;
@@ -2460,12 +2465,6 @@ textarea.finput { min-height: 90px; resize: vertical; }
     gap: 16px;
     margin-top: 20px;
     padding: 0;
-  }
-  .met-nav-center {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 6px;
   }
   .met-nav-btn {
     width: 40px; height: 40px;
@@ -5869,6 +5868,8 @@ footer {
 
     <div class="met-steps">
 
+      <span class="met-nav-counter" id="metCounter">Etapa 1 de 4</span>
+
       <div class="met-carousel-outer">
       <div class="met-carousel-track" id="metTrack">
 
@@ -6024,14 +6025,11 @@ footer {
         <button class="met-nav-btn" id="metPrev" aria-label="Etapa anterior" aria-disabled="true">
           <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
         </button>
-        <div class="met-nav-center">
-          <div class="met-nav-dots" id="metDots">
-            <div class="met-nav-dot active" role="tab" aria-selected="true" aria-label="Etapa 1 de 4"></div>
-            <div class="met-nav-dot" role="tab" aria-selected="false" aria-label="Etapa 2 de 4"></div>
-            <div class="met-nav-dot" role="tab" aria-selected="false" aria-label="Etapa 3 de 4"></div>
-            <div class="met-nav-dot" role="tab" aria-selected="false" aria-label="Etapa 4 de 4"></div>
-          </div>
-          <span class="met-nav-counter" id="metCounter">Etapa 1 de 4</span>
+        <div class="met-nav-dots" id="metDots">
+          <div class="met-nav-dot active" role="tab" aria-selected="true" aria-label="Etapa 1 de 4"></div>
+          <div class="met-nav-dot" role="tab" aria-selected="false" aria-label="Etapa 2 de 4"></div>
+          <div class="met-nav-dot" role="tab" aria-selected="false" aria-label="Etapa 3 de 4"></div>
+          <div class="met-nav-dot" role="tab" aria-selected="false" aria-label="Etapa 4 de 4"></div>
         </div>
         <button class="met-nav-btn" id="metNext" aria-label="Próxima etapa">
           <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
