@@ -2811,9 +2811,10 @@ footer {
   }
 
   /* Mobile text alignment */
-  .quote-inner { text-align: left !important; }
-  .quote-inner::before { left: 0; transform: none; }
-  .quote-line { margin: 16px 0 0 0; }
+  .quote-inner { text-align: center !important; padding: 0 28px; }
+  .quote-inner::before { left: 50%; transform: translateX(-50%); }
+  .quote-line { margin: 20px auto 0; }
+  .quote-txt { line-height: 1.7; }
   [style*="text-align:center"], [style*="text-align: center"] { text-align: left !important; }
   [style*="margin-left:auto"][style*="margin-right:auto"] { margin-left: 0 !important; }
 
@@ -7048,14 +7049,9 @@ Regular agencies do posts and ads. Maturare builds pages that make companies app
 
   document.querySelectorAll('#clientGrid .cl-item[data-id]').forEach(function(item) {
     var id = item.dataset.id;
-    var touchMoved = false;
 
-    item.addEventListener('touchstart', function() { touchMoved = false; }, { passive: true });
-    item.addEventListener('touchmove',  function() { touchMoved = true;  }, { passive: true });
-
-    item.addEventListener('touchend', function(e) {
-      if (touchMoved) return;
-      e.preventDefault();
+    item.addEventListener('click', function() {
+      if (!isMobile()) return;
       if (openId === id) { closeAll(); } else { openPanel(item, id); }
     });
 
