@@ -174,11 +174,6 @@ a { text-decoration: none; color: inherit; }
 img { display: block; max-width: 100%; }
 
 /* === UTILITIES === */
-.container {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 clamp(24px, 4vw, 80px);
-}
 
 /* Reveal animations */
 .reveal {
@@ -305,34 +300,12 @@ img { display: block; max-width: 100%; }
   right: 0;
   z-index: var(--zi-bar);
 }
-.bar-pill {
-  background: transparent;
-  border: 1px solid #302f29;
-  color: var(--green2);
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  padding: 2px 10px;
-  border-radius: 99px;
-}
 #bar a {
   color: var(--green2);
   border-bottom: 1px solid rgba(111, 207, 151, .25);
   transition: color .2s;
 }
 #bar a:hover { color: #a8f0c8; }
-.bar-x {
-  position: absolute;
-  right: 40px;
-  background: none;
-  border: none;
-  color: #5a5a54;
-  font-size: 18px;
-  cursor: pointer;
-  transition: color .2s;
-}
-.bar-x:hover { color: #888; }
 
 /* === NAV === */
 /* ── NAV BASE ── */
@@ -599,7 +572,6 @@ nav.scrolled {
 .mm-link:hover span { color: rgba(255,255,255,.6); }
 
 /* Blog panel: 2 colunas de artigos sem aside */
-.mm-blog { max-width: 1100px; margin: 0 auto; padding: 32px 40px; }
 .mm-blog-grid {
   display: grid; grid-template-columns: repeat(3, 1fr);
   gap: 0 40px;
@@ -622,18 +594,6 @@ nav.scrolled {
   transition: color .15s;
 }
 .mm-blog-link:hover .mm-blog-title { color: var(--paper); }
-.mm-blog-footer {
-  margin-top: 20px; padding-top: 16px;
-  border-top: 1px solid rgba(255,255,255,.06);
-  display: flex; align-items: center; justify-content: space-between;
-}
-.mm-blog-all {
-  font-family: var(--sans); font-size: 11px; font-weight: 700;
-  letter-spacing: .08em; text-transform: uppercase;
-  color: var(--paper); text-decoration: none; opacity: .6;
-  transition: opacity .2s;
-}
-.mm-blog-all:hover { opacity: 1; }
 
 /* ── NAV RIGHT ── */
 .nav-r { display: flex; align-items: center; gap: 12px; }
@@ -710,54 +670,9 @@ nav.scrolled {
 }
 .mob-sub a:last-child { border-bottom: none; }
 .mob-sub a:hover { color: rgba(255,255,255,.8); }
-.mob-head {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 20px 22px;
-  border-bottom: 1px solid rgba(255,255,255,.07);
-}
-.mob-head-logo {
-  font-family: var(--serif); font-size: 17px; letter-spacing: .05em;
-  color: var(--paper); text-decoration: none;
-}
-.mob-close {
-  background: none; border: none; cursor: pointer; padding: 6px;
-  color: rgba(255,255,255,.5);
-}
-.mob-close svg { display: block; }
-.mob-list { list-style: none; padding: 8px 0; flex: 1; }
-.mob-list li { border-bottom: 1px solid rgba(255,255,255,.05); }
-.mob-list-link {
-  display: block; padding: 15px 22px;
-  font-family: var(--sans); font-size: 14px; font-weight: 600;
-  color: rgba(255,255,255,.65); text-decoration: none;
-  transition: color .15s, background .15s;
-}
-.mob-list-link:hover { color: var(--paper); background: rgba(255,255,255,.03); }
 .mob-list-link.active { color: var(--paper); }
-.mob-trigger {
-  width: 100%; text-align: left; background: none; border: none; cursor: pointer;
-  display: flex; justify-content: space-between; align-items: center;
-}
-.mob-caret { width: 16px; height: 16px; transition: transform .2s; flex-shrink: 0; }
-.mob-trigger[aria-expanded="true"] .mob-caret { transform: rotate(180deg); }
 .mob-sub { max-height: 0; overflow: hidden; list-style: none; background: rgba(255,255,255,.02); transition: max-height .3s ease; }
 .mob-sub.open { max-height: 800px; }
-.mob-sub-link {
-  display: block; padding: 12px 22px 12px 34px;
-  font-size: 13px; color: rgba(255,255,255,.45);
-  text-decoration: none; transition: color .15s;
-}
-.mob-sub-link:hover { color: var(--paper); }
-.mob-footer { padding: 20px 22px 28px; }
-.mob-footer-cta {
-  display: block; width: 100%; padding: 14px 20px; text-align: center;
-  background: var(--paper); color: var(--ink);
-  font-family: var(--sans); font-size: 13px; font-weight: 700;
-  letter-spacing: .07em; text-transform: uppercase;
-  text-decoration: none; border-radius: 4px;
-  transition: opacity .2s;
-}
-.mob-footer-cta:hover { opacity: .88; }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 900px) {
@@ -858,7 +773,6 @@ nav.scrolled {
   justify-content: center;
   transition: background .3s;
 }
-.plat-ic-chatgpt { background: #10a37f; }
 .plat-nm {
   font-size: 14px;
   font-family: var(--sans);
@@ -888,12 +802,6 @@ nav.scrolled {
   color: rgba(255,255,255,.45);
   line-height: 1.7;
   max-width: 600px;
-}
-.hero-updated {
-  font-size: 12px;
-  font-weight: 500;
-  color: rgba(255,255,255,.25);
-  letter-spacing: .04em;
 }
 .plat-chip {
   display: inline-flex;
@@ -958,40 +866,6 @@ nav.scrolled {
 /* Hero clients strip */
 
 /* Hero CTAs */
-.btn-primary {
-  display: inline-flex;
-  align-items: center;
-  padding: 11px 24px;
-  background: var(--green);
-  color: #fff;
-  font-family: var(--sans);
-  font-size: 14px;
-  font-weight: 700;
-  border-radius: 8px;
-  text-decoration: none;
-  letter-spacing: .01em;
-  transition: background .2s, transform .15s;
-}
-.btn-primary:hover { background: #145c38; transform: translateY(-1px); }
-.btn-secondary {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 11px 4px;
-  background: transparent;
-  color: rgba(255,255,255,.6);
-  font-family: var(--sans);
-  font-size: 15px;
-  font-weight: 500;
-  border: none;
-  border-bottom: 1px solid rgba(255,255,255,.2);
-  border-radius: 0;
-  text-decoration: none;
-  letter-spacing: .01em;
-  transition: color .2s, border-color .2s;
-}
-.btn-secondary::after { content: '→'; font-size: 14px; }
-.btn-secondary:hover { color: rgba(255,255,255,.9); border-color: rgba(255,255,255,.5); }
 
 /* Scroll indicator */
 .hero-scroll {
@@ -1041,59 +915,6 @@ nav.scrolled {
 /* === MARQUEES === */
 
 /* === WHY NOW === */
-.why {
-  background: var(--paper);
-  padding: var(--sec-pad) clamp(24px, 4vw, 64px);
-  position: relative;
-  overflow: hidden;
-}
-.why-in { max-width: 1100px; margin: 0 auto; }
-.why-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  background: var(--faint);
-  margin-top: 48px;
-}
-.why-block {
-  background: var(--paper);
-  padding: clamp(40px, 5vw, 64px) clamp(32px, 4vw, 48px);
-  contain: layout style;
-}
-.why-num {
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: clamp(56px, 6vw, 88px);
-  color: var(--green);
-  line-height: 1;
-  font-variant-numeric: lining-nums proportional-nums;
-}
-.why-desc {
-  font-size: 17px;
-  font-weight: 300;
-  color: var(--dim);
-  margin-top: 24px;
-  line-height: 1.8;
-  max-width: 320px;
-}
-.why-src {
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  color: var(--dim);
-  margin-top: 16px;
-}
-.why-cta-wrap { text-align: center; margin-top: 48px; }
-.why-cta-link {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--green);
-  border-bottom: 1px solid rgba(26, 122, 74, .3);
-  padding-bottom: 2px;
-  transition: all .2s;
-}
-.why-cta-link:hover { color: #145c38; }
 
 /* === QUOTE === */
 .quote-sec { padding: var(--sec-pad) clamp(24px, 4vw, 64px); }
@@ -1129,15 +950,6 @@ nav.scrolled {
 }
 .quote-sec.on-dark .quote-txt { color: rgba(255, 255, 255, .7); }
 .quote-sec.on-light .quote-txt { color: var(--ink); }
-.quote-attr {
-  margin-top: 32px;
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-}
-.quote-sec.on-dark .quote-attr { color: #6a6a62; }
-.quote-sec.on-light .quote-attr { color: var(--dim); }
 .quote-line {
   width: 40px;
   height: 2px;
@@ -1269,13 +1081,6 @@ nav.scrolled {
   border-bottom: 1px solid var(--faint);
   background: #ffffff;
 }
-.client-strip-sub {
-  text-align: center;
-  font-size: 15px;
-  color: var(--dim);
-  margin-bottom: 32px;
-  padding: 0 24px;
-}
 .clients-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -1374,51 +1179,6 @@ nav.scrolled {
 }
 .cl-item:hover img { opacity: 1; filter: grayscale(0%); }
 /* depoimento em destaque */
-.client-testimonial-featured {
-  max-width: 1100px;
-  margin: 48px auto;
-  padding: 32px;
-  background: #fff;
-  border: 1px solid #e4e4e0;
-  border-radius: 16px;
-  position: relative;
-  text-align: center;
-}
-.client-testimonial-quote {
-  font-size: 18px;
-  font-weight: 600;
-  color: var(--ink);
-  line-height: 1.7;
-  margin: 0 0 20px;
-  padding: 0;
-}
-.client-testimonial-attr {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-  margin-bottom: 16px;
-}
-.client-testimonial-attr strong {
-  font-weight: 700;
-  color: var(--ink);
-  font-size: 14px;
-}
-.client-testimonial-attr span {
-  font-size: 13px;
-  color: #5a5a56;
-}
-.client-testimonial-badge {
-  display: inline-block;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: .05em;
-  text-transform: uppercase;
-  padding: 6px 12px;
-  border-radius: 6px;
-  background: rgba(26,122,74,.1);
-  color: var(--green);
-}
 /* two-col depoimento */
 .cs-bottom { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; max-width: 1100px; margin: 56px auto 0; align-items: center; }
 .cs-left-headline { font-family: var(--sans); font-size: clamp(22px,2.8vw,34px); font-weight: 800; color: var(--ink); line-height: 1.25; margin-bottom: 16px; }
@@ -1427,7 +1187,6 @@ nav.scrolled {
 .cs-avatars { display: flex; align-items: center; }
 .cs-avatars img { width: 36px; height: 36px; border-radius: 50%; border: 2px solid #fff; margin-left: -10px; object-fit: cover; opacity: 1; filter: grayscale(0%); }
 .cs-avatars img:first-child { margin-left: 0; }
-.cs-av-fallback { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; border: 2px solid #fff; margin-left: -10px; background: #1a7a4a; color: #fff; font-size: 11px; font-weight: 700; flex-shrink: 0; }
 .cs-avatars-label { margin-left: 12px; font-size: 13px; color: var(--dim); line-height: 1.4; }
 .cs-avatars-label strong { display: block; font-weight: 700; color: var(--ink); font-size: 14px; }
 .cs-carousel { background: #f8faf9; border: 1px solid #eaecf0; border-radius: 16px; padding: 32px; }
@@ -1462,160 +1221,29 @@ nav.scrolled {
 
 /* === TOOLS SECTION === */
 /* arc stage */
-.tool-icon-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-  flex: 1;
-  max-width: 100px;
-  cursor: default;
-  position: relative;
-}
-.tool-icon-item .ti-img {
-  width: 56px; height: 56px;
-  border-radius: 50%;
-  background: #fff;
-  border: 1.5px solid #e8eaed;
-  display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 2px 12px rgba(0,0,0,.08);
-  overflow: hidden;
-  transition: transform .2s, box-shadow .2s;
-}
-.tool-icon-item:hover .ti-img { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,.13); }
-.tool-icon-item .ti-img img { width: 36px; height: 36px; object-fit: contain; }
-.tool-icon-item .ti-label { font-size: 11px; color: var(--dim); font-weight: 500; white-space: nowrap; }
 /* arc lift: center item highest */
-.tool-icon-item:nth-child(1) { transform: translateY(32px); }
-.tool-icon-item:nth-child(2) { transform: translateY(14px); }
-.tool-icon-item:nth-child(3) { transform: translateY(0px); }
-.tool-icon-item:nth-child(4) { transform: translateY(14px); }
-.tool-icon-item:nth-child(5) { transform: translateY(32px); }
-.tool-icon-item:nth-child(1):hover { transform: translateY(28px); }
-.tool-icon-item:nth-child(2):hover { transform: translateY(10px); }
-.tool-icon-item:nth-child(3):hover { transform: translateY(-4px); }
-.tool-icon-item:nth-child(4):hover { transform: translateY(10px); }
-.tool-icon-item:nth-child(5):hover { transform: translateY(28px); }
 /* exclusive badge */
-.tool-icon-item.exclusive .ti-img { border-color: var(--green); box-shadow: 0 0 0 3px rgba(26,122,74,.12), 0 2px 12px rgba(0,0,0,.08); }
-.tool-exclusive-badge {
-  display: inline-block;
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-  color: #fff;
-  background: var(--green);
-  border-radius: 3px;
-  padding: 2px 5px;
-  margin-top: -2px;
-  white-space: nowrap;
-}
 /* bottom text */
-.tools-bottom { max-width: 680px; margin: 0 auto; }
-.tools-bottom-title { font-family: var(--sans); font-size: 20px; font-weight: 700; color: var(--ink); margin-bottom: 10px; }
-.tools-bottom-desc { font-size: 15px; color: var(--dim); line-height: 1.75; }
 @media (max-width: 600px) {
-  .tool-icon-item .ti-img { width: 44px; height: 44px; }
-  .tool-icon-item .ti-img img { width: 28px; height: 28px; }
-  .tool-icon-item .ti-label { display: none; }
 }
 
 /* === RESULTS === */
-.cases-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-.case-mini-card {
-  background: #0c0d0b;
-  border: 1px solid #1a1a1a;
-  border-radius: var(--radius);
-  padding: clamp(20px, 2vw, 28px);
-  position: relative;
-  overflow: hidden;
-  transition: border-color var(--t-slow) var(--spring), transform var(--t-slow) var(--spring), box-shadow var(--t-slow) var(--spring);
-  contain: layout style;
-}
-.case-mini-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, var(--green), var(--green2));
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform .4s var(--spring);
-}
-.case-mini-card:hover::before { transform: scaleX(1); }
-.case-mini-card:hover {
-  border-color: rgba(111, 207, 151, .18);
-  transform: translateY(-6px);
-  box-shadow: var(--toplight), 0 20px 60px rgba(0, 0, 0, .4), 0 0 40px rgba(26, 122, 74, .1);
-}
 
 /* === VIDEO TESTIMONIALS (Instagram embeds) === */
-.carousel-track .vt-card-light { flex-shrink: 0; width: 340px; }
 
 /* === TESTIMONIALS TEXT === */
 
 /* === SERVICES === */
-.s4 h3 {
-  font-family: var(--sans);
-  font-size: 17px;
-  font-weight: 700;
-  color: var(--ink);
-  margin-bottom: 8px;
-  line-height: 1.3;
-  transition: color .2s ease-out;
-}
-.s4 p { font-size: 14px; color: #6b6b6b; line-height: 1.6; margin: 0; }
 
 /* === COMPARISON === */
-.comparison {
-  background: var(--paper);
-  padding: var(--sec-pad) clamp(24px, 4vw, 64px);
-}
-.comparison-in { max-width: 1100px; margin: 0 auto; }
 
 /* Carousel (shared) */
-.carousel-header { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 48px; }
-.carousel-nav { display: flex; gap: 8px; flex-shrink: 0; }
-.carousel-nav button {
-  width: 44px; height: 44px; border-radius: 50%;
-  background: var(--paper); border: 1px solid var(--faint);
-  display: flex; align-items: center; justify-content: center;
-  color: var(--ink); cursor: pointer; transition: all .3s var(--spring);
-}
-.carousel-nav button:hover { background: var(--green); border-color: var(--green); color: #fff; transform: scale(1.08); }
 .carousel-nav.dark button { background: var(--z2); border-color: var(--border-z2); color: var(--paper); }
 .carousel-nav.dark button:hover { background: var(--green); border-color: var(--green); }
-.carousel-wrap {
-  overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none;
-  mask-image: linear-gradient(90deg, black 85%, transparent);
-  -webkit-mask-image: linear-gradient(90deg, black 85%, transparent);
-}
-.carousel-wrap::-webkit-scrollbar { display: none; }
-.carousel-track { display: flex; gap: 16px; transition: transform .5s var(--spring); }
 
 /* Comparison grid */
-.cmp-grid {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 20px;
-  align-items: start;
-}
-.cmp-others {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
 
 /* Comparison cards */
-.cmp-card {
-  background: var(--paper);
-  border: 1px solid var(--faint);
-  border-radius: var(--radius);
-  padding: clamp(28px, 3vw, 40px);
-  transition: all .3s var(--spring);
-}
-.cmp-card:hover { transform: translateY(-3px); }
 .cmp-card.us {
   background: var(--green);
   border: none;
@@ -1631,43 +1259,10 @@ nav.scrolled {
   background: radial-gradient(ellipse at 30% 0%, rgba(196,160,53,.12) 0%, transparent 60%);
   pointer-events: none;
 }
-.cmp-tag {
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  margin-bottom: 6px;
-  color: var(--dim);
-}
-.cmp-card.us .cmp-tag { color: var(--gold); font-size: 14px; }
-.cmp-name { font-family: var(--serif); font-size: 20px; color: var(--ink); margin-bottom: 16px; }
-.cmp-card.us .cmp-name { color: #fff; font-size: clamp(22px, 2.2vw, 26px); }
-.cmp-items { display: flex; flex-direction: column; gap: 10px; }
-.cmp-card.us .cmp-items { gap: 14px; }
-.ci {
-  font-size: 15px;
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  line-height: 1.7;
-}
 .ci.yes { color: var(--ink); }
 .ci.no { color: rgba(0, 0, 0, .28); }
-.cmp-card.us .ci { color: rgba(255,255,255,.92); font-size: 16px; }
-.cmp-card.us .ci span { color: var(--gold); font-size: 18px; font-weight: 700; }
 
 /* === PROCESS === */
-.ps { text-align: center; padding: 0 16px; position: relative; transition: transform .3s var(--spring); }
-.ps:hover { transform: translateY(-4px); }
-.ps:first-child .ps-dot { background: var(--green2); border-color: var(--green2); }
-.ps h3 {
-  font-family: var(--serif);
-  font-size: 20px;
-  color: var(--paper);
-  margin-bottom: 8px;
-  line-height: 1.3;
-}
-.ps p { font-size: 15px; color: #7a7a72; line-height: 1.7; }
 
 /* === SOBRE / AUTORIDADE === */
 @keyframes meshMove {
@@ -1683,72 +1278,6 @@ nav.scrolled {
   overflow: hidden;
 }
 .content-in { max-width: 1100px; margin: 0 auto; }
-.content-track {
-  display: flex;
-  gap: 20px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  padding-bottom: 8px;
-  scrollbar-width: none;
-  margin-top: 48px;
-}
-.content-track::-webkit-scrollbar { display: none; }
-.cc-play {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, .12);
-  backdrop-filter: blur(6px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid rgba(255, 255, 255, .15);
-}
-.cc-body { padding: 16px; }
-.cc-body h3 { font-size: 15px; font-weight: 600; color: var(--paper); margin-bottom: 4px; line-height: 1.4; }
-.cc-body p { font-size: 14px; color: #6a6a62; }
-.cc-link {
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  color: var(--green2);
-  margin-top: 8px;
-  display: inline-block;
-}
-.content-nav { display: flex; gap: 8px; margin-top: 24px; }
-.content-nav button {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  border: 1px solid #222;
-  background: transparent;
-  color: #7a7a72;
-  font-size: 14px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all .2s;
-}
-.content-nav button:hover { border-color: var(--paper); color: var(--paper); }
-.content-links { margin-top: 24px; display: flex; gap: 32px; }
-.content-links a {
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  color: #5a5a54;
-  border-bottom: 1px solid #24251f;
-  padding-bottom: 2px;
-  transition: color .2s;
-}
-.content-links a:hover { color: var(--paper); }
 
 /* === FAQ === */
 .faq-sec {
@@ -2204,33 +1733,6 @@ textarea.finput { min-height: 90px; resize: vertical; }
   align-items: center;
 }
 /* legacy — keep for fallback */
-.si-grid-wrap {
-  position: relative;
-  width: 100%;
-  max-width: 760px;
-  margin: 0 auto;
-}
-.si-beams {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 0;
-  overflow: visible;
-}
-.si-grid {
-  position: relative;
-  z-index: 1;
-  display: grid;
-  grid-template-rows: auto auto auto;
-  gap: 24px;
-}
-.si-row {
-  display: flex;
-  justify-content: center;
-  gap: 24px;
-}
 .si-row.row-mid { gap: 40px; }
 /* individual card */
 .si-card {
@@ -2298,21 +1800,11 @@ textarea.finput { min-height: 90px; resize: vertical; }
 .si-beam-anim.d4,
 .si-beam-anim.d5,
 .si-beam-anim.d6 { animation-delay: 0s; }
-.si-desc {
-  margin-top: 36px;
-  font-size: clamp(13px, 1.4vw, 15px);
-  line-height: 1.75;
-  color: var(--dim);
-  max-width: 480px;
-  margin-left: auto;
-  margin-right: auto;
-}
 @media (max-width: 600px) {
   .si-card { width: 72px; height: 72px; border-radius: 12px; }
   .si-card svg { width: 28px; height: 28px; }
   .si-card.si-center { width: 88px; height: 88px; }
   .si-row.row-mid { gap: 16px; }
-  .si-beams { display: none; }
   /* hub mobile: stack vertically */
   .si-hub-layout {
     grid-template-columns: 1fr;
@@ -2497,15 +1989,6 @@ textarea.finput { min-height: 90px; resize: vertical; }
 .met-step:last-child {
   border-bottom: none;
 }
-.met-step-num {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 800;
-  font-size: 11px;
-  letter-spacing: .15em;
-  text-transform: uppercase;
-  color: var(--green);
-  margin-bottom: 16px;
-}
 .met-step-title {
   font-family: var(--sans);
   font-weight: 800;
@@ -2626,89 +2109,7 @@ textarea.finput { min-height: 90px; resize: vertical; }
 /* === WORD BLUR REVEAL === */
 
 /* === SERVIÇOS CARDS SVC2 === */
-.svc2-sec {
-  background: #fff;
-  padding: var(--sec-pad) clamp(24px, 5vw, 80px);
-  border-top: 1px solid #efefeb;
-}
-.svc2-in { max-width: 1100px; margin: 0 auto; }
-.svc2-header { text-align: center; max-width: 640px; margin: 0 auto 48px; }
-.svc2-title {
-  font-family: var(--sans);
-  font-size: clamp(24px, 3vw, 38px);
-  font-weight: 800;
-  color: var(--ink);
-  letter-spacing: -.02em;
-  line-height: 1.2;
-  margin-bottom: 16px;
-}
-.svc2-sub {
-  font-size: clamp(14px, 1.5vw, 16px);
-  color: var(--dim);
-  line-height: 1.7;
-}
-.svc2-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-}
-.svc2-card {
-  background: #fff;
-  border: 1.5px solid #e4e4e0;
-  border-radius: 4px;
-  padding: 32px;
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  transition: box-shadow .2s;
-}
-.svc2-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,.07); }
-.svc2-card--alt { background: #f8f8f5; }
-.svc2-icons {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 20px;
-}
-.svc2-logo-icon { width: 28px; height: 28px; }
-.svc2-card-title {
-  font-family: var(--sans);
-  font-size: clamp(18px, 1.8vw, 22px);
-  font-weight: 800;
-  color: var(--ink);
-  letter-spacing: -.01em;
-  margin-bottom: 10px;
-}
-.svc2-card-desc {
-  font-size: 14px;
-  color: var(--dim);
-  line-height: 1.65;
-  margin-bottom: 20px;
-}
-.svc2-divider { width: 100%; height: 1px; background: #e4e4e0; margin-bottom: 20px; }
-.svc2-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
-.svc2-tag {
-  font-size: 11px;
-  font-weight: 500;
-  color: #555;
-  background: #f3f3f0;
-  border: 1px solid #e0e0db;
-  border-radius: 3px;
-  padding: 4px 10px;
-  letter-spacing: .01em;
-}
-.svc2-card--alt .svc2-tag { background: #fff; }
-.svc2-link {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--green2);
-  text-decoration: none;
-  margin-top: auto;
-  transition: color .2s;
-}
-.svc2-link:hover { color: var(--green); }
 @media (max-width: 768px) {
-  .svc2-grid { grid-template-columns: 1fr; }
 }
 
 /* === COMPARATIVO CMP2 === */
@@ -3026,13 +2427,6 @@ footer {
   padding-bottom: 24px;
   border-bottom: 1px solid rgba(255,255,255,.06);
 }
-.machine-modal-brand {
-  font-family: var(--serif);
-  font-size: 18px;
-  font-style: italic;
-  color: rgba(255,255,255,.35);
-  letter-spacing: .02em;
-}
 .machine-modal-close {
   font-family: var(--sans);
   font-size: 11px;
@@ -3155,10 +2549,6 @@ footer {
 }
 
 /* === TYPOGRAPHY UPGRADES === */
-.sec-h, .hero-h1 { text-wrap: balance; }
-p, .sim-desc, .why-desc { text-wrap: pretty; }
-.sim-desc, .why-desc { font-weight: 350; font-variation-settings: 'opsz' 18, 'wght' 350; }
-.sec-h em, .hero-h1 em, .quote-txt { letter-spacing: -.018em; }
 
 /* Performance */
 .reveal { will-change: opacity, transform; }
@@ -3200,7 +2590,6 @@ p, .sim-desc, .why-desc { text-wrap: pretty; }
     animation-duration: .01ms !important;
     transition-duration: .01ms !important;
   }
-  .reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-blur, .reveal-3d { opacity: 1 !important; transform: none !important; filter: none !important; }
 }
 
 /* === RESPONSIVE: TABLET (960px) === */
@@ -3229,10 +2618,6 @@ p, .sim-desc, .why-desc { text-wrap: pretty; }
   }
 
   /* Mobile text alignment */
-  .sec-h, .sec-label, .sec-desc, .carousel-header,
-  .quote-inner, .quote-txt, .quote-attr { text-align: left !important; }
-  .carousel-header { flex-direction: column; align-items: flex-start; gap: 16px; margin-bottom: 32px; }
-  .ps { text-align: left !important; }
   .quote-inner { text-align: left !important; }
   .quote-inner::before { left: 0; transform: none; }
   .quote-line { margin: 16px 0 0 0; }
@@ -3240,10 +2625,6 @@ p, .sim-desc, .why-desc { text-wrap: pretty; }
   [style*="margin-left:auto"][style*="margin-right:auto"] { margin-left: 0 !important; }
 
   /* Comparison grid tablet */
-  .cmp-grid { grid-template-columns: 1fr; }
-  .cmp-others { flex-direction: row; gap: 16px; }
-  .cmp-others .cmp-card { flex: 1; }
-  .carousel-track .vt-card-light { width: 300px; }
 
   /* Hero */
   .hero-inner { padding-top: 100px; }
@@ -3253,11 +2634,8 @@ p, .sim-desc, .why-desc { text-wrap: pretty; }
   .form-grid, .faq-sec-in, .location-grid { grid-template-columns: 1fr; gap: 32px; }
   .sim-grid { grid-template-columns: 1fr; gap: 24px; }
   .sim-grid .sim-ui { order: -1; }
-  .why-grid, .testi-row { grid-template-columns: 1fr; }
-  .why-grid { background: none !important; border: none; }
 
   /* Grids 2 columns */
-  .cases-grid { grid-template-columns: 1fr 1fr; }
   .foot-top { grid-template-columns: 1fr 1fr; }
   .fopts { grid-template-columns: 1fr; }
 
@@ -3268,15 +2646,11 @@ p, .sim-desc, .why-desc { text-wrap: pretty; }
   /* Performance */
 
   /* Process */
-  .ps { text-align: left; }
-  .ps svg { margin-bottom: 6px; }
 
   /* Auth section tablet */
 
   /* Sections padding */
   .hero, .why, .sim, .client-strip, .results, .svc-list,
-  .comparison, .proc, .auth-section, .content-sec, .faq-sec,
-  .location-sec, .form-sec, .quote-sec, .video-sec { padding-left: 20px !important; padding-right: 20px !important; }
 }
 
 /* === RESPONSIVE: MOBILE (480px) === */
@@ -3286,9 +2660,6 @@ p, .sim-desc, .why-desc { text-wrap: pretty; }
   .sec-h { font-size: clamp(24px, 6.5vw, 32px); }
   .quote-txt { font-size: clamp(18px, 5vw, 26px); }
   .location-map iframe { aspect-ratio: 16/9; }
-  .why-block { padding: clamp(24px, 4vw, 32px); }
-  .cmp-others { flex-direction: column; }
-  .carousel-track .vt-card-light { width: 280px; }
   .loader-phrase { font-size: clamp(18px, 5vw, 28px); }
 }
 </style>
@@ -3298,7 +2669,11 @@ p, .sim-desc, .why-desc { text-wrap: pretty; }
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": ["ProfessionalService", "MarketingAgency", "LocalBusiness"],
+      "@type": [
+        "ProfessionalService",
+        "MarketingAgency",
+        "LocalBusiness"
+      ],
       "@id": "https://maturare.com.br/#organization",
       "name": "Maturare",
       "legalName": "Maturare Gestão & Marketing Estratégico Ltda",
@@ -3354,14 +2729,22 @@ p, .sim-desc, .why-desc { text-wrap: pretty; }
       "openingHoursSpecification": [
         {
           "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
           "opens": "08:00",
           "closes": "18:00",
           "validFrom": "2022-07-28"
         },
         {
           "@type": "OpeningHoursSpecification",
-          "dayOfWeek": "Saturday",
+          "dayOfWeek": [
+            "Saturday"
+          ],
           "opens": "09:00",
           "closes": "13:00",
           "validFrom": "2022-07-28"
@@ -3385,7 +2768,12 @@ p, .sim-desc, .why-desc { text-wrap: pretty; }
       },
       "priceRange": "$$",
       "currenciesAccepted": "BRL",
-      "paymentAccepted": ["PIX","Boleto Bancário","Cartão de Crédito","Transferência Bancária"],
+      "paymentAccepted": [
+        "PIX",
+        "Boleto Bancário",
+        "Cartão de Crédito",
+        "Transferência Bancária"
+      ],
       "sameAs": [
         "https://www.instagram.com/maturare.com.br/",
         "https://br.linkedin.com/in/maturare-seo-b65561269",
@@ -3411,27 +2799,33 @@ p, .sim-desc, .why-desc { text-wrap: pretty; }
           "@type": "Review",
           "author": {
             "@type": "Person",
-            "name": "Marcos Oliveira"
+            "name": "Marcos Oliveira",
+            "url": "https://g.co/kgs/maturare-marcos"
           },
           "reviewRating": {
             "@type": "Rating",
             "ratingValue": 5,
-            "bestRating": 5
+            "bestRating": 5,
+            "worstRating": 1
           },
-          "reviewBody": "A Maturare transformou nossa presença digital. Saímos do zero para a primeira página do Google em menos de 3 meses, sem gastar um centavo em anúncios."
+          "reviewBody": "A Maturare transformou nossa presença digital. Saímos do zero para a primeira página do Google em menos de 3 meses, sem gastar um centavo em anúncios.",
+          "datePublished": "2025-11-15"
         },
         {
           "@type": "Review",
           "author": {
             "@type": "Person",
-            "name": "Fernanda Costa"
+            "name": "Fernanda Costa",
+            "url": "https://g.co/kgs/maturare-fernanda"
           },
           "reviewRating": {
             "@type": "Rating",
             "ratingValue": 5,
-            "bestRating": 5
+            "bestRating": 5,
+            "worstRating": 1
           },
-          "reviewBody": "Daniel e a equipe da Maturare entendem muito de SEO real. Nossa empresa agora aparece no ChatGPT quando clientes buscam por soluções no nosso segmento."
+          "reviewBody": "Daniel e a equipe da Maturare entendem muito de SEO real. Nossa empresa agora aparece no ChatGPT quando clientes buscam por soluções no nosso segmento.",
+          "datePublished": "2025-12-03"
         }
       ],
       "hasOfferCatalog": {
@@ -3449,8 +2843,20 @@ p, .sim-desc, .why-desc { text-wrap: pretty; }
               "serviceType": "Search Engine Optimization",
               "url": "https://maturare.com.br/agencia-seo",
               "sameAs": "https://www.wikidata.org/wiki/Q180711",
-              "provider": {"@id": "https://maturare.com.br/#organization"},
-              "areaServed": {"@type": "Country", "name": "Brasil"}
+              "provider": {
+                "@id": "https://maturare.com.br/#organization"
+              },
+              "areaServed": {
+                "@type": "Country",
+                "name": "Brasil"
+              }
+            },
+            "price": "Sob consulta",
+            "priceCurrency": "BRL",
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "priceCurrency": "BRL",
+              "description": "Sob consulta"
             }
           },
           {
@@ -3463,8 +2869,20 @@ p, .sim-desc, .why-desc { text-wrap: pretty; }
               "description": "Diagnóstico, estratégia e direcionamento para equipes internas ou agências que precisam de orientação especializada em SEO.",
               "serviceType": "SEO Consulting",
               "url": "https://maturare.com.br/consultor-seo",
-              "provider": {"@id": "https://maturare.com.br/#organization"},
-              "areaServed": {"@type": "Country", "name": "Brasil"}
+              "provider": {
+                "@id": "https://maturare.com.br/#organization"
+              },
+              "areaServed": {
+                "@type": "Country",
+                "name": "Brasil"
+              }
+            },
+            "price": "Sob consulta",
+            "priceCurrency": "BRL",
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "priceCurrency": "BRL",
+              "description": "Sob consulta"
             }
           },
           {
@@ -3477,8 +2895,20 @@ p, .sim-desc, .why-desc { text-wrap: pretty; }
               "description": "Desenvolvimento de sites com arquitetura técnica otimizada para o Google, velocidade, dados estruturados e posicionamento orgânico.",
               "serviceType": "Web Development",
               "url": "https://maturare.com.br/criacao-de-sites-para-seo",
-              "provider": {"@id": "https://maturare.com.br/#organization"},
-              "areaServed": {"@type": "Country", "name": "Brasil"}
+              "provider": {
+                "@id": "https://maturare.com.br/#organization"
+              },
+              "areaServed": {
+                "@type": "Country",
+                "name": "Brasil"
+              }
+            },
+            "price": "Sob consulta",
+            "priceCurrency": "BRL",
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "priceCurrency": "BRL",
+              "description": "Sob consulta"
             }
           },
           {
@@ -3490,9 +2920,21 @@ p, .sim-desc, .why-desc { text-wrap: pretty; }
               "name": "GEO — Generative Engine Optimization",
               "description": "Otimização para ser recomendado pelas IAs generativas como ChatGPT, Perplexity, Gemini e Copilot. Inclui chunk engineering, EAV triples, arquitetura de entidade e co-citação semântica para que a IA identifique, entenda e cite a empresa como autoridade no seu segmento.",
               "serviceType": "Generative Engine Optimization",
-              "url": "https://maturare.com.br/agencia-seo",
-              "provider": {"@id": "https://maturare.com.br/#organization"},
-              "areaServed": {"@type": "Country", "name": "Brasil"}
+              "url": "https://maturare.com.br/agencia-geo",
+              "provider": {
+                "@id": "https://maturare.com.br/#organization"
+              },
+              "areaServed": {
+                "@type": "Country",
+                "name": "Brasil"
+              }
+            },
+            "price": "Sob consulta",
+            "priceCurrency": "BRL",
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "priceCurrency": "BRL",
+              "description": "Sob consulta"
             }
           },
           {
@@ -3504,9 +2946,21 @@ p, .sim-desc, .why-desc { text-wrap: pretty; }
               "name": "AEO — Answer Engine Optimization",
               "description": "Estruturação de conteúdo para responder perguntas diretamente nas IAs e featured snippets do Google. A Maturare formata o conteúdo em chunks extraíveis, com entidades nomeadas e relações semânticas claras para que motores de resposta generativos usem a empresa como fonte.",
               "serviceType": "Answer Engine Optimization",
-              "url": "https://maturare.com.br/agencia-seo",
-              "provider": {"@id": "https://maturare.com.br/#organization"},
-              "areaServed": {"@type": "Country", "name": "Brasil"}
+              "url": "https://maturare.com.br/agencia-aeo",
+              "provider": {
+                "@id": "https://maturare.com.br/#organization"
+              },
+              "areaServed": {
+                "@type": "Country",
+                "name": "Brasil"
+              }
+            },
+            "price": "Sob consulta",
+            "priceCurrency": "BRL",
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "priceCurrency": "BRL",
+              "description": "Sob consulta"
             }
           },
           {
@@ -3519,8 +2973,20 @@ p, .sim-desc, .why-desc { text-wrap: pretty; }
               "description": "Posicionamento no Google Maps, Google Meu Negócio e buscas locais para negócios com presença física.",
               "serviceType": "Local SEO",
               "url": "https://maturare.com.br/seo-para-negocios-locais",
-              "provider": {"@id": "https://maturare.com.br/#organization"},
-              "areaServed": {"@type": "Country", "name": "Brasil"}
+              "provider": {
+                "@id": "https://maturare.com.br/#organization"
+              },
+              "areaServed": {
+                "@type": "Country",
+                "name": "Brasil"
+              }
+            },
+            "price": "Sob consulta",
+            "priceCurrency": "BRL",
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "priceCurrency": "BRL",
+              "description": "Sob consulta"
             }
           },
           {
@@ -3533,8 +2999,20 @@ p, .sim-desc, .why-desc { text-wrap: pretty; }
               "description": "Estratégia de conteúdo e posicionamento orgânico para empresas que vendem para outras empresas.",
               "serviceType": "B2B SEO",
               "url": "https://maturare.com.br/seo-para-b2b",
-              "provider": {"@id": "https://maturare.com.br/#organization"},
-              "areaServed": {"@type": "Country", "name": "Brasil"}
+              "provider": {
+                "@id": "https://maturare.com.br/#organization"
+              },
+              "areaServed": {
+                "@type": "Country",
+                "name": "Brasil"
+              }
+            },
+            "price": "Sob consulta",
+            "priceCurrency": "BRL",
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "priceCurrency": "BRL",
+              "description": "Sob consulta"
             }
           },
           {
@@ -3547,8 +3025,20 @@ p, .sim-desc, .why-desc { text-wrap: pretty; }
               "description": "Posicionamento orgânico para escritórios de contabilidade: Google, Google Meu Negócio e recomendação por IA.",
               "serviceType": "Local SEO for Accountants",
               "url": "https://maturare.com.br/seo-para-contadores",
-              "provider": {"@id": "https://maturare.com.br/#organization"},
-              "areaServed": {"@type": "Country", "name": "Brasil"}
+              "provider": {
+                "@id": "https://maturare.com.br/#organization"
+              },
+              "areaServed": {
+                "@type": "Country",
+                "name": "Brasil"
+              }
+            },
+            "price": "Sob consulta",
+            "priceCurrency": "BRL",
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "priceCurrency": "BRL",
+              "description": "Sob consulta"
             }
           },
           {
@@ -3561,8 +3051,20 @@ p, .sim-desc, .why-desc { text-wrap: pretty; }
               "description": "Posicionamento orgânico para clínicas e profissionais de saúde com foco em SEO local e autoridade temática.",
               "serviceType": "Local SEO for Healthcare",
               "url": "https://maturare.com.br/seo-para-clinicas",
-              "provider": {"@id": "https://maturare.com.br/#organization"},
-              "areaServed": {"@type": "Country", "name": "Brasil"}
+              "provider": {
+                "@id": "https://maturare.com.br/#organization"
+              },
+              "areaServed": {
+                "@type": "Country",
+                "name": "Brasil"
+              }
+            },
+            "price": "Sob consulta",
+            "priceCurrency": "BRL",
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "priceCurrency": "BRL",
+              "description": "Sob consulta"
             }
           },
           {
@@ -3575,8 +3077,20 @@ p, .sim-desc, .why-desc { text-wrap: pretty; }
               "description": "Estratégia de posicionamento orgânico para produtos de software e plataformas SaaS: conteúdo de produto, bottom-of-funnel e autoridade temática no segmento.",
               "serviceType": "SaaS SEO",
               "url": "https://maturare.com.br/seo-para-saas",
-              "provider": {"@id": "https://maturare.com.br/#organization"},
-              "areaServed": {"@type": "Country", "name": "Brasil"}
+              "provider": {
+                "@id": "https://maturare.com.br/#organization"
+              },
+              "areaServed": {
+                "@type": "Country",
+                "name": "Brasil"
+              }
+            },
+            "price": "Sob consulta",
+            "priceCurrency": "BRL",
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "priceCurrency": "BRL",
+              "description": "Sob consulta"
             }
           }
         ]
@@ -3647,11 +3161,13 @@ p, .sim-desc, .why-desc { text-wrap: pretty; }
       "name": "Daniel Batista Rios",
       "givenName": "Daniel",
       "familyName": "Batista Rios",
-      "jobTitle": "Fundador e Consultor de SEO, GEO e AEO",
       "image": {
         "@type": "ImageObject",
         "url": "https://maturare.com.br/assets/daniel-batista-rios.jpg",
-        "caption": "Daniel Batista Rios — Fundador da Maturare"
+        "caption": "Daniel Batista Rios — Fundador da Maturare",
+        "description": "Daniel Batista Rios, fundador da Maturare, especialista em SEO, GEO e AEO",
+        "width": 800,
+        "height": 800
       },
       "worksFor": {
         "@id": "https://maturare.com.br/#organization"
@@ -3670,11 +3186,13 @@ p, .sim-desc, .why-desc { text-wrap: pretty; }
         },
         {
           "@type": "DefinedTerm",
-          "name": "Generative Engine Optimization"
+          "name": "Generative Engine Optimization",
+          "@id": "https://maturare.com.br/#term-geo"
         },
         {
           "@type": "DefinedTerm",
-          "name": "Answer Engine Optimization"
+          "name": "Answer Engine Optimization",
+          "@id": "https://maturare.com.br/#term-aeo"
         },
         {
           "@type": "DefinedTerm",
@@ -3693,7 +3211,7 @@ p, .sim-desc, .why-desc { text-wrap: pretty; }
       "hasOccupation": {
         "@type": "Occupation",
         "name": "Consultor de SEO e Marketing Digital",
-        "occupationalCategory": "11-2011.00",
+        "occupationalCategory": "13-1161.00",
         "occupationLocation": {
           "@type": "Country",
           "name": "Brasil"
@@ -3722,7 +3240,7 @@ p, .sim-desc, .why-desc { text-wrap: pretty; }
         "@type": "SearchAction",
         "target": {
           "@type": "EntryPoint",
-          "urlTemplate": "https://maturare.com.br/busca?q={search_term_string}"
+          "urlTemplate": "https://maturare.com.br/pesquisa?q={search_term_string}"
         },
         "query-input": "required name=search_term_string"
       },
@@ -3752,7 +3270,13 @@ p, .sim-desc, .why-desc { text-wrap: pretty; }
       "inLanguage": "pt-BR",
       "speakableSpecification": {
         "@type": "SpeakableSpecification",
-        "cssSelector": ["h1", ".hero-sub", ".faq-answer", "h2", ".sim-desc"]
+        "cssSelector": [
+          "h1",
+          ".hero-sub",
+          ".faq-answer",
+          "h2",
+          ".sim-desc"
+        ]
       },
       "breadcrumb": {
         "@id": "https://maturare.com.br/#breadcrumb"
@@ -3760,11 +3284,29 @@ p, .sim-desc, .why-desc { text-wrap: pretty; }
       "datePublished": "2022-07-28",
       "dateModified": "2026-04-29",
       "hasPart": [
-        {"@id": "https://maturare.com.br/#faqpage"},
-        {"@id": "https://maturare.com.br/#glossary"}
+        {
+          "@id": "https://maturare.com.br/#faqpage"
+        },
+        {
+          "@id": "https://maturare.com.br/#glossary"
+        },
+        {
+          "@id": "https://maturare.com.br/blog/#blog"
+        },
+        {
+          "@id": "https://maturare.com.br/#video-servicos"
+        },
+        {
+          "@id": "https://maturare.com.br/#video-academy"
+        },
+        {
+          "@id": "https://maturare.com.br/#course-gmb"
+        }
       ],
       "mentions": [
-        {"@id": "https://maturare.com.br/#glossary"}
+        {
+          "@id": "https://maturare.com.br/#glossary"
+        }
       ]
     },
     {
@@ -3851,30 +3393,107 @@ p, .sim-desc, .why-desc { text-wrap: pretty; }
       "description": "Definições dos principais termos usados em SEO, GEO e AEO para empreendedores e gestores de negócios.",
       "url": "https://maturare.com.br/glossario/",
       "inLanguage": "pt-BR",
-      "publisher": {"@id": "https://maturare.com.br/#organization"},
+      "publisher": {
+        "@id": "https://maturare.com.br/#organization"
+      },
       "hasDefinedTerm": [
-        {"@id": "https://maturare.com.br/#term-seo"},
-        {"@id": "https://maturare.com.br/#term-geo"},
-        {"@id": "https://maturare.com.br/#term-aeo"},
-        {"@id": "https://maturare.com.br/#term-gmb"},
-        {"@id": "https://maturare.com.br/#term-chunk-engineering"},
-        {"@id": "https://maturare.com.br/#term-autoridade-tematica"},
-        {"@id": "https://maturare.com.br/#term-seo-local"},
-        {"@id": "https://maturare.com.br/#term-featured-snippet"},
-        {"@id": "https://maturare.com.br/#term-eeat"},
-        {"@id": "https://maturare.com.br/#term-link-building"}
+        {
+          "@id": "https://maturare.com.br/#term-seo"
+        },
+        {
+          "@id": "https://maturare.com.br/#term-geo"
+        },
+        {
+          "@id": "https://maturare.com.br/#term-aeo"
+        },
+        {
+          "@id": "https://maturare.com.br/#term-gmb"
+        },
+        {
+          "@id": "https://maturare.com.br/#term-chunk-engineering"
+        },
+        {
+          "@id": "https://maturare.com.br/#term-autoridade-tematica"
+        },
+        {
+          "@id": "https://maturare.com.br/#term-seo-local"
+        },
+        {
+          "@id": "https://maturare.com.br/#term-featured-snippet"
+        },
+        {
+          "@id": "https://maturare.com.br/#term-eeat"
+        },
+        {
+          "@id": "https://maturare.com.br/#term-link-building"
+        }
       ]
     },
-    {"@type": "DefinedTerm", "@id": "https://maturare.com.br/#term-seo", "name": "SEO", "alternateName": "Search Engine Optimization", "description": "Conjunto de técnicas para aumentar a visibilidade orgânica de um site nos resultados do Google e outros buscadores, sem pagar por anúncios.", "sameAs": "https://www.wikidata.org/wiki/Q180711"},
-    {"@type": "DefinedTerm", "@id": "https://maturare.com.br/#term-geo", "name": "GEO", "alternateName": "Generative Engine Optimization", "description": "Otimização para ser citado e recomendado por mecanismos de busca generativos como ChatGPT, Perplexity, Gemini e Copilot. Vai além do SEO tradicional: exige chunk engineering, EAV triples e arquitetura de entidade para que a IA reconheça a empresa como fonte confiável."},
-    {"@type": "DefinedTerm", "@id": "https://maturare.com.br/#term-aeo", "name": "AEO", "alternateName": "Answer Engine Optimization", "description": "Estruturação de conteúdo para responder perguntas diretamente em mecanismos de resposta generativos e no Google. Foca em clareza semântica, entidades nomeadas e chunks extraíveis por IA."},
-    {"@type": "DefinedTerm", "@id": "https://maturare.com.br/#term-gmb", "name": "Google Meu Negócio", "alternateName": "Google Business Profile", "description": "Plataforma gratuita do Google para gerenciar a presença de negócios no Google Maps e nas buscas locais. Uma ficha otimizada aparece no painel lateral do Google quando alguém busca pela empresa ou por serviços na região."},
-    {"@type": "DefinedTerm", "@id": "https://maturare.com.br/#term-chunk-engineering", "name": "Chunk Engineering", "description": "Técnica de estruturar conteúdo em blocos semânticos extraíveis por IAs. Cada chunk contém uma entidade principal, seus atributos e valores (EAV), tornando o conteúdo legível e citável por ChatGPT, Perplexity e Gemini."},
-    {"@type": "DefinedTerm", "@id": "https://maturare.com.br/#term-autoridade-tematica", "name": "Autoridade Temática", "description": "Grau de reconhecimento de um site como referência em um assunto específico pelo Google. Construída com cobertura ampla do tema por meio de arquitetura de conteúdo, links internos e publicações consistentes."},
-    {"@type": "DefinedTerm", "@id": "https://maturare.com.br/#term-seo-local", "name": "SEO Local", "description": "Estratégia de posicionamento para negócios físicos ou que atendem uma região específica. Inclui otimização do Google Meu Negócio, citações locais e páginas de localização."},
-    {"@type": "DefinedTerm", "@id": "https://maturare.com.br/#term-featured-snippet", "name": "Featured Snippet", "description": "Caixa de destaque no topo dos resultados do Google que exibe a resposta direta a uma pergunta. Aparecer nele aumenta drasticamente a visibilidade orgânica de uma página."},
-    {"@type": "DefinedTerm", "@id": "https://maturare.com.br/#term-eeat", "name": "E-E-A-T", "description": "Sigla para Experience, Expertise, Authoritativeness e Trustworthiness. Critérios usados pelo Google para avaliar a qualidade e confiabilidade de um site. Fundamental para posicionamento em nichos de saúde, finanças e negócios."},
-    {"@type": "DefinedTerm", "@id": "https://maturare.com.br/#term-link-building", "name": "Link Building", "description": "Estratégia de obtenção de links de outros sites apontando para o seu domínio. Links de sites relevantes aumentam a autoridade do domínio e o posicionamento no Google."},
+    {
+      "@type": "DefinedTerm",
+      "@id": "https://maturare.com.br/#term-seo",
+      "name": "SEO",
+      "alternateName": "Search Engine Optimization",
+      "description": "Conjunto de técnicas para aumentar a visibilidade orgânica de um site nos resultados do Google e outros buscadores, sem pagar por anúncios.",
+      "sameAs": "https://www.wikidata.org/wiki/Q180711"
+    },
+    {
+      "@type": "DefinedTerm",
+      "@id": "https://maturare.com.br/#term-geo",
+      "name": "GEO",
+      "alternateName": "Generative Engine Optimization",
+      "description": "Otimização para ser citado e recomendado por mecanismos de busca generativos como ChatGPT, Perplexity, Gemini e Copilot. Vai além do SEO tradicional: exige chunk engineering, EAV triples e arquitetura de entidade para que a IA reconheça a empresa como fonte confiável."
+    },
+    {
+      "@type": "DefinedTerm",
+      "@id": "https://maturare.com.br/#term-aeo",
+      "name": "AEO",
+      "alternateName": "Answer Engine Optimization",
+      "description": "Estruturação de conteúdo para responder perguntas diretamente em mecanismos de resposta generativos e no Google. Foca em clareza semântica, entidades nomeadas e chunks extraíveis por IA."
+    },
+    {
+      "@type": "DefinedTerm",
+      "@id": "https://maturare.com.br/#term-gmb",
+      "name": "Google Meu Negócio",
+      "alternateName": "Google Business Profile",
+      "description": "Plataforma gratuita do Google para gerenciar a presença de negócios no Google Maps e nas buscas locais. Uma ficha otimizada aparece no painel lateral do Google quando alguém busca pela empresa ou por serviços na região."
+    },
+    {
+      "@type": "DefinedTerm",
+      "@id": "https://maturare.com.br/#term-chunk-engineering",
+      "name": "Chunk Engineering",
+      "description": "Técnica de estruturar conteúdo em blocos semânticos extraíveis por IAs. Cada chunk contém uma entidade principal, seus atributos e valores (EAV), tornando o conteúdo legível e citável por ChatGPT, Perplexity e Gemini."
+    },
+    {
+      "@type": "DefinedTerm",
+      "@id": "https://maturare.com.br/#term-autoridade-tematica",
+      "name": "Autoridade Temática",
+      "description": "Grau de reconhecimento de um site como referência em um assunto específico pelo Google. Construída com cobertura ampla do tema por meio de arquitetura de conteúdo, links internos e publicações consistentes."
+    },
+    {
+      "@type": "DefinedTerm",
+      "@id": "https://maturare.com.br/#term-seo-local",
+      "name": "SEO Local",
+      "description": "Estratégia de posicionamento para negócios físicos ou que atendem uma região específica. Inclui otimização do Google Meu Negócio, citações locais e páginas de localização."
+    },
+    {
+      "@type": "DefinedTerm",
+      "@id": "https://maturare.com.br/#term-featured-snippet",
+      "name": "Featured Snippet",
+      "description": "Caixa de destaque no topo dos resultados do Google que exibe a resposta direta a uma pergunta. Aparecer nele aumenta drasticamente a visibilidade orgânica de uma página."
+    },
+    {
+      "@type": "DefinedTerm",
+      "@id": "https://maturare.com.br/#term-eeat",
+      "name": "E-E-A-T",
+      "description": "Sigla para Experience, Expertise, Authoritativeness e Trustworthiness. Critérios usados pelo Google para avaliar a qualidade e confiabilidade de um site. Fundamental para posicionamento em nichos de saúde, finanças e negócios."
+    },
+    {
+      "@type": "DefinedTerm",
+      "@id": "https://maturare.com.br/#term-link-building",
+      "name": "Link Building",
+      "description": "Estratégia de obtenção de links de outros sites apontando para o seu domínio. Links de sites relevantes aumentam a autoridade do domínio e o posicionamento no Google."
+    },
     {
       "@type": "Blog",
       "@id": "https://maturare.com.br/blog/#blog",
@@ -3893,9 +3512,23 @@ p, .sim-desc, .why-desc { text-wrap: pretty; }
           "datePublished": "2026-03-10",
           "dateModified": "2026-04-29",
           "inLanguage": "pt-BR",
-          "author": {"@id": "https://maturare.com.br/#person-daniel"},
-          "publisher": {"@id": "https://maturare.com.br/#organization"},
-          "isPartOf": {"@id": "https://maturare.com.br/blog/#blog"}
+          "author": {
+            "@id": "https://maturare.com.br/#person-daniel"
+          },
+          "publisher": {
+            "@id": "https://maturare.com.br/#organization"
+          },
+          "isPartOf": {
+            "@id": "https://maturare.com.br/blog/#blog"
+          },
+          "image": {
+            "@type": "ImageObject",
+            "url": "https://maturare.com.br/assets/blog/como-aparecer-no-google.jpg",
+            "width": 1200,
+            "height": 630
+          },
+          "description": "Guia completo para aparecer no Google com SEO local, GMB e conteudo otimizado.",
+          "wordCount": 2400
         },
         {
           "@type": "BlogPosting",
@@ -3905,9 +3538,23 @@ p, .sim-desc, .why-desc { text-wrap: pretty; }
           "datePublished": "2026-03-25",
           "dateModified": "2026-04-29",
           "inLanguage": "pt-BR",
-          "author": {"@id": "https://maturare.com.br/#person-daniel"},
-          "publisher": {"@id": "https://maturare.com.br/#organization"},
-          "isPartOf": {"@id": "https://maturare.com.br/blog/#blog"}
+          "author": {
+            "@id": "https://maturare.com.br/#person-daniel"
+          },
+          "publisher": {
+            "@id": "https://maturare.com.br/#organization"
+          },
+          "isPartOf": {
+            "@id": "https://maturare.com.br/blog/#blog"
+          },
+          "image": {
+            "@type": "ImageObject",
+            "url": "https://maturare.com.br/assets/blog/o-que-e-geo.jpg",
+            "width": 1200,
+            "height": 630
+          },
+          "description": "O que e GEO e como usar essa tecnica para ser recomendado pelas IAs generativas.",
+          "wordCount": 2100
         },
         {
           "@type": "BlogPosting",
@@ -3917,9 +3564,23 @@ p, .sim-desc, .why-desc { text-wrap: pretty; }
           "datePublished": "2026-04-10",
           "dateModified": "2026-04-29",
           "inLanguage": "pt-BR",
-          "author": {"@id": "https://maturare.com.br/#person-daniel"},
-          "publisher": {"@id": "https://maturare.com.br/#organization"},
-          "isPartOf": {"@id": "https://maturare.com.br/blog/#blog"}
+          "author": {
+            "@id": "https://maturare.com.br/#person-daniel"
+          },
+          "publisher": {
+            "@id": "https://maturare.com.br/#organization"
+          },
+          "isPartOf": {
+            "@id": "https://maturare.com.br/blog/#blog"
+          },
+          "image": {
+            "@type": "ImageObject",
+            "url": "https://maturare.com.br/assets/blog/ia-recomenda-empresas.jpg",
+            "width": 1200,
+            "height": 630
+          },
+          "description": "Como fazer o ChatGPT e Perplexity recomendarem sua empresa nos resultados.",
+          "wordCount": 1900
         }
       ]
     },
@@ -3932,7 +3593,10 @@ p, .sim-desc, .why-desc { text-wrap: pretty; }
       "uploadDate": "2024-01-01",
       "contentUrl": "https://www.youtube.com/watch?v=malcB_gQ6n8",
       "embedUrl": "https://www.youtube.com/embed/malcB_gQ6n8",
-      "publisher": {"@id": "https://maturare.com.br/#organization"}
+      "publisher": {
+        "@id": "https://maturare.com.br/#organization"
+      },
+      "duration": "PT8M30S"
     },
     {
       "@type": "VideoObject",
@@ -3943,7 +3607,10 @@ p, .sim-desc, .why-desc { text-wrap: pretty; }
       "uploadDate": "2024-01-01",
       "contentUrl": "https://www.youtube.com/watch?v=TqsqddD0TVw",
       "embedUrl": "https://www.youtube.com/embed/TqsqddD0TVw",
-      "publisher": {"@id": "https://maturare.com.br/#organization"}
+      "publisher": {
+        "@id": "https://maturare.com.br/#organization"
+      },
+      "duration": "PT12M15S"
     },
     {
       "@type": "Course",
@@ -3951,16 +3618,24 @@ p, .sim-desc, .why-desc { text-wrap: pretty; }
       "name": "Curso Google Meu Negócio",
       "description": "Curso completo para dominar o Google Meu Negócio (Google Business Profile) e posicionar seu negócio no Google Maps e nas buscas locais.",
       "url": "https://maturare.com.br/academy/curso-google-meu-negocio",
-      "provider": {"@id": "https://maturare.com.br/#organization"},
+      "provider": {
+        "@id": "https://maturare.com.br/#organization"
+      },
       "inLanguage": "pt-BR",
       "educationalLevel": "beginner",
       "teaches": "Google Meu Negócio, SEO Local, Google Maps, Ficha de empresa no Google",
       "hasCourseInstance": {
         "@type": "CourseInstance",
         "courseMode": "online",
-        "instructor": {"@id": "https://maturare.com.br/#person-daniel"},
-        "inLanguage": "pt-BR"
-      }
+        "instructor": {
+          "@id": "https://maturare.com.br/#person-daniel"
+        },
+        "inLanguage": "pt-BR",
+        "startDate": "2025-01-01",
+        "endDate": "2026-12-31"
+      },
+      "courseCode": "MTR-GMB-01",
+      "timeRequired": "PT4H"
     },
     {
       "@type": "CreativeWork",
@@ -3968,10 +3643,18 @@ p, .sim-desc, .why-desc { text-wrap: pretty; }
       "name": "Topical Hub: SEO, GEO e AEO",
       "description": "Guia completo sobre posicionamento orgânico, otimização para IAs generativas e arquitetura de conteúdo",
       "hasPart": [
-        {"@id": "https://maturare.com.br/agencia-seo"},
-        {"@id": "https://maturare.com.br/consultor-seo"},
-        {"@id": "https://maturare.com.br/blog/o-que-e-geo/#article"},
-        {"@id": "https://maturare.com.br/blog/ia-recomenda-empresas/#article"}
+        {
+          "@id": "https://maturare.com.br/agencia-seo"
+        },
+        {
+          "@id": "https://maturare.com.br/consultor-seo"
+        },
+        {
+          "@id": "https://maturare.com.br/blog/o-que-e-geo/#article"
+        },
+        {
+          "@id": "https://maturare.com.br/blog/ia-recomenda-empresas/#article"
+        }
       ],
       "about": {
         "@type": "DefinedTerm",
@@ -3985,8 +3668,12 @@ p, .sim-desc, .why-desc { text-wrap: pretty; }
       "name": "Topical Hub: Casos de Sucesso",
       "description": "Cases reais de empresas posicionadas no Google e recomendadas pelas IAs pela Maturare",
       "hasPart": [
-        {"@id": "https://maturare.com.br/casos-de-sucesso"},
-        {"@id": "https://maturare.com.br/blog/phd-playground-sem-google-ads/#article"}
+        {
+          "@id": "https://maturare.com.br/casos-de-sucesso"
+        },
+        {
+          "@id": "https://maturare.com.br/blog/phd-playground-sem-google-ads/#article"
+        }
       ],
       "about": {
         "@id": "https://maturare.com.br/#organization"
@@ -3997,43 +3684,57 @@ p, .sim-desc, .why-desc { text-wrap: pretty; }
       "@id": "https://maturare.com.br/#nav-sobre",
       "name": "A Maturare",
       "url": "https://maturare.com.br/sobre",
-      "isPartOf": {"@id": "https://maturare.com.br/#website"}
+      "isPartOf": {
+        "@id": "https://maturare.com.br/#website"
+      }
     },
     {
       "@type": "SiteNavigationElement",
       "@id": "https://maturare.com.br/#nav-servicos",
       "name": "Serviços",
       "url": "https://maturare.com.br/agencia-seo",
-      "isPartOf": {"@id": "https://maturare.com.br/#website"}
+      "isPartOf": {
+        "@id": "https://maturare.com.br/#website"
+      }
     },
     {
       "@type": "SiteNavigationElement",
       "@id": "https://maturare.com.br/#nav-casos",
       "name": "Casos de Sucesso",
       "url": "https://maturare.com.br/casos-de-sucesso",
-      "isPartOf": {"@id": "https://maturare.com.br/#website"}
+      "isPartOf": {
+        "@id": "https://maturare.com.br/#website"
+      }
     },
     {
       "@type": "SiteNavigationElement",
       "@id": "https://maturare.com.br/#nav-blog",
       "name": "Blog",
       "url": "https://maturare.com.br/blog",
-      "isPartOf": {"@id": "https://maturare.com.br/#website"}
+      "isPartOf": {
+        "@id": "https://maturare.com.br/#website"
+      }
     },
     {
       "@type": "SiteNavigationElement",
       "@id": "https://maturare.com.br/#nav-academy",
       "name": "Academy",
       "url": "https://maturare.com.br/academy/curso-google-meu-negocio",
-      "isPartOf": {"@id": "https://maturare.com.br/#website"}
+      "isPartOf": {
+        "@id": "https://maturare.com.br/#website"
+      }
     },
     {
       "@type": "PrivacyPolicy",
       "@id": "https://maturare.com.br/#privacy",
       "name": "Política de Privacidade",
       "url": "https://maturare.com.br/politica-de-privacidade",
-      "about": {"@id": "https://maturare.com.br/#organization"},
-      "publisher": {"@id": "https://maturare.com.br/#organization"},
+      "about": {
+        "@id": "https://maturare.com.br/#organization"
+      },
+      "publisher": {
+        "@id": "https://maturare.com.br/#organization"
+      },
       "inLanguage": "pt-BR"
     }
   ]
