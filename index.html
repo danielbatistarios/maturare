@@ -2026,51 +2026,80 @@ textarea.finput { min-height: 90px; resize: vertical; }
   .si-mob-wrap { display: none; }
 }
 
-/* === SI-HUB MOBILE LAYOUT === */
-/* viewBox 320×420 — cards posicionados absolutamente em cima do SVG */
+/* === SI-HUB MOBILE LAYOUT (≤600px) === */
+/* 3 linhas: 2 | 3 | 2 ícones. SVG de fundo com bezier + beams. */
 .si-mob-wrap {
   position: relative;
   width: 100%;
-  max-width: 320px;
+  max-width: 340px;
   margin: 0 auto;
 }
+/* SVG ocupa toda a área do wrapper — posição absoluta atrás dos ícones */
 .si-mob-svg {
+  position: absolute;
+  inset: 0;
   width: 100%;
-  height: auto;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+/* grid 3 linhas */
+.si-mob-rows {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 12px 0;
+}
+.si-mob-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+}
+.si-mob-row.row-mid {
+  justify-content: space-between;
+  padding: 12px 24px;
+}
+/* ícone: círculo branco sem texto */
+.si-mob-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #fff;
+  border: 1px solid #e4e4e0;
+  box-shadow: 0 2px 8px rgba(0,0,0,.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.si-mob-icon svg,
+.si-mob-icon img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
   display: block;
 }
-/* cards posicionados absolutamente sobre o SVG */
-/* viewBox 320×420 → posições em % */
-.si-mob-card {
-  position: absolute;
-  transform: translate(-50%, -50%);
-  z-index: 2;
+/* centro: maior, com pulse */
+.si-mob-icon.si-mob-center {
+  width: 76px;
+  height: 76px;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(0,0,0,.10), 0 0 0 4px rgba(196,160,53,.15);
+  animation: siPulse 3s ease-in-out infinite;
 }
-/* posições dos 6 cards laterais e 1 centro */
-/* esquerda: top, mid, bot — x=16%, y=12%/50%/88% */
-/* direita:  top, mid, bot — x=84%, y=12%/50%/88% */
-/* centro: x=50%, y=50% */
-.si-mob-card.mc-l1 { left: 16%; top: 12%; }
-.si-mob-card.mc-l2 { left: 16%; top: 50%; }
-.si-mob-card.mc-l3 { left: 16%; top: 88%; }
-.si-mob-card.mc-r1 { left: 84%; top: 12%; }
-.si-mob-card.mc-r2 { left: 84%; top: 50%; }
-.si-mob-card.mc-r3 { left: 84%; top: 88%; }
-.si-mob-card.mc-c  { left: 50%; top: 50%; }
-/* cards menores no mobile */
-.si-mob-card .si-card {
-  width: 64px;
-  height: 64px;
-  border-radius: 12px;
-  gap: 4px;
+.si-mob-icon.si-mob-center img {
+  width: 32px;
+  height: 39px;
 }
-.si-mob-card .si-card svg,
-.si-mob-card .si-card img { width: 26px; height: 26px; }
-.si-mob-card .si-center {
-  width: 72px;
-  height: 72px;
+/* espaçador invisível para alinhar centro com as bordas */
+.si-mob-spacer {
+  width: 60px;
+  height: 60px;
+  visibility: hidden;
 }
-.si-mob-card .si-center img { width: 28px; height: 34px; }
 
 /* === SERVIÇOS 4 CARDS === */
 .svc4-sec {
@@ -5448,85 +5477,78 @@ footer {
       </div><!-- .si-hub-layout -->
     </div><!-- .si-hub-wrap -->
 
-    <!-- ─── SI-HUB MOBILE (≤600px) ─── -->
+    <!-- ─── SI-HUB MOBILE (≤600px) — layout 2-3-2 igual à referência ─── -->
     <div class="si-mob-wrap" aria-hidden="true">
 
-      <!-- SVG: guias estáticas + beams animados — viewBox 320×420, centro (160,210) -->
-      <svg class="si-mob-svg" viewBox="0 0 320 420" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+      <!--
+        viewBox 340×220
+        Linha 1 (y=46):  ChatGPT x=54,  Google x=286
+        Linha 2 (y=110): Claude x=54,   Centro x=170, Perplexity x=286
+        Linha 3 (y=174): Bing x=54,     Gemini x=286
+        Centro = (170,110)
+      -->
+      <svg class="si-mob-svg" viewBox="0 0 340 220" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
         <defs>
-          <!-- Gradients: do centro (160,210) para cada nó -->
-          <linearGradient id="mb1" gradientUnits="userSpaceOnUse" x1="160" y1="210" x2="51"  y2="50" ><stop offset="20%" stop-color="#2D6B45" stop-opacity="0"/><stop offset="50%" stop-color="#2D6B45" stop-opacity=".85"/><stop offset="80%" stop-color="#2D6B45" stop-opacity="0"/></linearGradient>
-          <linearGradient id="mb2" gradientUnits="userSpaceOnUse" x1="160" y1="210" x2="51"  y2="210"><stop offset="20%" stop-color="#2D6B45" stop-opacity="0"/><stop offset="50%" stop-color="#2D6B45" stop-opacity=".85"/><stop offset="80%" stop-color="#2D6B45" stop-opacity="0"/></linearGradient>
-          <linearGradient id="mb3" gradientUnits="userSpaceOnUse" x1="160" y1="210" x2="51"  y2="370"><stop offset="20%" stop-color="#2D6B45" stop-opacity="0"/><stop offset="50%" stop-color="#2D6B45" stop-opacity=".85"/><stop offset="80%" stop-color="#2D6B45" stop-opacity="0"/></linearGradient>
-          <linearGradient id="mb4" gradientUnits="userSpaceOnUse" x1="160" y1="210" x2="269" y2="50" ><stop offset="20%" stop-color="#2D6B45" stop-opacity="0"/><stop offset="50%" stop-color="#2D6B45" stop-opacity=".85"/><stop offset="80%" stop-color="#2D6B45" stop-opacity="0"/></linearGradient>
-          <linearGradient id="mb5" gradientUnits="userSpaceOnUse" x1="160" y1="210" x2="269" y2="210"><stop offset="20%" stop-color="#2D6B45" stop-opacity="0"/><stop offset="50%" stop-color="#2D6B45" stop-opacity=".85"/><stop offset="80%" stop-color="#2D6B45" stop-opacity="0"/></linearGradient>
-          <linearGradient id="mb6" gradientUnits="userSpaceOnUse" x1="160" y1="210" x2="269" y2="370"><stop offset="20%" stop-color="#2D6B45" stop-opacity="0"/><stop offset="50%" stop-color="#2D6B45" stop-opacity=".85"/><stop offset="80%" stop-color="#2D6B45" stop-opacity="0"/></linearGradient>
+          <linearGradient id="mb1" gradientUnits="userSpaceOnUse" x1="170" y1="110" x2="54"  y2="46" ><stop offset="0%" stop-color="#2D6B45" stop-opacity="0"/><stop offset="50%" stop-color="#2D6B45" stop-opacity=".8"/><stop offset="100%" stop-color="#2D6B45" stop-opacity="0"/></linearGradient>
+          <linearGradient id="mb2" gradientUnits="userSpaceOnUse" x1="170" y1="110" x2="54"  y2="110"><stop offset="0%" stop-color="#2D6B45" stop-opacity="0"/><stop offset="50%" stop-color="#2D6B45" stop-opacity=".8"/><stop offset="100%" stop-color="#2D6B45" stop-opacity="0"/></linearGradient>
+          <linearGradient id="mb3" gradientUnits="userSpaceOnUse" x1="170" y1="110" x2="54"  y2="174"><stop offset="0%" stop-color="#2D6B45" stop-opacity="0"/><stop offset="50%" stop-color="#2D6B45" stop-opacity=".8"/><stop offset="100%" stop-color="#2D6B45" stop-opacity="0"/></linearGradient>
+          <linearGradient id="mb4" gradientUnits="userSpaceOnUse" x1="170" y1="110" x2="286" y2="46" ><stop offset="0%" stop-color="#2D6B45" stop-opacity="0"/><stop offset="50%" stop-color="#2D6B45" stop-opacity=".8"/><stop offset="100%" stop-color="#2D6B45" stop-opacity="0"/></linearGradient>
+          <linearGradient id="mb5" gradientUnits="userSpaceOnUse" x1="170" y1="110" x2="286" y2="110"><stop offset="0%" stop-color="#2D6B45" stop-opacity="0"/><stop offset="50%" stop-color="#2D6B45" stop-opacity=".8"/><stop offset="100%" stop-color="#2D6B45" stop-opacity="0"/></linearGradient>
+          <linearGradient id="mb6" gradientUnits="userSpaceOnUse" x1="170" y1="110" x2="286" y2="174"><stop offset="0%" stop-color="#2D6B45" stop-opacity="0"/><stop offset="50%" stop-color="#2D6B45" stop-opacity=".8"/><stop offset="100%" stop-color="#2D6B45" stop-opacity="0"/></linearGradient>
         </defs>
-        <!-- guias estáticas (bezier) -->
-        <path d="M160,210 C 120,210 90,130  51,50"  fill="none" stroke="rgba(0,0,0,.15)" stroke-width="1.5"/>
-        <path d="M160,210 C 110,210 80,210  51,210" fill="none" stroke="rgba(0,0,0,.15)" stroke-width="1.5"/>
-        <path d="M160,210 C 120,210 90,290  51,370" fill="none" stroke="rgba(0,0,0,.15)" stroke-width="1.5"/>
-        <path d="M160,210 C 200,210 230,130 269,50"  fill="none" stroke="rgba(0,0,0,.15)" stroke-width="1.5"/>
-        <path d="M160,210 C 210,210 240,210 269,210" fill="none" stroke="rgba(0,0,0,.15)" stroke-width="1.5"/>
-        <path d="M160,210 C 200,210 230,290 269,370" fill="none" stroke="rgba(0,0,0,.15)" stroke-width="1.5"/>
+        <!-- guias estáticas bezier -->
+        <path d="M170,110 C 140,110 110,80  54,46"   fill="none" stroke="rgba(0,0,0,.13)" stroke-width="1.5"/>
+        <path d="M170,110 C 120,110 90,110  54,110"  fill="none" stroke="rgba(0,0,0,.13)" stroke-width="1.5"/>
+        <path d="M170,110 C 140,110 110,140 54,174"  fill="none" stroke="rgba(0,0,0,.13)" stroke-width="1.5"/>
+        <path d="M170,110 C 200,110 230,80  286,46"  fill="none" stroke="rgba(0,0,0,.13)" stroke-width="1.5"/>
+        <path d="M170,110 C 220,110 250,110 286,110" fill="none" stroke="rgba(0,0,0,.13)" stroke-width="1.5"/>
+        <path d="M170,110 C 200,110 230,140 286,174" fill="none" stroke="rgba(0,0,0,.13)" stroke-width="1.5"/>
         <!-- beams animados -->
-        <path class="si-beam-anim d1" d="M160,210 C 120,210 90,130  51,50"  fill="none" stroke="url(#mb1)" stroke-width="4" stroke-linecap="round"/>
-        <path class="si-beam-anim d2" d="M160,210 C 110,210 80,210  51,210" fill="none" stroke="url(#mb2)" stroke-width="4" stroke-linecap="round"/>
-        <path class="si-beam-anim d3" d="M160,210 C 120,210 90,290  51,370" fill="none" stroke="url(#mb3)" stroke-width="4" stroke-linecap="round"/>
-        <path class="si-beam-anim d4" d="M160,210 C 200,210 230,130 269,50"  fill="none" stroke="url(#mb4)" stroke-width="4" stroke-linecap="round"/>
-        <path class="si-beam-anim d5" d="M160,210 C 210,210 240,210 269,210" fill="none" stroke="url(#mb5)" stroke-width="4" stroke-linecap="round"/>
-        <path class="si-beam-anim d6" d="M160,210 C 200,210 230,290 269,370" fill="none" stroke="url(#mb6)" stroke-width="4" stroke-linecap="round"/>
+        <path class="si-beam-anim d1" d="M170,110 C 140,110 110,80  54,46"   fill="none" stroke="url(#mb1)" stroke-width="3" stroke-linecap="round"/>
+        <path class="si-beam-anim d2" d="M170,110 C 120,110 90,110  54,110"  fill="none" stroke="url(#mb2)" stroke-width="3" stroke-linecap="round"/>
+        <path class="si-beam-anim d3" d="M170,110 C 140,110 110,140 54,174"  fill="none" stroke="url(#mb3)" stroke-width="3" stroke-linecap="round"/>
+        <path class="si-beam-anim d4" d="M170,110 C 200,110 230,80  286,46"  fill="none" stroke="url(#mb4)" stroke-width="3" stroke-linecap="round"/>
+        <path class="si-beam-anim d5" d="M170,110 C 220,110 250,110 286,110" fill="none" stroke="url(#mb5)" stroke-width="3" stroke-linecap="round"/>
+        <path class="si-beam-anim d6" d="M170,110 C 200,110 230,140 286,174" fill="none" stroke="url(#mb6)" stroke-width="3" stroke-linecap="round"/>
       </svg>
 
-      <!-- Cards sobre o SVG -->
-      <!-- Esquerda -->
-      <div class="si-mob-card mc-l1">
-        <div class="si-card">
-          <svg viewBox="0 0 24 24" fill="none"><path d="M22.28 9.94a5.77 5.77 0 0 0-.5-4.74 5.84 5.84 0 0 0-6.29-2.8A5.77 5.77 0 0 0 11.15 1a5.84 5.84 0 0 0-5.57 4.05 5.77 5.77 0 0 0-3.85 2.8 5.84 5.84 0 0 0 .72 6.86 5.77 5.77 0 0 0 .5 4.74 5.84 5.84 0 0 0 6.29 2.8A5.77 5.77 0 0 0 13.58 23a5.84 5.84 0 0 0 5.57-4.05 5.77 5.77 0 0 0 3.85-2.8 5.84 5.84 0 0 0-.72-6.21ZM13.58 21.5a4.33 4.33 0 0 1-2.78-1l.14-.08 4.62-2.67a.76.76 0 0 0 .38-.66v-6.5l1.95 1.13a.07.07 0 0 1 .04.05v5.4a4.35 4.35 0 0 1-4.35 4.33Zm-9.35-4a4.33 4.33 0 0 1-.52-2.91l.14.08 4.62 2.67a.75.75 0 0 0 .76 0l5.64-3.26v2.26a.07.07 0 0 1-.03.06L9.98 19.1a4.35 4.35 0 0 1-5.75-1.6Zm-1.22-10.1A4.33 4.33 0 0 1 5.27 5.6v5.48a.75.75 0 0 0 .38.66l5.63 3.25-1.95 1.13a.07.07 0 0 1-.07 0L4.5 13.42a4.35 4.35 0 0 1-1.49-6.02Zm16.03 3.73-5.63-3.26 1.95-1.12a.07.07 0 0 1 .07 0l4.77 2.75a4.34 4.34 0 0 1-.67 7.83v-5.48a.75.75 0 0 0-.49-.72Zm1.94-2.92-.14-.08-4.61-2.68a.76.76 0 0 0-.76 0L9.83 8.71V6.45a.07.07 0 0 1 .03-.06L14.6 3.7a4.34 4.34 0 0 1 6.38 4.51Zm-12.2 4.01L6.83 11.1a.07.07 0 0 1-.04-.06V5.64a4.34 4.34 0 0 1 7.12-3.33l-.14.08-4.62 2.67a.75.75 0 0 0-.38.66l-.01 6.5Zm1.06-2.28L12 8.53l2.17 1.25v2.5L12 13.53l-2.16-1.25V9.94Z" fill="#10a37f"/></svg>
-          <span>ChatGPT</span>
-        </div>
-      </div>
-      <div class="si-mob-card mc-l2">
-        <div class="si-card">
-          <img src="/assets/claude-logo.png" alt="Claude" width="28" height="28" style="object-fit:contain;">
-          <span>Claude</span>
-        </div>
-      </div>
-      <div class="si-mob-card mc-l3">
-        <div class="si-card">
-          <img src="/assets/copilot-logo.png" alt="Copilot" width="28" height="28" style="object-fit:contain;">
-          <span>Copilot</span>
-        </div>
-      </div>
+      <!-- Ícones: 3 linhas (2-3-2) sem texto -->
+      <div class="si-mob-rows">
 
-      <!-- Centro -->
-      <div class="si-mob-card mc-c">
-        <div class="si-card si-center">
-          <img src="/assets/maturare-logo.png" alt="Maturare" width="32" height="39" style="object-fit:contain;">
-          <span>Maturare</span>
+        <!-- Linha 1: ChatGPT | Google -->
+        <div class="si-mob-row">
+          <div class="si-mob-icon">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M22.28 9.94a5.77 5.77 0 0 0-.5-4.74 5.84 5.84 0 0 0-6.29-2.8A5.77 5.77 0 0 0 11.15 1a5.84 5.84 0 0 0-5.57 4.05 5.77 5.77 0 0 0-3.85 2.8 5.84 5.84 0 0 0 .72 6.86 5.77 5.77 0 0 0 .5 4.74 5.84 5.84 0 0 0 6.29 2.8A5.77 5.77 0 0 0 13.58 23a5.84 5.84 0 0 0 5.57-4.05 5.77 5.77 0 0 0 3.85-2.8 5.84 5.84 0 0 0-.72-6.21ZM13.58 21.5a4.33 4.33 0 0 1-2.78-1l.14-.08 4.62-2.67a.76.76 0 0 0 .38-.66v-6.5l1.95 1.13a.07.07 0 0 1 .04.05v5.4a4.35 4.35 0 0 1-4.35 4.33Zm-9.35-4a4.33 4.33 0 0 1-.52-2.91l.14.08 4.62 2.67a.75.75 0 0 0 .76 0l5.64-3.26v2.26a.07.07 0 0 1-.03.06L9.98 19.1a4.35 4.35 0 0 1-5.75-1.6Zm-1.22-10.1A4.33 4.33 0 0 1 5.27 5.6v5.48a.75.75 0 0 0 .38.66l5.63 3.25-1.95 1.13a.07.07 0 0 1-.07 0L4.5 13.42a4.35 4.35 0 0 1-1.49-6.02Zm16.03 3.73-5.63-3.26 1.95-1.12a.07.07 0 0 1 .07 0l4.77 2.75a4.34 4.34 0 0 1-.67 7.83v-5.48a.75.75 0 0 0-.49-.72Zm1.94-2.92-.14-.08-4.61-2.68a.76.76 0 0 0-.76 0L9.83 8.71V6.45a.07.07 0 0 1 .03-.06L14.6 3.7a4.34 4.34 0 0 1 6.38 4.51Zm-12.2 4.01L6.83 11.1a.07.07 0 0 1-.04-.06V5.64a4.34 4.34 0 0 1 7.12-3.33l-.14.08-4.62 2.67a.75.75 0 0 0-.38.66l-.01 6.5Zm1.06-2.28L12 8.53l2.17 1.25v2.5L12 13.53l-2.16-1.25V9.94Z" fill="#10a37f"/></svg>
+          </div>
+          <div class="si-mob-icon">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M21.8 12.2c0-.7-.1-1.3-.2-1.9H12v3.6h5.5a4.7 4.7 0 0 1-2 3.1v2.5h3.3c1.9-1.8 3-4.4 3-7.3Z" fill="#4285F4"/><path d="M12 22c2.7 0 5-.9 6.7-2.4l-3.3-2.5c-.9.6-2.1 1-3.4 1-2.6 0-4.8-1.8-5.6-4.1H3v2.6C4.8 19.9 8.1 22 12 22Z" fill="#34A853"/><path d="M6.4 14c-.2-.6-.3-1.3-.3-2s.1-1.4.3-2V7.4H3A10 10 0 0 0 2 12c0 1.6.4 3.1 1 4.6L6.4 14Z" fill="#FBBC05"/><path d="M12 5.9c1.5 0 2.8.5 3.8 1.5l2.9-2.9C16.9 2.9 14.7 2 12 2c-3.9 0-7.2 2.1-9 5.4L6.4 10c.8-2.3 3-4.1 5.6-4.1Z" fill="#EA4335"/></svg>
+          </div>
         </div>
-      </div>
 
-      <!-- Direita -->
-      <div class="si-mob-card mc-r1">
-        <div class="si-card">
-          <svg viewBox="0 0 24 24" fill="none"><path d="M21.8 12.2c0-.7-.1-1.3-.2-1.9H12v3.6h5.5a4.7 4.7 0 0 1-2 3.1v2.5h3.3c1.9-1.8 3-4.4 3-7.3Z" fill="#4285F4"/><path d="M12 22c2.7 0 5-.9 6.7-2.4l-3.3-2.5c-.9.6-2.1 1-3.4 1-2.6 0-4.8-1.8-5.6-4.1H3v2.6C4.8 19.9 8.1 22 12 22Z" fill="#34A853"/><path d="M6.4 14c-.2-.6-.3-1.3-.3-2s.1-1.4.3-2V7.4H3A10 10 0 0 0 2 12c0 1.6.4 3.1 1 4.6L6.4 14Z" fill="#FBBC05"/><path d="M12 5.9c1.5 0 2.8.5 3.8 1.5l2.9-2.9C16.9 2.9 14.7 2 12 2c-3.9 0-7.2 2.1-9 5.4L6.4 10c.8-2.3 3-4.1 5.6-4.1Z" fill="#EA4335"/></svg>
-          <span>Google</span>
+        <!-- Linha 2: Claude | Maturare | Perplexity -->
+        <div class="si-mob-row row-mid">
+          <div class="si-mob-icon">
+            <img src="/assets/claude-logo.png" alt="Claude" width="28" height="28" style="object-fit:contain;">
+          </div>
+          <div class="si-mob-icon si-mob-center">
+            <img src="/assets/maturare-logo.png" alt="Maturare" width="32" height="39" style="object-fit:contain;">
+          </div>
+          <div class="si-mob-icon">
+            <img src="/assets/perplexity-logo.webp" alt="Perplexity" width="28" height="28" style="object-fit:contain;border-radius:6px;">
+          </div>
         </div>
-      </div>
-      <div class="si-mob-card mc-r2">
-        <div class="si-card">
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="gem-g2" x1="12" y1="2" x2="12" y2="22" gradientUnits="userSpaceOnUse"><stop stop-color="#4285F4"/><stop offset="1" stop-color="#9B72CB"/></linearGradient></defs><path d="M12 2c-.55 2.74-.9 4.5-2.12 5.88C8.5 9.26 6.74 9.6 2 10.15c4.74.55 6.5.9 7.88 2.12C11.1 13.5 11.45 15.26 12 20c.55-4.74.9-6.5 2.12-7.73C15.5 11.05 17.26 10.7 22 10.15c-4.74-.55-6.5-.9-7.88-2.27C12.9 6.5 12.55 4.74 12 2Z" fill="url(#gem-g2)"/></svg>
-          <span>Gemini</span>
-        </div>
-      </div>
-      <div class="si-mob-card mc-r3">
-        <div class="si-card">
-          <img src="/assets/perplexity-logo.webp" alt="Perplexity" width="28" height="28" style="object-fit:contain;border-radius:8px;">
-          <span>Perplexity</span>
-        </div>
-      </div>
 
+        <!-- Linha 3: Bing (Copilot) | Gemini -->
+        <div class="si-mob-row">
+          <div class="si-mob-icon">
+            <img src="/assets/copilot-logo.png" alt="Bing" width="28" height="28" style="object-fit:contain;">
+          </div>
+          <div class="si-mob-icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="gem-g3" x1="12" y1="2" x2="12" y2="22" gradientUnits="userSpaceOnUse"><stop stop-color="#4285F4"/><stop offset="1" stop-color="#9B72CB"/></linearGradient></defs><path d="M12 2c-.55 2.74-.9 4.5-2.12 5.88C8.5 9.26 6.74 9.6 2 10.15c4.74.55 6.5.9 7.88 2.12C11.1 13.5 11.45 15.26 12 20c.55-4.74.9-6.5 2.12-7.73C15.5 11.05 17.26 10.7 22 10.15c-4.74-.55-6.5-.9-7.88-2.27C12.9 6.5 12.55 4.74 12 2Z" fill="url(#gem-g3)"/></svg>
+          </div>
+        </div>
+
+      </div><!-- .si-mob-rows -->
     </div><!-- .si-mob-wrap -->
 
   </div>
