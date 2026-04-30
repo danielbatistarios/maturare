@@ -1998,15 +1998,14 @@ textarea.finput { min-height: 90px; resize: vertical; }
 }
 /* beam animation — travels FROM center outward */
 @keyframes beamMove {
-  0%   { stroke-dashoffset: 0;    opacity: 0; }
-  10%  { opacity: 1; }
-  90%  { opacity: 1; }
-  100% { stroke-dashoffset: -300; opacity: 0; }
+  0%   { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: -240; }
 }
 .si-beam-anim {
-  stroke-dasharray: 60 240;
+  /* dois traços curtos (24px) separados por espaço (96px) = ciclo 240px */
+  stroke-dasharray: 24 96;
   stroke-dashoffset: 0;
-  animation: beamMove 2.4s linear infinite;
+  animation: beamMove 1.8s linear infinite;
 }
 /* all beams in sync — same timing, no stagger */
 .si-beam-anim.d1,
