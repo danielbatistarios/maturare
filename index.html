@@ -1400,6 +1400,28 @@ nav.scrolled {
 .cs-arr { width: 34px; height: 34px; border-radius: 50%; border: 1px solid #ddd; background: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: border-color .2s, background .2s; }
 .cs-arr:hover { border-color: var(--green); background: rgba(26,122,74,.05); }
 @media (max-width: 900px) { .cs-bottom { grid-template-columns: 1fr; gap: 32px; } }
+/* tap hint label — só mobile */
+.cl-tap-hint {
+  display: none;
+}
+@media (max-width: 768px) {
+  .cl-tap-hint {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-top: 6px;
+    opacity: .75;
+    transition: opacity .2s;
+  }
+  .cl-tap-hint svg { flex-shrink: 0; }
+  .cl-item.active .cl-tap-hint { display: none; }
+}
+
 @media (max-width: 768px) {
   .clients-grid { grid-template-columns: repeat(2, 1fr); }
   .cl-item { cursor: pointer; padding: 20px 12px; touch-action: manipulation; }
@@ -5175,38 +5197,47 @@ footer {
     <div class="cl-item" data-id="move">
       <img src="/assets/move-maquinas-logo.png" alt="Move Máquinas">
       <span class="cl-badge case">Case study</span>
+      <span class="cl-tap-hint"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V6a2 2 0 0 0-4 0v5"/><path d="M14 10V4a2 2 0 0 0-4 0v6"/><path d="M10 10.5V6a2 2 0 0 0-4 0v8"/><path d="M6 14a4 4 0 0 0 4 4h4a4 4 0 0 0 4-4v-2.5"/></svg>toque para ver</span>
     </div>
     <div class="cl-item" data-id="ambiental">
       <img src="/assets/ambiental-wash-logo.webp" alt="Ambiental Wash">
       <span class="cl-badge case">Case study</span>
+      <span class="cl-tap-hint"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V6a2 2 0 0 0-4 0v5"/><path d="M14 10V4a2 2 0 0 0-4 0v6"/><path d="M10 10.5V6a2 2 0 0 0-4 0v8"/><path d="M6 14a4 4 0 0 0 4 4h4a4 4 0 0 0 4-4v-2.5"/></svg>toque para ver</span>
     </div>
     <div class="cl-item" data-id="keysfan">
       <img src="/assets/keysfan-logo.webp" alt="Keysfan">
       <span class="cl-badge case">Case study</span>
+      <span class="cl-tap-hint"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V6a2 2 0 0 0-4 0v5"/><path d="M14 10V4a2 2 0 0 0-4 0v6"/><path d="M10 10.5V6a2 2 0 0 0-4 0v8"/><path d="M6 14a4 4 0 0 0 4 4h4a4 4 0 0 0 4-4v-2.5"/></svg>toque para ver</span>
     </div>
     <div class="cl-item" data-id="mundpay">
       <img src="/assets/mundpay-logo.png" alt="Mundpay">
       <span class="cl-badge">Cliente</span>
+      <span class="cl-tap-hint"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V6a2 2 0 0 0-4 0v5"/><path d="M14 10V4a2 2 0 0 0-4 0v6"/><path d="M10 10.5V6a2 2 0 0 0-4 0v8"/><path d="M6 14a4 4 0 0 0 4 4h4a4 4 0 0 0 4-4v-2.5"/></svg>toque para ver</span>
     </div>
     <div class="cl-item" data-id="agita">
       <img src="/assets/agita-morango-logo.png" alt="Agita Morango">
       <span class="cl-badge">Cliente</span>
+      <span class="cl-tap-hint"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V6a2 2 0 0 0-4 0v5"/><path d="M14 10V4a2 2 0 0 0-4 0v6"/><path d="M10 10.5V6a2 2 0 0 0-4 0v8"/><path d="M6 14a4 4 0 0 0 4 4h4a4 4 0 0 0 4-4v-2.5"/></svg>toque para ver</span>
     </div>
     <div class="cl-item" data-id="inpress">
       <img src="/assets/inpress-brasil-logo.jpeg" alt="Inpress Brasil">
       <span class="cl-badge">Cliente</span>
+      <span class="cl-tap-hint"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V6a2 2 0 0 0-4 0v5"/><path d="M14 10V4a2 2 0 0 0-4 0v6"/><path d="M10 10.5V6a2 2 0 0 0-4 0v8"/><path d="M6 14a4 4 0 0 0 4 4h4a4 4 0 0 0 4-4v-2.5"/></svg>toque para ver</span>
     </div>
     <div class="cl-item" data-id="inled">
       <img src="/assets/inled-brasil-logo.png" alt="Inled Brasil">
       <span class="cl-badge">Cliente</span>
+      <span class="cl-tap-hint"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V6a2 2 0 0 0-4 0v5"/><path d="M14 10V4a2 2 0 0 0-4 0v6"/><path d="M10 10.5V6a2 2 0 0 0-4 0v8"/><path d="M6 14a4 4 0 0 0 4 4h4a4 4 0 0 0 4-4v-2.5"/></svg>toque para ver</span>
     </div>
     <div class="cl-item" data-id="amanda">
       <img src="/assets/am-cabral-logo.svg" alt="Amanda Cabral">
       <span class="cl-badge">Cliente</span>
+      <span class="cl-tap-hint"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V6a2 2 0 0 0-4 0v5"/><path d="M14 10V4a2 2 0 0 0-4 0v6"/><path d="M10 10.5V6a2 2 0 0 0-4 0v8"/><path d="M6 14a4 4 0 0 0 4 4h4a4 4 0 0 0 4-4v-2.5"/></svg>toque para ver</span>
     </div>
     <div class="cl-item" data-id="soft">
       <img src="/assets/soft-everest-logo.png" alt="Soft Everest">
       <span class="cl-badge">Cliente</span>
+      <span class="cl-tap-hint"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V6a2 2 0 0 0-4 0v5"/><path d="M14 10V4a2 2 0 0 0-4 0v6"/><path d="M10 10.5V6a2 2 0 0 0-4 0v8"/><path d="M6 14a4 4 0 0 0 4 4h4a4 4 0 0 0 4-4v-2.5"/></svg>toque para ver</span>
     </div>
 
   </div>
@@ -7069,6 +7100,12 @@ Regular agencies do posts and ads. Maturare builds pages that make companies app
 
   panel.addEventListener('mouseenter', function(){ if (!isMobile()){ clearTimeout(leaveTimer); clearTimeout(enterTimer); } });
   panel.addEventListener('mouseleave', function(){ if (!isMobile()){ leaveTimer = setTimeout(closeAll, LEAVE_DELAY); } });
+
+  /* Em mobile, abre o PHD automaticamente no carregamento */
+  if (isMobile()) {
+    var firstItem = document.querySelector('#clientGrid .cl-item[data-id="phd"]');
+    if (firstItem) openPanel(firstItem, 'phd');
+  }
 })();
 </script>
 
