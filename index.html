@@ -2377,6 +2377,103 @@ textarea.finput { min-height: 90px; resize: vertical; }
   .met-step:nth-child(even) .met-step-visual  { order: 2; }
 }
 
+/* === MET CAROUSEL — mobile only === */
+@media (max-width: 680px) {
+  /* Hide the normal stacked layout */
+  .met-steps {
+    display: block;
+    position: relative;
+  }
+
+  /* Scroll container */
+  .met-carousel-track {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 16px;
+    padding: 0 24px 20px;
+    margin: 0 -24px;
+    scrollbar-width: none;
+  }
+  .met-carousel-track::-webkit-scrollbar { display: none; }
+
+  /* Each card */
+  .met-step {
+    display: flex !important;
+    flex-direction: column;
+    gap: 20px;
+    padding: 28px 20px 24px !important;
+    border-top: none !important;
+    border-bottom: none !important;
+    border: 1px solid #e8e8e4;
+    border-radius: 14px;
+    background: #fff;
+    box-shadow: 0 2px 12px rgba(0,0,0,.06);
+    min-width: 85vw;
+    max-width: 85vw;
+    scroll-snap-align: start;
+    flex-shrink: 0;
+  }
+  .met-step:nth-child(even) .met-step-content { order: 1 !important; }
+  .met-step:nth-child(even) .met-step-visual  { order: 2 !important; }
+
+  /* Visual card: remove aspect-ratio to keep compact */
+  .met-step-visual {
+    aspect-ratio: unset !important;
+    min-height: unset;
+  }
+
+  /* Desc shorter */
+  .met-step-desc { font-size: 14px; line-height: 1.7; margin-bottom: 16px; max-width: 100%; }
+  .met-step-title { font-size: 17px; }
+  .met-tags { padding-top: 14px; }
+  .met-tag { font-size: 11px; padding: 4px 10px; }
+  .met-header { margin-bottom: 40px; }
+
+  /* Navigation bar */
+  .met-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 8px;
+  }
+  .met-nav-btn {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    border: 1px solid #e0e0da;
+    background: #fff;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    transition: background .2s, border-color .2s;
+    flex-shrink: 0;
+  }
+  .met-nav-btn:disabled { opacity: .35; pointer-events: none; }
+  .met-nav-btn:hover:not(:disabled) { background: #f4f4f0; border-color: #c0c0ba; }
+  .met-nav-btn svg { width: 16px; height: 16px; stroke: var(--ink); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .met-nav-dots {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+  }
+  .met-nav-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #d0d0cc;
+    transition: background .25s, transform .25s;
+  }
+  .met-nav-dot.active {
+    background: var(--green);
+    transform: scale(1.4);
+  }
+}
+/* Desktop: hide nav controls */
+@media (min-width: 681px) {
+  .met-carousel-track { display: contents; }
+  .met-nav { display: none !important; }
+}
+
 /* === WORD BLUR REVEAL === */
 
 /* === SERVIÇOS CARDS SVC2 === */
@@ -5691,6 +5788,7 @@ footer {
     </div>
 
     <div class="met-steps">
+      <div class="met-carousel-track" id="metTrack">
 
       <!-- 01 -->
       <div class="met-step reveal">
@@ -5836,7 +5934,25 @@ footer {
         </div>
       </div>
 
+      </div><!-- /met-carousel-track -->
     </div>
+
+    <!-- Mobile navigation -->
+    <div class="met-nav" id="metNav" aria-label="Navegação da metodologia">
+      <button class="met-nav-btn" id="metPrev" aria-label="Etapa anterior">
+        <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <div class="met-nav-dots" id="metDots">
+        <div class="met-nav-dot active"></div>
+        <div class="met-nav-dot"></div>
+        <div class="met-nav-dot"></div>
+        <div class="met-nav-dot"></div>
+      </div>
+      <button class="met-nav-btn" id="metNext" aria-label="Próxima etapa">
+        <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </div>
+
   </div>
 </section>
 
@@ -7299,6 +7415,64 @@ function closeVidModal(e) {
 document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') closeVidModal();
 });
+</script>
+
+<script>
+/* === MET CAROUSEL — mobile nav === */
+(function () {
+  var track = document.getElementById('metTrack');
+  var prevBtn = document.getElementById('metPrev');
+  var nextBtn = document.getElementById('metNext');
+  var dotsEl  = document.getElementById('metDots');
+  if (!track || !prevBtn) return;
+
+  var dots = Array.from(dotsEl.querySelectorAll('.met-nav-dot'));
+  var cards = Array.from(track.querySelectorAll('.met-step'));
+  var total = cards.length;
+  var current = 0;
+
+  function isMobile() { return window.innerWidth <= 680; }
+
+  function scrollTo(idx) {
+    if (!isMobile()) return;
+    var card = cards[idx];
+    if (!card) return;
+    /* scroll card into view within track */
+    var trackLeft = track.getBoundingClientRect().left;
+    var cardLeft  = card.getBoundingClientRect().left;
+    track.scrollBy({ left: cardLeft - trackLeft, behavior: 'smooth' });
+    current = idx;
+    updateState();
+  }
+
+  function updateState() {
+    dots.forEach(function(d, i) { d.classList.toggle('active', i === current); });
+    prevBtn.disabled = current === 0;
+    nextBtn.disabled = current === total - 1;
+  }
+
+  prevBtn.addEventListener('click', function () { if (current > 0) scrollTo(current - 1); });
+  nextBtn.addEventListener('click', function () { if (current < total - 1) scrollTo(current + 1); });
+
+  /* Sync dots on manual swipe */
+  var scrollTimer;
+  track.addEventListener('scroll', function () {
+    clearTimeout(scrollTimer);
+    scrollTimer = setTimeout(function () {
+      if (!isMobile()) return;
+      var trackRect = track.getBoundingClientRect();
+      var closest = 0, minDist = Infinity;
+      cards.forEach(function (card, i) {
+        var dist = Math.abs(card.getBoundingClientRect().left - trackRect.left);
+        if (dist < minDist) { minDist = dist; closest = i; }
+      });
+      current = closest;
+      updateState();
+    }, 80);
+  }, { passive: true });
+
+  updateState();
+})();
 </script>
 
 
