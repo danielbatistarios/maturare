@@ -3207,6 +3207,22 @@ footer {
   .machine-modal-inner { padding: 32px 20px 80px; }
 }
 
+/* Respiro lateral global — garante mínimo 20px em todos os dispositivos */
+@media (max-width: 480px) {
+  .sim-in, .met-in, .cmp2-in, .content-in, .faq-sec-in,
+  .form-in, .location-in, .foot-in, .art-cta-inner,
+  .si-inner, .hero-inner, .quote-inner {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  /* Seções que já têm padding próprio — reforçar mínimo */
+  .svc4-sec, .met-sec, .cmp2-sec, .sim, .content-sec,
+  .location-sec, .faq-sec, .form-sec, .art-cta-sec, .si-sec {
+    padding-left: max(20px, 4vw);
+    padding-right: max(20px, 4vw);
+  }
+}
+
 /* P2: cmp2-card min-height mobile */
 @media (max-width: 600px) {
   .cmp2-card { min-height: unset; }
