@@ -6443,26 +6443,26 @@ footer {
     .books-nav {
       display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 16px;
-      padding: 24px 0 0;
+      justify-content: flex-end;
+      gap: 12px;
+      padding: 24px 20px 0;
     }
     .books-nav-btn {
-      width: 40px; height: 40px;
+      width: 36px; height: 36px;
       border-radius: 50%;
-      border: 1px solid rgba(255,255,255,.15);
-      background: rgba(255,255,255,.06);
+      border: 1.5px solid rgba(255,255,255,.35);
+      background: transparent;
       display: flex; align-items: center; justify-content: center;
       cursor: pointer;
       transition: background .2s, border-color .2s;
       flex-shrink: 0;
     }
-    .books-nav-btn:disabled { opacity: .3; pointer-events: none; }
-    .books-nav-btn:hover:not(:disabled) { background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.3); }
-    .books-nav-btn svg { width: 16px; height: 16px; stroke: #fff; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-    .books-nav-dots { display: flex; gap: 6px; align-items: center; }
-    .books-nav-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,.25); transition: background .25s, transform .25s; }
-    .books-nav-dot.active { background: var(--green2); transform: scale(1.4); }
+    .books-nav-btn:disabled { opacity: .25; pointer-events: none; }
+    .books-nav-btn:hover:not(:disabled) { background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.6); }
+    .books-nav-btn svg { width: 16px; height: 16px; stroke: #fff; fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+    .books-nav-dots { display: flex; gap: 6px; align-items: center; margin-right: 4px; }
+    .books-nav-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,.3); transition: background .25s, transform .25s; }
+    .books-nav-dot.active { background: #fff; transform: scale(1.4); }
 
     .books-shelf {
       gap: 24px;
