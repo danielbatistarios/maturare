@@ -2816,12 +2816,18 @@ footer {
 
 /* hero padding mobile — espaço inferior para o scroll indicator */
 @media (max-width: 480px) {
-  .hero-inner { padding-top: 84px; padding-bottom: 120px; }
+  .hero-inner { padding-top: 84px; padding-bottom: 160px; }
   .hero-scroll {
-    bottom: 32px;
-    left: 50%;
-    transform: translateX(-50%);
+    position: absolute;
+    bottom: 40px;
+    left: 0;
+    right: 0;
+    transform: none;
+    display: flex;
+    flex-direction: column;
     align-items: center;
+    margin: 0 auto;
+    width: 100%;
   }
 }
 
@@ -3265,7 +3271,26 @@ footer {
         {
           "@id": "https://maturare.com.br/#term-eeat"
         }
-      ]
+      ],
+      "subjectOf": [
+        {
+          "@id": "https://maturare.com.br/casos-de-sucesso/phd-playground/"
+        },
+        {
+          "@id": "https://maturare.com.br/casos-de-sucesso/move-maquinas/"
+        },
+        {
+          "@id": "https://maturare.com.br/casos-de-sucesso/ambiental-wash/"
+        },
+        {
+          "@id": "https://maturare.com.br/casos-de-sucesso/keysfan/"
+        }
+      ],
+      "audience": {
+        "@type": "Audience",
+        "audienceType": "Donos de pequenas e médias empresas que querem crescer organicamente no Google sem depender de anúncios pagos"
+      },
+      "slogan": "Seu negócio no topo do Google. Sem anúncios."
     },
     {
       "@type": "Service",
@@ -3309,7 +3334,11 @@ footer {
         {
           "@id": "https://maturare.com.br/#term-eeat"
         }
-      ]
+      ],
+      "audience": {
+        "@type": "Audience",
+        "audienceType": "Empreendedores e gestores de marketing que precisam de diagnóstico e estratégia SEO para orientar equipes internas"
+      }
     },
     {
       "@type": "Service",
@@ -3347,7 +3376,11 @@ footer {
         {
           "@id": "https://maturare.com.br/#term-featured-snippet"
         }
-      ]
+      ],
+      "audience": {
+        "@type": "Audience",
+        "audienceType": "Empresas que precisam de site com arquitetura técnica otimizada para ranquear desde o primeiro dia"
+      }
     },
     {
       "@type": "Service",
@@ -3388,7 +3421,17 @@ footer {
         {
           "@id": "https://maturare.com.br/#term-seo"
         }
-      ]
+      ],
+      "subjectOf": [
+        {
+          "@id": "https://maturare.com.br/casos-de-sucesso/move-maquinas/"
+        }
+      ],
+      "audience": {
+        "@type": "Audience",
+        "audienceType": "Empresas que querem ser recomendadas pelo ChatGPT, Perplexity e Gemini como referência no seu segmento"
+      },
+      "slogan": "Seja recomendado pelo ChatGPT, Perplexity e Gemini."
     },
     {
       "@type": "Service",
@@ -3429,7 +3472,12 @@ footer {
         {
           "@id": "https://maturare.com.br/#term-chunk-engineering"
         }
-      ]
+      ],
+      "audience": {
+        "@type": "Audience",
+        "audienceType": "Empresas que querem aparecer em featured snippets do Google e nas respostas diretas das IAs generativas"
+      },
+      "slogan": "Suas respostas. Nas perguntas que seus clientes fazem."
     },
     {
       "@type": "Service",
@@ -3473,7 +3521,23 @@ footer {
         {
           "@id": "https://maturare.com.br/#term-seo"
         }
-      ]
+      ],
+      "subjectOf": [
+        {
+          "@id": "https://maturare.com.br/casos-de-sucesso/phd-playground/"
+        },
+        {
+          "@id": "https://maturare.com.br/casos-de-sucesso/move-maquinas/"
+        },
+        {
+          "@id": "https://maturare.com.br/casos-de-sucesso/ambiental-wash/"
+        }
+      ],
+      "audience": {
+        "@type": "Audience",
+        "audienceType": "Donos de negócios com presença física que querem aparecer no Google Maps e nas buscas locais perto de mim"
+      },
+      "slogan": "Apareça no Google Maps quando o cliente está perto."
     },
     {
       "@type": "Service",
@@ -3511,7 +3575,16 @@ footer {
         {
           "@id": "https://maturare.com.br/#term-autoridade-tematica"
         }
-      ]
+      ],
+      "subjectOf": [
+        {
+          "@id": "https://maturare.com.br/casos-de-sucesso/keysfan/"
+        }
+      ],
+      "audience": {
+        "@type": "Audience",
+        "audienceType": "Empresas que vendem para outras empresas e precisam de leads orgânicos qualificados no Google"
+      }
     },
     {
       "@type": "Service",
@@ -3552,7 +3625,11 @@ footer {
         {
           "@id": "https://maturare.com.br/#term-eeat"
         }
-      ]
+      ],
+      "audience": {
+        "@type": "Audience",
+        "audienceType": "Escritórios de contabilidade e contadores autônomos que querem atrair clientes pela internet sem anúncios"
+      }
     },
     {
       "@type": "Service",
@@ -3593,7 +3670,11 @@ footer {
         {
           "@id": "https://maturare.com.br/#term-autoridade-tematica"
         }
-      ]
+      ],
+      "audience": {
+        "@type": "Audience",
+        "audienceType": "Clínicas, consultórios e profissionais de saúde que precisam de mais agendamentos orgânicos"
+      }
     },
     {
       "@type": "Service",
@@ -3634,7 +3715,16 @@ footer {
         {
           "@id": "https://maturare.com.br/#term-featured-snippet"
         }
-      ]
+      ],
+      "subjectOf": [
+        {
+          "@id": "https://maturare.com.br/casos-de-sucesso/keysfan/"
+        }
+      ],
+      "audience": {
+        "@type": "Audience",
+        "audienceType": "Fundadores e times de growth de startups e produtos SaaS que precisam de tráfego qualificado com intenção de compra"
+      }
     },
     {
       "@type": "Service",
@@ -3772,7 +3862,9 @@ footer {
           "@type": "Organization",
           "name": "Maturare"
         }
-      }
+      },
+      "jobTitle": "Consultor de SEO, GEO e AEO",
+      "award": "Fundador da Maturare, agência especializada em posicionamento orgânico e otimização para IAs generativas"
     },
     {
       "@type": "WebSite",
@@ -4020,7 +4112,8 @@ footer {
         {
           "@id": "https://maturare.com.br/#term-autoridade-tematica"
         }
-      ]
+      ],
+      "url": "https://maturare.com.br/blog/o-que-e-seo"
     },
     {
       "@type": "DefinedTerm",
@@ -4041,7 +4134,8 @@ footer {
         {
           "@id": "https://maturare.com.br/#term-chunk-engineering"
         }
-      ]
+      ],
+      "url": "https://maturare.com.br/blog/o-que-e-geo"
     },
     {
       "@type": "DefinedTerm",
@@ -4062,50 +4156,58 @@ footer {
         {
           "@id": "https://maturare.com.br/#term-featured-snippet"
         }
-      ]
+      ],
+      "url": "https://maturare.com.br/blog/o-que-e-aeo"
     },
     {
       "@type": "DefinedTerm",
       "@id": "https://maturare.com.br/#term-gmb",
       "name": "Google Meu Negócio",
       "alternateName": "Google Business Profile",
-      "description": "Plataforma gratuita do Google para gerenciar a presença de negócios no Google Maps e nas buscas locais. Uma ficha otimizada aparece no painel lateral do Google quando alguém busca pela empresa ou por serviços na região."
+      "description": "Plataforma gratuita do Google para gerenciar a presença de negócios no Google Maps e nas buscas locais. Uma ficha otimizada aparece no painel lateral do Google quando alguém busca pela empresa ou por serviços na região.",
+      "url": "https://maturare.com.br/blog/google-meu-negocio"
     },
     {
       "@type": "DefinedTerm",
       "@id": "https://maturare.com.br/#term-chunk-engineering",
       "name": "Chunk Engineering",
-      "description": "Técnica de estruturar conteúdo em blocos semânticos extraíveis por IAs. Cada chunk contém uma entidade principal, seus atributos e valores (EAV), tornando o conteúdo legível e citável por ChatGPT, Perplexity e Gemini."
+      "description": "Técnica de estruturar conteúdo em blocos semânticos extraíveis por IAs. Cada chunk contém uma entidade principal, seus atributos e valores (EAV), tornando o conteúdo legível e citável por ChatGPT, Perplexity e Gemini.",
+      "url": "https://maturare.com.br/blog/chunk-engineering"
     },
     {
       "@type": "DefinedTerm",
       "@id": "https://maturare.com.br/#term-autoridade-tematica",
       "name": "Autoridade Temática",
-      "description": "Grau de reconhecimento de um site como referência em um assunto específico pelo Google. Construída com cobertura ampla do tema por meio de arquitetura de conteúdo, links internos e publicações consistentes."
+      "description": "Grau de reconhecimento de um site como referência em um assunto específico pelo Google. Construída com cobertura ampla do tema por meio de arquitetura de conteúdo, links internos e publicações consistentes.",
+      "url": "https://maturare.com.br/blog/autoridade-tematica"
     },
     {
       "@type": "DefinedTerm",
       "@id": "https://maturare.com.br/#term-seo-local",
       "name": "SEO Local",
-      "description": "Estratégia de posicionamento para negócios físicos ou que atendem uma região específica. Inclui otimização do Google Meu Negócio, citações locais e páginas de localização."
+      "description": "Estratégia de posicionamento para negócios físicos ou que atendem uma região específica. Inclui otimização do Google Meu Negócio, citações locais e páginas de localização.",
+      "url": "https://maturare.com.br/blog/seo-local"
     },
     {
       "@type": "DefinedTerm",
       "@id": "https://maturare.com.br/#term-featured-snippet",
       "name": "Featured Snippet",
-      "description": "Caixa de destaque no topo dos resultados do Google que exibe a resposta direta a uma pergunta. Aparecer nele aumenta drasticamente a visibilidade orgânica de uma página."
+      "description": "Caixa de destaque no topo dos resultados do Google que exibe a resposta direta a uma pergunta. Aparecer nele aumenta drasticamente a visibilidade orgânica de uma página.",
+      "url": "https://maturare.com.br/blog/featured-snippet"
     },
     {
       "@type": "DefinedTerm",
       "@id": "https://maturare.com.br/#term-eeat",
       "name": "E-E-A-T",
-      "description": "Sigla para Experience, Expertise, Authoritativeness e Trustworthiness. Critérios usados pelo Google para avaliar a qualidade e confiabilidade de um site. Fundamental para posicionamento em nichos de saúde, finanças e negócios."
+      "description": "Sigla para Experience, Expertise, Authoritativeness e Trustworthiness. Critérios usados pelo Google para avaliar a qualidade e confiabilidade de um site. Fundamental para posicionamento em nichos de saúde, finanças e negócios.",
+      "url": "https://maturare.com.br/blog/eeat"
     },
     {
       "@type": "DefinedTerm",
       "@id": "https://maturare.com.br/#term-link-building",
       "name": "Link Building",
-      "description": "Estratégia de obtenção de links de outros sites apontando para o seu domínio. Links de sites relevantes aumentam a autoridade do domínio e o posicionamento no Google."
+      "description": "Estratégia de obtenção de links de outros sites apontando para o seu domínio. Links de sites relevantes aumentam a autoridade do domínio e o posicionamento no Google.",
+      "url": "https://maturare.com.br/blog/link-building"
     },
     {
       "@type": "Blog",
@@ -4220,7 +4322,12 @@ footer {
         {
           "@id": "https://maturare.com.br/#service-aeo"
         }
-      ]
+      ],
+      "author": {
+        "@id": "https://maturare.com.br/#person-daniel"
+      },
+      "inLanguage": "pt-BR",
+      "keywords": "SEO, GEO, AEO, posicionamento orgânico, ChatGPT, Perplexity, agência SEO, Maturare"
     },
     {
       "@type": "VideoObject",
@@ -4242,7 +4349,12 @@ footer {
         {
           "@id": "https://maturare.com.br/#term-gmb"
         }
-      ]
+      ],
+      "author": {
+        "@id": "https://maturare.com.br/#person-daniel"
+      },
+      "inLanguage": "pt-BR",
+      "keywords": "Google Meu Negócio, Google Business Profile, SEO local, Google Maps, curso online"
     },
     {
       "@type": "Course",
@@ -4392,7 +4504,14 @@ footer {
         "description": "Empresa de playground de madeira com sede no Rio de Janeiro, RJ"
       },
       "result": "R$70.000 economizados em anúncios. 2 anos sem Google Ads. Faturamento cresceu com leads orgânicos qualificados.",
-      "datePublished": "2025-01-01"
+      "datePublished": "2025-01-01",
+      "keywords": "case SEO, playground de madeira, SEO local Rio de Janeiro, sem Google Ads, leads orgânicos",
+      "dateModified": "2025-06-01",
+      "inLanguage": "pt-BR",
+      "audience": {
+        "@type": "Audience",
+        "audienceType": "Empresários que querem reduzir dependência de anúncios pagos"
+      }
     },
     {
       "@type": "CreativeWork",
@@ -4420,7 +4539,14 @@ footer {
         "description": "Empresa de aluguel de equipamentos com sede em Goiânia, GO"
       },
       "result": "Recomendado pelo Google, ChatGPT e Perplexity. Economia de R$96.000 por ano em anúncios.",
-      "datePublished": "2025-06-01"
+      "datePublished": "2025-06-01",
+      "keywords": "case SEO local, aluguel de equipamentos, Goiás, 63 cidades, GEO, ChatGPT recomenda",
+      "dateModified": "2025-07-01",
+      "inLanguage": "pt-BR",
+      "audience": {
+        "@type": "Audience",
+        "audienceType": "Empresas de aluguel e serviços com cobertura regional"
+      }
     },
     {
       "@type": "CreativeWork",
@@ -4445,7 +4571,14 @@ footer {
         "description": "Lavanderia com unidades na Barra da Tijuca e Copacabana, Rio de Janeiro, RJ"
       },
       "result": "Topo do Google nas buscas de lavanderia na Barra e em Copacabana. R$48.000 por ano economizados.",
-      "datePublished": "2025-03-01"
+      "datePublished": "2025-03-01",
+      "keywords": "case SEO local, lavanderia, Barra da Tijuca, Copacabana, Google Maps",
+      "dateModified": "2025-04-01",
+      "inLanguage": "pt-BR",
+      "audience": {
+        "@type": "Audience",
+        "audienceType": "Donos de negócios locais em grandes cidades"
+      }
     },
     {
       "@type": "CreativeWork",
@@ -4473,7 +4606,14 @@ footer {
         "description": "Empresa de licenças de software de atuação nacional"
       },
       "result": "R$12.000 por mês em vendas orgânicas. R$0 investido em anúncios.",
-      "datePublished": "2025-08-01"
+      "datePublished": "2025-08-01",
+      "keywords": "case SEO, licenças de software, SEO programático, vendas orgânicas, sem anúncios",
+      "dateModified": "2025-09-01",
+      "inLanguage": "pt-BR",
+      "audience": {
+        "@type": "Audience",
+        "audienceType": "E-commerces e softwares que vendem digitalmente"
+      }
     }
   ]
 }
