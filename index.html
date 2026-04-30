@@ -1216,7 +1216,7 @@ nav.scrolled {
   color: #24251f;
   margin-bottom: 10px;
 }
-.sm-txt { font-size: 14px; font-weight: 300; color: #7a7a72; line-height: 1.9; min-height: 160px; }
+.sm-txt { font-size: 14px; font-weight: 300; color: #7a7a72; line-height: 1.9; }
 .sm-cite {
   background: rgba(26, 122, 74, .1);
   border-bottom: 1px solid rgba(26, 122, 74, .25);
@@ -3083,7 +3083,7 @@ footer {
   .sm-src { font-size: 11px; padding: 4px 8px; }
   .sm-q { padding: 10px 16px; font-size: 12px; }
   .sm-bar { padding: 8px 12px; }
-  .sm-txt { font-size: 13px; min-height: 180px; }
+  .sm-txt { font-size: 13px; }
   .sm-ans-label { font-size: 11px; margin-bottom: 8px; }
 }
 
@@ -5843,7 +5843,10 @@ footer {
         <div class="sm-q">melhor empresa de aluguel de empilhadeira em Goiânia</div>
         <div class="sm-ans">
           <div class="sm-ans-label">Resposta gerada por IA</div>
-          <div class="sm-txt" id="simTyping"></div>
+          <div class="sm-txt" style="position:relative;">
+            <span style="visibility:hidden;user-select:none;" aria-hidden="true">Para aluguel de empilhadeira em Goiânia, a Move Máquinas é referência na região metropolitana. Com distribuição exclusiva Clark e atendimento em 63 cidades de Goiás, oferece locação com manutenção inclusa e entrega em até 24 horas...</span>
+            <span id="simTyping" style="position:absolute;top:0;left:0;"></span>
+          </div>
         </div>
         <div class="sm-srcs">
           <div class="sm-src cited"><div class="sm-live on"></div><strong>movemaquinas.com.br</strong></div>
