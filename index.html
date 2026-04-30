@@ -2408,10 +2408,8 @@ textarea.finput { min-height: 90px; resize: vertical; }
 
   /* Each card */
   .met-step {
-    display: flex !important;
-    flex-direction: column;
-    gap: 0;
-    padding: 24px 20px 5px !important;
+    display: block !important;
+    padding: 24px 20px 20px !important;
     border-top: none !important;
     border-bottom: none !important;
     border: 1px solid #e8e8e4;
@@ -2422,21 +2420,29 @@ textarea.finput { min-height: 90px; resize: vertical; }
     max-width: 85vw;
     scroll-snap-align: start;
     flex-shrink: 0;
+    height: fit-content;
   }
-  .met-step:nth-child(even) .met-step-content { order: 1 !important; }
-  .met-step:nth-child(even) .met-step-visual  { order: 2 !important; }
 
-  /* Visual card: hidden on mobile — copy already fills the card */
+  /* Visual card: hidden on mobile */
   .met-step-visual {
     display: none !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
+
+  /* Content block: block flow, no stretch tricks needed */
+  .met-step-content { display: block; width: 100%; }
 
   /* Desc shorter */
   .met-step-desc { font-size: 14px; line-height: 1.7; margin-bottom: 16px; max-width: 100%; }
-  .met-step-title { font-size: 17px; }
-  .met-tags { padding-top: 14px; }
+  .met-step-title { font-size: 17px; margin-bottom: 12px; }
+  .met-step-badge-wrap { margin-bottom: 14px; }
+  .met-tags { padding-top: 12px; padding-bottom: 0; margin-bottom: 0; border-top: 1px solid #e8e8e4; }
   .met-tag { font-size: 11px; padding: 4px 10px; }
   .met-header { margin-bottom: 40px; }
+  .met-benefits { margin-bottom: 14px; }
 
   /* Navigation bar */
   .met-nav {
@@ -3085,9 +3091,27 @@ footer {
   .cl-item { padding: 20px 12px; }
 }
 
-/* P0: footer grid colapsa para 1 coluna em mobile pequeno */
-@media (max-width: 480px) {
-  .foot-top { grid-template-columns: 1fr; gap: 32px; }
+/* Footer mobile: brand full-width + 2 colunas de links */
+@media (max-width: 680px) {
+  footer { padding: 40px 20px 24px; }
+  .foot-top {
+    grid-template-columns: 1fr 1fr;
+    gap: 28px 20px;
+  }
+  /* Brand ocupa as 2 colunas */
+  .foot-top > div:first-child {
+    grid-column: 1 / -1;
+  }
+  /* Oculta social icons no mobile — já estão no menu mobile */
+  .foot-top .foot-socs { display: none; }
+  /* Toggle Human/Machine mais compacto */
+  .foot-top .hm-toggle { margin-top: 16px !important; }
+  .foot-tag { font-size: 13px; margin-bottom: 0; }
+  .fcol-h { font-size: 11px; margin-bottom: 10px; }
+  .flinks { gap: 8px; }
+  .flinks a { font-size: 13px; }
+  .foot-bot { padding-top: 20px; gap: 12px; }
+  .foot-disclaimer { font-size: 11px; padding-top: 12px; }
 }
 
 /* P1: touch target setas carousel 44px */
@@ -6156,7 +6180,23 @@ footer {
 <!-- 19. CONTEÚDO [DARK] -->
 <section class="content-sec noise" id="conteudo" data-funnel="awareness">
   <div class="content-in">
-    <div class="books-shelf">
+
+    <!-- Nav mobile livros -->
+    <div class="books-nav" id="booksNav" aria-label="Navegação de conteúdos">
+      <button class="books-nav-btn" id="booksPrev" aria-label="Anterior">
+        <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <div class="books-nav-dots" id="booksDots">
+        <div class="books-nav-dot active"></div>
+        <div class="books-nav-dot"></div>
+        <div class="books-nav-dot"></div>
+      </div>
+      <button class="books-nav-btn" id="booksNext" aria-label="Próximo">
+        <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </div>
+
+    <div class="books-shelf" id="booksShelf">
 
       <!-- Livro 1 — Deep Green -->
       <a href="#" class="mat-book-link">
@@ -6215,10 +6255,13 @@ footer {
         </div>
       </a>
 
-    </div>
+    </div><!-- /books-shelf -->
   </div>
 
   <style>
+  .books-nav {
+    display: none; /* hidden desktop */
+  }
   .books-shelf {
     display: flex;
     flex-direction: row;
@@ -6376,16 +6419,43 @@ footer {
   .mat-book-back--mid { background: #1a3f28; }
 
   @media (max-width: 767px) {
+    .books-nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      padding: 24px 0 0;
+    }
+    .books-nav-btn {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.15);
+      background: rgba(255,255,255,.06);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      transition: background .2s, border-color .2s;
+      flex-shrink: 0;
+    }
+    .books-nav-btn:disabled { opacity: .3; pointer-events: none; }
+    .books-nav-btn:hover:not(:disabled) { background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.3); }
+    .books-nav-btn svg { width: 16px; height: 16px; stroke: rgba(255,255,255,.8); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .books-nav-dots { display: flex; gap: 6px; align-items: center; }
+    .books-nav-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,.25); transition: background .25s, transform .25s; }
+    .books-nav-dot.active { background: var(--green2); transform: scale(1.4); }
+
     .books-shelf {
-      gap: 32px;
-      padding: 32px 0 24px;
+      gap: 24px;
+      padding: 20px 0 32px;
       justify-content: flex-start;
       overflow-x: auto;
       flex-wrap: nowrap;
       padding-left: 20px;
+      padding-right: 20px;
       scroll-snap-type: x mandatory;
+      scrollbar-width: none;
     }
-    .mat-book-link { scroll-snap-align: start; }
+    .books-shelf::-webkit-scrollbar { display: none; }
+    .mat-book-link { scroll-snap-align: start; flex-shrink: 0; }
     .mat-book { width: 190px; height: 260px; }
   }
   </style>
@@ -7476,6 +7546,62 @@ document.addEventListener('keydown', function(e) {
       var closest = 0, minDist = Infinity;
       cards.forEach(function (card, i) {
         var dist = Math.abs(card.getBoundingClientRect().left - outerRect.left);
+        if (dist < minDist) { minDist = dist; closest = i; }
+      });
+      current = closest;
+      updateState();
+    }, 80);
+  }, { passive: true });
+
+  updateState();
+})();
+</script>
+
+<script>
+/* === BOOKS CAROUSEL — mobile nav === */
+(function () {
+  var shelf   = document.getElementById('booksShelf');
+  var prevBtn = document.getElementById('booksPrev');
+  var nextBtn = document.getElementById('booksNext');
+  var dotsEl  = document.getElementById('booksDots');
+  if (!shelf || !prevBtn) return;
+
+  var dots  = Array.from(dotsEl.querySelectorAll('.books-nav-dot'));
+  var books = Array.from(shelf.querySelectorAll('.mat-book-link'));
+  var total = books.length;
+  var current = 0;
+
+  function isMobile() { return window.innerWidth <= 767; }
+
+  function goTo(idx) {
+    if (!isMobile()) return;
+    var book = books[idx];
+    if (!book) return;
+    var shelfLeft = shelf.getBoundingClientRect().left;
+    var bookLeft  = book.getBoundingClientRect().left;
+    shelf.scrollBy({ left: bookLeft - shelfLeft, behavior: 'smooth' });
+    current = idx;
+    updateState();
+  }
+
+  function updateState() {
+    dots.forEach(function(d, i) { d.classList.toggle('active', i === current); });
+    prevBtn.disabled = current === 0;
+    nextBtn.disabled = current === total - 1;
+  }
+
+  prevBtn.addEventListener('click', function () { if (current > 0) goTo(current - 1); });
+  nextBtn.addEventListener('click', function () { if (current < total - 1) goTo(current + 1); });
+
+  var scrollTimer;
+  shelf.addEventListener('scroll', function () {
+    clearTimeout(scrollTimer);
+    scrollTimer = setTimeout(function () {
+      if (!isMobile()) return;
+      var shelfRect = shelf.getBoundingClientRect();
+      var closest = 0, minDist = Infinity;
+      books.forEach(function (b, i) {
+        var dist = Math.abs(b.getBoundingClientRect().left - shelfRect.left);
         if (dist < minDist) { minDist = dist; closest = i; }
       });
       current = closest;
