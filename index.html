@@ -932,28 +932,30 @@ nav.scrolled {
 .plat-chip-inline {
   display: inline-block;
   vertical-align: middle;
-  width: 180px;
-  height: 42px;
+  position: relative;
+  width: 8em;
+  height: 1.14em;
   flex-shrink: 0;
 }
 .plat-chip-inline .plat-chip {
-  font-size: 28px;
-  padding: 4px 14px 4px 7px;
-  border-radius: 8px;
-  gap: 8px;
+  font-size: .6em;
+  padding: 3px 10px 3px 5px;
+  border-radius: 7px;
+  gap: 6px;
+  top: 50%;
 }
 .plat-chip-inline .plat-nm {
   font-size: inherit;
   font-weight: 700;
 }
 .plat-chip-inline .plat-ic {
-  width: 30px;
-  height: 30px;
-  border-radius: 7px;
+  width: 1.4em;
+  height: 1.4em;
+  border-radius: 4px;
 }
-.plat-chip-inline .plat-ic img {
-  width: 20px;
-  height: 20px;
+.plat-chip-inline .plat-ic svg {
+  width: 55%;
+  height: 55%;
 }
 
 /* Hero clients strip */
@@ -2842,10 +2844,10 @@ footer {
   .hero-sub { font-size: 15px; color: rgba(255,255,255,.65); }
 
   /* Chip AI (ChatGPT/Gemini/etc) menor em mobile */
-  .plat-chip-inline { width: 150px; height: 34px; }
-  .plat-chip-inline .plat-chip { font-size: 18px; padding: 3px 10px 3px 5px; border-radius: 7px; gap: 6px; }
-  .plat-chip-inline .plat-ic { width: 22px; height: 22px; border-radius: 5px; }
-  .plat-chip-inline .plat-ic svg { width: 13px; height: 13px; }
+  .plat-chip-inline { width: 6em; height: 1.14em; }
+  .plat-chip-inline .plat-chip { font-size: .58em; padding: 2px 8px 2px 4px; border-radius: 6px; gap: 5px; }
+  .plat-chip-inline .plat-ic { width: 1.5em; height: 1.5em; border-radius: 4px; }
+  .plat-chip-inline .plat-ic svg { width: 55%; height: 55%; }
 }
 
 /* ================================================
