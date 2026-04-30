@@ -2418,10 +2418,9 @@ textarea.finput { min-height: 90px; resize: vertical; }
   .met-step:nth-child(even) .met-step-content { order: 1 !important; }
   .met-step:nth-child(even) .met-step-visual  { order: 2 !important; }
 
-  /* Visual card: remove aspect-ratio to keep compact */
+  /* Visual card: hidden on mobile — copy already fills the card */
   .met-step-visual {
-    aspect-ratio: unset !important;
-    min-height: unset;
+    display: none !important;
   }
 
   /* Desc shorter */
