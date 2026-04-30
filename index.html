@@ -2734,7 +2734,6 @@ footer {
   /* Auth section tablet */
 
   /* Sections padding */
-  .hero, .why, .sim, .client-strip, .results, .svc-list,
 }
 
 /* === RESPONSIVE: MOBILE (480px) === */
@@ -2745,6 +2744,77 @@ footer {
   .quote-txt { font-size: clamp(18px, 5vw, 26px); }
   .location-map iframe { aspect-ratio: 16/9; }
   .loader-phrase { font-size: clamp(18px, 5vw, 28px); }
+}
+
+/* ================================================
+   MOBILE PATCH — Gerado por /mobile-review 2026-04-30
+   Score antes: 58/100 | Estimativa após: 80/100
+   ================================================ */
+
+/* P0: sec-pad muito alto em mobile */
+@media (max-width: 480px) {
+  :root { --sec-pad: clamp(48px, 10vw, 64px); }
+}
+
+/* P0: clients-grid colapsa para 3 colunas em mobile */
+@media (max-width: 480px) {
+  .clients-grid { grid-template-columns: repeat(3, 1fr); gap: 12px; }
+}
+
+/* P0: footer grid colapsa para 1 coluna em mobile pequeno */
+@media (max-width: 480px) {
+  .foot-top { grid-template-columns: 1fr; gap: 32px; }
+}
+
+/* P1: touch target setas carousel 44px */
+@media (max-width: 960px) {
+  .cs-arr { width: 44px; height: 44px; }
+}
+
+/* P1: touch target botão fechar modal machine */
+@media (max-width: 960px) {
+  .machine-modal-close { padding: 12px 20px; min-height: 44px; }
+}
+
+/* P1: font-size mínimo 12px em mobile */
+@media (max-width: 960px) {
+  .met-vis-title, .bb-mobile-top, .bb-mobile-stars { font-size: 12px; }
+  .hm-btn { font-size: 12px; }
+  .hero-kicker { font-size: 11px; }
+}
+
+/* P1: hover gruda em touch — svc4 */
+@media (hover: hover) {
+  .svc4-grid:hover .svc4-card { opacity: 0.4; transition: opacity .3s ease, transform .3s ease; }
+  .svc4-grid:hover .svc4-card:hover { opacity: 1; transform: translateY(-6px) scale(1.03); box-shadow: 0 12px 32px rgba(0,0,0,.10); }
+}
+@media (hover: none) {
+  .svc4-grid:hover .svc4-card { opacity: 1 !important; transform: none !important; }
+}
+
+/* P1: hover cmp2 timeline gruda em touch */
+@media (hover: none) {
+  .cmp2-tl-cols:has(.cmp2-tl-col:hover) .cmp2-tl-col:not(:hover) { opacity: 1 !important; }
+}
+
+/* P1: hero padding excessivo em mobile */
+@media (max-width: 480px) {
+  .hero-inner { padding-top: 80px; padding-bottom: 60px; }
+}
+
+/* P2: machine modal padding mobile */
+@media (max-width: 480px) {
+  .machine-modal-inner { padding: 32px 20px 80px; }
+}
+
+/* P2: cmp2-card min-height mobile */
+@media (max-width: 600px) {
+  .cmp2-card { min-height: unset; }
+}
+
+/* P2: flinks touch target ampliado */
+@media (max-width: 960px) {
+  .flinks a { padding: 6px 0; display: inline-block; }
 }
 </style>
 
@@ -2848,7 +2918,12 @@ footer {
           "addressRegion": "RJ",
           "addressCountry": "BR"
         },
-        "sameAs": "https://www.wikidata.org/wiki/Q179753"
+        "sameAs": "https://www.wikidata.org/wiki/Q165139",
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": -22.8838,
+          "longitude": -43.1037
+        }
       },
       "priceRange": "$$",
       "currenciesAccepted": "BRL",
@@ -2920,20 +2995,7 @@ footer {
             "@type": "Offer",
             "@id": "https://maturare.com.br/#offer-agencia-seo",
             "itemOffered": {
-              "@type": "Service",
-              "@id": "https://maturare.com.br/#service-agencia-seo",
-              "name": "Agência SEO",
-              "description": "Estratégia e execução de SEO completo: arquitetura de conteúdo, otimização técnica, link building e monitoramento de resultados orgânicos.",
-              "serviceType": "Search Engine Optimization",
-              "url": "https://maturare.com.br/agencia-seo",
-              "sameAs": "https://www.wikidata.org/wiki/Q180711",
-              "provider": {
-                "@id": "https://maturare.com.br/#organization"
-              },
-              "areaServed": {
-                "@type": "Country",
-                "name": "Brasil"
-              }
+              "@id": "https://maturare.com.br/#service-agencia-seo"
             },
             "price": "Sob consulta",
             "priceCurrency": "BRL",
@@ -2947,19 +3009,7 @@ footer {
             "@type": "Offer",
             "@id": "https://maturare.com.br/#offer-consultoria-seo",
             "itemOffered": {
-              "@type": "Service",
-              "@id": "https://maturare.com.br/#service-consultoria-seo",
-              "name": "Consultoria SEO",
-              "description": "Diagnóstico, estratégia e direcionamento para equipes internas ou agências que precisam de orientação especializada em SEO.",
-              "serviceType": "SEO Consulting",
-              "url": "https://maturare.com.br/consultor-seo",
-              "provider": {
-                "@id": "https://maturare.com.br/#organization"
-              },
-              "areaServed": {
-                "@type": "Country",
-                "name": "Brasil"
-              }
+              "@id": "https://maturare.com.br/#service-consultoria-seo"
             },
             "price": "Sob consulta",
             "priceCurrency": "BRL",
@@ -2973,19 +3023,7 @@ footer {
             "@type": "Offer",
             "@id": "https://maturare.com.br/#offer-criacao-sites",
             "itemOffered": {
-              "@type": "Service",
-              "@id": "https://maturare.com.br/#service-criacao-sites",
-              "name": "Criação de Sites para SEO",
-              "description": "Desenvolvimento de sites com arquitetura técnica otimizada para o Google, velocidade, dados estruturados e posicionamento orgânico.",
-              "serviceType": "Web Development",
-              "url": "https://maturare.com.br/criacao-de-sites-para-seo",
-              "provider": {
-                "@id": "https://maturare.com.br/#organization"
-              },
-              "areaServed": {
-                "@type": "Country",
-                "name": "Brasil"
-              }
+              "@id": "https://maturare.com.br/#service-criacao-sites"
             },
             "price": "Sob consulta",
             "priceCurrency": "BRL",
@@ -2999,19 +3037,7 @@ footer {
             "@type": "Offer",
             "@id": "https://maturare.com.br/#offer-geo",
             "itemOffered": {
-              "@type": "Service",
-              "@id": "https://maturare.com.br/#service-geo",
-              "name": "GEO — Generative Engine Optimization",
-              "description": "Otimização para ser recomendado pelas IAs generativas como ChatGPT, Perplexity, Gemini e Copilot. Inclui chunk engineering, EAV triples, arquitetura de entidade e co-citação semântica para que a IA identifique, entenda e cite a empresa como autoridade no seu segmento.",
-              "serviceType": "Generative Engine Optimization",
-              "url": "https://maturare.com.br/agencia-geo",
-              "provider": {
-                "@id": "https://maturare.com.br/#organization"
-              },
-              "areaServed": {
-                "@type": "Country",
-                "name": "Brasil"
-              }
+              "@id": "https://maturare.com.br/#service-geo"
             },
             "price": "Sob consulta",
             "priceCurrency": "BRL",
@@ -3025,19 +3051,7 @@ footer {
             "@type": "Offer",
             "@id": "https://maturare.com.br/#offer-aeo",
             "itemOffered": {
-              "@type": "Service",
-              "@id": "https://maturare.com.br/#service-aeo",
-              "name": "AEO — Answer Engine Optimization",
-              "description": "Estruturação de conteúdo para responder perguntas diretamente nas IAs e featured snippets do Google. A Maturare formata o conteúdo em chunks extraíveis, com entidades nomeadas e relações semânticas claras para que motores de resposta generativos usem a empresa como fonte.",
-              "serviceType": "Answer Engine Optimization",
-              "url": "https://maturare.com.br/agencia-aeo",
-              "provider": {
-                "@id": "https://maturare.com.br/#organization"
-              },
-              "areaServed": {
-                "@type": "Country",
-                "name": "Brasil"
-              }
+              "@id": "https://maturare.com.br/#service-aeo"
             },
             "price": "Sob consulta",
             "priceCurrency": "BRL",
@@ -3051,19 +3065,7 @@ footer {
             "@type": "Offer",
             "@id": "https://maturare.com.br/#offer-seo-local",
             "itemOffered": {
-              "@type": "Service",
-              "@id": "https://maturare.com.br/#service-seo-local",
-              "name": "SEO para Negócios Locais",
-              "description": "Posicionamento no Google Maps, Google Meu Negócio e buscas locais para negócios com presença física.",
-              "serviceType": "Local SEO",
-              "url": "https://maturare.com.br/seo-para-negocios-locais",
-              "provider": {
-                "@id": "https://maturare.com.br/#organization"
-              },
-              "areaServed": {
-                "@type": "Country",
-                "name": "Brasil"
-              }
+              "@id": "https://maturare.com.br/#service-seo-local"
             },
             "price": "Sob consulta",
             "priceCurrency": "BRL",
@@ -3077,19 +3079,7 @@ footer {
             "@type": "Offer",
             "@id": "https://maturare.com.br/#offer-seo-b2b",
             "itemOffered": {
-              "@type": "Service",
-              "@id": "https://maturare.com.br/#service-seo-b2b",
-              "name": "SEO para B2B",
-              "description": "Estratégia de conteúdo e posicionamento orgânico para empresas que vendem para outras empresas.",
-              "serviceType": "B2B SEO",
-              "url": "https://maturare.com.br/seo-para-b2b",
-              "provider": {
-                "@id": "https://maturare.com.br/#organization"
-              },
-              "areaServed": {
-                "@type": "Country",
-                "name": "Brasil"
-              }
+              "@id": "https://maturare.com.br/#service-seo-b2b"
             },
             "price": "Sob consulta",
             "priceCurrency": "BRL",
@@ -3103,19 +3093,7 @@ footer {
             "@type": "Offer",
             "@id": "https://maturare.com.br/#offer-seo-contadores",
             "itemOffered": {
-              "@type": "Service",
-              "@id": "https://maturare.com.br/#service-seo-contadores",
-              "name": "SEO para Contadores",
-              "description": "Posicionamento orgânico para escritórios de contabilidade: Google, Google Meu Negócio e recomendação por IA.",
-              "serviceType": "Local SEO for Accountants",
-              "url": "https://maturare.com.br/seo-para-contadores",
-              "provider": {
-                "@id": "https://maturare.com.br/#organization"
-              },
-              "areaServed": {
-                "@type": "Country",
-                "name": "Brasil"
-              }
+              "@id": "https://maturare.com.br/#service-seo-contadores"
             },
             "price": "Sob consulta",
             "priceCurrency": "BRL",
@@ -3129,19 +3107,7 @@ footer {
             "@type": "Offer",
             "@id": "https://maturare.com.br/#offer-seo-clinicas",
             "itemOffered": {
-              "@type": "Service",
-              "@id": "https://maturare.com.br/#service-seo-clinicas",
-              "name": "SEO para Clínicas",
-              "description": "Posicionamento orgânico para clínicas e profissionais de saúde com foco em SEO local e autoridade temática.",
-              "serviceType": "Local SEO for Healthcare",
-              "url": "https://maturare.com.br/seo-para-clinicas",
-              "provider": {
-                "@id": "https://maturare.com.br/#organization"
-              },
-              "areaServed": {
-                "@type": "Country",
-                "name": "Brasil"
-              }
+              "@id": "https://maturare.com.br/#service-seo-clinicas"
             },
             "price": "Sob consulta",
             "priceCurrency": "BRL",
@@ -3155,19 +3121,7 @@ footer {
             "@type": "Offer",
             "@id": "https://maturare.com.br/#offer-seo-saas",
             "itemOffered": {
-              "@type": "Service",
-              "@id": "https://maturare.com.br/#service-seo-saas",
-              "name": "SEO para SaaS",
-              "description": "Estratégia de posicionamento orgânico para produtos de software e plataformas SaaS: conteúdo de produto, bottom-of-funnel e autoridade temática no segmento.",
-              "serviceType": "SaaS SEO",
-              "url": "https://maturare.com.br/seo-para-saas",
-              "provider": {
-                "@id": "https://maturare.com.br/#organization"
-              },
-              "areaServed": {
-                "@type": "Country",
-                "name": "Brasil"
-              }
+              "@id": "https://maturare.com.br/#service-seo-saas"
             },
             "price": "Sob consulta",
             "priceCurrency": "BRL",
@@ -3238,6 +3192,385 @@ footer {
         "@id": "https://maturare.com.br/#webpage"
       },
       "dateModified": "2026-04-29"
+    },
+    {
+      "@type": "Service",
+      "@id": "https://maturare.com.br/#service-agencia-seo",
+      "name": "Agência SEO",
+      "description": "Estratégia e execução de SEO completo: arquitetura de conteúdo, otimização técnica, link building e monitoramento de resultados orgânicos.",
+      "serviceType": "Search Engine Optimization",
+      "url": "https://maturare.com.br/agencia-seo",
+      "sameAs": "https://www.wikidata.org/wiki/Q180711",
+      "provider": {
+        "@id": "https://maturare.com.br/#organization"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Brasil"
+      },
+      "text": "A Maturare executa SEO completo para empresas que querem crescer organicamente: arquitetura de conteúdo por cluster, otimização técnica (Core Web Vitals, dados estruturados), link building editorial e monitoramento mensal de posições e tráfego.",
+      "relatedService": [
+        {
+          "@id": "https://maturare.com.br/#service-consultoria-seo"
+        },
+        {
+          "@id": "https://maturare.com.br/#service-criacao-sites"
+        },
+        {
+          "@id": "https://maturare.com.br/#service-geo"
+        },
+        {
+          "@id": "https://maturare.com.br/#service-aeo"
+        }
+      ],
+      "availableChannel": {
+        "@type": "ServiceChannel",
+        "serviceUrl": "https://maturare.com.br/agencia-seo",
+        "availableLanguage": "Portuguese"
+      },
+      "serviceOutput": "Posicionamento orgânico no Google e nas IAs, aumento de tráfego qualificado"
+    },
+    {
+      "@type": "Service",
+      "@id": "https://maturare.com.br/#service-consultoria-seo",
+      "name": "Consultoria SEO",
+      "description": "Diagnóstico, estratégia e direcionamento para equipes internas ou agências que precisam de orientação especializada em SEO.",
+      "serviceType": "SEO Consulting",
+      "url": "https://maturare.com.br/consultor-seo",
+      "provider": {
+        "@id": "https://maturare.com.br/#organization"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Brasil"
+      },
+      "text": "Na Consultoria SEO, Daniel Batista Rios entrega diagnóstico técnico e estratégico completo, define roadmap de execução e orienta equipes internas ou agências que precisam de direcionamento especializado para escalar resultados orgânicos.",
+      "relatedService": [
+        {
+          "@id": "https://maturare.com.br/#service-agencia-seo"
+        },
+        {
+          "@id": "https://maturare.com.br/#service-geo"
+        },
+        {
+          "@id": "https://maturare.com.br/#service-aeo"
+        }
+      ],
+      "availableChannel": {
+        "@type": "ServiceChannel",
+        "serviceUrl": "https://maturare.com.br/consultor-seo",
+        "availableLanguage": "Portuguese"
+      },
+      "serviceOutput": "Diagnóstico, roadmap estratégico e direcionamento de execução SEO"
+    },
+    {
+      "@type": "Service",
+      "@id": "https://maturare.com.br/#service-criacao-sites",
+      "name": "Criação de Sites para SEO",
+      "description": "Desenvolvimento de sites com arquitetura técnica otimizada para o Google, velocidade, dados estruturados e posicionamento orgânico.",
+      "serviceType": "Web Development",
+      "url": "https://maturare.com.br/criacao-de-sites-para-seo",
+      "provider": {
+        "@id": "https://maturare.com.br/#organization"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Brasil"
+      },
+      "text": "A Maturare desenvolve sites HTML com arquitetura técnica otimizada para o Google: velocidade de carregamento, Schema.org JSON-LD, hierarquia semântica de headings, canonical tags e sitemap. Sites construídos para ranquear desde o primeiro dia.",
+      "relatedService": [
+        {
+          "@id": "https://maturare.com.br/#service-agencia-seo"
+        },
+        {
+          "@id": "https://maturare.com.br/#service-seo-local"
+        }
+      ],
+      "availableChannel": {
+        "@type": "ServiceChannel",
+        "serviceUrl": "https://maturare.com.br/criacao-de-sites-para-seo",
+        "availableLanguage": "Portuguese"
+      },
+      "serviceOutput": "Site otimizado para SEO, velocidade e conversão"
+    },
+    {
+      "@type": "Service",
+      "@id": "https://maturare.com.br/#service-geo",
+      "name": "GEO — Generative Engine Optimization",
+      "description": "Otimização para ser recomendado pelas IAs generativas como ChatGPT, Perplexity, Gemini e Copilot. Inclui chunk engineering, EAV triples, arquitetura de entidade e co-citação semântica para que a IA identifique, entenda e cite a empresa como autoridade no seu segmento.",
+      "serviceType": "Generative Engine Optimization",
+      "url": "https://maturare.com.br/agencia-geo",
+      "provider": {
+        "@id": "https://maturare.com.br/#organization"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Brasil"
+      },
+      "text": "GEO (Generative Engine Optimization) posiciona a empresa como fonte citável para ChatGPT, Perplexity, Gemini e Copilot. Inclui chunk engineering (blocos semânticos extraíveis), EAV triples (entidade-atributo-valor), co-citação semântica e arquitetura de entidade para que a IA reconheça e recomende a empresa.",
+      "relatedService": [
+        {
+          "@id": "https://maturare.com.br/#service-aeo"
+        },
+        {
+          "@id": "https://maturare.com.br/#service-agencia-seo"
+        }
+      ],
+      "availableChannel": {
+        "@type": "ServiceChannel",
+        "serviceUrl": "https://maturare.com.br/agencia-geo",
+        "availableLanguage": "Portuguese"
+      },
+      "serviceOutput": "Citação e recomendação da empresa por ChatGPT, Perplexity, Gemini e Copilot"
+    },
+    {
+      "@type": "Service",
+      "@id": "https://maturare.com.br/#service-aeo",
+      "name": "AEO — Answer Engine Optimization",
+      "description": "Estruturação de conteúdo para responder perguntas diretamente nas IAs e featured snippets do Google. A Maturare formata o conteúdo em chunks extraíveis, com entidades nomeadas e relações semânticas claras para que motores de resposta generativos usem a empresa como fonte.",
+      "serviceType": "Answer Engine Optimization",
+      "url": "https://maturare.com.br/agencia-aeo",
+      "provider": {
+        "@id": "https://maturare.com.br/#organization"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Brasil"
+      },
+      "text": "AEO (Answer Engine Optimization) estrutura conteúdo para responder perguntas diretamente nos mecanismos de resposta generativos e featured snippets do Google. Foca em clareza semântica, entidades nomeadas, perguntas naturais e chunks extraíveis por IA para maximizar citações diretas.",
+      "relatedService": [
+        {
+          "@id": "https://maturare.com.br/#service-geo"
+        },
+        {
+          "@id": "https://maturare.com.br/#service-agencia-seo"
+        }
+      ],
+      "availableChannel": {
+        "@type": "ServiceChannel",
+        "serviceUrl": "https://maturare.com.br/agencia-aeo",
+        "availableLanguage": "Portuguese"
+      },
+      "serviceOutput": "Featured snippets e respostas diretas em IAs generativas"
+    },
+    {
+      "@type": "Service",
+      "@id": "https://maturare.com.br/#service-seo-local",
+      "name": "SEO para Negócios Locais",
+      "description": "Posicionamento no Google Maps, Google Meu Negócio e buscas locais para negócios com presença física.",
+      "serviceType": "Local SEO",
+      "url": "https://maturare.com.br/seo-para-negocios-locais",
+      "provider": {
+        "@id": "https://maturare.com.br/#organization"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Brasil"
+      },
+      "text": "SEO Local combina otimização do Google Meu Negócio (Google Business Profile), criação de páginas de localização e citações locais consistentes. Resultado: aparição no Google Maps e nas buscas \"perto de mim\" para negócios com presença física.",
+      "relatedService": [
+        {
+          "@id": "https://maturare.com.br/#service-agencia-seo"
+        },
+        {
+          "@id": "https://maturare.com.br/#service-seo-contadores"
+        },
+        {
+          "@id": "https://maturare.com.br/#service-seo-clinicas"
+        }
+      ],
+      "availableChannel": {
+        "@type": "ServiceChannel",
+        "serviceUrl": "https://maturare.com.br/seo-para-negocios-locais",
+        "availableLanguage": "Portuguese"
+      },
+      "serviceOutput": "Posicionamento no Google Maps e buscas locais"
+    },
+    {
+      "@type": "Service",
+      "@id": "https://maturare.com.br/#service-seo-b2b",
+      "name": "SEO para B2B",
+      "description": "Estratégia de conteúdo e posicionamento orgânico para empresas que vendem para outras empresas.",
+      "serviceType": "B2B SEO",
+      "url": "https://maturare.com.br/seo-para-b2b",
+      "provider": {
+        "@id": "https://maturare.com.br/#organization"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Brasil"
+      },
+      "text": "SEO para B2B mapeia o ciclo de compra corporativo e cria conteúdo de topo, meio e fundo de funil para cada persona decisora. Gera leads orgânicos qualificados de empresas que buscam fornecedores, parceiros ou soluções no Google.",
+      "relatedService": [
+        {
+          "@id": "https://maturare.com.br/#service-agencia-seo"
+        },
+        {
+          "@id": "https://maturare.com.br/#service-consultoria-seo"
+        }
+      ],
+      "availableChannel": {
+        "@type": "ServiceChannel",
+        "serviceUrl": "https://maturare.com.br/seo-para-b2b",
+        "availableLanguage": "Portuguese"
+      },
+      "serviceOutput": "Leads orgânicos qualificados de empresas"
+    },
+    {
+      "@type": "Service",
+      "@id": "https://maturare.com.br/#service-seo-contadores",
+      "name": "SEO para Contadores",
+      "description": "Posicionamento orgânico para escritórios de contabilidade: Google, Google Meu Negócio e recomendação por IA.",
+      "serviceType": "Local SEO for Accountants",
+      "url": "https://maturare.com.br/seo-para-contadores",
+      "provider": {
+        "@id": "https://maturare.com.br/#organization"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Brasil"
+      },
+      "text": "SEO para Contadores posiciona escritórios de contabilidade nas buscas locais e nas IAs generativas. Inclui ficha no Google Meu Negócio, páginas por cidade e conteúdo de autoridade sobre impostos, rotinas fiscais e obrigações contábeis.",
+      "relatedService": [
+        {
+          "@id": "https://maturare.com.br/#service-seo-local"
+        },
+        {
+          "@id": "https://maturare.com.br/#service-agencia-seo"
+        }
+      ],
+      "availableChannel": {
+        "@type": "ServiceChannel",
+        "serviceUrl": "https://maturare.com.br/seo-para-contadores",
+        "availableLanguage": "Portuguese"
+      },
+      "serviceOutput": "Visibilidade local e recomendação por IA para escritórios contábeis"
+    },
+    {
+      "@type": "Service",
+      "@id": "https://maturare.com.br/#service-seo-clinicas",
+      "name": "SEO para Clínicas",
+      "description": "Posicionamento orgânico para clínicas e profissionais de saúde com foco em SEO local e autoridade temática.",
+      "serviceType": "Local SEO for Healthcare",
+      "url": "https://maturare.com.br/seo-para-clinicas",
+      "provider": {
+        "@id": "https://maturare.com.br/#organization"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Brasil"
+      },
+      "text": "SEO para Clínicas combina SEO local (Google Maps), conteúdo YMYL (saúde) otimizado para E-E-A-T e recomendação por IA generativa. Aumenta agendamentos orgânicos sem depender de tráfego pago.",
+      "relatedService": [
+        {
+          "@id": "https://maturare.com.br/#service-seo-local"
+        },
+        {
+          "@id": "https://maturare.com.br/#service-agencia-seo"
+        }
+      ],
+      "availableChannel": {
+        "@type": "ServiceChannel",
+        "serviceUrl": "https://maturare.com.br/seo-para-clinicas",
+        "availableLanguage": "Portuguese"
+      },
+      "serviceOutput": "Agendamentos orgânicos e autoridade E-E-A-T na área de saúde"
+    },
+    {
+      "@type": "Service",
+      "@id": "https://maturare.com.br/#service-seo-saas",
+      "name": "SEO para SaaS",
+      "description": "Estratégia de posicionamento orgânico para produtos de software e plataformas SaaS: conteúdo de produto, bottom-of-funnel e autoridade temática no segmento.",
+      "serviceType": "SaaS SEO",
+      "url": "https://maturare.com.br/seo-para-saas",
+      "provider": {
+        "@id": "https://maturare.com.br/#organization"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Brasil"
+      },
+      "text": "SEO para SaaS cria autoridade temática no segmento do produto, captura demanda bottom-of-funnel (comparativos, alternativas, reviews) e posiciona nas IAs para recomendações de ferramentas. Foco em tráfego qualificado com intenção de compra.",
+      "relatedService": [
+        {
+          "@id": "https://maturare.com.br/#service-agencia-seo"
+        },
+        {
+          "@id": "https://maturare.com.br/#service-seo-b2b"
+        }
+      ],
+      "availableChannel": {
+        "@type": "ServiceChannel",
+        "serviceUrl": "https://maturare.com.br/seo-para-saas",
+        "availableLanguage": "Portuguese"
+      },
+      "serviceOutput": "Tráfego orgânico de alta intenção e recomendação por IA de ferramentas"
+    },
+    {
+      "@type": "Service",
+      "@id": "https://maturare.com.br/#bundle-seo-geo",
+      "name": "Pacote SEO + GEO",
+      "description": "Combinação de SEO tradicional e GEO para posicionar a empresa no Google e ser recomendada pelas IAs generativas como ChatGPT e Perplexity.",
+      "serviceType": "SEO and Generative Engine Optimization Bundle",
+      "provider": {
+        "@id": "https://maturare.com.br/#organization"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Componentes do Pacote SEO + GEO",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@id": "https://maturare.com.br/#service-agencia-seo"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@id": "https://maturare.com.br/#service-geo"
+            }
+          }
+        ]
+      },
+      "text": "Para empresas que querem aparecer no Google e ser recomendadas pelas IAs ao mesmo tempo. O pacote combina arquitetura de conteúdo SEO com chunk engineering e EAV triples do GEO.",
+      "url": "https://maturare.com.br/agencia-seo"
+    },
+    {
+      "@type": "Service",
+      "@id": "https://maturare.com.br/#bundle-seo-geo-aeo",
+      "name": "Pacote SEO + GEO + AEO",
+      "description": "Estratégia completa de presença orgânica: Google, IAs generativas e mecanismos de resposta. O pacote mais abrangente da Maturare.",
+      "serviceType": "Full Organic Presence Bundle",
+      "provider": {
+        "@id": "https://maturare.com.br/#organization"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Componentes do Pacote SEO + GEO + AEO",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@id": "https://maturare.com.br/#service-agencia-seo"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@id": "https://maturare.com.br/#service-geo"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@id": "https://maturare.com.br/#service-aeo"
+            }
+          }
+        ]
+      },
+      "text": "Para empresas que querem dominar todos os canais de busca orgânica: Google tradicional, IAs generativas (ChatGPT, Gemini, Perplexity) e featured snippets. Inclui SEO técnico, GEO com chunk engineering e AEO com estruturação de respostas.",
+      "url": "https://maturare.com.br/agencia-seo"
     },
     {
       "@type": "Person",
@@ -3390,8 +3723,29 @@ footer {
       "mentions": [
         {
           "@id": "https://maturare.com.br/#glossary"
+        },
+        {
+          "@id": "https://maturare.com.br/#term-seo"
+        },
+        {
+          "@id": "https://maturare.com.br/#term-geo"
+        },
+        {
+          "@id": "https://maturare.com.br/#term-aeo"
+        },
+        {
+          "@id": "https://www.wikidata.org/wiki/Q180711"
+        },
+        {
+          "@id": "https://www.wikidata.org/wiki/Q11235244"
+        },
+        {
+          "@id": "https://www.wikidata.org/wiki/Q165139"
         }
-      ]
+      ],
+      "about": {
+        "@id": "https://maturare.com.br/#organization"
+      }
     },
     {
       "@type": "BreadcrumbList",
@@ -3519,21 +3873,66 @@ footer {
       "name": "SEO",
       "alternateName": "Search Engine Optimization",
       "description": "Conjunto de técnicas para aumentar a visibilidade orgânica de um site nos resultados do Google e outros buscadores, sem pagar por anúncios.",
-      "sameAs": "https://www.wikidata.org/wiki/Q180711"
+      "sameAs": "https://www.wikidata.org/wiki/Q180711",
+      "inDefinedTermSet": {
+        "@id": "https://maturare.com.br/#glossary"
+      },
+      "relatedTerm": [
+        {
+          "@id": "https://maturare.com.br/#term-geo"
+        },
+        {
+          "@id": "https://maturare.com.br/#term-aeo"
+        },
+        {
+          "@id": "https://maturare.com.br/#term-seo-local"
+        },
+        {
+          "@id": "https://maturare.com.br/#term-autoridade-tematica"
+        }
+      ]
     },
     {
       "@type": "DefinedTerm",
       "@id": "https://maturare.com.br/#term-geo",
       "name": "GEO",
       "alternateName": "Generative Engine Optimization",
-      "description": "Otimização para ser citado e recomendado por mecanismos de busca generativos como ChatGPT, Perplexity, Gemini e Copilot. Vai além do SEO tradicional: exige chunk engineering, EAV triples e arquitetura de entidade para que a IA reconheça a empresa como fonte confiável."
+      "description": "Otimização para ser citado e recomendado por mecanismos de busca generativos como ChatGPT, Perplexity, Gemini e Copilot. Vai além do SEO tradicional: exige chunk engineering, EAV triples e arquitetura de entidade para que a IA reconheça a empresa como fonte confiável.",
+      "inDefinedTermSet": {
+        "@id": "https://maturare.com.br/#glossary"
+      },
+      "relatedTerm": [
+        {
+          "@id": "https://maturare.com.br/#term-aeo"
+        },
+        {
+          "@id": "https://maturare.com.br/#term-seo"
+        },
+        {
+          "@id": "https://maturare.com.br/#term-chunk-engineering"
+        }
+      ]
     },
     {
       "@type": "DefinedTerm",
       "@id": "https://maturare.com.br/#term-aeo",
       "name": "AEO",
       "alternateName": "Answer Engine Optimization",
-      "description": "Estruturação de conteúdo para responder perguntas diretamente em mecanismos de resposta generativos e no Google. Foca em clareza semântica, entidades nomeadas e chunks extraíveis por IA."
+      "description": "Estruturação de conteúdo para responder perguntas diretamente em mecanismos de resposta generativos e no Google. Foca em clareza semântica, entidades nomeadas e chunks extraíveis por IA.",
+      "inDefinedTermSet": {
+        "@id": "https://maturare.com.br/#glossary"
+      },
+      "relatedTerm": [
+        {
+          "@id": "https://maturare.com.br/#term-geo"
+        },
+        {
+          "@id": "https://maturare.com.br/#term-seo"
+        },
+        {
+          "@id": "https://maturare.com.br/#term-featured-snippet"
+        }
+      ]
     },
     {
       "@type": "DefinedTerm",
@@ -3820,6 +4219,106 @@ footer {
         "@id": "https://maturare.com.br/#organization"
       },
       "inLanguage": "pt-BR"
+    },
+    {
+      "@type": "CreativeWork",
+      "@id": "https://maturare.com.br/casos-de-sucesso/phd-playground/",
+      "name": "Case Study: PHD Playground",
+      "description": "Como a PHD Playground economizou R$70k em anúncios com posicionamento orgânico em 2 anos, sem Google Ads.",
+      "url": "https://maturare.com.br/casos-de-sucesso/phd-playground/",
+      "about": [
+        {
+          "@id": "https://maturare.com.br/#service-agencia-seo"
+        },
+        {
+          "@id": "https://maturare.com.br/#service-seo-local"
+        }
+      ],
+      "creator": {
+        "@id": "https://maturare.com.br/#organization"
+      },
+      "subjectOf": {
+        "@type": "Organization",
+        "name": "PHD Playground",
+        "description": "Empresa de playground de madeira com sede no Rio de Janeiro, RJ"
+      },
+      "result": "R$70.000 economizados em anúncios. 2 anos sem Google Ads. Faturamento cresceu com leads orgânicos qualificados.",
+      "datePublished": "2025-01-01"
+    },
+    {
+      "@type": "CreativeWork",
+      "@id": "https://maturare.com.br/casos-de-sucesso/move-maquinas/",
+      "name": "Case Study: Move Máquinas",
+      "description": "Como a Move Máquinas ficou em 1º lugar no Google em mais de 20 cidades de Goiás e economizou R$96k/ano em anúncios.",
+      "url": "https://maturare.com.br/casos-de-sucesso/move-maquinas/",
+      "about": [
+        {
+          "@id": "https://maturare.com.br/#service-agencia-seo"
+        },
+        {
+          "@id": "https://maturare.com.br/#service-seo-local"
+        },
+        {
+          "@id": "https://maturare.com.br/#service-geo"
+        }
+      ],
+      "creator": {
+        "@id": "https://maturare.com.br/#organization"
+      },
+      "subjectOf": {
+        "@type": "Organization",
+        "name": "Move Máquinas",
+        "description": "Empresa de aluguel de equipamentos com sede em Goiânia, GO"
+      },
+      "result": "Recomendado pelo Google, ChatGPT e Perplexity. Economia de R$96.000 por ano em anúncios.",
+      "datePublished": "2025-06-01"
+    },
+    {
+      "@type": "CreativeWork",
+      "@id": "https://maturare.com.br/casos-de-sucesso/ambiental-wash/",
+      "name": "Case Study: Ambiental Wash",
+      "description": "Como a Ambiental Wash chegou ao topo do Google nas buscas de lavanderia na Barra e em Copacabana, economizando R$48k/ano.",
+      "url": "https://maturare.com.br/casos-de-sucesso/ambiental-wash/",
+      "about": [
+        {
+          "@id": "https://maturare.com.br/#service-seo-local"
+        },
+        {
+          "@id": "https://maturare.com.br/#service-agencia-seo"
+        }
+      ],
+      "creator": {
+        "@id": "https://maturare.com.br/#organization"
+      },
+      "subjectOf": {
+        "@type": "Organization",
+        "name": "Ambiental Wash",
+        "description": "Lavanderia com unidades na Barra da Tijuca e Copacabana, Rio de Janeiro, RJ"
+      },
+      "result": "Topo do Google nas buscas de lavanderia na Barra e em Copacabana. R$48.000 por ano economizados.",
+      "datePublished": "2025-03-01"
+    },
+    {
+      "@type": "CreativeWork",
+      "@id": "https://maturare.com.br/casos-de-sucesso/keysfan/",
+      "name": "Case Study: Keysfan",
+      "description": "Como a Keysfan gerou R$12k/mês em vendas orgânicas de licenças de software sem investir em anúncios.",
+      "url": "https://maturare.com.br/casos-de-sucesso/keysfan/",
+      "about": [
+        {
+          "@id": "https://maturare.com.br/#service-agencia-seo"
+        }
+      ],
+      "creator": {
+        "@id": "https://maturare.com.br/#organization"
+      },
+      "subjectOf": {
+        "@type": "Organization",
+        "name": "Keysfan",
+        "description": "Empresa de licenças de software de atuação nacional"
+      },
+      "result": "R$12.000 por mês em vendas orgânicas. R$0 investido em anúncios.",
+      "datePublished": "2025-08-01"
     }
   ]
 }
