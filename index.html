@@ -6778,6 +6778,11 @@ footer {
   transition: border-color .15s, color .15s;
 }
 .art-cta-ghost:hover { border-color: rgba(255,255,255,.28); color: #F5F1E8; }
+@media (max-width: 480px) {
+  .art-cta-btns { flex-wrap: nowrap; gap: 8px; }
+  .art-cta-btns .btn-p,
+  .art-cta-btns .art-cta-ghost { font-size: 12px; padding: 11px 16px; flex: 1; text-align: center; white-space: nowrap; }
+}
 .art-ref-block { border-top: 1px solid rgba(255,255,255,.08); padding-top: 40px; }
 .art-ref-label {
   font-family: var(--sans);
