@@ -3095,12 +3095,16 @@ footer {
 @media (max-width: 680px) {
   footer { padding: 40px 20px 24px; }
   .foot-top {
-    grid-template-columns: 1fr 1fr;
-    gap: 28px 20px;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 28px 20px !important;
   }
   /* Brand ocupa as 2 colunas */
   .foot-top > div:first-child {
-    grid-column: 1 / -1;
+    grid-column: 1 / -1 !important;
+  }
+  /* Último filho (Conteúdo) ocupa as 2 colunas tb */
+  .foot-top > div:last-child {
+    grid-column: 1 / -1 !important;
   }
   /* Oculta social icons no mobile — já estão no menu mobile */
   .foot-top .foot-socs { display: none; }
