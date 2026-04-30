@@ -2028,13 +2028,15 @@ textarea.finput { min-height: 90px; resize: vertical; }
 
 /* === SI-HUB MOBILE LAYOUT (≤600px) === */
 /* 3 linhas: 2 | 3 | 2 ícones. SVG de fundo com bezier + beams. */
+/* wrapper: aspect-ratio fixo para SVG e ícones DOM ficarem em sync */
 .si-mob-wrap {
   position: relative;
   width: 100%;
   max-width: 340px;
   margin: 0 auto;
+  aspect-ratio: 340 / 220;
 }
-/* SVG ocupa toda a área do wrapper — posição absoluta atrás dos ícones */
+/* SVG absoluto atrás dos ícones */
 .si-mob-svg {
   position: absolute;
   inset: 0;
@@ -2043,30 +2045,27 @@ textarea.finput { min-height: 90px; resize: vertical; }
   pointer-events: none;
   z-index: 0;
 }
-/* grid 3 linhas */
+/* flex column ocupa 100% da altura do wrapper */
 .si-mob-rows {
   position: relative;
   z-index: 1;
   display: flex;
   flex-direction: column;
-  gap: 0;
-  padding: 12px 0;
+  height: 100%;
 }
+/* cada linha ocupa 1/3 da altura — 3 linhas, flex:1 cada */
 .si-mob-row {
+  flex: 1;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 24px;
+  padding: 0 12px; /* 12px das bordas → centro dos ícones em x=42 e x=298 */
 }
-.si-mob-row.row-mid {
-  justify-content: space-between;
-  padding: 12px 24px;
-}
-/* ícone: círculo branco sem texto */
+/* ícone: quadrado arredondado (app-icon style), SEM texto */
 .si-mob-icon {
   width: 60px;
   height: 60px;
-  border-radius: 50%;
+  border-radius: 12px;
   background: #fff;
   border: 1px solid #e4e4e0;
   box-shadow: 0 2px 8px rgba(0,0,0,.06);
@@ -2082,23 +2081,17 @@ textarea.finput { min-height: 90px; resize: vertical; }
   object-fit: contain;
   display: block;
 }
-/* centro: maior, com pulse */
+/* centro: maior, quadrado arredondado, com pulse */
 .si-mob-icon.si-mob-center {
-  width: 76px;
-  height: 76px;
-  border-radius: 18px;
+  width: 72px;
+  height: 72px;
+  border-radius: 16px;
   box-shadow: 0 4px 24px rgba(0,0,0,.10), 0 0 0 4px rgba(196,160,53,.15);
   animation: siPulse 3s ease-in-out infinite;
 }
 .si-mob-icon.si-mob-center img {
-  width: 32px;
-  height: 39px;
-}
-/* espaçador invisível para alinhar centro com as bordas */
-.si-mob-spacer {
-  width: 60px;
-  height: 60px;
-  visibility: hidden;
+  width: 26px;
+  height: 32px;
 }
 
 /* === SERVIÇOS 4 CARDS === */
@@ -5481,35 +5474,37 @@ footer {
     <div class="si-mob-wrap" aria-hidden="true">
 
       <!--
-        viewBox 340×220
-        Linha 1 (y=46):  ChatGPT x=54,  Google x=286
-        Linha 2 (y=110): Claude x=54,   Centro x=170, Perplexity x=286
-        Linha 3 (y=174): Bing x=54,     Gemini x=286
+        viewBox 340×220, aspect-ratio 340/220 fixo no wrapper
+        Padding 12px → centros dos ícones laterais: x=42, x=298
+        Linha 1 (y=36):  ChatGPT x=42,  Google x=298
+        Linha 2 (y=110): Claude x=42,   Centro x=170, Perplexity x=298
+        Linha 3 (y=184): Bing x=42,     Gemini x=298
         Centro = (170,110)
+        Control points: perpendiculares ao vetor start→end para curva visível
       -->
       <svg class="si-mob-svg" viewBox="0 0 340 220" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
         <defs>
-          <linearGradient id="mb1" gradientUnits="userSpaceOnUse" x1="170" y1="110" x2="54"  y2="46" ><stop offset="0%" stop-color="#2D6B45" stop-opacity="0"/><stop offset="50%" stop-color="#2D6B45" stop-opacity=".8"/><stop offset="100%" stop-color="#2D6B45" stop-opacity="0"/></linearGradient>
-          <linearGradient id="mb2" gradientUnits="userSpaceOnUse" x1="170" y1="110" x2="54"  y2="110"><stop offset="0%" stop-color="#2D6B45" stop-opacity="0"/><stop offset="50%" stop-color="#2D6B45" stop-opacity=".8"/><stop offset="100%" stop-color="#2D6B45" stop-opacity="0"/></linearGradient>
-          <linearGradient id="mb3" gradientUnits="userSpaceOnUse" x1="170" y1="110" x2="54"  y2="174"><stop offset="0%" stop-color="#2D6B45" stop-opacity="0"/><stop offset="50%" stop-color="#2D6B45" stop-opacity=".8"/><stop offset="100%" stop-color="#2D6B45" stop-opacity="0"/></linearGradient>
-          <linearGradient id="mb4" gradientUnits="userSpaceOnUse" x1="170" y1="110" x2="286" y2="46" ><stop offset="0%" stop-color="#2D6B45" stop-opacity="0"/><stop offset="50%" stop-color="#2D6B45" stop-opacity=".8"/><stop offset="100%" stop-color="#2D6B45" stop-opacity="0"/></linearGradient>
-          <linearGradient id="mb5" gradientUnits="userSpaceOnUse" x1="170" y1="110" x2="286" y2="110"><stop offset="0%" stop-color="#2D6B45" stop-opacity="0"/><stop offset="50%" stop-color="#2D6B45" stop-opacity=".8"/><stop offset="100%" stop-color="#2D6B45" stop-opacity="0"/></linearGradient>
-          <linearGradient id="mb6" gradientUnits="userSpaceOnUse" x1="170" y1="110" x2="286" y2="174"><stop offset="0%" stop-color="#2D6B45" stop-opacity="0"/><stop offset="50%" stop-color="#2D6B45" stop-opacity=".8"/><stop offset="100%" stop-color="#2D6B45" stop-opacity="0"/></linearGradient>
+          <linearGradient id="mb1" gradientUnits="userSpaceOnUse" x1="170" y1="110" x2="42"  y2="36" ><stop offset="0%" stop-color="#2D6B45" stop-opacity="0"/><stop offset="50%" stop-color="#2D6B45" stop-opacity=".85"/><stop offset="100%" stop-color="#2D6B45" stop-opacity="0"/></linearGradient>
+          <linearGradient id="mb2" gradientUnits="userSpaceOnUse" x1="170" y1="110" x2="42"  y2="110"><stop offset="0%" stop-color="#2D6B45" stop-opacity="0"/><stop offset="50%" stop-color="#2D6B45" stop-opacity=".85"/><stop offset="100%" stop-color="#2D6B45" stop-opacity="0"/></linearGradient>
+          <linearGradient id="mb3" gradientUnits="userSpaceOnUse" x1="170" y1="110" x2="42"  y2="184"><stop offset="0%" stop-color="#2D6B45" stop-opacity="0"/><stop offset="50%" stop-color="#2D6B45" stop-opacity=".85"/><stop offset="100%" stop-color="#2D6B45" stop-opacity="0"/></linearGradient>
+          <linearGradient id="mb4" gradientUnits="userSpaceOnUse" x1="170" y1="110" x2="298" y2="36" ><stop offset="0%" stop-color="#2D6B45" stop-opacity="0"/><stop offset="50%" stop-color="#2D6B45" stop-opacity=".85"/><stop offset="100%" stop-color="#2D6B45" stop-opacity="0"/></linearGradient>
+          <linearGradient id="mb5" gradientUnits="userSpaceOnUse" x1="170" y1="110" x2="298" y2="110"><stop offset="0%" stop-color="#2D6B45" stop-opacity="0"/><stop offset="50%" stop-color="#2D6B45" stop-opacity=".85"/><stop offset="100%" stop-color="#2D6B45" stop-opacity="0"/></linearGradient>
+          <linearGradient id="mb6" gradientUnits="userSpaceOnUse" x1="170" y1="110" x2="298" y2="184"><stop offset="0%" stop-color="#2D6B45" stop-opacity="0"/><stop offset="50%" stop-color="#2D6B45" stop-opacity=".85"/><stop offset="100%" stop-color="#2D6B45" stop-opacity="0"/></linearGradient>
         </defs>
-        <!-- guias estáticas bezier -->
-        <path d="M170,110 C 140,110 110,80  54,46"   fill="none" stroke="rgba(0,0,0,.13)" stroke-width="1.5"/>
-        <path d="M170,110 C 120,110 90,110  54,110"  fill="none" stroke="rgba(0,0,0,.13)" stroke-width="1.5"/>
-        <path d="M170,110 C 140,110 110,140 54,174"  fill="none" stroke="rgba(0,0,0,.13)" stroke-width="1.5"/>
-        <path d="M170,110 C 200,110 230,80  286,46"  fill="none" stroke="rgba(0,0,0,.13)" stroke-width="1.5"/>
-        <path d="M170,110 C 220,110 250,110 286,110" fill="none" stroke="rgba(0,0,0,.13)" stroke-width="1.5"/>
-        <path d="M170,110 C 200,110 230,140 286,174" fill="none" stroke="rgba(0,0,0,.13)" stroke-width="1.5"/>
+        <!-- guias estáticas — control points perpendiculares, curva visível -->
+        <path d="M170,110 C 110,78  80,55  42,36"   fill="none" stroke="rgba(0,0,0,.13)" stroke-width="1.5"/>
+        <path d="M170,110 C 110,110 80,110 42,110"  fill="none" stroke="rgba(0,0,0,.13)" stroke-width="1.5"/>
+        <path d="M170,110 C 110,142 80,165 42,184"  fill="none" stroke="rgba(0,0,0,.13)" stroke-width="1.5"/>
+        <path d="M170,110 C 230,78  260,55  298,36"  fill="none" stroke="rgba(0,0,0,.13)" stroke-width="1.5"/>
+        <path d="M170,110 C 230,110 260,110 298,110" fill="none" stroke="rgba(0,0,0,.13)" stroke-width="1.5"/>
+        <path d="M170,110 C 230,142 260,165 298,184" fill="none" stroke="rgba(0,0,0,.13)" stroke-width="1.5"/>
         <!-- beams animados -->
-        <path class="si-beam-anim d1" d="M170,110 C 140,110 110,80  54,46"   fill="none" stroke="url(#mb1)" stroke-width="3" stroke-linecap="round"/>
-        <path class="si-beam-anim d2" d="M170,110 C 120,110 90,110  54,110"  fill="none" stroke="url(#mb2)" stroke-width="3" stroke-linecap="round"/>
-        <path class="si-beam-anim d3" d="M170,110 C 140,110 110,140 54,174"  fill="none" stroke="url(#mb3)" stroke-width="3" stroke-linecap="round"/>
-        <path class="si-beam-anim d4" d="M170,110 C 200,110 230,80  286,46"  fill="none" stroke="url(#mb4)" stroke-width="3" stroke-linecap="round"/>
-        <path class="si-beam-anim d5" d="M170,110 C 220,110 250,110 286,110" fill="none" stroke="url(#mb5)" stroke-width="3" stroke-linecap="round"/>
-        <path class="si-beam-anim d6" d="M170,110 C 200,110 230,140 286,174" fill="none" stroke="url(#mb6)" stroke-width="3" stroke-linecap="round"/>
+        <path class="si-beam-anim d1" d="M170,110 C 110,78  80,55  42,36"   fill="none" stroke="url(#mb1)" stroke-width="3" stroke-linecap="round"/>
+        <path class="si-beam-anim d2" d="M170,110 C 110,110 80,110 42,110"  fill="none" stroke="url(#mb2)" stroke-width="3" stroke-linecap="round"/>
+        <path class="si-beam-anim d3" d="M170,110 C 110,142 80,165 42,184"  fill="none" stroke="url(#mb3)" stroke-width="3" stroke-linecap="round"/>
+        <path class="si-beam-anim d4" d="M170,110 C 230,78  260,55  298,36"  fill="none" stroke="url(#mb4)" stroke-width="3" stroke-linecap="round"/>
+        <path class="si-beam-anim d5" d="M170,110 C 230,110 260,110 298,110" fill="none" stroke="url(#mb5)" stroke-width="3" stroke-linecap="round"/>
+        <path class="si-beam-anim d6" d="M170,110 C 230,142 260,165 298,184" fill="none" stroke="url(#mb6)" stroke-width="3" stroke-linecap="round"/>
       </svg>
 
       <!-- Ícones: 3 linhas (2-3-2) sem texto -->
