@@ -1402,7 +1402,7 @@ nav.scrolled {
 @media (max-width: 900px) { .cs-bottom { grid-template-columns: 1fr; gap: 32px; } }
 @media (max-width: 768px) {
   .clients-grid { grid-template-columns: repeat(2, 1fr); }
-  .cl-item { cursor: pointer; padding: 20px 12px; }
+  .cl-item { cursor: pointer; padding: 20px 12px; touch-action: manipulation; }
   .cl-item::after { display: none; }
   .cl-expand-body { flex-direction: column; gap: 12px; padding: 16px; }
   .cl-expand-logo { display: none; }
@@ -7048,9 +7048,13 @@ Regular agencies do posts and ads. Maturare builds pages that make companies app
 
   document.querySelectorAll('#clientGrid .cl-item[data-id]').forEach(function(item) {
     var id = item.dataset.id;
+    var touchMoved = false;
+
+    item.addEventListener('touchstart', function() { touchMoved = false; }, { passive: true });
+    item.addEventListener('touchmove',  function() { touchMoved = true;  }, { passive: true });
 
     item.addEventListener('touchend', function(e) {
-      if (!isMobile()) return;
+      if (touchMoved) return;
       e.preventDefault();
       if (openId === id) { closeAll(); } else { openPanel(item, id); }
     });
