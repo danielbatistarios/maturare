@@ -2385,7 +2385,7 @@ textarea.finput { min-height: 90px; resize: vertical; }
     position: relative;
   }
 
-  /* Scroll outer: handles overflow + negative margin */
+  /* Scroll outer — margin negativa abre para borda da tela */
   .met-carousel-outer {
     overflow-x: auto;
     overflow-y: visible;
@@ -2393,35 +2393,42 @@ textarea.finput { min-height: 90px; resize: vertical; }
     -webkit-overflow-scrolling: touch;
     margin: 0 -24px;
     scrollbar-width: none;
-    /* extra top space so card shadow + top edge don't clip */
-    padding: 20px 0 24px;
+    padding: 16px 0 8px;
   }
   .met-carousel-outer::-webkit-scrollbar { display: none; }
 
-  /* Inner flex track — padding lateral centraliza primeiro e último card */
+  /* Inner track */
   .met-carousel-track {
     display: flex;
-    gap: 16px;
-    /* padding lateral = (100vw - card width) / 2 para centralizar */
-    padding: 0 7.5vw;
+    gap: 12px;
+    padding: 0 calc((100vw - 85vw) / 2);
     width: max-content;
   }
 
   /* Each card */
   .met-step {
     display: block !important;
-    padding: 24px 20px 20px !important;
+    padding: 22px 20px 20px !important;
     border-top: none !important;
     border-bottom: none !important;
     border: 1px solid #e8e8e4;
+    border-top: 3px solid transparent !important;
     border-radius: 14px;
     background: #fff;
-    box-shadow: 0 2px 12px rgba(0,0,0,.06);
+    /* filter em vez de box-shadow para não clipar no Safari */
+    filter: drop-shadow(0 2px 10px rgba(0,0,0,.07));
     min-width: 85vw;
     max-width: 85vw;
     scroll-snap-align: center;
     flex-shrink: 0;
     height: fit-content;
+    opacity: 0.62;
+    transition: opacity .35s ease, border-color .35s ease, filter .35s ease;
+  }
+  .met-step.active {
+    opacity: 1;
+    border-top: 3px solid var(--green) !important;
+    filter: drop-shadow(0 4px 18px rgba(26,122,74,.13));
   }
 
   /* Visual card: hidden on mobile */
@@ -2433,26 +2440,32 @@ textarea.finput { min-height: 90px; resize: vertical; }
     padding: 0 !important;
   }
 
-  /* Content block: block flow, no stretch tricks needed */
+  /* Content block */
   .met-step-content { display: block; width: 100%; }
 
-  /* Desc shorter */
-  .met-step-desc { font-size: 14px; line-height: 1.7; margin-bottom: 16px; max-width: 100%; }
+  /* Typography P1 */
+  .met-step-desc { font-size: 15px; font-weight: 400; line-height: 1.7; margin-bottom: 20px; max-width: 100%; }
   .met-step-title { font-size: 17px; margin-bottom: 12px; }
   .met-step-badge-wrap { margin-bottom: 14px; }
-  .met-tags { padding-top: 12px; padding-bottom: 0; margin-bottom: 0; border-top: 1px solid #e8e8e4; }
+  .met-benefits { margin-bottom: 20px; gap: 10px; }
+  .met-tags { padding-top: 14px; padding-bottom: 0; margin-bottom: 0; border-top: 2px solid rgba(26,122,74,.15); }
   .met-tag { font-size: 11px; padding: 4px 10px; }
   .met-header { margin-bottom: 40px; }
-  .met-benefits { margin-bottom: 14px; }
 
-  /* Navigation bar */
+  /* Navigation bar — below carousel */
   .met-nav {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 16px;
-    margin-bottom: 16px;
-    padding: 4px 0;
+    margin-top: 20px;
+    padding: 0;
+  }
+  .met-nav-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
   }
   .met-nav-btn {
     width: 40px; height: 40px;
@@ -2464,7 +2477,7 @@ textarea.finput { min-height: 90px; resize: vertical; }
     transition: background .2s, border-color .2s;
     flex-shrink: 0;
   }
-  .met-nav-btn:disabled { opacity: .35; pointer-events: none; }
+  .met-nav-btn:disabled { opacity: .3; pointer-events: none; }
   .met-nav-btn:hover:not(:disabled) { background: #f4f4f0; border-color: #c0c0ba; }
   .met-nav-btn svg { width: 16px; height: 16px; stroke: var(--ink); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
   .met-nav-dots {
@@ -2481,6 +2494,12 @@ textarea.finput { min-height: 90px; resize: vertical; }
   .met-nav-dot.active {
     background: var(--green);
     transform: scale(1.4);
+  }
+  .met-nav-counter {
+    font-size: 11px;
+    font-weight: 500;
+    color: #aaa;
+    letter-spacing: .04em;
   }
 }
 /* Desktop: hide nav controls */
@@ -5843,22 +5862,6 @@ footer {
 
     <div class="met-steps">
 
-      <!-- Mobile navigation — above cards -->
-      <div class="met-nav" id="metNav" aria-label="Navegação da metodologia">
-        <button class="met-nav-btn" id="metPrev" aria-label="Etapa anterior">
-          <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
-        </button>
-        <div class="met-nav-dots" id="metDots">
-          <div class="met-nav-dot active"></div>
-          <div class="met-nav-dot"></div>
-          <div class="met-nav-dot"></div>
-          <div class="met-nav-dot"></div>
-        </div>
-        <button class="met-nav-btn" id="metNext" aria-label="Próxima etapa">
-          <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
-        </button>
-      </div>
-
       <div class="met-carousel-outer">
       <div class="met-carousel-track" id="metTrack">
 
@@ -6008,6 +6011,26 @@ footer {
 
       </div><!-- /met-carousel-track -->
       </div><!-- /met-carousel-outer -->
+
+      <!-- Mobile navigation — below cards -->
+      <div class="met-nav" id="metNav" aria-label="Navegação da metodologia" role="region">
+        <button class="met-nav-btn" id="metPrev" aria-label="Etapa anterior" aria-disabled="true">
+          <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <div class="met-nav-center">
+          <div class="met-nav-dots" id="metDots">
+            <div class="met-nav-dot active" role="tab" aria-selected="true" aria-label="Etapa 1 de 4"></div>
+            <div class="met-nav-dot" role="tab" aria-selected="false" aria-label="Etapa 2 de 4"></div>
+            <div class="met-nav-dot" role="tab" aria-selected="false" aria-label="Etapa 3 de 4"></div>
+            <div class="met-nav-dot" role="tab" aria-selected="false" aria-label="Etapa 4 de 4"></div>
+          </div>
+          <span class="met-nav-counter" id="metCounter">Etapa 1 de 4</span>
+        </div>
+        <button class="met-nav-btn" id="metNext" aria-label="Próxima etapa">
+          <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+
     </div>
 
   </div>
@@ -7535,14 +7558,15 @@ document.addEventListener('keydown', function(e) {
 <script>
 /* === MET CAROUSEL — mobile nav === */
 (function () {
-  var outer  = document.querySelector('.met-carousel-outer');
-  var track  = document.getElementById('metTrack');
+  var outer   = document.querySelector('.met-carousel-outer');
+  var track   = document.getElementById('metTrack');
   var prevBtn = document.getElementById('metPrev');
   var nextBtn = document.getElementById('metNext');
   var dotsEl  = document.getElementById('metDots');
+  var counter = document.getElementById('metCounter');
   if (!track || !prevBtn || !outer) return;
 
-  var dots = Array.from(dotsEl.querySelectorAll('.met-nav-dot'));
+  var dots  = Array.from(dotsEl.querySelectorAll('.met-nav-dot'));
   var cards = Array.from(track.querySelectorAll('.met-step'));
   var total = cards.length;
   var current = 0;
@@ -7553,7 +7577,6 @@ document.addEventListener('keydown', function(e) {
     if (!isMobile()) return;
     var card = cards[idx];
     if (!card) return;
-    /* outer is the scrollable element */
     var outerLeft = outer.getBoundingClientRect().left;
     var cardLeft  = card.getBoundingClientRect().left;
     outer.scrollBy({ left: cardLeft - outerLeft, behavior: 'smooth' });
@@ -7562,15 +7585,22 @@ document.addEventListener('keydown', function(e) {
   }
 
   function updateState() {
-    dots.forEach(function(d, i) { d.classList.toggle('active', i === current); });
+    dots.forEach(function (d, i) {
+      d.classList.toggle('active', i === current);
+      d.setAttribute('aria-selected', i === current ? 'true' : 'false');
+    });
+    cards.forEach(function (c, i) { c.classList.toggle('active', i === current); });
     prevBtn.disabled = current === 0;
+    prevBtn.setAttribute('aria-disabled', current === 0 ? 'true' : 'false');
     nextBtn.disabled = current === total - 1;
+    nextBtn.setAttribute('aria-disabled', current === total - 1 ? 'true' : 'false');
+    if (counter) counter.textContent = 'Etapa ' + (current + 1) + ' de ' + total;
   }
 
   prevBtn.addEventListener('click', function () { if (current > 0) scrollTo(current - 1); });
   nextBtn.addEventListener('click', function () { if (current < total - 1) scrollTo(current + 1); });
 
-  /* Sync dots on manual swipe */
+  /* Sync on manual swipe */
   var scrollTimer;
   outer.addEventListener('scroll', function () {
     clearTimeout(scrollTimer);
