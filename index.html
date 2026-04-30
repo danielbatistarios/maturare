@@ -2385,18 +2385,26 @@ textarea.finput { min-height: 90px; resize: vertical; }
     position: relative;
   }
 
-  /* Scroll container */
-  .met-carousel-track {
-    display: flex;
+  /* Scroll outer: handles overflow + negative margin */
+  .met-carousel-outer {
     overflow-x: auto;
+    overflow-y: visible;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
-    gap: 16px;
-    padding: 0 24px 20px;
     margin: 0 -24px;
     scrollbar-width: none;
+    /* extra top/bottom space so shadow isn't clipped */
+    padding: 8px 0 20px;
   }
-  .met-carousel-track::-webkit-scrollbar { display: none; }
+  .met-carousel-outer::-webkit-scrollbar { display: none; }
+
+  /* Inner flex track — no overflow here */
+  .met-carousel-track {
+    display: flex;
+    gap: 16px;
+    padding: 0 24px;
+    width: max-content;
+  }
 
   /* Each card */
   .met-step {
@@ -5805,6 +5813,7 @@ footer {
         </button>
       </div>
 
+      <div class="met-carousel-outer">
       <div class="met-carousel-track" id="metTrack">
 
       <!-- 01 -->
@@ -5952,6 +5961,7 @@ footer {
       </div>
 
       </div><!-- /met-carousel-track -->
+      </div><!-- /met-carousel-outer -->
     </div>
 
   </div>
@@ -7421,11 +7431,12 @@ document.addEventListener('keydown', function(e) {
 <script>
 /* === MET CAROUSEL — mobile nav === */
 (function () {
-  var track = document.getElementById('metTrack');
+  var outer  = document.querySelector('.met-carousel-outer');
+  var track  = document.getElementById('metTrack');
   var prevBtn = document.getElementById('metPrev');
   var nextBtn = document.getElementById('metNext');
   var dotsEl  = document.getElementById('metDots');
-  if (!track || !prevBtn) return;
+  if (!track || !prevBtn || !outer) return;
 
   var dots = Array.from(dotsEl.querySelectorAll('.met-nav-dot'));
   var cards = Array.from(track.querySelectorAll('.met-step'));
@@ -7438,10 +7449,10 @@ document.addEventListener('keydown', function(e) {
     if (!isMobile()) return;
     var card = cards[idx];
     if (!card) return;
-    /* scroll card into view within track */
-    var trackLeft = track.getBoundingClientRect().left;
+    /* outer is the scrollable element */
+    var outerLeft = outer.getBoundingClientRect().left;
     var cardLeft  = card.getBoundingClientRect().left;
-    track.scrollBy({ left: cardLeft - trackLeft, behavior: 'smooth' });
+    outer.scrollBy({ left: cardLeft - outerLeft, behavior: 'smooth' });
     current = idx;
     updateState();
   }
@@ -7457,14 +7468,14 @@ document.addEventListener('keydown', function(e) {
 
   /* Sync dots on manual swipe */
   var scrollTimer;
-  track.addEventListener('scroll', function () {
+  outer.addEventListener('scroll', function () {
     clearTimeout(scrollTimer);
     scrollTimer = setTimeout(function () {
       if (!isMobile()) return;
-      var trackRect = track.getBoundingClientRect();
+      var outerRect = outer.getBoundingClientRect();
       var closest = 0, minDist = Infinity;
       cards.forEach(function (card, i) {
-        var dist = Math.abs(card.getBoundingClientRect().left - trackRect.left);
+        var dist = Math.abs(card.getBoundingClientRect().left - outerRect.left);
         if (dist < minDist) { minDist = dist; closest = i; }
       });
       current = closest;
