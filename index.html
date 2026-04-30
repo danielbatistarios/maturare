@@ -3091,6 +3091,16 @@ footer {
   .cl-item { padding: 20px 12px; }
 }
 
+/* col legal e copyright — só aparecem no mobile */
+.foot-col-legal-mobile { display: none; }
+.foot-copyright-mobile { display: none; }
+.foot-col-disclaimer-mobile {
+  font-size: 11px;
+  color: rgba(255,255,255,.3);
+  line-height: 1.6;
+  margin-top: 14px;
+}
+
 /* Footer mobile: brand full-width + 2 colunas de links */
 @media (max-width: 680px) {
   footer { padding: 40px 20px 24px; }
@@ -3102,10 +3112,6 @@ footer {
   .foot-top > div:first-child {
     grid-column: 1 / -1 !important;
   }
-  /* Último filho (Conteúdo) ocupa as 2 colunas tb */
-  .foot-top > div:last-child {
-    grid-column: 1 / -1 !important;
-  }
   /* Oculta social icons no mobile — já estão no menu mobile */
   .foot-top .foot-socs { display: none; }
   /* Toggle Human/Machine mais compacto */
@@ -3114,8 +3120,19 @@ footer {
   .fcol-h { font-size: 11px; margin-bottom: 10px; }
   .flinks { gap: 8px; }
   .flinks a { font-size: 13px; }
-  .foot-bot { padding-top: 20px; gap: 12px; }
-  .foot-disclaimer { font-size: 11px; padding-top: 12px; }
+  /* Mostra coluna legal no mobile, oculta foot-bot */
+  .foot-col-legal-mobile { display: block; }
+  .foot-bot { display: none; }
+  .foot-copyright-mobile {
+    display: block;
+    font-size: 10px;
+    color: rgba(255,255,255,.25);
+    line-height: 1.6;
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255,255,255,.07);
+    text-align: center;
+  }
 }
 
 /* P1: touch target setas carousel 44px */
@@ -6874,7 +6891,19 @@ footer {
           <li><a href="/glossario/">Glossário de SEO e IA</a></li>
         </ul>
       </div>
+      <!-- col legal: visível só no mobile (desktop usa foot-bot abaixo) -->
+      <div class="foot-col-legal-mobile">
+        <div class="fcol-h">Legal</div>
+        <ul class="flinks">
+          <li><a href="termos-de-privacidade.html">Termos de Privacidade</a></li>
+          <li><a href="politica-de-cookies.html">Política de Cookies</a></li>
+          <li><a href="termos-de-uso.html">Termos de Uso</a></li>
+        </ul>
+        <p class="foot-col-disclaimer-mobile">Os resultados apresentados são reais e referem-se a clientes específicos. Resultados individuais variam conforme mercado e execução.</p>
+      </div>
     </div>
+    <!-- Copyright mobile only -->
+    <p class="foot-copyright-mobile">&#169; 2026 Maturare Gestão &amp; Marketing Estratégico Ltda | CNPJ: 47.336.340/0001-51</p>
     <div class="foot-bot">
       <div class="foot-bot-row">
         <div class="foot-legal">
