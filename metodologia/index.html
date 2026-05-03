@@ -17,866 +17,466 @@
 <style>
 /* === LOADER === */
 .loader {
-  position: fixed;
-  inset: 0;
-  background: var(--z0, #0e0f0d);
-  z-index: 99999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 32px;
+  position: fixed; inset: 0; background: var(--z0, #0e0f0d); z-index: 99999;
+  display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 32px;
 }
 .loader-phrase {
   font-family: 'Instrument Serif', Georgia, serif;
-  font-size: clamp(22px, 4.5vw, 42px);
-  font-style: italic;
-  color: rgba(255,255,255,.9);
-  letter-spacing: .01em;
-  text-align: center;
-  max-width: 600px;
-  padding: 0 24px;
-  overflow: hidden;
+  font-size: clamp(22px, 4.5vw, 42px); font-style: italic;
+  color: rgba(255,255,255,.9); letter-spacing: .01em;
+  text-align: center; max-width: 600px; padding: 0 24px; overflow: hidden;
 }
-.loader-phrase span {
-  display: inline-block;
-  opacity: 0;
-  transform: translateY(12px);
-  transition: opacity .4s ease, transform .4s ease;
-}
+.loader-phrase span { display: inline-block; opacity: 0; transform: translateY(12px); transition: opacity .4s ease, transform .4s ease; }
 .loader-phrase span.visible { opacity: 1; transform: none; }
-.loader-brand {
-  font-family: 'DM Sans', system-ui, sans-serif;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: .2em;
-  text-transform: uppercase;
-  color: #6fcf97;
-  opacity: 0;
-  transition: opacity .6s ease .3s;
-}
+.loader-brand { font-family: 'DM Sans', system-ui, sans-serif; font-size: 11px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: #6fcf97; opacity: 0; transition: opacity .6s ease .3s; }
 .loader-brand.visible { opacity: 1; }
-.loader-line {
-  width: 48px;
-  height: 1px;
-  background: rgba(255,255,255,.12);
-  position: relative;
-  overflow: hidden;
-}
-.loader-line::after {
-  content: '';
-  position: absolute;
-  left: 0; top: 0;
-  height: 100%;
-  width: 0%;
-  background: #1a7a4a;
-  transition: width 1.8s cubic-bezier(.16,1,.3,1);
-}
+.loader-line { width: 48px; height: 1px; background: rgba(255,255,255,.12); position: relative; overflow: hidden; }
+.loader-line::after { content: ''; position: absolute; left: 0; top: 0; height: 100%; width: 0%; background: #1a7a4a; transition: width 1.8s cubic-bezier(.16,1,.3,1); }
 .loader-line.active::after { width: 100%; }
-.loader.done {
-  opacity: 0;
-  transition: opacity .6s ease;
-  pointer-events: none;
-}
+.loader.done { opacity: 0; transition: opacity .6s ease; pointer-events: none; }
 
 /* === VARIABLES === */
 :root {
-  --ink: #111210;
-  --ink2: #1c1b19;
-  --paper: #f5f4f0;
-  --paper2: #edebe3;
-  --paper3: #e2dfd6;
-  --dim: #5a5a56;
-  --faint: #d6d4ce;
-  --green: #1a7a4a;
-  --green2: #6fcf97;
-  --green-bg: #e8f5ee;
+  --ink: #111210; --ink2: #1c1b19;
+  --paper: #f5f4f0; --paper2: #edebe3; --paper3: #e2dfd6;
+  --dim: #5a5a56; --faint: #d6d4ce;
+  --green: #1a7a4a; --green2: #6fcf97; --green-bg: #e8f5ee;
   --orange: #e07b39;
-  --chatgpt: #10a37f;
-  --perplexity: #6366f1;
-  --gemini: #4285f4;
-  --claude: #c96442;
-  --copilot: #0078d4;
+  --chatgpt: #10a37f; --perplexity: #6366f1; --gemini: #4285f4; --claude: #c96442; --copilot: #0078d4;
   --serif: 'Instrument Serif', Georgia, serif;
   --sans: 'DM Sans', system-ui, sans-serif;
-  --radius: 16px;
-  --radius-sm: 8px;
+  --radius: 16px; --radius-sm: 8px;
   --sec-pad: clamp(100px, 12vw, 160px);
   --spring: cubic-bezier(.16, 1, .3, 1);
-  --z0: #0e0f0d;
-  --z1: #141513;
-  --z2: #1a1b18;
-  --z3: #21221f;
-  --z4: #292a26;
-  --glow-green: rgba(26, 122, 74, .14);
-  --glow-green-edge: rgba(111, 207, 151, .07);
-  --glow-orange: rgba(224, 123, 57, .06);
-  --border-z1: rgba(255, 255, 255, .055);
-  --border-z2: rgba(255, 255, 255, .08);
-  --border-z3: rgba(255, 255, 255, .11);
-  --toplight: inset 0 1px 0 rgba(255, 255, 255, .06);
-  --toplight-strong: inset 0 1px 0 rgba(255, 255, 255, .1);
-  --sp-2: 8px; --sp-3: 12px; --sp-4: 16px; --sp-6: 24px; --sp-8: 32px; --sp-10: 40px; --sp-12: 48px; --sp-16: 64px;
-  --r-sharp: 0px; --r-subtle: 4px; --r-card: 12px; --r-soft: 16px; --r-pill: 999px;
-  --zi-nav: 300; --zi-bar: 301; --zi-prog: 999;
-  --t-fast: 150ms; --t-normal: 250ms; --t-slow: 400ms; --t-slower: 750ms;
+  --z0: #0e0f0d; --z1: #141513; --z2: #1a1b18; --z3: #21221f; --z4: #292a26;
+  --glow-green: rgba(26, 122, 74, .14); --glow-green-edge: rgba(111, 207, 151, .07); --glow-orange: rgba(224, 123, 57, .06);
+  --border-z1: rgba(255,255,255,.055); --border-z2: rgba(255,255,255,.08); --border-z3: rgba(255,255,255,.11);
+  --toplight: inset 0 1px 0 rgba(255,255,255,.06); --toplight-strong: inset 0 1px 0 rgba(255,255,255,.1);
+  --sp-2:8px; --sp-3:12px; --sp-4:16px; --sp-6:24px; --sp-8:32px; --sp-10:40px; --sp-12:48px; --sp-16:64px;
+  --r-sharp:0px; --r-subtle:4px; --r-card:12px; --r-soft:16px; --r-pill:999px;
+  --zi-nav:300; --zi-bar:301; --zi-prog:999;
+  --t-fast:150ms; --t-normal:250ms; --t-slow:400ms; --t-slower:750ms;
   --shadow-2: 0 4px 12px rgba(0,0,0,.25), 0 2px 4px rgba(0,0,0,.2);
   --shadow-3: 0 8px 24px rgba(0,0,0,.3), 0 4px 8px rgba(0,0,0,.2);
   --shadow-5: 0 24px 80px rgba(0,0,0,.45), 0 12px 24px rgba(0,0,0,.25);
   --color-warmth: #1a1812;
-  --color-warmth-border: rgba(224, 123, 57, .08);
 }
 
 /* === RESET === */
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-
-/* === GLOBAL === */
-body {
-  background: var(--z0);
-  color: var(--paper);
-  font-family: var(--sans);
-  font-size: 16px;
-  letter-spacing: -.008em;
-  line-height: 1.75;
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-}
-a { text-decoration: none; color: inherit; }
-img { display: block; max-width: 100%; }
+*,*::before,*::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { background:var(--z0); color:var(--paper); font-family:var(--sans); font-size:16px; letter-spacing:-.008em; line-height:1.75; overflow-x:hidden; -webkit-font-smoothing:antialiased; }
+a { text-decoration:none; color:inherit; }
+img { display:block; max-width:100%; }
 
 /* === UTILITIES === */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 clamp(24px, 5vw, 80px);
-}
+.container { max-width:1200px; margin:0 auto; padding:0 clamp(24px,5vw,80px); }
 
-/* Reveal animations */
-.reveal {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity .8s var(--spring), transform .8s var(--spring);
-}
-.reveal.in { opacity: 1; transform: none; }
-.reveal-left {
-  opacity: 0;
-  transform: translateX(-40px);
-  transition: opacity .8s var(--spring), transform .8s var(--spring);
-}
-.reveal-left.in { opacity: 1; transform: none; }
-.reveal-right {
-  opacity: 0;
-  transform: translateX(40px);
-  transition: opacity .8s var(--spring), transform .8s var(--spring);
-}
-.reveal-right.in { opacity: 1; transform: none; }
-.reveal-scale {
-  opacity: 0;
-  transform: scale(.85);
-  transition: opacity .7s var(--spring), transform .7s var(--spring);
-}
-.reveal-scale.in { opacity: 1; transform: none; }
-.reveal-blur {
-  opacity: 0;
-  filter: blur(8px);
-  transform: translateY(12px);
-  transition: opacity .9s var(--spring), filter .9s var(--spring), transform .9s var(--spring);
-}
-.reveal-blur.in { opacity: 1; filter: blur(0); transform: none; }
+/* Reveal */
+.reveal { opacity:0; transform:translateY(24px); transition:opacity .8s var(--spring), transform .8s var(--spring); }
+.reveal.in { opacity:1; transform:none; }
+.reveal-left { opacity:0; transform:translateX(-40px); transition:opacity .8s var(--spring), transform .8s var(--spring); }
+.reveal-left.in { opacity:1; transform:none; }
+.reveal-right { opacity:0; transform:translateX(40px); transition:opacity .8s var(--spring), transform .8s var(--spring); }
+.reveal-right.in { opacity:1; transform:none; }
+.reveal-scale { opacity:0; transform:scale(.85); transition:opacity .7s var(--spring), transform .7s var(--spring); }
+.reveal-scale.in { opacity:1; transform:none; }
+.reveal-blur { opacity:0; filter:blur(8px); transform:translateY(12px); transition:opacity .9s var(--spring), filter .9s var(--spring), transform .9s var(--spring); }
+.reveal-blur.in { opacity:1; filter:blur(0); transform:none; }
 
-/* Stagger delays */
-.d1 { transition-delay: .08s; }
-.d2 { transition-delay: .16s; }
-.d3 { transition-delay: .24s; }
-.d4 { transition-delay: .24s; }
-.d5 { transition-delay: .30s; }
-.d6 { transition-delay: .36s; }
+.d1{transition-delay:.08s} .d2{transition-delay:.16s} .d3{transition-delay:.24s}
+.d4{transition-delay:.24s} .d5{transition-delay:.30s} .d6{transition-delay:.36s}
 
 /* Section labels */
-.sec-label {
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: .15em;
-  text-transform: uppercase;
-  margin-bottom: 12px;
-}
-.sec-label.lt { color: var(--dim); }
-.sec-label.dk { color: #5a5a54; }
-.sec-h {
-  font-family: var(--serif);
-  font-size: clamp(32px, 4.5vw, 52px);
-  line-height: 1.1;
-  letter-spacing: -.02em;
-}
-.sec-h.lt { color: var(--paper); }
-.sec-h.dk { color: var(--ink); }
-.sec-h em { font-style: italic; }
-.sec-desc {
-  font-size: 18px;
-  font-weight: 300;
-  line-height: 1.8;
-  max-width: 640px;
-}
-.sec-desc.lt { color: rgba(255, 255, 255, .6); }
-.sec-desc.dk { color: var(--dim); }
+.sec-label { font-size:13px; font-weight:700; letter-spacing:.15em; text-transform:uppercase; margin-bottom:12px; }
+.sec-label.lt { color:var(--dim); }
+.sec-label.dk { color:#5a5a54; }
+.sec-label.green { color:var(--green); }
+.sec-label.green2 { color:var(--green2); }
+.sec-h { font-family:var(--serif); font-size:clamp(32px,4.5vw,52px); line-height:1.1; letter-spacing:-.02em; }
+.sec-h.lt { color:var(--paper); }
+.sec-h.dk { color:var(--ink); }
+.sec-h em { font-style:italic; }
+.sec-desc { font-size:18px; font-weight:300; line-height:1.8; max-width:640px; }
+.sec-desc.lt { color:rgba(255,255,255,.6); }
+.sec-desc.dk { color:var(--dim); }
 
 /* Primary button */
-.btn-p {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: var(--paper);
-  color: var(--ink);
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: .07em;
-  text-transform: uppercase;
-  padding: 14px 32px;
-  border: none;
-  cursor: pointer;
-  transition: transform var(--t-normal) var(--spring), box-shadow var(--t-normal);
-  font-family: var(--sans);
-}
-.btn-p:hover {
-  transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 8px 32px rgba(244, 243, 239, .14), 0 2px 8px rgba(244, 243, 239, .08);
-}
-.btn-p:active { transform: translateY(0) scale(.98); transition-duration: .1s; }
+.btn-p { display:inline-flex; align-items:center; gap:8px; background:var(--paper); color:var(--ink); font-size:13px; font-weight:700; letter-spacing:.07em; text-transform:uppercase; padding:14px 32px; border:none; cursor:pointer; transition:transform var(--t-normal) var(--spring), box-shadow var(--t-normal); font-family:var(--sans); }
+.btn-p:hover { transform:translateY(-3px) scale(1.02); box-shadow:0 8px 32px rgba(244,243,239,.14), 0 2px 8px rgba(244,243,239,.08); }
+.btn-p:active { transform:translateY(0) scale(.98); transition-duration:.1s; }
 
 /* Noise overlay */
-.noise { position: relative; }
-.noise::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.045'/%3E%3C/svg%3E");
-  background-size: 200px 200px;
-  mix-blend-mode: screen;
-  opacity: .5;
-  transform: translate3d(0, 0, 0);
-}
-.noise > * { position: relative; z-index: 1; }
+.noise { position:relative; }
+.noise::after { content:''; position:absolute; inset:0; pointer-events:none; z-index:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.045'/%3E%3C/svg%3E"); background-size:200px 200px; mix-blend-mode:screen; opacity:.5; transform:translate3d(0,0,0); }
+.noise > * { position:relative; z-index:1; }
 
 /* === SCROLL PROGRESS === */
-.scroll-prog {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 2px;
-  background: linear-gradient(90deg, var(--green) 0%, var(--green2) 60%, var(--orange) 100%);
-  z-index: var(--zi-prog);
-  width: 0%;
-  pointer-events: none;
-  will-change: width;
-}
+.scroll-prog { position:fixed; top:0; left:0; height:2px; background:linear-gradient(90deg,var(--green) 0%,var(--green2) 60%,var(--orange) 100%); z-index:var(--zi-prog); width:0%; pointer-events:none; will-change:width; }
 
 /* === NAV === */
-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 300; height: 64px; display: flex; align-items: center; justify-content: center; padding: 0; background: transparent; backdrop-filter: none; border-bottom: 1px solid transparent; transition: background .3s, border-color .3s, backdrop-filter .3s; }
-.nav-inner { width: 100%; max-width: 1100px; padding: 0 clamp(24px, 4vw, 80px); display: flex; align-items: center; justify-content: space-between; }
-nav.scrolled { background: rgba(7,7,9,.92); backdrop-filter: blur(28px) saturate(180%); -webkit-backdrop-filter: blur(28px) saturate(180%); border-bottom-color: rgba(255,255,255,.07); box-shadow: 0 1px 0 rgba(255,255,255,.05), 0 1px 20px rgba(0,0,0,.3); }
-.logo { font-family: var(--serif); font-size: 19px; letter-spacing: .05em; color: var(--paper); transition: opacity .2s; flex-shrink: 0; }
-.logo:hover { opacity: .6; }
-.nav-links { display: flex; list-style: none; align-items: center; gap: 0; }
-.nav-item { position: relative; }
-.nav-btn { background: none; border: none; font-family: var(--sans); font-size: 13px; font-weight: 500; color: rgba(255,255,255,.55); padding: 8px 14px; cursor: pointer; display: flex; align-items: center; gap: 5px; transition: color .2s; white-space: nowrap; text-decoration: none; position: relative; }
-.nav-btn:hover { color: rgba(255,255,255,.85); }
-.nav-item.open .nav-btn { color: var(--paper); }
-.nav-btn::after { content: ''; position: absolute; bottom: 2px; left: 14px; right: 14px; height: 2px; background: #6fcf97; border-radius: 2px; transform: scaleX(0); transform-origin: center; transition: transform .2s ease; }
-.nav-item.open .nav-btn::after { transform: scaleX(1); }
-.nav-caret { width: 10px; height: 10px; flex-shrink: 0; transition: transform .2s, opacity .2s; opacity: .45; }
-.nav-item.open .nav-caret { transform: rotate(180deg); opacity: .8; }
-.nav-r { display: flex; align-items: center; gap: 12px; }
-.nav-cta { font-family: var(--sans); font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; background: var(--paper); color: #0e0f0d; padding: 10px 22px; border: none; cursor: pointer; border-radius: 4px; text-decoration: none; transition: transform .2s, box-shadow .2s; white-space: nowrap; }
-.nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 20px rgba(244,243,239,.15); }
-.hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
-.hamburger span { display: block; width: 22px; height: 1.5px; background: var(--paper); }
-@media (max-width: 900px) { .nav-links, .nav-cta { display: none; } .hamburger { display: flex; } nav { padding: 0 20px; } }
+nav { position:fixed; top:0; left:0; right:0; z-index:300; height:64px; display:flex; align-items:center; justify-content:center; padding:0; background:transparent; backdrop-filter:none; border-bottom:1px solid transparent; transition:background .3s, border-color .3s, backdrop-filter .3s; }
+.nav-inner { width:100%; max-width:1100px; padding:0 clamp(24px,4vw,80px); display:flex; align-items:center; justify-content:space-between; }
+nav.scrolled { background:rgba(7,7,9,.92); backdrop-filter:blur(28px) saturate(180%); -webkit-backdrop-filter:blur(28px) saturate(180%); border-bottom-color:rgba(255,255,255,.07); box-shadow:0 1px 0 rgba(255,255,255,.05), 0 1px 20px rgba(0,0,0,.3); }
+.logo { font-family:var(--serif); font-size:19px; letter-spacing:.05em; color:var(--paper); transition:opacity .2s; flex-shrink:0; }
+.logo:hover { opacity:.6; }
+.nav-links { display:flex; list-style:none; align-items:center; gap:0; }
+.nav-item { position:relative; }
+.nav-btn { background:none; border:none; font-family:var(--sans); font-size:13px; font-weight:500; color:rgba(255,255,255,.55); padding:8px 14px; cursor:pointer; display:flex; align-items:center; gap:5px; transition:color .2s; white-space:nowrap; text-decoration:none; position:relative; }
+.nav-btn:hover { color:rgba(255,255,255,.85); }
+.nav-item.open .nav-btn { color:var(--paper); }
+.nav-btn::after { content:''; position:absolute; bottom:2px; left:14px; right:14px; height:2px; background:#6fcf97; border-radius:2px; transform:scaleX(0); transform-origin:center; transition:transform .2s ease; }
+.nav-item.open .nav-btn::after { transform:scaleX(1); }
+.nav-caret { width:10px; height:10px; flex-shrink:0; transition:transform .2s, opacity .2s; opacity:.45; }
+.nav-item.open .nav-caret { transform:rotate(180deg); opacity:.8; }
+.nav-r { display:flex; align-items:center; gap:12px; }
+.nav-cta { font-family:var(--sans); font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; background:var(--paper); color:#0e0f0d; padding:10px 22px; border:none; cursor:pointer; border-radius:4px; text-decoration:none; transition:transform .2s, box-shadow .2s; white-space:nowrap; }
+.nav-cta:hover { transform:translateY(-1px); box-shadow:0 4px 20px rgba(244,243,239,.15); }
+.hamburger { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:4px; }
+.hamburger span { display:block; width:22px; height:1.5px; background:var(--paper); }
+@media (max-width:900px) { .nav-links,.nav-cta { display:none; } .hamburger { display:flex; } nav { padding:0 20px; } }
 
 /* === MEGAMENU === */
-.mm-panel { position: fixed; top: 64px; left: 0; right: 0; background: rgba(10,11,9,.97); border-top: 1px solid rgba(255,255,255,.06); border-bottom: 1px solid rgba(255,255,255,.04); backdrop-filter: blur(24px) saturate(1.5); -webkit-backdrop-filter: blur(24px) saturate(1.5); box-shadow: 0 24px 80px rgba(0,0,0,.55); z-index: 290; opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(-6px); transition: opacity .2s ease, transform .2s ease, visibility .2s; }
-.mm-panel.open { opacity: 1; visibility: visible; pointer-events: auto; transform: translateY(0); }
-.mm-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 300px 1fr; gap: 0; min-height: 260px; }
-.mm-aside { padding: 32px 28px; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden; min-height: 260px; }
-.mm-aside-bg { position: absolute; inset: 0; background-size: cover; background-position: center; }
-.mm-aside-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(7,7,9,.92) 0%, rgba(7,7,9,.55) 50%, rgba(7,7,9,.35) 100%); }
-.mm-aside > *:not(.mm-aside-bg) { position: relative; z-index: 1; }
-.mm-aside-tag { font-family: var(--sans); font-size: 10px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #6fcf97; }
-.mm-aside-title { font-family: var(--serif); font-size: 21px; font-style: italic; color: var(--paper); line-height: 1.35; margin: 0; }
-.mm-aside-cta { display: inline-flex; align-items: center; gap: 5px; font-family: var(--sans); font-size: 11px; font-weight: 600; letter-spacing: .06em; color: rgba(255,255,255,.7); text-decoration: none; border-bottom: 1px solid rgba(255,255,255,.25); padding-bottom: 1px; width: fit-content; transition: color .2s, border-color .2s; }
-.mm-aside-cta:hover { color: var(--paper); border-color: rgba(255,255,255,.6); }
-.mm-vid-wrap { position: relative; border-radius: 10px; overflow: hidden; cursor: pointer; flex: 1; min-height: 0; }
-.mm-vid-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .3s ease; }
-.mm-vid-wrap:hover img { transform: scale(1.04); }
-.mm-vid-play { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,.35); transition: background .2s; }
-.mm-vid-wrap:hover .mm-vid-play { background: rgba(0,0,0,.5); }
-.mm-vid-play svg { width: 44px; height: 44px; filter: drop-shadow(0 2px 8px rgba(0,0,0,.5)); transition: transform .2s; }
-.mm-vid-wrap:hover .mm-vid-play svg { transform: scale(1.1); }
-.mm-vid-label { font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #6fcf97; margin-bottom: 8px; }
-.mm-vid-title { font-family: var(--sans); font-size: 13px; font-weight: 600; color: rgba(255,255,255,.85); line-height: 1.45; margin-bottom: 14px; }
-.mm-links { padding: 36px 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 0 48px; align-content: start; }
-.mm-links--single { grid-template-columns: 1fr; max-width: 420px; }
-.mm-col-label { font-family: var(--sans); font-size: 10px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.25); margin: 0 0 8px; grid-column: 1/-1; }
-.mm-link { display: flex; flex-direction: column; gap: 2px; padding: 11px 0; border-bottom: 1px solid rgba(255,255,255,.05); text-decoration: none; transition: padding-left .15s; }
-.mm-link:last-of-type { border-bottom: none; }
-.mm-link:hover { padding-left: 5px; }
-.mm-link strong { font-family: var(--sans); font-size: 13.5px; font-weight: 600; color: rgba(255,255,255,.8); transition: color .15s; }
-.mm-link span { font-size: 11.5px; color: rgba(255,255,255,.35); line-height: 1.45; transition: color .15s; }
-.mm-link:hover strong { color: var(--paper); }
-.mm-link:hover span { color: rgba(255,255,255,.6); }
+.mm-panel { position:fixed; top:64px; left:0; right:0; background:rgba(10,11,9,.97); border-top:1px solid rgba(255,255,255,.06); border-bottom:1px solid rgba(255,255,255,.04); backdrop-filter:blur(24px) saturate(1.5); -webkit-backdrop-filter:blur(24px) saturate(1.5); box-shadow:0 24px 80px rgba(0,0,0,.55); z-index:290; opacity:0; visibility:hidden; pointer-events:none; transform:translateY(-6px); transition:opacity .2s ease, transform .2s ease, visibility .2s; }
+.mm-panel.open { opacity:1; visibility:visible; pointer-events:auto; transform:translateY(0); }
+.mm-inner { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:300px 1fr; gap:0; min-height:260px; }
+.mm-aside { padding:32px 28px; display:flex; flex-direction:column; justify-content:space-between; position:relative; overflow:hidden; min-height:260px; }
+.mm-aside-bg { position:absolute; inset:0; background-size:cover; background-position:center; }
+.mm-aside-bg::after { content:''; position:absolute; inset:0; background:linear-gradient(to top, rgba(7,7,9,.92) 0%, rgba(7,7,9,.55) 50%, rgba(7,7,9,.35) 100%); }
+.mm-aside > *:not(.mm-aside-bg) { position:relative; z-index:1; }
+.mm-aside-tag { font-family:var(--sans); font-size:10px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:#6fcf97; }
+.mm-aside-title { font-family:var(--serif); font-size:21px; font-style:italic; color:var(--paper); line-height:1.35; margin:0; }
+.mm-aside-cta { display:inline-flex; align-items:center; gap:5px; font-family:var(--sans); font-size:11px; font-weight:600; letter-spacing:.06em; color:rgba(255,255,255,.7); text-decoration:none; border-bottom:1px solid rgba(255,255,255,.25); padding-bottom:1px; width:fit-content; transition:color .2s, border-color .2s; }
+.mm-aside-cta:hover { color:var(--paper); border-color:rgba(255,255,255,.6); }
+.mm-links { padding:36px 40px; display:grid; grid-template-columns:1fr 1fr; gap:0 48px; align-content:start; }
+.mm-links--single { grid-template-columns:1fr; max-width:420px; }
+.mm-col-label { font-family:var(--sans); font-size:10px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:rgba(255,255,255,.25); margin:0 0 8px; grid-column:1/-1; }
+.mm-link { display:flex; flex-direction:column; gap:2px; padding:11px 0; border-bottom:1px solid rgba(255,255,255,.05); text-decoration:none; transition:padding-left .15s; }
+.mm-link:last-of-type { border-bottom:none; }
+.mm-link:hover { padding-left:5px; }
+.mm-link strong { font-family:var(--sans); font-size:13.5px; font-weight:600; color:rgba(255,255,255,.8); transition:color .15s; }
+.mm-link span { font-size:11.5px; color:rgba(255,255,255,.35); line-height:1.45; transition:color .15s; }
+.mm-link:hover strong { color:var(--paper); }
+.mm-link:hover span { color:rgba(255,255,255,.6); }
 
 /* === MOBILE MENU === */
-.mob-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.6); z-index: 590; backdrop-filter: blur(4px); }
-.mob-overlay.open { display: block; }
-.mob-menu { position: fixed; inset: 0; width: 100%; height: 100%; background: #0a0a08; z-index: 600; display: flex; flex-direction: column; overflow-y: auto; transform: translateX(100%); transition: transform .35s cubic-bezier(.16,1,.3,1); }
-.mob-menu.open { transform: translateX(0); }
-.mob-menu-header { display: flex; align-items: center; justify-content: space-between; padding: 20px 24px 18px; border-bottom: 1px solid rgba(255,255,255,.07); flex-shrink: 0; }
-.mob-menu-close { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.1); cursor: pointer; color: rgba(255,255,255,.7); transition: background .15s, color .15s; flex-shrink: 0; }
-.mob-menu-close:hover { background: rgba(255,255,255,.14); color: #fff; }
-.mob-section { border-bottom: 1px solid rgba(255,255,255,.06); }
-.mob-section-btn { display: flex; justify-content: space-between; align-items: center; width: 100%; padding: 17px 24px; background: none; border: none; cursor: pointer; font-family: var(--sans); font-size: 15px; font-weight: 600; letter-spacing: .01em; text-transform: uppercase; color: rgba(255,255,255,.75); transition: color .15s; }
-.mob-section-btn:hover { color: #fff; }
-.mob-sub { max-height: 0; overflow: hidden; background: rgba(255,255,255,.02); transition: max-height .35s ease; }
-.mob-sub.open { max-height: 600px; }
-.mob-sub a { display: block; padding: 11px 24px 11px 38px; font-family: var(--sans); font-size: 13px; font-weight: 400; color: rgba(255,255,255,.45); text-decoration: none; border-bottom: 1px solid rgba(255,255,255,.04); transition: color .15s; }
-.mob-sub a:last-child { border-bottom: none; }
-.mob-sub a:hover { color: rgba(255,255,255,.85); }
-.mob-menu-ctas { display: flex; gap: 10px; margin: 20px 24px 0; }
-.mob-cta-wa, .mob-cta-contact { display: inline-flex; align-items: center; gap: 7px; padding: 10px 16px; font-family: var(--sans); font-size: 13px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; border-radius: 6px; text-decoration: none; transition: opacity .2s; white-space: nowrap; flex: 1; justify-content: center; }
-.mob-cta-wa { background: var(--green,#1a7a4a); color: #fff; }
-.mob-cta-wa:hover { opacity: .85; }
-.mob-cta-contact { background: rgba(255,255,255,.07); color: rgba(255,255,255,.7); border: 1px solid rgba(255,255,255,.12); }
-.mob-cta-contact:hover { background: rgba(255,255,255,.12); color: #fff; }
-.mob-menu-footer { margin-top: auto; padding: 24px; border-top: 1px solid rgba(255,255,255,.07); }
-.mob-footer-tagline { font-family: var(--serif); font-style: italic; font-size: 13px; color: rgba(255,255,255,.3); margin-bottom: 18px; line-height: 1.5; }
-.mob-contact-email { display: flex; align-items: center; gap: 7px; font-family: var(--sans); font-size: 13px; color: rgba(255,255,255,.55); text-decoration: none; margin-bottom: 4px; transition: color .15s; }
-.mob-contact-email:hover { color: rgba(255,255,255,.85); }
-.mob-footer-cnpj { font-size: 11px; color: rgba(255,255,255,.22); margin-bottom: 18px; padding-left: 22px; }
-.mob-socials { display: flex; gap: 10px; }
-.mob-soc-link { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: transparent; border: 1px solid rgba(255,255,255,.18); color: rgba(255,255,255,.55); transition: border-color .15s, color .15s, background .15s; }
-.mob-soc-link:hover { border-color: rgba(255,255,255,.4); color: #fff; background: rgba(255,255,255,.06); }
+.mob-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,.6); z-index:590; backdrop-filter:blur(4px); }
+.mob-overlay.open { display:block; }
+.mob-menu { position:fixed; inset:0; width:100%; height:100%; background:#0a0a08; z-index:600; display:flex; flex-direction:column; overflow-y:auto; transform:translateX(100%); transition:transform .35s cubic-bezier(.16,1,.3,1); }
+.mob-menu.open { transform:translateX(0); }
+.mob-menu-header { display:flex; align-items:center; justify-content:space-between; padding:20px 24px 18px; border-bottom:1px solid rgba(255,255,255,.07); flex-shrink:0; }
+.mob-menu-close { display:flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:50%; background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.1); cursor:pointer; color:rgba(255,255,255,.7); transition:background .15s, color .15s; flex-shrink:0; }
+.mob-menu-close:hover { background:rgba(255,255,255,.14); color:#fff; }
+.mob-section { border-bottom:1px solid rgba(255,255,255,.06); }
+.mob-section-btn { display:flex; justify-content:space-between; align-items:center; width:100%; padding:17px 24px; background:none; border:none; cursor:pointer; font-family:var(--sans); font-size:15px; font-weight:600; letter-spacing:.01em; text-transform:uppercase; color:rgba(255,255,255,.75); transition:color .15s; }
+.mob-section-btn:hover { color:#fff; }
+.mob-sub { max-height:0; overflow:hidden; background:rgba(255,255,255,.02); transition:max-height .35s ease; }
+.mob-sub.open { max-height:600px; }
+.mob-sub a { display:block; padding:11px 24px 11px 38px; font-family:var(--sans); font-size:13px; font-weight:400; color:rgba(255,255,255,.45); text-decoration:none; border-bottom:1px solid rgba(255,255,255,.04); transition:color .15s; }
+.mob-sub a:last-child { border-bottom:none; }
+.mob-sub a:hover { color:rgba(255,255,255,.85); }
+.mob-menu-ctas { display:flex; gap:10px; margin:20px 24px 0; }
+.mob-cta-wa, .mob-cta-contact { display:inline-flex; align-items:center; gap:7px; padding:10px 16px; font-family:var(--sans); font-size:13px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; border-radius:6px; text-decoration:none; transition:opacity .2s; white-space:nowrap; flex:1; justify-content:center; }
+.mob-cta-wa { background:var(--green,#1a7a4a); color:#fff; }
+.mob-cta-wa:hover { opacity:.85; }
+.mob-cta-contact { background:rgba(255,255,255,.07); color:rgba(255,255,255,.7); border:1px solid rgba(255,255,255,.12); }
+.mob-cta-contact:hover { background:rgba(255,255,255,.12); color:#fff; }
+.mob-menu-footer { margin-top:auto; padding:24px; border-top:1px solid rgba(255,255,255,.07); }
+.mob-footer-tagline { font-family:var(--serif); font-style:italic; font-size:13px; color:rgba(255,255,255,.3); margin-bottom:18px; line-height:1.5; }
+.mob-contact-email { display:flex; align-items:center; gap:7px; font-family:var(--sans); font-size:13px; color:rgba(255,255,255,.55); text-decoration:none; margin-bottom:4px; transition:color .15s; }
+.mob-contact-email:hover { color:rgba(255,255,255,.85); }
+.mob-footer-cnpj { font-size:11px; color:rgba(255,255,255,.22); margin-bottom:18px; padding-left:22px; }
+.mob-socials { display:flex; gap:10px; }
+.mob-soc-link { display:flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:50%; background:transparent; border:1px solid rgba(255,255,255,.18); color:rgba(255,255,255,.55); transition:border-color .15s, color .15s, background .15s; }
+.mob-soc-link:hover { border-color:rgba(255,255,255,.4); color:#fff; background:rgba(255,255,255,.06); }
 
-.skip-link { position: absolute; top: -100%; left: 16px; background: var(--green); color: #fff; padding: 8px 16px; border-radius: 4px; z-index: 100000; font-size: 14px; transition: top .2s; }
-.skip-link:focus { top: 8px; }
+.skip-link { position:absolute; top:-100%; left:16px; background:var(--green); color:#fff; padding:8px 16px; border-radius:4px; z-index:100000; font-size:14px; transition:top .2s; }
+.skip-link:focus { top:8px; }
 
 /* === HERO === */
 .hero-met {
-  min-height: 70vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 160px 0 100px;
-  position: relative;
-  overflow: hidden;
-  background: var(--z1);
+  min-height:70vh; display:flex; align-items:center; justify-content:center; text-align:center;
+  padding:160px 0 100px; position:relative; overflow:hidden;
+  background:
+    radial-gradient(ellipse 900px 500px at 50% 40%, rgba(26,122,74,.18) 0%, transparent 70%),
+    radial-gradient(ellipse 400px 200px at 30% 70%, rgba(196,160,53,.07) 0%, transparent 60%),
+    var(--z1);
 }
-.hero-met::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 800px;
-  height: 800px;
-  border-radius: 50%;
-  background: radial-gradient(circle, var(--glow-green) 0%, transparent 60%);
-  pointer-events: none;
-}
-.hero-met-inner { position: relative; z-index: 1; max-width: 700px; }
+.hero-met-inner { position:relative; z-index:1; max-width:700px; }
 .hero-met-label {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(26, 122, 74, .08);
-  border: 1px solid rgba(26, 122, 74, .18);
-  border-radius: var(--r-pill);
-  padding: 4px 14px 4px 10px;
-  color: var(--green2);
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  margin-bottom: 32px;
-  opacity: 0;
-  animation: up .6s .1s var(--spring) forwards;
+  display:inline-flex; align-items:center; gap:8px;
+  background:rgba(26,122,74,.08); border:1px solid rgba(26,122,74,.18);
+  border-radius:var(--r-pill); padding:4px 14px 4px 10px;
+  color:var(--green2); font-size:12px; font-weight:600;
+  letter-spacing:.12em; text-transform:uppercase; margin-bottom:32px;
+  opacity:0; animation:up .6s .1s var(--spring) forwards;
 }
 .hero-met-label::before {
-  content: '';
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--green2);
-  animation: pulse 2s infinite;
+  content:''; width:6px; height:6px; border-radius:50%;
+  background:var(--green2); animation:pulse 2s infinite;
 }
 .hero-met h1 {
-  font-family: var(--serif);
-  font-size: clamp(42px, 5.5vw, 68px);
-  line-height: .96;
-  letter-spacing: -.028em;
-  color: var(--paper);
-  opacity: 0;
-  animation: up .9s .18s var(--spring) forwards;
+  font-family:var(--serif); font-size:clamp(42px,5.5vw,68px); line-height:.96;
+  letter-spacing:-.028em; color:var(--paper);
+  opacity:0; animation:up .9s .18s var(--spring) forwards;
 }
 .hero-met p {
-  font-size: 18px;
-  font-weight: 300;
-  line-height: 1.8;
-  color: rgba(255, 255, 255, .6);
-  max-width: 560px;
-  margin: 32px auto 0;
-  opacity: 0;
-  animation: up .9s .4s var(--spring) forwards;
+  font-size:18px; font-weight:300; line-height:1.8; color:rgba(255,255,255,.6);
+  max-width:560px; margin:32px auto 0;
+  opacity:0; animation:up .9s .4s var(--spring) forwards;
 }
 
-/* === PROBLEMA === */
+/* === PROBLEMA (light) === */
 .problema {
-  background: var(--z2);
-  padding: var(--sec-pad) 0;
-  position: relative;
-  overflow: hidden;
+  background:#FAFAFA; padding:var(--sec-pad) 0; position:relative; overflow:hidden;
 }
-.prob-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
-  margin-top: 48px;
-}
+.prob-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:48px; }
 .prob-card {
-  background: var(--z3);
-  border: 1px solid var(--border-z2);
-  border-radius: var(--radius);
-  padding: clamp(32px, 4vw, 48px);
-  box-shadow: var(--toplight);
-  transition: transform .3s var(--spring), border-color .3s;
+  background:#fff; border:1px solid #e8e8e4; border-radius:var(--r-card);
+  padding:clamp(28px,3.5vw,40px); transition:transform .3s var(--spring), box-shadow .3s;
 }
-.prob-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(224, 123, 57, .2);
-}
+.prob-card:hover { transform:translateY(-4px); box-shadow:0 12px 32px rgba(0,0,0,.08); }
 .prob-icon {
-  width: 48px;
-  height: 48px;
-  border-radius: 12px;
-  background: rgba(224, 123, 57, .1);
-  border: 1px solid rgba(224, 123, 57, .15);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 24px;
-  font-size: 22px;
+  width:48px; height:48px; border-radius:12px;
+  background:rgba(224,123,57,.08); border:1px solid rgba(224,123,57,.14);
+  display:flex; align-items:center; justify-content:center; margin-bottom:20px; font-size:22px;
 }
-.prob-card h3 {
-  font-family: var(--serif);
-  font-size: 22px;
-  color: var(--paper);
-  margin-bottom: 12px;
-  line-height: 1.2;
-}
-.prob-card p {
-  font-size: 15px;
-  font-weight: 300;
-  color: rgba(255, 255, 255, .5);
-  line-height: 1.8;
-}
+.prob-card h3 { font-family:var(--serif); font-size:22px; color:var(--ink); margin-bottom:12px; line-height:1.2; }
+.prob-card p { font-size:15px; font-weight:300; color:var(--dim); line-height:1.8; }
 
-/* === PILARES === */
-.pilares {
-  background: var(--z0);
-  padding: var(--sec-pad) 0;
+/* === QUOTE / WORD BLUR (dark z0) === */
+.quote-met {
+  background:var(--z0); padding:var(--sec-pad) 0; position:relative; overflow:hidden;
 }
-.pilar {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 64px;
-  align-items: center;
-  padding: 64px 0;
-  border-bottom: 1px solid var(--border-z1);
+.quote-met-inner {
+  max-width:860px; margin:0 auto; padding:0 clamp(24px,4vw,64px);
+  text-align:center; position:relative;
 }
-.pilar:last-child { border-bottom: none; }
-.pilar.reverse .pilar-content { order: 2; }
-.pilar.reverse .pilar-visual { order: 1; }
-.pilar-num {
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: clamp(80px, 10vw, 140px);
-  color: rgba(26, 122, 74, .15);
-  line-height: 1;
-  margin-bottom: 8px;
+.quote-met-inner::before {
+  content:'"'; font-family:var(--serif); font-size:clamp(100px,14vw,160px);
+  line-height:.7; position:absolute; top:-20px; left:clamp(24px,4vw,64px);
+  color:rgba(111,207,151,.08); pointer-events:none; user-select:none;
 }
-.pilar-tag {
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: .15em;
-  text-transform: uppercase;
-  color: var(--green2);
-  margin-bottom: 12px;
+.quote-line { width:40px; height:2px; background:var(--green); margin:0 auto 40px; animation:quotePulse 2.5s ease-in-out infinite; }
+@keyframes quotePulse { 0%,100%{opacity:1;width:40px} 50%{opacity:.5;width:60px} }
+.quote-met-txt {
+  font-family:var(--serif); font-weight:700; font-size:clamp(24px,3.5vw,40px);
+  line-height:1.4; letter-spacing:-.01em; color:var(--paper);
 }
-.pilar h3 {
-  font-family: var(--serif);
-  font-size: clamp(28px, 3.5vw, 40px);
-  line-height: 1.1;
-  letter-spacing: -.02em;
-  color: var(--paper);
-  margin-bottom: 20px;
-}
-.pilar-desc {
-  font-size: 17px;
-  font-weight: 300;
-  color: rgba(255, 255, 255, .55);
-  line-height: 1.8;
-  margin-bottom: 24px;
-}
-.pilar-items {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-.pilar-items li {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  font-size: 15px;
-  font-weight: 400;
-  color: rgba(255, 255, 255, .6);
-}
-.pilar-items li::before {
-  content: '';
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--green);
-  margin-top: 10px;
-  flex-shrink: 0;
-}
-.pilar-visual {
-  background: var(--z2);
-  border: 1px solid var(--border-z2);
-  border-radius: var(--radius);
-  padding: clamp(40px, 5vw, 64px);
-  box-shadow: var(--toplight);
-  min-height: 280px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.pilar-visual-icon {
-  font-size: clamp(60px, 8vw, 90px);
-  opacity: .6;
-}
+.wb { display:inline; filter:blur(14px); opacity:0; transition:filter .9s ease, opacity .9s ease; }
+.wb.lit { filter:blur(0); opacity:1; }
+.quote-met-attr { margin-top:32px; font-size:13px; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:rgba(255,255,255,.3); }
 
-/* === PROCESSO === */
-.processo {
-  background: var(--z2);
-  padding: var(--sec-pad) 0;
-  overflow: hidden;
+/* === PILARES (white #fff, met-step) === */
+.pilares { background:#fff; padding:var(--sec-pad) 0; }
+.pilar-steps { display:flex; flex-direction:column; margin-top:64px; }
+.pilar-step {
+  display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center;
+  padding:64px 0; border-top:1px solid #e8e8e4;
 }
-.timeline {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 0;
-  margin-top: 56px;
-  position: relative;
-}
-.timeline::before {
-  content: '';
-  position: absolute;
-  top: 40px;
-  left: 12.5%;
-  right: 12.5%;
-  height: 2px;
-  background: var(--border-z2);
-}
-.tl-step {
-  text-align: center;
-  position: relative;
-  padding: 0 16px;
-}
-.tl-dot {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: var(--z4);
-  border: 2px solid var(--green);
-  margin: 30px auto 24px;
-  position: relative;
-  z-index: 2;
-  transition: background .3s;
-}
-.tl-step:hover .tl-dot { background: var(--green); }
-.tl-icon {
-  width: 56px;
-  height: 56px;
-  border-radius: 14px;
-  background: rgba(26, 122, 74, .08);
-  border: 1px solid rgba(26, 122, 74, .15);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 16px;
-  font-size: 24px;
-}
-.tl-period {
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  color: var(--green2);
-  margin-bottom: 8px;
-}
-.tl-title {
-  font-family: var(--serif);
-  font-size: 20px;
-  color: var(--paper);
-  margin-bottom: 8px;
-}
-.tl-desc {
-  font-size: 14px;
-  font-weight: 300;
-  color: rgba(255, 255, 255, .45);
-  line-height: 1.7;
-}
+.pilar-step:last-child { border-bottom:1px solid #e8e8e4; }
+.pilar-step.even .pilar-step-content { order:2; }
+.pilar-step.even .pilar-step-visual { order:1; }
 
-/* === FERRAMENTAS === */
-.ferramentas {
-  background: var(--z1);
-  padding: var(--sec-pad) 0;
+.pilar-step-badge {
+  display:inline-flex; align-items:center; gap:8px;
+  background:var(--green); color:#fff;
+  font-size:10px; font-weight:700; letter-spacing:.12em; text-transform:uppercase;
+  padding:4px 10px; border-radius:5px; margin-bottom:16px;
 }
-.tools-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  justify-content: center;
-  margin-top: 48px;
+.pilar-step-badge-label {
+  font-size:11px; font-weight:700; letter-spacing:.12em; text-transform:uppercase;
+  color:var(--dim); margin-bottom:4px;
 }
-.tool-chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 20px;
-  background: rgba(255, 255, 255, .04);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, .08);
-  border-radius: var(--r-pill);
-  font-size: 14px;
-  font-weight: 500;
-  color: rgba(255, 255, 255, .7);
-  transition: all .3s var(--spring);
-  box-shadow: var(--toplight);
-}
-.tool-chip:hover {
-  background: rgba(255, 255, 255, .08);
-  border-color: rgba(111, 207, 151, .2);
-  color: var(--paper);
-  transform: translateY(-2px);
-  box-shadow: var(--toplight-strong), 0 4px 16px rgba(0, 0, 0, .25), 0 0 20px rgba(111, 207, 151, .06);
-}
-.tool-chip-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  flex-shrink: 0;
-}
+.pilar-step-title { font-family:var(--sans); font-weight:800; font-size:clamp(20px,2vw,26px); line-height:1.3; color:var(--ink); margin-bottom:16px; }
+.pilar-step-desc { font-size:16px; font-weight:300; color:var(--dim); line-height:1.8; margin-bottom:24px; }
+.pilar-step-desc strong { color:var(--ink); font-weight:600; }
+.pilar-benefits { list-style:none; display:flex; flex-direction:column; gap:10px; margin-bottom:24px; }
+.pilar-benefits li { display:flex; align-items:flex-start; gap:10px; font-size:15px; color:var(--dim); line-height:1.6; }
+.met-benefit-dot { width:6px; height:6px; border-radius:50%; background:var(--green); flex-shrink:0; margin-top:9px; }
 
-/* === DIFERENCIAL === */
-.diferencial {
-  background: var(--paper);
-  padding: var(--sec-pad) 0;
+/* Visual mockup (light) */
+.pilar-step-visual {
+  background:#f4f4f0; border:1px solid #e8e8e4; border-radius:14px;
+  padding:clamp(32px,4vw,48px); min-height:280px; position:relative; overflow:hidden;
 }
-.dif-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0;
-  margin-top: 48px;
-  border-radius: var(--radius);
-  overflow: hidden;
-  border: 1px solid var(--faint);
+.pilar-vis-top { background:#e8e8e4; border-radius:8px 8px 0 0; height:28px; display:flex; align-items:center; gap:6px; padding:0 14px; margin:-clamp(32px,4vw,48px) -clamp(32px,4vw,48px) 24px; }
+.pilar-vis-dot { width:10px; height:10px; border-radius:50%; }
+.pilar-vis-label { font-size:11px; font-weight:600; color:rgba(0,0,0,.35); margin-left:auto; letter-spacing:.06em; }
+.pilar-vis-bar-row { display:flex; flex-direction:column; gap:10px; margin-top:8px; }
+.pilar-vis-bar { height:8px; border-radius:4px; }
+.pilar-vis-bar.fill { background:var(--green); opacity:.6; }
+.pilar-vis-bar.empty { background:#e0dfd8; }
+.pilar-vis-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; margin-top:16px; }
+.pilar-vis-card { background:#fff; border:1px solid #e8e8e4; border-radius:8px; padding:12px; }
+.pilar-vis-card-label { font-size:10px; color:#aaa; margin-bottom:4px; }
+.pilar-vis-card-val { font-size:18px; font-weight:700; color:var(--green); }
+.pilar-vis-chip-wrap { display:flex; flex-wrap:wrap; gap:6px; margin-top:16px; }
+.pilar-vis-chip { padding:5px 12px; border-radius:var(--r-pill); font-size:12px; font-weight:500; }
+.pilar-vis-chip.g { background:rgba(26,122,74,.08); color:var(--green); border:1px solid rgba(26,122,74,.12); }
+.pilar-vis-chip.dim { background:#f0ede5; color:var(--dim); border:1px solid #e8e8e4; }
+.pilar-vis-ia-row { display:flex; align-items:center; gap:12px; padding:12px 0; border-bottom:1px solid #e8e8e4; }
+.pilar-vis-ia-row:last-child { border-bottom:none; }
+.pilar-vis-ia-dot { width:10px; height:10px; border-radius:50%; flex-shrink:0; }
+.pilar-vis-ia-name { font-size:13px; font-weight:500; color:var(--ink); flex:1; }
+.pilar-vis-ia-bar { height:6px; border-radius:3px; background:#e8e8e4; flex:2; overflow:hidden; position:relative; }
+.pilar-vis-ia-fill { position:absolute; left:0; top:0; height:100%; border-radius:3px; background:var(--green); }
+.case-card {
+  margin-top:28px; padding:20px 24px;
+  background:rgba(26,122,74,.04); border:1px solid rgba(26,122,74,.12);
+  border-radius:var(--r-card);
 }
+.case-card-label { font-size:11px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--green); margin-bottom:10px; }
+.case-card p { font-size:14px; font-weight:400; color:var(--dim); line-height:1.7; margin:0; }
+.case-card strong { color:var(--ink); }
+
+/* === PROCESSO (light #FAFAFA) === */
+.processo { background:#FAFAFA; padding:var(--sec-pad) 0; overflow:hidden; }
+.timeline { display:grid; grid-template-columns:repeat(4,1fr); gap:0; margin-top:56px; position:relative; }
+.timeline::before { content:''; position:absolute; top:40px; left:12.5%; right:12.5%; height:2px; background:#e8e8e4; }
+.tl-step { text-align:center; position:relative; padding:0 16px; }
+.tl-dot { width:20px; height:20px; border-radius:50%; background:#fff; border:2px solid var(--green); margin:30px auto 24px; position:relative; z-index:2; transition:background .3s; }
+.tl-step:hover .tl-dot { background:var(--green); }
+.tl-icon { width:56px; height:56px; border-radius:14px; background:rgba(26,122,74,.07); border:1px solid rgba(26,122,74,.12); display:flex; align-items:center; justify-content:center; margin:0 auto 16px; font-size:24px; }
+.tl-period { font-size:12px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--green); margin-bottom:8px; }
+.tl-title { font-family:var(--serif); font-size:20px; color:var(--ink); margin-bottom:8px; }
+.tl-desc { font-size:14px; font-weight:300; color:var(--dim); line-height:1.7; }
+
+/* === DIFERENCIAL (dark z1 + noise) === */
+.diferencial-sec { background:var(--z1); padding:var(--sec-pad) 0; position:relative; overflow:hidden; }
+.dif-grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:48px; }
 .dif-col {
-  padding: clamp(40px, 5vw, 56px);
+  border-radius:var(--radius); padding:clamp(36px,4vw,52px); box-shadow:var(--toplight);
 }
-.dif-col.old { background: #f0ede5; }
-.dif-col.new { background: var(--paper); }
-.dif-col-tag {
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: .15em;
-  text-transform: uppercase;
-  margin-bottom: 24px;
-  padding-bottom: 16px;
-  border-bottom: 2px solid;
+.dif-col.old { background:var(--z2); border:1px solid var(--border-z1); }
+.dif-col.new { background:rgba(26,122,74,.07); border:1px solid rgba(26,122,74,.14); }
+.dif-col-tag { font-size:12px; font-weight:700; letter-spacing:.15em; text-transform:uppercase; margin-bottom:24px; padding-bottom:16px; border-bottom:2px solid; }
+.dif-col.old .dif-col-tag { color:rgba(255,255,255,.25); border-color:var(--border-z1); }
+.dif-col.new .dif-col-tag { color:var(--green2); border-color:var(--green); }
+.dif-list { list-style:none; display:flex; flex-direction:column; gap:16px; }
+.dif-list li { display:flex; align-items:flex-start; gap:10px; font-size:15px; line-height:1.7; }
+.dif-col.old .dif-list li { color:rgba(255,255,255,.35); }
+.dif-col.new .dif-list li { color:rgba(255,255,255,.8); font-weight:400; }
+.dif-x { width:20px; height:20px; border-radius:50%; flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:700; margin-top:2px; }
+.dif-col.old .dif-x { background:rgba(224,123,57,.1); color:var(--orange); }
+.dif-col.new .dif-x { background:rgba(26,122,74,.2); color:var(--green2); }
+
+/* === FERRAMENTAS (light #FAFAFA) === */
+.ferramentas { background:#FAFAFA; padding:var(--sec-pad) 0; }
+.tools-grid { display:flex; flex-wrap:wrap; gap:12px; justify-content:center; margin-top:48px; }
+.tool-chip {
+  display:inline-flex; align-items:center; gap:8px; padding:10px 20px;
+  background:#fff; border:1px solid #e8e8e4; border-radius:var(--r-pill);
+  font-size:14px; font-weight:500; color:var(--dim);
+  transition:all .3s var(--spring); box-shadow:0 1px 4px rgba(0,0,0,.05);
 }
-.dif-col.old .dif-col-tag { color: var(--dim); border-color: var(--faint); }
-.dif-col.new .dif-col-tag { color: var(--green); border-color: var(--green); }
-.dif-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+.tool-chip:hover { border-color:rgba(26,122,74,.25); color:var(--ink); transform:translateY(-2px); box-shadow:0 4px 16px rgba(0,0,0,.1), 0 0 20px rgba(26,122,74,.06); }
+.tool-chip-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
+
+/* === DEPOIMENTOS (white #fff) === */
+.depoimentos { background:#fff; padding:var(--sec-pad) 0; }
+.depo-grid { display:grid; grid-template-columns:1fr 1fr; gap:28px; margin-top:48px; }
+.depo-card {
+  background:#FAFAFA; border:1px solid #e8e8e4; border-radius:var(--radius);
+  padding:clamp(28px,3.5vw,40px); transition:box-shadow .3s;
 }
-.dif-list li {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  font-size: 15px;
-  line-height: 1.7;
-}
-.dif-col.old .dif-list li { color: var(--dim); }
-.dif-col.new .dif-list li { color: var(--ink); font-weight: 500; }
-.dif-x {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 12px;
-  font-weight: 700;
-  margin-top: 2px;
-}
-.dif-col.old .dif-x { background: rgba(224, 123, 57, .12); color: var(--orange); }
-.dif-col.new .dif-x { background: var(--green-bg); color: var(--green); }
+.depo-card:hover { box-shadow:0 8px 32px rgba(0,0,0,.07); }
+.depo-quote-mark { font-family:var(--serif); font-size:48px; line-height:.8; color:var(--green); margin-bottom:16px; opacity:.5; }
+.depo-text { font-size:16px; font-weight:300; color:var(--dim); line-height:1.8; margin-bottom:24px; }
+.depo-text mark { background:rgba(26,122,74,.08); color:#1B3A2A; border-radius:3px; padding:0 3px; }
+.depo-author { display:flex; align-items:center; gap:12px; }
+.depo-avatar { width:40px; height:40px; border-radius:50%; background:rgba(26,122,74,.1); border:1px solid rgba(26,122,74,.15); display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-size:18px; color:var(--green); flex-shrink:0; }
+.depo-name { font-size:14px; font-weight:600; color:var(--ink); }
+.depo-role { font-size:13px; font-weight:300; color:var(--dim); }
+
+/* === ENTITY BRIDGE (dark z0 + noise) === */
+.entity-sec { background:var(--z0); padding:clamp(80px,10vw,120px) 0; position:relative; overflow:hidden; }
 
 /* === CTA === */
 .cta-sec {
-  background: var(--z1);
-  padding: var(--sec-pad) 0;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
+  padding:var(--sec-pad) 0; text-align:center; position:relative; overflow:hidden;
+  background:
+    radial-gradient(circle 600px at 50% 50%, rgba(26,122,74,.12) 0%, transparent 70%),
+    var(--z0);
 }
-.cta-sec::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 600px;
-  height: 600px;
-  border-radius: 50%;
-  background: radial-gradient(circle, var(--glow-green) 0%, transparent 60%);
-  pointer-events: none;
-}
-.cta-inner {
-  position: relative;
-  z-index: 1;
-  max-width: 600px;
-  margin: 0 auto;
-}
-.cta-inner h2 {
-  font-family: var(--serif);
-  font-size: clamp(28px, 4vw, 44px);
-  line-height: 1.15;
-  letter-spacing: -.02em;
-  color: var(--paper);
-  margin-bottom: 32px;
-}
-.cta-inner p {
-  font-size: 17px;
-  font-weight: 300;
-  color: rgba(255, 255, 255, .55);
-  margin-bottom: 40px;
-  line-height: 1.8;
-}
+.cta-inner { position:relative; z-index:1; max-width:600px; margin:0 auto; }
+.cta-inner h2 { font-family:var(--serif); font-size:clamp(28px,4vw,44px); line-height:1.15; letter-spacing:-.02em; color:var(--paper); margin-bottom:32px; }
+.cta-inner p { font-size:17px; font-weight:300; color:rgba(255,255,255,.55); margin-bottom:40px; line-height:1.8; }
+
+/* Bottom bar */
+.bb-dock { position:fixed; bottom:24px; left:50%; transform:translateX(-50%) translateY(16px); z-index:95; background:rgba(0,0,0,.88); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); border:1px solid rgba(255,255,255,.1); border-radius:var(--r-pill); padding:10px 14px 10px 20px; display:flex; align-items:center; gap:16px; white-space:nowrap; opacity:0; pointer-events:none; transition:opacity .4s ease, transform .4s var(--spring); box-shadow:0 8px 32px rgba(0,0,0,.4); }
+.bb-dock.visible { opacity:1; pointer-events:auto; transform:translateX(-50%) translateY(0); }
+.bb-txt { font-size:13px; font-weight:400; color:rgba(255,255,255,.75); }
+.bb-btn { background:var(--green2); color:var(--ink); font-family:var(--sans); font-size:12px; font-weight:700; letter-spacing:.07em; text-transform:uppercase; padding:8px 18px; border-radius:var(--r-pill); text-decoration:none; transition:opacity .2s; border:none; cursor:pointer; }
+.bb-btn:hover { opacity:.85; }
+.bb-close { width:28px; height:28px; border-radius:50%; background:rgba(255,255,255,.08); border:none; cursor:pointer; color:rgba(255,255,255,.45); display:flex; align-items:center; justify-content:center; transition:background .15s; flex-shrink:0; font-size:18px; line-height:1; padding:0; }
+.bb-close:hover { background:rgba(255,255,255,.14); color:#fff; }
 
 /* === BREADCRUMB === */
-.breadcrumb-nav { padding: 10px clamp(24px,4vw,80px); background: var(--z0); }
-.breadcrumb-nav ol { list-style: none; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; max-width: 1100px; margin: 0 auto; }
-.breadcrumb-nav li { font-size: 12px; color: rgba(255,255,255,.35); display: flex; align-items: center; gap: 6px; }
-.breadcrumb-nav li::after { content: '/'; opacity: .3; }
-.breadcrumb-nav li:last-child::after { display: none; }
-.breadcrumb-nav a { color: rgba(255,255,255,.45); transition: color .2s; }
-.breadcrumb-nav a:hover { color: rgba(255,255,255,.75); }
-.breadcrumb-nav li[aria-current="page"] { color: rgba(255,255,255,.55); }
+.breadcrumb-nav { padding:10px clamp(24px,4vw,80px); background:var(--z0); }
+.breadcrumb-nav ol { list-style:none; display:flex; align-items:center; gap:6px; flex-wrap:wrap; max-width:1100px; margin:0 auto; }
+.breadcrumb-nav li { font-size:12px; color:rgba(255,255,255,.35); display:flex; align-items:center; gap:6px; }
+.breadcrumb-nav li::after { content:'/'; opacity:.3; }
+.breadcrumb-nav li:last-child::after { display:none; }
+.breadcrumb-nav a { color:rgba(255,255,255,.45); transition:color .2s; }
+.breadcrumb-nav a:hover { color:rgba(255,255,255,.75); }
+.breadcrumb-nav li[aria-current="page"] { color:rgba(255,255,255,.55); }
 
 /* === FOOTER === */
-footer { background: #000; border-top: 1px solid #111; padding: 64px clamp(24px,4vw,80px) 32px; }
-.foot-in { max-width: 1100px; margin: 0 auto; }
-.foot-top { display: grid; grid-template-columns: 1.8fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 64px; }
-.foot-tag { font-size: 14px; font-weight: 300; color: rgba(255,255,255,.28); line-height: 1.7; max-width: 220px; margin-top: 16px; }
-.foot-socs { display: flex; gap: 20px; align-items: center; margin-top: 20px; }
-.foot-socs a { display: flex; align-items: center; color: #3a3a34; transition: color .2s; }
-.foot-socs a svg { width: 18px; height: 18px; display: block; }
-.foot-socs a:hover { color: rgba(255,255,255,.7); }
-.fcol-h { font-size: 12px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.25); margin-bottom: 16px; }
-.flinks { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-.flinks a { font-size: 14px; font-weight: 300; color: rgba(255,255,255,.35); transition: color .2s; }
-.flinks a:hover { color: var(--paper); }
-.foot-col-legal-mobile { display: none; margin-top: 24px; display: none; flex-direction: column; gap: 8px; }
-.foot-col-legal-mobile a { font-size: 12px; color: rgba(255,255,255,.25); text-decoration: underline; text-underline-offset: 2px; transition: color .2s; }
-.foot-col-legal-mobile a:hover { color: rgba(255,255,255,.6); }
-.foot-bot { display: flex; flex-direction: column; padding-top: 32px; border-top: 1px solid #111; gap: 20px; }
-.foot-legal { display: flex; gap: 24px; flex-wrap: wrap; }
-.foot-legal a { font-size: 12px; color: rgba(255,255,255,.22); text-decoration: underline; text-underline-offset: 2px; transition: color .2s; }
-.foot-legal a:hover { color: rgba(255,255,255,.6); }
-.foot-copy { font-size: 13px; color: rgba(255,255,255,.18); }
-.foot-disclaimer { font-size: 12px; color: rgba(255,255,255,.45); line-height: 1.7; padding-top: 16px; border-top: 1px solid rgba(255,255,255,.08); }
-@media (max-width: 680px) {
-  .foot-top { grid-template-columns: 1fr 1fr; }
-  .foot-col-brand { grid-column: 1 / -1; }
-  .foot-col-legal-mobile { display: flex; }
-  .foot-bot { display: none; }
-}
+footer { background:#000; border-top:1px solid #111; padding:64px clamp(24px,4vw,80px) 32px; }
+.foot-in { max-width:1100px; margin:0 auto; }
+.foot-top { display:grid; grid-template-columns:1.8fr 1fr 1fr 1fr; gap:48px; margin-bottom:64px; }
+.foot-tag { font-size:14px; font-weight:300; color:rgba(255,255,255,.28); line-height:1.7; max-width:220px; margin-top:16px; }
+.foot-socs { display:flex; gap:20px; align-items:center; margin-top:20px; }
+.foot-socs a { display:flex; align-items:center; color:#3a3a34; transition:color .2s; }
+.foot-socs a svg { width:18px; height:18px; display:block; }
+.foot-socs a:hover { color:rgba(255,255,255,.7); }
+.fcol-h { font-size:12px; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:rgba(255,255,255,.25); margin-bottom:16px; }
+.flinks { list-style:none; display:flex; flex-direction:column; gap:10px; }
+.flinks a { font-size:14px; font-weight:300; color:rgba(255,255,255,.35); transition:color .2s; }
+.flinks a:hover { color:var(--paper); }
+.foot-col-legal-mobile { display:none; margin-top:24px; flex-direction:column; gap:8px; }
+.foot-col-legal-mobile a { font-size:12px; color:rgba(255,255,255,.25); text-decoration:underline; text-underline-offset:2px; transition:color .2s; }
+.foot-col-legal-mobile a:hover { color:rgba(255,255,255,.6); }
+.foot-bot { display:flex; flex-direction:column; padding-top:32px; border-top:1px solid #111; gap:20px; }
+.foot-legal { display:flex; gap:24px; flex-wrap:wrap; }
+.foot-legal a { font-size:12px; color:rgba(255,255,255,.22); text-decoration:underline; text-underline-offset:2px; transition:color .2s; }
+.foot-legal a:hover { color:rgba(255,255,255,.6); }
+.foot-copy { font-size:13px; color:rgba(255,255,255,.18); }
+.foot-disclaimer { font-size:12px; color:rgba(255,255,255,.45); line-height:1.7; padding-top:16px; border-top:1px solid rgba(255,255,255,.08); }
+@media (max-width:680px) { .foot-top { grid-template-columns:1fr 1fr; } .foot-col-brand { grid-column:1/-1; } .foot-col-legal-mobile { display:flex; } .foot-bot { display:none; } }
 
 /* === KEYFRAMES === */
-@keyframes up {
-  from { opacity: 0; transform: translateY(24px); }
-  to { opacity: 1; transform: none; }
+@keyframes up { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:none; } }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(.75)} }
+
+@media (-webkit-min-device-pixel-ratio:2), (min-resolution:192dpi) { .noise::after { background-size:150px 150px; opacity:.38; } }
+@media (prefers-reduced-motion:reduce) { *,*::before,*::after { animation-duration:.01ms !important; transition-duration:.01ms !important; } .reveal,.reveal-left,.reveal-right,.reveal-scale,.reveal-blur { opacity:1 !important; transform:none !important; filter:none !important; } .wb { filter:none !important; opacity:1 !important; } }
+
+/* === RESPONSIVE 960px === */
+@media (max-width:960px) {
+  nav { padding:0 20px; } .nav-links,.nav-cta { display:none; } .hamburger { display:flex; }
+  :root { --sec-pad: clamp(64px,10vw,100px); }
+  .hero-met { padding:100px 20px 64px; min-height:auto; }
+  .hero-met h1 { font-size:clamp(32px,7vw,48px); }
+  .prob-grid { grid-template-columns:1fr; }
+  .pilar-step { grid-template-columns:1fr; gap:32px; }
+  .pilar-step.even .pilar-step-content { order:1; }
+  .pilar-step.even .pilar-step-visual { order:2; }
+  .timeline { grid-template-columns:1fr 1fr; gap:40px; }
+  .timeline::before { display:none; }
+  .dif-grid { grid-template-columns:1fr; }
+  .depo-grid { grid-template-columns:1fr; }
+  .foot-top { grid-template-columns:1fr 1fr; }
+  .sec-h,.sec-label,.sec-desc { text-align:left !important; }
+  .bb-dock { display:none; }
 }
-@keyframes pulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: .4; transform: scale(.75); }
-}
-
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-  .noise::after { background-size: 150px 150px; opacity: .38; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: .01ms !important;
-    transition-duration: .01ms !important;
-  }
-  .reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-blur { opacity: 1 !important; transform: none !important; filter: none !important; }
-}
-
-/* === RESPONSIVE: 960px === */
-@media (max-width: 960px) {
-  nav { padding: 0 20px; }
-  .nav-links, .nav-cta { display: none; }
-  .hamburger { display: flex; }
-  :root { --sec-pad: clamp(64px, 10vw, 100px); }
-
-  .hero-met { padding: 100px 20px 64px; min-height: auto; }
-  .hero-met h1 { font-size: clamp(32px, 7vw, 48px); }
-
-  .prob-grid { grid-template-columns: 1fr; }
-  .pilar { grid-template-columns: 1fr; gap: 32px; }
-  .pilar.reverse .pilar-content { order: 1; }
-  .pilar.reverse .pilar-visual { order: 2; }
-  .timeline { grid-template-columns: 1fr 1fr; gap: 40px; }
-  .timeline::before { display: none; }
-  .dif-grid { grid-template-columns: 1fr; }
-  .foot-top { grid-template-columns: 1fr 1fr; }
-
-  .sec-h, .sec-label, .sec-desc { text-align: left !important; }
-
-  .hero-met, .problema, .pilares, .processo, .ferramentas, .diferencial, .cta-sec { padding-left: 20px !important; padding-right: 20px !important; }
-}
-
-/* === RESPONSIVE: 480px === */
-@media (max-width: 480px) {
-  .hero-met h1 { font-size: 28px; line-height: 1.1; }
-  .sec-h { font-size: clamp(24px, 6.5vw, 32px); }
-  .timeline { grid-template-columns: 1fr; }
-  .foot-top { grid-template-columns: 1fr; }
-  .pilar-num { font-size: clamp(60px, 15vw, 100px); }
-  .loader-phrase { font-size: clamp(18px, 5vw, 28px); }
+@media (max-width:480px) {
+  .hero-met h1 { font-size:28px; line-height:1.1; }
+  .sec-h { font-size:clamp(24px,6.5vw,32px); }
+  .timeline { grid-template-columns:1fr; }
+  .foot-top { grid-template-columns:1fr; }
+  .loader-phrase { font-size:clamp(18px,5vw,28px); }
 }
 </style>
 
@@ -905,6 +505,13 @@ footer { background: #000; border-top: 1px solid #111; padding: 64px clamp(24px,
 <!-- SCROLL PROGRESS -->
 <div class="scroll-prog" id="scrollProg"></div>
 
+<!-- BOTTOM BAR -->
+<div class="bb-dock" id="bbDock">
+  <span class="bb-txt">Seu mercado está sendo buscado agora.</span>
+  <a href="/analise-gratuita/" class="bb-btn">Diagnóstico Gratuito</a>
+  <button class="bb-close" id="bbClose" aria-label="Fechar">&#215;</button>
+</div>
+
 <!-- NAV -->
 <a href="#main-content" class="skip-link">Pular para conteúdo</a>
 <nav id="nav" aria-label="Navegação principal">
@@ -914,70 +521,81 @@ footer { background: #000; border-top: 1px solid #111; padding: 64px clamp(24px,
     </a>
     <ul class="nav-links" role="list">
       <li class="nav-item" id="niSobre">
-        <button class="nav-btn" aria-expanded="false" aria-controls="mmSobre" id="nbSobre">Sobre <svg class="nav-chevron" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button>
+        <button class="nav-btn" aria-expanded="false" aria-controls="mmSobre" id="nbSobre">Sobre <svg class="nav-caret" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button>
         <div class="mm-panel" id="mmSobre" role="region" aria-labelledby="nbSobre">
           <div class="mm-inner">
             <div class="mm-aside">
-              <strong>Conheça a Maturare</strong>
-              <p>Agência fundada em Niterói para posicionar negócios no Google e nas IAs.</p>
+              <div>
+                <div class="mm-aside-tag">Conheça a Maturare</div>
+                <p class="mm-aside-title">Agência fundada em Niterói para posicionar negócios no Google e nas IAs.</p>
+              </div>
+              <a href="/sobre/" class="mm-aside-cta">Ver a agência &rarr;</a>
             </div>
-            <ul class="mm-links" role="list">
-              <li><a href="/sobre/">A Agência</a></li>
-              <li><a href="/daniel-batista-rios/">Daniel Rios</a></li>
-              <li><a href="/metodologia/" aria-current="page">Metodologia</a></li>
-              <li><a href="/nossos-clientes/">Nossos Clientes</a></li>
-              <li><a href="/projetos-realizados/">Projetos Realizados</a></li>
-            </ul>
+            <div class="mm-links mm-links--single">
+              <a href="/sobre/" class="mm-link"><strong>A Agência</strong><span>Quem somos e como trabalhamos</span></a>
+              <a href="/daniel-batista-rios/" class="mm-link"><strong>Daniel Rios</strong><span>Fundador e estrategista</span></a>
+              <a href="/metodologia/" class="mm-link" aria-current="page"><strong>Metodologia</strong><span>O método por trás dos resultados</span></a>
+              <a href="/nossos-clientes/" class="mm-link"><strong>Nossos Clientes</strong><span>Quem já confia na Maturare</span></a>
+              <a href="/projetos-realizados/" class="mm-link"><strong>Projetos Realizados</strong><span>Casos reais com números</span></a>
+            </div>
           </div>
         </div>
       </li>
       <li class="nav-item" id="niServ">
-        <button class="nav-btn" aria-expanded="false" aria-controls="mmServ" id="nbServ">Serviços <svg class="nav-chevron" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button>
+        <button class="nav-btn" aria-expanded="false" aria-controls="mmServ" id="nbServ">Serviços <svg class="nav-caret" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button>
         <div class="mm-panel" id="mmServ" role="region" aria-labelledby="nbServ">
           <div class="mm-inner">
             <div class="mm-aside">
-              <strong>O que fazemos</strong>
-              <p>SEO, GEO, AEO e arquitetura digital para negócios locais e PMEs.</p>
+              <div>
+                <div class="mm-aside-tag">O que fazemos</div>
+                <p class="mm-aside-title">SEO, GEO, AEO e arquitetura digital para negócios locais e PMEs.</p>
+              </div>
+              <a href="/servicos/" class="mm-aside-cta">Ver todos os serviços &rarr;</a>
             </div>
-            <ul class="mm-links" role="list">
-              <li><a href="/servicos/">Todos os Serviços</a></li>
-              <li><a href="/consultoria-de-seo/">Consultoria de SEO</a></li>
-              <li><a href="/agencia-geo-aeo/">GEO + AEO</a></li>
-              <li><a href="/arquitetura-digital/">Arquitetura Digital</a></li>
-              <li><a href="/criacao-de-sites/">Criação de Sites</a></li>
-              <li><a href="/google-meu-negocio-servico/">Google Meu Negócio</a></li>
-            </ul>
+            <div class="mm-links">
+              <a href="/consultoria-de-seo/" class="mm-link"><strong>Consultoria de SEO</strong><span>Estratégia e execução</span></a>
+              <a href="/agencia-geo-aeo/" class="mm-link"><strong>GEO + AEO</strong><span>Presença nas IAs</span></a>
+              <a href="/arquitetura-digital/" class="mm-link"><strong>Arquitetura Digital</strong><span>Estrutura que o Google entende</span></a>
+              <a href="/criacao-de-sites/" class="mm-link"><strong>Criação de Sites</strong><span>Sites construídos para ranquear</span></a>
+              <a href="/google-meu-negocio-servico/" class="mm-link"><strong>Google Meu Negócio</strong><span>Presença local otimizada</span></a>
+            </div>
           </div>
         </div>
       </li>
       <li class="nav-item" id="niBlog">
-        <button class="nav-btn" aria-expanded="false" aria-controls="mmBlog" id="nbBlog">Blog <svg class="nav-chevron" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button>
+        <button class="nav-btn" aria-expanded="false" aria-controls="mmBlog" id="nbBlog">Blog <svg class="nav-caret" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button>
         <div class="mm-panel" id="mmBlog" role="region" aria-labelledby="nbBlog">
           <div class="mm-inner">
             <div class="mm-aside">
-              <strong>Conteúdo e conhecimento</strong>
-              <p>Artigos sobre SEO, GEO, AEO e posicionamento digital.</p>
+              <div>
+                <div class="mm-aside-tag">Conteúdo e conhecimento</div>
+                <p class="mm-aside-title">Artigos sobre SEO, GEO, AEO e posicionamento digital.</p>
+              </div>
+              <a href="/blog/" class="mm-aside-cta">Ver todos os artigos &rarr;</a>
             </div>
-            <ul class="mm-links" role="list">
-              <li><a href="/blog/">Todos os Artigos</a></li>
-              <li><a href="/blog/como-aparecer-no-chatgpt/">Como aparecer no ChatGPT</a></li>
-              <li><a href="/glossario/">Glossário SEO/GEO</a></li>
-              <li><a href="/faq-maturare/">Perguntas Frequentes</a></li>
-            </ul>
+            <div class="mm-links mm-links--single">
+              <a href="/blog/" class="mm-link"><strong>Todos os Artigos</strong><span>SEO, GEO e posicionamento</span></a>
+              <a href="/blog/como-aparecer-no-chatgpt/" class="mm-link"><strong>Como aparecer no ChatGPT</strong><span>Guia prático GEO</span></a>
+              <a href="/glossario/" class="mm-link"><strong>Glossário SEO/GEO</strong><span>Termos que você precisa conhecer</span></a>
+              <a href="/faq-maturare/" class="mm-link"><strong>Perguntas Frequentes</strong><span>Respostas diretas</span></a>
+            </div>
           </div>
         </div>
       </li>
       <li class="nav-item" id="niAcad">
-        <button class="nav-btn" aria-expanded="false" aria-controls="mmAcad" id="nbAcad">Academy <svg class="nav-chevron" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button>
+        <button class="nav-btn" aria-expanded="false" aria-controls="mmAcad" id="nbAcad">Academy <svg class="nav-caret" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button>
         <div class="mm-panel" id="mmAcad" role="region" aria-labelledby="nbAcad">
           <div class="mm-inner">
             <div class="mm-aside">
-              <strong>Aprenda com a Maturare</strong>
-              <p>Cursos e comunidade com 300+ profissionais de SEO e GEO.</p>
+              <div>
+                <div class="mm-aside-tag">Aprenda com a Maturare</div>
+                <p class="mm-aside-title">Cursos e comunidade com 300+ profissionais de SEO e GEO.</p>
+              </div>
+              <a href="/academy/" class="mm-aside-cta">Conhecer o Academy &rarr;</a>
             </div>
-            <ul class="mm-links" role="list">
-              <li><a href="/academy/">Maturare Academy</a></li>
-            </ul>
+            <div class="mm-links mm-links--single">
+              <a href="/academy/" class="mm-link"><strong>Maturare Academy</strong><span>Cursos e comunidade</span></a>
+            </div>
           </div>
         </div>
       </li>
@@ -999,236 +617,355 @@ footer { background: #000; border-top: 1px solid #111; padding: 64px clamp(24px,
       <img src="/assets/maturare-logo-white.png" alt="Maturare" style="height:24px;width:auto;">
     </a>
     <button class="mob-menu-close" id="mobClose" aria-label="Fechar menu">
-      <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4l8 8M12 4l-8 8"/></svg>
     </button>
   </div>
-  <nav aria-label="Menu mobile">
-    <div class="mob-section">
-      <button class="mob-section-btn" id="mobSobreBtn" aria-expanded="false" aria-controls="mobSobreSub">Sobre <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button>
-      <div class="mob-sub" id="mobSobreSub">
-        <a href="/sobre/">A Agência</a>
-        <a href="/daniel-batista-rios/">Daniel Rios</a>
-        <a href="/metodologia/" aria-current="page">Metodologia</a>
-        <a href="/nossos-clientes/">Nossos Clientes</a>
-        <a href="/projetos-realizados/">Projetos Realizados</a>
-      </div>
+  <div class="mob-section">
+    <button class="mob-section-btn" id="mobSobreBtn" aria-expanded="false">Sobre</button>
+    <div class="mob-sub" id="mobSobreSub">
+      <a href="/sobre/">A Agência</a>
+      <a href="/daniel-batista-rios/">Daniel Rios</a>
+      <a href="/metodologia/" aria-current="page">Metodologia</a>
+      <a href="/nossos-clientes/">Nossos Clientes</a>
+      <a href="/projetos-realizados/">Projetos Realizados</a>
     </div>
-    <div class="mob-section">
-      <button class="mob-section-btn" id="mobServBtn" aria-expanded="false" aria-controls="mobServSub">Serviços <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button>
-      <div class="mob-sub" id="mobServSub">
-        <a href="/servicos/">Todos os Serviços</a>
-        <a href="/consultoria-de-seo/">Consultoria de SEO</a>
-        <a href="/agencia-geo-aeo/">GEO + AEO</a>
-        <a href="/arquitetura-digital/">Arquitetura Digital</a>
-        <a href="/criacao-de-sites/">Criação de Sites</a>
-        <a href="/google-meu-negocio-servico/">Google Meu Negócio</a>
-      </div>
+  </div>
+  <div class="mob-section">
+    <button class="mob-section-btn" id="mobServBtn" aria-expanded="false">Serviços</button>
+    <div class="mob-sub" id="mobServSub">
+      <a href="/consultoria-de-seo/">Consultoria de SEO</a>
+      <a href="/agencia-geo-aeo/">GEO + AEO</a>
+      <a href="/arquitetura-digital/">Arquitetura Digital</a>
+      <a href="/criacao-de-sites/">Criação de Sites</a>
+      <a href="/google-meu-negocio-servico/">Google Meu Negócio</a>
     </div>
-    <div class="mob-section">
-      <button class="mob-section-btn" id="mobBlogBtn" aria-expanded="false" aria-controls="mobBlogSub">Blog <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button>
-      <div class="mob-sub" id="mobBlogSub">
-        <a href="/blog/">Todos os Artigos</a>
-        <a href="/blog/como-aparecer-no-chatgpt/">Como aparecer no ChatGPT</a>
-        <a href="/glossario/">Glossário SEO/GEO</a>
-        <a href="/faq-maturare/">Perguntas Frequentes</a>
-      </div>
+  </div>
+  <div class="mob-section">
+    <button class="mob-section-btn" id="mobBlogBtn" aria-expanded="false">Blog</button>
+    <div class="mob-sub" id="mobBlogSub">
+      <a href="/blog/">Todos os Artigos</a>
+      <a href="/blog/como-aparecer-no-chatgpt/">Como aparecer no ChatGPT</a>
+      <a href="/glossario/">Glossário</a>
+      <a href="/faq-maturare/">Perguntas Frequentes</a>
     </div>
-    <div class="mob-section">
-      <button class="mob-section-btn" id="mobAcadBtn" aria-expanded="false" aria-controls="mobAcadSub">Academy <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button>
-      <div class="mob-sub" id="mobAcadSub">
-        <a href="/academy/">Maturare Academy</a>
-      </div>
+  </div>
+  <div class="mob-section">
+    <button class="mob-section-btn" id="mobAcadBtn" aria-expanded="false">Academy</button>
+    <div class="mob-sub" id="mobAcadSub">
+      <a href="/academy/">Maturare Academy</a>
     </div>
-  </nav>
+  </div>
   <div class="mob-menu-ctas">
-    <a href="https://wa.me/5521990770731" class="mob-cta-wa" target="_blank" rel="noopener">
-      <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      WhatsApp
-    </a>
-    <a href="/analise-gratuita/" class="mob-cta-diag">Diagnóstico Gratuito</a>
+    <a href="/analise-gratuita/" class="mob-cta-wa">Diagnóstico Gratuito</a>
+    <a href="/contato/" class="mob-cta-contact">Contato</a>
   </div>
   <div class="mob-menu-footer">
-    <a href="https://br.linkedin.com/in/daniel-batista-674b62140" target="_blank" rel="noopener" aria-label="LinkedIn">
-      <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+    <p class="mob-footer-tagline">"Método é o que separa resultado de sorte."</p>
+    <a href="mailto:contato@maturare.com.br" class="mob-contact-email">
+      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+      contato@maturare.com.br
     </a>
-    <a href="https://www.instagram.com/maturare.com.br/" target="_blank" rel="noopener" aria-label="Instagram">
-      <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-    </a>
-    <a href="https://www.youtube.com/@googledominado1" target="_blank" rel="noopener" aria-label="YouTube">
-      <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M23.495 6.205a3.007 3.007 0 00-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 00.527 6.205a31.247 31.247 0 00-.522 5.805 31.247 31.247 0 00.522 5.783 3.007 3.007 0 002.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 002.088-2.088 31.247 31.247 0 00.5-5.783 31.247 31.247 0 00-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
-    </a>
+    <p class="mob-footer-cnpj">CNPJ 47.336.340/0001-51</p>
+    <div class="mob-socials">
+      <a href="https://br.linkedin.com/in/daniel-batista-674b62140" target="_blank" rel="noopener" class="mob-soc-link" aria-label="LinkedIn">
+        <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+      <a href="https://www.instagram.com/maturare.com.br/" target="_blank" rel="noopener" class="mob-soc-link" aria-label="Instagram">
+        <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+      </a>
+      <a href="https://www.youtube.com/@googledominado1" target="_blank" rel="noopener" class="mob-soc-link" aria-label="YouTube">
+        <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M23.495 6.205a3.007 3.007 0 00-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 00.527 6.205a31.247 31.247 0 00-.522 5.805 31.247 31.247 0 00.522 5.783 3.007 3.007 0 002.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 002.088-2.088 31.247 31.247 0 00.5-5.783 31.247 31.247 0 00-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+      </a>
+    </div>
   </div>
 </div>
 
-<!-- BREADCRUMB -->
-
-<!-- HERO -->
+<!-- HERO — dark z1, noise, radial glow verde -->
 <section class="hero-met noise" id="main-content">
   <div class="container">
     <div class="hero-met-inner">
       <div class="hero-met-label">Método Maturare</div>
-      <h1>Método Maturare de Posicionamento Digital</h1>
-      <p>Não vendemos atalhos. O Método Maturare constrói ativos digitais que posicionam sua empresa no Google e nas IAs, 24 horas por dia. <small style="opacity:.5">Atualizado em abril de 2026</small></p>
+      <h1>Posicionamento não é sorte.<br>É <em>processo.</em></h1>
+      <p>Enquanto sua empresa depende de anúncio pago, o concorrente constrói ativos que aparecem 24h por dia. O Método Maturare é o processo que muda isso, com diagnóstico, arquitetura, conteúdo e monitoramento no Google e nas IAs.</p>
     </div>
   </div>
 </section>
 
-<!-- O PROBLEMA -->
-<section class="problema noise">
+<!-- PROBLEMA — light #FAFAFA, cards brancos, texto dark -->
+<section class="problema">
   <div class="container">
-    <div class="sec-label lt reveal" style="text-align:center">O que combatemos</div>
-    <h2 class="sec-h lt reveal d1" style="text-align:center;max-width:700px;margin:0 auto">Por que a maioria dos negócios locais não aparece no Google?</h2>
-    <p class="sec-desc lt reveal d2" style="text-align:center;margin:20px auto 0">Enquanto empresários como você investem tempo e dinheiro, o retorno nunca vem. O mercado está cheio de promessas vazias, e o Método Maturare existe para mudar esse cenário.</p>
+    <div class="sec-label dk reveal" style="text-align:center">O que combatemos</div>
+    <h2 class="sec-h dk reveal d1" style="text-align:center;max-width:680px;margin:0 auto">Por que <em>a maioria</em> dos negócios locais não aparece no Google?</h2>
+    <p class="sec-desc dk reveal d2" style="text-align:center;margin:20px auto 0">Você não está invisível por falta de produto. Está invisível porque ninguém construiu a estrutura certa.</p>
     <div class="prob-grid">
       <div class="prob-card reveal d1">
         <div class="prob-icon">
           <svg width="24" height="24" fill="none" stroke="#e07b39" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
         </div>
         <h3>Agências que vendem mágica</h3>
-        <p>Prometem primeira página em 30 dias, entregam posts bonitos que não geram cliente. Você paga, não vê retorno e fica com a sensação de que marketing não funciona.</p>
+        <p>Prometem primeira página em 30 dias, entregam posts bonitos que não geram cliente. Você paga, não vê retorno, e fica com a sensação de que marketing não funciona para o seu segmento.</p>
       </div>
       <div class="prob-card reveal d2">
         <div class="prob-icon">
           <svg width="24" height="24" fill="none" stroke="#e07b39" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
         </div>
         <h3>Ads que param quando você para</h3>
-        <p>Google Ads fica mais caro todo mês. Parou de pagar? Parou de aparecer. Você aluga visibilidade em vez de construir um ativo que trabalha por você.</p>
+        <p>Google Ads fica mais caro todo mês. Parou de pagar? Parou de aparecer. Você aluga visibilidade em vez de construir um ativo digital que trabalha independente do seu bolso.</p>
       </div>
       <div class="prob-card reveal d3">
         <div class="prob-icon">
           <svg width="24" height="24" fill="none" stroke="#e07b39" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
         </div>
         <h3>Conteúdo de IA que o Google ignora</h3>
-        <p>Ferramentas que prometem SEO e entregam texto genérico. Sem estratégia, sem arquitetura técnica, sem dados estruturados. O Google vê e descarta.</p>
+        <p>Ferramentas que prometem SEO e entregam texto genérico. Sem estratégia local, sem arquitetura técnica, sem dados estruturados. O Google lê, classifica como ruído e descarta.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 4 PILARES -->
+<!-- QUOTE WORD-BLUR — dark z0, impacto emocional -->
+<section class="quote-met" id="quote-sec">
+  <div class="quote-met-inner">
+    <div class="quote-line"></div>
+    <p class="quote-met-txt" id="wbQuote">
+      SEO é <strong style="color:var(--green2)">inteligência de negócio</strong>, não só posicionamento. Toda página que publicamos é um vendedor que trabalha por você às 2 da manhã, sem salário, sem folga, sem reclamação.
+    </p>
+    <div class="quote-met-attr">Daniel Batista Rios, fundador da Maturare</div>
+  </div>
+</section>
+
+<!-- 4 PILARES — branco #fff, met-step alternado, dark text -->
 <section class="pilares" id="pilares">
   <div class="container">
-    <div style="text-align:center;margin-bottom:32px">
-      <div class="sec-label lt reveal" style="text-align:center">Nosso método</div>
-      <h2 class="sec-h lt reveal d1" style="text-align:center;max-width:600px;margin:0 auto">O que está incluído no Método Maturare?</h2>
-      <p class="sec-desc lt reveal d2" style="text-align:center;margin:20px auto 0">O Método Maturare inclui diagnóstico, arquitetura, conteúdo e monitoramento. 4 pilares pensados para construir um ativo digital que posiciona sua empresa no Google e nas IAs.</p>
+    <div style="text-align:center">
+      <div class="sec-label dk reveal" style="text-align:center">Nosso método</div>
+      <h2 class="sec-h dk reveal d1" style="text-align:center;max-width:560px;margin:0 auto">Quatro pilares. <em>Um processo.</em></h2>
+      <p class="sec-desc dk reveal d2" style="text-align:center;margin:20px auto 0;max-width:540px">Cada pilar resolve um problema real. Juntos, constroem a presença digital que faz sua empresa aparecer onde o cliente já está buscando.</p>
     </div>
 
-    <!-- Pilar 1 -->
-    <div class="pilar">
-      <div class="pilar-content reveal-left">
-        <div class="pilar-num">01</div>
-        <div class="pilar-tag">Pilar 1</div>
-        <h3>Diagnóstico</h3>
-        <p class="pilar-desc">Antes de qualquer coisa, a Maturare entende seu negócio, seu público e sua cidade. Não existe receita pronta. Cada diagnóstico SEO é personalizado para o cenário real da sua empresa.</p>
-        <ul class="pilar-items">
-          <li>Auditoria completa do seu site atual</li>
-          <li>Análise da sua ficha no Google Meu Negócio</li>
-          <li>Mapeamento dos concorrentes na sua região</li>
-          <li>Diagnóstico da presença digital completa</li>
-          <li>Levantamento das palavras que seus clientes pesquisam</li>
-        </ul>
-      </div>
-      <div class="pilar-visual reveal-right">
-        <div class="pilar-visual-icon">
-          <svg width="80" height="80" fill="none" stroke="rgba(111,207,151,.4)" stroke-width="1.5" stroke-linecap="round"><circle cx="40" cy="40" r="30"/><circle cx="40" cy="40" r="18"/><circle cx="40" cy="40" r="6"/><line x1="40" y1="4" x2="40" y2="16"/><line x1="40" y1="64" x2="40" y2="76"/><line x1="4" y1="40" x2="16" y2="40"/><line x1="64" y1="40" x2="76" y2="40"/></svg>
-        </div>
-      </div>
-    </div>
+    <div class="pilar-steps">
 
-    <!-- Pilar 2 -->
-    <div class="pilar reverse">
-      <div class="pilar-content reveal-right">
-        <div class="pilar-num">02</div>
-        <div class="pilar-tag">Pilar 2</div>
-        <h3>Arquitetura</h3>
-        <p class="pilar-desc">A Maturare cria a estrutura técnica e de conteúdo que o Google e as IAs precisam para recomendar sua empresa. Não é design. É engenharia de posicionamento.</p>
-        <ul class="pilar-items">
-          <li>Site construído para SEO desde a fundação</li>
-          <li>Páginas estratégicas por serviço e cidade</li>
-          <li>Dados estruturados (Schema.org) para o Google entender seu negócio</li>
-          <li>Arquitetura de links internos e autoridade</li>
-          <li>Setup de Google Search Console e Analytics</li>
-        </ul>
-      </div>
-      <div class="pilar-visual reveal-left">
-        <div class="pilar-visual-icon">
-          <svg width="80" height="80" fill="none" stroke="rgba(111,207,151,.4)" stroke-width="1.5" stroke-linecap="round"><rect x="10" y="10" width="60" height="60" rx="4"/><line x1="10" y1="30" x2="70" y2="30"/><line x1="30" y1="30" x2="30" y2="70"/><rect x="16" y="16" width="20" height="8" rx="2"/><rect x="36" y="36" width="28" height="4" rx="1"/><rect x="36" y="46" width="20" height="4" rx="1"/><rect x="36" y="56" width="24" height="4" rx="1"/></svg>
+      <!-- Pilar 1: Diagnóstico -->
+      <div class="pilar-step">
+        <div class="pilar-step-content reveal-left">
+          <div class="pilar-step-badge">01</div>
+          <div class="pilar-step-badge-label">Diagnóstico</div>
+          <h3 class="pilar-step-title">Você não sabe o que não sabe sobre seu posicionamento atual.</h3>
+          <p class="pilar-step-desc">Antes de qualquer coisa, a Maturare mapeia o cenário real: site, concorrentes, Google Meu Negócio, palavras que seus clientes pesquisam. Sem diagnóstico real, qualquer estratégia é chute.</p>
+          <ul class="pilar-benefits">
+            <li><span class="met-benefit-dot"></span>Auditoria completa do seu site atual</li>
+            <li><span class="met-benefit-dot"></span>Análise da sua ficha no Google Meu Negócio</li>
+            <li><span class="met-benefit-dot"></span><strong>Mapeamento dos concorrentes na sua região</strong></li>
+            <li><span class="met-benefit-dot"></span>Levantamento das palavras que seus clientes realmente pesquisam</li>
+          </ul>
+        </div>
+        <div class="pilar-step-visual reveal-right">
+          <div class="pilar-vis-top">
+            <div class="pilar-vis-dot" style="background:#ff5f57"></div>
+            <div class="pilar-vis-dot" style="background:#ffbd2e"></div>
+            <div class="pilar-vis-dot" style="background:#28ca41"></div>
+            <div class="pilar-vis-label">Relatório de Diagnóstico</div>
+          </div>
+          <div class="pilar-vis-grid">
+            <div class="pilar-vis-card"><div class="pilar-vis-card-label">Autoridade</div><div class="pilar-vis-card-val">34</div></div>
+            <div class="pilar-vis-card"><div class="pilar-vis-card-label">Oportunidades</div><div class="pilar-vis-card-val">127</div></div>
+            <div class="pilar-vis-card"><div class="pilar-vis-card-label">Concorrentes</div><div class="pilar-vis-card-val">8</div></div>
+          </div>
+          <div style="margin-top:16px">
+            <div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#aaa;margin-bottom:8px">Presença por canal</div>
+            <div class="pilar-vis-bar-row">
+              <div style="display:flex;align-items:center;gap:8px"><div class="pilar-vis-bar fill" style="width:62%;flex:1;height:8px;background:var(--green);opacity:.6;border-radius:4px"></div><div style="font-size:12px;color:var(--dim);width:28px">62%</div></div>
+              <div style="display:flex;align-items:center;gap:8px"><div class="pilar-vis-bar empty" style="flex:1;height:8px"></div><div style="font-size:12px;color:var(--dim);width:28px">18%</div></div>
+              <div style="display:flex;align-items:center;gap:8px"><div style="flex:1;height:8px;border-radius:4px;background:#e0dfd8;position:relative;overflow:hidden"><div style="position:absolute;left:0;top:0;height:100%;width:8%;background:var(--green);border-radius:4px;opacity:.5"></div></div><div style="font-size:12px;color:var(--dim);width:28px">8%</div></div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- Pilar 3 -->
-    <div class="pilar">
-      <div class="pilar-content reveal-left">
-        <div class="pilar-num">03</div>
-        <div class="pilar-tag">Pilar 3</div>
-        <h3>Conteúdo</h3>
-        <p class="pilar-desc">Produzimos conteúdo que responde o que seu cliente pergunta, no Google e nas IAs. Não é texto genérico de IA. É estratégia de posicionamento.</p>
-        <ul class="pilar-items">
-          <li>Conteúdo local otimizado para sua cidade e serviço</li>
-          <li>Entity Bridge: conectamos seu negócio às entidades que o Google reconhece</li>
-          <li>SEO programático para escalar presença em múltiplas cidades</li>
-          <li>Cada página é um ativo que trabalha 24h por dia, por 2 a 4 anos</li>
-        </ul>
-        <div style="margin-top:32px;padding:24px;background:rgba(26,122,74,.06);border:1px solid rgba(26,122,74,.15);border-radius:12px;">
-          <div style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--green2);margin-bottom:12px;">Caso real</div>
-          <p style="font-size:15px;font-weight:400;color:rgba(255,255,255,.7);line-height:1.7;margin:0;">Empresa de locação de equipamentos, Goiás. 78 páginas estratégicas entregues em 90 dias, cobrindo 13 cidades e 5 linhas de serviço. Resultado: presença orgânica em todas as praças atendidas, sem investimento em tráfego pago.</p>
+      <!-- Pilar 2: Arquitetura -->
+      <div class="pilar-step even">
+        <div class="pilar-step-content reveal-right">
+          <div class="pilar-step-badge">02</div>
+          <div class="pilar-step-badge-label">Arquitetura</div>
+          <h3 class="pilar-step-title">O Google não lê o que você escreve. Ele lê a <em>estrutura</em> por trás.</h3>
+          <p class="pilar-step-desc">A Maturare cria a fundação técnica e a arquitetura de conteúdo que o Google e as IAs precisam para entender, confiar e recomendar sua empresa. Não é design. É engenharia de posicionamento.</p>
+          <ul class="pilar-benefits">
+            <li><span class="met-benefit-dot"></span>Site construído para SEO desde a fundação</li>
+            <li><span class="met-benefit-dot"></span><strong>Páginas estratégicas por serviço e cidade</strong></li>
+            <li><span class="met-benefit-dot"></span>Dados estruturados (Schema.org) que o Google entende</li>
+            <li><span class="met-benefit-dot"></span>Arquitetura de links internos e autoridade</li>
+          </ul>
+        </div>
+        <div class="pilar-step-visual reveal-left">
+          <div class="pilar-vis-top">
+            <div class="pilar-vis-dot" style="background:#ff5f57"></div>
+            <div class="pilar-vis-dot" style="background:#ffbd2e"></div>
+            <div class="pilar-vis-dot" style="background:#28ca41"></div>
+            <div class="pilar-vis-label">Arquitetura de Páginas</div>
+          </div>
+          <div style="margin-top:8px">
+            <div style="font-size:11px;font-weight:600;color:var(--dim);margin-bottom:8px;text-transform:uppercase;letter-spacing:.08em">Hub de serviços</div>
+            <div class="pilar-vis-chip-wrap">
+              <span class="pilar-vis-chip g">Locação de Equipamentos</span>
+              <span class="pilar-vis-chip g">Plataforma Elevatória</span>
+              <span class="pilar-vis-chip g">Treinamento NR-35</span>
+              <span class="pilar-vis-chip dim">+ 12 páginas</span>
+            </div>
+            <div style="margin-top:16px;font-size:11px;font-weight:600;color:var(--dim);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px">Cobertura de cidades</div>
+            <div class="pilar-vis-chip-wrap">
+              <span class="pilar-vis-chip g">Goiânia</span>
+              <span class="pilar-vis-chip g">Aparecida de Goiânia</span>
+              <span class="pilar-vis-chip g">Anápolis</span>
+              <span class="pilar-vis-chip dim">+ 10 cidades</span>
+            </div>
+            <div style="margin-top:16px;padding:12px;background:rgba(26,122,74,.06);border-radius:8px;border:1px solid rgba(26,122,74,.1)">
+              <div style="font-size:12px;color:var(--green);font-weight:600">78 páginas estratégicas</div>
+              <div style="font-size:11px;color:var(--dim);margin-top:2px">Criadas em 90 dias</div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="pilar-visual reveal-right">
-        <div class="pilar-visual-icon">
-          <svg width="80" height="80" fill="none" stroke="rgba(111,207,151,.4)" stroke-width="1.5" stroke-linecap="round"><path d="M12 20h56M12 32h40M12 44h48M12 56h32"/><circle cx="64" cy="56" r="12"/><path d="M60 56l3 3 5-6"/></svg>
-        </div>
-      </div>
-    </div>
 
-    <!-- Pilar 4 -->
-    <div class="pilar reverse">
-      <div class="pilar-content reveal-right">
-        <div class="pilar-num">04</div>
-        <div class="pilar-tag">Pilar 4</div>
-        <h3>Monitoramento</h3>
-        <p class="pilar-desc">A Maturare monitora Google + ChatGPT + Perplexity + Gemini + Claude + Copilot. Enquanto outros olham só o Google, o Método Maturare acompanha onde seu cliente realmente pesquisa.</p>
-        <ul class="pilar-items">
-          <li>Monitoramento no Google Search Console e Analytics</li>
-          <li>Rastreamento de citações no ChatGPT</li>
-          <li>Rastreamento de citações no Perplexity</li>
-          <li>Rastreamento de citações no Gemini</li>
-          <li>Rastreamento de citações no Claude e Copilot</li>
-          <li>Relatórios mensais com evolução real do posicionamento</li>
-        </ul>
-      </div>
-      <div class="pilar-visual reveal-left">
-        <div class="pilar-visual-icon">
-          <svg width="80" height="80" fill="none" stroke="rgba(111,207,151,.4)" stroke-width="1.5" stroke-linecap="round"><rect x="8" y="16" width="64" height="48" rx="4"/><polyline points="18 52 30 38 40 44 52 28 62 34"/><circle cx="52" cy="28" r="3" fill="rgba(111,207,151,.3)"/></svg>
+      <!-- Pilar 3: Conteúdo -->
+      <div class="pilar-step">
+        <div class="pilar-step-content reveal-left">
+          <div class="pilar-step-badge">03</div>
+          <div class="pilar-step-badge-label">Conteúdo</div>
+          <h3 class="pilar-step-title">Cada página que publicamos trabalha por você. Às 2 da manhã. Sem custo por clique.</h3>
+          <p class="pilar-step-desc">Produzimos conteúdo que responde o que seu cliente pergunta, no Google e nas IAs. Não é texto genérico de IA. É estratégia com <strong>Entity Bridge</strong>, cobertura local e SEO programático para escalar.</p>
+          <ul class="pilar-benefits">
+            <li><span class="met-benefit-dot"></span>Conteúdo local por cidade e serviço</li>
+            <li><span class="met-benefit-dot"></span><strong>Entity Bridge: conectamos seu negócio ao que o Google reconhece</strong></li>
+            <li><span class="met-benefit-dot"></span>SEO programático para múltiplas cidades</li>
+            <li><span class="met-benefit-dot"></span>Cada página é um ativo que dura de 2 a 4 anos</li>
+          </ul>
+          <div class="case-card">
+            <div class="case-card-label">Caso real</div>
+            <p>Empresa de locação de equipamentos, Goiás. <strong>78 páginas estratégicas em 90 dias</strong>, cobrindo 13 cidades e 5 linhas de serviço. Resultado: presença orgânica em todas as praças, sem R$1 em tráfego pago.</p>
+          </div>
+        </div>
+        <div class="pilar-step-visual reveal-right">
+          <div class="pilar-vis-top">
+            <div class="pilar-vis-dot" style="background:#ff5f57"></div>
+            <div class="pilar-vis-dot" style="background:#ffbd2e"></div>
+            <div class="pilar-vis-dot" style="background:#28ca41"></div>
+            <div class="pilar-vis-label">Produção de Conteúdo</div>
+          </div>
+          <div style="margin-top:8px">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+              <div style="font-size:12px;color:var(--dim)">Semana 4</div>
+              <div style="font-size:12px;font-weight:600;color:var(--green)">18 páginas</div>
+            </div>
+            <div style="height:6px;border-radius:3px;background:#e8e8e4;overflow:hidden;margin-bottom:10px"><div style="height:100%;width:23%;background:var(--green);border-radius:3px;opacity:.7"></div></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+              <div style="font-size:12px;color:var(--dim)">Semana 8</div>
+              <div style="font-size:12px;font-weight:600;color:var(--green)">48 páginas</div>
+            </div>
+            <div style="height:6px;border-radius:3px;background:#e8e8e4;overflow:hidden;margin-bottom:10px"><div style="height:100%;width:62%;background:var(--green);border-radius:3px;opacity:.7"></div></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+              <div style="font-size:12px;color:var(--dim)">Semana 12</div>
+              <div style="font-size:12px;font-weight:600;color:var(--green)">78 páginas</div>
+            </div>
+            <div style="height:6px;border-radius:3px;background:#e8e8e4;overflow:hidden"><div style="height:100%;width:100%;background:var(--green);border-radius:3px;opacity:.7"></div></div>
+            <div style="margin-top:16px;display:flex;gap:10px">
+              <div style="flex:1;background:rgba(26,122,74,.06);border:1px solid rgba(26,122,74,.1);border-radius:8px;padding:10px;text-align:center">
+                <div style="font-size:18px;font-weight:700;color:var(--green)">78</div>
+                <div style="font-size:11px;color:var(--dim)">Páginas</div>
+              </div>
+              <div style="flex:1;background:rgba(26,122,74,.06);border:1px solid rgba(26,122,74,.1);border-radius:8px;padding:10px;text-align:center">
+                <div style="font-size:18px;font-weight:700;color:var(--green)">90</div>
+                <div style="font-size:11px;color:var(--dim)">Dias</div>
+              </div>
+              <div style="flex:1;background:rgba(26,122,74,.06);border:1px solid rgba(26,122,74,.1);border-radius:8px;padding:10px;text-align:center">
+                <div style="font-size:18px;font-weight:700;color:var(--green)">R$0</div>
+                <div style="font-size:11px;color:var(--dim)">Em ads</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+
+      <!-- Pilar 4: Monitoramento -->
+      <div class="pilar-step even">
+        <div class="pilar-step-content reveal-right">
+          <div class="pilar-step-badge">04</div>
+          <div class="pilar-step-badge-label">Monitoramento</div>
+          <h3 class="pilar-step-title">Seu cliente pesquisa no ChatGPT. Você sabe se sua empresa aparece lá?</h3>
+          <p class="pilar-step-desc">A Maturare monitora Google + ChatGPT + Perplexity + Gemini + Claude + Copilot. Enquanto outras agências olham só o Google, o Método Maturare acompanha onde seu cliente <strong>realmente pesquisa em 2026</strong>.</p>
+          <ul class="pilar-benefits">
+            <li><span class="met-benefit-dot"></span>Monitoramento no Google Search Console e Analytics</li>
+            <li><span class="met-benefit-dot"></span><strong>Rastreamento de citações no ChatGPT, Perplexity, Gemini</strong></li>
+            <li><span class="met-benefit-dot"></span>Rastreamento no Claude e Microsoft Copilot</li>
+            <li><span class="met-benefit-dot"></span>Relatórios mensais com evolução real do posicionamento</li>
+          </ul>
+        </div>
+        <div class="pilar-step-visual reveal-left">
+          <div class="pilar-vis-top">
+            <div class="pilar-vis-dot" style="background:#ff5f57"></div>
+            <div class="pilar-vis-dot" style="background:#ffbd2e"></div>
+            <div class="pilar-vis-dot" style="background:#28ca41"></div>
+            <div class="pilar-vis-label">Painel de Monitoramento</div>
+          </div>
+          <div style="margin-top:8px">
+            <div class="pilar-vis-ia-row">
+              <div class="pilar-vis-ia-dot" style="background:#4285f4"></div>
+              <div class="pilar-vis-ia-name">Google</div>
+              <div class="pilar-vis-ia-bar"><div class="pilar-vis-ia-fill" style="width:88%"></div></div>
+              <div style="font-size:12px;color:var(--green);font-weight:600;margin-left:8px">88%</div>
+            </div>
+            <div class="pilar-vis-ia-row">
+              <div class="pilar-vis-ia-dot" style="background:#10a37f"></div>
+              <div class="pilar-vis-ia-name">ChatGPT</div>
+              <div class="pilar-vis-ia-bar"><div class="pilar-vis-ia-fill" style="width:74%"></div></div>
+              <div style="font-size:12px;color:var(--green);font-weight:600;margin-left:8px">74%</div>
+            </div>
+            <div class="pilar-vis-ia-row">
+              <div class="pilar-vis-ia-dot" style="background:#6366f1"></div>
+              <div class="pilar-vis-ia-name">Perplexity</div>
+              <div class="pilar-vis-ia-bar"><div class="pilar-vis-ia-fill" style="width:61%"></div></div>
+              <div style="font-size:12px;color:var(--green);font-weight:600;margin-left:8px">61%</div>
+            </div>
+            <div class="pilar-vis-ia-row">
+              <div class="pilar-vis-ia-dot" style="background:#c96442"></div>
+              <div class="pilar-vis-ia-name">Claude</div>
+              <div class="pilar-vis-ia-bar"><div class="pilar-vis-ia-fill" style="width:58%"></div></div>
+              <div style="font-size:12px;color:var(--green);font-weight:600;margin-left:8px">58%</div>
+            </div>
+            <div class="pilar-vis-ia-row">
+              <div class="pilar-vis-ia-dot" style="background:#0078d4"></div>
+              <div class="pilar-vis-ia-name">Copilot</div>
+              <div class="pilar-vis-ia-bar"><div class="pilar-vis-ia-fill" style="width:52%"></div></div>
+              <div style="font-size:12px;color:var(--green);font-weight:600;margin-left:8px">52%</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
 
-<!-- PROCESSO VISUAL -->
-<section class="processo noise" id="processo">
+<!-- PROCESSO — light #FAFAFA, timeline 4 etapas -->
+<section class="processo" id="processo">
   <div class="container">
-    <div style="text-align:center;margin-bottom:16px">
-      <div class="sec-label lt reveal" style="text-align:center">Passo a passo</div>
-      <h2 class="sec-h lt reveal d1" style="text-align:center;max-width:600px;margin:0 auto">Como funciona o Método Maturare na prática?</h2>
-      <p class="sec-desc lt reveal d2" style="text-align:center;margin:20px auto 0">Do diagnóstico ao resultado: um processo claro, com prazos definidos e entregas que você acompanha. Veja como a Maturare conduz cada projeto.</p>
+    <div style="text-align:center">
+      <div class="sec-label dk reveal" style="text-align:center">Passo a passo</div>
+      <h2 class="sec-h dk reveal d1" style="text-align:center;max-width:560px;margin:0 auto">Do diagnóstico ao resultado: <em>90 dias.</em></h2>
+      <p class="sec-desc dk reveal d2" style="text-align:center;margin:20px auto 0">Um processo claro, com prazos definidos e entregas que você acompanha. Sem black box, sem promessa vaga.</p>
     </div>
     <div class="timeline">
       <div class="tl-step reveal d1">
         <div class="tl-icon">
-          <svg width="24" height="24" fill="none" stroke="#6fcf97" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/></svg>
+          <svg width="24" height="24" fill="none" stroke="#1a7a4a" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/></svg>
         </div>
         <div class="tl-dot"></div>
         <div class="tl-period">Semana 1</div>
         <div class="tl-title">Diagnóstico</div>
-        <div class="tl-desc">Auditoria do site, Google Meu Negócio, concorrentes e mapeamento de oportunidades.</div>
+        <div class="tl-desc">Auditoria do site, Google Meu Negócio, concorrentes e mapeamento de oportunidades reais.</div>
       </div>
       <div class="tl-step reveal d2">
         <div class="tl-icon">
-          <svg width="24" height="24" fill="none" stroke="#6fcf97" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="9" x2="9" y2="21"/></svg>
+          <svg width="24" height="24" fill="none" stroke="#1a7a4a" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="9" x2="9" y2="21"/></svg>
         </div>
         <div class="tl-dot"></div>
         <div class="tl-period">Semana 2-3</div>
@@ -1237,32 +974,67 @@ footer { background: #000; border-top: 1px solid #111; padding: 64px clamp(24px,
       </div>
       <div class="tl-step reveal d3">
         <div class="tl-icon">
-          <svg width="24" height="24" fill="none" stroke="#6fcf97" stroke-width="2" stroke-linecap="round"><path d="M12 20h9M16.5 3.5a2.12 2.12 0 013 3L7 19l-4 1 1-4z"/></svg>
+          <svg width="24" height="24" fill="none" stroke="#1a7a4a" stroke-width="2" stroke-linecap="round"><path d="M12 20h9M16.5 3.5a2.12 2.12 0 013 3L7 19l-4 1 1-4z"/></svg>
         </div>
         <div class="tl-dot"></div>
         <div class="tl-period">Semana 4-12</div>
         <div class="tl-title">Produção de Conteúdo</div>
-        <div class="tl-desc">Criação de páginas estratégicas, conteúdo local e SEO programático em escala.</div>
+        <div class="tl-desc">78+ páginas estratégicas, conteúdo local e SEO programático. Ativos que trabalham sozinhos.</div>
       </div>
       <div class="tl-step reveal d4">
         <div class="tl-icon">
-          <svg width="24" height="24" fill="none" stroke="#6fcf97" stroke-width="2" stroke-linecap="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          <svg width="24" height="24" fill="none" stroke="#1a7a4a" stroke-width="2" stroke-linecap="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
         </div>
         <div class="tl-dot"></div>
         <div class="tl-period">Mensal</div>
         <div class="tl-title">Monitoramento</div>
-        <div class="tl-desc">Acompanhamento do Google + 5 IAs com relatórios mensais e ajustes contínuos.</div>
+        <div class="tl-desc">Google + 5 IAs. Relatórios com dados de negócio: posições, contatos e citações em IA.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FERRAMENTAS -->
-<section class="ferramentas">
+<!-- DIFERENCIAL — dark z1, noise, texto claro -->
+<section class="diferencial-sec noise" id="diferencial">
+  <div class="container">
+    <div style="text-align:center">
+      <div class="sec-label green2 reveal" style="text-align:center">Por que somos diferentes</div>
+      <h2 class="sec-h lt reveal d1" style="text-align:center;max-width:640px;margin:0 auto">SEO que <em>ignora as IAs</em> é estratégia de ontem.</h2>
+      <p class="sec-desc lt reveal d2" style="text-align:center;margin:20px auto 0">Veja o que separa o Método Maturare de uma agência de SEO tradicional.</p>
+    </div>
+    <div class="dif-grid reveal d3">
+      <div class="dif-col old">
+        <div class="dif-col-tag">SEO Tradicional</div>
+        <ul class="dif-list">
+          <li><span class="dif-x">&times;</span>Foca apenas em palavras-chave genéricas</li>
+          <li><span class="dif-x">&times;</span>Promete primeira página sem processo claro</li>
+          <li><span class="dif-x">&times;</span>Ignora completamente as IAs</li>
+          <li><span class="dif-x">&times;</span>Relatório com métricas que você não entende</li>
+          <li><span class="dif-x">&times;</span>Conteúdo genérico igual para todo mundo</li>
+          <li><span class="dif-x">&times;</span>Sem visão de negócio, só técnica</li>
+        </ul>
+      </div>
+      <div class="dif-col new">
+        <div class="dif-col-tag">Método Maturare</div>
+        <ul class="dif-list">
+          <li><span class="dif-x">&#10003;</span>Estratégia completa: local + serviço + cidade</li>
+          <li><span class="dif-x">&#10003;</span>Processo transparente com entregas definidas</li>
+          <li><span class="dif-x">&#10003;</span>Monitoramento em Google + 5 IAs</li>
+          <li><span class="dif-x">&#10003;</span>Relatório com dados de negócio: contatos, posições, citações</li>
+          <li><span class="dif-x">&#10003;</span>Conteúdo personalizado por negócio e região</li>
+          <li><span class="dif-x">&#10003;</span>Visão 360: marketing, posicionamento e negócio</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FERRAMENTAS — light #FAFAFA -->
+<section class="ferramentas" id="ferramentas">
   <div class="container" style="text-align:center">
-    <div class="sec-label lt reveal" style="text-align:center">Nosso arsenal</div>
-    <h2 class="sec-h lt reveal d1" style="text-align:center;max-width:500px;margin:0 auto">Quais ferramentas a Maturare utiliza?</h2>
-    <p class="sec-desc lt reveal d2" style="text-align:center;margin:20px auto 0">O Método Maturare opera com as mesmas ferramentas das maiores agências do mundo, garantindo excelência em cada etapa.</p>
+    <div class="sec-label dk reveal" style="text-align:center">Nosso arsenal</div>
+    <h2 class="sec-h dk reveal d1" style="text-align:center;max-width:480px;margin:0 auto">As mesmas ferramentas das maiores agências do mundo.</h2>
+    <p class="sec-desc dk reveal d2" style="text-align:center;margin:20px auto 0">Não terceirizamos a análise. Operamos diretamente com cada plataforma em todas as etapas do Método.</p>
     <div class="tools-grid">
       <div class="tool-chip reveal d1"><span class="tool-chip-dot" style="background:#ff6b35"></span>Semrush</div>
       <div class="tool-chip reveal d1"><span class="tool-chip-dot" style="background:#2d6cdf"></span>Ahrefs</div>
@@ -1276,86 +1048,55 @@ footer { background: #000; border-top: 1px solid #111; padding: 64px clamp(24px,
   </div>
 </section>
 
-<!-- DIFERENCIAL -->
-<section class="diferencial" id="diferencial">
+<!-- DEPOIMENTOS — branco #fff, cards em #FAFAFA -->
+<section class="depoimentos" id="depoimentos">
   <div class="container">
-    <div style="text-align:center;margin-bottom:16px">
-      <div class="sec-label dk reveal" style="text-align:center">Por que somos diferentes</div>
-      <h2 class="sec-h dk reveal d1" style="text-align:center;max-width:700px;margin:0 auto">Qual a diferença entre o Método Maturare e o SEO tradicional?</h2>
+    <div style="text-align:center">
+      <div class="sec-label dk reveal" style="text-align:center">O que dizem os clientes</div>
+      <h2 class="sec-h dk reveal d1" style="text-align:center;max-width:520px;margin:0 auto">Não é a Maturare que fala. São os clientes.</h2>
     </div>
-    <div class="dif-grid reveal d2">
-      <div class="dif-col old">
-        <div class="dif-col-tag">SEO Tradicional</div>
-        <ul class="dif-list">
-          <li><span class="dif-x">&times;</span>Foca apenas em palavras-chave genéricas</li>
-          <li><span class="dif-x">&times;</span>Promete primeira página sem processo claro</li>
-          <li><span class="dif-x">&times;</span>Ignora completamente as IAs</li>
-          <li><span class="dif-x">&times;</span>Relatório mensal com métricas que você não entende</li>
-          <li><span class="dif-x">&times;</span>Conteúdo genérico igual para todo mundo</li>
-          <li><span class="dif-x">&times;</span>Sem visão de negócio, só técnica</li>
-        </ul>
+    <div class="depo-grid">
+      <div class="depo-card reveal d1">
+        <div class="depo-quote-mark">"</div>
+        <p class="depo-text">Antes da Maturare, investia em anúncio todo mês e parava quando o dinheiro acabava. Hoje tenho páginas que aparecem no Google sem depender de tráfego pago. <mark>O método é transparente, cada etapa tem entrega definida.</mark></p>
+        <div class="depo-author">
+          <div class="depo-avatar">R</div>
+          <div>
+            <div class="depo-name">Ricardo M.</div>
+            <div class="depo-role">Empresário, setor de serviços, RJ</div>
+          </div>
+        </div>
       </div>
-      <div class="dif-col new">
-        <div class="dif-col-tag">Método Maturare</div>
-        <ul class="dif-list">
-          <li><span class="dif-x">&#10003;</span>Estratégia completa: local + serviço + cidade</li>
-          <li><span class="dif-x">&#10003;</span>Processo transparente com entregas definidas</li>
-          <li><span class="dif-x">&#10003;</span>Monitoramento em Google + 5 IAs</li>
-          <li><span class="dif-x">&#10003;</span>Relatório que você entende: contatos, posições, citações</li>
-          <li><span class="dif-x">&#10003;</span>Conteúdo personalizado para seu negócio e região</li>
-          <li><span class="dif-x">&#10003;</span>Visão 360: marketing, posicionamento e negócio</li>
-        </ul>
+      <div class="depo-card reveal d2">
+        <div class="depo-quote-mark">"</div>
+        <p class="depo-text">Fui indicado por outro empresário que já trabalhava com a Maturare. O que me convenceu foi o processo: auditaram meu site, mapearam meus concorrentes e <mark>apresentaram um plano antes de cobrar qualquer coisa.</mark> Isso não é comum no mercado.</p>
+        <div class="depo-author">
+          <div class="depo-avatar">F</div>
+          <div>
+            <div class="depo-name">Fábio A.</div>
+            <div class="depo-role">Empresário, PME, MG</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ENTITY BRIDGE + INTERNAL LINKS -->
-<section class="noise" style="padding:var(--sec-pad) 0;">
+<!-- ENTITY BRIDGE — dark z0, noise, links internos -->
+<section class="entity-sec noise">
   <div class="container">
     <p class="sec-desc lt reveal" style="max-width:760px;margin:0 auto;text-align:center;font-size:17px;line-height:1.85;">O Método Maturare nasceu para resolver um problema real do mercado brasileiro: a transformação digital de negócios locais. Enquanto milhares de empresários investem em agências genéricas sem retorno, a Maturare oferece um caminho concreto, com diagnóstico, arquitetura, conteúdo e monitoramento, que gera resultado mensurável. <a href="/daniel-batista-rios/" style="color:var(--green2);text-decoration:underline;">Daniel Rios</a>, fundador da Maturare, desenvolveu esse método após atender dezenas de empresas e constatar que SEO para negócio local exige processo, não promessa. Veja nossos <a href="/projetos-realizados/" style="color:var(--green2);text-decoration:underline;">casos reais</a>, confira <a href="/nossos-clientes/" style="color:var(--green2);text-decoration:underline;">nossos clientes</a>, tire suas <a href="/faq-maturare/" style="color:var(--green2);text-decoration:underline;">dúvidas frequentes</a> ou <a href="/contato/" style="color:var(--green2);text-decoration:underline;">solicite um diagnóstico gratuito</a>.</p>
   </div>
 </section>
 
-<!-- DEPOIMENTOS -->
-<section style="background:var(--z1);padding:var(--sec-pad) 0;">
-  <div class="container">
-    <div class="sec-label lt reveal" style="text-align:center;margin-bottom:16px">O que dizem os clientes</div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:32px;" class="depo-grid">
-      <div class="reveal d1" style="background:var(--z2);border:1px solid var(--border-z2);border-radius:var(--radius);padding:clamp(28px,3.5vw,40px);box-shadow:var(--toplight);">
-        <p style="font-size:16px;font-weight:300;color:rgba(255,255,255,.7);line-height:1.8;margin:0 0 24px;">"Antes da Maturare, investia em anúncio todo mês e parava quando o dinheiro acabava. Hoje tenho páginas que aparecem no Google sem depender de tráfego pago. O método é transparente, cada etapa tem entrega definida."</p>
-        <div style="display:flex;align-items:center;gap:12px;">
-          <div style="width:40px;height:40px;border-radius:50%;background:rgba(26,122,74,.15);border:1px solid rgba(26,122,74,.2);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:18px;color:var(--green2);">R</div>
-          <div>
-            <div style="font-size:14px;font-weight:600;color:var(--paper);">Ricardo M.</div>
-            <div style="font-size:13px;font-weight:300;color:rgba(255,255,255,.4);">Empresário, setor de serviços, RJ</div>
-          </div>
-        </div>
-      </div>
-      <div class="reveal d2" style="background:var(--z2);border:1px solid var(--border-z2);border-radius:var(--radius);padding:clamp(28px,3.5vw,40px);box-shadow:var(--toplight);">
-        <p style="font-size:16px;font-weight:300;color:rgba(255,255,255,.7);line-height:1.8;margin:0 0 24px;">"Fui indicado por outro empresário que já trabalhava com a Maturare. O que me convenceu foi o processo: eles auditaram meu site, mapearam meus concorrentes e apresentaram um plano antes de cobrar qualquer coisa. Isso não é comum no mercado."</p>
-        <div style="display:flex;align-items:center;gap:12px;">
-          <div style="width:40px;height:40px;border-radius:50%;background:rgba(26,122,74,.15);border:1px solid rgba(26,122,74,.2);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:18px;color:var(--green2);">F</div>
-          <div>
-            <div style="font-size:14px;font-weight:600;color:var(--paper);">Fábio A.</div>
-            <div style="font-size:13px;font-weight:300;color:rgba(255,255,255,.4);">Empresário, PME, MG</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<style>
-@media (max-width:680px) { .depo-grid { grid-template-columns:1fr !important; } }
-</style>
-
-<!-- CTA -->
+<!-- CTA — dark z0, radial glow verde -->
 <section class="cta-sec noise">
   <div class="container">
     <div class="cta-inner">
-      <h2 class="reveal">Quer entender como o Método Maturare se aplica ao <em>seu</em> negócio?</h2>
-      <p class="reveal d1">Fazemos uma análise gratuita do seu cenário digital. Sem compromisso, sem pressão. Só clareza.</p>
-      <a class="btn-p reveal d2" href="/contato/">Fale Com Especialista
+      <div class="sec-label green2 reveal" style="text-align:center;margin-bottom:24px">Comece agora</div>
+      <h2 class="reveal d1">Quer saber como o Método Maturare se aplica ao <em>seu</em> negócio?</h2>
+      <p class="reveal d2">O Daniel responde pessoalmente em até 24 horas. Fazemos uma análise gratuita do seu cenário digital. Sem compromisso, sem pressão. Só clareza.</p>
+      <a class="btn-p reveal d3" href="/contato/">Falar com o Daniel
         <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12l5-5-5-5"/></svg>
       </a>
     </div>
@@ -1423,7 +1164,7 @@ footer { background: #000; border-top: 1px solid #111; padding: 64px clamp(24px,
         <a href="/politica-de-cookies/">Política de Cookies</a>
         <a href="/termos-de-uso/">Termos de Uso</a>
       </div>
-      <div class="foot-copy">&#169; 2026 Maturare · CNPJ 47.336.340/0001-51 · Niterói, RJ</div>
+      <div class="foot-copy">&#169; 2026 Maturare &middot; CNPJ 47.336.340/0001-51 &middot; Niterói, RJ</div>
     </div>
     <p class="foot-disclaimer">A Maturare é uma agência de SEO, GEO e AEO sediada em Niterói, RJ. Não garantimos posições específicas no Google, pois resultados orgânicos dependem de múltiplos fatores além do nosso controle.</p>
   </div>
@@ -1442,9 +1183,7 @@ footer { background: #000; border-top: 1px solid #111; padding: 64px clamp(24px,
   var spans = phrase.querySelectorAll('span');
   document.body.style.overflow = 'hidden';
   requestAnimationFrame(function() { if (line) line.classList.add('active'); });
-  spans.forEach(function(s, i) {
-    setTimeout(function() { s.classList.add('visible'); }, 200 + i * 200);
-  });
+  spans.forEach(function(s, i) { setTimeout(function() { s.classList.add('visible'); }, 200 + i * 200); });
   setTimeout(function() { if (brand) brand.classList.add('visible'); }, 200 + words.length * 200 + 200);
   setTimeout(function() {
     loader.classList.add('done');
@@ -1526,12 +1265,51 @@ window.addEventListener('scroll', function() {
 
 /* === REVEAL ON SCROLL === */
 document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-blur').forEach(function(el) {
-  if (el) {
-    new IntersectionObserver(function(e) {
-      if (e[0].isIntersecting) { el.classList.add('in'); this.unobserve(el); }
-    }, {threshold: .1, rootMargin: '0px 0px -40px 0px'}).observe(el);
-  }
+  new IntersectionObserver(function(e) {
+    if (e[0].isIntersecting) { el.classList.add('in'); this.unobserve(el); }
+  }, {threshold: .1, rootMargin: '0px 0px -40px 0px'}).observe(el);
 });
+
+/* === WORD-BLUR QUOTE === */
+(function() {
+  var sec = document.getElementById('quote-sec');
+  if (!sec) return;
+  var txt = document.getElementById('wbQuote');
+  if (!txt) return;
+  var html = txt.innerHTML;
+  var wrapped = html.replace(/(\S+)/g, function(word) {
+    if (word.startsWith('<') || word.startsWith('</')) return word;
+    return '<span class="wb">' + word + '</span>';
+  });
+  txt.innerHTML = wrapped;
+  var wbs = txt.querySelectorAll('.wb');
+  var observed = false;
+  new IntersectionObserver(function(entries) {
+    if (entries[0].isIntersecting && !observed) {
+      observed = true;
+      wbs.forEach(function(wb, i) {
+        setTimeout(function() { wb.classList.add('lit'); }, i * 55);
+      });
+    }
+  }, {threshold: 0.5}).observe(sec);
+})();
+
+/* === BOTTOM BAR === */
+(function() {
+  var dock = document.getElementById('bbDock');
+  var close = document.getElementById('bbClose');
+  var footer = document.querySelector('footer');
+  var dismissed = false;
+  if (!dock) return;
+  function update() {
+    if (dismissed) return;
+    var scrolled = window.scrollY > window.innerHeight * 0.5;
+    var footerVisible = footer ? footer.getBoundingClientRect().top < window.innerHeight : false;
+    dock.classList.toggle('visible', scrolled && !footerVisible);
+  }
+  window.addEventListener('scroll', update, {passive: true});
+  if (close) close.addEventListener('click', function() { dismissed = true; dock.classList.remove('visible'); });
+})();
 </script>
 </body>
 </html>
