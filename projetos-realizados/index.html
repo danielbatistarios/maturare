@@ -786,36 +786,301 @@ p, .hero-sub { text-wrap: pretty; }
 <!-- 3. NAV -->
 <a href="#main-content" class="skip-link">Pular para conteúdo</a>
 <nav id="nav">
-  <a href="home-maturare-final.html" class="logo">Maturare</a>
+  <div class="nav-inner">
+  <a href="/" class="logo"><img src="/assets/maturare-logo-white.png" alt="Maturare" style="height:32px;width:auto;display:block;"></a>
   <ul class="nav-links">
-    <li><a href="home-maturare-final.html" class="nav-btn">Home</a></li>
-    <li><a href="metodologia.html" class="nav-btn">Metodologia</a></li>
-    <li><a href="projetos.html" class="nav-btn active">Projetos</a></li>
-    <li><a href="blog.html" class="nav-btn">Blog</a></li>
-    <li><a href="contato.html" class="nav-btn">Contato</a></li>
+    <li class="nav-item">
+      <a href="/" class="nav-btn">Início</a>
+    </li>
+    <li class="nav-item" id="ni-sobre">
+      <button class="nav-btn" aria-haspopup="true" aria-expanded="false" aria-controls="mm-sobre">
+        Sobre
+        <svg class="nav-caret" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+          <path d="M2 3.5 5 6.5 8 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </li>
+    <li class="nav-item" id="ni-servicos">
+      <button class="nav-btn" aria-haspopup="true" aria-expanded="false" aria-controls="mm-servicos">
+        Serviços
+        <svg class="nav-caret" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+          <path d="M2 3.5 5 6.5 8 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </li>
+    <li class="nav-item" id="ni-blog">
+      <button class="nav-btn" aria-haspopup="true" aria-expanded="false" aria-controls="mm-blog">
+        Blog
+        <svg class="nav-caret" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+          <path d="M2 3.5 5 6.5 8 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </li>
+    <li class="nav-item" id="ni-academy">
+      <button class="nav-btn" aria-haspopup="true" aria-expanded="false" aria-controls="mm-academy">
+        Academy
+        <svg class="nav-caret" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+          <path d="M2 3.5 5 6.5 8 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </li>
   </ul>
   <div class="nav-r">
-    <a href="contato.html" class="nav-cta">Fale Com Especialista</a>
+    <a href="#orcamento" class="nav-cta">Diagnóstico Gratuito →</a>
     <button class="hamburger" id="hambBtn" aria-label="Abrir menu de navegação"><span></span><span></span><span></span></button>
   </div>
+  </div>
 </nav>
-<div class="mob-overlay" id="mobOverlay"></div>
-<div class="mob-menu" id="mobMenu">
-  <a href="home-maturare-final.html">Home</a>
-  <a href="sobre.html">Sobre</a>
-  <a href="metodologia.html">Metodologia</a>
-  <a href="projetos.html" class="active">Projetos</a>
-  <a href="blog.html">Blog</a>
-  <a href="daniel-rios.html">Daniel Rios</a>
-  <a href="nossos-clientes.html">Clientes</a>
-  <a href="depoimentos.html">Depoimentos</a>
-  <a href="faq-maturare.html">FAQ</a>
-  <a href="contato.html" class="mob-menu-cta">Fale Com Especialista</a>
+
+<!-- MEGAMENU: Sobre -->
+<div class="mm-panel" id="mm-sobre" role="region" aria-label="Menu Sobre">
+  <div class="mm-inner">
+    <div class="mm-aside">
+      <div class="mm-aside-bg" style="background-image:url('https://images.unsplash.com/photo-1642621859598-79bc9a87fd77?w=600&auto=format&fit=crop&q=80')"></div>
+      <div>
+        <p class="mm-aside-tag">A Maturare</p>
+        <p class="mm-aside-title">Não é sobre crescer rápido. É sobre crescer certo.</p>
+      </div>
+      <a href="/sobre" class="mm-aside-cta">Conheça nossa história →</a>
+    </div>
+    <div class="mm-links mm-links--single">
+      <a href="/sobre" class="mm-link">
+        <strong>A Maturare</strong>
+        <span>Quem somos, o que acreditamos e por que fazemos o que fazemos</span>
+      </a>
+      <a href="/nossos-clientes/" class="mm-link">
+        <strong>Casos de Sucesso</strong>
+        <span>Empresas reais que aparecem no Google e nas IAs hoje</span>
+      </a>
+      <a href="/cidades-atendidas" class="mm-link">
+        <strong>Cidades Atendidas</strong>
+        <span>Atuamos em todo o Brasil, com foco em negócios locais</span>
+      </a>
+      <a href="/perguntas-frequentes" class="mm-link">
+        <strong>Perguntas Frequentes</strong>
+        <span>Tira as dúvidas mais comuns antes de conversar com a gente</span>
+      </a>
+    </div>
+  </div>
 </div>
 
-<!-- 4. HERO -->
-<section class="hero noise" id="main-content">
-  <div class="hero-glow"></div>
+<!-- MEGAMENU: Serviços -->
+<div class="mm-panel" id="mm-servicos" role="region" aria-label="Menu Serviços">
+  <div class="mm-inner">
+    <div class="mm-aside" style="gap:16px;">
+      <p class="mm-vid-label">Destaque</p>
+      <div class="mm-vid-wrap" onclick="openVidModal('malcB_gQ6n8')">
+        <img src="https://img.youtube.com/vi/malcB_gQ6n8/maxresdefault.jpg" alt="Como a Move Máquinas dominou o Google em 63 cidades">
+        <div class="mm-vid-play">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="12" fill="rgba(255,255,255,0.15)"/>
+            <polygon points="10,8 17,12 10,16" fill="white"/>
+          </svg>
+        </div>
+      </div>
+      <p class="mm-vid-title">Como a Move Máquinas ficou em 1º no Google em mais de 20 cidades sem pagar anúncio</p>
+      <a href="#" onclick="openVidModal('malcB_gQ6n8');return false;" class="mm-aside-cta">Assistir agora →</a>
+    </div>
+    <div class="mm-links" style="grid-template-columns:1fr 1fr;">
+      <p class="mm-col-label" style="grid-column:1/-1;">O que fazemos</p>
+      <a href="/agencia-seo" class="mm-link">
+        <strong>Agência SEO</strong>
+        <span>Execução completa para sua empresa aparecer no Google e nas IAs</span>
+      </a>
+      <a href="/consultor-seo" class="mm-link">
+        <strong>Consultor SEO</strong>
+        <span>Diagnóstico, estratégia e direcionamento para sua equipe executar</span>
+      </a>
+      <a href="/criacao-de-sites-para-seo" class="mm-link">
+        <strong>Criação de Site</strong>
+        <span>Site construído para ranquear desde o primeiro dia</span>
+      </a>
+      <a href="/seo-para-b2b" class="mm-link">
+        <strong>SEO para B2B</strong>
+        <span>Apareça quando seu comprador corporativo pesquisar sua solução</span>
+      </a>
+      <a href="/seo-para-negocios-locais" class="mm-link">
+        <strong>SEO para Negócios Locais</strong>
+        <span>Domine as buscas na sua cidade e região</span>
+      </a>
+      <a href="/seo-para-saas" class="mm-link">
+        <strong>SEO para SaaS</strong>
+        <span>Tráfego orgânico previsível para reduzir custo de aquisição</span>
+      </a>
+      <a href="/seo-para-contadores" class="mm-link">
+        <strong>SEO para Contadores</strong>
+        <span>Clientes chegando pelo Google sem depender de indicação</span>
+      </a>
+      <a href="/seo-para-clinicas" class="mm-link">
+        <strong>SEO para Clínicas</strong>
+        <span>Pacientes encontrando sua clínica antes da concorrência</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- MEGAMENU: Blog -->
+<div class="mm-panel" id="mm-blog" role="region" aria-label="Menu Blog">
+  <div class="mm-inner" style="grid-template-columns:260px 1fr;">
+    <div class="mm-aside">
+      <div class="mm-aside-bg" style="background-image:url('https://images.unsplash.com/photo-1643148636630-0b0fb138fc74?w=600&auto=format&fit=crop&q=80'); filter:grayscale(100%);"></div>
+      <div>
+        <p class="mm-aside-tag">Blog Maturare</p>
+        <p class="mm-aside-title">Visibilidade não é sorte. É método.</p>
+      </div>
+      <a href="/blog" class="mm-aside-cta">Ver todos os artigos →</a>
+    </div>
+    <div style="padding:32px 40px;">
+      <div class="mm-blog-grid">
+        <a href="/blog/como-aparecer-no-google" class="mm-blog-link">
+          <span class="mm-blog-tag">SEO</span>
+          <span class="mm-blog-title">Como aparecer no Google quando o cliente pesquisar seu serviço</span>
+        </a>
+        <a href="/blog/o-que-e-geo" class="mm-blog-link">
+          <span class="mm-blog-tag">GEO</span>
+          <span class="mm-blog-title">O que é GEO e por que o ChatGPT pode recomendar seu concorrente</span>
+        </a>
+        <a href="/blog/phd-playground-sem-google-ads" class="mm-blog-link">
+          <span class="mm-blog-tag">Case</span>
+          <span class="mm-blog-title">PHD Playground: 2 anos sem pagar Google Ads</span>
+        </a>
+        <a href="/blog/google-meu-negocio-guia" class="mm-blog-link">
+          <span class="mm-blog-tag">Local SEO</span>
+          <span class="mm-blog-title">Google Meu Negócio: o guia definitivo para negócios locais</span>
+        </a>
+        <a href="/blog/5-sinais-agencia-nao-funciona" class="mm-blog-link">
+          <span class="mm-blog-tag">Estratégia</span>
+          <span class="mm-blog-title">5 sinais de que sua agência não está funcionando</span>
+        </a>
+        <a href="/blog/ia-recomenda-empresas" class="mm-blog-link">
+          <span class="mm-blog-tag">AEO</span>
+          <span class="mm-blog-title">Perplexity, Gemini, ChatGPT: qual IA já recomenda empresas?</span>
+        </a>
+        <a href="/glossario/" class="mm-blog-link">
+          <span class="mm-blog-tag">Referência</span>
+          <span class="mm-blog-title">Glossário de SEO e IA — todos os termos que você precisa conhecer</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MEGAMENU: Academy -->
+<div class="mm-panel" id="mm-academy" role="region" aria-label="Menu Academy">
+  <div class="mm-inner">
+    <div class="mm-aside" style="gap:16px;">
+      <p class="mm-vid-label">Aula gratuita</p>
+      <div class="mm-vid-wrap" onclick="openVidModal('TqsqddD0TVw')">
+        <img src="https://img.youtube.com/vi/TqsqddD0TVw/maxresdefault.jpg" alt="Aula gratuita Maturare Academy">
+        <div class="mm-vid-play">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="12" fill="rgba(255,255,255,0.15)"/>
+            <polygon points="10,8 17,12 10,16" fill="white"/>
+          </svg>
+        </div>
+      </div>
+      <p class="mm-vid-title">Assista uma aula gratuita do curso de Google Meu Negócio</p>
+      <a href="#" onclick="openVidModal('TqsqddD0TVw');return false;" class="mm-aside-cta">Assistir aula →</a>
+    </div>
+    <div class="mm-links mm-links--single">
+      <p class="mm-col-label">Cursos disponíveis</p>
+      <a href="/academy/curso-google-meu-negocio" class="mm-link">
+        <strong>Curso de Google Meu Negócio</strong>
+        <span>Do zero ao perfil otimizado: apareça no mapa e atraia clientes da sua cidade</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- MOBILE OVERLAY + MENU -->
+<div class="mob-overlay" id="mobOverlay"></div>
+<div class="mob-menu" id="mobMenu">
+
+  <!-- Header: logo + fechar -->
+  <div class="mob-menu-header">
+    <img src="/assets/maturare-logo-white.png" alt="Maturare" style="height:26px;width:auto;">
+    <button class="mob-menu-close" id="mobCloseBtn" aria-label="Fechar menu">
+      <svg viewBox="0 0 24 24" fill="none" width="16" height="16">
+        <path d="M6 6l12 12M6 18L18 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Nav -->
+  <a href="/">Início</a>
+
+  <div class="mob-section">
+    <button class="mob-section-btn" id="mobSobreBtn">
+      Sobre
+      <svg viewBox="0 0 10 10" fill="none" width="10" height="10" style="transition:transform .2s"><path d="M2 3.5 5 6.5 8 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="mob-sub" id="mobSobreSub">
+      <a href="/sobre">A Maturare</a>
+      <a href="/nossos-clientes/">Casos de Sucesso</a>
+      <a href="/cidades-atendidas">Cidades Atendidas</a>
+      <a href="/perguntas-frequentes">Perguntas Frequentes</a>
+    </div>
+  </div>
+
+  <div class="mob-section">
+    <button class="mob-section-btn" id="mobServBtn">
+      Serviços
+      <svg viewBox="0 0 10 10" fill="none" width="10" height="10" style="transition:transform .2s"><path d="M2 3.5 5 6.5 8 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="mob-sub" id="mobServSub">
+      <div class="mob-vid-item" onclick="openVidModal('malcB_gQ6n8')">
+        <img src="https://img.youtube.com/vi/malcB_gQ6n8/maxresdefault.jpg" alt="Move Máquinas no Google">
+        <div class="mob-vid-play-btn">
+          <svg viewBox="0 0 48 48" width="36" height="36" fill="none"><circle cx="24" cy="24" r="24" fill="rgba(255,255,255,0.18)"/><polygon points="20,16 34,24 20,32" fill="white"/></svg>
+        </div>
+        <div class="mob-vid-caption">Move Máquinas: 1º no Google em 20 cidades sem anúncio</div>
+      </div>
+      <a href="/agencia-seo">Agência SEO</a>
+      <a href="/consultor-seo">Consultor SEO</a>
+      <a href="/criacao-de-sites-para-seo">Criação de Site</a>
+      <a href="/seo-para-b2b">SEO para B2B</a>
+      <a href="/seo-para-negocios-locais">SEO para Negócios Locais</a>
+      <a href="/seo-para-saas">SEO para SaaS</a>
+      <a href="/seo-para-contadores">SEO para Contadores</a>
+      <a href="/seo-para-clinicas">SEO para Clínicas</a>
+    </div>
+  </div>
+
+  <div class="mob-section">
+    <button class="mob-section-btn" id="mobBlogBtn">
+      Blog
+      <svg viewBox="0 0 10 10" fill="none" width="10" height="10" style="transition:transform .2s"><path d="M2 3.5 5 6.5 8 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="mob-sub" id="mobBlogSub">
+      <a href="/blog/como-aparecer-no-google">Como aparecer no Google</a>
+      <a href="/blog/o-que-e-geo">O que é GEO</a>
+      <a href="/blog/phd-playground-sem-google-ads">Case PHD Playground</a>
+      <a href="/blog/google-meu-negocio-guia">Guia Google Meu Negócio</a>
+      <a href="/blog/5-sinais-agencia-nao-funciona">5 sinais da agência ruim</a>
+      <a href="/blog/ia-recomenda-empresas">Qual IA recomenda empresas?</a>
+      <a href="/glossario/">Glossário de SEO e IA</a>
+      <a href="/blog">Ver todos →</a>
+    </div>
+  </div>
+
+  <div class="mob-section">
+    <button class="mob-section-btn" id="mobAcadBtn">
+      Academy
+      <svg viewBox="0 0 10 10" fill="none" width="10" height="10" style="transition:transform .2s"><path d="M2 3.5 5 6.5 8 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="mob-sub" id="mobAcadSub">
+      <div class="mob-vid-item" onclick="openVidModal('TqsqddD0TVw')">
+        <img src="https://img.youtube.com/vi/TqsqddD0TVw/maxresdefault.jpg" alt="Aula gratuita Maturare Academy">
+        <div class="mob-vid-play-btn">
+          <svg viewBox="0 0 48 48" width="36" height="36" fill="none"><circle cx="24" cy="24" r="24" fill="rgba(255,255,255,0.18)"/><polygon points="20,16 34,24 20,32" fill="white"/></svg>
+        </div>
+        <div class="mob-vid-caption">Aula gratuita: como aparecer no ChatGPT e Gemini</div>
+      </div>
+      <a href="/academy/curso-google-meu-negocio">Curso de Google Meu Negócio</a>
+    </div>
+  </div>
+
+<div class="hero-glow"></div>
   <div class="container">
     <h1 class="hero-h1">Projetos de SEO da Maturare: resultados reais para <em>negócios locais</em></h1>
     <p class="hero-sub">Cada projeto é uma história de maturidade digital. Veja como a Maturare gerou resultado orgânico concreto para PHD Playground, Ambiental Wash, Keysfan e Move Máquinas — e entenda por que negócios locais no Brasil confiam no nosso método.</p>
@@ -1061,50 +1326,85 @@ p, .hero-sub { text-wrap: pretty; }
   <div class="foot-in">
     <div class="foot-top">
       <div>
-        <div class="foot-brand">Maturare</div>
+        <div class="foot-brand"><img src="/assets/maturare-logo-white.png" alt="Maturare" style="height:36px;width:auto;display:block;"></div>
         <p class="foot-tag">Aceleradora de negócios que faz empresas locais serem encontradas no Google e recomendadas pelas IAs.</p>
-        <div class="foot-live">Monitoramento ativo</div>
+        <div class="hm-toggle" role="group" aria-label="Modo de visualização" style="margin-top:30px;">
+          <button class="hm-btn active" id="btnHuman" onclick="setHMView('human')">Human</button>
+          <button class="hm-btn" id="btnMachine" onclick="setHMView('machine')">Machine</button>
+        </div>
+        <div class="foot-socs" style="margin-top:30px;">
+          <a href="https://br.linkedin.com/in/daniel-batista-674b62140" target="_blank" aria-label="LinkedIn da Maturare">
+            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/maturare.com.br/" target="_blank" aria-label="Instagram da Maturare">
+            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+          </a>
+          <a href="https://www.youtube.com/@googledominado1" target="_blank" aria-label="YouTube da Maturare">
+            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
+        </div>
       </div>
       <div>
-        <div class="fcol-h">Principal</div>
+        <div class="fcol-h">Soluções</div>
         <ul class="flinks">
-          <li><a href="home-maturare-final.html">Home</a></li>
-          <li><a href="sobre.html">Sobre</a></li>
-          <li><a href="metodologia.html">Metodologia</a></li>
-          <li><a href="projetos.html">Projetos</a></li>
-          <li><a href="blog.html">Blog</a></li>
+          <li><a href="/agencia-seo/">Agência SEO</a></li>
+          <li><a href="/consultor-seo/">Consultor SEO</a></li>
+          <li><a href="/criacao-de-site/">Criação de Site</a></li>
+          <li><a href="/seo-para-b2b/">SEO para B2B</a></li>
+          <li><a href="/seo-para-negocios-locais/">SEO para Negócios Locais</a></li>
+          <li><a href="/seo-para-saas/">SEO para SaaS</a></li>
+          <li><a href="/seo-para-contadores/">SEO para Contadores</a></li>
+          <li><a href="/seo-para-clinicas/">SEO para Clínicas</a></li>
+          <li><a href="/analise-gratuita/" style="color:var(--green);font-weight:600;">→ Diagnóstico Gratuito</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="fcol-h">Blog</div>
+        <ul class="flinks">
+          <li><a href="/blog/">Todos os artigos</a></li>
+          <li><a href="/blog/como-ranquear-no-chatgpt/">Como Ranquear no ChatGPT</a></li>
+          <li><a href="/blog/seo-local-em-2026/">SEO Local em 2026</a></li>
+          <li><a href="/blog/chatgpt-indicando-seu-concorrente/">O ChatGPT Indica Seu Concorrente?</a></li>
+          <li><a href="/blog/seo-ou-google-ads/">SEO ou Google Ads</a></li>
+          <li><a href="/blog/o-que-e-geo/">GEO: o Novo SEO</a></li>
+          <li><a href="/glossario/">Glossário de SEO e IA</a></li>
         </ul>
       </div>
       <div>
         <div class="fcol-h">Empresa</div>
         <ul class="flinks">
-          <li><a href="nossos-clientes.html">Nossos Clientes</a></li>
-          <li><a href="depoimentos.html">Depoimentos</a></li>
-          <li><a href="contato.html">Contato</a></li>
-          <li><a href="faq-maturare.html">FAQ</a></li>
-          <li><a href="daniel-rios.html">Daniel Rios</a></li>
+          <li><a href="/sobre/">Sobre a Maturare</a></li>
+          <li><a href="/daniel-rios/">Daniel Rios</a></li>
+          <li><a href="/nossos-clientes/">Casos de Sucesso</a></li>
+          <li><a href="/cidades-atendidas/">Cidades Atendidas</a></li>
+          <li><a href="/academy/google-meu-negocio/">Curso Google Meu Negócio</a></li>
+          <li><a href="/faq-maturare/">FAQ</a></li>
         </ul>
       </div>
-      <div>
-        <div class="fcol-h">Contato</div>
+      <!-- col legal: visível só no mobile (desktop usa foot-bot abaixo) -->
+      <div class="foot-col-legal-mobile">
+        <div class="fcol-h">Legal</div>
         <ul class="flinks">
-          <li><a href="contato.html">Diagnóstico grátis</a></li>
-          <li><a href="contato.html">Falar com Daniel</a></li>
-          <li><a href="mailto:contato@maturare.com.br">contato@maturare.com.br</a></li>
+          <li><a href="/termos-de-privacidade/">Termos de Privacidade</a></li>
+          <li><a href="/politica-de-cookies/">Política de Cookies</a></li>
+          <li><a href="/termos-de-uso/">Termos de Uso</a></li>
         </ul>
+        <p class="foot-col-disclaimer-mobile">Os resultados apresentados são reais e referem-se a clientes específicos. Resultados individuais variam conforme mercado e execução.</p>
       </div>
     </div>
+    <!-- Copyright mobile only -->
+    <p class="foot-copyright-mobile">&#169; 2026 Maturare Gestão &amp; Marketing Estratégico Ltda | CNPJ: 47.336.340/0001-51</p>
     <div class="foot-bot">
-      <div class="foot-legal">
-        <a href="termos-de-privacidade.html">Termos de Privacidade</a>
-        <a href="politica-de-cookies.html">Política de Cookies</a>
-        <a href="termos-de-uso.html">Termos de Uso</a>
+      <div class="foot-bot-row">
+        <div class="foot-legal">
+          <a href="/termos-de-privacidade/">Termos de Privacidade</a>
+          <a href="/politica-de-cookies/">Política de Cookies</a>
+          <a href="/termos-de-uso/">Termos de Uso</a>
+        </div>
       </div>
-      <div class="foot-copy">&#169; 2026 Maturare · CNPJ 47.336.340/0001-51 · Niterói, RJ</div>
-      <div class="foot-socs">
-        <a href="https://br.linkedin.com/in/daniel-batista-674b62140" target="_blank" aria-label="LinkedIn da Maturare">LinkedIn</a>
-        <a href="https://www.instagram.com/maturare.com.br/" target="_blank" aria-label="Instagram da Maturare">Instagram</a>
-        <a href="https://www.youtube.com/@googledominado1" target="_blank" aria-label="YouTube da Maturare">YouTube</a>
+      <div class="foot-disclaimer">
+        <span style="display:block;text-align:center;">Os resultados apresentados neste site são reais e referem-se a clientes específicos. Resultados individuais variam conforme mercado, histórico do site e consistência na execução.</span><br>
+        <span style="display:block;text-align:center;">&#169; 2026 Maturare Gestão &amp; Marketing Estratégico Ltda | CNPJ: 47.336.340/0001-51 | Todos os Direitos Reservados | Rua Coronel Sebastião Dantas, 56, Niterói/RJ, Brasil</span>
       </div>
     </div>
   </div>

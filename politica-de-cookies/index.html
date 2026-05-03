@@ -1520,5 +1520,59 @@ if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   });
 }
 </script>
+<div class="machine-modal" id="machineModal" role="dialog" aria-modal="true" aria-label="Conteúdo para IAs">
+  <div class="machine-modal-inner">
+    <div class="machine-modal-header">
+      <img src="../assets/maturare-logo-white.png" alt="Maturare" style="height:32px;width:auto;display:block;">
+      <button class="machine-modal-close" onclick="setHMView('human')" aria-label="Fechar">&#x2715; Fechar</button>
+    </div>
+    <div class="machine-content"># MATURARE
+Page: /politica-de-cookies/
+
+Cookie Policy of Maturare. Explains what cookies are used and why.
+
+## About Maturare
+Maturare is a Brazilian GEO + AEO + SEO agency that helps local businesses appear on Google and be recommended by AI engines like ChatGPT, Perplexity, Claude, and Gemini.
+
+## Contact
+- WhatsApp: +55 21 99077-0731
+- Email: contato@maturare.com.br
+- Free diagnosis: https://maturare.com.br/#orcamento
+
+## Company
+- Founder: Daniel Batista Rios
+- CNPJ: 47.336.340/0001-51
+
+[Terms](https://maturare.com.br/termos-de-uso/) | [Privacy](https://maturare.com.br/termos-de-privacidade/) | [Cookies](https://maturare.com.br/politica-de-cookies/)
+
+&#169; 2026 Maturare. Todos os direitos reservados.</div>
+  </div>
+</div>
+
+<script>
+(function(){
+  function setHMView(mode) {
+    var modal = document.getElementById('machineModal');
+    var btnH  = document.getElementById('btnHuman');
+    var btnM  = document.getElementById('btnMachine');
+    if (!modal) return;
+    if (mode === 'machine') {
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      btnM.classList.add('active');
+      btnH.classList.remove('active');
+    } else {
+      modal.classList.remove('open');
+      document.body.style.overflow = '';
+      btnH.classList.add('active');
+      btnM.classList.remove('active');
+    }
+  }
+  window.setHMView = setHMView;
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape') setHMView('human');
+  });
+})();
+</script>
 </body>
 </html>
