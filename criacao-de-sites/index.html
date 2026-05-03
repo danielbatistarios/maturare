@@ -834,7 +834,7 @@ nav.scrolled {
 /* === HERO === */
 .hero {
   background: var(--z1);
-  padding: clamp(110px, 14vw, 160px) 0 clamp(80px, 10vw, 120px);
+  padding: clamp(140px, 18vw, 200px) 0 clamp(110px, 14vw, 160px);
   position: relative;
   overflow: hidden;
 }
@@ -1654,6 +1654,16 @@ section.light .tl-desc { color: var(--dim); }
 .cl-score-resp { font-size: 11px; color: rgba(255,255,255,.3); white-space: nowrap; }
 /* bloco */
 .cl-bloco { margin-bottom: 48px; }
+/* expand toggle */
+.cl-expand-wrap { margin: 32px 0 40px; display: flex; justify-content: center; }
+.cl-expand-btn { display: inline-flex; align-items: center; gap: 10px; background: rgba(26,122,74,.1); border: 1px solid rgba(26,122,74,.3); border-radius: 40px; padding: 12px 28px; font-family: var(--sans); font-size: 14px; font-weight: 600; color: var(--green2,#6fcf97); cursor: pointer; transition: background .2s, border-color .2s, transform .15s; letter-spacing: .02em; }
+.cl-expand-btn:hover { background: rgba(26,122,74,.18); border-color: rgba(26,122,74,.5); transform: translateY(-1px); }
+.cl-expand-btn.open { background: rgba(26,122,74,.06); border-color: rgba(26,122,74,.2); }
+.cl-expand-btn .cl-exp-arrow { display: inline-block; transition: transform .3s; font-style: normal; }
+.cl-expand-btn.open .cl-exp-arrow { transform: rotate(180deg); }
+#cl-extra-blocos { display: none; }
+#cl-extra-blocos.visible { display: block; animation: fadeSlideDown .35s ease; }
+@keyframes fadeSlideDown { from { opacity:0; transform:translateY(-10px); } to { opacity:1; transform:translateY(0); } }
 .cl-bloco-header { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 14px; padding-bottom: 14px; border-bottom: 1px solid rgba(255,255,255,.07); }
 .cl-badge { padding: 3px 10px; border-radius: 99px; font-size: 10px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; flex-shrink: 0; margin-top: 4px; }
 .cl-badge-p0 { background: rgba(224,82,82,.15); color: #ff8080; border: 1px solid rgba(224,82,82,.3); }
@@ -2477,7 +2487,7 @@ footer {
 
 </div><!-- /mob-menu -->
 
-<section class="hero-section" id="hero">
+<section class="hero" id="hero">
 <div class="hero-glow"></div>
   <div class="hero-glow-2"></div>
   <div class="container">
@@ -3825,7 +3835,8 @@ function clMostrarResultado() {
 
 (function clRender() {
   const container = document.getElementById('cl-body');
-  CL_BLOCOS.forEach(bloco => {
+
+  function renderBloco(bloco, target) {
     const bdiv = document.createElement('div');
     bdiv.className = 'cl-bloco';
     bdiv.innerHTML = `<div class="cl-bloco-header"><div class="cl-badge ${bloco.badge}">${bloco.label}</div><div class="cl-bloco-info"><div class="cl-bloco-titulo">${bloco.titulo}</div><div class="cl-bloco-sub">${bloco.sub}</div></div><div class="cl-bloco-prog" id="clprog-${bloco.id}">0/${bloco.itens.length}</div></div>`;
@@ -3873,10 +3884,44 @@ function clMostrarResultado() {
         </div>`;
       bdiv.appendChild(div);
     });
-    container.appendChild(bdiv);
-  });
+    target.appendChild(bdiv);
+  }
+
+  const p0 = CL_BLOCOS.find(b => b.id === 'p0');
+  const rest = CL_BLOCOS.filter(b => b.id !== 'p0');
+
+  renderBloco(p0, container);
+
+  const toggleWrap = document.createElement('div');
+  toggleWrap.className = 'cl-expand-wrap';
+  toggleWrap.innerHTML = `<button class="cl-expand-btn" id="clExpandBtn" onclick="clToggleExtra()">
+    Realizar diagnóstico completo (P1, P2 e P3)
+    <i class="cl-exp-arrow">&#x25BC;</i>
+  </button>`;
+  container.appendChild(toggleWrap);
+
+  const extraWrap = document.createElement('div');
+  extraWrap.id = 'cl-extra-blocos';
+  rest.forEach(bloco => renderBloco(bloco, extraWrap));
+  container.appendChild(extraWrap);
+
   clUpdateUI();
 })();
+
+function clToggleExtra() {
+  const wrap = document.getElementById('cl-extra-blocos');
+  const btn = document.getElementById('clExpandBtn');
+  const isOpen = wrap.classList.contains('visible');
+  if (isOpen) {
+    wrap.classList.remove('visible');
+    btn.classList.remove('open');
+    btn.querySelector('.cl-exp-arrow').innerHTML = '&#x25BC;';
+  } else {
+    wrap.classList.add('visible');
+    btn.classList.add('open');
+    btn.querySelector('.cl-exp-arrow').innerHTML = '&#x25B2;';
+  }
+}
 </script>
 </body>
 </html>
