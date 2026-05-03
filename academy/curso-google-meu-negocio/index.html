@@ -55,6 +55,7 @@
       --r-card: 12px;
       --r-soft: 16px;
       --r-pill: 999px;
+      --zi-nav: 500;
     }
 
     html { scroll-behavior: smooth; }
@@ -398,6 +399,12 @@
       background: none; border: none; cursor: pointer; padding: 4px;
     }
     .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--paper); }
+
+    @media (max-width: 768px) {
+      .hamburger { display: flex; }
+      .nav-links { display: none; }
+      .nav-cta { display: none; }
+    }
 
     /* ── MOBILE OVERLAY ── */
     /* ── MOBILE MENU — fullscreen overlay style ── */
@@ -1215,6 +1222,64 @@
       .depo-shorts-row { grid-template-columns: 1fr; }
     }
 
+    /* ── PRINTS CARROSSEL ── */
+    .prints-carousel-wrap { overflow: hidden; }
+    .prints-carousel {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+    .prints-carousel img {
+      width: 100%;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.08);
+      display: block;
+    }
+    .prints-arrow {
+      display: none;
+    }
+    @media (max-width: 768px) {
+      .prints-carousel-wrap { overflow: visible; position: relative; }
+      .prints-carousel {
+        display: flex;
+        gap: 12px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        padding-bottom: 4px;
+      }
+      .prints-carousel::-webkit-scrollbar { display: none; }
+      .prints-carousel img {
+        flex-shrink: 0;
+        width: 72vw;
+        max-width: 280px;
+        scroll-snap-align: center;
+        border-radius: 12px;
+      }
+      .prints-arrow {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        border: 1px solid rgba(255,255,255,.15);
+        background: rgba(0,0,0,.7);
+        backdrop-filter: blur(8px);
+        color: #fff;
+        font-size: 22px;
+        cursor: pointer;
+        z-index: 2;
+        line-height: 1;
+      }
+      .prints-prev { left: 0; }
+      .prints-next { right: 0; }
+    }
+
     /* ── DEPOIMENTOS ── */
     .depos-sec {
       background: var(--z1);
@@ -1795,12 +1860,14 @@
     @media (max-width: 600px) {
       .bottom-bar {
         bottom: 16px;
-        left: 16px;
-        right: 16px;
-        transform: translateY(120px);
+        left: 50%;
+        transform: translateX(-50%) translateY(120px);
+        width: auto;
       }
-      .bottom-bar.visible { transform: translateY(0); }
-      .bb-dock { width: 100%; justify-content: space-between; }
+      .bottom-bar.visible { transform: translateX(-50%) translateY(0); }
+      .bb-dock { padding: 6px 6px 6px 16px; gap: 10px; }
+      .bb-text { display: none; }
+      .bb-btn { font-size: 12px; padding: 9px 18px; }
     }
 
     /* ── REVEAL ANIMATIONS ── */
@@ -2257,12 +2324,16 @@
       </div>
     </div>
 
-    <!-- Prints reais de resultados (linha 1) -->
-    <div class="depos-screenshots reveal" style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:40px;">
-      <img src="assets/img/IMG_3474-e1760654345533.png" alt="Print resultado Google Meu Negócio" loading="lazy" style="width:100%;border-radius:12px;border:1px solid rgba(255,255,255,.08);">
-      <img src="assets/img/IMG_3473-e1760654397200.png" alt="Print resultado Google Maps" loading="lazy" style="width:100%;border-radius:12px;border:1px solid rgba(255,255,255,.08);">
-      <img src="assets/img/IMG_3471-e1760654451386.png" alt="Print ranqueamento Google" loading="lazy" style="width:100%;border-radius:12px;border:1px solid rgba(255,255,255,.08);">
-      <img src="assets/img/IMG_3472-e1760654483139.png" alt="Print ficha otimizada Google" loading="lazy" style="width:100%;border-radius:12px;border:1px solid rgba(255,255,255,.08);">
+    <!-- Prints reais de resultados -->
+    <div class="prints-carousel-wrap reveal" style="position:relative;margin-bottom:40px;">
+      <div class="prints-carousel" id="printsCarousel">
+        <img src="assets/img/IMG_3474-e1760654345533.png" alt="Print resultado Google Meu Negócio" loading="lazy">
+        <img src="assets/img/IMG_3473-e1760654397200.png" alt="Print resultado Google Maps" loading="lazy">
+        <img src="assets/img/IMG_3471-e1760654451386.png" alt="Print ranqueamento Google" loading="lazy">
+        <img src="assets/img/IMG_3472-e1760654483139.png" alt="Print ficha otimizada Google" loading="lazy">
+      </div>
+      <button class="prints-arrow prints-prev" id="printsPrev" aria-label="Anterior">&#8249;</button>
+      <button class="prints-arrow prints-next" id="printsNext" aria-label="Próximo">&#8250;</button>
     </div>
 
   </div>
@@ -3047,6 +3118,21 @@
       this.appendChild(iframe);
     });
   });
+
+  // Prints carousel arrows
+  (function() {
+    var carousel = document.getElementById('printsCarousel');
+    var prev = document.getElementById('printsPrev');
+    var next = document.getElementById('printsNext');
+    if (!carousel || !prev || !next) return;
+    function scrollBy(dir) {
+      var img = carousel.querySelector('img');
+      var step = img ? img.offsetWidth + 12 : 260;
+      carousel.scrollBy({ left: dir * step, behavior: 'smooth' });
+    }
+    prev.addEventListener('click', function() { scrollBy(-1); });
+    next.addEventListener('click', function() { scrollBy(1); });
+  })();
 </script>
 </body>
 </html>
