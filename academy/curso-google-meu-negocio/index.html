@@ -398,6 +398,33 @@
       .dores-grid { grid-template-columns: 1fr; }
     }
 
+    /* ── VÍDEO ── */
+    .video-sec {
+      background: var(--z0);
+      padding: clamp(80px,10vw,120px) clamp(24px,4vw,80px);
+      text-align: center;
+    }
+    .video-wrap {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .video-embed {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: var(--r-soft);
+      border: 1px solid var(--border-z2);
+      box-shadow: var(--shadow-5);
+      margin-top: 48px;
+    }
+    .video-embed iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: 0;
+    }
+
     /* ── PRODUTO ── */
     .produto-sec {
       background: var(--z0);
@@ -693,6 +720,21 @@
       border-radius: var(--r-card);
       padding: 28px 24px;
       backdrop-filter: blur(12px);
+    }
+    .depo-stars {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 12px;
+      color: var(--gold);
+      font-size: 14px;
+    }
+    .depo-img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 16px;
+      display: block;
+      max-height: 280px;
+      object-fit: cover;
     }
     .depo-segment {
       display: inline-block;
@@ -1217,6 +1259,17 @@
   </div>
 </div>
 
+<!-- VÍDEO -->
+<section class="video-sec">
+  <div class="video-wrap">
+    <div class="sec-label lt reveal">Veja como funciona</div>
+    <h2 class="sec-h lt reveal d1">O método explicado em <em>menos de 5 minutos</em></h2>
+    <div class="video-embed reveal d2">
+      <iframe src="https://www.tella.tv/video/cmdxevsg900050bju26ht5nhu/embed?b=0&title=0&a=1&loop=0&t=0&muted=0&wt=0" allowfullscreen allowtransparency loading="lazy"></iframe>
+    </div>
+  </div>
+</section>
+
 <!-- DORES -->
 <section class="dores-sec" data-funnel="awareness">
   <div class="sec-container">
@@ -1440,64 +1493,87 @@
       <h2 class="sec-h lt reveal d1">Alguns resultados de quem <em>acreditou no método</em></h2>
       <p class="sec-desc lt reveal d2">Negócios de segmentos diferentes, mesma solução: aparecer primeiro no Google e atrair clientes todos os dias.</p>
     </div>
+    <!-- Prints reais de resultados (linha 1) -->
+    <div class="depos-screenshots reveal" style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:40px;">
+      <img src="assets/img/IMG_3474-e1760654345533.png" alt="Print resultado Google Meu Negócio" loading="lazy" style="width:100%;border-radius:12px;border:1px solid rgba(255,255,255,.08);">
+      <img src="assets/img/IMG_3473-e1760654397200.png" alt="Print resultado Google Maps" loading="lazy" style="width:100%;border-radius:12px;border:1px solid rgba(255,255,255,.08);">
+      <img src="assets/img/IMG_3471-e1760654451386.png" alt="Print ranqueamento Google" loading="lazy" style="width:100%;border-radius:12px;border:1px solid rgba(255,255,255,.08);">
+      <img src="assets/img/IMG_3472-e1760654483139.png" alt="Print ficha otimizada Google" loading="lazy" style="width:100%;border-radius:12px;border:1px solid rgba(255,255,255,.08);">
+    </div>
+
     <div class="depos-grid">
       <div class="depo-card reveal">
+        <div class="depo-stars">★★★★★</div>
         <span class="depo-segment">Lanchonete</span>
         <p class="depo-text">"Mano, a ficha da nossa lanchonete ficou <mark>100% visível</mark> depois de usar o checklist. Agora, não tem mais erro. É cliente chegando toda horaaa."</p>
       </div>
       <div class="depo-card reveal d1">
+        <div class="depo-stars">★★★★★</div>
         <span class="depo-segment">Academia de Ginástica</span>
         <p class="depo-text">"Eu já tinha tentado de tudo para melhorar a visibilidade da minha academia. O curso foi a solução! Em pouco tempo, nossa ficha ficou <mark>nas primeiras posições</mark> e os novos alunos começaram a chegar."</p>
       </div>
       <div class="depo-card reveal d2">
+        <div class="depo-stars">★★★★★</div>
         <span class="depo-segment">Loja de Eletrônicos</span>
         <p class="depo-text">"Após aplicar as recomendações das aulas, nossa loja teve <mark>aumento significativo no tráfego online e nas vendas</mark>. A otimização da ficha foi essencial."</p>
       </div>
       <div class="depo-card reveal d1">
+        <div class="depo-stars">★★★★★</div>
         <span class="depo-segment">Clínica Odontológica</span>
         <p class="depo-text">"Nossa clínica foi otimizada no Google e passamos a ser facilmente encontrados. A metodologia é <mark>eficaz e simples de seguir</mark>, proporcionando resultados rápidos. Incrível!"</p>
       </div>
       <div class="depo-card reveal d2">
+        <div class="depo-stars">★★★★★</div>
         <span class="depo-segment">Oficina Mecânica</span>
         <p class="depo-text">"Rapaz agora a galera encontra minha oficina sem esforço. O curso foi <mark>um divisor de águas</mark>, mais clientes chamando e chegando pra resolver o problema do carro."</p>
       </div>
       <div class="depo-card reveal d3">
+        <div class="depo-stars">★★★★★</div>
         <span class="depo-segment">Açaiteria</span>
         <p class="depo-text">"Aplicamos o método e <mark>em menos de uma semana</mark> já apareceu na primeira página do Google. Muito bom, galera tá nos achando direto!"</p>
       </div>
       <div class="depo-card reveal">
+        <div class="depo-stars">★★★★★</div>
         <span class="depo-segment">Pet Shop</span>
         <p class="depo-text">"Com esse guia, nossa loja de pets ficou <mark>super visível no Google</mark>! O processo é simples, rápido e super eficiente. Agora, não falta cliente."</p>
       </div>
       <div class="depo-card reveal d1">
+        <div class="depo-stars">★★★★★</div>
         <span class="depo-segment">Cafeteria</span>
         <p class="depo-text">"Agora o pessoal sabe onde tomar aquele cafézinho! O curso fez a gente aparecer na <mark>primeira página do Google</mark> e tá sendo só visita e mais visita."</p>
       </div>
       <div class="depo-card reveal d2">
+        <div class="depo-stars">★★★★★</div>
         <span class="depo-segment">Loja de Calçados</span>
         <p class="depo-text">"Você ajudou nossa loja a se destacar! Hoje, nossos clientes <mark>não precisam mais procurar muito</mark>, nos encontram direto no Google. Resultado imediato!"</p>
       </div>
       <div class="depo-card reveal d1">
+        <div class="depo-stars">★★★★★</div>
         <span class="depo-segment">Clínica de Estética</span>
         <p class="depo-text">"Este foi o segredo para a minha clínica aparecer nas buscas e ser vista por <mark>muito mais pessoas</mark>. Já estou tendo um retorno ótimo!"</p>
       </div>
       <div class="depo-card reveal d2">
+        <div class="depo-stars">★★★★★</div>
         <span class="depo-segment">Escritório de Advocacia</span>
         <p class="depo-text">"Nosso escritório utilizou o passo a passo e os resultados foram excelentes. A otimização nos trouxe <mark>mais visibilidade e reforçou nossa autoridade</mark> no mercado."</p>
       </div>
       <div class="depo-card reveal d3">
+        <div class="depo-stars">★★★★★</div>
         <span class="depo-segment">Barber Shop</span>
         <p class="depo-text">"Meu salão de barbearia foi de 0 a 100 depois de usar esse checklist. Hoje em dia <mark>a maior parte dos clientes vem do Google</mark>. Só sucesso!"</p>
       </div>
       <div class="depo-card reveal">
+        <div class="depo-stars">★★★★★</div>
         <span class="depo-segment">Restaurante</span>
         <p class="depo-text">"Deu muito certo pra gente! Seguimos os ensinamentos, fizemos tudo direitinho, e logo a nossa ficha ficou <mark>nas buscas principais</mark>. Tá sendo sucesso total, galera chegando pra almoçar."</p>
       </div>
       <div class="depo-card reveal d1">
+        <div class="depo-stars">★★★★★</div>
         <span class="depo-segment">Consultoria de Marketing</span>
         <p class="depo-text">"Usei o checklist e, em pouco tempo, a visibilidade da nossa consultoria <mark>aumentou consideravelmente</mark>. Estamos bem posicionados no Google e recebendo muito mais leads!"</p>
       </div>
       <div class="depo-card reveal d2">
+        <div class="depo-stars">★★★★★</div>
         <span class="depo-segment">Loja de Alimentos Saudáveis</span>
         <p class="depo-text">"A implementação do checklist foi fundamental para otimizar nossa ficha. Em pouco tempo, <mark>começamos a ser mais visíveis</mark> e atraímos novos clientes."</p>
       </div>
