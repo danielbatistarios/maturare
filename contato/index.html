@@ -909,28 +909,383 @@ nav.scrolled {
   filter: grayscale(.8) invert(.92) contrast(1.1) brightness(.7);
 }
 
-/* === LOGO MARQUEE === */
-.logo-marquee {
-  display: flex;
-  width: max-content;
-  animation: mqs 25s linear infinite;
+/* === CLIENT STRIP === */
+.client-strip {
+  padding: 60px clamp(24px,4vw,80px);
+  border-top: 1px solid var(--faint);
+  border-bottom: 1px solid var(--faint);
+  background: #ffffff;
 }
-.logo-marquee-item {
+.clients-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  max-width: 1100px;
+  margin: 0 auto;
+  border: 1px solid #eaecf0;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.cl-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 28px 20px;
+  border-right: 1px solid #eaecf0;
+  border-bottom: 1px solid #eaecf0;
+  cursor: default;
+  transition: background .18s;
+}
+.cl-item:nth-child(5n) { border-right: none; }
+.cl-item:hover { background: #f8faf9; }
+.cl-item.active { background: #f0f7f3; }
+.cl-item.active img { opacity: 1; filter: grayscale(0%); }
+.cl-item::after {
+  content: '';
+  position: absolute;
+  bottom: 7px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 12px;
+  background-image: url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23ccc' stroke-width='2.5' stroke-linecap='round' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 0;
+  transition: opacity .2s;
+}
+.cl-item:hover::after { opacity: 1; }
+.cl-item.active::after {
+  opacity: 1;
+  background-image: url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%231a7a4a' stroke-width='2.5' stroke-linecap='round' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='18 15 12 9 6 15'/%3E%3C/svg%3E");
+}
+.cl-expand {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows .38s cubic-bezier(.4,0,.2,1);
+  border-bottom: 1px solid #eaecf0;
+}
+.cl-expand.open { grid-template-rows: 1fr; }
+.cl-expand-inner { overflow: hidden; }
+.cl-expand-body {
+  display: flex;
+  gap: 32px;
+  padding: 24px 32px;
+  align-items: flex-start;
+  border-top: 2px solid #1a7a4a;
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: opacity .3s ease .1s, transform .3s ease .1s;
+}
+.cl-expand.open .cl-expand-body { opacity: 1; transform: translateY(0); }
+.cl-expand-logo { flex-shrink: 0; width: 72px; padding-top: 2px; }
+.cl-expand-logo img { height: 32px; width: auto; max-width: 72px; object-fit: contain; opacity: 1; filter: none; }
+.cl-expand-content { flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 0 40px; }
+.cl-expand-name { grid-column: 1 / -1; font-family: var(--sans); font-size: 14px; font-weight: 800; color: #1b3a2a; margin-bottom: 2px; }
+.cl-expand-meta { grid-column: 1 / -1; font-size: 11px; color: #aaa; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 14px; }
+.cl-expand-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: #bbb; margin-bottom: 4px; }
+.cl-expand-text { font-size: 13px; color: #444; line-height: 1.65; }
+.cl-expand-result .cl-expand-text { font-weight: 600; color: #1a7a4a; }
+.cl-badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border-radius: 4px;
+  border: 1px solid #e0e3e8;
+  color: #666;
+  background: #f5f5f5;
+  line-height: 1.6;
+}
+.cl-badge.case { border-color: rgba(26,122,74,.3); color: var(--green); background: rgba(26,122,74,.06); }
+.cl-item img {
+  height: 36px;
+  width: auto;
+  max-width: 110px;
+  opacity: .5;
+  filter: grayscale(100%);
+  transition: opacity .2s, filter .2s;
+  object-fit: contain;
+}
+.cl-item:hover img { opacity: 1; filter: grayscale(0%); }
+.cs-bottom { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; max-width: 1100px; margin: 56px auto 0; align-items: center; }
+.cs-left-headline { font-family: var(--sans); font-size: clamp(22px,2.8vw,34px); font-weight: 800; color: var(--ink); line-height: 1.25; margin-bottom: 16px; }
+.cs-left-headline em { font-style: normal; color: var(--green); }
+.cs-left-desc { font-size: 16px; color: var(--dim); line-height: 1.7; margin-bottom: 28px; }
+.cs-avatars { display: flex; align-items: center; }
+.cs-avatars img { width: 36px; height: 36px; border-radius: 50%; border: 2px solid #fff; margin-left: -10px; object-fit: cover; opacity: 1; filter: grayscale(0%); }
+.cs-avatars img:first-child { margin-left: 0; }
+.cs-avatars-label { margin-left: 12px; font-size: 13px; color: var(--dim); line-height: 1.4; }
+.cs-avatars-label strong { display: block; font-weight: 700; color: var(--ink); font-size: 14px; }
+.cs-carousel { background: #f8faf9; border: 1px solid #eaecf0; border-radius: 16px; padding: 32px; }
+.cs-slide { display: none; }
+.cs-slide.active { display: block; }
+.cs-slide-logo { height: 26px; width: auto; max-width: 120px; object-fit: contain; margin-bottom: 16px; opacity: .75; filter: grayscale(15%); }
+.cs-quote { font-size: 15px; line-height: 1.75; color: #333; margin-bottom: 20px; }
+.cs-quote mark { background: rgba(196,160,53,.18); color: #7a5c0a; border-radius: 3px; padding: 0 2px; font-style: normal; }
+.cs-author { display: flex; align-items: center; gap: 12px; }
+.cs-author img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2px solid #e0e3e8; opacity: 1; filter: grayscale(0%); }
+.cs-author-info strong { display: block; font-size: 14px; font-weight: 700; color: var(--ink); }
+.cs-author-info span { font-size: 12px; color: #888; }
+.cs-nav { display: flex; align-items: center; justify-content: space-between; margin-top: 24px; }
+.cs-dots { display: flex; gap: 6px; }
+.cs-dot { width: 7px; height: 7px; border-radius: 50%; background: #d0d0d0; border: none; cursor: pointer; padding: 0; transition: background .2s; }
+.cs-dot.active { background: var(--green); }
+.cs-arrows { display: flex; gap: 8px; }
+.cs-arr { width: 34px; height: 34px; border-radius: 50%; border: 1px solid #ddd; background: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: border-color .2s, background .2s; }
+.cs-arr:hover { border-color: var(--green); background: rgba(26,122,74,.05); }
+@media (max-width: 900px) { .cs-bottom { grid-template-columns: 1fr; gap: 32px; } }
+.cl-tap-hint { display: none; }
+@media (max-width: 768px) {
+  .cl-tap-hint {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-top: 6px;
+    opacity: .75;
+    transition: opacity .2s;
+  }
+  .cl-tap-hint svg { flex-shrink: 0; }
+  .cl-item.active .cl-tap-hint { display: none; }
+  .clients-grid { grid-template-columns: repeat(2, 1fr); }
+  .cl-item { cursor: pointer; padding: 20px 12px; touch-action: manipulation; }
+  .cl-item::after { display: none; }
+  .cl-expand-body { flex-direction: column; gap: 12px; padding: 16px; }
+  .cl-expand-logo { display: none; }
+  .cl-expand-content { grid-template-columns: 1fr; gap: 10px; }
+  .cl-expand-name { font-size: 13px; }
+  .cl-expand-meta { margin-bottom: 8px; }
+  .cl-expand-text { font-size: 12px; }
+}
+
+/* === WIZARD FORM === */
+.form-sec {
+  background: var(--ink);
+  padding: var(--sec-pad) clamp(24px, 4vw, 64px);
+  position: relative;
+  overflow: hidden;
+}
+.form-sec::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  left: -10%;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(26, 122, 74, .10) 0%, transparent 70%);
+  pointer-events: none;
+}
+.form-sec::after {
+  content: '';
+  position: absolute;
+  bottom: -10%;
+  right: 5%;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(45, 107, 69, .08) 0%, transparent 65%);
+  pointer-events: none;
+}
+.form-in { max-width: 1100px; margin: 0 auto; position: relative; }
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(40px, 5vw, 80px);
+  align-items: center;
+}
+.form-info h3 {
+  font-family: var(--serif);
+  font-size: clamp(28px, 4vw, 48px);
+  color: var(--paper);
+  line-height: 1.1;
+  margin-bottom: 24px;
+}
+.form-info h3 em { color: var(--green2); font-style: italic; }
+.form-info-desc {
+  color: rgba(255, 255, 255, .55);
+  line-height: 1.8;
+  margin-bottom: 40px;
+  font-size: 18px;
+  max-width: 640px;
+}
+.form-feats { display: flex; flex-direction: column; gap: 16px; }
+.ff { display: flex; align-items: center; gap: 12px; color: rgba(255, 255, 255, .75); font-size: 15px; }
+.ff-ic {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(26, 122, 74, .2);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 40px;
   flex-shrink: 0;
 }
-.logo-marquee-item img {
-  height: 40px;
-  width: auto;
-  filter: grayscale(100%);
-  opacity: .5;
-  transition: filter .3s, opacity .3s;
+.form-card-wiz {
+  background: rgba(255, 255, 255, .07);
+  border: 1px solid rgba(255, 255, 255, .12);
+  border-top: 2px solid rgba(45, 107, 69, .7);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-radius: var(--r-soft);
+  padding: clamp(28px, 3vw, 48px);
+  box-shadow:
+    0 0 0 1px rgba(45, 107, 69, .15),
+    0 8px 32px rgba(0, 0, 0, .4),
+    0 0 80px rgba(45, 107, 69, .12),
+    inset 0 1px 0 rgba(255, 255, 255, .08);
 }
-.logo-marquee-item img:hover { filter: grayscale(0); opacity: 1; }
-@keyframes mqs { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+.form-step-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, .3);
+  letter-spacing: .08em;
+}
+.form-step-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.form-dots { display: flex; gap: 8px; margin-bottom: 32px; }
+.fdot {
+  flex: 1;
+  height: 3px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, .1);
+  transition: background .4s;
+}
+.fdot.active { background: var(--green2); }
+.fdot.done { background: var(--green); }
+.fpanel { display: none; }
+.fpanel.active { display: block; }
+.fpanel h4 { color: var(--paper); font-family: var(--serif); font-size: 22px; margin-bottom: 6px; }
+.fpanel .hint { color: rgba(255, 255, 255, .55); font-size: 14px; margin-bottom: 24px; }
+.fopts { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 24px; }
+.fopt {
+  padding: 16px;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid rgba(255, 255, 255, .08);
+  background: rgba(255, 255, 255, .03);
+  color: rgba(255, 255, 255, .6);
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+  cursor: pointer;
+  transition: all .25s;
+  font-family: var(--sans);
+}
+.fopt:hover, .fopt.selected {
+  border-color: var(--green2);
+  background: rgba(26, 122, 74, .1);
+  color: var(--paper);
+}
+.fopt-nosite {
+  width: 100%;
+  margin-top: 8px;
+  text-align: center;
+}
+.fopt-nosite.selected {
+  border-color: var(--green2);
+  background: rgba(26, 122, 74, .1);
+  color: var(--paper);
+}
+.finput {
+  width: 100%;
+  padding: 14px 18px;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid rgba(255, 255, 255, .08);
+  background: rgba(255, 255, 255, .03);
+  color: var(--paper);
+  font-family: var(--sans);
+  font-size: 15px;
+  margin-bottom: 14px;
+  outline: none;
+  transition: border-color .3s;
+  box-sizing: border-box;
+}
+.finput::placeholder { color: rgba(255, 255, 255, .25); }
+.finput:focus { border-color: var(--green2); }
+.finput:not(:placeholder-shown) { border-color: rgba(111, 207, 151, .2); }
+textarea.finput { min-height: 90px; resize: vertical; }
+.fnav { display: flex; gap: 12px; margin-top: 12px; }
+.fnav button {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 24px;
+  font-size: 13px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-family: var(--sans);
+}
+.fnav .btn-p {
+  background: var(--green);
+  color: #fff;
+  border: none;
+  font-weight: 700;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  transition: transform .2s, box-shadow .2s, background .2s;
+}
+.fnav .btn-p:hover {
+  background: #1f8f55;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(26,122,74,.25);
+}
+.fnav-full { width: 100%; }
+.fbtn-back {
+  background: rgba(45,107,69,.25);
+  color: rgba(255, 255, 255, .7);
+  border: 1px solid rgba(45,107,69,.5);
+  cursor: pointer;
+  font-family: var(--sans);
+  font-weight: 600;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  transition: all .2s;
+}
+.fbtn-back:hover { background: rgba(45,107,69,.4); color: #fff; }
+.fbtn-submit {
+  background: var(--green);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-family: var(--sans);
+  font-weight: 700;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  transition: all .2s;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 24px;
+  font-size: 13px;
+  border-radius: var(--radius-sm);
+}
+.fbtn-submit:hover { background: #1f8f55; }
+.form-privacy {
+  font-size: 13px;
+  color: rgba(255, 255, 255, .25);
+  margin-top: 12px;
+}
+@media (max-width: 900px) {
+  .form-grid { grid-template-columns: 1fr; gap: 32px; }
+  .fopts { grid-template-columns: 1fr; }
+  .form-card-wiz { padding: 24px 20px; }
+}
 
 /* === FOOTER === */
 footer {
@@ -1415,125 +1770,69 @@ footer {
 </section>
 
 <!-- CONTACT GRID -->
-<section class="contact-sec">
-  <div class="container">
-    <div class="contact-grid">
-
-      <!-- LEFT: FORM -->
-      <div class="form-card reveal">
-        <div class="form-title">Solicite seu diagnóstico gratuito</div>
-        <form action="#" method="POST">
-          <div class="form-row-grid">
-            <div class="form-row">
-              <label for="nome">Nome</label>
-              <input type="text" id="nome" name="nome" placeholder="Ex: João Silva" required autocomplete="name">
-            </div>
-            <div class="form-row">
-              <label for="email">Email <span style="color:var(--green2);font-size:11px;">(obrigatório)</span></label>
-              <input type="email" id="email" name="email" placeholder="joao@empresa.com.br" required autocomplete="email">
-            </div>
-          </div>
-          <div class="form-row-grid">
-            <div class="form-row">
-              <label for="whatsapp">WhatsApp</label>
-              <input type="tel" id="whatsapp" name="whatsapp" placeholder="(21) 99999-9999" autocomplete="tel" inputmode="tel">
-            </div>
-            <div class="form-row">
-              <label for="empresa">Empresa</label>
-              <input type="text" id="empresa" name="empresa" placeholder="Ex: Clínica São Pedro" autocomplete="organization">
-            </div>
-          </div>
-          <div class="form-row">
-            <label for="servico">Serviço de interesse</label>
-            <select id="servico" name="servico">
-              <option value="" disabled selected>Selecione um serviço</option>
-              <option value="consultoria-seo">Consultoria SEO</option>
-              <option value="criacao-site">Criação de Site</option>
-              <option value="google-meu-negocio">Google Meu Negócio</option>
-              <option value="servico-mensal">Serviço Mensal</option>
-              <option value="maturare-academy">Maturare Academy</option>
-              <option value="outro">Outro</option>
-            </select>
-          </div>
-          <div class="form-row">
-            <label for="mensagem">Mensagem</label>
-            <textarea id="mensagem" name="mensagem" placeholder="Conte um pouco sobre o que precisa..." required></textarea>
-          </div>
-          <button type="submit" class="btn-green" style="width:100%;justify-content:center;">Solicitar Diagnóstico Gratuito &rarr;</button>
-          <p style="font-size:12px;color:rgba(255,255,255,.4);margin-top:12px;text-align:center;">Seus dados est&atilde;o seguros. Leia nossa <a href="termos-de-privacidade.html" style="color:var(--green2);text-decoration:underline;">pol&iacute;tica de privacidade</a>.</p>
-        </form>
-        <p class="form-note">Ou se preferir, <a href="contato.html">fale direto pelo WhatsApp</a></p>
+<section class="form-sec noise" id="orcamento" data-funnel="decision">
+  <div class="form-in">
+    <div class="form-grid">
+      <div class="form-info reveal-left">
+        <div class="sec-label lt">Comece agora</div>
+        <h3>Seu mercado está crescendo. Você está capturando essa demanda de buscas?</h3>
+        <p class="form-info-desc">Responda as perguntas a seguir e depois agendamos uma call com nosso time para entender onde está a demanda que você ainda não captura.</p>
+        <div class="form-feats">
+          <div class="ff"><div class="ff-ic"><svg width="14" height="14" fill="none" stroke="var(--green2)" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Entenda o potencial de buscas do seu segmento</div>
+          <div class="ff"><div class="ff-ic"><svg width="14" height="14" fill="none" stroke="var(--green2)" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>O que seus concorrentes estão fazendo que você ainda não viu</div>
+          <div class="ff"><div class="ff-ic"><svg width="14" height="14" fill="none" stroke="var(--green2)" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Como reduzir seu CAC e CPL com orgânico e ter mais autonomia no tráfego pago</div>
+          <div class="ff"><div class="ff-ic"><svg width="14" height="14" fill="none" stroke="var(--green2)" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Como trilhar o caminho para sua empresa ser recomendada pelo ChatGPT, Perplexity, Gemini, Google, Claude, Grok</div>
+        </div>
       </div>
-
-      <!-- RIGHT: INFO CARDS -->
-      <div class="info-stack">
-
-        <!-- WhatsApp -->
-        <div class="info-card reveal d1">
-          <div class="info-card-header">
-            <div class="info-card-icon whatsapp">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>
-            </div>
-            <div class="info-card-title"><a href="#">Fale pelo WhatsApp</a></div>
-          </div>
-          <div class="info-card-body">Resposta em minutos durante horário comercial.</div>
+      <div class="form-card-wiz reveal-right d1">
+        <div class="form-step-row"><span class="form-step-label" id="fStepLabel">PASSO 1 DE 4</span></div>
+        <div class="form-dots">
+          <div class="fdot active" data-step="0"></div>
+          <div class="fdot" data-step="1"></div>
+          <div class="fdot" data-step="2"></div>
+          <div class="fdot" data-step="3"></div>
         </div>
-
-        <!-- Email -->
-        <div class="info-card reveal d2">
-          <div class="info-card-header">
-            <div class="info-card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-            </div>
-            <div class="info-card-title">contato@maturare.com.br</div>
+        <div class="fpanel active" data-panel="0">
+          <h4>O que melhor descreve sua situação agora?</h4>
+          <p class="hint">Seja honesto, isso define o diagnóstico</p>
+          <div class="fopts" id="fType">
+            <button type="button" class="fopt" data-value="Estou perdendo clientes para concorrentes que aparecem mais" onclick="selOpt(this)">Estou perdendo clientes para concorrentes que aparecem mais</button>
+            <button type="button" class="fopt" data-value="Pago caro em ads e quero sair dessa dependência" onclick="selOpt(this)">Pago caro em ads e quero sair dessa dependência</button>
+            <button type="button" class="fopt" data-value="Quero crescer mas não sei por onde começar com SEO" onclick="selOpt(this)">Quero crescer mas não sei por onde começar com SEO</button>
+            <button type="button" class="fopt" data-value="Já tentei SEO antes e não funcionou" onclick="selOpt(this)">Já tentei SEO antes e não funcionou</button>
           </div>
-          <div class="info-card-body">Envie um email e respondemos em até 24 horas.</div>
+          <div class="fnav"><button type="button" class="btn-p fnav-full" onclick="fNext()">Próximo &#8594;</button></div>
         </div>
-
-        <!-- Localização -->
-        <div class="info-card reveal d3">
-          <div class="info-card-header">
-            <div class="info-card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-            </div>
-            <div class="info-card-title">Niterói, RJ — Brasil</div>
-          </div>
-          <div class="info-card-body">Operação 100% remota. Atendemos todo o Brasil.</div>
+        <div class="fpanel" data-panel="1">
+          <h4>Qual é o seu site?</h4>
+          <p class="hint">Cole a URL abaixo para analisarmos antes do diagnóstico</p>
+          <input class="finput" type="url" id="fSite" placeholder="https://seusite.com.br">
+          <button type="button" class="fopt fopt-nosite" id="fNoSite" onclick="toggleNoSite(this)">Não tenho site ainda</button>
+          <div class="fnav"><button type="button" class="fbtn-back" onclick="fPrev()">&#8592; Voltar</button><button type="button" class="btn-p" onclick="fNext()">Próximo &#8594;</button></div>
         </div>
-
-        <!-- Horário -->
-        <div class="info-card reveal d4">
-          <div class="info-card-header">
-            <div class="info-card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            </div>
-            <div class="info-card-title">Horário de atendimento</div>
+        <div class="fpanel" data-panel="2">
+          <h4>Quanto investe em ads por mês?</h4>
+          <p class="hint">Isso nos ajuda a mostrar quanto SEO pode economizar</p>
+          <div class="fopts" id="fBudget">
+            <button type="button" class="fopt" data-value="Não invisto em ads" onclick="selOpt(this)">Não invisto em ads</button>
+            <button type="button" class="fopt" data-value="R$1.000 a R$4.000" onclick="selOpt(this)">R$1.000 a R$4.000</button>
+            <button type="button" class="fopt" data-value="R$4.000 a R$10.000" onclick="selOpt(this)">R$4.000 a R$10.000</button>
+            <button type="button" class="fopt" data-value="R$10.000 a R$20.000" onclick="selOpt(this)">R$10.000 a R$20.000</button>
+            <button type="button" class="fopt" data-value="R$20.000 a R$40.000" onclick="selOpt(this)">R$20.000 a R$40.000</button>
+            <button type="button" class="fopt" data-value="Acima de R$40.000" onclick="selOpt(this)">Acima de R$40.000</button>
           </div>
-          <div class="info-card-body">Seg a Sex: 9h às 18h<br>Sáb: 9h às 13h</div>
+          <div class="fnav"><button type="button" class="fbtn-back" onclick="fPrev()">&#8592; Voltar</button><button type="button" class="btn-p" onclick="fNext()">Próximo &#8594;</button></div>
         </div>
-
-        <!-- Redes -->
-        <div class="info-card reveal d5">
-          <div class="info-card-header">
-            <div class="info-card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-            </div>
-            <div class="info-card-title">Redes sociais</div>
-          </div>
-          <div class="info-card-body">
-            <div class="social-row">
-              <a href="https://www.instagram.com/maturare.com.br/" target="_blank" class="social-link">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
-                @maturare.com.br
-              </a>
-              <a href="https://www.youtube.com/@googledominado1" target="_blank" class="social-link">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.546 12 3.546 12 3.546s-7.505 0-9.377.504A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.504 9.376.504 9.376.504s7.505 0 9.377-.504a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-                @googledominado1
-              </a>
-            </div>
-          </div>
+        <div class="fpanel" data-panel="3">
+          <h4>Seus dados de contato</h4>
+          <p class="hint">O Daniel responde pessoalmente em até 24h</p>
+          <input class="finput" type="text" id="fName" placeholder="Seu nome">
+          <input class="finput" type="tel" id="fPhone" placeholder="Seu WhatsApp (DDD + número)">
+          <input class="finput" type="text" id="fCompany" placeholder="Nome da empresa">
+          <textarea class="finput" id="fBio" placeholder="Fale sobre o seu negócio, queremos te conhecer melhor para entender como podemos te ajudar." rows="3" style="resize:none;line-height:1.6;"></textarea>
+          <div class="fnav"><button type="button" class="fbtn-back" onclick="fPrev()">&#8592; Voltar</button><button type="button" class="fbtn-submit" onclick="fSubmit()">Agendar Diagnóstico</button></div>
+          <p class="form-privacy">Seus dados são usados apenas para contato comercial.</p>
         </div>
-
       </div>
     </div>
   </div>
@@ -1620,17 +1919,133 @@ footer {
 </section>
 
 <!-- CLIENT STRIP [LIGHT] -->
-<div style="overflow:hidden;padding:48px 0;border-top:1px solid var(--faint);border-bottom:1px solid var(--faint);background:var(--paper);">
-  <div style="text-align:center;font-size:14px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--dim);margin-bottom:28px;">Quem confia na Maturare</div>
-  <div class="logo-marquee">
-    <div class="logo-marquee-item"><img src="https://movemaquinas.com.br/assets/logo-move-maquinas-B2l9eWy_.png" alt="Move Máquinas" loading="lazy"></div>
-    <div class="logo-marquee-item"><img src="https://framerusercontent.com/images/912Bk5uKdxMx0IggmgUKAE201Q.svg" alt="Mundpay" loading="lazy"></div>
-    <div class="logo-marquee-item"><img src="https://phdplayground.com.br/wp-content/uploads/elementor/thumbs/Untitled-design-3-ps5zcsr26yinnlhpo9pd8zi653uqjvzmkipby9sqco.png" alt="PHD Playground" loading="lazy"></div>
-    <div class="logo-marquee-item"><img src="https://ambientalwash.com.br/wp-content/uploads/2023/08/LOGO.png" alt="Ambiental Wash" loading="lazy"></div>
-    <div class="logo-marquee-item"><img src="https://movemaquinas.com.br/assets/logo-move-maquinas-B2l9eWy_.png" alt="Move Máquinas" loading="lazy"></div>
-    <div class="logo-marquee-item"><img src="https://framerusercontent.com/images/912Bk5uKdxMx0IggmgUKAE201Q.svg" alt="Mundpay" loading="lazy"></div>
-    <div class="logo-marquee-item"><img src="https://phdplayground.com.br/wp-content/uploads/elementor/thumbs/Untitled-design-3-ps5zcsr26yinnlhpo9pd8zi653uqjvzmkipby9sqco.png" alt="PHD Playground" loading="lazy"></div>
-    <div class="logo-marquee-item"><img src="https://ambientalwash.com.br/wp-content/uploads/2023/08/LOGO.png" alt="Ambiental Wash" loading="lazy"></div>
+<div class="client-strip">
+  <div class="clients-grid" id="clientGrid">
+
+    <div class="cl-item" data-id="phd">
+      <img src="../assets/phd-playground-logo.png" alt="PHD Playground">
+      <span class="cl-badge case">Case study</span>
+    </div>
+    <div class="cl-item" data-id="move">
+      <img src="../assets/move-maquinas-logo.png" alt="Move Máquinas">
+      <span class="cl-badge case">Case study</span>
+      <span class="cl-tap-hint"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V6a2 2 0 0 0-4 0v5"/><path d="M14 10V4a2 2 0 0 0-4 0v6"/><path d="M10 10.5V6a2 2 0 0 0-4 0v8"/><path d="M6 14a4 4 0 0 0 4 4h4a4 4 0 0 0 4-4v-2.5"/></svg>toque para ver</span>
+    </div>
+    <div class="cl-item" data-id="ambiental">
+      <img src="../assets/ambiental-wash-logo.webp" alt="Ambiental Wash">
+      <span class="cl-badge case">Case study</span>
+      <span class="cl-tap-hint"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V6a2 2 0 0 0-4 0v5"/><path d="M14 10V4a2 2 0 0 0-4 0v6"/><path d="M10 10.5V6a2 2 0 0 0-4 0v8"/><path d="M6 14a4 4 0 0 0 4 4h4a4 4 0 0 0 4-4v-2.5"/></svg>toque para ver</span>
+    </div>
+    <div class="cl-item" data-id="keysfan">
+      <img src="../assets/keysfan-logo.webp" alt="Keysfan">
+      <span class="cl-badge case">Case study</span>
+      <span class="cl-tap-hint"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V6a2 2 0 0 0-4 0v5"/><path d="M14 10V4a2 2 0 0 0-4 0v6"/><path d="M10 10.5V6a2 2 0 0 0-4 0v8"/><path d="M6 14a4 4 0 0 0 4 4h4a4 4 0 0 0 4-4v-2.5"/></svg>toque para ver</span>
+    </div>
+    <div class="cl-item" data-id="mundpay">
+      <img src="../assets/mundpay-logo.png" alt="Mundpay">
+      <span class="cl-badge">Cliente</span>
+      <span class="cl-tap-hint"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V6a2 2 0 0 0-4 0v5"/><path d="M14 10V4a2 2 0 0 0-4 0v6"/><path d="M10 10.5V6a2 2 0 0 0-4 0v8"/><path d="M6 14a4 4 0 0 0 4 4h4a4 4 0 0 0 4-4v-2.5"/></svg>toque para ver</span>
+    </div>
+    <div class="cl-item" data-id="agita">
+      <img src="../assets/agita-morango-logo.png" alt="Agita Morango">
+      <span class="cl-badge">Cliente</span>
+      <span class="cl-tap-hint"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V6a2 2 0 0 0-4 0v5"/><path d="M14 10V4a2 2 0 0 0-4 0v6"/><path d="M10 10.5V6a2 2 0 0 0-4 0v8"/><path d="M6 14a4 4 0 0 0 4 4h4a4 4 0 0 0 4-4v-2.5"/></svg>toque para ver</span>
+    </div>
+    <div class="cl-item" data-id="inpress">
+      <img src="../assets/inpress-brasil-logo.jpeg" alt="Inpress Brasil">
+      <span class="cl-badge">Cliente</span>
+      <span class="cl-tap-hint"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V6a2 2 0 0 0-4 0v5"/><path d="M14 10V4a2 2 0 0 0-4 0v6"/><path d="M10 10.5V6a2 2 0 0 0-4 0v8"/><path d="M6 14a4 4 0 0 0 4 4h4a4 4 0 0 0 4-4v-2.5"/></svg>toque para ver</span>
+    </div>
+    <div class="cl-item" data-id="inled">
+      <img src="../assets/inled-brasil-logo.png" alt="Inled Brasil">
+      <span class="cl-badge">Cliente</span>
+      <span class="cl-tap-hint"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V6a2 2 0 0 0-4 0v5"/><path d="M14 10V4a2 2 0 0 0-4 0v6"/><path d="M10 10.5V6a2 2 0 0 0-4 0v8"/><path d="M6 14a4 4 0 0 0 4 4h4a4 4 0 0 0 4-4v-2.5"/></svg>toque para ver</span>
+    </div>
+    <div class="cl-item" data-id="amanda">
+      <img src="../assets/am-cabral-logo.svg" alt="Amanda Cabral">
+      <span class="cl-badge">Cliente</span>
+      <span class="cl-tap-hint"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V6a2 2 0 0 0-4 0v5"/><path d="M14 10V4a2 2 0 0 0-4 0v6"/><path d="M10 10.5V6a2 2 0 0 0-4 0v8"/><path d="M6 14a4 4 0 0 0 4 4h4a4 4 0 0 0 4-4v-2.5"/></svg>toque para ver</span>
+    </div>
+    <div class="cl-item" data-id="soft">
+      <img src="../assets/soft-everest-logo.png" alt="Soft Everest">
+      <span class="cl-badge">Cliente</span>
+      <span class="cl-tap-hint"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V6a2 2 0 0 0-4 0v5"/><path d="M14 10V4a2 2 0 0 0-4 0v6"/><path d="M10 10.5V6a2 2 0 0 0-4 0v8"/><path d="M6 14a4 4 0 0 0 4 4h4a4 4 0 0 0 4-4v-2.5"/></svg>toque para ver</span>
+    </div>
+
+  </div>
+
+  <!-- two-col: âncora + carrossel de depoimentos -->
+  <div class="cs-bottom">
+    <div class="cs-left">
+      <h3 class="cs-left-headline">Construímos posicionamento orgânico<br><em>para quem quer ser encontrado.</em></h3>
+      <p class="cs-left-desc">Uma equipe especializada em SEO, GEO e AEO, liderada diretamente pelo Daniel Rios. Cada cliente recebe atenção do founder, não de estagiário.</p>
+      <div class="cs-avatars">
+        <img src="../assets/daniel-rios-foto.jpg" alt="Daniel Rios" title="Daniel Rios, Founder">
+        <img src="../assets/felipe-foto.jpg" alt="Felipe" title="Felipe, PHD Playground">
+        <img src="../assets/matheus-foto.jpg" alt="Matheus" title="Matheus, Keysfan">
+        <img src="../assets/bruno-foto.jpg" alt="Bruno" title="Bruno, Ambiental Wash">
+        <div class="cs-avatars-label">
+          <strong>+de 74 clientes</strong>
+          já fizeram projetos SEO + GEO com a Maturare
+        </div>
+      </div>
+    </div>
+    <div class="cs-right">
+      <div class="cs-carousel">
+        <!-- Slide 1 -->
+        <div class="cs-slide active">
+          <img class="cs-slide-logo" src="../assets/phd-playground-logo.png" alt="PHD Playground">
+          <p class="cs-quote">"Criamos páginas específicas para Playground de Madeira RJ, para restaurantes, hotéis fazenda. Dois anos depois, <mark>ele economizou mais de R$70 mil em anúncios</mark> e o faturamento aumentou com leads qualificados vindos do orgânico."</p>
+          <div class="cs-author">
+            <img src="../assets/felipe-foto.jpg" alt="Felipe">
+            <div class="cs-author-info">
+              <strong>Felipe</strong>
+              <span>PHD Playground, Rio de Janeiro</span>
+            </div>
+          </div>
+        </div>
+        <!-- Slide 2 -->
+        <div class="cs-slide">
+          <img class="cs-slide-logo" src="../assets/keysfan-logo.webp" alt="Keysfan">
+          <p class="cs-quote">"<mark>R$12 mil em vendas orgânicas todo mês.</mark> Licenças de Windows ranqueando nas principais keywords. Sem ads."</p>
+          <div class="cs-author">
+            <img src="../assets/matheus-foto.jpg" alt="Matheus">
+            <div class="cs-author-info">
+              <strong>Matheus</strong>
+              <span>Keysfan, Nacional</span>
+            </div>
+          </div>
+        </div>
+        <!-- Slide 3 -->
+        <div class="cs-slide">
+          <img class="cs-slide-logo" src="../assets/ambiental-wash-logo.webp" alt="Ambiental Wash">
+          <p class="cs-quote">"Quando pesquisam lavanderia na Barra ou em Copacabana, <mark>minha empresa aparece no topo.</mark> A Maturare fez isso."</p>
+          <div class="cs-author">
+            <img src="../assets/bruno-foto.jpg" alt="Bruno">
+            <div class="cs-author-info">
+              <strong>Bruno</strong>
+              <span>Ambiental Wash, Rio de Janeiro</span>
+            </div>
+          </div>
+        </div>
+        <!-- nav -->
+        <div class="cs-nav">
+          <div class="cs-dots">
+            <button class="cs-dot active" data-idx="0"></button>
+            <button class="cs-dot" data-idx="1"></button>
+            <button class="cs-dot" data-idx="2"></button>
+          </div>
+          <div class="cs-arrows">
+            <button class="cs-arr" id="csPrev" aria-label="Anterior">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+            <button class="cs-arr" id="csNext" aria-label="Próximo">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2" stroke-linecap="round"><polyline points="9 6 15 12 9 18"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -1910,6 +2325,194 @@ if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     if (e) { e.style.transition = 'none'; e.classList.add('in'); }
   });
 }
+
+/* === CLIENT CAROUSEL === */
+(function() {
+  var slides = document.querySelectorAll('.cs-slide');
+  var dots = document.querySelectorAll('.cs-dot');
+  var cur = 0;
+  function goTo(n) {
+    slides[cur].classList.remove('active');
+    dots[cur].classList.remove('active');
+    cur = (n + slides.length) % slides.length;
+    slides[cur].classList.add('active');
+    dots[cur].classList.add('active');
+  }
+  var prev = document.getElementById('csPrev');
+  var next = document.getElementById('csNext');
+  if (prev) prev.addEventListener('click', function() { goTo(cur - 1); });
+  if (next) next.addEventListener('click', function() { goTo(cur + 1); });
+  dots.forEach(function(d) { d.addEventListener('click', function() { goTo(+d.getAttribute('data-idx')); }); });
+  setInterval(function() { goTo(cur + 1); }, 5000);
+})();
+
+/* === FORM WIZARD === */
+var fStep = 0;
+var fData = {type: '', seg: '', budget: '', name: '', phone: '', company: ''};
+function selOpt(btn) {
+  if (!btn) return;
+  var p = btn.parentElement;
+  if (!p) return;
+  p.querySelectorAll('.fopt').forEach(function(o) { o.classList.remove('selected'); });
+  btn.classList.add('selected');
+  if (p.id === 'fType') fData.type = btn.dataset.value;
+  if (p.id === 'fBudget') fData.budget = btn.dataset.value;
+  if (p.id === 'fAcq') fData.acq = btn.dataset.value;
+  setTimeout(fNext, 300);
+}
+function toggleNoSite(btn) {
+  var siteEl = document.getElementById('fSite');
+  var isActive = btn.classList.contains('selected');
+  if (isActive) {
+    btn.classList.remove('selected');
+    siteEl.disabled = false;
+    siteEl.value = '';
+    fData.site = '';
+  } else {
+    btn.classList.add('selected');
+    siteEl.disabled = true;
+    siteEl.value = '';
+    fData.site = 'Não tem site';
+  }
+}
+function fNext() { if (fStep < 3) { fStep++; fUpdate(); } }
+function fPrev() { if (fStep > 0) { fStep--; fUpdate(); } }
+function fUpdate() {
+  document.querySelectorAll('.fpanel').forEach(function(p, i) {
+    p.classList.toggle('active', i === fStep);
+  });
+  document.querySelectorAll('.fdot').forEach(function(d, i) {
+    d.classList.remove('active', 'done');
+    if (i === fStep) d.classList.add('active');
+    if (i < fStep) d.classList.add('done');
+  });
+  var label = document.getElementById('fStepLabel');
+  if (label) label.textContent = 'PASSO ' + (fStep + 1) + ' DE 4';
+}
+function fSubmit() {
+  var nameEl = document.getElementById('fName');
+  var phoneEl = document.getElementById('fPhone');
+  var compEl = document.getElementById('fCompany');
+  var bioEl = document.getElementById('fBio');
+  fData.name = nameEl ? nameEl.value : '';
+  fData.phone = phoneEl ? phoneEl.value : '';
+  fData.company = compEl ? compEl.value : '';
+  fData.bio = bioEl ? bioEl.value : '';
+  var siteEl = document.getElementById('fSite');
+  if (!fData.site) fData.site = siteEl && siteEl.value ? siteEl.value : 'Não informado';
+  var msg = 'Olá! Vim pelo site da Maturare.\n\n' +
+    '*Desafio:* ' + (fData.type || 'Não especificado') + '\n' +
+    '*Site:* ' + fData.site + '\n' +
+    '*Investimento em Ads:* ' + (fData.budget || 'Não informado') + '\n' +
+    '*Nome:* ' + fData.name + '\n' +
+    '*Empresa:* ' + fData.company + '\n' +
+    '*WhatsApp:* ' + fData.phone + '\n' +
+    (fData.bio ? '*Sobre o negócio:* ' + fData.bio : '');
+  window.open('https://wa.me/5521990770731?text=' + encodeURIComponent(msg), '_blank');
+}
+
+/* === CLIENT GRID EXPAND === */
+(function(){
+  var clData = {
+    phd:      { logo:'../assets/phd-playground-logo.png',    alt:'PHD Playground',   name:'PHD Playground',   meta:'Playground de Madeira · Rio de Janeiro, RJ', estrategia:'Fichas do Google Meu Negócio ao redor do RJ e páginas específicas por segmento: restaurantes, hotéis fazenda e principais compradores do serviço.', resultado:'R$70k+ economizados em anúncios. 2 anos sem Google Ads. Faturamento cresceu com leads orgânicos qualificados.' },
+    move:     { logo:'../assets/move-maquinas-logo.png',     alt:'Move Máquinas',    name:'Move Máquinas',    meta:'Aluguel de Equipamentos · Goiânia, GO',          estrategia:'78 páginas em 90 dias cobrindo 63 cidades de Goiás com SEO local e presença nas principais IAs.',               resultado:'Recomendado pelo Google, ChatGPT e Perplexity. Economia de R$96k/ano em anúncios.' },
+    ambiental:{ logo:'../assets/ambiental-wash-logo.webp',   alt:'Ambiental Wash',   name:'Ambiental Wash',   meta:'Lavanderia · Barra e Copacabana, RJ',            estrategia:'SEO local, Google Meu Negócio e arquitetura de conteúdo para os dois bairros.',                                  resultado:'Topo do Google nas buscas de lavanderia na Barra e em Copacabana. R$48k/ano economizados.' },
+    keysfan:  { logo:'../assets/keysfan-logo.webp',          alt:'Keysfan',          name:'Keysfan',          meta:'Licenças de Software · Nacional',                estrategia:'SEO programático para as principais keywords de licença Windows e software.',                                      resultado:'R$12k/mês em vendas orgânicas. R$0 investido em anúncios.' },
+    amanda:   { logo:'../assets/am-cabral-logo.svg',         alt:'Amanda Cabral',    name:'Amanda Cabral',    meta:'Contabilidade · Minas Gerais',                   estrategia:'Site, SEO local e conteúdo para 15 cidades da carteira em MG.',                                                   resultado:'Posicionada nas principais cidades. Leads chegando sem anúncios.' },
+    mundpay:  { logo:'../assets/mundpay-logo.png',           alt:'Mundpay',          name:'Mundpay',          meta:'Pagamentos Globais · Nacional',                  estrategia:'Arquitetura de conhecimento e posicionamento GEO/AEO no segmento de pagamentos.',                                 resultado:'Entidade reconhecida pelas IAs no segmento de pagamentos digitais.' },
+    agita:    { logo:'../assets/agita-morango-logo.png',     alt:'Agita Morango',    name:'Agita Morango',    meta:'Recreação Infantil · São Paulo, SP',             estrategia:'48 páginas SEO cobrindo bairros e segmentos de São Paulo.',                                                       resultado:'Domínio local no Google para recreação infantil em SP.' },
+    inpress:  { logo:'../assets/inpress-brasil-logo.jpeg',   alt:'Inpress Brasil',   name:'Inpress Brasil',   meta:'Comunicação e RP · RJ',                          estrategia:'SEO institucional e otimização da presença orgânica.',                                                             resultado:'Maior visibilidade no segmento de comunicação corporativa.' },
+    inled:    { logo:'../assets/inled-brasil-logo.png',      alt:'Inled Brasil',     name:'Inled Brasil',     meta:'Iluminação LED · Nacional',                      estrategia:'SEO técnico e conteúdo para as principais keywords de iluminação LED.',                                           resultado:'Posicionado nas principais buscas do segmento no Brasil.' },
+    soft:     { logo:'../assets/soft-everest-logo.png',      alt:'Soft Everest',     name:'Soft Everest',     meta:'Tecnologia e Software · Nacional',               estrategia:'Posicionamento orgânico e arquitetura digital.',                                                                   resultado:'Visibilidade ampliada no Google para soluções de software.' }
+  };
+
+  var openId = null, enterTimer = null, leaveTimer = null;
+  var ENTER_DELAY = 200, LEAVE_DELAY = 300;
+
+  var panel = document.createElement('div');
+  panel.className = 'cl-expand';
+  panel.innerHTML = '<div class="cl-expand-inner"><div class="cl-expand-body" id="cl-expand-body"></div></div>';
+
+  function isMobile() { return window.matchMedia('(max-width: 768px)').matches; }
+
+  function getColCount() {
+    var grid = document.getElementById('clientGrid');
+    if (!grid) return 5;
+    var cols = window.getComputedStyle(grid).getPropertyValue('grid-template-columns').trim().split(/\s+/).length;
+    return cols;
+  }
+
+  function buildBody(id) {
+    var d = clData[id];
+    document.getElementById('cl-expand-body').innerHTML =
+      '<div class="cl-expand-logo"><img src="' + d.logo + '" alt="' + d.alt + '"></div>' +
+      '<div class="cl-expand-content">' +
+        '<div class="cl-expand-name">' + d.name + '</div>' +
+        '<div class="cl-expand-meta">' + d.meta + '</div>' +
+        '<div class="cl-expand-block">' +
+          '<div class="cl-expand-label">Estratégia</div>' +
+          '<div class="cl-expand-text">' + d.estrategia + '</div>' +
+        '</div>' +
+        '<div class="cl-expand-block cl-expand-result">' +
+          '<div class="cl-expand-label">Resultado</div>' +
+          '<div class="cl-expand-text">' + d.resultado + '</div>' +
+        '</div>' +
+      '</div>';
+  }
+
+  function openPanel(item, id) {
+    var items = Array.from(document.querySelectorAll('#clientGrid .cl-item'));
+    var idx   = items.indexOf(item);
+    var cols  = getColCount();
+    var lastIdx = Math.min(idx + (cols - 1 - (idx % cols)), items.length - 1);
+    var anchor  = items[lastIdx];
+    anchor.after(panel);
+    buildBody(id);
+    openId = id;
+    panel.classList.remove('open');
+    void panel.offsetHeight;
+    panel.classList.add('open');
+    items.forEach(function(i){ i.classList.remove('active'); });
+    item.classList.add('active');
+    if (isMobile()) {
+      setTimeout(function(){
+        panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }, 80);
+    }
+  }
+
+  function closeAll() {
+    panel.classList.remove('open');
+    document.querySelectorAll('#clientGrid .cl-item').forEach(function(i){ i.classList.remove('active'); });
+    openId = null;
+  }
+
+  document.querySelectorAll('#clientGrid .cl-item[data-id]').forEach(function(item) {
+    var id = item.dataset.id;
+    item.addEventListener('click', function() {
+      if (!isMobile()) return;
+      if (openId === id) { closeAll(); } else { openPanel(item, id); }
+    });
+    item.addEventListener('mouseenter', function() {
+      if (isMobile()) return;
+      clearTimeout(leaveTimer);
+      enterTimer = setTimeout(function(){ openPanel(item, id); }, ENTER_DELAY);
+    });
+    item.addEventListener('mouseleave', function() {
+      if (isMobile()) return;
+      clearTimeout(enterTimer);
+      leaveTimer = setTimeout(closeAll, LEAVE_DELAY);
+    });
+  });
+
+  panel.addEventListener('mouseenter', function(){ if (!isMobile()){ clearTimeout(leaveTimer); clearTimeout(enterTimer); } });
+  panel.addEventListener('mouseleave', function(){ if (!isMobile()){ leaveTimer = setTimeout(closeAll, LEAVE_DELAY); } });
+
+  if (isMobile()) {
+    var firstItem = document.querySelector('#clientGrid .cl-item[data-id="phd"]');
+    if (firstItem) openPanel(firstItem, 'phd');
+  }
+})();
 </script>
 </body>
 </html>
