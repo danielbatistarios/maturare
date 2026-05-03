@@ -388,31 +388,31 @@ footer {
 <!-- NAV -->
 <a href="#main-content" class="skip-link">Pular para conteúdo</a>
 <nav id="nav">
-  <a href="home-maturare-final.html" class="logo">Maturare</a>
+  <a href="/" class="logo">Maturare</a>
   <ul class="nav-links">
-    <li><a href="home-maturare-final.html" class="nav-btn">Home</a></li>
-    <li><a href="metodologia.html" class="nav-btn">Metodologia</a></li>
-    <li><a href="projetos.html" class="nav-btn">Projetos</a></li>
-    <li><a href="blog.html" class="nav-btn">Blog</a></li>
-    <li><a href="contato.html" class="nav-btn">Contato</a></li>
+    <li><a href="/" class="nav-btn">Home</a></li>
+    <li><a href="/servicos" class="nav-btn" style="color:var(--green2)">Serviços</a></li>
+    <li><a href="/blog" class="nav-btn">Blog</a></li>
+    <li><a href="projetos.html" class="nav-btn">Resultados</a></li>
+    <li><a href="daniel-rios.html" class="nav-btn">Sobre</a></li>
+    <li><a href="faq-maturare.html" class="nav-btn">FAQ</a></li>
   </ul>
   <div class="nav-r">
-    <a href="contato.html" class="nav-cta">Fale Com Especialista</a>
-    <button class="hamburger" id="hambBtn" aria-label="Abrir menu de navegação"><span></span><span></span><span></span></button>
+    <button class="nav-cta" onclick="location.href='contato.html'">Fale Com Especialista</button>
+    <button class="hamburger" id="hambBtn" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
 <div class="mob-overlay" id="mobOverlay"></div>
-<div class="mob-menu" id="mobMenu">
-  <a href="home-maturare-final.html">Home</a>
-  <a href="sobre.html">Sobre</a>
-  <a href="metodologia.html">Metodologia</a>
-  <a href="projetos.html">Projetos</a>
-  <a href="blog.html">Blog</a>
-  <a href="daniel-rios.html">Daniel Rios</a>
-  <a href="nossos-clientes.html">Clientes</a>
-  <a href="depoimentos.html">Depoimentos</a>
+<div class="mob-menu" id="mobMenu" role="navigation" aria-label="Menu mobile">
+  <a href="/">Home</a>
+  <a href="/servicos" style="color:var(--green2)">Serviços</a>
+  <a href="/blog">Blog</a>
+  <a href="projetos.html">Resultados</a>
+  <a href="daniel-rios.html">Sobre</a>
   <a href="faq-maturare.html">FAQ</a>
-  <a href="contato.html" class="mob-menu-cta">Fale Com Especialista</a>
+  <a href="contato.html" class="mob-cta">Solicitar Diagnóstico</a>
 </div>
 
 <!-- HERO -->
@@ -591,27 +591,33 @@ footer {
     <div class="foot-top">
       <div>
         <div class="foot-brand">Maturare</div>
-        <p class="foot-tag">Aceleradora de negócios que faz empresas locais serem encontradas no Google e recomendadas pelas IAs.</p>
+        <p class="foot-tag">Construímos ativos digitais que vendem por você.</p>
         <div class="foot-live">Monitoramento ativo</div>
       </div>
       <div>
-        <div class="fcol-h">Principal</div>
+        <div class="fcol-h">Serviços</div>
         <ul class="flinks">
-          <li><a href="home-maturare-final.html">Home</a></li>
-          <li><a href="sobre.html">Sobre</a></li>
-          <li><a href="metodologia.html">Metodologia</a></li>
-          <li><a href="projetos.html">Projetos</a></li>
-          <li><a href="blog.html">Blog</a></li>
+          <li><a href="/consultoria-seo">Consultoria de SEO</a></li>
+          <li><a href="/criacao-sites-seo-ia">Criação de Sites</a></li>
+          <li><a href="/google-meu-negocio">Google Meu Negócio</a></li>
+          <li><a href="/agencia-geo-aeo">GEO e AEO</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="fcol-h">Segmentos</div>
+        <ul class="flinks">
+          <li><a href="/seo-contadores">Contadores</a></li>
+          <li><a href="/seo-clinicas">Clínicas</a></li>
+          <li><a href="/seo-advogados">Advogados</a></li>
+          <li><a href="/seo-negocios-locais">Negócios Locais</a></li>
         </ul>
       </div>
       <div>
         <div class="fcol-h">Empresa</div>
         <ul class="flinks">
-          <li><a href="nossos-clientes.html">Nossos Clientes</a></li>
-          <li><a href="depoimentos.html">Depoimentos</a></li>
-          <li><a href="contato.html">Contato</a></li>
-          <li><a href="faq-maturare.html">FAQ</a></li>
-          <li><a href="daniel-rios.html">Daniel Rios</a></li>
+          <li><a href="daniel-rios.html">Sobre</a></li>
+          <li><a href="/blog">Blog</a></li>
+          <li><a href="projetos.html">Resultados</a></li>
         </ul>
       </div>
       <div>
@@ -624,16 +630,11 @@ footer {
       </div>
     </div>
     <div class="foot-bot">
-      <div class="foot-legal">
-        <a href="termos-de-privacidade.html">Termos de Privacidade</a>
-        <a href="politica-de-cookies.html">Política de Cookies</a>
-        <a href="termos-de-uso.html">Termos de Uso</a>
-      </div>
       <div class="foot-copy">&#169; 2026 Maturare · CNPJ 47.336.340/0001-51 · Niterói, RJ</div>
       <div class="foot-socs">
-        <a href="https://br.linkedin.com/in/daniel-batista-674b62140" target="_blank" aria-label="LinkedIn da Maturare">LinkedIn</a>
-        <a href="https://www.instagram.com/maturare.com.br/" target="_blank" aria-label="Instagram da Maturare">Instagram</a>
-        <a href="https://www.youtube.com/@googledominado1" target="_blank" aria-label="YouTube da Maturare">YouTube</a>
+        <a href="https://br.linkedin.com/in/daniel-batista-674b62140" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://www.instagram.com/maturare.com.br/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.youtube.com/@googledominado1" target="_blank" rel="noopener">YouTube</a>
       </div>
     </div>
   </div>
