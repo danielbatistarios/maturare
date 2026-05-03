@@ -601,8 +601,11 @@ nav.scrolled {
 /* === LOGOS GRID === */
 .logos-sec {
   padding: var(--sec-pad) 0;
-  background: var(--z0);
+  background: #fff;
 }
+.logos-sec .sec-label,
+.logos-sec .sec-h { color: var(--ink); }
+.logos-sec .sec-label { color: var(--dim); }
 .logos-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -610,38 +613,51 @@ nav.scrolled {
   margin-top: 48px;
 }
 .logo-card {
-  background: var(--z2);
-  border: 1px solid var(--border-z2);
+  background: #f9f9f7;
+  border: 1px solid rgba(0,0,0,.08);
   border-radius: var(--r-card);
-  padding: 40px 24px;
+  padding: 28px 20px 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 16px;
+  gap: 12px;
   text-align: center;
-  transition: border-color var(--t-normal), box-shadow var(--t-normal);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: var(--toplight);
+  transition: border-color var(--t-normal), box-shadow var(--t-normal), transform var(--t-normal);
+  overflow: hidden;
 }
 .logo-card:hover {
-  border-color: var(--border-z3);
-  box-shadow: var(--toplight), var(--shadow-2);
+  border-color: rgba(0,0,0,.14);
+  box-shadow: 0 6px 24px rgba(0,0,0,.08);
+  transform: translateY(-2px);
+}
+.logo-site-preview {
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(0,0,0,.07);
+  aspect-ratio: 16/10;
+  background: #e8e8e6;
+}
+.logo-site-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
 }
 .logo-placeholder {
   width: 100%;
-  height: 48px;
-  background: var(--z3);
+  height: 44px;
+  background: transparent;
   border-radius: var(--r-subtle);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .logo-name {
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
-  color: rgba(255,255,255,.7);
+  color: var(--ink);
   letter-spacing: .02em;
 }
 .logo-card.soon {
@@ -649,7 +665,7 @@ nav.scrolled {
   opacity: .5;
 }
 .logo-card.soon .logo-name {
-  color: var(--green2);
+  color: var(--green);
   font-weight: 500;
 }
 
@@ -1489,35 +1505,43 @@ p, .hero-sub { text-wrap: pretty; }
     <h2 class="sec-h lt reveal d1">Quais setores a Maturare atende?</h2>
     <div class="logos-grid">
       <div class="logo-card reveal d1">
-        <div class="logo-placeholder"><img src="../assets/phd-playground-logo.png" alt="PHD Playground" style="max-height:48px;width:auto;object-fit:contain;filter:brightness(0) invert(1);opacity:.75;"></div>
+        <div class="logo-site-preview"><img src="../assets/phd-playground-site.png" alt="Site PHD Playground" loading="lazy"></div>
+        <div class="logo-placeholder"><img src="../assets/phd-playground-logo.png" alt="PHD Playground" style="max-height:40px;width:auto;object-fit:contain;"></div>
         <span class="logo-name">PHD Playground</span>
       </div>
       <div class="logo-card reveal d2">
-        <div class="logo-placeholder"><img src="../assets/ambiental-wash-logo.webp" alt="Ambiental Wash" style="max-height:48px;width:auto;object-fit:contain;filter:brightness(0) invert(1);opacity:.75;"></div>
+        <div class="logo-site-preview" style="background:#d8edf2;display:flex;align-items:center;justify-content:center;"><span style="font-size:11px;color:#666;font-family:var(--sans);">Ambiental Wash</span></div>
+        <div class="logo-placeholder"><img src="../assets/ambiental-wash-logo.webp" alt="Ambiental Wash" style="max-height:40px;width:auto;object-fit:contain;"></div>
         <span class="logo-name">Ambiental Wash</span>
       </div>
       <div class="logo-card reveal d3">
-        <div class="logo-placeholder"><img src="../assets/keysfan-logo.webp" alt="Keysfan" style="max-height:48px;width:auto;object-fit:contain;filter:brightness(0) invert(1);opacity:.75;"></div>
+        <div class="logo-site-preview"><img src="../assets/keysfan-site.png" alt="Site Keysfan" loading="lazy"></div>
+        <div class="logo-placeholder"><img src="../assets/keysfan-logo.webp" alt="Keysfan" style="max-height:40px;width:auto;object-fit:contain;"></div>
         <span class="logo-name">Keysfan</span>
       </div>
       <div class="logo-card reveal d4">
-        <div class="logo-placeholder"><img src="../assets/move-maquinas-logo.png" alt="Move Máquinas" style="max-height:48px;width:auto;object-fit:contain;filter:brightness(0) invert(1);opacity:.75;"></div>
+        <div class="logo-site-preview"><img src="../assets/move-maquinas-site.png" alt="Site Move Máquinas" loading="lazy"></div>
+        <div class="logo-placeholder"><img src="../assets/move-maquinas-logo.png" alt="Move Máquinas" style="max-height:40px;width:auto;object-fit:contain;"></div>
         <span class="logo-name">Move Máquinas</span>
       </div>
       <div class="logo-card reveal d1">
-        <div class="logo-placeholder"><img src="../assets/agita-morango-logo.png" alt="Agita Morango" style="max-height:48px;width:auto;object-fit:contain;filter:brightness(0) invert(1);opacity:.75;"></div>
-        <span class="logo-name">Agita Morango</span>
+        <div class="logo-site-preview"><img src="../assets/leticia-paula-site.png" alt="Site Letícia Paula" loading="lazy"></div>
+        <div class="logo-placeholder" style="height:28px;"></div>
+        <span class="logo-name">Letícia de Paula</span>
       </div>
       <div class="logo-card reveal d2">
-        <div class="logo-placeholder"><img src="../assets/mundpay-logo.png" alt="Mundpay" style="max-height:48px;width:auto;object-fit:contain;filter:brightness(0) invert(1);opacity:.75;"></div>
-        <span class="logo-name">Mundpay</span>
+        <div class="logo-site-preview"><img src="../assets/agita-morango-site.png" alt="Site Agita Morango" loading="lazy"></div>
+        <div class="logo-placeholder"><img src="../assets/agita-morango-logo.png" alt="Agita Morango" style="max-height:40px;width:auto;object-fit:contain;"></div>
+        <span class="logo-name">Agita Morango</span>
       </div>
       <div class="logo-card reveal d3">
-        <div class="logo-placeholder"><img src="../assets/inled-brasil-logo.png" alt="Inled Brasil" style="max-height:48px;width:auto;object-fit:contain;filter:brightness(0) invert(1);opacity:.75;"></div>
-        <span class="logo-name">Inled Brasil</span>
+        <div class="logo-site-preview"><img src="../assets/amanda-cabral-site.png" alt="Site Amanda Cabral" loading="lazy"></div>
+        <div class="logo-placeholder"><img src="../assets/am-cabral-logo.svg" alt="Amanda Cabral" style="max-height:40px;width:auto;object-fit:contain;"></div>
+        <span class="logo-name">Amanda Cabral</span>
       </div>
       <div class="logo-card soon reveal d4">
-        <div class="logo-placeholder"><span style="color:var(--green2);font-size:20px">+</span></div>
+        <div class="logo-site-preview" style="background:#f0f0ee;display:flex;align-items:center;justify-content:center;"><span style="font-size:22px;color:var(--green);">+</span></div>
+        <div class="logo-placeholder"></div>
         <span class="logo-name">Em breve</span>
       </div>
     </div>
