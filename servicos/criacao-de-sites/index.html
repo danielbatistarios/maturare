@@ -1088,6 +1088,107 @@ section.light .sec-desc { color: var(--dim); }
   background: var(--green2);
   opacity: .5;
 }
+/* portfolio grid */
+.portfolio-head {
+  margin: clamp(60px, 8vw, 90px) 0 clamp(32px, 4vw, 48px);
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.portfolio-head-left { max-width: 560px; }
+.portfolio-head-title {
+  font-family: var(--serif);
+  font-size: clamp(24px, 3vw, 36px);
+  font-weight: 400;
+  color: var(--paper);
+  margin-bottom: 8px;
+}
+.portfolio-head-sub {
+  font-size: 15px;
+  color: rgba(255,255,255,.4);
+  line-height: 1.6;
+}
+.portfolio-see-all {
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--green2);
+  text-decoration: none;
+  letter-spacing: .04em;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: gap .2s;
+}
+.portfolio-see-all:hover { gap: 10px; }
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.port-card {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.07);
+  background: var(--z1);
+  display: block;
+  text-decoration: none;
+  transition: transform .35s var(--spring), border-color .3s, box-shadow .3s;
+}
+.port-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(26,122,74,.35);
+  box-shadow: 0 20px 60px rgba(0,0,0,.45), 0 0 30px rgba(26,122,74,.08);
+}
+.port-card-img {
+  width: 100%;
+  aspect-ratio: 16/10;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  transition: transform .5s var(--spring);
+}
+.port-card:hover .port-card-img { transform: scale(1.04); }
+.port-card-info {
+  padding: 16px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.port-card-name {
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(255,255,255,.85);
+}
+.port-card-niche {
+  font-size: 12px;
+  color: rgba(255,255,255,.3);
+  margin-top: 2px;
+}
+.port-card-arrow {
+  color: var(--green2);
+  font-size: 16px;
+  opacity: 0;
+  transition: opacity .25s, transform .25s;
+  flex-shrink: 0;
+}
+.port-card:hover .port-card-arrow {
+  opacity: 1;
+  transform: translateX(4px);
+}
+@media (max-width: 900px) {
+  .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 540px) {
+  .portfolio-grid { grid-template-columns: 1fr; }
+  .portfolio-head { flex-direction: column; align-items: flex-start; }
+}
 
 /* === CENARIOS (light) === */
 .cenarios-section {
@@ -2620,6 +2721,73 @@ footer {
         </ul>
       </div>
     </div>
+
+    <!-- Portfolio de sites criados -->
+    <div class="portfolio-head reveal">
+      <div class="portfolio-head-left">
+        <div class="portfolio-head-title">Sites que já entregamos</div>
+        <p class="portfolio-head-sub">Cada site foi construído do zero com arquitetura SEO, design e copy estratégico. Clique para visitar.</p>
+      </div>
+      <a href="/projetos-realizados/" class="portfolio-see-all">Ver todos os projetos →</a>
+    </div>
+    <div class="portfolio-grid">
+      <a href="https://phdplayground.com.br" target="_blank" rel="noopener" class="port-card reveal d1">
+        <img src="/assets/phd-playground-site.png" alt="Site PHD Playground — playground de madeira RJ" class="port-card-img" loading="lazy" width="800" height="500">
+        <div class="port-card-info">
+          <div>
+            <div class="port-card-name">PHD Playground</div>
+            <div class="port-card-niche">Playground artesanal · Rio de Janeiro</div>
+          </div>
+          <span class="port-card-arrow">→</span>
+        </div>
+      </a>
+      <a href="https://movemaquinas.com.br" target="_blank" rel="noopener" class="port-card reveal d2">
+        <img src="/assets/move-maquinas-site.png" alt="Site Move Máquinas — locação de empilhadeiras Goiânia" class="port-card-img" loading="lazy" width="800" height="500">
+        <div class="port-card-info">
+          <div>
+            <div class="port-card-name">Move Máquinas</div>
+            <div class="port-card-niche">Locação de empilhadeiras · Goiânia</div>
+          </div>
+          <span class="port-card-arrow">→</span>
+        </div>
+      </a>
+      <a href="https://agitamorango.com.br" target="_blank" rel="noopener" class="port-card reveal d3">
+        <img src="/assets/agita-morango-site.png" alt="Site Agita Morango — recreação infantil São Paulo" class="port-card-img" loading="lazy" width="800" height="500">
+        <div class="port-card-info">
+          <div>
+            <div class="port-card-name">Agita Morango</div>
+            <div class="port-card-niche">Recreação infantil · São Paulo</div>
+          </div>
+          <span class="port-card-arrow">→</span>
+        </div>
+      </a>
+      <a href="https://www.leticiapaula.com.br" target="_blank" rel="noopener" class="port-card reveal d1">
+        <img src="/assets/leticia-paula-site.png" alt="Site Letícia Paula — psicóloga Divinópolis MG" class="port-card-img" loading="lazy" width="800" height="500">
+        <div class="port-card-info">
+          <div>
+            <div class="port-card-name">Letícia Paula</div>
+            <div class="port-card-niche">Psicóloga · Divinópolis, MG</div>
+          </div>
+          <span class="port-card-arrow">→</span>
+        </div>
+      </a>
+      <a href="https://amcabralblindagem.com.br" target="_blank" rel="noopener" class="port-card reveal d2">
+        <img src="/assets/amanda-cabral-site.png" alt="Site Amanda Cabral — contadora tributária MG" class="port-card-img" loading="lazy" width="800" height="500">
+        <div class="port-card-info">
+          <div>
+            <div class="port-card-name">Amanda Cabral</div>
+            <div class="port-card-niche">Contadora tributária · Minas Gerais</div>
+          </div>
+          <span class="port-card-arrow">→</span>
+        </div>
+      </a>
+      <a href="#orcamento" class="port-card reveal d3" style="background:linear-gradient(135deg,rgba(26,122,74,.08),rgba(0,0,0,0));border-color:rgba(26,122,74,.2);display:flex;flex-direction:column;justify-content:center;align-items:center;min-height:200px;gap:12px;">
+        <div style="font-size:32px;color:rgba(26,122,74,.5);">+</div>
+        <div style="font-family:var(--serif);font-size:18px;color:rgba(255,255,255,.4);text-align:center;padding:0 24px;">Seu site pode estar aqui</div>
+        <div style="font-size:13px;color:rgba(255,255,255,.2);text-align:center;padding:0 24px">Diagnóstico gratuito</div>
+      </a>
+    </div>
+
   </div>
 </section>
 
