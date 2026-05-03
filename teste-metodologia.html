@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Teste — Seção Metodologia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink:   #1B3A2A;
+  --green: #2D6B45;
+  --gold:  #C4A035;
+  --cream: #F5F1E8;
+  --dim:   #5a6470;
+  --border: #e4e4e0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #fff;
+  color: var(--ink);
+}
+
+/* ── SECTION WRAPPER ── */
+.met-sec {
+  background: #fff;
+  padding: clamp(80px, 10vw, 140px) clamp(24px, 5vw, 80px);
+}
+.met-in {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* ── SECTION HEADER ── */
+.met-header {
+  text-align: center;
+  margin-bottom: 100px;
+}
+.met-header-label {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 16px;
+}
+.met-header h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-size: clamp(28px, 3.5vw, 44px);
+  color: var(--ink);
+  line-height: 1.2;
+  max-width: 640px;
+  margin: 0 auto 20px;
+}
+.met-header p {
+  font-size: 17px;
+  font-weight: 300;
+  color: var(--dim);
+  line-height: 1.8;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+/* ── STEP ── */
+.met-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.met-step {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  padding: 80px 0;
+  border-top: 1px solid var(--border);
+  /* reveal state */
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+.met-step.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.met-step:last-child { border-bottom: 1px solid var(--border); }
+.met-step:nth-child(even) .met-step-content { order: 2; }
+.met-step:nth-child(even) .met-step-visual  { order: 1; }
+
+/* ── LEFT CONTENT ── */
+.met-step-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.met-step-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.met-step-big-num {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-size: 13px;
+  line-height: 1;
+  color: #fff;
+  background: var(--green);
+  border-radius: 6px;
+  padding: 4px 9px;
+  letter-spacing: .04em;
+  user-select: none;
+  flex-shrink: 0;
+}
+.met-step-label {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--green);
+}
+
+.met-step-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: clamp(22px, 2.4vw, 30px);
+  color: var(--ink);
+  line-height: 1.25;
+  margin-bottom: 18px;
+}
+
+.met-step-desc {
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--dim);
+  line-height: 1.85;
+  margin-bottom: 32px;
+  max-width: 460px;
+}
+
+/* tags */
+.met-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.met-tag {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--dim);
+  background: #f4f4f0;
+  border: 1px solid #e4e4e0;
+  border-radius: 6px;
+  padding: 5px 12px;
+  letter-spacing: .02em;
+}
+
+/* ── RIGHT VISUAL ── */
+.met-step-visual {
+  background: var(--ink);
+  border: none;
+  border-radius: 16px;
+  overflow: hidden;
+  padding: 28px 28px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  min-height: 300px;
+}
+
+/* mock window dots */
+.mock-dots {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+.mock-dot {
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.2);
+}
+.mock-title {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.3);
+  margin-left: auto;
+}
+
+.vis-section-label {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: rgba(255,255,255,.35);
+  margin-bottom: 14px;
+}
+
+/* bar chart rows */
+.vis-rows { display: flex; flex-direction: column; gap: 10px; width: 100%; }
+.vis-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.vis-row-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(255,255,255,.55);
+  width: 100px;
+  flex-shrink: 0;
+}
+.vis-row-track {
+  flex: 1;
+  height: 6px;
+  background: rgba(255,255,255,.1);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.vis-row-fill {
+  height: 100%;
+  border-radius: 3px;
+  background: #5aad7a;
+  opacity: 1;
+}
+.vis-row-fill.low { background: #e07b3a; opacity: .7; }
+.vis-row-score {
+  font-size: 12px;
+  font-weight: 700;
+  color: #5aad7a;
+  width: 28px;
+  text-align: right;
+  flex-shrink: 0;
+}
+.vis-row-score.low { color: #e07b3a; }
+
+/* pills */
+.vis-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 20px;
+}
+.vis-pill {
+  font-size: 11px;
+  font-weight: 500;
+  padding: 5px 12px;
+  border-radius: 20px;
+  background: rgba(255,255,255,.08);
+  color: rgba(255,255,255,.7);
+  border: 1px solid rgba(255,255,255,.15);
+}
+.vis-pill.gold {
+  background: rgba(196,160,53,.18);
+  color: #e8c355;
+  border-color: rgba(196,160,53,.35);
+}
+.vis-pill.orange {
+  background: rgba(224,123,58,.15);
+  color: #f09050;
+  border-color: rgba(224,123,58,.3);
+}
+
+/* pipeline steps */
+.vis-pipeline { display: flex; flex-direction: column; gap: 8px; width: 100%; }
+.vis-pipe-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.1);
+}
+.vis-pipe-icon {
+  width: 20px; height: 20px;
+  border-radius: 5px;
+  flex-shrink: 0;
+}
+.vis-pipe-icon.done  { background: rgba(90,173,122,.3); }
+.vis-pipe-icon.active { background: rgba(196,160,53,.3); }
+.vis-pipe-icon.pending { background: rgba(255,255,255,.08); }
+.vis-pipe-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(255,255,255,.6);
+  flex: 1;
+}
+.vis-pipe-status {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .04em;
+  padding: 3px 9px;
+  border-radius: 20px;
+}
+.vis-pipe-status.done   { background: rgba(90,173,122,.2); color: #5aad7a; }
+.vis-pipe-status.active { background: rgba(196,160,53,.2); color: #e8c355; }
+.vis-pipe-status.pending { color: rgba(255,255,255,.25); font-size: 10px; }
+
+/* authority grid */
+.vis-authority { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: 100%; }
+.vis-auth-card {
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 10px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.vis-auth-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.3);
+}
+.vis-auth-value {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 26px;
+  font-weight: 900;
+  color: #fff;
+  line-height: 1;
+}
+.vis-auth-value.low { color: #e07b3a; }
+.vis-auth-sub {
+  font-size: 11px;
+  color: rgba(255,255,255,.3);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .met-step {
+    grid-template-columns: 1fr;
+    gap: 36px;
+    padding: 56px 0;
+  }
+  .met-step:nth-child(even) .met-step-content { order: 1; }
+  .met-step:nth-child(even) .met-step-visual  { order: 2; }
+  .met-step-big-num { font-size: 64px; }
+}
+</style>
+</head>
+<body>
+
+<section class="met-sec">
+  <div class="met-in">
+
+    <div class="met-header">
+      <span class="met-header-label">Como trabalhamos</span>
+      <h2>Quatro etapas para você ser encontrado e recomendado</h2>
+      <p>Da auditoria inicial à construção de autoridade. Cada etapa tem entregável claro e resultado mensurável.</p>
+    </div>
+
+    <div class="met-steps">
+
+      <!-- 01 -->
+      <div class="met-step">
+        <div class="met-step-content">
+          <div class="met-step-eyebrow">
+            <span class="met-step-big-num">01</span>
+            <span class="met-step-label">Diagnóstico</span>
+          </div>
+          <h3 class="met-step-title">Onde você está agora no Google e nas IAs</h3>
+          <p class="met-step-desc">Medimos sua visibilidade real, não só rankings. Mapeamos como o ChatGPT, Perplexity e Gemini respondem perguntas do seu mercado, e identificamos onde sua empresa aparece, onde não aparece, e por quê.</p>
+          <div class="met-tags">
+            <span class="met-tag">Auditoria de visibilidade IA</span>
+            <span class="met-tag">Análise de SERP</span>
+            <span class="met-tag">Mapeamento de personas</span>
+            <span class="met-tag">Análise de citações</span>
+            <span class="met-tag">Share of voice</span>
+            <span class="met-tag">SEO técnico</span>
+          </div>
+        </div>
+        <div class="met-step-visual">
+          <div class="mock-dots">
+            <div class="mock-dot"></div><div class="mock-dot"></div><div class="mock-dot"></div>
+            <span class="mock-title">Diagnóstico de visibilidade</span>
+          </div>
+          <div class="vis-section-label">Presença atual</div>
+          <div class="vis-rows">
+            <div class="vis-row">
+              <span class="vis-row-label">Google</span>
+              <div class="vis-row-track"><div class="vis-row-fill" style="width:72%"></div></div>
+              <span class="vis-row-score">72</span>
+            </div>
+            <div class="vis-row">
+              <span class="vis-row-label">ChatGPT</span>
+              <div class="vis-row-track"><div class="vis-row-fill low" style="width:18%"></div></div>
+              <span class="vis-row-score low">18</span>
+            </div>
+            <div class="vis-row">
+              <span class="vis-row-label">Perplexity</span>
+              <div class="vis-row-track"><div class="vis-row-fill low" style="width:11%"></div></div>
+              <span class="vis-row-score low">11</span>
+            </div>
+            <div class="vis-row">
+              <span class="vis-row-label">Gemini</span>
+              <div class="vis-row-track"><div class="vis-row-fill low" style="width:9%"></div></div>
+              <span class="vis-row-score low">9</span>
+            </div>
+          </div>
+          <div class="vis-pills">
+            <span class="vis-pill gold">3 oportunidades encontradas</span>
+            <span class="vis-pill">2 ganhos rápidos</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 02 -->
+      <div class="met-step">
+        <div class="met-step-content">
+          <div class="met-step-eyebrow">
+            <span class="met-step-big-num">02</span>
+            <span class="met-step-label">Arquitetura de Conteúdo</span>
+          </div>
+          <h3 class="met-step-title">Um plano baseado em demanda real, não suposição</h3>
+          <p class="met-step-desc">Cruzamos dados de busca com testes de resposta das IAs para descobrir quais tópicos trazem clientes qualificados. Cada página tem prioridade definida por impacto, dificuldade e encaixe com o negócio.</p>
+          <div class="met-tags">
+            <span class="met-tag">Pesquisa de palavras-chave</span>
+            <span class="met-tag">Mapeamento de intenção</span>
+            <span class="met-tag">Score de impacto</span>
+            <span class="met-tag">Modelagem IA</span>
+            <span class="met-tag">Arquitetura de clusters</span>
+            <span class="met-tag">Plano de conteúdo</span>
+          </div>
+        </div>
+        <div class="met-step-visual">
+          <div class="mock-dots">
+            <div class="mock-dot"></div><div class="mock-dot"></div><div class="mock-dot"></div>
+            <span class="mock-title">Plano de conteúdo</span>
+          </div>
+          <div class="vis-section-label">Tópicos prioritários</div>
+          <div class="vis-rows">
+            <div class="vis-row">
+              <span class="vis-row-label">Serviço + cidade</span>
+              <div class="vis-row-track"><div class="vis-row-fill" style="width:90%"></div></div>
+              <span class="vis-row-score">Alto</span>
+            </div>
+            <div class="vis-row">
+              <span class="vis-row-label">Comparativos</span>
+              <div class="vis-row-track"><div class="vis-row-fill" style="width:74%"></div></div>
+              <span class="vis-row-score">Alto</span>
+            </div>
+            <div class="vis-row">
+              <span class="vis-row-label">Blog educacional</span>
+              <div class="vis-row-track"><div class="vis-row-fill" style="width:52%;opacity:.4"></div></div>
+              <span class="vis-row-score" style="color:#a07b10;">Médio</span>
+            </div>
+            <div class="vis-row">
+              <span class="vis-row-label">FAQ</span>
+              <div class="vis-row-track"><div class="vis-row-fill" style="width:45%;opacity:.4"></div></div>
+              <span class="vis-row-score" style="color:#a07b10;">Médio</span>
+            </div>
+          </div>
+          <div class="vis-pills">
+            <span class="vis-pill">48 páginas mapeadas</span>
+            <span class="vis-pill gold">Prioridade definida</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 03 -->
+      <div class="met-step">
+        <div class="met-step-content">
+          <div class="met-step-eyebrow">
+            <span class="met-step-big-num">03</span>
+            <span class="met-step-label">Produção Editorial</span>
+          </div>
+          <h3 class="met-step-title">Produção completa, da pesquisa à publicação</h3>
+          <p class="met-step-desc">Não entregamos briefing para você executar. Fazemos tudo: pesquisa, redação, otimização semântica, schema markup e publicação. Cada página é construída para ranquear no Google e ser citada pelas IAs.</p>
+          <div class="met-tags">
+            <span class="met-tag">Calendário editorial</span>
+            <span class="met-tag">Páginas de serviço</span>
+            <span class="met-tag">SEO local</span>
+            <span class="met-tag">Chunk engineering</span>
+            <span class="met-tag">Otimização de conversão</span>
+            <span class="met-tag">Cases e estudos</span>
+          </div>
+        </div>
+        <div class="met-step-visual">
+          <div class="mock-dots">
+            <div class="mock-dot"></div><div class="mock-dot"></div><div class="mock-dot"></div>
+            <span class="mock-title">Fluxo de produção</span>
+          </div>
+          <div class="vis-pipeline">
+            <div class="vis-pipe-row">
+              <div class="vis-pipe-icon done"></div>
+              <span class="vis-pipe-label">Briefing e pesquisa de intenção</span>
+              <span class="vis-pipe-status done">Concluído</span>
+            </div>
+            <div class="vis-pipe-row">
+              <div class="vis-pipe-icon done"></div>
+              <span class="vis-pipe-label">Redação com otimização semântica</span>
+              <span class="vis-pipe-status done">Concluído</span>
+            </div>
+            <div class="vis-pipe-row">
+              <div class="vis-pipe-icon active"></div>
+              <span class="vis-pipe-label">Revisão QA e schema markup</span>
+              <span class="vis-pipe-status active">Em andamento</span>
+            </div>
+            <div class="vis-pipe-row">
+              <div class="vis-pipe-icon pending"></div>
+              <span class="vis-pipe-label">Publicação e monitoramento</span>
+              <span class="vis-pipe-status pending">Pendente</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 04 -->
+      <div class="met-step">
+        <div class="met-step-content">
+          <div class="met-step-eyebrow">
+            <span class="met-step-big-num">04</span>
+            <span class="met-step-label">Autoridade Externa</span>
+          </div>
+          <h3 class="met-step-title">Os sinais que fazem as IAs confiarem em você</h3>
+          <p class="met-step-desc">As IAs não se baseiam só no seu site. Elas pesam menções em portais, backlinks de qualidade, co-citações temáticas e presença em plataformas que usam como fonte. Construímos esses sinais de forma estruturada.</p>
+          <div class="met-tags">
+            <span class="met-tag">Link building</span>
+            <span class="met-tag">Menções de marca</span>
+            <span class="met-tag">Construção de narrativa</span>
+            <span class="met-tag">Google Business Profile</span>
+            <span class="met-tag">Monitoramento de marca</span>
+            <span class="met-tag">Co-citações temáticas</span>
+          </div>
+        </div>
+        <div class="met-step-visual">
+          <div class="mock-dots">
+            <div class="mock-dot"></div><div class="mock-dot"></div><div class="mock-dot"></div>
+            <span class="mock-title">Sinais de autoridade</span>
+          </div>
+          <div class="vis-section-label">Fontes monitoradas</div>
+          <div class="vis-authority">
+            <div class="vis-auth-card">
+              <span class="vis-auth-label">Backlinks</span>
+              <span class="vis-auth-value">68</span>
+              <span class="vis-auth-sub">domínios únicos</span>
+            </div>
+            <div class="vis-auth-card">
+              <span class="vis-auth-label">GBP Score</span>
+              <span class="vis-auth-value">88</span>
+              <span class="vis-auth-sub">de 100</span>
+            </div>
+            <div class="vis-auth-card">
+              <span class="vis-auth-label">Menções externas</span>
+              <span class="vis-auth-value">54</span>
+              <span class="vis-auth-sub">portais ativos</span>
+            </div>
+            <div class="vis-auth-card">
+              <span class="vis-auth-label">Co-citações IA</span>
+              <span class="vis-auth-value low">31</span>
+              <span class="vis-auth-sub">oportunidade</span>
+            </div>
+          </div>
+          <div class="vis-pills" style="margin-top:16px;">
+            <span class="vis-pill orange">Co-citações: principal gap</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+/* scroll reveal */
+var observer = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.met-step').forEach(function(el) {
+  observer.observe(el);
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Timeline Preview — Maturare</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink: #000;
+  --dim: #5a5a56;
+  --green: #1a7a4a;
+  --green2: #6fcf97;
+  --paper: #fff;
+  --sans: 'DM Sans', system-ui, sans-serif;
+  --serif: 'Instrument Serif', Georgia, serif;
+}
+
+body {
+  font-family: var(--sans);
+  background: #f0f0ec;
+  /* Extra space so the page is long enough to scroll */
+  padding: 80px 24px 160px;
+}
+
+/* ── KICKER + TITLE ── */
+.tl-header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+.tl-kicker {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: #7a5c00;
+  background: #fff0cc;
+  border: 1px solid #e8d080;
+  border-radius: 4px;
+  padding: 5px 14px;
+  margin-bottom: 20px;
+}
+.tl-title {
+  font-family: var(--sans);
+  font-size: clamp(22px, 3.5vw, 40px);
+  font-weight: 800;
+  color: var(--ink);
+  line-height: 1.2;
+  letter-spacing: -.025em;
+  max-width: 640px;
+  margin: 0 auto;
+}
+.tl-title em {
+  font-style: normal;
+  color: var(--green);
+}
+
+/* ── WRAPPER ── */
+.tl-section {
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+/* ── PROGRESS BAR ── */
+.tl-progress-wrap {
+  position: relative;
+  height: 3px;
+  background: #e0e0da;
+  border-radius: 2px;
+  margin-bottom: 0;
+  overflow: visible;
+}
+.tl-progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--green), var(--green2));
+  border-radius: 2px;
+  transition: width .3s cubic-bezier(.34, 1.56, .64, 1);
+}
+
+/* ── DOT TRACK (above cards, below bar) ── */
+.tl-dot-track {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-bottom: 0;
+  position: relative;
+  z-index: 2;
+}
+.tl-dot-wrap {
+  display: flex;
+  justify-content: center;
+  transform: translateY(-7px);
+}
+.tl-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #e0e0da;
+  border: 2px solid #fff;
+  transition: background .35s, box-shadow .35s;
+}
+.tl-dot.active {
+  background: var(--green2);
+  box-shadow: 0 0 0 4px rgba(111,207,151,.25);
+}
+
+/* ── CARDS GRID ── */
+.tl-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  padding-top: 28px;
+}
+
+/* ── SINGLE CARD ── */
+.tl-card {
+  background: #fff;
+  border: 1px solid #e8e8e4;
+  border-left: 1px solid #e8e8e4;
+  border-radius: 10px;
+  padding: 28px 24px 24px;
+  box-shadow: none;
+  /* start hidden */
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity .5s ease,
+    transform .5s ease,
+    border-color .35s ease,
+    border-left-width .35s ease,
+    box-shadow .35s ease,
+    background .35s ease;
+}
+.tl-card.revealed {
+  opacity: 0.42;
+  transform: translateY(0);
+}
+.tl-card.revealed.active {
+  opacity: 1;
+  border-left: 4px solid var(--green);
+  box-shadow: 0 6px 28px rgba(26,122,74,.13);
+  background: #fff;
+}
+
+/* ── DAY NUMBER ── */
+.tl-day {
+  font-family: var(--serif);
+  font-size: clamp(44px, 5.5vw, 68px);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--green);
+  line-height: 1;
+  margin-bottom: 8px;
+  display: block;
+  transition: color .35s;
+}
+.tl-card.revealed:not(.active) .tl-day {
+  color: #9ab0a0;
+}
+
+/* ── STEP TITLE ── */
+.tl-step-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 14px;
+  letter-spacing: -.01em;
+  transition: color .35s;
+}
+.tl-card.revealed:not(.active) .tl-step-title {
+  color: #aaa;
+}
+
+/* ── BULLETS ── */
+.tl-bullets {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.tl-bullets li {
+  font-size: 12.5px;
+  color: var(--dim);
+  line-height: 1.5;
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+  transition: color .35s;
+}
+.tl-bullets li::before {
+  content: '✓';
+  color: var(--green2);
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 1px;
+  transition: color .35s;
+}
+.tl-card.revealed:not(.active) .tl-bullets li {
+  color: #bbb;
+}
+.tl-card.revealed:not(.active) .tl-bullets li::before {
+  color: #ccc;
+}
+
+/* card último (destaque) */
+.tl-card--featured.revealed.active {
+  border-color: var(--green2);
+  border-left: 4px solid var(--green);
+  background: #f8fef9;
+}
+
+/* ── MOBILE ── */
+@media (max-width: 680px) {
+  .tl-cards {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .tl-dot-track {
+    display: none;
+  }
+  .tl-card.revealed {
+    opacity: 1;
+  }
+  .tl-card.revealed.active {
+    border-left: 4px solid var(--green);
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- Extra space so page scrolls -->
+<div style="height:40vh;display:flex;align-items:center;justify-content:center;">
+  <p style="color:#999;font-size:14px;">↓ Scroll para baixo para ver a timeline</p>
+</div>
+
+<div class="tl-header">
+  <span class="tl-kicker">Na maioria das agências, o mês 1 é só burocracia.</span>
+  <h2 class="tl-title">No primeiro mês, você já tem diagnóstico,<br>estrutura e <em>conteúdo no ar</em>.</h2>
+</div>
+
+<div class="tl-section">
+
+  <!-- Progress bar -->
+  <div class="tl-progress-wrap">
+    <div class="tl-progress-fill" id="tlFill"></div>
+  </div>
+
+  <!-- Dots -->
+  <div class="tl-dot-track" id="tlDots">
+    <div class="tl-dot-wrap"><div class="tl-dot" id="dot0"></div></div>
+    <div class="tl-dot-wrap"><div class="tl-dot" id="dot1"></div></div>
+    <div class="tl-dot-wrap"><div class="tl-dot" id="dot2"></div></div>
+    <div class="tl-dot-wrap"><div class="tl-dot" id="dot3"></div></div>
+  </div>
+
+  <!-- Cards -->
+  <div class="tl-cards" id="tlCards">
+
+    <div class="tl-card" data-index="0">
+      <span class="tl-day">Amanhã</span>
+      <h3 class="tl-step-title">Diagnóstico estratégico.</h3>
+      <ul class="tl-bullets">
+        <li>Entendemos onde seu negócio está invisível hoje</li>
+        <li>Mapeamos o que sua concorrência indexa e você não</li>
+        <li>Identificamos o perfil exato do seu comprador ideal</li>
+        <li>Definimos as oportunidades de maior impacto</li>
+      </ul>
+    </div>
+
+    <div class="tl-card" data-index="1">
+      <span class="tl-day">10</span>
+      <h3 class="tl-step-title">Arquitetura de presença.</h3>
+      <ul class="tl-bullets">
+        <li>Seu site estruturado para ser encontrado e entendido pelas IAs</li>
+        <li>Páginas estratégicas mapeadas por intenção de compra</li>
+        <li>Estrutura de clusters que cobre toda a jornada do cliente</li>
+        <li>Lead magnet analisado para atrair o lead certo</li>
+      </ul>
+    </div>
+
+    <div class="tl-card" data-index="2">
+      <span class="tl-day">30</span>
+      <h3 class="tl-step-title">Negócio indexado.</h3>
+      <ul class="tl-bullets">
+        <li>Páginas prioritárias publicadas e otimizadas</li>
+        <li>Seu negócio aparece para quem já está pronto para comprar</li>
+        <li>Conteúdo estruturado com as entidades do seu segmento</li>
+        <li>Links internos construídos para distribuir autoridade</li>
+      </ul>
+    </div>
+
+    <div class="tl-card tl-card--featured" data-index="3">
+      <span class="tl-day">90</span>
+      <h3 class="tl-step-title">Presença orgânica real.</h3>
+      <ul class="tl-bullets">
+        <li>Sua empresa citada pelo ChatGPT, Perplexity e Gemini</li>
+        <li>Demanda chegando sem depender de anúncio ou indicação</li>
+        <li>Share of voice crescendo no seu segmento</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+<!-- Extra space to keep scrolling -->
+<div style="height:40vh;"></div>
+
+<script>
+(function () {
+  const cards   = Array.from(document.querySelectorAll('.tl-card'));
+  const dots    = [0,1,2,3].map(i => document.getElementById('dot' + i));
+  const fill    = document.getElementById('tlFill');
+  const section = document.querySelector('.tl-section');
+
+  /* ── 1. REVEAL ON ENTER (IntersectionObserver) ── */
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+  cards.forEach(c => revealObserver.observe(c));
+
+  /* ── 2. ACTIVE CARD (closest to viewport center) ── */
+  let rafId = null;
+
+  function updateActive() {
+    const vCenter = window.innerHeight * 0.5;
+    let minDist = Infinity;
+    let activeIdx = -1;
+
+    cards.forEach((card, i) => {
+      const rect = card.getBoundingClientRect();
+      const cardCenter = rect.left + rect.width / 2;   // horizontal center
+      const cardVCenter = rect.top + rect.height / 2;  // vertical center
+
+      // On mobile (single column) use vertical, on desktop use horizontal
+      const isMobile = window.innerWidth <= 680;
+      const dist = isMobile
+        ? Math.abs(cardVCenter - vCenter)
+        : Math.abs(cardVCenter - vCenter);
+
+      if (dist < minDist) {
+        minDist = dist;
+        activeIdx = i;
+      }
+    });
+
+    cards.forEach((card, i) => {
+      const isActive = i === activeIdx && card.classList.contains('revealed');
+      card.classList.toggle('active', isActive);
+      if (dots[i]) dots[i].classList.toggle('active', isActive);
+    });
+
+    /* ── 3. PROGRESS BAR ── */
+    const pct = activeIdx >= 0 ? ((activeIdx + 1) / cards.length) * 100 : 0;
+    fill.style.width = pct + '%';
+
+    rafId = null;
+  }
+
+  window.addEventListener('scroll', () => {
+    if (!rafId) rafId = requestAnimationFrame(updateActive);
+  }, { passive: true });
+
+  /* Initial call */
+  updateActive();
+})();
+</script>
+
+</body>
+</html>

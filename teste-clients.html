@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Teste — Client Grid</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Inter', sans-serif; background: #f5f1e8; padding: 60px 20px; color: #2d3440; }
+h2 { font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #888; margin-bottom: 32px; text-align: center; }
+
+.clients-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  border: 1px solid #e0e3e8;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.cl-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 28px 16px;
+  border-right: 1px solid #eaecf0;
+  border-bottom: 1px solid #eaecf0;
+  cursor: default;
+  transition: background .18s;
+}
+.cl-item:nth-child(5n) { border-right: none; }
+.cl-item:last-child { border-right: none; }
+
+.cl-item img {
+  height: 32px;
+  width: auto;
+  max-width: 100px;
+  opacity: .45;
+  filter: grayscale(100%);
+  transition: opacity .25s, filter .25s;
+  object-fit: contain;
+  pointer-events: none;
+}
+.cl-badge {
+  display: inline-block;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border-radius: 4px;
+  border: 1px solid #e0e3e8;
+  color: #888;
+  background: #f5f5f5;
+  line-height: 1.6;
+}
+.cl-badge.case { border-color: rgba(26,122,74,.3); color: #1a7a4a; background: rgba(26,122,74,.06); }
+
+.cl-item:hover { background: #f8faf9; }
+.cl-item:hover img { opacity: 1; filter: grayscale(0%); }
+.cl-item.active { background: #f0f7f3; }
+.cl-item.active img { opacity: 1; filter: grayscale(0%); }
+
+.cl-item::after {
+  content: '';
+  position: absolute;
+  bottom: 7px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 12px;
+  background-image: url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23ccc' stroke-width='2.5' stroke-linecap='round' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 0;
+  transition: opacity .2s;
+}
+.cl-item:hover::after { opacity: 1; }
+.cl-item.active::after {
+  opacity: 1;
+  background-image: url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%231a7a4a' stroke-width='2.5' stroke-linecap='round' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='18 15 12 9 6 15'/%3E%3C/svg%3E");
+}
+
+/* PAINEL EXPANDIDO */
+.cl-expand {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows .38s cubic-bezier(.4,0,.2,1);
+  border-bottom: 1px solid #eaecf0;
+}
+.cl-expand.open { grid-template-rows: 1fr; }
+.cl-expand-inner { overflow: hidden; }
+
+.cl-expand-body {
+  display: flex;
+  gap: 32px;
+  padding: 24px 32px;
+  align-items: flex-start;
+  border-top: 2px solid #1a7a4a;
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: opacity .3s ease .1s, transform .3s ease .1s;
+}
+.cl-expand.open .cl-expand-body {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cl-expand-logo {
+  flex-shrink: 0;
+  width: 72px;
+  padding-top: 2px;
+}
+.cl-expand-logo img {
+  height: 32px;
+  width: auto;
+  max-width: 72px;
+  object-fit: contain;
+  opacity: 1;
+  filter: none;
+}
+
+.cl-expand-content {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 40px;
+}
+.cl-expand-name {
+  grid-column: 1 / -1;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+  color: #1b3a2a;
+  margin-bottom: 2px;
+}
+.cl-expand-meta {
+  grid-column: 1 / -1;
+  font-size: 11px;
+  color: #aaa;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  margin-bottom: 14px;
+}
+.cl-expand-label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: #bbb;
+  margin-bottom: 4px;
+}
+.cl-expand-text {
+  font-size: 13px;
+  color: #444;
+  line-height: 1.65;
+}
+.cl-expand-result .cl-expand-text {
+  font-weight: 600;
+  color: #1a7a4a;
+}
+
+@media (max-width: 640px) {
+  .clients-grid { grid-template-columns: repeat(2, 1fr); }
+  .cl-item { cursor: pointer; padding: 20px 12px; }
+  .cl-item::after { display: none; }
+  .cl-expand-body { flex-direction: column; gap: 12px; padding: 16px; }
+  .cl-expand-logo { display: none; }
+  .cl-expand-content { grid-template-columns: 1fr; gap: 10px; }
+  .cl-expand-name { font-size: 13px; }
+  .cl-expand-meta { margin-bottom: 8px; }
+  .cl-expand-text { font-size: 12px; }
+}
+</style>
+</head>
+<body>
+
+<h2>Clientes & Cases</h2>
+
+<div class="clients-grid" id="clientGrid">
+  <div class="cl-item" data-id="phd">
+    <img src="assets/phd-playground-logo.png" alt="PHD Playground">
+    <span class="cl-badge case">Case study</span>
+  </div>
+  <div class="cl-item" data-id="move">
+    <img src="assets/move-maquinas-logo.png" alt="Move Máquinas">
+    <span class="cl-badge case">Case study</span>
+  </div>
+  <div class="cl-item" data-id="ambiental">
+    <img src="assets/ambiental-wash-logo.webp" alt="Ambiental Wash">
+    <span class="cl-badge case">Case study</span>
+  </div>
+  <div class="cl-item" data-id="keysfan">
+    <img src="assets/keysfan-logo.webp" alt="Keysfan">
+    <span class="cl-badge case">Case study</span>
+  </div>
+  <div class="cl-item" data-id="mundpay">
+    <img src="assets/mundpay-logo.png" alt="Mundpay">
+    <span class="cl-badge">Cliente</span>
+  </div>
+  <div class="cl-item" data-id="agita">
+    <img src="assets/agita-morango-logo.png" alt="Agita Morango">
+    <span class="cl-badge">Cliente</span>
+  </div>
+  <div class="cl-item" data-id="inpress">
+    <img src="assets/inpress-brasil-logo.jpeg" alt="Inpress Brasil">
+    <span class="cl-badge">Cliente</span>
+  </div>
+  <div class="cl-item" data-id="inled">
+    <img src="assets/inled-brasil-logo.png" alt="Inled Brasil">
+    <span class="cl-badge">Cliente</span>
+  </div>
+  <div class="cl-item" data-id="amanda">
+    <img src="assets/am-cabral-logo.svg" alt="Amanda Cabral">
+    <span class="cl-badge">Cliente</span>
+  </div>
+  <div class="cl-item" data-id="soft">
+    <img src="assets/soft-everest-logo.png" alt="Soft Everest">
+    <span class="cl-badge">Cliente</span>
+  </div>
+</div>
+
+<script>
+var clData = {
+  phd:      { logo:'assets/phd-playground-logo.png',    alt:'PHD Playground',   name:'PHD Playground',   meta:'Playground de Madeira · Rio de Janeiro, RJ', estrategia:'Fichas do Google Meu Negócio ao redor do RJ e páginas específicas por segmento: restaurantes, hotéis fazenda e principais compradores do serviço.', resultado:'R$70k+ economizados em anúncios. 2 anos sem Google Ads. Faturamento cresceu com leads orgânicos qualificados.' },
+  move:     { logo:'assets/move-maquinas-logo.png',     alt:'Move Máquinas',    name:'Move Máquinas',    meta:'Aluguel de Equipamentos · Goiânia, GO',          estrategia:'78 páginas em 90 dias cobrindo 63 cidades de Goiás com SEO local e presença nas principais IAs.',               resultado:'Recomendado pelo Google, ChatGPT e Perplexity. Economia de R$96k/ano em anúncios.' },
+  ambiental:{ logo:'assets/ambiental-wash-logo.webp',   alt:'Ambiental Wash',   name:'Ambiental Wash',   meta:'Lavanderia · Barra e Copacabana, RJ',            estrategia:'SEO local, Google Meu Negócio e arquitetura de conteúdo para os dois bairros.',                                  resultado:'Topo do Google nas buscas de lavanderia na Barra e em Copacabana. R$48k/ano economizados.' },
+  keysfan:  { logo:'assets/keysfan-logo.webp',          alt:'Keysfan',          name:'Keysfan',          meta:'Licenças de Software · Nacional',                estrategia:'SEO programático para as principais keywords de licença Windows e software.',                                      resultado:'R$12k/mês em vendas orgânicas. R$0 investido em anúncios.' },
+  amanda:   { logo:'assets/am-cabral-logo.svg',         alt:'Amanda Cabral',    name:'Amanda Cabral',    meta:'Contabilidade · Minas Gerais',                   estrategia:'Site, SEO local e conteúdo para 15 cidades da carteira em MG.',                                                   resultado:'Posicionada nas principais cidades. Leads chegando sem anúncios.' },
+  mundpay:  { logo:'assets/mundpay-logo.png',           alt:'Mundpay',          name:'Mundpay',          meta:'Pagamentos Globais · Nacional',                  estrategia:'Arquitetura de conhecimento e posicionamento GEO/AEO no segmento de pagamentos.',                                 resultado:'Entidade reconhecida pelas IAs no segmento de pagamentos digitais.' },
+  agita:    { logo:'assets/agita-morango-logo.png',     alt:'Agita Morango',    name:'Agita Morango',    meta:'Recreação Infantil · São Paulo, SP',             estrategia:'48 páginas SEO cobrindo bairros e segmentos de São Paulo.',                                                       resultado:'Domínio local no Google para recreação infantil em SP.' },
+  inpress:  { logo:'assets/inpress-brasil-logo.jpeg',   alt:'Inpress Brasil',   name:'Inpress Brasil',   meta:'Comunicação e RP · RJ',                          estrategia:'SEO institucional e otimização da presença orgânica.',                                                             resultado:'Maior visibilidade no segmento de comunicação corporativa.' },
+  inled:    { logo:'assets/inled-brasil-logo.png',      alt:'Inled Brasil',     name:'Inled Brasil',     meta:'Iluminação LED · Nacional',                      estrategia:'SEO técnico e conteúdo para as principais keywords de iluminação LED.',                                           resultado:'Posicionado nas principais buscas do segmento no Brasil.' },
+  soft:     { logo:'assets/soft-everest-logo.png',      alt:'Soft Everest',     name:'Soft Everest',     meta:'Tecnologia e Software · Nacional',               estrategia:'Posicionamento orgânico e arquitetura digital.',                                                                   resultado:'Visibilidade ampliada no Google para soluções de software.' }
+};
+
+var panel = document.createElement('div');
+panel.className = 'cl-expand';
+panel.innerHTML = '<div class="cl-expand-inner"><div class="cl-expand-body" id="cl-expand-body"></div></div>';
+
+var openId = null;
+var enterTimer = null;
+var leaveTimer = null;
+var ENTER_DELAY = 200;
+var LEAVE_DELAY = 300;
+
+function isMobile() {
+  return window.innerWidth <= 640;
+}
+
+function getColCount() {
+  return window.getComputedStyle(document.getElementById('clientGrid'))
+    .getPropertyValue('grid-template-columns').trim().split(/\s+/).length;
+}
+
+function buildBody(id) {
+  var d = clData[id];
+  document.getElementById('cl-expand-body').innerHTML =
+    '<div class="cl-expand-logo"><img src="' + d.logo + '" alt="' + d.alt + '"></div>' +
+    '<div class="cl-expand-content">' +
+      '<div class="cl-expand-name">' + d.name + '</div>' +
+      '<div class="cl-expand-meta">' + d.meta + '</div>' +
+      '<div class="cl-expand-block">' +
+        '<div class="cl-expand-label">Estratégia</div>' +
+        '<div class="cl-expand-text">' + d.estrategia + '</div>' +
+      '</div>' +
+      '<div class="cl-expand-block cl-expand-result">' +
+        '<div class="cl-expand-label">Resultado</div>' +
+        '<div class="cl-expand-text">' + d.resultado + '</div>' +
+      '</div>' +
+    '</div>';
+}
+
+function openPanel(item, id) {
+  var items = Array.from(document.querySelectorAll('#clientGrid .cl-item'));
+  var idx = items.indexOf(item);
+  var cols = getColCount();
+  var lastIdx = Math.min(idx + (cols - 1 - (idx % cols)), items.length - 1);
+  var anchor = items[lastIdx];
+  anchor.after(panel);
+  buildBody(id);
+  openId = id;
+  panel.classList.remove('open');
+  void panel.offsetHeight;
+  panel.classList.add('open');
+  items.forEach(function(i) { i.classList.remove('active'); });
+  item.classList.add('active');
+  if (isMobile()) {
+    setTimeout(function() { panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }, 80);
+  }
+}
+
+function closeAll() {
+  panel.classList.remove('open');
+  document.querySelectorAll('#clientGrid .cl-item').forEach(function(i) { i.classList.remove('active'); });
+  openId = null;
+}
+
+document.querySelectorAll('#clientGrid .cl-item').forEach(function(item) {
+  var id = item.dataset.id;
+
+  /* mobile: tap toggle */
+  item.addEventListener('touchend', function(e) {
+    e.preventDefault();
+    if (openId === id) { closeAll(); return; }
+    openPanel(item, id);
+  });
+
+  /* desktop: hover com delay */
+  item.addEventListener('mouseenter', function() {
+    clearTimeout(leaveTimer);
+    enterTimer = setTimeout(function() { openPanel(item, id); }, ENTER_DELAY);
+  });
+  item.addEventListener('mouseleave', function() {
+    clearTimeout(enterTimer);
+    leaveTimer = setTimeout(closeAll, LEAVE_DELAY);
+  });
+});
+
+/* manter aberto quando mouse está sobre o painel */
+panel.addEventListener('mouseenter', function() {
+  clearTimeout(leaveTimer);
+  clearTimeout(enterTimer);
+});
+panel.addEventListener('mouseleave', function() {
+  leaveTimer = setTimeout(closeAll, LEAVE_DELAY);
+});
+</script>
+</body>
+</html>
