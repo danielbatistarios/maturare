@@ -423,62 +423,11 @@ nav.scrolled {
 .skip-link { position: absolute; top: -100%; left: 16px; background: var(--green); color: #fff; padding: 8px 16px; border-radius: 4px; z-index: 100000; font-size: 14px; transition: top .2s; }
 .skip-link:focus { top: 8px; }
 
-/* === MOBILE MENU === */
-.mob-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,.6);
-  z-index: 298;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity .3s;
-}
-.mob-overlay.open { opacity: 1; pointer-events: auto; }
-.mob-menu {
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 280px;
-  height: 100%;
-  background: var(--z1);
-  border-left: 1px solid var(--border-z2);
-  z-index: 299;
-  transform: translateX(100%);
-  transition: transform .4s var(--spring);
-  padding: 80px 24px 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-.mob-menu.open { transform: translateX(0); }
-.mob-menu a {
-  display: block;
-  font-size: 15px;
-  font-weight: 500;
-  color: rgba(255,255,255,.6);
-  padding: 12px 0;
-  border-bottom: 1px solid var(--border-z1);
-  transition: color .2s;
-}
-.mob-menu a:hover { color: var(--paper); }
-.mob-menu a.active { color: var(--paper); }
-.mob-menu-cta {
-  margin-top: auto;
-  display: block;
-  text-align: center;
-  background: var(--paper);
-  color: var(--ink);
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  padding: 14px 24px;
-}
 
 /* === BLOG HERO === */
 .blog-hero {
   background: var(--z1);
-  padding: 140px 0 64px;
+  padding: 180px 0 100px;
   position: relative;
   overflow: hidden;
 }
@@ -581,7 +530,7 @@ nav.scrolled {
 
 /* === FEATURED SECTION === */
 .featured-sec {
-  padding: 64px 0 48px;
+  padding: 40px 0 32px;
   background: var(--z0);
 }
 .featured-grid {
@@ -611,7 +560,7 @@ nav.scrolled {
 .featured-main-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(14,15,13,.95) 0%, rgba(14,15,13,.4) 50%, transparent 100%);
+  background: linear-gradient(to top, rgba(14,15,13,.9) 0%, rgba(14,15,13,.25) 45%, transparent 100%);
 }
 .featured-main-content {
   position: relative;
@@ -4278,6 +4227,7 @@ footer {
   ]
 }
 </script>
+<link rel="stylesheet" href="mobile-patch.css">
 </head>
 <body>
 
@@ -4352,7 +4302,7 @@ footer {
       <div class="mm-aside-bg" style="background-image:url('https://images.unsplash.com/photo-1642621859598-79bc9a87fd77?w=600&auto=format&fit=crop&q=80')"></div>
       <div>
         <p class="mm-aside-tag">A Maturare</p>
-        <h2 class="mm-aside-title">Não é sobre crescer rápido. É sobre crescer certo.</h2>
+        <p class="mm-aside-title">Não é sobre crescer rápido. É sobre crescer certo.</p>
       </div>
       <a href="../sobre" class="mm-aside-cta">Conheça nossa história →</a>
     </div>
@@ -4439,7 +4389,7 @@ footer {
       <div class="mm-aside-bg" style="background-image:url('https://images.unsplash.com/photo-1643148636630-0b0fb138fc74?w=600&auto=format&fit=crop&q=80'); filter:grayscale(100%);"></div>
       <div>
         <p class="mm-aside-tag">Blog Maturare</p>
-        <h2 class="mm-aside-title">Visibilidade não é sorte. É método.</h2>
+        <p class="mm-aside-title">Visibilidade não é sorte. É método.</p>
       </div>
       <a href="/blog" class="mm-aside-cta">Ver todos os artigos →</a>
     </div>
@@ -4714,6 +4664,10 @@ footer {
       </button>
     </div>
     <span class="cat-counter" id="catCounter">12 artigos</span>
+  </div>
+  <div class="cat-scroll-hint" id="catHint">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+    <span>toque para filtrar por assunto</span>
   </div>
 </div>
 
@@ -5004,7 +4958,14 @@ footer {
       <h2 class="sec-h lt" style="max-width:700px;">Assista no canal <em>Google Dominado</em></h2>
       <p style="color:var(--dim);margin-top:12px;font-size:15px;max-width:520px;">SEO na prática. Sem enrolação. Direto de <a href="daniel-rios.html" style="color:var(--green);text-decoration:underline;text-underline-offset:2px;">Daniel Rios</a>, fundador da Maturare. Veja também os <a href="nossos-clientes.html" style="color:var(--green);text-decoration:underline;text-underline-offset:2px;">nossos clientes</a>.</p>
     </div>
-    <div class="yt-grid">
+    <div class="yt-carousel-wrap">
+      <button class="yt-arr yt-arr-prev" aria-label="Anterior" disabled>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      </button>
+      <button class="yt-arr yt-arr-next" aria-label="Próximo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </button>
+    <div class="yt-grid" id="ytGrid">
       <div class="yt-card reveal">
         <div class="yt-thumb" data-id="malcB_gQ6n8">
           <img src="https://i.ytimg.com/vi/malcB_gQ6n8/hqdefault.jpg" alt="Como a IA está transformando a jornada de compra B2B" loading="lazy">
@@ -5065,7 +5026,8 @@ footer {
           <div class="yt-channel">Google Dominado | SEO Inteligente com IA</div>
         </div>
       </div>
-    </div>
+    </div><!-- /.yt-grid -->
+    </div><!-- /.yt-carousel-wrap -->
     <div class="reveal" style="text-align:center;margin-top:40px;">
       <a href="https://www.youtube.com/@googledominado1" target="_blank" rel="noopener" class="btn-p" style="background:transparent;border:1px solid var(--border-z3);color:var(--paper);">Ver todos os vídeos no YouTube &#8594;</a>
     </div>
@@ -5816,6 +5778,68 @@ document.addEventListener('keydown', function(e) {
   }, { passive: true });
 
   updateState();
+})();
+</script>
+
+<script>
+(function() {
+  // Cat filter: filtro de cards por categoria
+  var chipsWrap = document.getElementById('catChips');
+  var grid      = document.getElementById('articlesGrid');
+  var counter   = document.getElementById('catCounter');
+  if (!chipsWrap || !grid) return;
+
+  chipsWrap.addEventListener('click', function(e) {
+    var btn = e.target.closest('.cat-chip');
+    if (!btn) return;
+
+    // atualiza chip ativo
+    chipsWrap.querySelectorAll('.cat-chip').forEach(function(c) { c.classList.remove('active'); });
+    btn.classList.add('active');
+
+    var cat = btn.getAttribute('data-cat');
+    var cards = grid.querySelectorAll('.article-card');
+    var visible = 0;
+
+    cards.forEach(function(card) {
+      var match = cat === 'todos' || card.getAttribute('data-cat') === cat;
+      card.style.display = match ? '' : 'none';
+      if (match) visible++;
+    });
+
+    if (counter) counter.textContent = visible + (visible === 1 ? ' artigo' : ' artigos');
+
+    var hint = document.getElementById('catHint');
+    if (hint) hint.classList.add('used');
+  });
+})();
+
+(function() {
+  var grid = document.getElementById('ytGrid');
+  if (!grid) return;
+  var prev = document.querySelector('.yt-arr-prev');
+  var next = document.querySelector('.yt-arr-next');
+  if (!prev || !next) return;
+
+  function cardWidth() {
+    var card = grid.querySelector('.yt-card');
+    if (!card) return 0;
+    return card.offsetWidth + parseInt(getComputedStyle(grid).gap || 14);
+  }
+
+  function updateArrows() {
+    prev.disabled = grid.scrollLeft <= 4;
+    next.disabled = grid.scrollLeft >= grid.scrollWidth - grid.clientWidth - 4;
+  }
+
+  prev.addEventListener('click', function() {
+    grid.scrollBy({ left: -cardWidth() * 2, behavior: 'smooth' });
+  });
+  next.addEventListener('click', function() {
+    grid.scrollBy({ left: cardWidth() * 2, behavior: 'smooth' });
+  });
+  grid.addEventListener('scroll', updateArrows, { passive: true });
+  updateArrows();
 })();
 </script>
 

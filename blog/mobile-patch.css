@@ -1,0 +1,256 @@
+/* ================================================
+   MOBILE PATCH — blog/index.html
+   Gerado por /mobile-review em 2026-05-01
+   Score antes: 48/100 | Estimativa após: 82/100
+   P0: 3 fixes | P1: 4 fixes | P2: 2 fixes
+   ================================================ */
+
+/* ── cat-filter: hint "filtrar por assunto" — desktop e mobile ── */
+.cat-scroll-hint {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--dim);
+  letter-spacing: .02em;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: opacity .35s ease;
+}
+.cat-scroll-hint svg {
+  width: 13px;
+  height: 13px;
+  flex-shrink: 0;
+  animation: hint-nudge 1.4s ease-in-out infinite;
+}
+@keyframes hint-nudge {
+  0%, 100% { transform: translateX(0); }
+  50%       { transform: translateX(4px); }
+}
+/* para de animar depois que o usuário já filtrou uma vez */
+.cat-scroll-hint.used svg {
+  animation: none;
+}
+.cat-scroll-hint.used {
+  opacity: .45;
+}
+
+@media (max-width: 768px) {
+  .cat-filter-inner {
+    padding: 0;
+    gap: 0;
+    flex-wrap: wrap;
+  }
+  .cat-chips {
+    padding: 0 clamp(16px, 4vw, 24px);
+    scroll-padding-left: clamp(16px, 4vw, 24px);
+    flex: 1 1 100%;
+  }
+  .cat-counter {
+    display: none;
+  }
+  .cat-scroll-hint {
+    width: 100%;
+    justify-content: flex-end;
+    padding: 5px clamp(16px, 4vw, 24px) 0;
+  }
+}
+
+/* ── featured-sec — ocultar galeria destaque em mobile (conteúdo já aparece nos cards) ── */
+@media (max-width: 768px) {
+  .featured-sec { display: none; }
+}
+
+/* ── P0: blog-layout — empilhar sidebar abaixo dos cards em tablet/mobile ── */
+/* Sidebar de 340px fixa causa scroll horizontal em telas < 768px */
+@media (max-width: 900px) {
+  .blog-layout {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .sidebar {
+    position: static;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .sidebar {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── P0: articles-grid — 1 coluna em mobile, 2 colunas em tablet ── */
+/* 2 colunas fixas em 320px resultam em cards com ~140px de largura */
+@media (max-width: 768px) {
+  .articles-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 900px) {
+  .articles-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ── P0: hub-grid — colapsar de 3 para 2 colunas (tablet) e 1 (mobile) ── */
+/* 3 colunas em 320px resulta em cards de ~90px, ilegível */
+@media (max-width: 900px) {
+  .hub-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hub-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── P1: mm-blog-grid (nav mega menu) — 1 coluna em mobile ── */
+@media (max-width: 900px) {
+  .mm-blog-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}
+
+/* ── P1: article-card hover — condicionar a hover:hover para não grudar em touch ── */
+@media (hover: hover) {
+  .article-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--green);
+    box-shadow: 0 12px 40px rgba(26,122,74,.1), 0 4px 12px rgba(0,0,0,.3);
+  }
+}
+@media (hover: none) {
+  .article-card:hover {
+    transform: none;
+    border-color: inherit;
+    box-shadow: none;
+  }
+  .article-card:active {
+    border-color: var(--green);
+  }
+}
+
+/* ── P1: article-card-body — padding menor em mobile para respirar ── */
+@media (max-width: 480px) {
+  .article-card-body {
+    padding: 16px;
+  }
+  .article-card-title {
+    font-size: 17px;
+  }
+  .article-card-footer {
+    font-size: 12px;
+  }
+}
+
+/* ── P1: hub-card — padding reduzido em mobile ── */
+@media (max-width: 480px) {
+  .hub-card {
+    padding: 20px;
+  }
+  .hub-card-name {
+    font-size: 17px;
+    margin-bottom: 14px;
+  }
+}
+
+/* ── P1: blog-main — padding reduzido em mobile ── */
+@media (max-width: 480px) {
+  .blog-main {
+    padding: 32px 0;
+  }
+}
+
+/* ── P2: sidebar-box — padding compacto em mobile ── */
+@media (max-width: 480px) {
+  .sidebar-box {
+    padding: 18px;
+  }
+  .sidebar-cta {
+    padding: 18px;
+  }
+}
+
+/* ── P2: hub-links — touch target ampliado nos links das hub-cards ── */
+@media (max-width: 900px) {
+  .hub-links li a {
+    padding: 6px 0;
+    min-height: 44px;
+    align-items: center;
+  }
+}
+
+/* ── YouTube carousel mobile — scroll lateral com setas ── */
+@media (max-width: 768px) {
+  .yt-sec {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .yt-sec-in > .reveal {
+    padding: 0 clamp(20px, 5vw, 40px);
+  }
+
+  /* wrapper relativo para posicionar setas */
+  .yt-carousel-wrap {
+    position: relative;
+  }
+
+  .yt-grid {
+    display: flex;
+    flex-direction: row;
+    gap: 14px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding: 8px clamp(20px, 5vw, 40px) 16px;
+    margin-top: 32px;
+    /* esconder scrollbar mas manter funcionalidade */
+    scrollbar-width: none;
+  }
+  .yt-grid::-webkit-scrollbar { display: none; }
+
+  .yt-card {
+    flex: 0 0 78vw;
+    max-width: 320px;
+    scroll-snap-align: start;
+  }
+
+  /* setas de navegação */
+  .yt-arr {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--z2);
+    border: 1px solid var(--border-z2);
+    color: var(--paper);
+    cursor: pointer;
+    z-index: 2;
+    transition: background .2s, opacity .2s;
+    flex-shrink: 0;
+  }
+  .yt-arr:disabled { opacity: .3; pointer-events: none; }
+  .yt-arr svg { width: 16px; height: 16px; }
+  .yt-arr-prev { left: 4px; }
+  .yt-arr-next { right: 4px; }
+}
+
+/* em desktop as setas ficam ocultas (o grid normal já resolve) */
+@media (min-width: 769px) {
+  .yt-arr { display: none; }
+}
