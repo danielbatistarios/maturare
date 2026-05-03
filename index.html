@@ -2089,6 +2089,47 @@ textarea.finput { min-height: 90px; resize: vertical; }
   height: 32px;
 }
 
+/* === VÍDEO INSTITUCIONAL === */
+.yt-embed-sec {
+  background: #0a0a0a;
+  padding: 72px 24px;
+  display: flex;
+  justify-content: center;
+}
+.yt-embed-inner {
+  width: 100%;
+  max-width: 860px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.yt-embed-title {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  color: #f0ede6;
+  text-align: center;
+  line-height: 1.3;
+  font-weight: 400;
+}
+.yt-embed-title em {
+  color: var(--green2);
+  font-style: normal;
+}
+.yt-embed-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.5);
+}
+.yt-embed-wrap iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
 /* === SERVIÇOS 4 CARDS === */
 .svc4-sec {
   background: #FAFAFA;
@@ -5769,6 +5810,23 @@ footer {
       </div><!-- .si-mob-rows -->
     </div><!-- .si-mob-wrap -->
 
+  </div>
+</section>
+
+<!-- VÍDEO INSTITUCIONAL -->
+<section class="yt-embed-sec">
+  <div class="yt-embed-inner">
+    <h2 class="yt-embed-title">Assista: como fazemos sua empresa ser encontrada<br>no <em>Google</em> e nas <em>IAs</em></h2>
+  <div class="yt-embed-wrap">
+    <iframe
+      src="https://www.youtube.com/embed/fMqOF6hmBhQ"
+      title="Maturare — Vídeo Institucional"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen
+      loading="lazy">
+    </iframe>
+  </div>
   </div>
 </section>
 
