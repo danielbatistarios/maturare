@@ -1276,12 +1276,25 @@ document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, 
   if (!sec) return;
   var txt = document.getElementById('wbQuote');
   if (!txt) return;
-  var html = txt.innerHTML;
-  var wrapped = html.replace(/(\S+)/g, function(word) {
-    if (word.startsWith('<') || word.startsWith('</')) return word;
-    return '<span class="wb">' + word + '</span>';
+  var walker = document.createTreeWalker(txt, NodeFilter.SHOW_TEXT, null, false);
+  var textNodes = [];
+  var node;
+  while ((node = walker.nextNode())) textNodes.push(node);
+  textNodes.forEach(function(tn) {
+    var words = tn.nodeValue.split(/(\s+)/);
+    var frag = document.createDocumentFragment();
+    words.forEach(function(part) {
+      if (/^\s+$/.test(part) || part === '') {
+        frag.appendChild(document.createTextNode(part));
+      } else {
+        var sp = document.createElement('span');
+        sp.className = 'wb';
+        sp.textContent = part;
+        frag.appendChild(sp);
+      }
+    });
+    tn.parentNode.replaceChild(frag, tn);
   });
-  txt.innerHTML = wrapped;
   var wbs = txt.querySelectorAll('.wb');
   var observed = false;
   new IntersectionObserver(function(entries) {
