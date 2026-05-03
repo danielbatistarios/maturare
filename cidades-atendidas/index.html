@@ -1133,10 +1133,6 @@ footer {
 .foot-legal a:hover { color: var(--paper); }
 
 
-/* Footer mobile responsive */
-x; }
-}
-
 /* col legal e copyright — só aparecem no mobile */
 .foot-col-legal-mobile { display: none; }
 .foot-copyright-mobile { display: none; }
@@ -2095,6 +2091,57 @@ x; }
     </div>
   </div>
 </footer>
+<!-- ═══ MACHINE MODAL ═══ -->
+<div class="machine-modal" id="machineModal" role="dialog" aria-modal="true" aria-label="Conteúdo para IAs">
+  <div class="machine-modal-inner">
+    <div class="machine-modal-header">
+      <img src="/assets/maturare-logo-white.png" alt="Maturare" style="height:32px;width:auto;display:block;">
+      <button class="machine-modal-close" onclick="setHMView('human')" aria-label="Fechar">&#x2715; Fechar</button>
+    </div>
+    <div class="machine-content"># MATURARE — CIDADES ATENDIDAS
+Page: /cidades-atendidas/
+
+Maturare é uma agência brasileira de GEO + AEO + SEO que ajuda empresas locais a aparecerem no Google e serem recomendadas por IAs como ChatGPT, Perplexity, Claude e Gemini.
+
+## Cobertura Nacional
+A Maturare atende clientes em todo o Brasil de forma 100% digital, com atenção direta do fundador Daniel Batista Rios. A sede fica em Niterói, RJ.
+
+## Regiões Atendidas
+- **Sudeste** — Rio de Janeiro, São Paulo, Minas Gerais, Espírito Santo
+- **Sul** — Paraná, Santa Catarina, Rio Grande do Sul
+- **Nordeste** — Bahia, Pernambuco, Ceará, e demais estados
+- **Centro-Oeste** — Goiás, Mato Grosso, Mato Grosso do Sul, Distrito Federal
+- **Norte** — Pará, Amazonas e demais estados
+
+## O que Entregamos em Cada Cidade
+- Arquitetura semântica de páginas locais
+- Otimização GEO: salience de entidades, EAV triples, co-citação
+- AEO: dados estruturados, FAQ schema, cobertura de query funnel
+- Conteúdo de blog com pesquisa real de SERP local
+- Diagnóstico gratuito inicial
+
+## Perfil de Cliente Ideal
+- Empresário cristão, 35-50 anos
+- PME com atuação local ou nacional
+- Frustrado com agências que só fazem redes sociais e anúncios
+
+## Contato
+- WhatsApp: +55 21 99077-0731
+- Email: contato@maturare.com.br
+- Endereço: Rua Coronel Sebastião Dantas, 56, Niterói, RJ, Brasil
+- Diagnóstico gratuito: https://maturare.com.br/#orcamento
+
+## Empresa
+- Fundador: Daniel Batista Rios
+- CNPJ: 47.336.340/0001-51
+- Fundada em 2023
+
+[Início](https://maturare.com.br) | [Metodologia](https://maturare.com.br/metodologia/) | [Serviços](https://maturare.com.br/servicos/) | [Blog](https://maturare.com.br/blog/)
+
+© 2026 Maturare. Todos os direitos reservados.</div>
+  </div>
+</div>
+
 <!-- ═══ BOTTOM BAR ═══ -->
 <div class="bottom-bar" id="bottomBar">
   <div class="bb-dock">
@@ -2264,6 +2311,31 @@ setupMobAccordion('mobAcadBtn', 'mobAcadSub');
       var t=document.querySelector(a.getAttribute('href'));
       if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}
     });
+  });
+})();
+</script>
+<script>
+(function(){
+  function setHMView(mode) {
+    var modal = document.getElementById('machineModal');
+    var btnH  = document.getElementById('btnHuman');
+    var btnM  = document.getElementById('btnMachine');
+    if (!modal) return;
+    if (mode === 'machine') {
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      if (btnM) btnM.classList.add('active');
+      if (btnH) btnH.classList.remove('active');
+    } else {
+      modal.classList.remove('open');
+      document.body.style.overflow = '';
+      if (btnH) btnH.classList.add('active');
+      if (btnM) btnM.classList.remove('active');
+    }
+  }
+  window.setHMView = setHMView;
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape') setHMView('human');
   });
 })();
 </script>
