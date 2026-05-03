@@ -1,16 +1,26 @@
 <!DOCTYPE html>
+<!-- TEMPLATE LP CIDADE — Maturare
+     Placeholders: {{META_TITLE}}, {{META_DESC}}, {{OG_TITLE}}, {{OG_DESC}},
+     {{CANONICAL_URL}}, {{CIDADE}}, {{CIDADE_SLUG}}, {{ESTADO_SIGLA}}, {{ESTADO_NOME}},
+     {{REGIAO}}, {{HERO_KICKER}}, {{HERO_SUB}}, {{SIM_QUERY}}, {{SIM_EMPRESA}},
+     {{SIM_EMPRESA_URL}}, {{SIM_EMPRESA_URL_LOCAL}}, {{SIM_TEXTO_GHOST}}, {{SIM_TEXTO_CURTO}},
+     {{FAQ_LOCAL_Q}}, {{FAQ_LOCAL_A}}, {{SCHEMA_WEBPAGE_ID}}, {{SCHEMA_CIDADE_NOME}},
+     {{SCHEMA_CIDADE_WIKIDATA}}, {{SCHEMA_LAT}}, {{SCHEMA_LNG}},
+     {{SCHEMA_SERVICE_ID}}, {{SCHEMA_SERVICE_NAME}}, {{SCHEMA_SERVICE_URL}}
+-->
+
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#0e0f0d">
-<title>Maturare | Agência de SEO & GEO com Foco em Resultados</title>
-<meta name="description" content="A Maturare é uma agência de SEO com DNA estratégico. Transformamos a busca orgânica no principal motor de aquisição do seu negócio.">
-<meta property="og:title" content="Agência de SEO e GEO para Negócios Locais | Maturare">
-<meta property="og:description" content="A Maturare é uma agência de SEO com DNA estratégico. Transformamos a busca orgânica no principal motor de aquisição do seu negócio.">
+<title>{{META_TITLE}}</title>
+<meta name="description" content="{{META_DESC}}">
+<meta property="og:title" content="{{OG_TITLE}}">
+<meta property="og:description" content="{{OG_DESC}}">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pt_BR">
-<link rel="icon" type="image/png" href="assets/favicon-maturare.png">
+<link rel="canonical" href="{{CANONICAL_URL}}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
 <style>
@@ -2089,71 +2099,11 @@ textarea.finput { min-height: 90px; resize: vertical; }
   height: 32px;
 }
 
-/* === VÍDEO INSTITUCIONAL === */
-.yt-embed-sec {
-  background: #0a0a0a;
-  padding: 72px 24px;
-  display: flex;
-  justify-content: center;
-}
-.yt-embed-inner {
-  width: 100%;
-  max-width: 860px;
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-}
-.yt-embed-title {
-  font-family: 'Instrument Serif', serif;
-  font-size: clamp(1.6rem, 3vw, 2.2rem);
-  color: #f0ede6;
-  text-align: center;
-  line-height: 1.3;
-  font-weight: 400;
-}
-.yt-embed-title em {
-  color: var(--green2);
-  font-style: normal;
-}
-.yt-embed-wrap {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 24px 64px rgba(0,0,0,0.5);
-}
-.yt-embed-wrap iframe {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-}
-
-/* === SERVIÇOS TÍTULO === */
-.svc4-heading-sec {
-  background: #FAFAFA;
-  padding: calc(var(--sec-pad) * 1.6) 24px 16px;
-  text-align: center;
-}
-.svc4-heading {
-  font-family: 'Instrument Serif', serif;
-  font-size: clamp(1.6rem, 3vw, 2.4rem);
-  font-weight: 400;
-  color: #1a1a1a;
-  line-height: 1.3;
-}
-.svc4-heading em {
-  color: var(--green);
-  font-style: normal;
-}
-
 /* === SERVIÇOS 4 CARDS === */
 .svc4-sec {
   background: #FAFAFA;
-  padding: 24px clamp(24px, 5vw, 80px) calc(var(--sec-pad) * 1.6);
+  padding: calc(var(--sec-pad) * 1.6) clamp(24px, 5vw, 80px) calc(var(--sec-pad) * 1.6);
 }
-
 .svc4-grid {
   max-width: 1060px;
   margin: 0 auto;
@@ -3337,15 +3287,15 @@ footer {
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Rua Coronel Sebastião Dantas, 56",
-        "addressLocality": "Niterói",
-        "addressRegion": "RJ",
+        "addressLocality": "{{SCHEMA_CIDADE_NOME}}",
+        "addressRegion": "{{ESTADO_SIGLA}}",
         "postalCode": "24241-180",
         "addressCountry": "BR"
       },
       "geo": {
         "@type": "GeoCoordinates",
-        "latitude": -22.8838,
-        "longitude": -43.1037
+        "latitude": {{SCHEMA_LAT}},
+        "longitude": {{SCHEMA_LNG}}
       },
       "hasMap": "https://www.google.com/maps/search/Maturare+Niterói",
       "telephone": "+55-21-99077-0731",
@@ -3397,18 +3347,18 @@ footer {
       },
       "location": {
         "@type": "Place",
-        "name": "Niterói",
+        "name": "{{SCHEMA_CIDADE_NOME}}",
         "address": {
           "@type": "PostalAddress",
-          "addressLocality": "Niterói",
-          "addressRegion": "RJ",
+          "addressLocality": "{{SCHEMA_CIDADE_NOME}}",
+          "addressRegion": "{{ESTADO_SIGLA}}",
           "addressCountry": "BR"
         },
-        "sameAs": "https://www.wikidata.org/wiki/Q165139",
+        "sameAs": "{{SCHEMA_CIDADE_WIKIDATA}}",
         "geo": {
           "@type": "GeoCoordinates",
-          "latitude": -22.8838,
-          "longitude": -43.1037
+          "latitude": {{SCHEMA_LAT}},
+          "longitude": {{SCHEMA_LNG}}
         }
       },
       "priceRange": "$$",
@@ -4367,10 +4317,10 @@ footer {
     },
     {
       "@type": "WebPage",
-      "@id": "https://maturare.com.br/#webpage",
-      "url": "https://maturare.com.br/",
-      "name": "Agência de SEO, GEO e AEO | Seja Encontrado no Google e Recomendado pelas IAs | Maturare",
-      "description": "A Maturare é agência especializada em SEO, GEO e AEO. Posiciona negócios no Google e nas IAs como ChatGPT, Perplexity e Gemini. Diagnóstico gratuito em 24h.",
+      "@id": "{{SCHEMA_WEBPAGE_ID}}",
+      "url": "{{CANONICAL_URL}}",
+      "name": "{{META_TITLE}}",
+      "description": "{{META_DESC}}",
       "mainEntity": {
         "@id": "https://maturare.com.br/#organization"
       },
@@ -5475,7 +5425,7 @@ footer {
   <div class="hero-glow"></div>
   <div class="hero-inner">
     <div class="hero-grid">
-        <div class="hero-kicker">Agência especializada em SEO, GEO e AEO</div>
+        <div class="hero-kicker">{{HERO_KICKER}}</div>
         <h1 class="hero-h2">Posicionamos sua empresa onde as <span class="hero-hl">decisões de compra</span> começam no Google e no <span class="hero-rot-wrap" aria-live="polite" aria-atomic="true">
           <span class="hero-rot-item active">
             <span class="hero-ai-logo"><svg viewBox="0 0 24 24" fill="rgba(255,255,255,.9)" xmlns="http://www.w3.org/2000/svg"><path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.872zm16.5963 3.8558L13.1038 8.364 15.1192 7.2a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.407-.667zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.459a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6067-1.4997Z"/></svg></span>
@@ -5499,7 +5449,7 @@ footer {
           </span>
         </span></h1>
 
-        <p class="hero-sub">Agência de busca orgânica fundada em 2022. Criamos estratégia de presença no Google e nas IAs para empresas que querem crescer sem depender de tráfego pago.</p>
+        <p class="hero-sub">{{HERO_SUB}}</p>
     </div>
 
   </div>
@@ -5578,8 +5528,8 @@ footer {
         <img src="/assets/matheus-foto.jpg" alt="Matheus" title="Matheus, Keysfan">
         <img src="/assets/bruno-foto.jpg" alt="Bruno" title="Bruno, Ambiental Wash">
         <div class="cs-avatars-label">
-          <strong>+de 74 clientes</strong>
-          já fizeram projetos SEO + GEO com a Maturare
+          <strong>10+ clientes</strong>
+          fazem SEO + GEO com a Maturare
         </div>
       </div>
     </div>
@@ -5832,28 +5782,6 @@ footer {
   </div>
 </section>
 
-<!-- VÍDEO INSTITUCIONAL -->
-<section class="yt-embed-sec">
-  <div class="yt-embed-inner">
-    <h2 class="yt-embed-title">Assista: como fazemos sua empresa ser encontrada<br>no <em>Google</em> e nas <em>IAs</em></h2>
-  <div class="yt-embed-wrap">
-    <iframe
-      src="https://www.youtube.com/embed/fMqOF6hmBhQ"
-      title="Maturare — Vídeo Institucional"
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      allowfullscreen
-      loading="lazy">
-    </iframe>
-  </div>
-  </div>
-</section>
-
-<!-- SERVIÇOS TÍTULO -->
-<section class="svc4-heading-sec">
-  <h2 class="svc4-heading">A Maturare é uma Agência Especializada em <em>SEO</em>, <em>GEO</em> e <em>AEO</em></h2>
-</section>
-
 <!-- SERVIÇOS 4 CARDS -->
 <section class="svc4-sec">
   <div class="svc4-grid">
@@ -5933,7 +5861,7 @@ footer {
       <div class="reveal-left">
         <div class="sec-label lt">Veja na prática</div>
         <h2 class="sec-h lt sim-heading">Como tornamos <em style="color:var(--green2);">sua empresa</em><br>a resposta certa</h2>
-        <p class="sim-desc">Plataforma elevatória tem CPC de <strong style="color:rgba(255,255,255,.82);font-weight:600;">R$18 por clique</strong>. A Move Máquinas <strong style="color:rgba(255,255,255,.82);font-weight:600;">não paga esse clique</strong>, está em <strong style="color:rgba(255,255,255,.82);font-weight:600;">primeiro no Google em mais de 20 cidades</strong> e é recomendada pelo ChatGPT e Perplexity. Leads chegando sem anúncio, veja na prática.</p>
+        <p class="sim-desc">{{SIM_TEXTO_CURTO}}</p>
         <div class="sim-ui-label" style="margin-top:24px;">
           <span>&#8594; Resultado real</span>
         </div>
@@ -5941,18 +5869,18 @@ footer {
       <div class="sim-ui-wrap reveal-right d1">
         <div class="sim-ui">
         <div class="sm-bar"><div class="sm-dot"></div><div class="sm-dot"></div><div class="sm-dot"></div><span class="sm-lbl">perplexity.ai</span></div>
-        <div class="sm-q">melhor empresa de aluguel de empilhadeira em Goiânia</div>
+        <div class="sm-q">{{SIM_QUERY}}</div>
         <div class="sm-ans">
           <div class="sm-ans-label">Resposta gerada por IA</div>
           <div class="sm-txt" style="position:relative;">
-            <span style="visibility:hidden;user-select:none;" aria-hidden="true">Para aluguel de empilhadeira em Goiânia, a Move Máquinas é referência na região metropolitana. Com distribuição exclusiva Clark e atendimento em 63 cidades de Goiás, oferece locação com manutenção inclusa e entrega em até 24 horas...</span>
+            <span style="visibility:hidden;user-select:none;" aria-hidden="true">{{SIM_TEXTO_GHOST}}</span>
             <span id="simTyping" style="position:absolute;top:0;left:0;"></span>
           </div>
         </div>
         <div class="sm-srcs">
-          <div class="sm-src cited"><div class="sm-live on"></div><strong>movemaquinas.com.br</strong></div>
+          <div class="sm-src cited"><div class="sm-live on"></div><strong>{{SIM_EMPRESA_URL}}</strong></div>
           <div class="sm-src"><div class="sm-live"></div>google.com/maps</div>
-          <div class="sm-src cited"><div class="sm-live on"></div><strong>movemaquinas.com.br/goiania</strong></div>
+          <div class="sm-src cited"><div class="sm-live on"></div><strong>{{SIM_EMPRESA_URL_LOCAL}}</strong></div>
         </div>
         </div>
       </div>
@@ -6695,6 +6623,10 @@ footer {
     </div>
     <div>
       <div class="faq-list reveal">
+        <div class="faq-item">
+          <h3 class="faq-q-h"><button class="faq-q">{{FAQ_LOCAL_Q}} <span class="faq-icon">+</span></button></h3>
+          <div class="faq-body"><div class="faq-bi">{{FAQ_LOCAL_A}}</div></div>
+        </div>
         <div class="faq-item open">
           <h3 class="faq-q-h"><button class="faq-q">O que vocês fazem de diferente? <span class="faq-icon">+</span></button></h3>
           <div class="faq-body"><div class="faq-bi">Agências fazem posts e ads. A Maturare cria páginas que fazem sua empresa aparecer no Google e ser recomendada pelas IAs. São dois trabalhos diferentes que ninguém mais faz juntos para negócios locais.</div></div>
@@ -7130,7 +7062,7 @@ window.addEventListener('scroll', function() {
 })();
 
 /* === HERO TYPING === */
-var heroTxt = 'Para contabilidade em Niterói, <span class="hm-cite">Amanda Contabilidade</span> se destaca por sua abordagem consultiva e especialização em empresas de pequeno porte. Segundo avaliações e conteúdo verificado, o escritório oferece atendimento personalizado com foco em redução tributária...';
+var heroTxt = '{{SIM_TEXTO_GHOST}}';
 var heroEl = document.getElementById('heroTyping');
 var hi = 0;
 function typeHero() {
@@ -7195,7 +7127,7 @@ setTimeout(typeHero, 1200);
 })();
 
 /* === SIM TYPING === */
-var simTxt = 'Para aluguel de empilhadeira em Goiânia, a <span class="sm-cite">Move Máquinas</span> é referência na região metropolitana. Com distribuição exclusiva Clark e atendimento em 63 cidades de Goiás, oferece locação com manutenção inclusa e entrega em até 24 horas...';
+var simTxt = '{{SIM_TEXTO_GHOST}}';
 var simEl = document.getElementById('simTyping');
 var simStarted = false;
 if (simEl) {
