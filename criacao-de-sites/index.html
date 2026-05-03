@@ -1278,6 +1278,122 @@ section.light .tl-desc { color: var(--dim); }
   text-wrap: pretty;
 }
 
+/* === CHECKLIST DIAGNÓSTICO === */
+.cl-section { padding: clamp(80px, 10vw, 130px) 0; }
+.cl-section .container { max-width: 860px; }
+.cl-intro { text-align: center; margin-bottom: 48px; }
+.cl-intro .sec-label { color: var(--green2); font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; display: block; margin-bottom: 14px; }
+.cl-intro .sec-h { font-family: 'Instrument Serif', Georgia, serif; font-size: clamp(28px,4vw,44px); font-weight: 400; color: #fff; line-height: 1.15; margin-bottom: 16px; }
+.cl-intro .sec-h em { color: var(--green2); font-style: normal; }
+.cl-intro p { color: rgba(255,255,255,.45); font-size: 15px; max-width: 560px; margin: 0 auto 24px; }
+.cl-instrucao { display: inline-flex; align-items: center; gap: 10px; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.07); border-radius: 10px; padding: 10px 18px; font-size: 13px; color: rgba(255,255,255,.4); }
+.cl-instrucao span { color: var(--green2); }
+/* score bar */
+.cl-score-bar { display: flex; align-items: center; gap: 16px; background: rgba(8,8,8,.97); border: 1px solid rgba(26,122,74,.2); border-radius: 12px; padding: 12px 20px; margin-bottom: 32px; }
+.cl-score-label { font-size: 12px; color: rgba(255,255,255,.35); white-space: nowrap; }
+.cl-bar-track { flex: 1; height: 5px; background: rgba(255,255,255,.08); border-radius: 99px; overflow: hidden; }
+.cl-bar-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--green), var(--green2)); border-radius: 99px; transition: width 0.5s ease; }
+.cl-score-num { font-size: 18px; font-weight: 700; color: var(--green2); min-width: 44px; text-align: right; }
+.cl-score-resp { font-size: 11px; color: rgba(255,255,255,.3); white-space: nowrap; }
+/* bloco */
+.cl-bloco { margin-bottom: 48px; }
+.cl-bloco-header { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 14px; padding-bottom: 14px; border-bottom: 1px solid rgba(255,255,255,.07); }
+.cl-badge { padding: 3px 10px; border-radius: 99px; font-size: 10px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; flex-shrink: 0; margin-top: 4px; }
+.cl-badge-p0 { background: rgba(224,82,82,.15); color: #ff8080; border: 1px solid rgba(224,82,82,.3); }
+.cl-badge-p1 { background: rgba(196,160,53,.15); color: var(--gold,#C4A035); border: 1px solid rgba(196,160,53,.3); }
+.cl-badge-p2 { background: rgba(26,122,74,.15); color: var(--green2); border: 1px solid rgba(26,122,74,.3); }
+.cl-badge-p3 { background: rgba(120,120,120,.12); color: #999; border: 1px solid rgba(120,120,120,.25); }
+.cl-bloco-info { flex: 1; }
+.cl-bloco-titulo { font-family: 'Instrument Serif', Georgia, serif; font-size: 20px; font-weight: 400; color: #fff; margin-bottom: 3px; }
+.cl-bloco-sub { font-size: 13px; color: rgba(255,255,255,.35); }
+.cl-bloco-prog { font-size: 12px; color: rgba(255,255,255,.3); white-space: nowrap; padding-top: 5px; }
+/* item */
+.cl-item { background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.06); border-radius: 14px; margin-bottom: 8px; overflow: hidden; transition: border-color .25s, background .25s; }
+.cl-item.sim { border-color: rgba(26,122,74,.45); background: rgba(26,122,74,.06); }
+.cl-item.nao.critical { border-color: rgba(224,82,82,.4); background: rgba(224,82,82,.05); }
+.cl-item.nao { border-color: rgba(196,160,53,.25); }
+.cl-item.skip { opacity: .5; }
+.cl-item-top { display: flex; align-items: flex-start; gap: 14px; padding: 16px 18px; cursor: pointer; user-select: none; }
+.cl-item-check { width: 24px; height: 24px; border-radius: 7px; border: 2px solid rgba(255,255,255,.18); flex-shrink: 0; margin-top: 1px; display: flex; align-items: center; justify-content: center; transition: all .2s; cursor: pointer; background: transparent; }
+.cl-item.sim .cl-item-check { background: var(--green); border-color: var(--green); }
+.cl-item.nao .cl-item-check { background: rgba(224,82,82,.2); border-color: rgba(224,82,82,.5); }
+.cl-item-check svg { display: none; }
+.cl-item.sim .cl-item-check svg.check { display: block; }
+.cl-item.nao .cl-item-check svg.cross { display: block; }
+.cl-item-main { flex: 1; min-width: 0; }
+.cl-item-nome { font-size: 15px; font-weight: 600; color: #fff; margin-bottom: 3px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.cl-item.sim .cl-item-nome { color: var(--green2); }
+.cl-item-impacto { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 2px 7px; border-radius: 4px; }
+.cl-imp-critico { background: rgba(224,82,82,.15); color: #ff8080; }
+.cl-imp-alto { background: rgba(196,160,53,.15); color: #C4A035; }
+.cl-imp-medio { background: rgba(111,207,151,.12); color: var(--green2); }
+.cl-imp-baixo { background: rgba(120,120,120,.12); color: #999; }
+.cl-item-resumo { font-size: 13px; color: rgba(255,255,255,.35); line-height: 1.45; }
+.cl-item-toggle { color: rgba(255,255,255,.3); font-size: 11px; flex-shrink: 0; display: flex; align-items: center; gap: 4px; padding-top: 4px; }
+.cl-item-toggle .cl-arr { transition: transform .25s; font-size: 9px; }
+.cl-item.open .cl-item-toggle .cl-arr { transform: rotate(180deg); }
+.cl-item.open .cl-item-toggle { color: var(--green2); }
+.cl-alerta-critico { display: none; margin: 0 18px 14px 56px; background: rgba(224,82,82,.1); border: 1px solid rgba(224,82,82,.3); border-radius: 8px; padding: 10px 14px; font-size: 13px; color: #ff9090; line-height: 1.5; }
+.cl-item.nao.critical .cl-alerta-critico { display: block; }
+.cl-item-detalhe { display: none; padding: 0 18px 20px; }
+.cl-item.open .cl-item-detalhe { display: block; }
+/* tabs */
+.cl-tabs { display: flex; gap: 6px; margin-bottom: 14px; flex-wrap: wrap; }
+.cl-tab-btn { padding: 6px 14px; border-radius: 7px; border: 1px solid rgba(255,255,255,.1); background: rgba(255,255,255,.04); color: rgba(255,255,255,.4); font-size: 12px; font-weight: 600; cursor: pointer; transition: all .2s; white-space: nowrap; }
+.cl-tab-btn.ativo { background: var(--green); border-color: var(--green); color: #fff; }
+.cl-tab-panel { display: none; }
+.cl-tab-panel.ativo { display: block; }
+/* cards conteúdo */
+.cl-info-card { background: rgba(255,255,255,.04); border-radius: 11px; padding: 16px 18px; margin-bottom: 10px; border-left: 3px solid transparent; }
+.cl-info-card.porque { border-color: #C4A035; }
+.cl-info-card.como { border-color: var(--green); }
+.cl-info-card .cl-ic-label { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 700; margin-bottom: 8px; }
+.cl-info-card.porque .cl-ic-label { color: #C4A035; }
+.cl-info-card.como .cl-ic-label { color: var(--green2); }
+.cl-info-card p { font-size: 14px; color: rgba(255,255,255,.55); line-height: 1.65; }
+.cl-info-card a { color: var(--green2); text-decoration: none; font-weight: 500; }
+.cl-info-card a:hover { text-decoration: underline; }
+.cl-info-card code { display: inline-block; background: rgba(255,255,255,.07); color: var(--green2); padding: 1px 7px; border-radius: 4px; font-family: monospace; font-size: 12px; }
+/* tutorial */
+.cl-tutorial { background: rgba(255,255,255,.04); border-radius: 11px; padding: 16px 18px; border: 1px solid rgba(26,122,74,.2); }
+.cl-tut-titulo { font-size: 13px; font-weight: 700; color: var(--green2); margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+.cl-tut-step { display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start; }
+.cl-tut-step:last-child { margin-bottom: 0; }
+.cl-tut-num { width: 24px; height: 24px; border-radius: 50%; background: var(--green); color: #fff; font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+.cl-tut-step p { font-size: 13px; color: rgba(255,255,255,.55); line-height: 1.6; }
+.cl-tut-step code { display: inline-block; background: rgba(255,255,255,.07); color: var(--green2); padding: 1px 7px; border-radius: 4px; font-family: monospace; font-size: 12px; }
+.cl-tut-step a { color: var(--green2); text-decoration: none; font-weight: 500; }
+.cl-tut-step a:hover { text-decoration: underline; }
+.cl-tut-dica { margin-top: 12px; padding: 10px 14px; background: rgba(196,160,53,.08); border-radius: 8px; border-left: 2px solid #C4A035; font-size: 12px; color: rgba(255,255,255,.5); line-height: 1.55; }
+.cl-tut-dica strong { color: #C4A035; }
+/* ações */
+.cl-item-acoes { display: flex; gap: 8px; margin-top: 16px; flex-wrap: wrap; }
+.cl-btn-sim { flex: 1; min-width: 160px; padding: 11px 16px; border-radius: 9px; border: none; background: var(--green); color: #fff; font-size: 13px; font-weight: 700; cursor: pointer; transition: background .2s; }
+.cl-btn-sim:hover { background: #1d8a54; }
+.cl-btn-nao { flex: 1; min-width: 130px; padding: 11px 16px; border-radius: 9px; border: 1px solid rgba(255,255,255,.1); background: rgba(255,255,255,.04); color: rgba(255,255,255,.4); font-size: 13px; font-weight: 600; cursor: pointer; transition: all .2s; }
+.cl-btn-nao:hover { color: #fff; border-color: rgba(255,255,255,.3); }
+.cl-btn-pular { padding: 11px 14px; border-radius: 9px; border: 1px solid rgba(255,255,255,.06); background: transparent; color: rgba(255,255,255,.3); font-size: 12px; cursor: pointer; transition: all .2s; }
+.cl-btn-pular:hover { color: #fff; }
+#cl-btn-resultado { display: none; width: 100%; padding: 18px; border-radius: 13px; border: 2px solid var(--green); background: transparent; color: var(--green2); font-size: 16px; font-weight: 700; cursor: pointer; margin-top: 24px; transition: all .2s; letter-spacing: .5px; }
+#cl-btn-resultado:hover { background: var(--green); color: #fff; }
+#cl-btn-resultado.visivel { display: block; }
+/* resultado */
+.cl-resultado { display: none; background: rgba(255,255,255,.03); border: 1px solid rgba(26,122,74,.35); border-radius: 20px; padding: 48px 36px; text-align: center; margin-top: 40px; }
+.cl-resultado.visivel { display: block; }
+.cl-res-score { font-size: 88px; font-weight: 800; line-height: 1; margin-bottom: 6px; }
+.cl-res-label { font-family: 'Instrument Serif', Georgia, serif; font-size: 26px; font-weight: 400; margin-bottom: 14px; color: #fff; }
+.cl-res-desc { font-size: 15px; color: rgba(255,255,255,.4); max-width: 500px; margin: 0 auto 32px; line-height: 1.7; }
+.cl-res-blocos { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px,1fr)); gap: 10px; margin: 28px 0; text-align: left; }
+.cl-rb { background: rgba(255,255,255,.04); border-radius: 11px; padding: 14px 16px; }
+.cl-rb-nome { font-size: 11px; color: rgba(255,255,255,.35); margin-bottom: 5px; }
+.cl-rb-val { font-size: 24px; font-weight: 800; margin-bottom: 6px; }
+.cl-rb-bar { height: 3px; background: rgba(255,255,255,.07); border-radius: 99px; overflow: hidden; }
+.cl-rb-bar-fill { height: 100%; border-radius: 99px; background: var(--green2); transition: width .6s ease; }
+.cl-res-p0-alert { background: rgba(224,82,82,.08); border: 1px solid rgba(224,82,82,.25); border-radius: 12px; padding: 18px 20px; margin: 20px 0; text-align: left; font-size: 14px; color: #ff9090; line-height: 1.6; }
+.cl-res-p0-alert strong { color: #ff8080; display: block; margin-bottom: 6px; }
+.cl-res-cta { display: inline-block; padding: 16px 36px; background: var(--green); color: #fff; border-radius: 11px; font-size: 15px; font-weight: 700; text-decoration: none; transition: background .2s; margin-top: 8px; }
+.cl-res-cta:hover { background: #1d8a54; }
+
 /* === CTA SECTION === */
 .cta-section {
   padding: clamp(80px, 10vw, 130px) 0;
@@ -2170,7 +2286,44 @@ footer {
 
 
 <!-- ============================================================ -->
-<!-- SECTION 12: CTA FINAL (dark, green gradient) -->
+<!-- SECTION 12: CHECKLIST DIAGNÓSTICO -->
+<!-- ============================================================ -->
+<section class="cl-section dark" id="diagnostico">
+  <div class="container">
+
+    <div class="cl-intro reveal">
+      <span class="sec-label">Diagnóstico gratuito</span>
+      <h2 class="sec-h">Seu site está gerando clientes<br>ou só <em>ocupando espaço?</em></h2>
+      <p>Responda cada pergunta. Clique em "detalhes" para entender o que é, por que importa e como verificar agora mesmo, sem precisar saber de tecnologia.</p>
+      <div class="cl-instrucao">
+        <span>Dica:</span> comece do topo — os primeiros itens são os mais críticos.
+      </div>
+    </div>
+
+    <div class="cl-score-bar">
+      <span class="cl-score-label">Seu score</span>
+      <div class="cl-bar-track"><div class="cl-bar-fill" id="clScoreBarFill"></div></div>
+      <span class="cl-score-num" id="clScoreNum">0</span>
+      <span class="cl-score-resp" id="clScoreResp">0/23 respondidos</span>
+    </div>
+
+    <div id="cl-body"></div>
+    <button id="cl-btn-resultado" onclick="clMostrarResultado()">Ver meu diagnóstico completo →</button>
+    <div class="cl-resultado" id="cl-resultado">
+      <div class="cl-res-score" id="cl-res-score"></div>
+      <div class="cl-res-label" id="cl-res-label"></div>
+      <p class="cl-res-desc" id="cl-res-desc"></p>
+      <div id="cl-res-p0-alerta"></div>
+      <div class="cl-res-blocos" id="cl-res-blocos"></div>
+      <a href="/contato" class="cl-res-cta">Quero um diagnóstico profissional gratuito →</a>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================================ -->
+<!-- SECTION 13: CTA FINAL (dark, green gradient) -->
 <!-- ============================================================ -->
 <section class="cta-section dark" id="cta-final">
   <div class="container">
@@ -2347,6 +2500,616 @@ document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, 
     }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }).observe(el);
   }
 });
+</script>
+
+<script>
+// ─── CHECKLIST DIAGNÓSTICO ───
+const CL_BLOCOS = [
+  {
+    id: "p0", label: "P0", badge: "cl-badge-p0", peso: 40,
+    titulo: "Fundação Crítica",
+    sub: "Sem esses itens funcionando, nenhuma outra melhoria adianta",
+    itens: [
+      {
+        nome: "Seu site aparece no Google?",
+        impacto: "critico",
+        resumo: "Verificação de indexação — o Google sabe que seu site existe?",
+        alerta: "Seu site é invisível para o Google. Nenhum cliente vai te encontrar por busca enquanto isso não for resolvido. Prioridade máxima.",
+        porque: "O Google precisa \"ler\" seu site para exibi-lo nos resultados. Se ele não indexou seu site, você não existe para quem busca na internet, mesmo que seu site esteja funcionando perfeitamente.",
+        como: `Abra o Google agora. Na barra de busca, digite exatamente:<br><br><code>site:seudominio.com.br</code><br><br>Substitua pelo endereço real do seu site. Ex: <code>site:drapsicologa.com.br</code><br><br>Se aparecer uma lista de páginas, seu site está indexado. Se aparecer "Nenhum resultado encontrado", o Google ainda não te encontrou.`,
+        tutorial: {
+          titulo: "Como resolver se o site não aparecer",
+          passos: [
+            { n:1, texto: `Acesse <a href="https://search.google.com/search-console" target="_blank">search.google.com/search-console</a> — é gratuito e feito pelo próprio Google.` },
+            { n:2, texto: `Clique em "Adicionar propriedade" e cole o endereço do seu site.` },
+            { n:3, texto: `O Google vai pedir uma verificação. A forma mais fácil é via arquivo HTML que você envia para o desenvolvedor do site instalar.` },
+            { n:4, texto: `Depois de verificado, clique em "Cobertura" no menu esquerdo. Veja quantas páginas estão indexadas.` },
+            { n:5, texto: `Se o número for zero, clique em "Inspeção de URL" e solicite indexação da página principal.` },
+          ],
+          dica: "<strong>Tempo médio para resolver:</strong> 24 a 72 horas após a solicitação. O Google precisa desse tempo para visitar seu site."
+        }
+      },
+      {
+        nome: "O site tem o cadeado (HTTPS)?",
+        impacto: "critico",
+        resumo: "Segurança básica — sem isso o Google avisa que seu site não é seguro",
+        alerta: "O Google exibe um aviso de 'site não seguro' para quem visita seu endereço. Isso espanta clientes antes mesmo de lerem o que você oferece.",
+        porque: "Sem HTTPS, o navegador exibe 'Não seguro' na barra de endereço. Esse aviso pode fazer a pessoa fechar a aba imediatamente. O Google também penaliza sites sem HTTPS no ranking.",
+        como: `Abra seu site. Olhe para a barra de endereço do navegador.<br><br>Você deve ver: <code>https://seusite.com.br</code> com um cadeado fechado.<br><br>Se aparecer <code>http://</code> (sem o S) ou um aviso de "Não seguro", seu site não tem HTTPS.`,
+        tutorial: {
+          titulo: "Como ativar o HTTPS",
+          passos: [
+            { n:1, texto: `Entre em contato com a empresa que hospeda seu site (Hostinger, Locaweb, GoDaddy, etc.).` },
+            { n:2, texto: `Peça para ativar o "Certificado SSL" (também chamado de Let's Encrypt). Normalmente é gratuito.` },
+            { n:3, texto: `Após ativar, peça ao desenvolvedor para redirecionar todas as URLs de HTTP para HTTPS.` },
+            { n:4, texto: `Aguarde algumas horas e verifique novamente. O cadeado deve aparecer.` },
+          ],
+          dica: "<strong>Custo:</strong> geralmente gratuito. Se a hospedagem cobrar, questione — a maioria oferece de graça hoje."
+        }
+      },
+      {
+        nome: "Seu site abre bem no celular?",
+        impacto: "critico",
+        resumo: "Responsividade — mais de 70% dos seus clientes chegam pelo celular",
+        alerta: "Se o site não funciona no celular, você está perdendo a maioria dos potenciais clientes antes mesmo de eles lerem o que você faz.",
+        porque: "O Google usa a versão mobile do seu site como referência principal para ranquear. Um site que só funciona bem no computador cai nos resultados de busca e afasta quem acessa pelo celular.",
+        como: `Pegue seu celular agora. Abra o site. Verifique:<br><br>1. O texto é legível sem dar zoom?<br>2. Os botões são fáceis de tocar com o dedo?<br>3. Nada está cortado ou saindo da tela?<br>4. O menu abre e fecha normalmente?<br><br>Você também pode testar em: <a href="https://search.google.com/test/mobile-friendly" target="_blank">search.google.com/test/mobile-friendly</a>`,
+        tutorial: {
+          titulo: "O que verificar no celular",
+          passos: [
+            { n:1, texto: `Acesse <a href="https://search.google.com/test/mobile-friendly" target="_blank">search.google.com/test/mobile-friendly</a> e cole o endereço do seu site.` },
+            { n:2, texto: `Se aparecer "A página é adequada para dispositivos móveis", está ok.` },
+            { n:3, texto: `Se aparecer problemas, anote-os e envie para o desenvolvedor do seu site.` },
+            { n:4, texto: `Os problemas mais comuns são: texto pequeno demais, botões muito juntos e conteúdo mais largo que a tela.` },
+          ],
+          dica: "<strong>Dica extra:</strong> teste também com internet lenta. Se demorar mais de 5 segundos, as imagens estão pesadas demais."
+        }
+      },
+      {
+        nome: "Os títulos do site estão estruturados corretamente?",
+        impacto: "critico",
+        resumo: "Title, H1, H2 e H3 — a hierarquia que o Google usa para entender cada página",
+        alerta: "Títulos genéricos como 'Bem-vinda' ou seu nome sozinho não posicionam para nenhuma busca. Title e H1 são os dois sinais mais fortes que existem.",
+        porque: `Cada página do seu site tem três camadas de títulos que o Google lê com atenção especial:<br><br><strong>Title (Título da aba)</strong> — aparece na aba do navegador e como título clicável no Google. Deve ter o serviço + cidade + seu nome, com até 60 caracteres.<br><br><strong>H1 (Título principal)</strong> — o texto grande que o visitante vê primeiro. Cada página tem exatamente um H1.<br><br><strong>H2 e H3 (Subtítulos)</strong> — organizam o conteúdo da página em seções e ajudam o Google a entender os subtemas.`,
+        como: `<strong>Para verificar o Title:</strong><br>Abra uma página e olhe a aba do navegador. Menciona o serviço e a cidade?<br><br><strong>Para verificar os H2/H3:</strong><br>Instale a extensão gratuita <a href="https://chromewebstore.google.com/detail/headingsmap/flbjommegcjonpdmenkdiocclhjacmbi" target="_blank">HeadingsMap</a> no Chrome — ela mostra todos os títulos em uma lista organizada.<br><br><strong>Extensões recomendadas para ver tudo de uma vez:</strong><br><a href="https://chromewebstore.google.com/detail/detailed-seo-extension/pfjdepjjfjjahkjfpkcgfmfhmnakjfba" target="_blank">Detailed SEO Extension</a> — mostra Title, H1, H2s, meta description e erros com um clique.<br><a href="https://chromewebstore.google.com/detail/seo-schema-visualizer/obabcjddknfnjjeblajgnlflppnpgdhi" target="_blank">SEO Schema Visualizer</a> — mostra os dados estruturados em formato visual.`,
+        tutorial: {
+          titulo: "Como corrigir a hierarquia de títulos",
+          passos: [
+            { n:1, texto: `<strong>Title:</strong> escreva um título único com a fórmula: <em>[Serviço] em [Cidade] | [Seu nome]</em>. Máximo 60 caracteres.` },
+            { n:2, texto: `<strong>H1:</strong> escreva uma frase que confirme o Title, mais humanizada. Apenas um H1 por página.` },
+            { n:3, texto: `<strong>H2:</strong> use para dividir a página em blocos. Ex: "Como funciona", "Para quem é", "Perguntas frequentes".` },
+            { n:4, texto: `<strong>H3:</strong> se um H2 tiver subtópicos, use H3 para eles.` },
+            { n:5, texto: `Passe a lista revisada para o desenvolvedor com a indicação de qual é Title, H1 e H2.` },
+          ],
+          dica: "<strong>Erro mais comum:</strong> Title e H1 idênticos palavra por palavra. O Title deve ser mais conciso para o Google; o H1 pode ser mais elaborado para o leitor."
+        }
+      },
+      {
+        nome: "Cada serviço tem sua própria página?",
+        impacto: "critico",
+        resumo: "Arquitetura de páginas — o Google ranqueia páginas, não sites",
+        alerta: "Com tudo em uma só página, o Google não consegue te encontrar para nenhuma busca específica.",
+        porque: "O Google ranqueia páginas individualmente, não sites. Uma página que fala de ansiedade E relacionamentos E autoestima ao mesmo tempo acaba não sendo especialista em nada. Cada serviço merece seu próprio espaço.",
+        como: `Olhe o menu do seu site. Existe uma página separada para cada serviço que você oferece?<br><br>Ex: <code>seusite.com.br/terapia-para-ansiedade</code> deveria ser uma página diferente de <code>seusite.com.br/terapia-de-casal</code>`,
+        tutorial: {
+          titulo: "Como criar páginas por serviço",
+          passos: [
+            { n:1, texto: `Liste todos os tipos de atendimento que você oferece.` },
+            { n:2, texto: `Para cada um, crie uma URL amigável: <code>/terapia-para-ansiedade</code>, <code>/atendimento-online</code>.` },
+            { n:3, texto: `Cada página deve ter: título com o serviço + cidade, para quem é, como funciona, o que você resolve e um botão de contato.` },
+            { n:4, texto: `Adicione essas páginas no menu do site para facilitar a navegação.` },
+          ],
+          dica: "<strong>Priorize:</strong> comece pelo serviço que mais te traz clientes hoje."
+        }
+      },
+      {
+        nome: "Seu site tem Google Search Console instalado?",
+        impacto: "critico",
+        resumo: "Monitoramento — como saber se há problemas sem essa ferramenta?",
+        alerta: "Sem o Search Console, você está dirigindo no escuro. Erros críticos podem existir há meses sem que você saiba.",
+        porque: "O Google Search Console é um painel gratuito onde o próprio Google te avisa quando tem problema no seu site: páginas que ele não consegue ler, erros, quedas de tráfego.",
+        como: `Acesse <a href="https://search.google.com/search-console" target="_blank">search.google.com/search-console</a> com sua conta Google.<br><br>Se ao entrar você ver dados sobre o seu site (gráficos, cliques, impressões), está instalado. Se pedir para "Adicionar propriedade", ainda não está.`,
+        tutorial: {
+          titulo: "Como instalar o Google Search Console",
+          passos: [
+            { n:1, texto: `Acesse <a href="https://search.google.com/search-console" target="_blank">search.google.com/search-console</a> com sua conta Google.` },
+            { n:2, texto: `Clique em "Adicionar propriedade" e escolha "Prefixo de URL". Cole o endereço completo do seu site.` },
+            { n:3, texto: `O Google vai mostrar opções de verificação. A mais fácil é a tag HTML — copie o código e envie para o desenvolvedor.` },
+            { n:4, texto: `Após verificado, vá em "Sitemaps" e adicione: <code>seusite.com.br/sitemap.xml</code>. Isso ajuda o Google a encontrar todas as páginas.` },
+          ],
+          dica: "<strong>Gratuito e essencial.</strong> Após instalar, verifique semanalmente a aba 'Cobertura' para ver se há páginas com erro."
+        }
+      }
+    ]
+  },
+  {
+    id: "p1", label: "P1", badge: "cl-badge-p1", peso: 30,
+    titulo: "Alto Impacto",
+    sub: "Itens que definem se o Google vai te mostrar ou te ignorar",
+    itens: [
+      {
+        nome: "A velocidade do site está abaixo de 3 segundos?",
+        impacto: "alto",
+        resumo: "Page Speed — site lento perde visitantes antes de ser lido",
+        alerta: null,
+        porque: "53% das pessoas abandonam um site que demora mais de 3 segundos para carregar no celular. O Google usa a velocidade como critério de ranqueamento desde 2021. Site lento = menos visitas + menos conversões.",
+        como: `Acesse <a href="https://pagespeed.web.dev" target="_blank">pagespeed.web.dev</a>, cole o endereço do seu site e clique em Analisar.<br><br>Olhe a nota do <strong>celular (mobile)</strong> — é a mais importante.<br><br>Acima de 70: bom. Entre 50 e 70: atenção. Abaixo de 50: urgente.`,
+        tutorial: {
+          titulo: "Como melhorar a velocidade",
+          passos: [
+            { n:1, texto: `A causa mais comum de lentidão são imagens pesadas. Comprima todas em <a href="https://squoosh.app" target="_blank">squoosh.app</a> antes de enviar ao desenvolvedor.` },
+            { n:2, texto: `O ideal é que cada imagem tenha menos de 200KB. Fotos do celular costumam ter 3 a 5MB — muito pesadas.` },
+            { n:3, texto: `Peça ao desenvolvedor para usar o formato WebP e ativar o "lazy loading".` },
+            { n:4, texto: `Se o site usa WordPress, instale o plugin WP Rocket ou Smush.` },
+          ],
+          dica: "<strong>Meta real:</strong> abaixo de 2 segundos no celular. Cada segundo a menos aumenta em até 20% a chance de a pessoa ficar na página."
+        }
+      },
+      {
+        nome: "O endereço de cada página tem palavras do serviço?",
+        impacto: "alto",
+        resumo: "URLs amigáveis — o Google lê o endereço como pista do conteúdo",
+        alerta: null,
+        porque: "A URL de uma página é um dos sinais que o Google usa para entender o assunto. Endereços com palavras reais ajudam no ranqueamento. Endereços com números (/page?id=47) não dizem nada.",
+        como: `Abra uma página de serviço e olhe a barra de endereço.<br><br><strong>Ruim:</strong> <code>seusite.com.br/page?id=7</code><br><strong>Bom:</strong> <code>seusite.com.br/terapia-para-ansiedade</code>`,
+        tutorial: {
+          titulo: "Como corrigir URLs",
+          passos: [
+            { n:1, texto: `Liste as páginas principais e escreva como a URL deveria ser, usando o nome do serviço em minúsculas separado por hífens.` },
+            { n:2, texto: `Exemplos: <code>/terapia-cognitivo-comportamental</code>, <code>/atendimento-online</code>.` },
+            { n:3, texto: `Passe a lista para o desenvolvedor. Junto com a mudança, peça um redirecionamento 301 da URL antiga para a nova.` },
+            { n:4, texto: `O redirecionamento é importante para não perder o que o Google já sabe sobre aquela página.` },
+          ],
+          dica: "<strong>Regra simples:</strong> se você leu a URL em voz alta e entendeu do que se trata, está boa."
+        }
+      },
+      {
+        nome: "As páginas se conectam entre si com links?",
+        impacto: "alto",
+        resumo: "Linkagem interna — ajuda o Google a entender a relação entre seus conteúdos",
+        alerta: null,
+        porque: "Quando uma página menciona outro serviço, o ideal é criar um link para aquela página. Isso distribui autoridade, mantém o visitante no site por mais tempo e ajuda o Google a entender que você é especialista em múltiplos temas.",
+        como: `Abra uma página de serviço. Em algum momento o texto menciona outro serviço ou artigo do seu site?<br><br>Esse trecho tem um link clicável levando para aquela outra página? Se termina sem nenhum link interno, está faltando.`,
+        tutorial: {
+          titulo: "Como criar links internos",
+          passos: [
+            { n:1, texto: `Em cada página, identifique 2 a 3 outros temas relacionados que você aborda no site.` },
+            { n:2, texto: `Encontre no texto uma frase que mencione aquele tema naturalmente.` },
+            { n:3, texto: `Peça ao desenvolvedor para transformar aquela frase em um link para a página correspondente.` },
+            { n:4, texto: `Exemplo: se a página de ansiedade menciona "autoestima", esse trecho pode linkar para a página de autoestima.` },
+          ],
+          dica: "<strong>Evite:</strong> usar sempre 'clique aqui'. Use textos descritivos como 'terapia para autoestima'."
+        }
+      },
+      {
+        nome: "Seu site aparece no Google Meu Negócio (mapa)?",
+        impacto: "alto",
+        resumo: "Presença local — aparecer no mapa é diferente de aparecer na busca",
+        alerta: null,
+        porque: "Quando alguém pesquisa seu serviço na cidade, o Google mostra primeiro um mapa com perfis do Google Meu Negócio, antes dos sites. Sem esse perfil, você simplesmente não aparece nessa área — que é a de maior intenção de compra.",
+        como: `Pesquise no Google: <code>[seu serviço] em [sua cidade]</code>.<br><br>Aparece um mapa com perfis logo no topo? Você está nesse mapa?`,
+        tutorial: {
+          titulo: "Como criar ou reclamar seu perfil",
+          passos: [
+            { n:1, texto: `Acesse <a href="https://business.google.com" target="_blank">business.google.com</a> com sua conta Google.` },
+            { n:2, texto: `Pesquise se já existe um perfil com o nome do seu negócio. Se sim, clique em "Reivindicar esta empresa".` },
+            { n:3, texto: `Se não existir, clique em "Adicionar empresa" e preencha todos os campos: nome, categoria, endereço, telefone, site e horários.` },
+            { n:4, texto: `O Google vai enviar um código de verificação por carta (até 14 dias) ou telefone.` },
+            { n:5, texto: `Após ativar, adicione fotos reais e complete a descrição mencionando suas especialidades.` },
+          ],
+          dica: "<strong>Gratuito e obrigatório</strong> para quem atende presencialmente. Perfis completos com fotos recebem até 42% mais contatos."
+        }
+      },
+      {
+        nome: "O site tem dados estruturados (Schema Markup)?",
+        impacto: "alto",
+        resumo: "Linguagem técnica que o Google usa para entender quem você é",
+        alerta: null,
+        porque: "Schema Markup é um código invisível que você adiciona ao site para falar diretamente com o Google — como preencher uma ficha: 'Sou psicóloga, meu CRP é X, atendo na cidade Y, meu telefone é Z'. Isso aumenta a chance de aparecer com destaque.",
+        como: `Acesse <a href="https://validator.schema.org" target="_blank">validator.schema.org</a>.<br><br>Cole o endereço do seu site e clique em "Run Test".<br><br>Se aparecerem dados como seu nome, tipo de negócio e localização, o Schema está instalado. Se aparecer uma tela vazia, não está.<br><br><strong>Forma mais rápida (extensões gratuitas do Chrome):</strong><br><a href="https://chromewebstore.google.com/detail/seo-schema-visualizer/obabcjddknfnjjeblajgnlflppnpgdhi" target="_blank">SEO Schema Visualizer</a> — veja todos os dados estruturados em formato visual, sem precisar entrar no código.<br><a href="https://chromewebstore.google.com/detail/detailed-seo-extension/pfjdepjjfjjahkjfpkcgfmfhmnakjfba" target="_blank">Detailed SEO Extension</a> — além do Schema, mostra Title, H1, meta description e outros dados técnicos de uma vez.`,
+        tutorial: {
+          titulo: "O que pedir ao desenvolvedor",
+          passos: [
+            { n:1, texto: `Peça para adicionar Schema do tipo <strong>LocalBusiness</strong> ou <strong>ProfessionalService</strong> no código do site.` },
+            { n:2, texto: `Os dados obrigatórios são: nome completo, especialidade, endereço, cidade, telefone.` },
+            { n:3, texto: `Também peça um Schema de <strong>FAQPage</strong> nas páginas que têm perguntas e respostas.` },
+            { n:4, texto: `Após o desenvolvedor instalar, valide novamente em <a href="https://validator.schema.org" target="_blank">validator.schema.org</a>.` },
+          ],
+          dica: "<strong>Por que o Google usa isso:</strong> com o Schema, o Google pode exibir seu telefone, endereço e avaliações diretamente no resultado de busca."
+        }
+      },
+      {
+        nome: "O texto da descrição no Google é atrativo?",
+        impacto: "alto",
+        resumo: "Meta description — seu anúncio gratuito no Google",
+        alerta: null,
+        porque: "A meta description é o pequeno texto que aparece abaixo do link nos resultados do Google. É a primeira coisa que o potencial cliente lê antes de decidir se vai entrar no seu site. Uma boa descrição pode dobrar o número de pessoas que clicam.",
+        como: `Pesquise seu nome ou especialidade no Google.<br><br>Abaixo do link do seu site aparece uma frase? Ela é específica e convida a clicar?<br><br><strong>Ruim:</strong> "Bem-vinda. Atendo diversas demandas..."<br><strong>Bom:</strong> "Especializada em ansiedade e autoestima. Atendimento presencial e online. Agende sua primeira conversa."`,
+        tutorial: {
+          titulo: "Como escrever uma boa meta description",
+          passos: [
+            { n:1, texto: `A meta description deve ter entre 120 e 155 caracteres (o Google corta o restante).` },
+            { n:2, texto: `Use a fórmula: <strong>o que você faz</strong> + <strong>para quem</strong> + <strong>diferencial</strong> + <strong>ação</strong>.` },
+            { n:3, texto: `Exemplo: "Especialista em ansiedade e autoestima. Atendimento presencial e online. Agende agora."` },
+            { n:4, texto: `Peça ao desenvolvedor para configurar a meta description de cada página individualmente — cada uma deve ser diferente.` },
+          ],
+          dica: "<strong>Atenção:</strong> o Google nem sempre usa a meta description que você escreve. Mas quando escreve uma boa, aumenta consideravelmente as chances."
+        }
+      },
+      {
+        nome: "Seu CRP ou registro profissional está visível no site?",
+        impacto: "alto",
+        resumo: "Credencial profissional — prova de que você é habilitado",
+        alerta: null,
+        porque: "O registro profissional é a prova pública de que você é um profissional registrado. Para um visitante decidindo entre você e outro, ver o registro gera confiança imediata. O Google também usa credenciais como sinal de autoridade (E-E-A-T).",
+        como: `Abra seu site. Em quanto tempo você encontra o número do registro profissional?<br><br>Ele deve estar visível sem precisar procurar: idealmente no rodapé (que aparece em todas as páginas) e na página Sobre.`,
+        tutorial: {
+          titulo: "Onde colocar o registro profissional",
+          passos: [
+            { n:1, texto: `Rodapé do site — aparece em todas as páginas automaticamente.` },
+            { n:2, texto: `Página Sobre / Quem Somos — junto com foto, formação e especialidades.` },
+            { n:3, texto: `Se tiver especializações ou certificações, liste-as também.` },
+            { n:4, texto: `Se possível, adicione um link para consulta pública do seu conselho profissional. Transparência total converte mais.` },
+          ],
+          dica: "<strong>Bônus:</strong> depoimentos com nome e foto de clientes reais reforçam muito mais a confiança do que apenas o registro."
+        }
+      }
+    ]
+  },
+  {
+    id: "p2", label: "P2", badge: "cl-badge-p2", peso: 20,
+    titulo: "Impacto Importante",
+    sub: "Itens que separam um site mediano de um site que converte",
+    itens: [
+      {
+        nome: "Existe uma seção de perguntas e respostas (FAQ)?",
+        impacto: "medio",
+        resumo: "FAQ — conteúdo que a IA e o Google usam para responder buscas",
+        alerta: null,
+        porque: "Ferramentas de IA como ChatGPT e o próprio Google usam FAQs para formular respostas. Se o seu site responde as dúvidas mais comuns de forma direta, ele pode ser citado quando alguém pergunta sobre seu serviço.",
+        como: `Existe em alguma página do seu site uma seção de perguntas frequentes?<br><br>As perguntas são as que seus clientes realmente fazem, não perguntas genéricas?`,
+        tutorial: {
+          titulo: "Como criar um FAQ eficiente",
+          passos: [
+            { n:1, texto: `Liste as 5 perguntas mais comuns que você recebe pelo WhatsApp ou na primeira reunião.` },
+            { n:2, texto: `Escreva respostas diretas em 2 a 4 frases — sem introdução ou rodeios.` },
+            { n:3, texto: `Adicione ao final de cada página de serviço.` },
+            { n:4, texto: `Peça ao desenvolvedor para usar a marcação técnica correta para que o Google reconheça como FAQ.` },
+          ],
+          dica: "<strong>Dica de ouro:</strong> use as palavras exatas que seus clientes usam ao perguntar."
+        }
+      },
+      {
+        nome: "O site tem avaliações ou depoimentos visíveis?",
+        impacto: "medio",
+        resumo: "Prova social — o que outros dizem sobre você vale mais que o que você diz",
+        alerta: null,
+        porque: "93% das pessoas leem avaliações online antes de contratar um serviço. Para negócios locais, avaliações no Google também influenciam diretamente o ranqueamento no mapa.",
+        como: `Abra seu site. Existem depoimentos de clientes com nome e, idealmente, foto?<br><br>Pesquise seu negócio no Google. Quantas avaliações você tem? A nota está acima de 4.5?`,
+        tutorial: {
+          titulo: "Como conseguir mais avaliações",
+          passos: [
+            { n:1, texto: `Após atender um cliente satisfeito, envie o link direto do seu perfil do Google para ele avaliar.` },
+            { n:2, texto: `Para pegar o link: acesse seu perfil no Google Meu Negócio, clique em "Pedir avaliações" e copie o link gerado.` },
+            { n:3, texto: `Adicione 3 a 5 depoimentos escritos no site — peça ao cliente permissão para usar o nome e foto.` },
+            { n:4, texto: `Responda todas as avaliações do Google, positivas e negativas. Isso mostra profissionalismo.` },
+          ],
+          dica: "<strong>Nunca compre avaliações falsas.</strong> O Google detecta e pode suspender seu perfil."
+        }
+      },
+      {
+        nome: "Existe um blog ou seção de conteúdo no site?",
+        impacto: "medio",
+        resumo: "Conteúdo — o combustível que atrai visitas orgânicas todo mês",
+        alerta: null,
+        porque: "Sites com blog atraem em média 55% mais visitantes do que sites estáticos. Cada artigo é uma nova oportunidade de aparecer no Google para uma busca diferente.",
+        como: `Existe um blog ou seção de artigos no seu site?<br><br>Os artigos falam sobre as dúvidas que seus clientes têm antes de contratar você?`,
+        tutorial: {
+          titulo: "Como começar com conteúdo",
+          passos: [
+            { n:1, texto: `Comece com 1 artigo por mês sobre um tema que seu cliente pesquisa no Google.` },
+            { n:2, texto: `Exemplos de temas: "Como saber se preciso de terapia", "Diferença entre ansiedade e estresse", "O que acontece na primeira sessão".` },
+            { n:3, texto: `Cada artigo deve ter no mínimo 800 palavras, título claro com a dúvida do cliente e resposta direta logo no início.` },
+            { n:4, texto: `Publique no blog do site, não apenas nas redes sociais — o conteúdo das redes não aparece no Google.` },
+          ],
+          dica: "<strong>Consistência vale mais que volume.</strong> Um artigo por mês publicado regularmente supera 10 artigos publicados de uma vez e depois abandonados."
+        }
+      },
+      {
+        nome: "O site tem botão de WhatsApp ou formulário de contato visível?",
+        impacto: "medio",
+        resumo: "Conversão — de que adianta visita se não há como entrar em contato?",
+        alerta: null,
+        porque: "Visitantes tomam a decisão de contato nos primeiros 30 segundos. Se o botão de contato não está visível imediatamente, a maioria vai embora sem agir.",
+        como: `Abra seu site no celular. Sem rolar a página, você consegue ver um botão de WhatsApp ou formulário de contato?<br><br>Ele está visível em todas as páginas, não só na página inicial?`,
+        tutorial: {
+          titulo: "Como otimizar o botão de contato",
+          passos: [
+            { n:1, texto: `Adicione um botão flutuante de WhatsApp que aparece em todas as páginas, no canto inferior direito da tela.` },
+            { n:2, texto: `Use uma mensagem pré-preenchida: "Olá, vim pelo site e gostaria de saber mais sobre [serviço]".` },
+            { n:3, texto: `No final de cada página de serviço, adicione um CTA claro: "Agende uma conversa", "Fale comigo", "Quero saber mais".` },
+            { n:4, texto: `Peça ao desenvolvedor para instalar um plugin gratuito de WhatsApp ou criar um botão com link direto para o número.` },
+          ],
+          dica: "<strong>Teste você mesmo:</strong> abra o site e tente entrar em contato como se fosse um cliente pela primeira vez. Se demorou mais de 3 cliques, está difícil demais."
+        }
+      },
+      {
+        nome: "O site tem Google Analytics instalado?",
+        impacto: "medio",
+        resumo: "Dados — sem medir, você não sabe o que está funcionando",
+        alerta: null,
+        porque: "O Google Analytics mostra de onde vêm seus visitantes, quais páginas eles visitam e por onde saem. Sem esses dados, você não consegue melhorar o que não está funcionando.",
+        como: `Acesse <a href="https://analytics.google.com" target="_blank">analytics.google.com</a> com sua conta Google.<br><br>Se você ver dados do seu site (visitas, sessões, páginas), está instalado. Se pedir para criar uma conta, ainda não está.`,
+        tutorial: {
+          titulo: "Como instalar o Google Analytics",
+          passos: [
+            { n:1, texto: `Acesse <a href="https://analytics.google.com" target="_blank">analytics.google.com</a> e crie uma conta gratuita.` },
+            { n:2, texto: `Crie uma "Propriedade" com o nome do seu site e clique em "Fluxo de dados Web".` },
+            { n:3, texto: `O Google vai gerar um código de rastreamento (tag). Copie e envie para o desenvolvedor instalar no site.` },
+            { n:4, texto: `Após instalar, aguarde 24 horas e acesse novamente — os primeiros dados já devem aparecer.` },
+          ],
+          dica: "<strong>Gratuito e poderoso.</strong> Olhe semanalmente: quais páginas recebem mais visitas e qual é a taxa de saída (pessoas que entram e saem sem clicar em nada)."
+        }
+      },
+      {
+        nome: "As imagens do site têm texto alternativo (alt text)?",
+        impacto: "medio",
+        resumo: "Acessibilidade e SEO — o Google não enxerga imagens, só o texto que as descreve",
+        alerta: null,
+        porque: "O Google não consegue ver imagens. Ele lê o 'alt text' — um texto escondido que descreve a imagem. Sem isso, você perde oportunidades de ranqueamento e o site fica inacessível para pessoas com deficiência visual.",
+        como: `Clique com o botão direito em uma imagem do seu site e escolha "Inspecionar". Procure por <code>alt=</code>.<br><br>Está vazio (<code>alt=""</code>) ou tem uma descrição real? Uma descrição real é algo como: <code>alt="psicóloga atendendo paciente em consultório em Niterói"</code>.`,
+        tutorial: {
+          titulo: "Como corrigir o alt text das imagens",
+          passos: [
+            { n:1, texto: `Liste as principais imagens do site (foto de perfil, fotos do ambiente, imagens de serviços).` },
+            { n:2, texto: `Para cada uma, escreva uma descrição em português: o que aparece na imagem + onde é + quem é.` },
+            { n:3, texto: `Exemplo: "Consultório de psicologia com decoração aconchegante em Niterói RJ".` },
+            { n:4, texto: `Envie a lista para o desenvolvedor adicionar ao código.` },
+          ],
+          dica: "<strong>Evite:</strong> usar apenas o nome do arquivo como alt text (como 'foto1.jpg'). Descreva o que realmente aparece na imagem."
+        }
+      }
+    ]
+  },
+  {
+    id: "p3", label: "P3", badge: "cl-badge-p3", peso: 10,
+    titulo: "Complementar",
+    sub: "Itens que diferenciam negócios com presença digital madura",
+    itens: [
+      {
+        nome: "O site aparece nas IAs (ChatGPT, Gemini, Perplexity)?",
+        impacto: "baixo",
+        resumo: "GEO/AEO — ser recomendado pela IA é o novo SEO",
+        alerta: null,
+        porque: "Cada vez mais pessoas perguntam para IAs como ChatGPT 'qual é um bom advogado em Niterói' em vez de buscar no Google. Se o seu site não for citado nessas respostas, você está perdendo um canal crescente.",
+        como: `Abra o ChatGPT ou o Gemini e pergunte: "Quais são bons [seu serviço] em [sua cidade]?"<br><br>Seu nome ou site aparece na resposta?`,
+        tutorial: {
+          titulo: "Como aumentar sua presença nas IAs",
+          passos: [
+            { n:1, texto: `Publique conteúdo consistente e de qualidade no seu site — as IAs aprendem com o que existe na internet.` },
+            { n:2, texto: `Garanta que seu nome, especialidade e cidade aparecem claramente no site, no Schema e nas redes sociais.` },
+            { n:3, texto: `Crie um perfil no Wikipedia, Crunchbase ou páginas de diretório confiáveis (como o CFP, OAB, CRM etc.).` },
+            { n:4, texto: `Seja citado em outros sites relevantes — artigos, entrevistas, menções na imprensa local.` },
+          ],
+          dica: "<strong>Estratégia de longo prazo:</strong> quanto mais fontes confiáveis mencionam você, mais as IAs confiam e recomendam seu nome."
+        }
+      },
+      {
+        nome: "O site tem uma página 'Sobre' completa?",
+        impacto: "baixo",
+        resumo: "E-E-A-T — o Google avalia a experiência e autoridade de quem assina o conteúdo",
+        alerta: null,
+        porque: "O Google usa o critério E-E-A-T (Experiência, Expertise, Autoridade, Confiança) para avaliar sites de saúde e finanças com mais rigor. Uma página Sobre completa com formação, experiência e credenciais é fundamental.",
+        como: `Existe uma página Sobre ou Quem Sou no seu site?<br><br>Ela tem: foto profissional, formação acadêmica, anos de experiência, especialidades, registro profissional e um texto humanizado sobre sua trajetória?`,
+        tutorial: {
+          titulo: "Como construir uma boa página Sobre",
+          passos: [
+            { n:1, texto: `Comece com uma foto profissional de rosto — sorri e olha para a câmera.` },
+            { n:2, texto: `Escreva sua história em primeira pessoa: por que escolheu essa profissão, quem você ajuda e como.` },
+            { n:3, texto: `Liste sua formação, pós-graduações, cursos relevantes e registro profissional.` },
+            { n:4, texto: `Adicione 2 a 3 depoimentos de clientes e, se possível, menções na imprensa ou participações em eventos.` },
+          ],
+          dica: "<strong>Humanize:</strong> a página Sobre é muitas vezes a segunda mais visitada depois da home. Ela decide se a pessoa vai entrar em contato ou não."
+        }
+      },
+      {
+        nome: "O site tem Política de Privacidade?",
+        impacto: "baixo",
+        resumo: "LGPD — obrigatório por lei para sites que coletam dados",
+        alerta: null,
+        porque: "A Lei Geral de Proteção de Dados (LGPD) exige que qualquer site que colete informações de visitantes (formulários, cookies, analytics) tenha uma Política de Privacidade visível. Além da questão legal, aumenta a confiança do visitante.",
+        como: `Existe um link para Política de Privacidade no rodapé do seu site?<br><br>Quando alguém preenche um formulário, há uma menção a como os dados serão usados?`,
+        tutorial: {
+          titulo: "Como adicionar a Política de Privacidade",
+          passos: [
+            { n:1, texto: `Gere um texto gratuito em <a href="https://politicaprivacidade.com" target="_blank">politicaprivacidade.com</a> — preencha os dados do seu negócio e ele gera o texto automaticamente.` },
+            { n:2, texto: `Crie uma página no site chamada "Política de Privacidade" e cole o texto gerado.` },
+            { n:3, texto: `Adicione um link para essa página no rodapé do site.` },
+            { n:4, texto: `Em formulários de contato, adicione: "Ao enviar, você concorda com nossa Política de Privacidade" com link.` },
+          ],
+          dica: "<strong>Não ignore:</strong> multas da LGPD podem chegar a 2% do faturamento. O processo de adequação é simples para pequenos negócios."
+        }
+      },
+      {
+        nome: "O site tem um sitemap.xml?",
+        impacto: "baixo",
+        resumo: "Sitemap — mapa que guia o Google por todas as páginas do site",
+        alerta: null,
+        porque: "O sitemap é um arquivo que lista todas as páginas do seu site para o Google. Sem ele, o Google pode demorar mais para encontrar e indexar páginas novas.",
+        como: `Tente acessar: <code>seusite.com.br/sitemap.xml</code><br><br>Se aparecer um arquivo com lista de URLs, o sitemap existe. Se aparecer erro 404, não existe.`,
+        tutorial: {
+          titulo: "Como criar e enviar o sitemap",
+          passos: [
+            { n:1, texto: `Se o site usa WordPress, instale o plugin Yoast SEO ou Rank Math — eles geram o sitemap automaticamente.` },
+            { n:2, texto: `Se o site é personalizado, peça ao desenvolvedor para criar um arquivo sitemap.xml com todas as URLs.` },
+            { n:3, texto: `Após criar, acesse o Google Search Console e vá em "Sitemaps". Cole o endereço do sitemap e clique em "Enviar".` },
+          ],
+          dica: "<strong>Atualize sempre:</strong> quando criar uma nova página, verifique se ela aparece no sitemap ou peça ao desenvolvedor para atualizá-lo."
+        }
+      }
+    ]
+  }
+];
+
+const clState = {};
+const clTotalItens = CL_BLOCOS.reduce((s,b) => s + b.itens.length, 0);
+
+function clCalcScore() {
+  let score = 0;
+  CL_BLOCOS.forEach(b => {
+    const sim = b.itens.filter((_, i) => clState[`${b.id}_${i}`] === true).length;
+    const total = b.itens.length;
+    score += (sim / total) * b.peso;
+  });
+  return Math.round(score);
+}
+
+function clRespondidos() {
+  return Object.values(clState).filter(v => v !== null && v !== undefined).length;
+}
+
+function clUpdateUI() {
+  const score = clCalcScore();
+  const resp = clRespondidos();
+  document.getElementById('clScoreBarFill').style.width = score + '%';
+  document.getElementById('clScoreNum').textContent = score;
+  document.getElementById('clScoreResp').textContent = `${resp}/${clTotalItens} respondidos`;
+  const btn = document.getElementById('cl-btn-resultado');
+  if (resp >= Math.ceil(clTotalItens * 0.6)) btn.classList.add('visivel');
+  CL_BLOCOS.forEach(b => {
+    const r = b.itens.filter((_, i) => clState[`${b.id}_${i}`] !== null && clState[`${b.id}_${i}`] !== undefined).length;
+    const el = document.getElementById(`clprog-${b.id}`);
+    if (el) el.textContent = `${r}/${b.itens.length}`;
+  });
+}
+
+function clMarcar(blocoId, idx, valor) {
+  clState[`${blocoId}_${idx}`] = valor;
+  const el = document.getElementById(`cl-item-${blocoId}-${idx}`);
+  el.classList.remove('sim','nao','skip','open');
+  if (valor === true) el.classList.add('sim');
+  if (valor === false) {
+    el.classList.add('nao');
+    const bloco = CL_BLOCOS.find(b => b.id === blocoId);
+    if (bloco && bloco.label === 'P0') el.classList.add('critical');
+  }
+  if (valor === 'skip') el.classList.add('skip');
+  clUpdateUI();
+  const bloco = CL_BLOCOS.find(b => b.id === blocoId);
+  if (idx + 1 < bloco.itens.length) {
+    const next = document.getElementById(`cl-item-${blocoId}-${idx + 1}`);
+    if (next && !next.classList.contains('sim') && !next.classList.contains('nao')) {
+      next.classList.add('open');
+      setTimeout(() => next.scrollIntoView({ behavior:'smooth', block:'nearest' }), 100);
+    }
+  }
+}
+
+function clToggleItem(id) {
+  document.getElementById(id).classList.toggle('open');
+}
+
+function clSwitchTab(itemId, tab) {
+  document.querySelectorAll(`#${itemId} .cl-tab-btn`).forEach(b => b.classList.remove('ativo'));
+  document.querySelectorAll(`#${itemId} .cl-tab-panel`).forEach(p => p.classList.remove('ativo'));
+  document.querySelector(`#${itemId} .cl-tab-btn[data-tab="${tab}"]`).classList.add('ativo');
+  document.querySelector(`#${itemId} .cl-tab-panel[data-tab="${tab}"]`).classList.add('ativo');
+}
+
+function clMostrarResultado() {
+  const score = clCalcScore();
+  let cor, label, desc;
+  if (score <= 35) {
+    cor = '#ff6b6b'; label = 'Seu site existe, mas não trabalha por você.';
+    desc = 'Há problemas fundamentais que estão impedindo clientes de te encontrar. Comece pelos itens P0 — eles têm o maior impacto.';
+  } else if (score <= 60) {
+    cor = '#C4A035'; label = 'Base existe, mas há buracos custando clientes todo mês.';
+    desc = 'Você já fez algumas coisas certas, mas ainda há pontos críticos. Priorize os itens que você marcou como "ainda não tenho" nas categorias P0 e P1.';
+  } else if (score <= 82) {
+    cor = '#6fcf97'; label = 'Site competitivo, mas deixa oportunidades na mesa.';
+    desc = 'Você está melhor que a maioria dos negócios locais. Os pontos restantes podem aumentar significativamente seus contatos.';
+  } else {
+    cor = '#1a7a4a'; label = 'Site de alta performance — raro no mercado local.';
+    desc = 'Seu site está bem construído. O próximo passo é produção de conteúdo consistente e expansão da presença nas IAs.';
+  }
+  document.getElementById('cl-res-score').textContent = score + '/100';
+  document.getElementById('cl-res-score').style.color = cor;
+  document.getElementById('cl-res-label').textContent = label;
+  document.getElementById('cl-res-desc').textContent = desc;
+
+  const p0Bloco = CL_BLOCOS.find(b => b.id === 'p0');
+  const p0Falhos = p0Bloco.itens.map((it, i) => ({ nome: it.nome, val: clState[`p0_${i}`] })).filter(x => x.val === false);
+  const alertEl = document.getElementById('cl-res-p0-alerta');
+  if (p0Falhos.length > 0) {
+    alertEl.innerHTML = `<div class="cl-res-p0-alert"><strong>⚠️ ${p0Falhos.length} problema${p0Falhos.length > 1 ? 's' : ''} crítico${p0Falhos.length > 1 ? 's' : ''} detectado${p0Falhos.length > 1 ? 's' : ''} — resolva isso primeiro:</strong>${p0Falhos.map(x => `<br>• ${x.nome}`).join('')}</div>`;
+  } else { alertEl.innerHTML = ''; }
+
+  const bd = document.getElementById('cl-res-blocos');
+  bd.innerHTML = '';
+  CL_BLOCOS.forEach(b => {
+    const sim = b.itens.filter((_, i) => clState[`${b.id}_${i}`] === true).length;
+    const pct = Math.round((sim / b.itens.length) * 100);
+    const c = pct >= 70 ? '#6fcf97' : pct >= 40 ? '#C4A035' : '#ff6b6b';
+    bd.innerHTML += `<div class="cl-rb"><div class="cl-rb-nome">${b.titulo}</div><div class="cl-rb-val" style="color:${c}">${pct}%</div><div class="cl-rb-bar"><div class="cl-rb-bar-fill" style="width:${pct}%"></div></div></div>`;
+  });
+  document.getElementById('cl-resultado').classList.add('visivel');
+  setTimeout(() => document.getElementById('cl-resultado').scrollIntoView({ behavior:'smooth' }), 100);
+}
+
+(function clRender() {
+  const container = document.getElementById('cl-body');
+  CL_BLOCOS.forEach(bloco => {
+    const bdiv = document.createElement('div');
+    bdiv.className = 'cl-bloco';
+    bdiv.innerHTML = `<div class="cl-bloco-header"><div class="cl-badge ${bloco.badge}">${bloco.label}</div><div class="cl-bloco-info"><div class="cl-bloco-titulo">${bloco.titulo}</div><div class="cl-bloco-sub">${bloco.sub}</div></div><div class="cl-bloco-prog" id="clprog-${bloco.id}">0/${bloco.itens.length}</div></div>`;
+    bloco.itens.forEach((item, idx) => {
+      const itemId = `cl-item-${bloco.id}-${idx}`;
+      const impMap = {critico:'cl-imp-critico',alto:'cl-imp-alto',medio:'cl-imp-medio',baixo:'cl-imp-baixo'};
+      const impLabel = {critico:'Crítico',alto:'Alto Impacto',medio:'Importante',baixo:'Complementar'}[item.impacto];
+      const passos = item.tutorial.passos.map(p => `<div class="cl-tut-step"><div class="cl-tut-num">${p.n}</div><p>${p.texto}</p></div>`).join('');
+      const div = document.createElement('div');
+      div.className = `cl-item${idx === 0 && bloco.id === 'p0' ? ' open' : ''}`;
+      div.id = itemId;
+      div.innerHTML = `
+        <div class="cl-item-top" onclick="clToggleItem('${itemId}')">
+          <div class="cl-item-check" onclick="event.stopPropagation();clMarcar('${bloco.id}',${idx},true)">
+            <svg class="check" width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5L4.5 8.5L11 1" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg class="cross" width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1 1L9 9M9 1L1 9" stroke="#ff8080" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <div class="cl-item-main">
+            <div class="cl-item-nome">${item.nome}<span class="cl-item-impacto ${impMap[item.impacto]}">${impLabel}</span></div>
+            <div class="cl-item-resumo">${item.resumo}</div>
+          </div>
+          <div class="cl-item-toggle">ver <span class="cl-arr">▼</span></div>
+        </div>
+        ${item.alerta ? `<div class="cl-alerta-critico">⚠️ ${item.alerta}</div>` : ''}
+        <div class="cl-item-detalhe">
+          <div class="cl-tabs">
+            <button class="cl-tab-btn ativo" data-tab="porque" onclick="clSwitchTab('${itemId}','porque')">Por que importa</button>
+            <button class="cl-tab-btn" data-tab="como" onclick="clSwitchTab('${itemId}','como')">Como verificar</button>
+            <button class="cl-tab-btn" data-tab="tutorial" onclick="clSwitchTab('${itemId}','tutorial')">Passo a passo</button>
+          </div>
+          <div class="cl-tab-panel ativo" data-tab="porque">
+            <div class="cl-info-card porque"><div class="cl-ic-label">Por que isso afeta seu negócio</div><p>${item.porque}</p></div>
+          </div>
+          <div class="cl-tab-panel" data-tab="como">
+            <div class="cl-info-card como"><div class="cl-ic-label">Como verificar agora — sem precisar saber de tecnologia</div><p>${item.como}</p></div>
+          </div>
+          <div class="cl-tab-panel" data-tab="tutorial">
+            <div class="cl-tutorial"><div class="cl-tut-titulo">📋 ${item.tutorial.titulo}</div>${passos}${item.tutorial.dica ? `<div class="cl-tut-dica">${item.tutorial.dica}</div>` : ''}</div>
+          </div>
+          <div class="cl-item-acoes">
+            <button class="cl-btn-sim" onclick="clMarcar('${bloco.id}',${idx},true)">Sim, tenho isso ✓</button>
+            <button class="cl-btn-nao" onclick="clMarcar('${bloco.id}',${idx},false)">Ainda não tenho</button>
+            <button class="cl-btn-pular" onclick="clMarcar('${bloco.id}',${idx},'skip')">Pular</button>
+          </div>
+        </div>`;
+      bdiv.appendChild(div);
+    });
+    container.appendChild(bdiv);
+  });
+  clUpdateUI();
+})();
 </script>
 </body>
 </html>
