@@ -208,7 +208,9 @@ img { display: block; max-width: 100%; }
 }
 .sec-h.lt { color: var(--paper); }
 .sec-h.dk { color: var(--ink); }
-.sec-h em { font-style: italic; }
+.sec-h em { font-style: italic; color: var(--green2); }
+.sec-h.dk em { color: var(--green); }
+.hero-h1 em { color: var(--green2); }
 .sec-desc {
   font-size: 18px;
   font-weight: 300;
@@ -1066,7 +1068,7 @@ footer {
 .sec-h, .hero-h1 { text-wrap: balance; }
 p, .hero-sub { text-wrap: pretty; }
 .hero-sub { font-weight: 350; font-variation-settings: 'opsz' 18, 'wght' 350; }
-.sec-h em, .hero-h1 em, .quote-txt { letter-spacing: -.018em; }
+.sec-h em, .hero-h1 em { letter-spacing: -.018em; }
 
 /* Performance */
 .reveal { will-change: opacity, transform; }
@@ -1503,16 +1505,16 @@ p, .hero-sub { text-wrap: pretty; }
 <section class="hero noise" id="main-content">
   <div class="hero-glow"></div>
   <div class="container">
-    <h1 class="hero-h1">Clientes da Maturare: cases reais de SEO<br>para <em>negócios locais</em></h1>
-    <p class="hero-sub">Conheça os empresários que escolheram construir ativos digitais com a Maturare — e hoje aparecem no Google e nas IAs sem depender de anúncios. De playground artesanal a locação de máquinas, cada caso real mostra como o resultado orgânico transforma negócios locais no Brasil.</p>
+    <h1 class="hero-h1">Empresas que escolheram<br><em>construir, não alugar.</em></h1>
+    <p class="hero-sub">Cada cliente aqui parou de depender de anúncios e construiu presença orgânica real. Playground, máquinas, software, contabilidade: nicho diferente, mesmo princípio. Posicionamento que pertence ao negócio.</p>
   </div>
 </section>
 
 <!-- 5. LOGOS GRID -->
 <section class="logos-sec noise">
   <div class="container">
-    <p class="sec-label lt reveal">Quem confia na Maturare</p>
-    <h2 class="sec-h lt reveal d1">Quais setores a Maturare atende?</h2>
+    <p class="sec-label lt reveal">Carteira ativa</p>
+    <h2 class="sec-h lt reveal d1">Empresas que a Maturare <em>já posicionou</em></h2>
     <div class="logos-grid">
       <div class="logo-card reveal d1">
         <div class="logo-placeholder"><img src="../assets/phd-playground-logo.png" alt="PHD Playground" style="max-height:44px;width:auto;object-fit:contain;"></div>
@@ -1714,7 +1716,7 @@ p, .hero-sub { text-wrap: pretty; }
 <section class="metricas-sec">
   <div class="container">
     <p class="sec-label" style="text-align:center;">Resultados consolidados</p>
-    <h2 class="sec-h" style="text-align:center;">Números que provam a metodologia</h2>
+    <h2 class="sec-h" style="text-align:center;">O que os números <em>dizem até aqui</em></h2>
     <div class="metricas-grid">
       <div class="metrica-card reveal d1">
         <div class="metrica-value">+200</div>
@@ -1739,8 +1741,8 @@ p, .hero-sub { text-wrap: pretty; }
 <!-- 7. SETORES ATENDIDOS -->
 <section class="setores-sec">
   <div class="container" style="text-align:center;">
-    <p class="sec-label lt reveal">Diversidade de nichos</p>
-    <h2 class="sec-h lt reveal d1">Em quais nichos a Maturare <em>gera resultado?</em></h2>
+    <p class="sec-label lt reveal">Setores atendidos</p>
+    <h2 class="sec-h lt reveal d1">Nicho não é barreira.<br><em>Método é.</em></h2>
     <div class="setores-pills">
       <span class="setor-pill reveal d1">Playground</span>
       <span class="setor-pill reveal d2">Limpeza Profissional</span>
@@ -1754,24 +1756,11 @@ p, .hero-sub { text-wrap: pretty; }
   </div>
 </section>
 
-<!-- 8. QUOTE -->
-<section class="quote-sec on-dark noise">
-  <div class="quote-inner reveal">
-    <p class="quote-txt">Todo empresário tem uma colheita para fazer. Nós preparamos o terreno.</p>
-    <p class="quote-attr">Daniel Rios — Founder, Maturare</p>
-    <div class="quote-line"></div>
-  </div>
-  <div class="container reveal" style="max-width:800px;margin:48px auto 0;text-align:center;">
-    <p style="color:rgba(255,255,255,.6);font-size:15px;line-height:1.8;">A Maturare posicionou o PHD Playground no Perplexity, criou 78 páginas para a Move Máquinas em apenas 90 dias, eliminou a dependência de Google Ads do PHD em 2 anos e gerou R$12k/mês em tráfego orgânico para a Keysfan. Cada caso real de SEO reflete a realidade de negócios locais no Brasil que precisavam parar de alugar visibilidade e construir ativos digitais com método e excelência. Essa transformação orgânica acontece quando posicionamento, conteúdo e maturidade digital caminham juntos.</p>
-    <p style="color:rgba(255,255,255,.35);font-size:13px;margin-top:16px;">Atualizado em abril de 2026</p>
-  </div>
-</section>
-
 <!-- 9. CTA -->
 <section class="cta-sec noise">
   <div class="container">
-    <h2 class="sec-h lt reveal" style="margin-bottom:40px;">Como iniciar um projeto de SEO<br><em>com a Maturare?</em></h2>
-    <p class="reveal d1" style="color:rgba(255,255,255,.65);max-width:600px;margin:0 auto 32px;text-align:center;">O primeiro passo é um diagnóstico gratuito. A Maturare analisa a situação atual do seu negócio local e mostra o caminho para o resultado orgânico que empresários como Felipe (PHD Playground) e Bruno (Ambiental Wash) alcançaram.</p>
+    <h2 class="sec-h lt reveal" style="margin-bottom:40px;">Seu negócio pode ser<br><em>o próximo case.</em></h2>
+    <p class="reveal d1" style="color:rgba(255,255,255,.65);max-width:600px;margin:0 auto 32px;text-align:center;">O primeiro passo é um diagnóstico direto: a Maturare analisa onde seu negócio está hoje e o que é preciso para construir presença real no Google e nas IAs.</p>
     <a href="/contato/" class="btn-p reveal d2">Diagnóstico Gratuito →</a>
   </div>
 </section>
