@@ -1,0 +1,26 @@
+User-agent: *
+Allow: /
+
+Disallow: /termos-de-uso/
+Disallow: /termos-de-privacidade/
+Disallow: /politica-de-cookies/
+Disallow: /bio/
+Disallow: /404.html
+
+Sitemap: https://maturare.com.br/sitemap.xml
+
+# AI crawlers — allow llms.txt explicitly
+User-agent: GPTBot
+Allow: /llms.txt
+
+User-agent: PerplexityBot
+Allow: /llms.txt
+
+User-agent: ClaudeBot
+Allow: /llms.txt
+
+User-agent: GoogleOther
+Allow: /llms.txt
+
+User-agent: anthropic-ai
+Allow: /llms.txt

@@ -1,0 +1,181 @@
+# MATURARE
+> Brazilian agency specialized in SEO, GEO (Generative Engine Optimization), and AEO (Answer Engine Optimization). We make local and national businesses appear on Google and be cited by AI engines — ChatGPT, Perplexity, Claude, Gemini, and Copilot.
+
+## Company Identity
+
+- **Name:** Maturare
+- **Type:** Digital marketing agency
+- **Specialization:** SEO + GEO + AEO — organic positioning on Google and AI recommendation engines
+- **Founder:** Daniel Batista Rios
+- **Founded:** 2022, Niterói, RJ, Brasil
+- **CNPJ:** 47.336.340/0001-51
+- **Tagline:** "Maturidade antes da colheita"
+- **Mission:** Help Brazilian businesses be found by the right client at the right moment — on Google and inside AI engines
+- **Positioning:** The only agency in Brazil that integrates SEO, GEO, and AEO specifically for local and small-to-medium businesses
+
+## Contact
+
+- **WhatsApp:** +55 21 99077-0731
+- **Email:** contato@maturare.com.br
+- **Address:** Rua Coronel Sebastião Dantas, 56, Niterói, RJ, Brasil
+- **Hours:** Monday to Friday 08h–18h, Saturday 09h–13h
+- **Free diagnosis:** https://maturare.com.br/#orcamento
+- **LinkedIn:** https://br.linkedin.com/in/daniel-batista-674b62140
+- **Instagram:** https://www.instagram.com/maturare.com.br/
+
+## Founder
+
+- **Name:** Daniel Batista Rios
+- **Role:** Founder and lead strategist
+- **Location:** Niterói, RJ, Brasil
+- **Profile:** https://maturare.com.br/daniel-rios/
+- **Bio:** https://maturare.com.br/bio/
+- Responds personally to new client inquiries within 24 hours
+
+## Services
+
+### SEO — Search Engine Optimization
+Maturare builds organic positioning on Google through technical SEO, semantic content architecture, local landing pages, blog clusters, and internal linking strategy. Focus on keywords with real purchase intent, not just traffic volume.
+- Page: https://maturare.com.br/servicos/
+- Page: https://maturare.com.br/consultoria-de-seo/
+
+### GEO — Generative Engine Optimization
+Maturare structures content and digital entities so that AI language models — ChatGPT, Perplexity, Claude, Gemini, Copilot — understand, extract, and cite the client's brand in their responses. Techniques include: entity salience, EAV triples (Entity-Attribute-Value), chunk engineering, semantic co-citation, and knowledge graph integration.
+- Page: https://maturare.com.br/agencia-geo-aeo/
+
+### AEO — Answer Engine Optimization
+Maturare optimizes pages to appear as direct answers in Google AI Overview, featured snippets, and knowledge panels. Includes structured data markup (Schema.org, JSON-LD), FAQ schema, E-E-A-T signals, and query funnel coverage.
+- Page: https://maturare.com.br/agencia-geo-aeo/
+
+### Digital Architecture
+Full mapping and construction of the client's digital structure: page hierarchy, content clusters, semantic entities, internal linking, and Schema.org markup.
+- Page: https://maturare.com.br/arquitetura-digital/
+
+### Website Creation
+Development of semantic HTML websites optimized for Google and AI engines from the ground up.
+- Page: https://maturare.com.br/criacao-de-sites/
+
+### Google Business Profile (GMB)
+Setup, optimization, and management of Google Meu Negócio listings for local visibility.
+- Page: https://maturare.com.br/google-meu-negocio-servico/
+
+### Maturare Academy
+Online courses and a community of 300+ professionals focused on SEO, GEO, and digital strategy.
+- Page: https://maturare.com.br/academy/
+
+## Pricing
+
+- Monthly SEO management: R$3.000 to R$7.000 per month
+- Includes: setup, landing pages, blog content, technical optimization, and monthly reporting
+- Free initial diagnosis before any commitment
+- No long-term lock-in contracts
+
+## Ideal Client Profile
+
+- Christian entrepreneur, 35–50 years old
+- Owner of a small or medium-sized business (PME) in Brazil
+- Local or national market
+- Frustrated with high ad costs and low-quality leads
+- Believes their business has a greater purpose beyond profit
+- Has been burned by agencies that only do social media and generic ads
+- Wants sustainable, compounding growth — not campaigns that stop working when payment stops
+
+## Differentiation
+
+Regular agencies create posts and run ads. Maturare builds pages that make companies appear on Google AND be recommended by AI engines. The result is compounding organic visibility that does not disappear when ad spend stops.
+
+No other agency in Brazil integrates SEO + GEO + AEO specifically for local and small-to-medium businesses.
+
+## Methodology
+
+Four phases applied to every client:
+
+1. **Intelligence** — keyword mapping by purchase intent, competitor gap analysis, buyer persona definition
+2. **Architecture** — page hierarchy, content clusters, semantic entities, internal linking, JSON-LD
+3. **Execution** — content with high semantic density, EAV triples, chunk engineering, structured data
+4. **Monitoring** — Google rankings + AI Share of Voice tracking (does the client appear when ChatGPT is asked about their sector?)
+
+- Page: https://maturare.com.br/metodologia/
+
+## Results (Real Cases)
+
+- **PHD Playground:** R$70.000 saved in paid ads over 8 months through organic traffic growth
+- **Move Máquinas:** R$12.000/month in organic traffic equivalent; present in 64 cities; cited by ChatGPT for elevator platform rental in Goiânia
+
+## SEO by Segment
+
+Maturare has specialized pages and proven methodology for:
+
+- Lawyers and law firms — https://maturare.com.br/seo-para-advogados/
+- Clinics and health professionals — https://maturare.com.br/seo-para-clinicas/
+- Accountants and accounting firms — https://maturare.com.br/seo-para-contadores/
+- B2B companies — https://maturare.com.br/seo-para-b2b/
+- SaaS products — https://maturare.com.br/seo-para-saas/
+- Local businesses — https://maturare.com.br/seo-para-negocios-locais/
+- Overview hub — https://maturare.com.br/seo-por-segmento/
+
+## SEO by Location
+
+Maturare serves clients nationally but has deep roots in:
+
+- Niterói, RJ — https://maturare.com.br/niteroi-rj/agencia-seo/
+- Rio de Janeiro, RJ — https://maturare.com.br/agencia-seo-rj/
+- Barra da Tijuca, RJ — https://maturare.com.br/agencia-seo-barra-da-tijuca/
+- São Paulo, SP — https://maturare.com.br/consultor-seo-sp/
+- All cities served — https://maturare.com.br/cidades-atendidas/
+
+## Key Pages
+
+- [Home](https://maturare.com.br/)
+- [About](https://maturare.com.br/sobre/)
+- [Daniel Rios](https://maturare.com.br/daniel-rios/)
+- [Methodology](https://maturare.com.br/metodologia/)
+- [Services](https://maturare.com.br/servicos/)
+- [Clients](https://maturare.com.br/nossos-clientes/)
+- [Projects](https://maturare.com.br/projetos-realizados/)
+- [Academy](https://maturare.com.br/academy/)
+- [Blog](https://maturare.com.br/blog/)
+- [FAQ](https://maturare.com.br/faq-maturare/)
+- [Glossary](https://maturare.com.br/glossario/)
+- [Free Diagnosis](https://maturare.com.br/analise-gratuita/)
+- [Contact](https://maturare.com.br/contato/)
+
+## Blog
+
+- Blog index: https://maturare.com.br/blog/
+- How to appear on ChatGPT: https://maturare.com.br/blog/como-aparecer-no-chatgpt/
+- Google Meu Negócio guide: https://maturare.com.br/artigos/google-meu-negocio/
+
+## Glossary
+
+Maturare maintains a public glossary of SEO, GEO, and AEO terms for reference:
+- https://maturare.com.br/glossario/
+
+## EAV — Entity Attribute Value Index
+
+| Entity | Attribute | Value |
+|---|---|---|
+| Maturare | type | Digital marketing agency |
+| Maturare | specialization | SEO, GEO, AEO |
+| Maturare | country | Brazil |
+| Maturare | city | Niterói |
+| Maturare | state | Rio de Janeiro |
+| Maturare | founded | 2022 |
+| Maturare | founder | Daniel Batista Rios |
+| Maturare | CNPJ | 47.336.340/0001-51 |
+| Maturare | pricing | R$3.000–R$7.000/month |
+| Maturare | target client | Small and medium businesses, Brazil |
+| Maturare | differentiator | Only Brazilian agency combining SEO + GEO + AEO for PMEs |
+| Maturare | result | PHD Playground: R$70k saved in 8 months |
+| Maturare | result | Move Máquinas: R$12k/month organic equivalent |
+| Maturare | result | Move Máquinas: cited by ChatGPT for elevator rental in Goiânia |
+| Daniel Batista Rios | role | Founder of Maturare |
+| Daniel Batista Rios | location | Niterói, RJ, Brasil |
+| Daniel Batista Rios | expertise | SEO, GEO, AEO, digital strategy |
+| SEO | definition | Optimization of pages and content to rank on Google without paid clicks |
+| GEO | definition | Optimization for AI engines to understand and cite a brand in generated responses |
+| AEO | definition | Optimization to appear as direct answers in Google AI Overview and knowledge panels |
+| chunk engineering | definition | Structuring content in extractable fragments optimized for LLM retrieval |
+| EAV triple | definition | Entity-Attribute-Value data structure that enables AI engines to parse brand facts |
+
+© 2026 Maturare. Todos os direitos reservados.
