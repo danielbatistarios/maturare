@@ -214,7 +214,8 @@ img { display: block; max-width: 100%; }
 }
 .sec-h.lt { color: var(--paper); }
 .sec-h.dk { color: var(--ink); }
-.sec-h em { font-style: italic; }
+.sec-h em { font-style: italic; color: var(--green2); }
+.hero h1 em { font-style: italic; color: var(--green2); }
 .sec-desc {
   font-size: 18px;
   font-weight: 300;
@@ -617,10 +618,158 @@ nav.scrolled {
   line-height: 1.7;
 }
 
-/* === INSTRUCTOR === */
-.instructor {
+/* === CREDENTIALS GALLERY === */
+.creds-section {
+  background: var(--z1);
+  padding: var(--sec-pad) 0;
+  border-top: 1px solid var(--border-z1);
+  border-bottom: 1px solid var(--border-z1);
+}
+.creds-photo-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+  margin-top: 48px;
+}
+.creds-photo-grid .cred-wide {
+  grid-column: span 2;
+}
+.cred-photo-wrap {
+  border-radius: var(--r-card);
+  overflow: hidden;
+  position: relative;
+  background: var(--z3);
+}
+.cred-photo-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .5s var(--spring);
+}
+.cred-photo-wrap:hover img { transform: scale(1.03); }
+.cred-photo-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0,0,0,.7));
+  padding: 40px 20px 16px;
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(255,255,255,.7);
+  letter-spacing: .04em;
+}
+.cred-photo-wrap.tall { min-height: 320px; }
+.cred-photo-wrap.short { min-height: 240px; }
+
+/* === COGNA SECTION === */
+.cogna-section {
   background: var(--z0);
   padding: var(--sec-pad) 0;
+}
+.cogna-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+.cogna-img-wrap {
+  margin-top: 40px;
+  background: #fff;
+  border-radius: var(--r-card);
+  overflow: hidden;
+  padding: 12px;
+}
+.cogna-img-wrap img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: calc(var(--r-card) - 8px);
+}
+
+/* === RESULTS WALL === */
+.results-section {
+  background: var(--z1);
+  padding: var(--sec-pad) 0;
+  border-top: 1px solid var(--border-z1);
+}
+.results-main-img {
+  margin-top: 48px;
+  border-radius: var(--r-card);
+  overflow: hidden;
+  border: 1px solid var(--border-z2);
+}
+.results-main-img img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.whatsapp-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-top: 24px;
+}
+.wa-thumb {
+  border-radius: var(--r-card);
+  overflow: hidden;
+  border: 1px solid var(--border-z2);
+  background: var(--z3);
+}
+.wa-thumb img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* === VIDEO TESTIMONIALS === */
+.videos-section {
+  background: var(--z0);
+  padding: var(--sec-pad) 0;
+}
+.videos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 48px;
+}
+.video-short-wrap {
+  border-radius: var(--r-card);
+  overflow: hidden;
+  background: var(--z2);
+  border: 1px solid var(--border-z2);
+  aspect-ratio: 9/16;
+  position: relative;
+}
+.video-short-wrap iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+.tella-wrap {
+  margin-top: 40px;
+  border-radius: var(--r-card);
+  overflow: hidden;
+  background: var(--z2);
+  border: 1px solid var(--border-z2);
+  aspect-ratio: 16/9;
+  position: relative;
+}
+.tella-wrap iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* === INSTRUCTOR === */
+.instructor {
+  background: var(--z1);
+  padding: var(--sec-pad) 0;
+  border-top: 1px solid var(--border-z1);
 }
 .instructor-grid {
   display: grid;
@@ -630,18 +779,18 @@ nav.scrolled {
   margin-top: 48px;
 }
 .instructor-photo {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
+  width: 240px;
+  height: 300px;
+  border-radius: var(--r-card);
   background: var(--z3);
-  border: 2px solid var(--border-z3);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--serif);
-  font-size: 56px;
-  font-style: italic;
-  color: var(--green2);
+  border: 1px solid var(--border-z2);
+  overflow: hidden;
+}
+.instructor-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 .instructor-info h3 {
   font-family: var(--serif);
@@ -1031,17 +1180,22 @@ footer {
   .pq-grid { grid-template-columns: 1fr; }
   .topics-grid { grid-template-columns: 1fr 1fr; }
   .instructor-grid { grid-template-columns: 1fr; text-align: center; }
-  .instructor-photo { margin: 0 auto; }
+  .instructor-photo { margin: 0 auto; width: 200px; height: 240px; }
   .instructor-info p { margin-left: auto; margin-right: auto; }
   .stats-grid { grid-template-columns: repeat(3, 1fr); }
   .products-grid { grid-template-columns: 1fr; }
   .testi-grid { grid-template-columns: 1fr; }
   .foot-top { grid-template-columns: 1fr 1fr; }
+  .creds-photo-grid { grid-template-columns: 1fr 1fr; }
+  .creds-photo-grid .cred-wide { grid-column: span 2; }
+  .whatsapp-grid { grid-template-columns: 1fr 1fr; }
+  .videos-grid { grid-template-columns: 1fr 1fr; }
 
   .sec-h, .sec-label, .sec-desc { text-align: left !important; }
 
   .hero, .para-quem, .topics, .instructor, .products,
-  .testimonials, .faq-sec, .final-cta { padding-left: 20px !important; padding-right: 20px !important; }
+  .testimonials, .faq-sec, .final-cta, .creds-section,
+  .cogna-section, .results-section, .videos-section { padding-left: 20px !important; padding-right: 20px !important; }
 }
 
 /* === RESPONSIVE: MOBILE (480px) === */
@@ -1054,6 +1208,11 @@ footer {
   .foot-top { grid-template-columns: 1fr; }
   .final-cta .btn-row { flex-direction: column; align-items: center; }
   .loader-phrase { font-size: clamp(18px, 5vw, 28px); }
+  .creds-photo-grid { grid-template-columns: 1fr; }
+  .creds-photo-grid .cred-wide { grid-column: span 1; }
+  .whatsapp-grid { grid-template-columns: 1fr 1fr; }
+  .videos-grid { grid-template-columns: 1fr; }
+  .video-short-wrap { aspect-ratio: 9/14; }
 }
 </style>
 
@@ -1384,14 +1543,55 @@ footer {
   <div class="hero-glow"></div>
   <div class="container">
     <div class="hero-content">
-      <div class="hero-kicker">Ensino pratico · Comunidade ativa · Aulas atualizadas</div>
-      <h1>Maturare Academy</h1>
-      <p class="hero-sub">Aprenda SEO e IA com quem faz. Nao com quem so ensina. <strong>300+ profissionais ja estao na comunidade.</strong></p>
-      <p class="hero-proof"><strong>+300 alunos</strong> aprendendo SEO e IA na pratica</p>
+      <div class="hero-kicker">Maturare Academy · SEO + IA + GEO</div>
+      <h1>SEO ensinado por quem<br>aparece no <em>Google e nas IAs</em></h1>
+      <p class="hero-sub">Daniel Rios é palestrante do Google Search Central Live Brasil, formado no ecossistema Cogna Educação e criador de metodologias que já posicionaram clientes em mais de 20 cidades. <strong>O que você aprende aqui funciona porque foi testado primeiro.</strong></p>
+      <p class="hero-proof"><strong>+300 alunos</strong> na comunidade · Método validado em clientes reais</p>
       <div class="hero-badge">
-        <span><span class="dot"></span> Ensino pratico</span>
-        <span><span class="dot"></span> Comunidade ativa</span>
-        <span><span class="dot"></span> Aulas atualizadas</span>
+        <span><span class="dot"></span> Palestrante Google</span>
+        <span><span class="dot"></span> Ecossistema Cogna</span>
+        <span><span class="dot"></span> Resultados documentados</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CREDENCIAIS DO INSTRUTOR -->
+<section class="creds-section noise">
+  <div class="container">
+    <p class="sec-label lt reveal">Credenciais</p>
+    <h2 class="sec-h lt reveal d1">Daniel no palco do <em>Google Search Central Live Brasil</em></h2>
+    <p class="sec-desc lt reveal d2">Não é curso de coach de SEO. É método criado por quem foi convidado pelo Google para palestrar no maior evento de busca do país.</p>
+    <div class="creds-photo-grid">
+      <div class="cred-photo-wrap tall cred-wide reveal d2">
+        <img src="../assets/sobre/maturare-search-live-2026.jpg" alt="Daniel Rios palestrando no Google Search Central Live Brasil 2026" loading="lazy">
+        <div class="cred-photo-caption">Google Search Central Live Brasil 2026 — Daniel Rios no palco</div>
+      </div>
+      <div class="cred-photo-wrap tall reveal d3">
+        <img src="../assets/sobre/palestra-search-live.jpg" alt="Palco do Search Central Live Brasil com três telas" loading="lazy">
+        <div class="cred-photo-caption">Search Central Live — evento oficial do Google no Brasil</div>
+      </div>
+      <div class="cred-photo-wrap short reveal d2" style="margin-top:0;">
+        <img src="../assets/sobre/daniel-google-hq.jpg" alt="Daniel Rios no Google HQ ao lado do logo do Google" loading="lazy">
+        <div class="cred-photo-caption">Google HQ — São Paulo</div>
+      </div>
+      <div class="cred-photo-wrap short reveal d3" style="margin-top:0;">
+        <img src="../assets/sobre/maturare-aprendizados.jpg" alt="Search Central Live Brasil — apresentação do Diretor de Engenharia do Google" loading="lazy">
+        <div class="cred-photo-caption">Keynote com Diretor de Engenharia do Google</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COGNA -->
+<section class="cogna-section noise">
+  <div class="container">
+    <div class="cogna-inner">
+      <p class="sec-label lt reveal" style="text-align:center;">Credencial educacional</p>
+      <h2 class="sec-h lt reveal d1" style="text-align:center;">Cursos dentro do maior <em>grupo educacional do Brasil</em></h2>
+      <p class="sec-desc lt reveal d2" style="text-align:center;margin:16px auto 0;">Os cursos da Maturare Academy fazem parte do ecossistema da Cogna Educação, que reúne marcas como Kroton, Anhanguera, Unopar e Pitágoras. O conhecimento ensinado aqui segue padrões do maior grupo educacional privado do país.</p>
+      <div class="cogna-img-wrap reveal d3">
+        <img src="../assets/cogna-ecossistema.webp" alt="Ecossistema Cogna Educação com Kroton, Anhanguera, Unopar e Pitágoras" loading="lazy">
       </div>
     </div>
   </div>
@@ -1400,19 +1600,19 @@ footer {
 <!-- PARA QUEM E A MATURARE ACADEMY -->
 <section class="para-quem noise">
   <div class="container">
-    <p class="sec-label lt reveal">PARA QUEM</p>
-    <h2 class="sec-h lt reveal d1">Para quem e a <em>Maturare Academy</em>?</h2>
-    <p class="sec-desc lt reveal d2">Dois perfis, um objetivo: construir maturidade digital com metodo, nao com atalho.</p>
+    <p class="sec-label lt reveal">Para quem</p>
+    <h2 class="sec-h lt reveal d1">Para quem é a <em>Maturare Academy</em>?</h2>
+    <p class="sec-desc lt reveal d2">Dois perfis, um objetivo: construir presença orgânica com método, não com atalho.</p>
     <div class="pq-grid">
       <div class="pq-card reveal d2">
         <div class="pq-icon">&#128187;</div>
         <h3>Profissionais de Marketing</h3>
-        <p>Voce trabalha com trafego pago ou social media e quer aprender SEO para cobrar mais, atender melhor e nao ficar defasado. Quer usar IA para produzir mais rapido e com mais qualidade. A Academy te entrega o metodo pratico para se diferenciar no mercado.</p>
+        <p>Você trabalha com tráfego pago ou social media e quer aprender SEO para cobrar mais, atender melhor e não ficar defasado. Quer usar IA para produzir mais rápido e com mais qualidade. A Academy entrega o método prático para se diferenciar no mercado.</p>
       </div>
       <div class="pq-card reveal d3">
         <div class="pq-icon">&#128188;</div>
-        <h3>Empresarios</h3>
-        <p>Voce e dono de negocio e quer entender o jogo. Nao para fazer sozinho, mas para saber cobrar resultados e tomar decisoes melhores sobre marketing digital. A Academy te da clareza para nao depender cegamente de agencias ou freelancers.</p>
+        <h3>Empresários</h3>
+        <p>Você é dono de negócio e quer entender o jogo. Não para fazer sozinho, mas para saber cobrar resultados e tomar decisões melhores sobre marketing digital. A Academy dá clareza para não depender cegamente de agências ou freelancers.</p>
       </div>
     </div>
   </div>
@@ -1421,39 +1621,39 @@ footer {
 <!-- O QUE VOCE APRENDE NA MATURARE ACADEMY -->
 <section class="topics noise">
   <div class="container">
-    <p class="sec-label lt reveal">CONTEUDO</p>
-    <h2 class="sec-h lt reveal d1">O que voce aprende na <em>Academy</em></h2>
-    <p class="sec-desc lt reveal d2">Conteudo pratico, atualizado e com aplicacao imediata. Sem teoria vazia.</p>
+    <p class="sec-label lt reveal">Conteúdo</p>
+    <h2 class="sec-h lt reveal d1">O que você aprende na <em>Academy</em></h2>
+    <p class="sec-desc lt reveal d2">Conteúdo prático, atualizado e com aplicação imediata. Sem teoria vazia.</p>
     <div class="topics-grid">
       <div class="topic-card reveal d1">
         <div class="topic-icon">&#9881;</div>
-        <h3>SEO Tecnico na pratica</h3>
-        <p>Core Web Vitals, indexacao, sitemap, velocidade. O que realmente importa para o Google posicionar seu site.</p>
+        <h3>SEO Técnico na prática</h3>
+        <p>Core Web Vitals, indexação, sitemap, velocidade. O que realmente importa para o Google posicionar seu site.</p>
       </div>
       <div class="topic-card reveal d2">
         <div class="topic-icon">&#128205;</div>
-        <h3>Google Meu Negocio</h3>
+        <h3>Google Meu Negócio</h3>
         <p>Do zero ao otimizado. Como fazer uma ficha que aparece nas buscas locais e gera contatos reais.</p>
       </div>
       <div class="topic-card reveal d3">
         <div class="topic-icon">&#129302;</div>
-        <h3>Inteligencia Artificial para SEO</h3>
-        <p>Prompts estrategicos, automacao de conteudo e ferramentas de IA que aceleram a producao sem perder qualidade.</p>
+        <h3>Inteligência Artificial para SEO</h3>
+        <p>Prompts estratégicos, automação de conteúdo e ferramentas de IA que aceleram a produção sem perder qualidade.</p>
       </div>
       <div class="topic-card reveal d4">
         <div class="topic-icon">&#9997;</div>
-        <h3>Conteudo que ranqueia</h3>
-        <p>Como criar paginas e artigos que o Google posiciona. Pesquisa de palavras-chave, estrutura e otimizacao on-page.</p>
+        <h3>Conteúdo que ranqueia</h3>
+        <p>Como criar páginas e artigos que o Google posiciona. Pesquisa de palavras-chave, estrutura e otimização on-page.</p>
       </div>
       <div class="topic-card reveal d5">
         <div class="topic-icon">&#127959;</div>
-        <h3>Arquitetura de site para conversao</h3>
+        <h3>Arquitetura de site para conversão</h3>
         <p>Como estruturar um site que o Google entende e o visitante converte. Hierarquia, links internos e UX.</p>
       </div>
       <div class="topic-card reveal d6">
         <div class="topic-icon">&#128161;</div>
-        <h3>Como aparecer nas IAs que recomendam empresas</h3>
-        <p>GEO: Generative Engine Optimization. Como fazer ChatGPT, Perplexity e Gemini citarem seu negocio.</p>
+        <h3>Aparecer nas IAs que recomendam empresas</h3>
+        <p>GEO: Generative Engine Optimization. Como fazer ChatGPT, Perplexity e Gemini citarem seu negócio.</p>
       </div>
     </div>
   </div>
@@ -1462,21 +1662,24 @@ footer {
 <!-- QUEM ENSINA -->
 <section class="instructor noise">
   <div class="container">
-    <p class="sec-label lt reveal">INSTRUTOR</p>
-    <h2 class="sec-h lt reveal d1">Quem esta por tras da <em>Academy</em></h2>
+    <p class="sec-label lt reveal">Instrutor</p>
+    <h2 class="sec-h lt reveal d1">Quem está por trás da <em>Academy</em></h2>
     <div class="instructor-grid reveal d2">
-      <div class="instructor-photo">DR</div>
+      <div class="instructor-photo">
+        <img src="../assets/sobre/maturare-search-live-2026.jpg" alt="Daniel Rios — Fundador da Maturare, palestrante Google Search Central Live" loading="lazy">
+      </div>
       <div class="instructor-info">
         <h3>Daniel Rios</h3>
-        <p class="role">Founder da Maturare</p>
-        <p>Especialista em SEO e Inteligencia Artificial aplicada a negocios. Mais de R$1 milhao gerenciado em trafego pago antes de se dedicar integralmente ao posicionamento organico. Ex-goleiro profissional que trocou o campo pelo digital com o mesmo foco em excelencia e metodo.</p>
+        <p class="role">Fundador da Maturare · Palestrante Google</p>
+        <p>Especialista em SEO, GEO e Inteligência Artificial aplicada a negócios. Palestrante do Google Search Central Live Brasil 2026. Mais de R$1 milhão gerenciado em tráfego pago antes de dedicar integralmente ao posicionamento orgânico. Formado no ecossistema Cogna Educação. Ex-goleiro profissional que trocou o campo pelo digital com o mesmo foco em método e resultado.</p>
         <div class="instructor-creds">
-          <span class="cred-tag">+R$1M em trafego</span>
+          <span class="cred-tag">Palestrante Google Search Central Live</span>
+          <span class="cred-tag">Ecossistema Cogna Educação</span>
+          <span class="cred-tag">+R$1M em tráfego gerenciado</span>
           <span class="cred-tag">+300 alunos</span>
           <span class="cred-tag">Fundador da Maturare</span>
-          <span class="cred-tag">Ex-goleiro profissional</span>
         </div>
-        <a href="daniel-rios.html" class="product-cta">Conhecer o Daniel &#8594;</a>
+        <a href="/daniel-rios/" class="product-cta">Conhecer o Daniel &#8594;</a>
       </div>
     </div>
   </div>
@@ -1500,7 +1703,7 @@ footer {
       </div>
       <div class="stat-item reveal d4">
         <strong>Mensal</strong>
-        <span>Atualizacao</span>
+        <span>Atualização</span>
       </div>
       <div class="stat-item reveal d5">
         <strong>2023</strong>
@@ -1510,108 +1713,104 @@ footer {
   </div>
 </section>
 
+<!-- RESULTADOS DE ALUNOS -->
+<section class="results-section noise">
+  <div class="container">
+    <p class="sec-label lt reveal">Resultados reais</p>
+    <h2 class="sec-h lt reveal d1">Alunos que saíram do curso e <em>apareceram no Google</em></h2>
+    <p class="sec-desc lt reveal d2">Não são cases hipotéticos. São alunos que aplicaram o método e viram resultado documentado.</p>
+    <div class="results-main-img reveal d3">
+      <img src="https://googledominado.com.br/wp-content/uploads/2025/05/3455.png" alt="Daniel Rios mostrando resultado de aluno no Google Meu Negócio — CA Pinturas de Fachadas no topo das buscas" loading="lazy">
+    </div>
+    <div class="whatsapp-grid">
+      <div class="wa-thumb reveal d1">
+        <img src="https://googledominado.com.br/wp-content/uploads/2025/05/IMG_3471.png" alt="Depoimento de aluno no grupo Google Dominado — resultado orgânico" loading="lazy">
+      </div>
+      <div class="wa-thumb reveal d2">
+        <img src="https://googledominado.com.br/wp-content/uploads/2025/05/IMG_3472.png" alt="Aluno do curso Google Dominado compartilhando resultado no WhatsApp" loading="lazy">
+      </div>
+      <div class="wa-thumb reveal d3">
+        <img src="https://googledominado.com.br/wp-content/uploads/2025/05/IMG_3473.png" alt="Depoimento de aluno sobre método do Daniel Rios no grupo da comunidade" loading="lazy">
+      </div>
+      <div class="wa-thumb reveal d4">
+        <img src="https://googledominado.com.br/wp-content/uploads/2025/05/IMG_3474.png" alt="Aluno elogiando as mentorias ao vivo no grupo Google Dominado" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VÍDEOS DE ALUNOS -->
+<section class="videos-section noise">
+  <div class="container">
+    <p class="sec-label lt reveal">Depoimentos em vídeo</p>
+    <h2 class="sec-h lt reveal d1">Alunos que gravaram porque <em>quiseram contar</em></h2>
+    <p class="sec-desc lt reveal d2">Nenhum depoimento foi solicitado. Eles gravaram porque os resultados falaram por si.</p>
+    <div class="videos-grid">
+      <div class="video-short-wrap reveal d1">
+        <iframe src="https://www.youtube.com/embed/7cJhaIZb4zg?rel=0&modestbranding=1" title="Depoimento de aluno da Maturare Academy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="video-short-wrap reveal d2">
+        <iframe src="https://www.youtube.com/embed/_vjIeQ9Jj4Q?rel=0&modestbranding=1" title="Depoimento de aluno sobre curso Google Dominado" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="video-short-wrap reveal d3">
+        <iframe src="https://www.youtube.com/embed/hF5ku7blho4?rel=0&modestbranding=1" title="Aluno da Maturare Academy fala sobre resultados com SEO" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+    <div class="tella-wrap reveal d2" style="margin-top:40px;">
+      <iframe src="https://www.tella.tv/video/cmdxevsg900050bju26ht5nhu/embed?b=0&title=0&a=1&loop=0&t=0&muted=0&wt=0" title="Aula demonstrativa — Maturare Academy" allowfullscreen allowtransparency loading="lazy"></iframe>
+    </div>
+  </div>
+</section>
+
 <!-- PRODUTOS DA ACADEMY -->
 <section class="products noise">
   <div class="container">
-    <p class="sec-label lt reveal">PRODUTOS</p>
+    <p class="sec-label lt reveal">Produtos</p>
     <h2 class="sec-h lt reveal d1">Escolha seu caminho na <em>Academy</em></h2>
-    <p class="sec-desc lt reveal d2">Dois caminhos para quem quer construir maturidade digital com metodo e comunidade.</p>
+    <p class="sec-desc lt reveal d2">Dois caminhos para quem quer construir presença orgânica com método e comunidade.</p>
     <div class="products-grid">
       <div class="product-card reveal d2">
         <span class="product-tag">Curso completo</span>
         <h3>Curso de SEO e IA</h3>
-        <p>O curso mais pratico do Brasil para profissionais que querem dominar SEO e usar Inteligencia Artificial para escalar resultados. De zero a avancado, com modulos atualizados mensalmente.</p>
-        <a href="curso-seo-ia.html" class="product-cta">Conhecer o curso &#8594;</a>
+        <p>O curso mais prático do Brasil para profissionais que querem dominar SEO e usar Inteligência Artificial para escalar resultados. Do zero ao avançado, com módulos atualizados mensalmente.</p>
+        <a href="/academy/curso-google-meu-negocio/" class="product-cta">Conhecer o curso &#8594;</a>
       </div>
       <div class="product-card reveal d3">
         <span class="product-tag">Comunidade</span>
         <h3>Comunidade Maturare</h3>
-        <p>300+ profissionais aprendendo juntos. Networking, conteudo exclusivo, lives mensais e suporte direto com Daniel Rios. A comunidade que constroi junto.</p>
-        <a href="comunidade.html" class="product-cta">Entrar na comunidade &#8594;</a>
+        <p>300+ profissionais aprendendo juntos. Networking, conteúdo exclusivo, lives mensais e suporte direto com Daniel Rios. A comunidade que constrói junto.</p>
+        <a href="https://www.youtube.com/@googledominado1" class="product-cta" target="_blank" rel="noopener">Ver conteúdo gratuito &#8594;</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- DEPOIMENTOS DE ALUNOS -->
-<section class="testimonials noise">
-  <div class="container">
-    <p class="sec-label lt reveal">DEPOIMENTOS</p>
-    <h2 class="sec-h lt reveal d1">O que dizem os alunos da <em>Academy</em>?</h2>
-    <div class="testi-grid">
-      <div class="testi-card reveal d1">
-        <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <blockquote>"Eu fazia social media e vivia dependendo de ads. Depois da Academy, comecei a oferecer SEO junto e meu ticket medio dobrou. O modulo de IA mudou minha forma de produzir conteudo."</blockquote>
-        <div class="testi-author">
-          <div class="testi-avatar">CM</div>
-          <div>
-            <div class="testi-name">Camila Mendes</div>
-            <div class="testi-role">Social Media Manager &#183; Sao Paulo, SP</div>
-          </div>
-        </div>
-      </div>
-      <div class="testi-card reveal d2">
-        <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <blockquote>"Eu era freelancer de trafego pago e nao entendia nada de SEO. Hoje tenho 4 clientes de recorrencia so com SEO local. A Academy me deu o metodo que faltava."</blockquote>
-        <div class="testi-author">
-          <div class="testi-avatar">RL</div>
-          <div>
-            <div class="testi-name">Rafael Lima</div>
-            <div class="testi-role">Freelancer de Marketing Digital &#183; Curitiba, PR</div>
-          </div>
-        </div>
-      </div>
-      <div class="testi-card reveal d3">
-        <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <blockquote>"Como empresario, eu nao sabia nem o que cobrar da minha agencia. Depois da Academy entendi o que e SEO de verdade e passei a exigir resultado. Mudou minha relacao com o marketing."</blockquote>
-        <div class="testi-author">
-          <div class="testi-avatar">PS</div>
-          <div>
-            <div class="testi-name">Pedro Santos</div>
-            <div class="testi-role">Dono de Clinica Odontologica &#183; Niteroi, RJ</div>
-          </div>
-        </div>
-      </div>
-      <div class="testi-card reveal d4">
-        <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <blockquote>"O modulo de IA para SEO me economiza umas 15 horas por semana. Prompts estrategicos, automacao de briefing, criacao de conteudo. E tudo aplicavel no dia seguinte."</blockquote>
-        <div class="testi-author">
-          <div class="testi-avatar">AF</div>
-          <div>
-            <div class="testi-name">Ana Ferreira</div>
-            <div class="testi-role">Analista de Marketing &#183; Belo Horizonte, MG</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- FAQ DA ACADEMY -->
 <section class="faq-sec noise">
   <div class="container">
-    <p class="sec-label lt reveal" style="text-align:center">PERGUNTAS FREQUENTES</p>
-    <h2 class="sec-h lt reveal d1" style="text-align:center">Duvidas sobre a Academy?</h2>
+    <p class="sec-label lt reveal" style="text-align:center">Perguntas frequentes</p>
+    <h2 class="sec-h lt reveal d1" style="text-align:center">Dúvidas sobre a <em>Academy</em>?</h2>
     <div class="faq-list">
       <div class="faq-item reveal d1">
-        <button class="faq-q">Preciso ter experiencia com marketing?<span class="faq-icon">+</span></button>
-        <div class="faq-body"><div class="faq-bi">Nao. O conteudo foi desenhado para quem esta comecando e tambem para quem ja trabalha com marketing digital. Os modulos vao do fundamento ao avancado, com linguagem acessivel e exemplos praticos do dia a dia.</div></div>
+        <button class="faq-q">Preciso ter experiência com marketing?<span class="faq-icon">+</span></button>
+        <div class="faq-body"><div class="faq-bi">Não. O conteúdo foi desenhado para quem está começando e também para quem já trabalha com marketing digital. Os módulos vão do fundamento ao avançado, com linguagem acessível e exemplos práticos do dia a dia.</div></div>
       </div>
       <div class="faq-item reveal d2">
-        <button class="faq-q">O conteudo e atualizado?<span class="faq-icon">+</span></button>
-        <div class="faq-body"><div class="faq-bi">Sim. As aulas sao atualizadas mensalmente com base nas mudancas do Google, novas funcionalidades de IA e tendencias do mercado. Voce nunca fica com conteudo defasado.</div></div>
+        <button class="faq-q">O conteúdo é atualizado?<span class="faq-icon">+</span></button>
+        <div class="faq-body"><div class="faq-bi">Sim. As aulas são atualizadas mensalmente com base nas mudanças do Google, novas funcionalidades de IA e tendências do mercado. Você nunca fica com conteúdo defasado.</div></div>
       </div>
       <div class="faq-item reveal d3">
         <button class="faq-q">Tem suporte?<span class="faq-icon">+</span></button>
-        <div class="faq-body"><div class="faq-bi">Sim. Voce tem acesso a comunidade no WhatsApp com suporte direto do Daniel Rios e networking com mais de 300 profissionais. Alem disso, temos lives mensais de Q&A.</div></div>
+        <div class="faq-body"><div class="faq-bi">Sim. Você tem acesso à comunidade no WhatsApp com suporte direto do Daniel Rios e networking com mais de 300 profissionais. Além disso, temos lives mensais de Q&A.</div></div>
       </div>
       <div class="faq-item reveal d4">
-        <button class="faq-q">Funciona para quem ja sabe SEO?<span class="faq-icon">+</span></button>
-        <div class="faq-body"><div class="faq-bi">Sim. Temos modulos avancados sobre GEO (Generative Engine Optimization), automacao com IA, estrategia de escala e como montar propostas de SEO para clientes. Conteudo relevante ate para quem ja atua na area.</div></div>
+        <button class="faq-q">Funciona para quem já sabe SEO?<span class="faq-icon">+</span></button>
+        <div class="faq-body"><div class="faq-bi">Sim. Temos módulos avançados sobre GEO (Generative Engine Optimization), automação com IA, estratégia de escala e como montar propostas de SEO para clientes. Conteúdo relevante até para quem já atua na área.</div></div>
       </div>
       <div class="faq-item reveal d5">
         <button class="faq-q">Posso cancelar?<span class="faq-icon">+</span></button>
-        <div class="faq-body"><div class="faq-bi">Sim. Voce pode cancelar a qualquer momento sem burocracia. Sem multa, sem pergunta. E o curso tem 7 dias de garantia incondicional.</div></div>
+        <div class="faq-body"><div class="faq-bi">Sim. Você pode cancelar a qualquer momento sem burocracia. Sem multa, sem pergunta. O curso tem 7 dias de garantia incondicional.</div></div>
       </div>
     </div>
   </div>
@@ -1620,12 +1819,12 @@ footer {
 <!-- CTA FINAL -->
 <section class="final-cta noise">
   <div class="container">
-    <p class="sec-label lt reveal">PROXIMO PASSO</p>
-    <h2 class="sec-h lt reveal d1">Pronto para levar sua carreira ao <em>proximo nivel</em>?</h2>
-    <p class="sec-desc lt reveal d2" style="margin:20px auto 0">Construa maturidade digital com metodo, comunidade e conteudo que funciona.</p>
+    <p class="sec-label lt reveal">Próximo passo</p>
+    <h2 class="sec-h lt reveal d1">Aprenda com quem já <em>provou no palco do Google</em></h2>
+    <p class="sec-desc lt reveal d2" style="margin:20px auto 0">Palestrante Google Search Central Live. Ecossistema Cogna. Resultados documentados em clientes reais. O método que você aprende aqui não é teoria.</p>
     <div class="btn-row reveal d3">
-      <a href="curso-seo-ia.html" class="btn-green">Ver o Curso</a>
-      <a href="comunidade.html" class="btn-outline">Entrar na Comunidade</a>
+      <a href="/academy/curso-google-meu-negocio/" class="btn-green">Ver o Curso</a>
+      <a href="/sobre/" class="btn-outline">Conhecer a Maturare</a>
     </div>
   </div>
 </section>
