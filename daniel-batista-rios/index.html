@@ -4,9 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#0e0f0d">
-<title>Daniel Batista Rios | Fundador da Maturare — Especialista em SEO e IA</title>
-<meta name="description" content="Daniel Rios: fundador da Maturare, ex-goleiro profissional (Macaé, Duque de Caxias, URT), +R$2.5M faturados em e-commerce, +300 alunos em SEO e IA. Casado com Thalisa, pai do Davi.">
-<meta property="og:title" content="Daniel Batista Rios | Fundador da Maturare — Especialista em SEO e IA">
+<title>Daniel Batista Rios | Fundador da Maturare — Especialista em SEO, GEO e IA</title>
+<meta name="description" content="Daniel Batista Rios é fundador da Maturare, agência de SEO e GEO em Niterói. Ex-goleiro profissional, +R$2.5M em e-commerce, +300 alunos na Academy. Casado com Thalisa, pai do Davi.">
+<link rel="canonical" href="https://maturare.com.br/daniel-batista-rios/">
+<meta property="og:title" content="Daniel Batista Rios | Fundador da Maturare — Especialista em SEO, GEO e IA">
 <meta property="og:description" content="Daniel Rios fundou a Maturare em 2022. Ex-goleiro profissional, especialista em SEO, IA e posicionamento digital para negócios locais.">
 <meta property="og:type" content="profile">
 <meta property="og:locale" content="pt_BR">
@@ -15,15 +16,11 @@
 <style>
 /* === LOADER === */
 .loader {
-  position: fixed;
-  inset: 0;
+  position: fixed; inset: 0;
   background: var(--z0, #0e0f0d);
   z-index: 99999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 32px;
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; gap: 32px;
 }
 .loader-phrase {
   font-family: 'Instrument Serif', Georgia, serif;
@@ -32,919 +29,586 @@
   color: rgba(255,255,255,.9);
   letter-spacing: .01em;
   text-align: center;
-  max-width: 600px;
-  padding: 0 24px;
-  overflow: hidden;
+  max-width: 600px; padding: 0 24px; overflow: hidden;
 }
-.loader-phrase span {
-  display: inline-block;
-  opacity: 0;
-  transform: translateY(12px);
-  transition: opacity .4s ease, transform .4s ease;
-}
+.loader-phrase span { display: inline-block; opacity: 0; transform: translateY(12px); transition: opacity .4s ease, transform .4s ease; }
 .loader-phrase span.visible { opacity: 1; transform: none; }
-.loader-brand {
-  font-family: 'DM Sans', system-ui, sans-serif;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: .2em;
-  text-transform: uppercase;
-  color: #6fcf97;
-  opacity: 0;
-  transition: opacity .6s ease .3s;
-}
+.loader-brand { font-family: 'DM Sans', system-ui, sans-serif; font-size: 11px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: #6fcf97; opacity: 0; transition: opacity .6s ease .3s; }
 .loader-brand.visible { opacity: 1; }
-.loader-line {
-  width: 48px;
-  height: 1px;
-  background: rgba(255,255,255,.12);
-  position: relative;
-  overflow: hidden;
-}
-.loader-line::after {
-  content: '';
-  position: absolute;
-  left: 0; top: 0;
-  height: 100%;
-  width: 0%;
-  background: #1a7a4a;
-  transition: width 1.8s cubic-bezier(.16,1,.3,1);
-}
+.loader-line { width: 48px; height: 1px; background: rgba(255,255,255,.12); position: relative; overflow: hidden; }
+.loader-line::after { content: ''; position: absolute; left: 0; top: 0; height: 100%; width: 0%; background: #1a7a4a; transition: width 1.8s cubic-bezier(.16,1,.3,1); }
 .loader-line.active::after { width: 100%; }
-.loader.done {
-  opacity: 0;
-  transition: opacity .6s ease;
-  pointer-events: none;
-}
+.loader.done { opacity: 0; transition: opacity .6s ease; pointer-events: none; }
 
 /* === VARIABLES === */
 :root {
-  --ink: #111210;
-  --ink2: #1c1b19;
-  --paper: #f5f4f0;
-  --paper2: #edebe3;
-  --paper3: #e2dfd6;
-  --dim: #5a5a56;
-  --faint: #d6d4ce;
-  --green: #1a7a4a;
-  --green2: #6fcf97;
-  --green-bg: #e8f5ee;
+  --ink: #111210; --ink2: #1c1b19;
+  --paper: #f5f4f0; --paper2: #edebe3; --paper3: #e2dfd6;
+  --dim: #5a5a56; --faint: #d6d4ce;
+  --green: #1a7a4a; --green2: #6fcf97; --green-bg: #e8f5ee;
   --orange: #e07b39;
-  --chatgpt: #10a37f;
-  --perplexity: #6366f1;
-  --gemini: #4285f4;
-  --claude: #c96442;
-  --copilot: #0078d4;
   --serif: 'Instrument Serif', Georgia, serif;
   --sans: 'DM Sans', system-ui, sans-serif;
-  --radius: 16px;
-  --radius-sm: 8px;
+  --radius: 16px; --radius-sm: 8px;
   --sec-pad: clamp(100px, 12vw, 160px);
   --spring: cubic-bezier(.16, 1, .3, 1);
-  --z0: #0e0f0d;
-  --z1: #141513;
-  --z2: #1a1b18;
-  --z3: #21221f;
-  --z4: #292a26;
+  --z0: #0e0f0d; --z1: #141513; --z2: #1a1b18; --z3: #21221f; --z4: #292a26;
   --glow-green: rgba(26, 122, 74, .14);
-  --glow-green-edge: rgba(111, 207, 151, .07);
-  --glow-orange: rgba(224, 123, 57, .06);
-  --border-z1: rgba(255, 255, 255, .055);
-  --border-z2: rgba(255, 255, 255, .08);
-  --border-z3: rgba(255, 255, 255, .11);
-  --toplight: inset 0 1px 0 rgba(255, 255, 255, .06);
-  --toplight-strong: inset 0 1px 0 rgba(255, 255, 255, .1);
-  --sp-2: 8px; --sp-3: 12px; --sp-4: 16px; --sp-6: 24px; --sp-8: 32px; --sp-10: 40px; --sp-12: 48px; --sp-16: 64px;
-  --r-sharp: 0px; --r-subtle: 4px; --r-card: 12px; --r-soft: 16px; --r-pill: 999px;
-  --zi-nav: 300; --zi-bar: 301; --zi-prog: 999;
-  --t-fast: 150ms; --t-normal: 250ms; --t-slow: 400ms; --t-slower: 750ms;
-  --shadow-2: 0 4px 12px rgba(0,0,0,.25), 0 2px 4px rgba(0,0,0,.2);
-  --shadow-3: 0 8px 24px rgba(0,0,0,.3), 0 4px 8px rgba(0,0,0,.2);
-  --shadow-5: 0 24px 80px rgba(0,0,0,.45), 0 12px 24px rgba(0,0,0,.25);
-  --color-warmth: #1a1812;
-  --color-warmth-border: rgba(224, 123, 57, .08);
+  --border-z1: rgba(255,255,255,.055); --border-z2: rgba(255,255,255,.08); --border-z3: rgba(255,255,255,.11);
+  --toplight: inset 0 1px 0 rgba(255,255,255,.06); --toplight-strong: inset 0 1px 0 rgba(255,255,255,.1);
+  --sp-2:8px;--sp-3:12px;--sp-4:16px;--sp-6:24px;--sp-8:32px;--sp-10:40px;--sp-12:48px;--sp-16:64px;
+  --r-sharp:0px;--r-subtle:4px;--r-card:12px;--r-soft:16px;--r-pill:999px;
+  --zi-nav:300;--zi-prog:999;
+  --t-fast:150ms;--t-normal:250ms;--t-slow:400ms;
+  --shadow-2:0 4px 12px rgba(0,0,0,.25),0 2px 4px rgba(0,0,0,.2);
+  --shadow-3:0 8px 24px rgba(0,0,0,.3),0 4px 8px rgba(0,0,0,.2);
 }
 
 /* === RESET === */
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-
-/* === GLOBAL === */
-body {
-  background: var(--z0);
-  color: var(--paper);
-  font-family: var(--sans);
-  font-size: 16px;
-  letter-spacing: -.008em;
-  line-height: 1.75;
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-}
-a { text-decoration: none; color: inherit; }
-img { display: block; max-width: 100%; }
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--z0);color:var(--paper);font-family:var(--sans);font-size:16px;letter-spacing:-.008em;line-height:1.75;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+a{text-decoration:none;color:inherit;}
+img{display:block;max-width:100%;}
 
 /* === UTILITIES === */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 clamp(24px, 5vw, 80px);
-}
+.container{max-width:1200px;margin:0 auto;padding:0 clamp(24px,5vw,80px);}
 
-/* Reveal animations */
-.reveal {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity .8s var(--spring), transform .8s var(--spring);
-}
-.reveal.in { opacity: 1; transform: none; }
-.reveal-left {
-  opacity: 0;
-  transform: translateX(-40px);
-  transition: opacity .8s var(--spring), transform .8s var(--spring);
-}
-.reveal-left.in { opacity: 1; transform: none; }
-.reveal-right {
-  opacity: 0;
-  transform: translateX(40px);
-  transition: opacity .8s var(--spring), transform .8s var(--spring);
-}
-.reveal-right.in { opacity: 1; transform: none; }
-.reveal-scale {
-  opacity: 0;
-  transform: scale(.85);
-  transition: opacity .7s var(--spring), transform .7s var(--spring);
-}
-.reveal-scale.in { opacity: 1; transform: none; }
-.reveal-blur {
-  opacity: 0;
-  filter: blur(8px);
-  transform: translateY(12px);
-  transition: opacity .9s var(--spring), filter .9s var(--spring), transform .9s var(--spring);
-}
-.reveal-blur.in { opacity: 1; filter: blur(0); transform: none; }
+/* Reveal */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s var(--spring),transform .8s var(--spring);}
+.reveal.in{opacity:1;transform:none;}
+.reveal-left{opacity:0;transform:translateX(-40px);transition:opacity .8s var(--spring),transform .8s var(--spring);}
+.reveal-left.in{opacity:1;transform:none;}
+.reveal-right{opacity:0;transform:translateX(40px);transition:opacity .8s var(--spring),transform .8s var(--spring);}
+.reveal-right.in{opacity:1;transform:none;}
+.reveal-scale{opacity:0;transform:scale(.85);transition:opacity .7s var(--spring),transform .7s var(--spring);}
+.reveal-scale.in{opacity:1;transform:none;}
 
-/* Stagger delays */
-.d1 { transition-delay: .08s; }
-.d2 { transition-delay: .16s; }
-.d3 { transition-delay: .24s; }
-.d4 { transition-delay: .24s; }
-.d5 { transition-delay: .30s; }
-.d6 { transition-delay: .36s; }
+.d1{transition-delay:.08s;}.d2{transition-delay:.16s;}.d3{transition-delay:.24s;}.d4{transition-delay:.32s;}.d5{transition-delay:.40s;}.d6{transition-delay:.48s;}
 
-/* Section labels */
-.sec-label {
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: .15em;
-  text-transform: uppercase;
-  margin-bottom: 12px;
-}
-.sec-label.lt { color: var(--dim); }
-.sec-label.dk { color: #5a5a54; }
-.sec-h {
-  font-family: var(--serif);
-  font-size: clamp(32px, 4.5vw, 52px);
-  line-height: 1.1;
-  letter-spacing: -.02em;
-}
-.sec-h.lt { color: var(--paper); }
-.sec-h.dk { color: var(--ink); }
-.sec-h em { font-style: italic; }
-.sec-desc {
-  font-size: 18px;
-  font-weight: 300;
-  line-height: 1.8;
-  max-width: 640px;
-}
-.sec-desc.lt { color: rgba(255, 255, 255, .6); }
-.sec-desc.dk { color: var(--dim); }
+.sec-label{font-size:13px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;margin-bottom:12px;}
+.sec-label.lt{color:var(--dim);}
+.sec-h{font-family:var(--serif);font-size:clamp(32px,4.5vw,52px);line-height:1.1;letter-spacing:-.02em;}
+.sec-h.lt{color:var(--paper);}
+.sec-h em{font-style:italic;}
+.sec-desc{font-size:18px;font-weight:300;line-height:1.8;max-width:640px;}
+.sec-desc.lt{color:rgba(255,255,255,.6);}
 
 /* Primary button */
-.btn-p {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: var(--paper);
-  color: var(--ink);
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: .07em;
-  text-transform: uppercase;
-  padding: 14px 32px;
-  border: none;
-  cursor: pointer;
-  transition: transform var(--t-normal) var(--spring), box-shadow var(--t-normal);
-  font-family: var(--sans);
-}
-.btn-p:hover {
-  transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 8px 32px rgba(244, 243, 239, .14), 0 2px 8px rgba(244, 243, 239, .08);
-}
-.btn-p:active { transform: translateY(0) scale(.98); transition-duration: .1s; }
+.btn-p{display:inline-flex;align-items:center;gap:8px;background:var(--paper);color:var(--ink);font-size:13px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:14px 32px;border:none;cursor:pointer;transition:transform var(--t-normal) var(--spring),box-shadow var(--t-normal);font-family:var(--sans);}
+.btn-p:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 8px 32px rgba(244,243,239,.14),0 2px 8px rgba(244,243,239,.08);}
+.btn-p:active{transform:translateY(0) scale(.98);transition-duration:.1s;}
 
-/* Noise overlay */
-.noise { position: relative; }
-.noise::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.045'/%3E%3C/svg%3E");
-  background-size: 200px 200px;
-  mix-blend-mode: screen;
-  opacity: .5;
-  transform: translate3d(0, 0, 0);
-}
-.noise > * { position: relative; z-index: 1; }
+/* Noise */
+.noise{position:relative;}
+.noise::after{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.045'/%3E%3C/svg%3E");background-size:200px 200px;mix-blend-mode:screen;opacity:.5;transform:translate3d(0,0,0);}
+.noise>*{position:relative;z-index:1;}
 
 /* === SCROLL PROGRESS === */
-.scroll-prog {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 2px;
-  background: linear-gradient(90deg, var(--green) 0%, var(--green2) 60%, var(--orange) 100%);
-  z-index: var(--zi-prog);
-  width: 0%;
-  pointer-events: none;
-  will-change: width;
-}
+.scroll-prog{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--green) 0%,var(--green2) 60%,var(--orange) 100%);z-index:var(--zi-prog);width:0%;pointer-events:none;will-change:width;}
 
 /* === NAV === */
-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: var(--zi-nav);
-  height: 62px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 40px;
-  background: transparent;
-  backdrop-filter: none;
-  border-bottom: 1px solid transparent;
-  transition: top .3s, background .3s, border-color .3s, backdrop-filter .3s;
-  will-change: background, backdrop-filter;
-}
-nav.scrolled {
-  background: rgba(7, 7, 9, .9);
-  backdrop-filter: blur(28px) saturate(180%);
-  -webkit-backdrop-filter: blur(28px) saturate(180%);
-  border-bottom-color: rgba(255, 255, 255, .07);
-  box-shadow: var(--toplight), 0 1px 20px rgba(0, 0, 0, .3);
-}
-.logo {
-  font-family: var(--serif);
-  font-size: 19px;
-  letter-spacing: .05em;
-  color: var(--paper);
-  transition: opacity .2s;
-}
-.logo:hover { opacity: .6; }
-.nav-links { display: flex; list-style: none; align-items: center; }
-.nav-btn {
-  background: none;
-  border: none;
-  font-family: var(--sans);
-  font-size: 13px;
-  font-weight: 500;
-  color: rgba(255, 255, 255, .55);
-  padding: 8px 14px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  transition: color .2s;
-  white-space: nowrap;
-}
-.nav-btn:hover { color: var(--paper); }
-.nav-btn.active { color: var(--paper); }
-.nav-r { display: flex; align-items: center; gap: 12px; }
-.nav-cta {
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  background: var(--paper);
-  color: var(--ink);
-  padding: 10px 24px;
-  border: none;
-  cursor: pointer;
-  font-family: var(--sans);
-  transition: transform .2s, box-shadow .2s;
-}
-.nav-cta:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 20px rgba(244, 243, 239, .15);
-}
-.hamburger {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 4px;
-}
-.hamburger span { display: block; width: 22px; height: 1.5px; background: var(--paper); }
+nav{position:fixed;top:0;left:0;right:0;z-index:var(--zi-nav);height:64px;display:flex;align-items:center;justify-content:center;padding:0;background:transparent;backdrop-filter:none;border-bottom:1px solid transparent;transition:background .3s,border-color .3s,backdrop-filter .3s;}
+.nav-inner{width:100%;max-width:1100px;padding:0 clamp(24px,4vw,80px);display:flex;align-items:center;justify-content:space-between;}
+nav.scrolled{background:rgba(7,7,9,.92);backdrop-filter:blur(28px) saturate(180%);-webkit-backdrop-filter:blur(28px) saturate(180%);border-bottom-color:rgba(255,255,255,.07);box-shadow:var(--toplight),0 1px 20px rgba(0,0,0,.3);}
+.logo{font-family:var(--serif);font-size:19px;letter-spacing:.05em;color:var(--paper);transition:opacity .2s;flex-shrink:0;}
+.logo:hover{opacity:.6;}
+.nav-links{display:flex;list-style:none;align-items:center;gap:0;}
+.nav-item{position:relative;}
+.nav-btn{background:none;border:none;font-family:var(--sans);font-size:13px;font-weight:500;color:rgba(255,255,255,.55);padding:8px 14px;cursor:pointer;display:flex;align-items:center;gap:5px;transition:color .2s;white-space:nowrap;text-decoration:none;}
+.nav-btn:hover{color:rgba(255,255,255,.85);}
+.nav-item.open .nav-btn{color:var(--paper);}
+.nav-btn::after{content:'';position:absolute;bottom:2px;left:14px;right:14px;height:2px;background:var(--green2);border-radius:2px;transform:scaleX(0);transform-origin:center;transition:transform .2s ease;}
+.nav-item.open .nav-btn::after{transform:scaleX(1);}
+.nav-caret{width:10px;height:10px;flex-shrink:0;transition:transform .2s,opacity .2s;opacity:.45;}
+.nav-item.open .nav-caret{transform:rotate(180deg);opacity:.8;}
+.nav-r{display:flex;align-items:center;gap:12px;}
+.nav-cta{font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:var(--paper);color:var(--ink);padding:10px 22px;border:none;cursor:pointer;border-radius:4px;text-decoration:none;transition:transform .2s,box-shadow .2s;white-space:nowrap;}
+.nav-cta:hover{transform:translateY(-1px);box-shadow:0 4px 20px rgba(244,243,239,.15);}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--paper);}
+.skip-link{position:absolute;top:-100%;left:16px;background:var(--green);color:#fff;padding:8px 16px;border-radius:4px;z-index:100000;font-size:14px;transition:top .2s;}
+.skip-link:focus{top:8px;}
 
-/* === SKIP LINK === */
-.skip-link { position: absolute; top: -100%; left: 16px; background: var(--green); color: #fff; padding: 8px 16px; border-radius: 4px; z-index: 100000; font-size: 14px; transition: top .2s; }
-.skip-link:focus { top: 8px; }
+/* === MEGAMENU === */
+.mm-panel{position:fixed;top:64px;left:0;right:0;background:rgba(10,11,9,.97);border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.04);backdrop-filter:blur(24px) saturate(1.5);-webkit-backdrop-filter:blur(24px) saturate(1.5);box-shadow:0 24px 80px rgba(0,0,0,.55);z-index:290;opacity:0;visibility:hidden;pointer-events:none;transform:translateY(-6px);transition:opacity .2s ease,transform .2s ease,visibility .2s;}
+.mm-panel.open{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0);}
+.mm-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:300px 1fr;gap:0;min-height:260px;}
+.mm-aside{padding:32px 28px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;min-height:260px;}
+.mm-aside-bg{position:absolute;inset:0;background-size:cover;background-position:center;}
+.mm-aside-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(7,7,9,.92) 0%,rgba(7,7,9,.55) 50%,rgba(7,7,9,.35) 100%);}
+.mm-aside>*:not(.mm-aside-bg){position:relative;z-index:1;}
+.mm-aside-tag{font-family:var(--sans);font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--green2);}
+.mm-aside-title{font-family:var(--serif);font-size:21px;font-style:italic;color:var(--paper);line-height:1.35;margin:0;}
+.mm-aside-cta{display:inline-flex;align-items:center;gap:5px;font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:.06em;color:rgba(255,255,255,.7);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.25);padding-bottom:1px;width:fit-content;transition:color .2s,border-color .2s;}
+.mm-aside-cta:hover{color:var(--paper);border-color:rgba(255,255,255,.6);}
+.mm-vid-wrap{position:relative;border-radius:10px;overflow:hidden;cursor:pointer;flex:1;min-height:0;}
+.mm-vid-wrap img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s ease;}
+.mm-vid-wrap:hover img{transform:scale(1.04);}
+.mm-vid-play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.35);transition:background .2s;}
+.mm-vid-wrap:hover .mm-vid-play{background:rgba(0,0,0,.5);}
+.mm-vid-play svg{width:44px;height:44px;filter:drop-shadow(0 2px 8px rgba(0,0,0,.5));transition:transform .2s;}
+.mm-vid-wrap:hover .mm-vid-play svg{transform:scale(1.1);}
+.mm-vid-label{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--green2);margin-bottom:8px;}
+.mm-vid-title{font-family:var(--sans);font-size:13px;font-weight:600;color:rgba(255,255,255,.85);line-height:1.45;margin-bottom:14px;}
+.vid-modal{display:none;position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,.88);align-items:center;justify-content:center;padding:20px;}
+.vid-modal.open{display:flex;}
+.vid-modal-inner{position:relative;width:100%;max-width:900px;aspect-ratio:16/9;border-radius:12px;overflow:hidden;box-shadow:0 32px 80px rgba(0,0,0,.7);}
+.vid-modal-inner iframe{width:100%;height:100%;border:none;}
+.vid-modal-close{position:absolute;top:-44px;right:0;background:none;border:none;color:rgba(255,255,255,.7);font-size:28px;cursor:pointer;line-height:1;transition:color .2s;padding:4px 8px;}
+.vid-modal-close:hover{color:#fff;}
+.mm-links{padding:36px 40px;display:grid;grid-template-columns:1fr 1fr;gap:0 48px;align-content:start;}
+.mm-links--single{grid-template-columns:1fr;max-width:420px;}
+.mm-col-label{font-family:var(--sans);font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.25);margin:0 0 8px;grid-column:1/-1;}
+.mm-link{display:flex;flex-direction:column;gap:2px;padding:11px 0;border-bottom:1px solid rgba(255,255,255,.05);text-decoration:none;transition:padding-left .15s;}
+.mm-link:last-of-type{border-bottom:none;}
+.mm-link:hover{padding-left:5px;}
+.mm-link strong{font-family:var(--sans);font-size:13.5px;font-weight:600;color:rgba(255,255,255,.8);transition:color .15s;}
+.mm-link span{font-size:11.5px;color:rgba(255,255,255,.35);line-height:1.45;transition:color .15s;}
+.mm-link:hover strong{color:var(--paper);}
+.mm-link:hover span{color:rgba(255,255,255,.6);}
+.mm-blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0 40px;}
+.mm-blog-link{display:flex;flex-direction:column;gap:4px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.05);text-decoration:none;transition:padding-left .15s;}
+.mm-blog-link:hover{padding-left:5px;}
+.mm-blog-tag{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--green2);}
+.mm-blog-title{font-size:13px;font-weight:600;color:rgba(255,255,255,.75);line-height:1.4;transition:color .15s;}
+.mm-blog-link:hover .mm-blog-title{color:var(--paper);}
+
 /* === MOBILE MENU === */
-.mob-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.6); z-index: 998; }
-.mob-overlay.open { display: block; }
-.mob-menu { position: fixed; top: 0; right: 0; width: 280px; height: 100vh; background: var(--z1, #141513); z-index: 999; display: flex; flex-direction: column; padding: 80px 24px 32px; gap: 4px; transform: translateX(100%); transition: transform .3s cubic-bezier(.16,1,.3,1); overflow-y: auto; }
-.mob-menu.open { transform: translateX(0); }
-.mob-menu a { color: rgba(255,255,255,.6); font-size: 15px; font-weight: 500; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,.06); transition: color .2s; }
-.mob-menu a:hover { color: var(--paper); }
-.mob-menu a.active { color: var(--paper); }
-.mob-menu-cta { margin-top: 16px; background: var(--green); color: #fff !important; text-align: center; padding: 12px 24px !important; border-radius: 8px; border: none !important; font-weight: 600; }
+.mob-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:590;backdrop-filter:blur(4px);}
+.mob-overlay.open{display:block;}
+.mob-menu{position:fixed;inset:0;width:100%;height:100%;background:#0a0a08;z-index:600;display:flex;flex-direction:column;overflow-y:auto;transform:translateX(100%);transition:transform .35s cubic-bezier(.16,1,.3,1);}
+.mob-menu.open{transform:translateX(0);}
+.mob-menu-header{display:flex;align-items:center;justify-content:space-between;padding:20px 24px 18px;border-bottom:1px solid rgba(255,255,255,.07);flex-shrink:0;}
+.mob-menu-close{display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);cursor:pointer;color:rgba(255,255,255,.7);transition:background .15s,color .15s;flex-shrink:0;}
+.mob-menu-close:hover{background:rgba(255,255,255,.14);color:#fff;}
+.mob-menu>a{display:block;padding:17px 24px;font-family:var(--sans);font-size:15px;font-weight:600;letter-spacing:.01em;text-transform:uppercase;color:rgba(255,255,255,.75);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.06);transition:color .15s;}
+.mob-menu>a:hover{color:#fff;}
+.mob-section{border-bottom:1px solid rgba(255,255,255,.06);}
+.mob-section-btn{display:flex;justify-content:space-between;align-items:center;width:100%;padding:17px 24px;background:none;border:none;cursor:pointer;font-family:var(--sans);font-size:15px;font-weight:600;letter-spacing:.01em;text-transform:uppercase;color:rgba(255,255,255,.75);transition:color .15s;}
+.mob-section-btn:hover{color:#fff;}
+.mob-sub{max-height:0;overflow:hidden;background:rgba(255,255,255,.02);transition:max-height .35s ease;}
+.mob-sub.open{max-height:800px;}
+.mob-sub a{display:block;padding:11px 24px 11px 38px;font-family:var(--sans);font-size:13px;font-weight:400;color:rgba(255,255,255,.45);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.04);transition:color .15s;}
+.mob-sub a:last-child{border-bottom:none;}
+.mob-sub a:hover{color:rgba(255,255,255,.85);}
+.mob-vid-item{position:relative;border-radius:8px;overflow:hidden;cursor:pointer;margin:10px 20px 6px;}
+.mob-vid-item img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;filter:brightness(.72);transition:filter .2s;}
+.mob-vid-item:hover img{filter:brightness(.88);}
+.mob-vid-play-btn{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;}
+.mob-vid-play-btn svg{filter:drop-shadow(0 2px 8px rgba(0,0,0,.5));}
+.mob-vid-caption{position:absolute;bottom:0;left:0;right:0;padding:22px 10px 8px;background:linear-gradient(transparent,rgba(0,0,0,.78));font-size:11px;color:rgba(255,255,255,.88);line-height:1.4;}
+.mob-menu-ctas{display:flex;gap:10px;margin:20px 24px 0;padding:0;}
+.mob-cta-wa,.mob-cta-contact{display:inline-flex;align-items:center;gap:7px;padding:10px 16px;font-family:var(--sans);font-size:13px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;border-radius:6px;text-decoration:none;transition:opacity .2s;white-space:nowrap;}
+.mob-cta-wa{background:var(--green);color:#fff;flex:1;justify-content:center;}
+.mob-cta-wa:hover{opacity:.85;}
+.mob-cta-contact{background:rgba(255,255,255,.07);color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.12);flex:1;justify-content:center;}
+.mob-cta-contact:hover{background:rgba(255,255,255,.12);color:#fff;}
+.mob-menu-footer{margin-top:auto;padding:24px;border-top:1px solid rgba(255,255,255,.07);}
+.mob-footer-tagline{font-family:var(--serif);font-style:italic;font-size:13px;color:rgba(255,255,255,.3);margin-bottom:18px;line-height:1.5;}
+.mob-contact-email{display:flex;align-items:center;gap:7px;font-family:var(--sans);font-size:13px;color:rgba(255,255,255,.55);text-decoration:none;margin-bottom:4px;transition:color .15s;}
+.mob-contact-email:hover{color:rgba(255,255,255,.85);}
+.mob-footer-cnpj{font-size:11px;color:rgba(255,255,255,.22);margin-bottom:18px;padding-left:22px;}
+.mob-socials{display:flex;gap:10px;}
+.mob-soc-link{display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;background:transparent;border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.55);transition:border-color .15s,color .15s,background .15s;}
+.mob-soc-link:hover{border-color:rgba(255,255,255,.4);color:#fff;background:rgba(255,255,255,.06);}
+@media(max-width:900px){.nav-links,.nav-cta{display:none;}.hamburger{display:flex;}nav{padding:0 20px;}}
 
-/* === HERO SPLIT === */
-.hero {
-  display: flex;
-  align-items: center;
-  padding: 140px 0 100px;
-  position: relative;
-  overflow: hidden;
-  background: var(--z1);
-}
-.hero-glow {
-  position: absolute;
-  top: -10%;
-  right: -5%;
-  width: 700px;
-  height: 700px;
-  border-radius: 50%;
-  background: radial-gradient(ellipse 70% 60% at 75% 20%, var(--glow-green) 0%, transparent 70%);
-  pointer-events: none;
-}
-.hero-grid {
-  display: grid;
-  grid-template-columns: 1.2fr .8fr;
-  gap: 64px;
-  align-items: center;
-}
-.hero-h1 {
-  font-family: var(--serif);
-  font-size: clamp(36px, 4.5vw, 56px);
-  line-height: 1.05;
-  letter-spacing: -.028em;
-  color: var(--paper);
-  opacity: 0;
-  animation: up .9s .18s var(--spring) forwards;
-}
-.hero-subtitle {
-  font-size: 18px;
-  font-weight: 300;
-  line-height: 1.8;
-  color: rgba(255, 255, 255, .55);
-  margin: 20px 0 28px;
-  opacity: 0;
-  animation: up .9s .35s var(--spring) forwards;
-}
-.hero-badges {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  opacity: 0;
-  animation: up .8s .5s var(--spring) forwards;
-}
-.hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: rgba(26, 122, 74, .08);
-  border: 1px solid rgba(26, 122, 74, .18);
-  border-radius: var(--r-pill);
-  padding: 5px 14px 5px 10px;
-  color: var(--green2);
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: .06em;
-}
-.hero-badge::before {
-  content: '';
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: var(--green2);
-}
-.hero-photo {
-  background: var(--z3);
-  border: 1px solid var(--border-z2);
-  border-radius: var(--radius);
-  aspect-ratio: 3/4;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: var(--toplight), var(--shadow-3);
-  opacity: 0;
-  animation: up .9s .4s var(--spring) forwards;
-}
-.hero-photo-initials {
-  font-family: var(--serif);
-  font-size: 72px;
-  font-style: italic;
-  color: rgba(255, 255, 255, .08);
-  letter-spacing: .05em;
-}
+/* === HERO === */
+.hero{display:flex;align-items:center;padding:140px 0 100px;position:relative;overflow:hidden;background:var(--z1);}
+.hero-glow{position:absolute;top:-10%;right:-5%;width:700px;height:700px;border-radius:50%;background:radial-gradient(ellipse 70% 60% at 75% 20%,var(--glow-green) 0%,transparent 70%);pointer-events:none;}
+.hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:64px;align-items:center;}
+.hero-h1{font-family:var(--serif);font-size:clamp(36px,4.5vw,56px);line-height:1.05;letter-spacing:-.028em;color:var(--paper);opacity:0;animation:up .9s .18s var(--spring) forwards;}
+.hero-subtitle{font-size:18px;font-weight:300;line-height:1.8;color:rgba(255,255,255,.55);margin:20px 0 28px;opacity:0;animation:up .9s .35s var(--spring) forwards;}
+.hero-badges{display:flex;flex-wrap:wrap;gap:8px;opacity:0;animation:up .8s .5s var(--spring) forwards;}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(26,122,74,.08);border:1px solid rgba(26,122,74,.18);border-radius:var(--r-pill);padding:5px 14px 5px 10px;color:var(--green2);font-size:12px;font-weight:600;letter-spacing:.06em;}
+.hero-badge::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--green2);}
+.hero-photo-wrap{opacity:0;animation:up .9s .4s var(--spring) forwards;}
+.hero-photo{border-radius:var(--radius);overflow:hidden;border:1px solid var(--border-z2);box-shadow:var(--toplight),0 8px 32px rgba(0,0,0,.4);}
+.hero-photo img{width:100%;height:100%;object-fit:cover;display:block;}
+
+/* === FOTOS SECTION === */
+.fotos-sec{background:var(--z0);padding:var(--sec-pad) clamp(24px,4vw,64px);}
+.fotos-in{max-width:1200px;margin:0 auto;}
+.fotos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px;}
+.foto-item{border-radius:var(--r-card);overflow:hidden;border:1px solid var(--border-z2);box-shadow:var(--toplight),var(--shadow-3);transition:transform .3s var(--spring),border-color .3s;}
+.foto-item:hover{transform:translateY(-4px);border-color:rgba(111,207,151,.15);}
+.foto-item img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:top;display:block;}
+.foto-caption{padding:14px 18px;background:var(--z2);font-size:12px;font-weight:500;color:rgba(255,255,255,.45);letter-spacing:.04em;}
 
 /* === HISTORIA === */
-.historia {
-  background: var(--z0);
-  padding: var(--sec-pad) clamp(24px, 4vw, 64px);
-}
-.historia-in {
-  max-width: 740px;
-  margin: 0 auto;
-}
-.historia-txt {
-  font-size: 17px;
-  font-weight: 350;
-  line-height: 1.9;
-  color: rgba(255, 255, 255, .6);
-  font-variation-settings: 'opsz' 18, 'wght' 350;
-}
-.historia-txt p { margin-bottom: 24px; }
-.historia-txt p:last-child { margin-bottom: 0; }
-.historia-txt strong { color: rgba(255, 255, 255, .8); font-weight: 500; }
+.historia{background:var(--z0);padding:var(--sec-pad) clamp(24px,4vw,64px);}
+.historia-in{max-width:740px;margin:0 auto;}
+.historia-txt{font-size:17px;font-weight:350;line-height:1.9;color:rgba(255,255,255,.6);font-variation-settings:'opsz' 18,'wght' 350;}
+.historia-txt p{margin-bottom:24px;}
+.historia-txt p:last-child{margin-bottom:0;}
+.historia-txt strong{color:rgba(255,255,255,.8);font-weight:500;}
 
 /* === EXPERTISE === */
-.expertise {
-  background: var(--z1);
-  padding: var(--sec-pad) clamp(24px, 4vw, 64px);
-}
-.expertise-in { max-width: 1200px; margin: 0 auto; }
-.expertise-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  margin-top: 48px;
-}
-.exp-card {
-  background: var(--z2);
-  border: 1px solid var(--border-z2);
-  border-radius: var(--r-card);
-  padding: clamp(28px, 3vw, 40px);
-  box-shadow: var(--toplight);
-  transition: transform .3s var(--spring), border-color .3s;
-}
-.exp-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(111, 207, 151, .15);
-}
-.exp-icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 10px;
-  background: rgba(26, 122, 74, .1);
-  border: 1px solid rgba(26, 122, 74, .18);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 20px;
-  color: var(--green2);
-}
-.exp-title {
-  font-family: var(--serif);
-  font-size: 20px;
-  color: var(--paper);
-  margin-bottom: 8px;
-}
-.exp-desc {
-  font-size: 14px;
-  font-weight: 300;
-  color: rgba(255, 255, 255, .45);
-  line-height: 1.7;
-}
+.expertise{background:var(--z1);padding:var(--sec-pad) clamp(24px,4vw,64px);}
+.expertise-in{max-width:1200px;margin:0 auto;}
+.expertise-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px;}
+.exp-card{background:var(--z2);border:1px solid var(--border-z2);border-radius:var(--r-card);padding:clamp(28px,3vw,40px);box-shadow:var(--toplight);transition:transform .3s var(--spring),border-color .3s;}
+.exp-card:hover{transform:translateY(-4px);border-color:rgba(111,207,151,.15);}
+.exp-icon{width:40px;height:40px;border-radius:10px;background:rgba(26,122,74,.1);border:1px solid rgba(26,122,74,.18);display:flex;align-items:center;justify-content:center;margin-bottom:20px;color:var(--green2);}
+.exp-title{font-family:var(--serif);font-size:20px;color:var(--paper);margin-bottom:8px;}
+.exp-desc{font-size:14px;font-weight:300;color:rgba(255,255,255,.45);line-height:1.7;}
 
 /* === FILOSOFIA === */
-.filosofia {
-  background: var(--z0);
-  padding: var(--sec-pad) clamp(24px, 4vw, 64px);
-  text-align: center;
-}
-.filosofia-inner { max-width: 700px; margin: 0 auto; }
-.filosofia-quote {
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: clamp(28px, 4vw, 48px);
-  line-height: 1.2;
-  color: var(--paper);
-  letter-spacing: -.02em;
-  margin-bottom: 40px;
-  position: relative;
-}
-.filosofia-quote::before {
-  content: '\201C';
-  font-family: var(--serif);
-  font-size: clamp(100px, 12vw, 160px);
-  line-height: .5;
-  position: absolute;
-  top: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  pointer-events: none;
-  color: rgba(26, 122, 74, .1);
-}
-.filosofia-txt {
-  font-size: 17px;
-  font-weight: 300;
-  line-height: 1.8;
-  color: rgba(255, 255, 255, .55);
-  text-align: left;
-}
-.filosofia-txt p { margin-bottom: 20px; }
-.filosofia-txt p:last-child { margin-bottom: 0; }
-.filosofia-line {
-  width: 40px;
-  height: 2px;
-  margin: 32px auto;
-  background: var(--green);
-}
+.filosofia{background:var(--z0);padding:var(--sec-pad) clamp(24px,4vw,64px);text-align:center;}
+.filosofia-inner{max-width:700px;margin:0 auto;}
+.filosofia-quote{font-family:var(--serif);font-style:italic;font-size:clamp(28px,4vw,48px);line-height:1.2;color:var(--paper);letter-spacing:-.02em;margin-bottom:40px;position:relative;}
+.filosofia-quote::before{content:'\201C';font-family:var(--serif);font-size:clamp(100px,12vw,160px);line-height:.5;position:absolute;top:-10px;left:50%;transform:translateX(-50%);pointer-events:none;color:rgba(26,122,74,.1);}
+.filosofia-txt{font-size:17px;font-weight:300;line-height:1.8;color:rgba(255,255,255,.55);text-align:left;}
+.filosofia-txt p{margin-bottom:20px;}
+.filosofia-txt p:last-child{margin-bottom:0;}
+.filosofia-line{width:40px;height:2px;margin:32px auto;background:var(--green);}
 
 /* === FERRAMENTAS === */
-.ferramentas {
-  background: var(--z1);
-  padding: var(--sec-pad) clamp(24px, 4vw, 64px);
-}
-.ferramentas-in { max-width: 900px; margin: 0 auto; }
-.ferr-pills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 40px;
-}
-.ferr-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  padding: 8px 18px 8px 12px;
-  background: rgba(255, 255, 255, .04);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, .1);
-  border-radius: 6px;
-  box-shadow: var(--toplight-strong), 0 2px 8px rgba(0, 0, 0, .2);
-  transition: all .3s var(--spring);
-  font-size: 14px;
-  font-weight: 500;
-  color: rgba(255, 255, 255, .7);
-}
-.ferr-pill:hover {
-  background: rgba(255, 255, 255, .07);
-  border-color: rgba(111, 207, 151, .2);
-  box-shadow: var(--toplight-strong), 0 4px 16px rgba(0, 0, 0, .25), 0 0 20px rgba(111, 207, 151, .06);
-}
-.ferr-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  flex-shrink: 0;
-}
+.ferramentas{background:var(--z1);padding:var(--sec-pad) clamp(24px,4vw,64px);}
+.ferramentas-in{max-width:900px;margin:0 auto;}
+.ferr-pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:40px;}
+.ferr-pill{display:inline-flex;align-items:center;gap:7px;padding:8px 18px 8px 12px;background:rgba(255,255,255,.04);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.1);border-radius:6px;box-shadow:var(--toplight-strong),0 2px 8px rgba(0,0,0,.2);transition:all .3s var(--spring);font-size:14px;font-weight:500;color:rgba(255,255,255,.7);}
+.ferr-pill:hover{background:rgba(255,255,255,.07);border-color:rgba(111,207,151,.2);box-shadow:var(--toplight-strong),0 4px 16px rgba(0,0,0,.25),0 0 20px rgba(111,207,151,.06);}
+.ferr-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
 
 /* === ACADEMY === */
-.academy-sec {
-  background: var(--z2);
-  padding: var(--sec-pad) clamp(24px, 4vw, 64px);
-  position: relative;
-  overflow: hidden;
-}
-.academy-sec::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 600px;
-  height: 600px;
-  border-radius: 50%;
-  background: radial-gradient(circle, var(--glow-green) 0%, transparent 65%);
-  pointer-events: none;
-}
-.academy-in {
-  max-width: 700px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 1;
-}
-.academy-txt {
-  font-size: 17px;
-  font-weight: 300;
-  line-height: 1.8;
-  color: rgba(255, 255, 255, .55);
-  margin-top: 24px;
-}
-.academy-num {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  margin-top: 24px;
-  padding: 12px 24px;
-  background: rgba(26, 122, 74, .08);
-  border: 1px solid rgba(26, 122, 74, .15);
-  border-radius: var(--r-card);
-}
-.academy-num-val {
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 32px;
-  color: var(--green2);
-  line-height: 1;
-}
-.academy-num-label {
-  font-size: 14px;
-  font-weight: 500;
-  color: rgba(255, 255, 255, .5);
-}
+.academy-sec{background:var(--z2);padding:var(--sec-pad) clamp(24px,4vw,64px);position:relative;overflow:hidden;}
+.academy-sec::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,var(--glow-green) 0%,transparent 65%);pointer-events:none;}
+.academy-in{max-width:700px;margin:0 auto;position:relative;z-index:1;}
+.academy-txt{font-size:17px;font-weight:300;line-height:1.8;color:rgba(255,255,255,.55);margin-top:24px;}
+.academy-num{display:inline-flex;align-items:center;gap:12px;margin-top:24px;padding:12px 24px;background:rgba(26,122,74,.08);border:1px solid rgba(26,122,74,.15);border-radius:var(--r-card);}
+.academy-num-val{font-family:var(--serif);font-style:italic;font-size:32px;color:var(--green2);line-height:1;}
+.academy-num-label{font-size:14px;font-weight:500;color:rgba(255,255,255,.5);}
 
 /* === REDES === */
-.redes {
-  background: var(--z0);
-  padding: clamp(48px, 6vw, 80px) clamp(24px, 4vw, 64px);
-}
-.redes-in {
-  max-width: 700px;
-  margin: 0 auto;
-}
-.redes-list {
-  display: flex;
-  gap: 24px;
-  margin-top: 24px;
-  flex-wrap: wrap;
-}
-.rede-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 12px 24px;
-  background: var(--z2);
-  border: 1px solid var(--border-z2);
-  border-radius: var(--r-card);
-  font-size: 14px;
-  font-weight: 500;
-  color: rgba(255, 255, 255, .6);
-  transition: all .3s var(--spring);
-}
-.rede-link:hover {
-  border-color: rgba(111, 207, 151, .2);
-  color: var(--paper);
-  transform: translateY(-2px);
-}
-.rede-link svg { flex-shrink: 0; }
+.redes{background:var(--z0);padding:clamp(48px,6vw,80px) clamp(24px,4vw,64px);}
+.redes-in{max-width:700px;margin:0 auto;}
+.redes-list{display:flex;gap:16px;margin-top:24px;flex-wrap:wrap;}
+.rede-link{display:inline-flex;align-items:center;gap:10px;padding:12px 24px;background:var(--z2);border:1px solid var(--border-z2);border-radius:var(--r-card);font-size:14px;font-weight:500;color:rgba(255,255,255,.6);transition:all .3s var(--spring);}
+.rede-link:hover{border-color:rgba(111,207,151,.2);color:var(--paper);transform:translateY(-2px);}
+.rede-link svg{flex-shrink:0;}
 
 /* === CTA === */
-.cta-sec {
-  background: var(--z2);
-  padding: var(--sec-pad) clamp(24px, 4vw, 64px);
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-.cta-sec::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 600px;
-  height: 600px;
-  border-radius: 50%;
-  background: radial-gradient(circle, var(--glow-green) 0%, transparent 65%);
-  pointer-events: none;
-}
-.cta-inner {
-  max-width: 600px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 1;
-}
-.cta-h {
-  font-family: var(--serif);
-  font-size: clamp(28px, 4vw, 44px);
-  line-height: 1.15;
-  letter-spacing: -.02em;
-  color: var(--paper);
-  margin-bottom: 32px;
-}
+.cta-sec{background:var(--z2);padding:var(--sec-pad) clamp(24px,4vw,64px);text-align:center;position:relative;overflow:hidden;}
+.cta-sec::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,var(--glow-green) 0%,transparent 65%);pointer-events:none;}
+.cta-inner{max-width:600px;margin:0 auto;position:relative;z-index:1;}
+.cta-h{font-family:var(--serif);font-size:clamp(28px,4vw,44px);line-height:1.15;letter-spacing:-.02em;color:var(--paper);margin-bottom:32px;}
 
 /* === FOOTER === */
-footer {
-  background: #0d0e0c;
-  border-top: 1px solid #111;
-  padding: 64px 40px 32px;
-}
-.foot-in { max-width: 1200px; margin: 0 auto; }
-.foot-top {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
-  gap: 48px;
-  margin-bottom: 64px;
-}
-.foot-brand {
-  font-family: var(--serif);
-  font-size: 22px;
-  font-style: italic;
-  color: var(--paper);
-  margin-bottom: 8px;
-}
-.foot-tag {
-  font-size: 14px;
-  font-weight: 300;
-  color: #4a4a44;
-  line-height: 1.7;
-  max-width: 220px;
-  margin-bottom: 32px;
-}
-.foot-live {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  color: #24251f;
-  border: 1px solid #1e1f1c;
-  padding: 4px 10px;
-  border-radius: 4px;
-}
-.foot-live::before {
-  content: '';
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: #1a7a4a;
-  animation: pulse 2.5s infinite;
-}
-.fcol-h {
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-  color: #4a4a44;
-  margin-bottom: 16px;
-}
-.flinks { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-.flinks a { font-size: 14px; font-weight: 300; color: #4a4a44; transition: color .2s; }
-.flinks a:hover { color: var(--paper); }
-.foot-bot {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: 32px;
-  border-top: 1px solid #111;
-  flex-wrap: wrap;
-  gap: 24px;
-}
-.foot-copy { font-size: 13px; color: #24251f; }
-.foot-socs { display: flex; gap: 24px; }
-.foot-socs a {
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  color: #24251f;
-  transition: color .2s;
-}
-.foot-socs a:hover { color: var(--paper); }
-.foot-legal { width: 100%; display: flex; gap: 24px; flex-wrap: wrap; margin-bottom: 8px; }
-.foot-legal a { font-size: 12px; color: #24251f; text-decoration: underline; text-underline-offset: 2px; transition: color .2s; }
-.foot-legal a:hover { color: var(--paper); }
+footer{background:#0d0e0c;border-top:1px solid #111;padding:64px 40px 32px;}
+.foot-in{max-width:1200px;margin:0 auto;}
+.foot-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:64px;}
+.foot-brand{margin-bottom:8px;}
+.foot-brand img{height:36px;width:auto;display:block;}
+.foot-tag{font-size:14px;font-weight:300;color:#4a4a44;line-height:1.7;max-width:220px;margin-bottom:24px;}
+.hm-toggle{display:inline-flex;border:1px solid #222;border-radius:6px;overflow:hidden;}
+.hm-btn{background:none;border:none;padding:6px 14px;font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.06em;color:#3a3a34;cursor:pointer;transition:background .15s,color .15s;}
+.hm-btn.active{background:#1a1b18;color:rgba(255,255,255,.6);}
+.foot-socs{display:flex;gap:16px;margin-top:24px;}
+.foot-socs a{color:#3a3a34;transition:color .2s;display:flex;}
+.foot-socs a:hover{color:rgba(255,255,255,.5);}
+.foot-socs svg{width:18px;height:18px;}
+.fcol-h{font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#4a4a44;margin-bottom:16px;}
+.flinks{list-style:none;display:flex;flex-direction:column;gap:10px;}
+.flinks a{font-size:14px;font-weight:300;color:#4a4a44;transition:color .2s;}
+.flinks a:hover{color:var(--paper);}
+.foot-bot{padding-top:24px;border-top:1px solid #111;}
+.foot-disclaimer{font-size:12px;color:#24251f;line-height:1.7;text-align:center;margin-top:16px;}
+.foot-legal{display:flex;gap:24px;flex-wrap:wrap;justify-content:center;margin-bottom:12px;}
+.foot-legal a{font-size:12px;color:#24251f;text-decoration:underline;text-underline-offset:2px;transition:color .2s;}
+.foot-legal a:hover{color:var(--paper);}
 
-/* === TYPOGRAPHY UPGRADES === */
-.sec-h, .hero-h1 { text-wrap: balance; }
-p, .hero-subtitle, .historia-txt, .filosofia-txt { text-wrap: pretty; }
-.hero-subtitle, .historia-txt { font-weight: 350; font-variation-settings: 'opsz' 18, 'wght' 350; }
-.sec-h em, .hero-h1 em, .filosofia-quote { letter-spacing: -.018em; }
-
-/* Performance */
-.reveal { will-change: opacity, transform; }
-.reveal.in, .reveal-left.in, .reveal-right.in, .reveal-scale.in, .reveal-blur.in { will-change: auto; }
-
-/* Retina noise */
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-  .noise::after { background-size: 150px 150px; opacity: .38; }
-}
+/* === TYPOGRAPHY === */
+.sec-h,.hero-h1{text-wrap:balance;}
+p,.hero-subtitle,.historia-txt,.filosofia-txt{text-wrap:pretty;}
 
 /* === KEYFRAMES === */
-@keyframes up {
-  from { opacity: 0; transform: translateY(24px); }
-  to { opacity: 1; transform: none; }
-}
-@keyframes pulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: .4; transform: scale(.75); }
-}
+@keyframes up{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:none;}}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.4;transform:scale(.75);}}
 
 /* === REDUCED MOTION === */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: .01ms !important;
-    transition-duration: .01ms !important;
-  }
-  .reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-blur { opacity: 1 !important; transform: none !important; filter: none !important; }
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;}.reveal,.reveal-left,.reveal-right,.reveal-scale{opacity:1!important;transform:none!important;}}
+
+/* === RESPONSIVE: TABLET === */
+@media(max-width:960px){
+  :root{--sec-pad:clamp(64px,10vw,100px);}
+  .hero{padding:90px 20px 64px;}
+  .hero-grid{grid-template-columns:1fr;gap:40px;}
+  .fotos-grid{grid-template-columns:1fr 1fr;}
+  .expertise-grid{grid-template-columns:1fr 1fr;}
+  .foot-top{grid-template-columns:1fr 1fr;}
+  .sec-h,.sec-label,.sec-desc{text-align:left!important;}
+  .filosofia{text-align:left!important;}
+  .filosofia-quote::before{left:0;transform:none;}
+  .hero,.historia,.expertise,.filosofia,.ferramentas,.academy-sec,.redes,.cta-sec,.fotos-sec{padding-left:20px!important;padding-right:20px!important;}
+  footer{padding-left:20px;padding-right:20px;}
 }
 
-/* === RESPONSIVE: TABLET (960px) === */
-@media (max-width: 960px) {
-  nav { padding: 0 20px; }
-  .nav-links, .nav-cta { display: none; }
-  .hamburger { display: flex; }
-  nav { top: 0 !important; }
-  :root { --sec-pad: clamp(64px, 10vw, 100px); }
-
-  .hero { padding: 90px 20px 64px; }
-  .hero-grid { grid-template-columns: 1fr; gap: 40px; }
-  .hero-photo { max-width: 300px; aspect-ratio: 1; }
-
-  .expertise-grid { grid-template-columns: 1fr 1fr; }
-  .foot-top { grid-template-columns: 1fr 1fr; }
-
-  /* Mobile text alignment */
-  .sec-h, .sec-label, .sec-desc { text-align: left !important; }
-  .filosofia { text-align: left !important; }
-  .filosofia-quote::before { left: 0; transform: none; }
-
-  /* Sections padding */
-  .hero, .historia, .expertise, .filosofia, .ferramentas,
-  .academy-sec, .redes, .cta-sec { padding-left: 20px !important; padding-right: 20px !important; }
-  footer { padding-left: 20px; padding-right: 20px; }
-}
-
-/* === RESPONSIVE: MOBILE (480px) === */
-@media (max-width: 480px) {
-  .hero-h1 { font-size: 28px; line-height: 1.1; }
-  .hero-subtitle { font-size: 16px; line-height: 1.7; }
-  .sec-h { font-size: clamp(24px, 6.5vw, 32px); }
-  .expertise-grid { grid-template-columns: 1fr; }
-  .foot-top { grid-template-columns: 1fr; }
-  .loader-phrase { font-size: clamp(18px, 5vw, 28px); }
-  .hero-photo { max-width: 220px; }
-  .redes-list { flex-direction: column; gap: 12px; }
-  .ferr-pills { gap: 8px; }
-  .ferr-pill { font-size: 13px; padding: 6px 14px 6px 10px; }
+/* === RESPONSIVE: MOBILE === */
+@media(max-width:480px){
+  .hero-h1{font-size:28px;line-height:1.1;}
+  .hero-subtitle{font-size:16px;line-height:1.7;}
+  .sec-h{font-size:clamp(24px,6.5vw,32px);}
+  .expertise-grid{grid-template-columns:1fr;}
+  .fotos-grid{grid-template-columns:1fr;}
+  .foot-top{grid-template-columns:1fr;}
+  .redes-list{flex-direction:column;gap:12px;}
+  .ferr-pills{gap:8px;}
+  .ferr-pill{font-size:13px;padding:6px 14px 6px 10px;}
 }
 </style>
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"ProfilePage","dateModified":"2026-04-06","mainEntity":{"@type":"Person","name":"Daniel Batista Rios","alternateName":"Daniel Rios","jobTitle":"Fundador e SEO Strategist","worksFor":{"@type":"ProfessionalService","@id":"https://maturare.com.br/#org","name":"Maturare","url":"https://maturare.com.br","foundingDate":"2022"},"spouse":{"@type":"Person","name":"Thalisa Valentim"},"children":{"@type":"Person","name":"Davi Valentim Rios"},"description":"Daniel Rios é fundador da Maturare, agência de SEO e GEO em Niterói. Ex-goleiro profissional (Macaé, Duque de Caxias, URT, Grêmio Prudente), faturou +R$2.5M com e-commerce, liderou equipes de 50+ pessoas e formou +300 alunos na Maturare Academy.","sameAs":["https://danielbatistarios.com.br/","https://br.linkedin.com/in/daniel-batista-674b62140","https://www.instagram.com/eudanielbatistta/","https://www.instagram.com/maturare.com.br/","https://www.youtube.com/@googledominado1","https://www.ogol.com.br/jogador/daniel/478023","https://localwiki.org/main/Daniel_Batista_Rios"],"knowsAbout":["SEO","Generative Engine Optimization","AEO","Artificial Intelligence","Digital Marketing","Google Business Profile","E-commerce","Dropshipping"],"hasOccupation":[{"@type":"Occupation","name":"Goleiro profissional de futebol","occupationLocation":{"@type":"Country","name":"Brasil"}},{"@type":"Occupation","name":"Fundador e CEO","occupationLocation":{"@type":"City","name":"Niterói"}}],"alumniOf":{"@type":"EducationalOrganization","name":"Maturare Academy"},"address":{"@type":"PostalAddress","addressLocality":"Niterói","addressRegion":"RJ","addressCountry":"BR"}}}
+{"@context":"https://schema.org","@type":"ProfilePage","dateModified":"2026-05-02","mainEntity":{"@type":"Person","@id":"https://maturare.com.br/daniel-batista-rios/#person","name":"Daniel Batista Rios","alternateName":"Daniel Rios","birthDate":"1996-07-16","height":{"@type":"QuantitativeValue","value":1.87,"unitCode":"MTR"},"jobTitle":"Fundador e SEO Strategist","worksFor":{"@type":"ProfessionalService","@id":"https://maturare.com.br/#org","name":"Maturare","url":"https://maturare.com.br","foundingDate":"2022"},"spouse":{"@type":"Person","name":"Thalisa Valentim"},"children":{"@type":"Person","name":"Davi Valentim Rios"},"description":"Daniel Batista Rios é o fundador da Maturare, agência de SEO, GEO e AEO em Niterói, RJ. Ex-goleiro profissional pelo Macaé Esporte, Duque de Caxias, Paulínia FC e Grêmio Prudente. Faturou mais de R$2,5 milhões com e-commerce e formou +300 alunos na Maturare Academy.","sameAs":["https://danielbatistarios.com.br/","https://br.linkedin.com/in/daniel-batista-674b62140","https://www.instagram.com/eudanielbatistta/","https://www.instagram.com/maturare.com.br/","https://www.youtube.com/@googledominado1","https://www.ogol.com.br/jogador/daniel/478023","https://localwiki.org/main/Daniel_Batista_Rios"],"knowsAbout":["SEO","Generative Engine Optimization","AEO","Inteligência Artificial","Marketing Digital","Google Business Profile","E-commerce"],"address":{"@type":"PostalAddress","addressLocality":"Niterói","addressRegion":"RJ","addressCountry":"BR"},"url":"https://maturare.com.br/daniel-batista-rios/","image":"https://maturare.com.br/assets/daniel-foto-palco.jpg"}}
 </script>
 </head>
 <body>
 
-<!-- 1. LOADER -->
+<!-- LOADER -->
 <div class="loader" id="loader">
   <div class="loader-phrase" id="loaderPhrase"></div>
   <div class="loader-line" id="loaderLine"></div>
   <div class="loader-brand" id="loaderBrand">Maturare</div>
 </div>
 
-<!-- 2. SCROLL PROGRESS -->
+<!-- SCROLL PROGRESS -->
 <div class="scroll-prog" id="scrollProg"></div>
 
-<!-- 3. NAV -->
+<!-- SKIP LINK -->
 <a href="#main-content" class="skip-link">Pular para conteúdo</a>
+
+<!-- NAV MEGAMENU -->
 <nav id="nav">
-  <a href="/" class="logo">Maturare</a>
-  <ul class="nav-links">
-    <li><a href="/" class="nav-btn">Home</a></li>
-    <li><a href="/metodologia/" class="nav-btn">Metodologia</a></li>
-    <li><a href="/projetos-realizados/" class="nav-btn">Projetos</a></li>
-    <li><a href="/blog/" class="nav-btn">Blog</a></li>
-    <li><a href="/contato/" class="nav-btn">Contato</a></li>
-  </ul>
-  <div class="nav-r">
-    <a href="/contato/" class="nav-cta">Fale Com Especialista</a>
-    <button class="hamburger" id="hambBtn" aria-label="Abrir menu de navegação"><span></span><span></span><span></span></button>
+  <div class="nav-inner">
+    <a href="/" class="logo"><img src="/assets/maturare-logo-white.png" alt="Maturare" style="height:32px;width:auto;display:block;"></a>
+    <ul class="nav-links">
+      <li class="nav-item"><a href="/" class="nav-btn">Início</a></li>
+      <li class="nav-item" id="ni-sobre">
+        <button class="nav-btn" aria-haspopup="true" aria-expanded="false" aria-controls="mm-sobre">
+          Sobre
+          <svg class="nav-caret" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M2 3.5 5 6.5 8 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </li>
+      <li class="nav-item" id="ni-servicos">
+        <button class="nav-btn" aria-haspopup="true" aria-expanded="false" aria-controls="mm-servicos">
+          Serviços
+          <svg class="nav-caret" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M2 3.5 5 6.5 8 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </li>
+      <li class="nav-item" id="ni-blog">
+        <button class="nav-btn" aria-haspopup="true" aria-expanded="false" aria-controls="mm-blog">
+          Blog
+          <svg class="nav-caret" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M2 3.5 5 6.5 8 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </li>
+      <li class="nav-item" id="ni-academy">
+        <button class="nav-btn" aria-haspopup="true" aria-expanded="false" aria-controls="mm-academy">
+          Academy
+          <svg class="nav-caret" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M2 3.5 5 6.5 8 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </li>
+    </ul>
+    <div class="nav-r">
+      <a href="/contato/" class="nav-cta">Diagnóstico Gratuito →</a>
+      <button class="hamburger" id="hambBtn" aria-label="Abrir menu de navegação"><span></span><span></span><span></span></button>
+    </div>
   </div>
 </nav>
-<div class="mob-overlay" id="mobOverlay"></div>
-<div class="mob-menu" id="mobMenu">
-  <a href="/">Home</a>
-  <a href="/sobre/">Sobre</a>
-  <a href="/metodologia/">Metodologia</a>
-  <a href="/projetos-realizados/">Projetos</a>
-  <a href="/blog/">Blog</a>
-  <a href="/daniel-rios/" class="active">Daniel Rios</a>
-  <a href="/nossos-clientes/">Clientes</a>
-  <a href="/faq-maturare/">FAQ</a>
-  <a href="/contato/" class="mob-menu-cta">Fale Com Especialista</a>
+
+<!-- MEGAMENU: Sobre -->
+<div class="mm-panel" id="mm-sobre" role="region" aria-label="Menu Sobre">
+  <div class="mm-inner">
+    <div class="mm-aside">
+      <div class="mm-aside-bg" style="background-image:url('https://images.unsplash.com/photo-1642621859598-79bc9a87fd77?w=600&auto=format&fit=crop&q=80')"></div>
+      <div>
+        <p class="mm-aside-tag">A Maturare</p>
+        <p class="mm-aside-title">Não é sobre crescer rápido. É sobre crescer certo.</p>
+      </div>
+      <a href="/sobre/" class="mm-aside-cta">Conheça nossa história →</a>
+    </div>
+    <div class="mm-links mm-links--single">
+      <a href="/sobre/" class="mm-link"><strong>A Maturare</strong><span>Quem somos, o que acreditamos e por que fazemos o que fazemos</span></a>
+      <a href="/casos-de-sucesso/" class="mm-link"><strong>Casos de Sucesso</strong><span>Empresas reais que aparecem no Google e nas IAs hoje</span></a>
+      <a href="/cidades-atendidas/" class="mm-link"><strong>Cidades Atendidas</strong><span>Atuamos em todo o Brasil, com foco em negócios locais</span></a>
+      <a href="/faq-maturare/" class="mm-link"><strong>Perguntas Frequentes</strong><span>Tira as dúvidas mais comuns antes de conversar com a gente</span></a>
+    </div>
+  </div>
 </div>
 
-<!-- 4. HERO SPLIT -->
+<!-- MEGAMENU: Serviços -->
+<div class="mm-panel" id="mm-servicos" role="region" aria-label="Menu Serviços">
+  <div class="mm-inner">
+    <div class="mm-aside" style="gap:16px;">
+      <p class="mm-vid-label">Destaque</p>
+      <div class="mm-vid-wrap" onclick="openVidModal('malcB_gQ6n8')">
+        <img src="https://img.youtube.com/vi/malcB_gQ6n8/maxresdefault.jpg" alt="Como a Move Máquinas dominou o Google em 63 cidades">
+        <div class="mm-vid-play"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="12" fill="rgba(255,255,255,0.15)"/><polygon points="10,8 17,12 10,16" fill="white"/></svg></div>
+      </div>
+      <p class="mm-vid-title">Como a Move Máquinas ficou em 1º no Google em mais de 20 cidades sem pagar anúncio</p>
+      <a href="#" onclick="openVidModal('malcB_gQ6n8');return false;" class="mm-aside-cta">Assistir agora →</a>
+    </div>
+    <div class="mm-links" style="grid-template-columns:1fr 1fr;">
+      <p class="mm-col-label" style="grid-column:1/-1;">O que fazemos</p>
+      <a href="/agencia-seo/" class="mm-link"><strong>Agência SEO</strong><span>Execução completa para sua empresa aparecer no Google e nas IAs</span></a>
+      <a href="/consultor-seo/" class="mm-link"><strong>Consultor SEO</strong><span>Diagnóstico, estratégia e direcionamento para sua equipe executar</span></a>
+      <a href="/criacao-de-sites/" class="mm-link"><strong>Criação de Site</strong><span>Site construído para ranquear desde o primeiro dia</span></a>
+      <a href="/seo-para-b2b/" class="mm-link"><strong>SEO para B2B</strong><span>Apareça quando seu comprador corporativo pesquisar sua solução</span></a>
+      <a href="/seo-para-negocios-locais/" class="mm-link"><strong>SEO para Negócios Locais</strong><span>Domine as buscas na sua cidade e região</span></a>
+      <a href="/seo-para-saas/" class="mm-link"><strong>SEO para SaaS</strong><span>Tráfego orgânico previsível para reduzir custo de aquisição</span></a>
+      <a href="/seo-para-contadores/" class="mm-link"><strong>SEO para Contadores</strong><span>Clientes chegando pelo Google sem depender de indicação</span></a>
+      <a href="/seo-para-clinicas/" class="mm-link"><strong>SEO para Clínicas</strong><span>Pacientes encontrando sua clínica antes da concorrência</span></a>
+    </div>
+  </div>
+</div>
+
+<!-- MEGAMENU: Blog -->
+<div class="mm-panel" id="mm-blog" role="region" aria-label="Menu Blog">
+  <div class="mm-inner" style="grid-template-columns:260px 1fr;">
+    <div class="mm-aside">
+      <div class="mm-aside-bg" style="background-image:url('https://images.unsplash.com/photo-1643148636630-0b0fb138fc74?w=600&auto=format&fit=crop&q=80');filter:grayscale(100%);"></div>
+      <div>
+        <p class="mm-aside-tag">Blog Maturare</p>
+        <p class="mm-aside-title">Visibilidade não é sorte. É método.</p>
+      </div>
+      <a href="/blog/" class="mm-aside-cta">Ver todos os artigos →</a>
+    </div>
+    <div style="padding:32px 40px;">
+      <div class="mm-blog-grid">
+        <a href="/blog/como-aparecer-no-google/" class="mm-blog-link"><span class="mm-blog-tag">SEO</span><span class="mm-blog-title">Como aparecer no Google quando o cliente pesquisar seu serviço</span></a>
+        <a href="/blog/o-que-e-geo/" class="mm-blog-link"><span class="mm-blog-tag">GEO</span><span class="mm-blog-title">O que é GEO e por que o ChatGPT pode recomendar seu concorrente</span></a>
+        <a href="/blog/phd-playground-sem-google-ads/" class="mm-blog-link"><span class="mm-blog-tag">Case</span><span class="mm-blog-title">PHD Playground: 2 anos sem pagar Google Ads</span></a>
+        <a href="/blog/google-meu-negocio-guia/" class="mm-blog-link"><span class="mm-blog-tag">Local SEO</span><span class="mm-blog-title">Google Meu Negócio: o guia definitivo para negócios locais</span></a>
+        <a href="/blog/5-sinais-agencia-nao-funciona/" class="mm-blog-link"><span class="mm-blog-tag">Estratégia</span><span class="mm-blog-title">5 sinais de que sua agência não está funcionando</span></a>
+        <a href="/blog/ia-recomenda-empresas/" class="mm-blog-link"><span class="mm-blog-tag">AEO</span><span class="mm-blog-title">Perplexity, Gemini, ChatGPT: qual IA já recomenda empresas?</span></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MEGAMENU: Academy -->
+<div class="mm-panel" id="mm-academy" role="region" aria-label="Menu Academy">
+  <div class="mm-inner">
+    <div class="mm-aside" style="gap:16px;">
+      <p class="mm-vid-label">Aula gratuita</p>
+      <div class="mm-vid-wrap" onclick="openVidModal('TqsqddD0TVw')">
+        <img src="https://img.youtube.com/vi/TqsqddD0TVw/maxresdefault.jpg" alt="Aula gratuita Maturare Academy">
+        <div class="mm-vid-play"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="12" fill="rgba(255,255,255,0.15)"/><polygon points="10,8 17,12 10,16" fill="white"/></svg></div>
+      </div>
+      <p class="mm-vid-title">Assista uma aula gratuita do curso de Google Meu Negócio</p>
+      <a href="#" onclick="openVidModal('TqsqddD0TVw');return false;" class="mm-aside-cta">Assistir aula →</a>
+    </div>
+    <div class="mm-links mm-links--single">
+      <p class="mm-col-label">Cursos disponíveis</p>
+      <a href="/academy/curso-google-meu-negocio/" class="mm-link"><strong>Curso de Google Meu Negócio</strong><span>Do zero ao perfil otimizado: apareça no mapa e atraia clientes da sua cidade</span></a>
+    </div>
+  </div>
+</div>
+
+<!-- MOBILE MENU -->
+<div class="mob-overlay" id="mobOverlay"></div>
+<div class="mob-menu" id="mobMenu">
+  <div class="mob-menu-header">
+    <img src="/assets/maturare-logo-white.png" alt="Maturare" style="height:26px;width:auto;">
+    <button class="mob-menu-close" id="mobCloseBtn" aria-label="Fechar menu">
+      <svg viewBox="0 0 24 24" fill="none" width="16" height="16"><path d="M6 6l12 12M6 18L18 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+  <a href="/">Início</a>
+  <div class="mob-section">
+    <button class="mob-section-btn" id="mobSobreBtn">Sobre<svg viewBox="0 0 10 10" fill="none" width="10" height="10" style="transition:transform .2s"><path d="M2 3.5 5 6.5 8 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <div class="mob-sub" id="mobSobreSub">
+      <a href="/sobre/">A Maturare</a>
+      <a href="/casos-de-sucesso/">Casos de Sucesso</a>
+      <a href="/cidades-atendidas/">Cidades Atendidas</a>
+      <a href="/faq-maturare/">Perguntas Frequentes</a>
+    </div>
+  </div>
+  <div class="mob-section">
+    <button class="mob-section-btn" id="mobServBtn">Serviços<svg viewBox="0 0 10 10" fill="none" width="10" height="10" style="transition:transform .2s"><path d="M2 3.5 5 6.5 8 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <div class="mob-sub" id="mobServSub">
+      <div class="mob-vid-item" onclick="openVidModal('malcB_gQ6n8')">
+        <img src="https://img.youtube.com/vi/malcB_gQ6n8/maxresdefault.jpg" alt="Move Máquinas no Google">
+        <div class="mob-vid-play-btn"><svg viewBox="0 0 48 48" width="36" height="36" fill="none"><circle cx="24" cy="24" r="24" fill="rgba(255,255,255,0.18)"/><polygon points="20,16 34,24 20,32" fill="white"/></svg></div>
+        <div class="mob-vid-caption">Move Máquinas: 1º no Google em 20 cidades sem anúncio</div>
+      </div>
+      <a href="/agencia-seo/">Agência SEO</a>
+      <a href="/consultor-seo/">Consultor SEO</a>
+      <a href="/criacao-de-sites/">Criação de Site</a>
+      <a href="/seo-para-b2b/">SEO para B2B</a>
+      <a href="/seo-para-negocios-locais/">SEO para Negócios Locais</a>
+      <a href="/seo-para-saas/">SEO para SaaS</a>
+      <a href="/seo-para-contadores/">SEO para Contadores</a>
+      <a href="/seo-para-clinicas/">SEO para Clínicas</a>
+    </div>
+  </div>
+  <div class="mob-section">
+    <button class="mob-section-btn" id="mobBlogBtn">Blog<svg viewBox="0 0 10 10" fill="none" width="10" height="10" style="transition:transform .2s"><path d="M2 3.5 5 6.5 8 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <div class="mob-sub" id="mobBlogSub">
+      <a href="/blog/como-aparecer-no-google/">Como aparecer no Google</a>
+      <a href="/blog/o-que-e-geo/">O que é GEO</a>
+      <a href="/blog/phd-playground-sem-google-ads/">Case PHD Playground</a>
+      <a href="/blog/google-meu-negocio-guia/">Guia Google Meu Negócio</a>
+      <a href="/blog/5-sinais-agencia-nao-funciona/">5 sinais da agência ruim</a>
+      <a href="/blog/ia-recomenda-empresas/">Qual IA recomenda empresas?</a>
+      <a href="/blog/">Ver todos →</a>
+    </div>
+  </div>
+  <div class="mob-section">
+    <button class="mob-section-btn" id="mobAcadBtn">Academy<svg viewBox="0 0 10 10" fill="none" width="10" height="10" style="transition:transform .2s"><path d="M2 3.5 5 6.5 8 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <div class="mob-sub" id="mobAcadSub">
+      <div class="mob-vid-item" onclick="openVidModal('TqsqddD0TVw')">
+        <img src="https://img.youtube.com/vi/TqsqddD0TVw/maxresdefault.jpg" alt="Aula gratuita Maturare Academy">
+        <div class="mob-vid-play-btn"><svg viewBox="0 0 48 48" width="36" height="36" fill="none"><circle cx="24" cy="24" r="24" fill="rgba(255,255,255,0.18)"/><polygon points="20,16 34,24 20,32" fill="white"/></svg></div>
+        <div class="mob-vid-caption">Aula gratuita: como aparecer no ChatGPT e Gemini</div>
+      </div>
+      <a href="/academy/curso-google-meu-negocio/">Curso de Google Meu Negócio</a>
+    </div>
+  </div>
+  <div class="mob-menu-ctas">
+    <a href="https://wa.me/5521990770731" target="_blank" class="mob-cta-wa">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+      WhatsApp
+    </a>
+    <a href="/contato/" class="mob-cta-contact">Fale Conosco →</a>
+  </div>
+  <div class="mob-menu-footer">
+    <p class="mob-footer-tagline">Presença orgânica real, sem depender de anúncio.</p>
+    <a href="mailto:contato@maturare.com.br" class="mob-contact-email">
+      <svg viewBox="0 0 24 24" fill="none" width="14" height="14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+      contato@maturare.com.br
+    </a>
+    <p class="mob-footer-cnpj">CNPJ 47.336.340/0001-51</p>
+    <div class="mob-socials">
+      <a href="https://www.instagram.com/maturare.com.br/" target="_blank" class="mob-soc-link" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+      </a>
+      <a href="https://br.linkedin.com/in/daniel-batista-674b62140" target="_blank" class="mob-soc-link" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+      <a href="https://www.youtube.com/@googledominado1" target="_blank" class="mob-soc-link" aria-label="YouTube">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- VIDEO MODAL -->
+<div class="vid-modal" id="vidModal" onclick="closeVidModal()">
+  <div class="vid-modal-inner" onclick="event.stopPropagation()">
+    <button class="vid-modal-close" onclick="closeVidModal()">&#x2715;</button>
+    <iframe id="vidFrame" src="" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+  </div>
+</div>
+
+<!-- HERO -->
 <section class="hero noise" id="main-content">
   <div class="hero-glow"></div>
   <div class="container" style="position:relative;z-index:1;">
     <div class="hero-grid">
       <div>
         <h1 class="hero-h1">Daniel Batista Rios</h1>
-        <p class="hero-subtitle">Fundador da Maturare · Especialista em SEO e IA · Marido e Pai</p>
+        <p class="hero-subtitle">Fundador da Maturare, agência de SEO, GEO e AEO em Niterói. Ex-goleiro profissional, empreendedor digital e especialista em posicionamento para IAs.</p>
         <div class="hero-badges">
           <span class="hero-badge">Ex-goleiro profissional</span>
           <span class="hero-badge">+R$2.5M faturados com e-commerce</span>
@@ -952,96 +616,139 @@ p, .hero-subtitle, .historia-txt, .filosofia-txt { text-wrap: pretty; }
           <span class="hero-badge">+300 alunos na Academy</span>
         </div>
       </div>
-      <div class="hero-photo">
-        <span class="hero-photo-initials">DR</span>
+      <div class="hero-photo-wrap">
+        <div class="hero-photo" style="aspect-ratio:3/4;">
+          <img
+            src="/assets/daniel-foto-palco.jpg"
+            alt="Daniel Batista Rios palestrando sobre SEO e inteligência artificial"
+            width="480" height="640"
+            loading="eager"
+          >
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 5. HISTORIA -->
+<!-- HISTORIA -->
 <section class="historia noise">
   <div class="historia-in">
-    <div class="sec-label lt reveal">A história</div>
-    <h2 class="sec-h lt reveal d1" style="margin-bottom:32px;">Quem é Daniel Rios e como nasceu a <em>Maturare</em>?</h2>
+    <div class="sec-label lt reveal">A trajetória</div>
+    <h2 class="sec-h lt reveal d1" style="margin-bottom:32px;">Conheça Daniel Batista Rios, fundador da <em>Maturare</em></h2>
     <div class="historia-txt reveal d2">
       <p>Daniel Batista Rios é casado com <strong>Thalisa Valentim</strong> e pai do <strong>Davi Valentim Rios</strong>. Nasceu em 16 de julho de 1996, tem 1,87m e cresceu com o futebol como primeira escola. Antes de fundar a Maturare, construiu uma carreira como <strong>goleiro profissional</strong>, passando por <a href="https://www.ogol.com.br/jogador/daniel/478023" target="_blank" rel="noopener" style="color:var(--green2);text-decoration:underline;text-underline-offset:2px;">Grêmio Prudente, Paulínia Futebol Clube, Macaé Esporte e Duque de Caxias</a>. No Paulínia dividiu o elenco com Fabinho, que anos depois se tornaria campeão da Champions League pelo Liverpool. No Macaé disputou a Série B de 2015 ao lado de Marcos Felipe. Era reconhecido pela velocidade, força física e dedicação exemplar nos treinos. Nos campos aprendeu o que carrega para os negócios: disciplina, consistência e a capacidade de se manter firme quando o jogo parece perdido.</p>
       <p>Depois do futebol, mergulhou no mundo digital. <strong>Faturou mais de R$2.5 milhões com dropshipping</strong>, gerenciou mais de R$1 milhão em tráfego pago, desenvolveu o SaaS Ulanano e <strong>liderou operações com mais de 50 pessoas</strong>. Passou por tráfego pago, e-commerce, trackeamento e automação antes de encontrar o que realmente queria fazer: ajudar empresários a gerarem demanda sem depender de anúncios.</p>
-      <p>Com essa experiência, entendeu uma verdade incômoda: a maioria dos empresários locais estava jogando dinheiro fora. Pagavam por cliques que não convertiam, contratavam agências que faziam posts bonitos mas não geravam clientes, e usavam ferramentas de IA que prometiam resultado e entregavam texto genérico.</p>
-      <p>Em 2022, fundou a <strong>Maturare em Niterói, RJ</strong>. O propósito: construir ativos digitais que vendem por você. Páginas que ranqueiam no Google, conteúdos que as IAs recomendam, estruturas que geram demanda orgânica — sem depender de ads que ficam mais caros todo mês.</p>
-      <p>Hoje, Daniel lidera a Maturare atendendo empresas em todo o Brasil com operação 100% remota. Criou a <a href="/academy/" style="color:var(--green2);text-decoration:underline;text-underline-offset:2px;">Maturare Academy</a>, onde mais de 300 profissionais aprendem SEO e IA na prática. E mantém uma convicção: o ambiente das empresas é o local de maior transformação da sociedade, depois das famílias.</p>
+      <p>Em 2022, fundou a <strong>Maturare em Niterói, RJ</strong>. O propósito: construir ativos digitais que vendem por você. Páginas que ranqueiam no Google, conteúdos que as IAs recomendam, estruturas que geram demanda orgânica sem depender de ads que ficam mais caros todo mês.</p>
+      <p>Hoje, Daniel lidera a Maturare atendendo empresas em todo o Brasil com operação 100% remota. Criou a <a href="/academy/" style="color:var(--green2);text-decoration:underline;text-underline-offset:2px;">Maturare Academy</a>, onde mais de 300 profissionais aprendem SEO e IA na prática.</p>
     </div>
   </div>
 </section>
 
-<!-- 6. EXPERTISE -->
+<!-- FOTOS -->
+<section class="fotos-sec noise">
+  <div class="fotos-in">
+    <div class="sec-label lt reveal">Galeria</div>
+    <h2 class="sec-h lt reveal d1">Daniel Rios em <em>imagens</em></h2>
+    <div class="fotos-grid">
+      <div class="foto-item reveal d1">
+        <img
+          src="/assets/sobre/palestra-search-live.jpg"
+          alt="Daniel Batista Rios palestra no evento Search Live sobre SEO e GEO"
+          width="600" height="750"
+          loading="lazy"
+        >
+        <div class="foto-caption">Search Live — palestra de Daniel Rios sobre GEO e IA</div>
+      </div>
+      <div class="foto-item reveal d2">
+        <img
+          src="/assets/daniel-foto-palco.jpg"
+          alt="Daniel Rios fundador da Maturare palestrando sobre SEO e inteligência artificial"
+          width="600" height="750"
+          loading="lazy"
+        >
+        <div class="foto-caption">Daniel Rios no palco — posicionamento orgânico para negócios</div>
+      </div>
+      <div class="foto-item reveal d3">
+        <img
+          src="/assets/sobre/daniel-google-hq.jpg"
+          alt="Daniel Batista Rios na sede do Google, fundador da Maturare agência SEO Niterói"
+          width="600" height="750"
+          loading="lazy"
+        >
+        <div class="foto-caption">Daniel Rios na sede do Google — parceria e aprendizado</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERTISE -->
 <section class="expertise noise">
   <div class="expertise-in">
-    <div class="sec-label lt reveal">Expertise</div>
-    <h2 class="sec-h lt reveal d1">Quais são as especialidades de Daniel Rios na <em>Maturare</em>?</h2>
+    <div class="sec-label lt reveal">Especialidades</div>
+    <h2 class="sec-h lt reveal d1">Áreas de atuação de Daniel Rios como especialista em <em>SEO e IA</em></h2>
     <div class="expertise-grid">
       <div class="exp-card reveal d1">
         <div class="exp-icon">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
         </div>
-        <div class="exp-title">SEO Técnico</div>
-        <p class="exp-desc">Arquitetura de site, dados estruturados, Core Web Vitals, crawlability. A fundação invisível que sustenta todo posicionamento.</p>
+        <h3 class="exp-title">SEO Técnico e Estratégico</h3>
+        <p class="exp-desc">Arquitetura de site, dados estruturados JSON-LD, Core Web Vitals, crawlability. A fundação invisível que sustenta todo posicionamento.</p>
       </div>
       <div class="exp-card reveal d2">
         <div class="exp-icon">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
         </div>
-        <div class="exp-title">GEO / AEO</div>
-        <p class="exp-desc">Generative Engine Optimization e Answer Engine Optimization. Fazer sua empresa ser citada pelo ChatGPT, Perplexity e Gemini.</p>
+        <h3 class="exp-title">GEO e AEO para IAs</h3>
+        <p class="exp-desc">Generative Engine Optimization e Answer Engine Optimization. Fazer sua empresa ser citada pelo ChatGPT, Perplexity, Gemini e Claude.</p>
       </div>
       <div class="exp-card reveal d3">
         <div class="exp-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
         </div>
-        <div class="exp-title">Arquitetura de Conteúdo</div>
-        <p class="exp-desc">Planejamento estratégico de páginas, clusters semânticos e query funnels que posicionam a empresa como autoridade no segmento.</p>
+        <h3 class="exp-title">Arquitetura de Conteúdo</h3>
+        <p class="exp-desc">Clusters semânticos, query funnels e EAV triples que posicionam a empresa como autoridade no Google e nos modelos de linguagem.</p>
       </div>
       <div class="exp-card reveal d4">
         <div class="exp-icon">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
         </div>
-        <div class="exp-title">Automação com IA</div>
-        <p class="exp-desc">Claude AI, ChatGPT e ferramentas proprietárias para produção de conteúdo em escala sem perder qualidade nem autenticidade.</p>
+        <h3 class="exp-title">Automação com IA</h3>
+        <p class="exp-desc">Claude AI, ChatGPT e fluxos proprietários para produção de conteúdo em escala sem perder qualidade nem autenticidade da marca.</p>
       </div>
       <div class="exp-card reveal d5">
         <div class="exp-icon">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
         </div>
-        <div class="exp-title">Google Meu Negócio</div>
-        <p class="exp-desc">Criação, otimização e gestão de fichas para negócios locais. Aparecer no Maps quando o cliente pesquisar na região.</p>
+        <h3 class="exp-title">SEO Local e Google Maps</h3>
+        <p class="exp-desc">Criação, otimização e gestão de fichas para negócios locais. Aparecer no Maps quando o cliente pesquisar na região certa.</p>
       </div>
       <div class="exp-card reveal d6">
         <div class="exp-icon">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
         </div>
-        <div class="exp-title">Estratégia Digital</div>
-        <p class="exp-desc">Visão 360 de marketing, CRO, branding e posicionamento de marca. Ajuda o empresário a pensar no negócio, não só no tráfego.</p>
+        <h3 class="exp-title">Estratégia Digital e CRO</h3>
+        <p class="exp-desc">Visão 360 de marketing, CRO e posicionamento. Ajuda o empresário a pensar no negócio inteiro, não só no tráfego.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 7. FILOSOFIA -->
+<!-- FILOSOFIA -->
 <section class="filosofia noise">
   <div class="filosofia-inner">
     <div class="reveal">
-      <div class="filosofia-quote">SER, FAZER, TER — nessa ordem.</div>
+      <div class="filosofia-quote">SER, FAZER, TER. Nessa ordem.</div>
     </div>
     <div class="filosofia-line"></div>
     <div class="filosofia-txt reveal d2">
-      <p>Daniel acredita que a ordem importa. Antes de fazer, é preciso ser. Antes de ter, é preciso construir. A excelência não é um destino; é o padrão de cada entrega, cada decisão, cada interação.</p>
+      <p>Daniel acredita que a ordem importa. Antes de fazer, é preciso ser. Antes de ter, é preciso construir. A excelência não é um destino; é o padrão de cada entrega, cada decisão, cada interação com o cliente.</p>
       <p>O maior inimigo, para ele, não é o concorrente nem o algoritmo. É o ego. O ego que faz uma agência prometer o que não pode entregar. O ego que faz um empresário buscar atalhos em vez de construção. O ego que substitui propósito por vaidade.</p>
       <p>Na Maturare, o trabalho é feito como se fosse para algo maior do que o cliente ou o faturamento. Conhecimento sem habilidade é teoria. Habilidade sem atitude é potencial desperdiçado. E tudo isso sem caráter é apenas técnica vazia.</p>
     </div>
   </div>
 </section>
 
-<!-- 8. FERRAMENTAS -->
+<!-- FERRAMENTAS -->
 <section class="ferramentas noise">
   <div class="ferramentas-in">
     <div class="sec-label lt reveal">Ferramentas do dia a dia</div>
@@ -1051,19 +758,20 @@ p, .hero-subtitle, .historia-txt, .filosofia-txt { text-wrap: pretty; }
       <div class="ferr-pill reveal d1"><span class="ferr-dot" style="background:#ff6b35"></span>Ahrefs</div>
       <div class="ferr-pill reveal d2"><span class="ferr-dot" style="background:#4285f4"></span>Google Search Console</div>
       <div class="ferr-pill reveal d2"><span class="ferr-dot" style="background:#87c540"></span>Screaming Frog</div>
-      <div class="ferr-pill reveal d3"><span class="ferr-dot" style="background:var(--claude)"></span>Claude AI</div>
-      <div class="ferr-pill reveal d3"><span class="ferr-dot" style="background:var(--chatgpt)"></span>ChatGPT</div>
-      <div class="ferr-pill reveal d4"><span class="ferr-dot" style="background:var(--perplexity)"></span>Perplexity</div>
+      <div class="ferr-pill reveal d3"><span class="ferr-dot" style="background:#c96442"></span>Claude AI</div>
+      <div class="ferr-pill reveal d3"><span class="ferr-dot" style="background:#10a37f"></span>ChatGPT</div>
+      <div class="ferr-pill reveal d4"><span class="ferr-dot" style="background:#6366f1"></span>Perplexity</div>
+      <div class="ferr-pill reveal d4"><span class="ferr-dot" style="background:#4285f4"></span>Gemini</div>
     </div>
   </div>
 </section>
 
-<!-- 9. NA ACADEMY -->
+<!-- ACADEMY -->
 <section class="academy-sec noise">
   <div class="academy-in">
     <div class="sec-label lt reveal">Na Academy</div>
-    <h2 class="sec-h lt reveal d1">Como Daniel Rios formou +300 alunos na <em>Maturare Academy</em>?</h2>
-    <p class="academy-txt reveal d2">Daniel Rios fundou a Maturare Academy para empresários e profissionais que querem entender o jogo do posicionamento digital. Não é curso teórico. É o mesmo <a href="/metodologia/" style="color:var(--green2);text-decoration:underline;">método</a> que Daniel aplica nos clientes da Maturare Serviços, documentado e ensinado com profundidade. SEO real, IA aplicada, estratégia de posicionamento. Confira também os <a href="/projetos-realizados/" style="color:var(--green2);text-decoration:underline;">projetos</a> da Maturare e entre em <a href="/contato/" style="color:var(--green2);text-decoration:underline;">contato</a> para saber mais.</p>
+    <h2 class="sec-h lt reveal d1">Como Daniel Rios formou mais de 300 alunos na <em>Maturare Academy</em></h2>
+    <p class="academy-txt reveal d2">Daniel fundou a <a href="/academy/" style="color:var(--green2);text-decoration:underline;">Maturare Academy</a> para empresários e profissionais que querem entender o jogo do posicionamento digital. Não é curso teórico. É o mesmo <a href="/metodologia/" style="color:var(--green2);text-decoration:underline;">método</a> que Daniel aplica nos clientes da Maturare Serviços, documentado e ensinado com profundidade. SEO real, IA aplicada, estratégia de posicionamento. Veja também os <a href="/projetos-realizados/" style="color:var(--green2);text-decoration:underline;">projetos realizados</a> e entre em <a href="/contato/" style="color:var(--green2);text-decoration:underline;">contato</a> para saber mais.</p>
     <div class="academy-num reveal d3">
       <span class="academy-num-val">+300</span>
       <span class="academy-num-label">alunos aprendendo o jogo</span>
@@ -1071,10 +779,11 @@ p, .hero-subtitle, .historia-txt, .filosofia-txt { text-wrap: pretty; }
   </div>
 </section>
 
-<!-- 10. REDES -->
+<!-- REDES -->
 <section class="redes noise">
   <div class="redes-in">
-    <div class="sec-label lt reveal">Onde encontrar</div>
+    <div class="sec-label lt reveal">Onde encontrar Daniel Rios</div>
+    <h3 class="sec-h lt reveal d1" style="font-size:clamp(22px,2.5vw,32px);margin-bottom:0;">Perfis e redes de <em>Daniel Batista Rios</em></h3>
     <div class="redes-list">
       <a href="https://www.instagram.com/eudanielbatistta/" target="_blank" rel="noopener" class="rede-link reveal d1">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
@@ -1102,20 +811,20 @@ p, .hero-subtitle, .historia-txt, .filosofia-txt { text-wrap: pretty; }
       </a>
       <a href="https://www.ogol.com.br/jogador/daniel/478023" target="_blank" rel="noopener" class="rede-link reveal d6">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
-        Ogol · Carreira no futebol
+        Ogol — carreira no futebol
       </a>
     </div>
   </div>
 </section>
 
-<!-- ENTITY BRIDGE + INTERNAL LINKS -->
-<section class="noise" style="padding:clamp(60px,8vw,100px) 0;">
+<!-- ENTITY BRIDGE -->
+<section class="noise" style="padding:clamp(60px,8vw,100px) 0;background:var(--z1);">
   <div class="container">
     <p style="max-width:760px;margin:0 auto;text-align:center;font-size:17px;line-height:1.85;color:rgba(255,255,255,.6);">A trajetória de Daniel Rios reflete uma mudança no mercado brasileiro de SEO. Enquanto agências tradicionais entregam serviços genéricos, Daniel construiu a Maturare como uma aceleradora que empodera negócios locais com posicionamento real no Google e nas IAs. Conheça a <a href="/sobre/" style="color:var(--green2);text-decoration:underline;">Maturare</a>, explore o <a href="/metodologia/" style="color:var(--green2);text-decoration:underline;">Método Maturare</a>, leia o <a href="/blog/" style="color:var(--green2);text-decoration:underline;">blog</a> e veja os <a href="/projetos-realizados/" style="color:var(--green2);text-decoration:underline;">projetos realizados</a>. Conheça também o perfil completo de Daniel em <a href="https://danielbatistarios.com.br/" target="_blank" rel="noopener" style="color:var(--green2);text-decoration:underline;">danielbatistarios.com.br</a>. <small style="opacity:.5">Atualizado em maio de 2026</small></p>
   </div>
 </section>
 
-<!-- 11. CTA -->
+<!-- CTA -->
 <section class="cta-sec noise">
   <div class="cta-inner reveal">
     <h2 class="cta-h">Quer conversar com Daniel Rios sobre o seu projeto?</h2>
@@ -1123,40 +832,64 @@ p, .hero-subtitle, .historia-txt, .filosofia-txt { text-wrap: pretty; }
   </div>
 </section>
 
-<!-- 12. FOOTER -->
+<!-- FOOTER -->
 <footer>
   <div class="foot-in">
     <div class="foot-top">
       <div>
-        <div class="foot-brand">Maturare</div>
+        <div class="foot-brand"><img src="/assets/maturare-logo-white.png" alt="Maturare" style="height:36px;width:auto;display:block;"></div>
         <p class="foot-tag">Aceleradora de negócios que faz empresas locais serem encontradas no Google e recomendadas pelas IAs.</p>
-        <div class="foot-live">Monitoramento ativo</div>
+        <div class="hm-toggle" role="group" aria-label="Modo de visualização" style="margin-top:30px;">
+          <button class="hm-btn active" id="btnHuman" onclick="setHMView('human')">Human</button>
+          <button class="hm-btn" id="btnMachine" onclick="setHMView('machine')">Machine</button>
+        </div>
+        <div class="foot-socs">
+          <a href="https://br.linkedin.com/in/daniel-batista-674b62140" target="_blank" aria-label="LinkedIn da Maturare">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/maturare.com.br/" target="_blank" aria-label="Instagram da Maturare">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+          </a>
+          <a href="https://www.youtube.com/@googledominado1" target="_blank" aria-label="YouTube da Maturare">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
+        </div>
       </div>
       <div>
-        <div class="fcol-h">Principal</div>
+        <div class="fcol-h">Soluções</div>
         <ul class="flinks">
-          <li><a href="/">Home</a></li>
-          <li><a href="/sobre/">Sobre</a></li>
-          <li><a href="/metodologia/">Metodologia</a></li>
-          <li><a href="/projetos-realizados/">Projetos</a></li>
-          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/agencia-seo/">Agência SEO</a></li>
+          <li><a href="/consultor-seo/">Consultor SEO</a></li>
+          <li><a href="/criacao-de-sites/">Criação de Site</a></li>
+          <li><a href="/seo-para-b2b/">SEO para B2B</a></li>
+          <li><a href="/seo-para-negocios-locais/">SEO para Negócios Locais</a></li>
+          <li><a href="/seo-para-saas/">SEO para SaaS</a></li>
+          <li><a href="/seo-para-contadores/">SEO para Contadores</a></li>
+          <li><a href="/seo-para-clinicas/">SEO para Clínicas</a></li>
+          <li><a href="/analise-gratuita/" style="color:var(--green);font-weight:600;">Diagnóstico Gratuito</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="fcol-h">Blog</div>
+        <ul class="flinks">
+          <li><a href="/blog/">Todos os artigos</a></li>
+          <li><a href="/blog/como-ranquear-no-chatgpt/">Como Ranquear no ChatGPT</a></li>
+          <li><a href="/blog/seo-local-em-2026/">SEO Local em 2026</a></li>
+          <li><a href="/blog/chatgpt-indicando-seu-concorrente/">O ChatGPT Indica Seu Concorrente?</a></li>
+          <li><a href="/blog/seo-ou-google-ads/">SEO ou Google Ads</a></li>
+          <li><a href="/blog/o-que-e-geo/">GEO: o Novo SEO</a></li>
+          <li><a href="/glossario/">Glossário de SEO e IA</a></li>
         </ul>
       </div>
       <div>
         <div class="fcol-h">Empresa</div>
         <ul class="flinks">
-          <li><a href="/nossos-clientes/">Nossos Clientes</a></li>
-          <li><a href="/contato/">Contato</a></li>
+          <li><a href="/sobre/">Sobre a Maturare</a></li>
+          <li><a href="/daniel-batista-rios/">Daniel Rios</a></li>
+          <li><a href="/casos-de-sucesso/">Casos de Sucesso</a></li>
+          <li><a href="/cidades-atendidas/">Cidades Atendidas</a></li>
+          <li><a href="/academy/google-meu-negocio/">Curso Google Meu Negócio</a></li>
           <li><a href="/faq-maturare/">FAQ</a></li>
-          <li><a href="/daniel-rios/">Daniel Rios</a></li>
-        </ul>
-      </div>
-      <div>
-        <div class="fcol-h">Contato</div>
-        <ul class="flinks">
-          <li><a href="/contato/">Diagnóstico grátis</a></li>
-          <li><a href="/contato/">Falar com Daniel</a></li>
-          <li><a href="mailto:contato@maturare.com.br">contato@maturare.com.br</a></li>
         </ul>
       </div>
     </div>
@@ -1166,11 +899,9 @@ p, .hero-subtitle, .historia-txt, .filosofia-txt { text-wrap: pretty; }
         <a href="/politica-de-cookies/">Política de Cookies</a>
         <a href="/termos-de-uso/">Termos de Uso</a>
       </div>
-      <div class="foot-copy">&#169; 2026 Maturare · CNPJ 47.336.340/0001-51 · Niterói, RJ</div>
-      <div class="foot-socs">
-        <a href="https://br.linkedin.com/in/daniel-batista-674b62140" target="_blank" aria-label="LinkedIn da Maturare">LinkedIn</a>
-        <a href="https://www.instagram.com/maturare.com.br/" target="_blank" aria-label="Instagram da Maturare">Instagram</a>
-        <a href="https://www.youtube.com/@googledominado1" target="_blank" aria-label="YouTube da Maturare">YouTube</a>
+      <div class="foot-disclaimer">
+        <span style="display:block;text-align:center;">Os resultados apresentados neste site são reais e referem-se a clientes específicos. Resultados individuais variam conforme mercado, histórico do site e consistência na execução.</span><br>
+        <span style="display:block;text-align:center;">&#169; 2026 Maturare Gestão &amp; Marketing Estratégico Ltda | CNPJ: 47.336.340/0001-51 | Todos os Direitos Reservados | Rua Coronel Sebastião Dantas, 56, Niterói/RJ, Brasil</span>
       </div>
     </div>
   </div>
@@ -1189,9 +920,7 @@ p, .hero-subtitle, .historia-txt, .filosofia-txt { text-wrap: pretty; }
   var spans = phrase.querySelectorAll('span');
   document.body.style.overflow = 'hidden';
   requestAnimationFrame(function() { if (line) line.classList.add('active'); });
-  spans.forEach(function(s, i) {
-    setTimeout(function() { s.classList.add('visible'); }, 200 + i * 200);
-  });
+  spans.forEach(function(s, i) { setTimeout(function() { s.classList.add('visible'); }, 200 + i * 200); });
   setTimeout(function() { if (brand) brand.classList.add('visible'); }, 200 + words.length * 200 + 200);
   setTimeout(function() {
     loader.classList.add('done');
@@ -1214,26 +943,109 @@ window.addEventListener('scroll', function() {
 }, {passive: true});
 
 /* === REVEAL ON SCROLL === */
-document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-blur').forEach(function(el) {
-  if (el) {
-    new IntersectionObserver(function(e) {
-      if (e[0].isIntersecting) { el.classList.add('in'); this.unobserve(el); }
-    }, {threshold: .1, rootMargin: '0px 0px -40px 0px'}).observe(el);
-  }
+document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(function(el) {
+  new IntersectionObserver(function(e) {
+    if (e[0].isIntersecting) { el.classList.add('in'); this.unobserve(el); }
+  }, {threshold: .1, rootMargin: '0px 0px -40px 0px'}).observe(el);
 });
+
+/* === MEGAMENU === */
+(function() {
+  var openId = null;
+  var closeTimer = null;
+  function openPanel(id) {
+    clearTimeout(closeTimer);
+    if (openId === id) return;
+    closeImmediate();
+    var ni = document.getElementById('ni-' + id);
+    var mm = document.getElementById('mm-' + id);
+    if (!ni || !mm) return;
+    ni.classList.add('open'); mm.classList.add('open');
+    ni.querySelector('.nav-btn').setAttribute('aria-expanded', 'true');
+    openId = id;
+  }
+  function scheduleClose() { closeTimer = setTimeout(closeImmediate, 120); }
+  function closeImmediate() {
+    clearTimeout(closeTimer);
+    if (!openId) return;
+    var ni = document.getElementById('ni-' + openId);
+    var mm = document.getElementById('mm-' + openId);
+    if (ni) { ni.classList.remove('open'); ni.querySelector('.nav-btn').setAttribute('aria-expanded', 'false'); }
+    if (mm) mm.classList.remove('open');
+    openId = null;
+  }
+  ['sobre', 'servicos', 'blog', 'academy'].forEach(function(id) {
+    var ni = document.getElementById('ni-' + id);
+    var mm = document.getElementById('mm-' + id);
+    if (!ni || !mm) return;
+    ni.addEventListener('mouseenter', function() { openPanel(id); });
+    ni.addEventListener('mouseleave', scheduleClose);
+    mm.addEventListener('mouseenter', function() { clearTimeout(closeTimer); });
+    mm.addEventListener('mouseleave', scheduleClose);
+    ni.querySelector('.nav-btn').addEventListener('click', function() {
+      if (openId === id) { closeImmediate(); } else { openPanel(id); }
+    });
+  });
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeImmediate(); });
+})();
 
 /* === MOBILE MENU === */
 var hambBtn = document.getElementById('hambBtn');
 var mobMenu = document.getElementById('mobMenu');
 var mobOverlay = document.getElementById('mobOverlay');
-function toggleMob() { mobMenu.classList.toggle('open'); mobOverlay.classList.toggle('open'); }
+function toggleMob() {
+  var isOpen = mobMenu.classList.toggle('open');
+  mobOverlay.classList.toggle('open');
+  hambBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+}
 if (hambBtn) hambBtn.addEventListener('click', toggleMob);
 if (mobOverlay) mobOverlay.addEventListener('click', toggleMob);
+var mobCloseBtn = document.getElementById('mobCloseBtn');
+if (mobCloseBtn) mobCloseBtn.addEventListener('click', toggleMob);
+
+function setupMobAccordion(btnId, subId) {
+  var btn = document.getElementById(btnId);
+  var sub = document.getElementById(subId);
+  if (!btn || !sub) return;
+  btn.addEventListener('click', function() {
+    var isOpen = sub.classList.toggle('open');
+    var caret = btn.querySelector('svg');
+    if (caret) caret.style.transform = isOpen ? 'rotate(180deg)' : '';
+  });
+}
+setupMobAccordion('mobSobreBtn', 'mobSobreSub');
+setupMobAccordion('mobServBtn', 'mobServSub');
+setupMobAccordion('mobBlogBtn', 'mobBlogSub');
+setupMobAccordion('mobAcadBtn', 'mobAcadSub');
+
+/* === VIDEO MODAL === */
+function openVidModal(id) {
+  var modal = document.getElementById('vidModal');
+  var frame = document.getElementById('vidFrame');
+  if (modal && frame) {
+    frame.src = 'https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0';
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+}
+function closeVidModal() {
+  var modal = document.getElementById('vidModal');
+  var frame = document.getElementById('vidFrame');
+  if (modal) { modal.classList.remove('open'); document.body.style.overflow = ''; }
+  if (frame) frame.src = '';
+}
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeVidModal(); });
+
+/* === HM TOGGLE (stub — sem modal nesta página) === */
+function setHMView(mode) {
+  document.getElementById('btnHuman').classList.toggle('active', mode === 'human');
+  document.getElementById('btnMachine').classList.toggle('active', mode === 'machine');
+}
 
 /* === REDUCED MOTION === */
 if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-  document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-blur').forEach(function(e) {
-    if (e) { e.style.opacity = '1'; e.style.transform = 'none'; e.style.filter = 'none'; }
+  document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(function(e) {
+    e.style.opacity = '1'; e.style.transform = 'none';
   });
 }
 </script>
