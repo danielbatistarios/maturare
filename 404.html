@@ -74,86 +74,108 @@ body {
 a { text-decoration: none; color: inherit; }
 img { display: block; max-width: 100%; }
 
+/* === SKIP LINK === */
+.skip-link { position: absolute; top: -100%; left: 16px; background: var(--green); color: #fff; padding: 8px 16px; border-radius: 4px; z-index: 100000; font-size: 14px; transition: top .2s; }
+.skip-link:focus { top: 8px; }
+
 /* === NAV === */
 nav {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  top: 0; left: 0; right: 0;
   z-index: var(--zi-nav);
-  height: 62px;
+  height: 64px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 0 40px;
-  background: rgba(7, 7, 9, .9);
+  justify-content: center;
+  background: rgba(7,7,9,.92);
   backdrop-filter: blur(28px) saturate(180%);
   -webkit-backdrop-filter: blur(28px) saturate(180%);
-  border-bottom: 1px solid rgba(255, 255, 255, .07);
-  box-shadow: var(--toplight), 0 1px 20px rgba(0, 0, 0, .3);
+  border-bottom: 1px solid rgba(255,255,255,.07);
+  box-shadow: var(--toplight), 0 1px 20px rgba(0,0,0,.3);
+  transition: background .3s;
 }
-.logo {
-  font-family: var(--serif);
-  font-size: 19px;
-  letter-spacing: .05em;
-  color: var(--paper);
-  transition: opacity .2s;
-}
-.logo:hover { opacity: .6; }
-.nav-links { display: flex; list-style: none; align-items: center; }
+nav.scrolled { background: rgba(7,7,9,.97); }
+.nav-inner { width: 100%; max-width: 1100px; padding: 0 clamp(24px,4vw,80px); display: flex; align-items: center; justify-content: space-between; }
+.logo { display: flex; align-items: center; flex-shrink: 0; transition: opacity .2s; }
+.logo:hover { opacity: .7; }
+.nav-links { display: flex; list-style: none; align-items: center; gap: 2px; }
+.nav-item { position: relative; }
 .nav-btn {
-  background: none;
-  border: none;
-  font-family: var(--sans);
-  font-size: 13px;
-  font-weight: 500;
-  color: rgba(255, 255, 255, .55);
-  padding: 8px 14px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  transition: color .2s;
-  white-space: nowrap;
+  background: none; border: none;
+  font-family: var(--sans); font-size: 13px; font-weight: 500;
+  color: rgba(255,255,255,.55);
+  padding: 8px 14px; cursor: pointer;
+  display: flex; align-items: center; gap: 4px;
+  transition: color .2s; white-space: nowrap;
+  position: relative;
 }
 .nav-btn:hover { color: var(--paper); }
+.nav-btn::after {
+  content: ''; position: absolute; bottom: 0; left: 14px; right: 14px; height: 2px;
+  background: var(--green2); border-radius: 2px;
+  transform: scaleX(0); transition: transform .2s var(--spring);
+}
+.nav-item.open > .nav-btn::after { transform: scaleX(1); }
+.nav-chevron { transition: transform .2s; }
+.nav-item.open > .nav-btn .nav-chevron { transform: rotate(180deg); }
 .nav-r { display: flex; align-items: center; gap: 12px; }
 .nav-cta {
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  background: var(--paper);
-  color: var(--ink);
-  padding: 10px 24px;
-  border: none;
-  cursor: pointer;
-  font-family: var(--sans);
+  font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+  background: var(--paper); color: var(--ink);
+  padding: 10px 24px; border: none; cursor: pointer; font-family: var(--sans);
   transition: transform .2s, box-shadow .2s;
 }
-.nav-cta:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 20px rgba(244, 243, 239, .15);
-}
-.hamburger {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 4px;
-}
+.nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 20px rgba(244,243,239,.15); }
+.hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
 .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--paper); }
-.skip-link { position: absolute; top: -100%; left: 16px; background: var(--green); color: #fff; padding: 8px 16px; border-radius: 4px; z-index: 100000; font-size: 14px; transition: top .2s; }
-.skip-link:focus { top: 8px; }
-.mob-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.6); z-index: 998; }
+
+/* === MEGAMENU PANEL === */
+.mm-panel {
+  position: absolute; top: calc(100% + 8px); left: 50%; transform: translateX(-50%);
+  min-width: 360px; background: var(--z1); border: 1px solid var(--border-z2);
+  border-radius: var(--r-card); box-shadow: var(--shadow-5);
+  opacity: 0; pointer-events: none; transform: translateX(-50%) translateY(-8px);
+  transition: opacity .2s, transform .2s var(--spring);
+  z-index: 400;
+}
+.nav-item.open .mm-panel { opacity: 1; pointer-events: auto; transform: translateX(-50%) translateY(0); }
+.mm-inner { display: grid; grid-template-columns: 160px 1fr; gap: 0; }
+.mm-aside { padding: 20px; border-right: 1px solid var(--border-z1); }
+.mm-aside strong { display: block; font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,.35); margin-bottom: 8px; }
+.mm-aside p { font-size: 13px; color: rgba(255,255,255,.45); line-height: 1.6; }
+.mm-links { list-style: none; padding: 12px; display: flex; flex-direction: column; gap: 2px; }
+.mm-links a { display: block; font-size: 14px; font-weight: 400; color: rgba(255,255,255,.6); padding: 8px 12px; border-radius: 6px; transition: background .15s, color .15s; }
+.mm-links a:hover { background: rgba(255,255,255,.06); color: var(--paper); }
+
+/* === MOBILE MENU === */
+.mob-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.6); z-index: 500; }
 .mob-overlay.open { display: block; }
-.mob-menu { position: fixed; top: 0; right: 0; width: 280px; height: 100vh; background: var(--z1, #141513); z-index: 999; display: flex; flex-direction: column; padding: 80px 24px 32px; gap: 4px; transform: translateX(100%); transition: transform .3s cubic-bezier(.16,1,.3,1); overflow-y: auto; }
+.mob-menu {
+  position: fixed; inset: 0; width: 100%; height: 100%;
+  background: #0a0a08; z-index: 600;
+  display: flex; flex-direction: column; overflow-y: auto;
+  transform: translateX(100%); transition: transform .35s cubic-bezier(.16,1,.3,1);
+}
 .mob-menu.open { transform: translateX(0); }
-.mob-menu a { color: rgba(255,255,255,.6); font-size: 15px; font-weight: 500; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,.06); transition: color .2s; }
-.mob-menu a:hover, .mob-menu a.active { color: var(--paper); }
-.mob-menu-cta { margin-top: 16px; background: var(--green); color: #fff !important; text-align: center; padding: 12px 24px !important; border-radius: 8px; border: none !important; font-weight: 600; }
+.mob-menu-header { display: flex; align-items: center; justify-content: space-between; padding: 20px 24px 18px; border-bottom: 1px solid rgba(255,255,255,.07); flex-shrink: 0; }
+.mob-menu-close { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.1); cursor: pointer; color: rgba(255,255,255,.7); transition: background .15s, color .15s; flex-shrink: 0; }
+.mob-menu-close:hover { background: rgba(255,255,255,.14); color: #fff; }
+.mob-section { border-bottom: 1px solid rgba(255,255,255,.06); }
+.mob-section-btn { width: 100%; background: none; border: none; font-family: var(--sans); font-size: 15px; font-weight: 500; color: rgba(255,255,255,.6); padding: 16px 24px; text-align: left; cursor: pointer; display: flex; align-items: center; justify-content: space-between; transition: color .2s; }
+.mob-section-btn:hover { color: var(--paper); }
+.mob-section-btn svg { transition: transform .25s; flex-shrink: 0; }
+.mob-section-btn[aria-expanded="true"] svg { transform: rotate(180deg); }
+.mob-sub { max-height: 0; overflow: hidden; transition: max-height .35s cubic-bezier(.16,1,.3,1); }
+.mob-sub a { display: block; font-size: 14px; color: rgba(255,255,255,.45); padding: 10px 24px 10px 36px; transition: color .2s; }
+.mob-sub a:hover { color: var(--paper); }
+.mob-menu-ctas { display: flex; gap: 10px; margin: 20px 24px 0; }
+.mob-cta-wa { display: flex; align-items: center; gap: 8px; background: #25d366; color: #fff; font-size: 13px; font-weight: 600; padding: 12px 20px; border-radius: 8px; flex: 1; justify-content: center; transition: opacity .2s; }
+.mob-cta-wa:hover { opacity: .9; }
+.mob-cta-diag { display: flex; align-items: center; justify-content: center; background: var(--green); color: #fff; font-size: 13px; font-weight: 600; padding: 12px 20px; border-radius: 8px; flex: 1; transition: opacity .2s; }
+.mob-cta-diag:hover { opacity: .9; }
+.mob-menu-footer { margin-top: auto; padding: 24px; border-top: 1px solid rgba(255,255,255,.07); display: flex; gap: 16px; }
+.mob-menu-footer a { color: rgba(255,255,255,.4); transition: color .2s; }
+.mob-menu-footer a:hover { color: rgba(255,255,255,.75); }
 
 /* === 404 CONTENT === */
 .error-section {
@@ -163,13 +185,12 @@ nav {
   justify-content: center;
   position: relative;
   min-height: 100vh;
-  padding: 62px 24px 0;
+  padding: 64px 24px 0;
   overflow: hidden;
 }
 .error-watermark {
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: 50%; left: 50%;
   transform: translate(-50%, -50%);
   font-family: var(--serif);
   font-size: clamp(120px, 20vw, 300px);
@@ -182,178 +203,108 @@ nav {
   letter-spacing: -.03em;
 }
 .error-center {
-  position: relative;
-  z-index: 1;
-  text-align: center;
-  max-width: 560px;
-  opacity: 0;
-  transform: translateY(24px);
+  position: relative; z-index: 1;
+  text-align: center; max-width: 560px;
+  opacity: 0; transform: translateY(24px);
   animation: errorIn .9s .15s var(--spring) forwards;
 }
 .error-center h1 {
   font-family: var(--serif);
   font-size: clamp(28px, 4vw, 42px);
-  line-height: 1.15;
-  letter-spacing: -.02em;
-  color: var(--paper);
-  margin-bottom: 16px;
+  line-height: 1.15; letter-spacing: -.02em;
+  color: var(--paper); margin-bottom: 16px;
 }
 .error-center .subtitle {
-  font-size: 17px;
-  font-weight: 300;
-  line-height: 1.8;
-  color: rgba(245, 244, 240, .6);
-  margin-bottom: 40px;
+  font-size: 17px; font-weight: 300; line-height: 1.8;
+  color: rgba(245,244,240,.6); margin-bottom: 40px;
 }
-.error-center .subtitle strong {
-  color: rgba(245, 244, 240, .75);
-  font-weight: 500;
-}
+.error-center .subtitle strong { color: rgba(245,244,240,.75); font-weight: 500; }
 
-/* Search input */
-.error-search {
-  position: relative;
-  max-width: 400px;
-  margin: 0 auto 32px;
-}
+.error-search { position: relative; max-width: 400px; margin: 0 auto 32px; }
 .error-search input {
-  width: 100%;
-  background: var(--z2);
-  border: 1px solid var(--border-z2);
-  color: var(--paper);
-  font-family: var(--sans);
-  font-size: 15px;
-  font-weight: 400;
-  padding: 14px 20px 14px 48px;
-  border-radius: var(--r-soft);
-  outline: none;
-  transition: border-color .2s, box-shadow .2s;
+  width: 100%; background: var(--z2); border: 1px solid var(--border-z2);
+  color: var(--paper); font-family: var(--sans); font-size: 15px; font-weight: 400;
+  padding: 14px 20px 14px 48px; border-radius: var(--r-soft);
+  outline: none; transition: border-color .2s, box-shadow .2s;
 }
-.error-search input::placeholder {
-  color: var(--dim);
-  font-weight: 300;
-}
-.error-search input:focus {
-  border-color: rgba(111, 207, 151, .3);
-  box-shadow: 0 0 0 3px rgba(26, 122, 74, .1);
-}
-.error-search-icon {
-  position: absolute;
-  left: 16px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--dim);
-  pointer-events: none;
-}
+.error-search input::placeholder { color: var(--dim); font-weight: 300; }
+.error-search input:focus { border-color: rgba(111,207,151,.3); box-shadow: 0 0 0 3px rgba(26,122,74,.1); }
+.error-search-icon { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--dim); pointer-events: none; }
 
-/* Buttons */
-.error-btns {
-  display: flex;
-  gap: 16px;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-bottom: 40px;
-}
+.error-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px; }
 .btn-green {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: var(--green);
-  color: #fff;
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: .07em;
-  text-transform: uppercase;
-  padding: 14px 32px;
-  border: none;
-  border-radius: 0;
-  cursor: pointer;
-  font-family: var(--sans);
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--green); color: #fff;
+  font-size: 13px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase;
+  padding: 14px 32px; border: none; border-radius: 0; cursor: pointer; font-family: var(--sans);
   transition: transform var(--t-normal) var(--spring), box-shadow var(--t-normal);
 }
-.btn-green:hover {
-  transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 8px 32px rgba(26, 122, 74, .25), 0 2px 8px rgba(26, 122, 74, .15);
-}
+.btn-green:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 8px 32px rgba(26,122,74,.25), 0 2px 8px rgba(26,122,74,.15); }
 .btn-green:active { transform: translateY(0) scale(.98); transition-duration: .1s; }
 .btn-outline {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: transparent;
-  color: var(--paper);
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: .07em;
-  text-transform: uppercase;
-  padding: 14px 32px;
-  border: 1px solid var(--border-z3);
-  border-radius: 0;
-  cursor: pointer;
-  font-family: var(--sans);
+  display: inline-flex; align-items: center; gap: 8px;
+  background: transparent; color: var(--paper);
+  font-size: 13px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase;
+  padding: 14px 32px; border: 1px solid var(--border-z3); border-radius: 0;
+  cursor: pointer; font-family: var(--sans);
   transition: transform var(--t-normal) var(--spring), border-color .2s, box-shadow var(--t-normal);
 }
-.btn-outline:hover {
-  transform: translateY(-3px) scale(1.02);
-  border-color: rgba(255, 255, 255, .2);
-  box-shadow: 0 8px 32px rgba(255, 255, 255, .05);
-}
+.btn-outline:hover { transform: translateY(-3px) scale(1.02); border-color: rgba(255,255,255,.2); box-shadow: 0 8px 32px rgba(255,255,255,.05); }
 .btn-outline:active { transform: translateY(0) scale(.98); transition-duration: .1s; }
 
-.error-note {
-  font-size: 13px;
-  font-weight: 300;
-  color: rgba(245, 244, 240, .35);
-  line-height: 1.6;
-}
-.error-note a {
-  color: var(--green2);
-  border-bottom: 1px solid rgba(111, 207, 151, .25);
-  transition: color .2s;
-}
+.error-note { font-size: 13px; font-weight: 300; color: rgba(245,244,240,.35); line-height: 1.6; }
+.error-note a { color: var(--green2); border-bottom: 1px solid rgba(111,207,151,.25); transition: color .2s; }
 .error-note a:hover { color: #a8f0c8; }
 
-/* === FOOTER (minimal) === */
-footer {
-  background: #0d0e0c;
-  border-top: 1px solid #111;
-  padding: 24px 40px;
-}
-.foot-bot-min {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1200px;
-  margin: 0 auto;
-  flex-wrap: wrap;
-  gap: 16px;
-}
-.foot-copy { font-size: 13px; color: #24251f; }
+/* === FOOTER === */
+footer { background: #000; border-top: 1px solid #111; padding: 64px clamp(24px,4vw,80px) 32px; }
+.foot-in { max-width: 1100px; margin: 0 auto; }
+.foot-top { display: grid; grid-template-columns: 1.8fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+.foot-col-brand {}
+.foot-tag { font-size: 13px; color: rgba(255,255,255,.4); line-height: 1.7; max-width: 220px; margin-bottom: 20px; }
+.foot-socs { display: flex; gap: 14px; }
+.foot-socs a { color: rgba(255,255,255,.35); transition: color .2s; display: flex; align-items: center; }
+.foot-socs a:hover { color: rgba(255,255,255,.75); }
+.foot-socs a svg { width: 18px; height: 18px; }
+.fcol-h { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.25); margin-bottom: 16px; }
+.flinks { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.flinks a { font-size: 14px; color: rgba(255,255,255,.5); transition: color .2s; }
+.flinks a:hover { color: rgba(255,255,255,.85); }
+.foot-col-legal-mobile { display: none; margin-top: 20px; flex-direction: column; gap: 8px; }
+.foot-col-legal-mobile a { font-size: 12px; color: rgba(255,255,255,.3); transition: color .2s; }
+.foot-col-legal-mobile a:hover { color: rgba(255,255,255,.6); }
+.foot-bot { display: flex; align-items: center; justify-content: space-between; padding-top: 24px; border-top: 1px solid rgba(255,255,255,.07); flex-wrap: wrap; gap: 12px; }
+.foot-legal { display: flex; gap: 20px; flex-wrap: wrap; }
+.foot-legal a { font-size: 12px; color: rgba(255,255,255,.25); transition: color .2s; }
+.foot-legal a:hover { color: rgba(255,255,255,.55); }
+.foot-copy { font-size: 12px; color: rgba(255,255,255,.2); }
+.foot-disclaimer { font-size: 12px; color: rgba(255,255,255,.45); line-height: 1.7; padding-top: 16px; border-top: 1px solid rgba(255,255,255,.08); margin-top: 16px; }
 
 /* === KEYFRAMES === */
 @keyframes errorIn {
   from { opacity: 0; transform: translateY(24px); }
   to { opacity: 1; transform: none; }
 }
-@keyframes pulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: .4; transform: scale(.75); }
-}
 
 /* === RESPONSIVE === */
-@media (max-width: 960px) {
-  nav { padding: 0 20px; }
+@media (max-width: 900px) {
   .nav-links, .nav-cta { display: none; }
   .hamburger { display: flex; }
-  nav { top: 0 !important; }
-  .error-section { padding: 62px 20px 0; }
+}
+@media (max-width: 768px) {
+  .foot-top { grid-template-columns: 1fr 1fr; gap: 32px; }
+}
+@media (max-width: 680px) {
+  .foot-top { grid-template-columns: 1fr; }
+  .foot-col-brand { grid-column: auto; }
+  .foot-col-legal-mobile { display: flex; }
+  .foot-bot { display: none; }
 }
 @media (max-width: 480px) {
   .error-center h1 { font-size: 24px; }
   .error-center .subtitle { font-size: 15px; }
   .error-btns { flex-direction: column; }
   .btn-green, .btn-outline { width: 100%; justify-content: center; }
-  footer { padding: 20px 20px; }
 }
 </style>
 </head>
@@ -361,32 +312,157 @@ footer {
 
 <!-- NAV -->
 <a href="#main-content" class="skip-link">Pular para conteúdo</a>
-<nav id="nav">
-  <a href="home-maturare-final.html" class="logo">Maturare</a>
-  <ul class="nav-links">
-    <li><a href="home-maturare-final.html" class="nav-btn">Home</a></li>
-    <li><a href="metodologia.html" class="nav-btn">Metodologia</a></li>
-    <li><a href="projetos.html" class="nav-btn">Projetos</a></li>
-    <li><a href="blog.html" class="nav-btn">Blog</a></li>
-    <li><a href="contato.html" class="nav-btn">Contato</a></li>
-  </ul>
-  <div class="nav-r">
-    <a href="contato.html" class="nav-cta">Fale Com Especialista</a>
-    <button class="hamburger" id="hambBtn" aria-label="Abrir menu de navegação"><span></span><span></span><span></span></button>
+<nav id="nav" aria-label="Navegação principal">
+  <div class="nav-inner">
+    <a href="/" class="logo" aria-label="Maturare — página inicial">
+      <img src="/assets/maturare-logo-white.png" alt="Maturare" style="height:28px;width:auto;display:block;">
+    </a>
+    <ul class="nav-links" role="list">
+      <li class="nav-item" id="niSobre">
+        <button class="nav-btn" aria-expanded="false" aria-controls="mmSobre" id="nbSobre">Sobre <svg class="nav-chevron" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="mm-panel" id="mmSobre" role="region" aria-labelledby="nbSobre">
+          <div class="mm-inner">
+            <div class="mm-aside">
+              <strong>Conheça a Maturare</strong>
+              <p>Agência fundada em Niterói para posicionar negócios no Google e nas IAs.</p>
+            </div>
+            <ul class="mm-links" role="list">
+              <li><a href="/sobre/">A Agência</a></li>
+              <li><a href="/daniel-batista-rios/">Daniel Rios</a></li>
+              <li><a href="/metodologia/">Metodologia</a></li>
+              <li><a href="/nossos-clientes/">Nossos Clientes</a></li>
+              <li><a href="/projetos-realizados/">Projetos Realizados</a></li>
+            </ul>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item" id="niServ">
+        <button class="nav-btn" aria-expanded="false" aria-controls="mmServ" id="nbServ">Serviços <svg class="nav-chevron" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="mm-panel" id="mmServ" role="region" aria-labelledby="nbServ">
+          <div class="mm-inner">
+            <div class="mm-aside">
+              <strong>O que fazemos</strong>
+              <p>SEO, GEO, AEO e arquitetura digital para negócios locais e PMEs.</p>
+            </div>
+            <ul class="mm-links" role="list">
+              <li><a href="/servicos/">Todos os Serviços</a></li>
+              <li><a href="/consultoria-de-seo/">Consultoria de SEO</a></li>
+              <li><a href="/agencia-geo-aeo/">GEO + AEO</a></li>
+              <li><a href="/arquitetura-digital/">Arquitetura Digital</a></li>
+              <li><a href="/criacao-de-sites/">Criação de Sites</a></li>
+              <li><a href="/google-meu-negocio-servico/">Google Meu Negócio</a></li>
+            </ul>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item" id="niBlog">
+        <button class="nav-btn" aria-expanded="false" aria-controls="mmBlog" id="nbBlog">Blog <svg class="nav-chevron" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="mm-panel" id="mmBlog" role="region" aria-labelledby="nbBlog">
+          <div class="mm-inner">
+            <div class="mm-aside">
+              <strong>Conteúdo e conhecimento</strong>
+              <p>Artigos sobre SEO, GEO, AEO e posicionamento digital.</p>
+            </div>
+            <ul class="mm-links" role="list">
+              <li><a href="/blog/">Todos os Artigos</a></li>
+              <li><a href="/blog/como-aparecer-no-chatgpt/">Como aparecer no ChatGPT</a></li>
+              <li><a href="/glossario/">Glossário SEO/GEO</a></li>
+              <li><a href="/faq-maturare/">Perguntas Frequentes</a></li>
+            </ul>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item" id="niAcad">
+        <button class="nav-btn" aria-expanded="false" aria-controls="mmAcad" id="nbAcad">Academy <svg class="nav-chevron" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="mm-panel" id="mmAcad" role="region" aria-labelledby="nbAcad">
+          <div class="mm-inner">
+            <div class="mm-aside">
+              <strong>Aprenda com a Maturare</strong>
+              <p>Cursos e comunidade com 300+ profissionais de SEO e GEO.</p>
+            </div>
+            <ul class="mm-links" role="list">
+              <li><a href="/academy/">Maturare Academy</a></li>
+            </ul>
+          </div>
+        </div>
+      </li>
+    </ul>
+    <div class="nav-r">
+      <a href="/analise-gratuita/" class="nav-cta">Diagnóstico Gratuito</a>
+      <button class="hamburger" id="hambBtn" aria-label="Abrir menu de navegação" aria-expanded="false" aria-controls="mobMenu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </div>
 </nav>
+
+<!-- MOBILE MENU -->
 <div class="mob-overlay" id="mobOverlay"></div>
-<div class="mob-menu" id="mobMenu">
-  <a href="home-maturare-final.html">Home</a>
-  <a href="sobre.html">Sobre</a>
-  <a href="metodologia.html">Metodologia</a>
-  <a href="projetos.html">Projetos</a>
-  <a href="blog.html">Blog</a>
-  <a href="daniel-rios.html">Daniel Rios</a>
-  <a href="nossos-clientes.html">Clientes</a>
-  <a href="depoimentos.html">Depoimentos</a>
-  <a href="faq-maturare.html">FAQ</a>
-  <a href="contato.html" class="mob-menu-cta">Fale Com Especialista</a>
+<div class="mob-menu" id="mobMenu" role="dialog" aria-modal="true" aria-label="Menu de navegação mobile">
+  <div class="mob-menu-header">
+    <a href="/" aria-label="Maturare — página inicial">
+      <img src="/assets/maturare-logo-white.png" alt="Maturare" style="height:24px;width:auto;">
+    </a>
+    <button class="mob-menu-close" id="mobClose" aria-label="Fechar menu">
+      <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+  <nav aria-label="Menu mobile">
+    <div class="mob-section">
+      <button class="mob-section-btn" id="mobSobreBtn" aria-expanded="false" aria-controls="mobSobreSub">Sobre <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button>
+      <div class="mob-sub" id="mobSobreSub">
+        <a href="/sobre/">A Agência</a>
+        <a href="/daniel-batista-rios/">Daniel Rios</a>
+        <a href="/metodologia/">Metodologia</a>
+        <a href="/nossos-clientes/">Nossos Clientes</a>
+        <a href="/projetos-realizados/">Projetos Realizados</a>
+      </div>
+    </div>
+    <div class="mob-section">
+      <button class="mob-section-btn" id="mobServBtn" aria-expanded="false" aria-controls="mobServSub">Serviços <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button>
+      <div class="mob-sub" id="mobServSub">
+        <a href="/servicos/">Todos os Serviços</a>
+        <a href="/consultoria-de-seo/">Consultoria de SEO</a>
+        <a href="/agencia-geo-aeo/">GEO + AEO</a>
+        <a href="/arquitetura-digital/">Arquitetura Digital</a>
+        <a href="/criacao-de-sites/">Criação de Sites</a>
+        <a href="/google-meu-negocio-servico/">Google Meu Negócio</a>
+      </div>
+    </div>
+    <div class="mob-section">
+      <button class="mob-section-btn" id="mobBlogBtn" aria-expanded="false" aria-controls="mobBlogSub">Blog <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button>
+      <div class="mob-sub" id="mobBlogSub">
+        <a href="/blog/">Todos os Artigos</a>
+        <a href="/blog/como-aparecer-no-chatgpt/">Como aparecer no ChatGPT</a>
+        <a href="/glossario/">Glossário SEO/GEO</a>
+        <a href="/faq-maturare/">Perguntas Frequentes</a>
+      </div>
+    </div>
+    <div class="mob-section">
+      <button class="mob-section-btn" id="mobAcadBtn" aria-expanded="false" aria-controls="mobAcadSub">Academy <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button>
+      <div class="mob-sub" id="mobAcadSub">
+        <a href="/academy/">Maturare Academy</a>
+      </div>
+    </div>
+  </nav>
+  <div class="mob-menu-ctas">
+    <a href="https://wa.me/5521990770731" class="mob-cta-wa" target="_blank" rel="noopener">
+      <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      WhatsApp
+    </a>
+    <a href="/analise-gratuita/" class="mob-cta-diag">Diagnóstico Gratuito</a>
+  </div>
+  <div class="mob-menu-footer">
+    <a href="https://br.linkedin.com/in/daniel-batista-674b62140" target="_blank" rel="noopener" aria-label="LinkedIn">
+      <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+    </a>
+    <a href="https://www.instagram.com/maturare.com.br/" target="_blank" rel="noopener" aria-label="Instagram">
+      <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+    </a>
+    <a href="https://www.youtube.com/@googledominado1" target="_blank" rel="noopener" aria-label="YouTube">
+      <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M23.495 6.205a3.007 3.007 0 00-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 00.527 6.205a31.247 31.247 0 00-.522 5.805 31.247 31.247 0 00.522 5.783 3.007 3.007 0 002.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 002.088-2.088 31.247 31.247 0 00.5-5.783 31.247 31.247 0 00-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+    </a>
+  </div>
 </div>
 
 <!-- 404 CONTENT -->
@@ -400,28 +476,144 @@ footer {
       <input type="text" placeholder="Buscar no site...">
     </div>
     <div class="error-btns">
-      <a href="home-maturare-final.html" class="btn-green">Voltar para Home &rarr;</a>
-      <a href="blog.html" class="btn-outline">Explorar o Blog &rarr;</a>
+      <a href="/" class="btn-green">Voltar para Home &rarr;</a>
+      <a href="/blog/" class="btn-outline">Explorar o Blog &rarr;</a>
     </div>
     <p class="error-note">Se você chegou aqui por um link quebrado, nos avise: <a href="mailto:contato@maturare.com.br">contato@maturare.com.br</a></p>
   </div>
 </section>
 
-<!-- FOOTER (minimal) -->
+<!-- FOOTER -->
 <footer>
-  <div class="foot-bot-min">
-    <div class="foot-copy">&#169; 2026 Maturare · CNPJ 47.336.340/0001-51 · Niterói, RJ</div>
+  <div class="foot-in">
+    <div class="foot-top">
+      <div class="foot-col-brand">
+        <a href="/" aria-label="Maturare — página inicial">
+          <img src="/assets/maturare-logo-white.png" alt="Maturare" style="height:28px;width:auto;display:block;margin-bottom:16px;">
+        </a>
+        <p class="foot-tag">Agência especializada em SEO, GEO e AEO para negócios locais e PMEs no Brasil.</p>
+        <div class="foot-socs">
+          <a href="https://br.linkedin.com/in/daniel-batista-674b62140" target="_blank" rel="noopener" aria-label="LinkedIn da Maturare">
+            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/maturare.com.br/" target="_blank" rel="noopener" aria-label="Instagram da Maturare">
+            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </a>
+          <a href="https://www.youtube.com/@googledominado1" target="_blank" rel="noopener" aria-label="YouTube da Maturare">
+            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M23.495 6.205a3.007 3.007 0 00-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 00.527 6.205a31.247 31.247 0 00-.522 5.805 31.247 31.247 0 00.522 5.783 3.007 3.007 0 002.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 002.088-2.088 31.247 31.247 0 00.5-5.783 31.247 31.247 0 00-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <div class="fcol-h">Soluções</div>
+        <ul class="flinks">
+          <li><a href="/consultoria-de-seo/">SEO</a></li>
+          <li><a href="/agencia-geo-aeo/">GEO + AEO</a></li>
+          <li><a href="/arquitetura-digital/">Arquitetura Digital</a></li>
+          <li><a href="/criacao-de-sites/">Criação de Sites</a></li>
+          <li><a href="/google-meu-negocio-servico/">Google Meu Negócio</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="fcol-h">Blog</div>
+        <ul class="flinks">
+          <li><a href="/blog/">Todos os Artigos</a></li>
+          <li><a href="/glossario/">Glossário</a></li>
+          <li><a href="/faq-maturare/">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="fcol-h">Empresa</div>
+        <ul class="flinks">
+          <li><a href="/sobre/">A Agência</a></li>
+          <li><a href="/daniel-batista-rios/">Daniel Rios</a></li>
+          <li><a href="/nossos-clientes/">Nossos Clientes</a></li>
+          <li><a href="/contato/">Contato</a></li>
+          <li><a href="/analise-gratuita/">Diagnóstico Gratuito</a></li>
+        </ul>
+        <div class="foot-col-legal-mobile">
+          <a href="/termos-de-privacidade/">Privacidade</a>
+          <a href="/politica-de-cookies/">Cookies</a>
+          <a href="/termos-de-uso/">Termos</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <div class="foot-legal">
+        <a href="/termos-de-privacidade/">Termos de Privacidade</a>
+        <a href="/politica-de-cookies/">Política de Cookies</a>
+        <a href="/termos-de-uso/">Termos de Uso</a>
+      </div>
+      <div class="foot-copy">&#169; 2026 Maturare · CNPJ 47.336.340/0001-51 · Niterói, RJ</div>
+    </div>
+    <p class="foot-disclaimer">A Maturare é uma agência de SEO, GEO e AEO sediada em Niterói, RJ. Não garantimos posições específicas no Google, pois resultados orgânicos dependem de múltiplos fatores além do nosso controle.</p>
   </div>
 </footer>
 
 <script>
+/* === NAV SCROLL === */
+var navEl = document.getElementById('nav');
+window.addEventListener('scroll', function() {
+  if (navEl) navEl.classList.toggle('scrolled', window.scrollY > 80);
+}, {passive: true});
+
+/* === MEGAMENU === */
+(function() {
+  var items = document.querySelectorAll('.nav-item');
+  var openItem = null;
+  var closeTimer = null;
+  function openPanel(item) {
+    if (closeTimer) { clearTimeout(closeTimer); closeTimer = null; }
+    if (openItem && openItem !== item) closePanel(openItem, true);
+    openItem = item;
+    item.classList.add('open');
+    var btn = item.querySelector('.nav-btn');
+    if (btn) btn.setAttribute('aria-expanded', 'true');
+  }
+  function closePanel(item, immediate) {
+    function doClose() { item.classList.remove('open'); var btn = item.querySelector('.nav-btn'); if (btn) btn.setAttribute('aria-expanded', 'false'); if (openItem === item) openItem = null; }
+    if (immediate) { doClose(); } else { closeTimer = setTimeout(doClose, 180); }
+  }
+  items.forEach(function(item) {
+    item.addEventListener('mouseenter', function() { openPanel(item); });
+    item.addEventListener('mouseleave', function() { closePanel(item, false); });
+    var btn = item.querySelector('.nav-btn');
+    if (btn) btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      item.classList.contains('open') ? closePanel(item, true) : openPanel(item);
+    });
+  });
+  document.addEventListener('click', function() { if (openItem) closePanel(openItem, true); });
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && openItem) closePanel(openItem, true); });
+})();
+
 /* === MOBILE MENU === */
-var hambBtn = document.getElementById('hambBtn');
-var mobMenu = document.getElementById('mobMenu');
-var mobOverlay = document.getElementById('mobOverlay');
-function toggleMob() { mobMenu.classList.toggle('open'); mobOverlay.classList.toggle('open'); }
-if (hambBtn) hambBtn.addEventListener('click', toggleMob);
-if (mobOverlay) mobOverlay.addEventListener('click', toggleMob);
+(function() {
+  var hambBtn = document.getElementById('hambBtn');
+  var mobMenu = document.getElementById('mobMenu');
+  var mobOverlay = document.getElementById('mobOverlay');
+  var mobClose = document.getElementById('mobClose');
+  function openMob() { if (mobMenu) mobMenu.classList.add('open'); if (mobOverlay) mobOverlay.classList.add('open'); document.body.style.overflow = 'hidden'; if (hambBtn) hambBtn.setAttribute('aria-expanded', 'true'); }
+  function closeMob() { if (mobMenu) mobMenu.classList.remove('open'); if (mobOverlay) mobOverlay.classList.remove('open'); document.body.style.overflow = ''; if (hambBtn) hambBtn.setAttribute('aria-expanded', 'false'); }
+  if (hambBtn) hambBtn.addEventListener('click', openMob);
+  if (mobClose) mobClose.addEventListener('click', closeMob);
+  if (mobOverlay) mobOverlay.addEventListener('click', closeMob);
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeMob(); });
+  function setupMobAccordion(btnId, subId) {
+    var btn = document.getElementById(btnId);
+    var sub = document.getElementById(subId);
+    if (!btn || !sub) return;
+    btn.addEventListener('click', function() {
+      var open = sub.style.maxHeight && sub.style.maxHeight !== '0px';
+      sub.style.maxHeight = open ? '0px' : '600px';
+      btn.setAttribute('aria-expanded', open ? 'false' : 'true');
+    });
+  }
+  setupMobAccordion('mobSobreBtn', 'mobSobreSub');
+  setupMobAccordion('mobServBtn', 'mobServSub');
+  setupMobAccordion('mobBlogBtn', 'mobBlogSub');
+  setupMobAccordion('mobAcadBtn', 'mobAcadSub');
+})();
 </script>
 </body>
 </html>
