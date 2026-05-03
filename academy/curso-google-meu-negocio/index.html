@@ -178,10 +178,31 @@
       z-index: 1;
     }
     .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 60px;
+      align-items: center;
+    }
+    .hero-text-col {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      max-width: 680px;
+    }
+    .hero-visual-col {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero-visual-col img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.08);
+      box-shadow: 0 24px 80px rgba(0,0,0,.5);
+    }
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-visual-col { display: none; }
     }
     .hero-kicker {
       display: inline-flex;
@@ -712,7 +733,9 @@
       width: 100%;
       display: block;
       aspect-ratio: 4/3;
-      object-fit: cover;
+      object-fit: contain;
+      background: rgba(255,255,255,.03);
+      padding: 8px;
     }
     .recebe-card-body {
       padding: 20px 20px 24px;
@@ -761,8 +784,8 @@
       padding: 20px;
     }
     .recebe-bonus-card img {
-      width: 80px;
-      height: 60px;
+      width: 120px;
+      height: 90px;
       object-fit: cover;
       border-radius: 8px;
       flex-shrink: 0;
@@ -801,12 +824,35 @@
     .depo-short-wrap {
       position: relative;
       padding-bottom: 177.78%; /* 9:16 */
+      max-height: 520px;
       height: 0;
       overflow: hidden;
       border-radius: var(--r-card);
       border: 1px solid var(--border-z2);
       box-shadow: var(--shadow-3);
+      cursor: pointer;
     }
+    .depo-short-wrap .yt-thumb {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+    .depo-short-wrap .yt-play {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+      width: 56px; height: 56px;
+      background: rgba(0,0,0,.75);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+      transition: background .2s;
+    }
+    .depo-short-wrap:hover .yt-play { background: rgba(26,122,74,.9); }
+    .depo-short-wrap .yt-play svg { margin-left: 4px; }
     .depo-short-wrap iframe {
       position: absolute;
       top: 0; left: 0;
@@ -899,6 +945,32 @@
       font-style: normal;
       padding: 1px 3px;
       border-radius: 3px;
+    }
+    .depo-footer {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255,255,255,.06);
+    }
+    .depo-avatar {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: rgba(26,122,74,.25);
+      border: 1px solid rgba(26,122,74,.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--green2);
+      flex-shrink: 0;
+    }
+    .depo-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: rgba(255,255,255,.65);
     }
 
     @media (max-width: 768px) {
@@ -1216,7 +1288,7 @@
     .foot-tag {
       font-size: 14px;
       font-weight: 300;
-      color: #4a4a44;
+      color: rgba(255,255,255,.45);
       line-height: 1.7;
       max-width: 280px;
     }
@@ -1237,7 +1309,7 @@
     .flinks a {
       font-size: 14px;
       font-weight: 300;
-      color: #4a4a44;
+      color: rgba(255,255,255,.45);
       text-decoration: none;
       transition: color var(--t-normal);
     }
@@ -1347,33 +1419,38 @@
 <section class="hero noise" id="main-content">
   <div class="hero-inner">
     <div class="hero-grid">
-      <div class="hero-kicker reveal">
-        <span class="kicker-dot"></span>
-        Maturare Academy
+      <div class="hero-text-col">
+        <div class="hero-kicker reveal">
+          <span class="kicker-dot"></span>
+          Maturare Academy
+        </div>
+        <h1 class="hero-h1 reveal d1">
+          Imagine o seu negócio sendo <em>encontrado todos os dias</em> no Google
+        </h1>
+        <p class="hero-sub reveal d2">
+          Apareça no topo das buscas do Google Maps, atraia mais clientes e construa autoridade digital com estratégia, execução e método validado.
+        </p>
+        <div class="hero-actions reveal d3">
+          <a href="#oferta" class="btn-primary">Eu Quero o Curso →</a>
+          <a href="#metodo" class="btn-secondary">Ver o método</a>
+        </div>
+        <div class="hero-trust reveal d4">
+          <div class="trust-item">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="rgba(111,207,151,.6)" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            30 dias de garantia
+          </div>
+          <div class="trust-item">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="rgba(111,207,151,.6)" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/></svg>
+            Acesso imediato
+          </div>
+          <div class="trust-item">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="rgba(111,207,151,.6)" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            Método validado
+          </div>
+        </div>
       </div>
-      <h1 class="hero-h1 reveal d1">
-        Imagine o seu negócio sendo <em>encontrado todos os dias</em> no Google
-      </h1>
-      <p class="hero-sub reveal d2">
-        Apareça no topo das buscas do Google Maps, atraia mais clientes e construa autoridade digital com estratégia, execução e método validado.
-      </p>
-      <div class="hero-actions reveal d3">
-        <a href="#oferta" class="btn-primary">Eu Quero o Curso →</a>
-        <a href="#metodo" class="btn-secondary">Ver o método</a>
-      </div>
-      <div class="hero-trust reveal d4">
-        <div class="trust-item">
-          <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="rgba(111,207,151,.6)" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-          30 dias de garantia
-        </div>
-        <div class="trust-item">
-          <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="rgba(111,207,151,.6)" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/></svg>
-          Acesso imediato
-        </div>
-        <div class="trust-item">
-          <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="rgba(111,207,151,.6)" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-          Método validado
-        </div>
+      <div class="hero-visual-col reveal-right">
+        <img src="assets/img/Group-23.png" alt="Interface da área de membros do Curso Google Meu Negócio" loading="eager">
       </div>
     </div>
   </div>
@@ -1395,17 +1472,6 @@
     <span class="marquee-item">RESULTADOS REAIS <span class="marquee-sep">&bull;</span></span>
   </div>
 </div>
-
-<!-- VÍDEO -->
-<section class="video-sec">
-  <div class="video-wrap">
-    <div class="sec-label lt reveal">Veja como funciona</div>
-    <h2 class="sec-h lt reveal d1">O método explicado em <em>menos de 5 minutos</em></h2>
-    <div class="video-embed reveal d2">
-      <iframe src="https://www.tella.tv/video/cmdxevsg900050bju26ht5nhu/embed?b=0&title=0&a=1&loop=0&t=0&muted=0&wt=0" allowfullscreen allowtransparency loading="lazy"></iframe>
-    </div>
-  </div>
-</section>
 
 <!-- DORES -->
 <section class="dores-sec" data-funnel="awareness">
@@ -1430,6 +1496,17 @@
         <h3>Não sabe por onde começar no digital</h3>
         <p>Cada guru diz uma coisa diferente. O Curso Google Meu Negócio é direto ao ponto: método claro, passo a passo, sem enrolação.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- VÍDEO -->
+<section class="video-sec">
+  <div class="video-wrap">
+    <div class="sec-label lt reveal">Veja como funciona</div>
+    <h2 class="sec-h lt reveal d1">O método explicado em <em>menos de 5 minutos</em></h2>
+    <div class="video-embed reveal d2">
+      <iframe src="https://www.tella.tv/video/cmdxevsg900050bju26ht5nhu/embed?b=0&title=0&a=1&loop=0&t=0&muted=0&wt=0" allowfullscreen allowtransparency loading="lazy"></iframe>
     </div>
   </div>
 </section>
@@ -1657,6 +1734,12 @@
         </div>
       </div>
     </div>
+    <!-- Divider bônus -->
+    <div style="display:flex;align-items:center;gap:16px;max-width:1100px;margin:0 auto 40px;" class="reveal">
+      <div style="flex:1;height:1px;background:rgba(255,255,255,.08);"></div>
+      <span style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--green2);background:rgba(26,122,74,.12);border:1px solid rgba(26,122,74,.25);border-radius:var(--r-pill);padding:6px 16px;">Bônus inclusos</span>
+      <div style="flex:1;height:1px;background:rgba(255,255,255,.08);"></div>
+    </div>
     <!-- Bônus / Extras -->
     <div class="recebe-bonus-row">
       <div class="recebe-bonus-card reveal">
@@ -1692,16 +1775,19 @@
       <h2 class="sec-h lt reveal d1">Alguns resultados de quem <em>acreditou no método</em></h2>
       <p class="sec-desc lt reveal d2">Negócios de segmentos diferentes, mesma solução: aparecer primeiro no Google e atrair clientes todos os dias.</p>
     </div>
-    <!-- Vídeos de depoimento (YouTube Shorts) -->
+    <!-- Vídeos de depoimento (YouTube Shorts — lazy facade) -->
     <div class="depo-shorts-row reveal">
-      <div class="depo-short-wrap">
-        <iframe src="https://www.youtube.com/embed/7cJhaIZb4zg" title="Depoimento cliente Google Meu Negócio" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+      <div class="depo-short-wrap" data-yt="7cJhaIZb4zg">
+        <img class="yt-thumb" src="https://i.ytimg.com/vi/7cJhaIZb4zg/hqdefault.jpg" alt="Depoimento cliente Google Meu Negócio" loading="lazy">
+        <div class="yt-play"><svg width="22" height="22" fill="white" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
       </div>
-      <div class="depo-short-wrap">
-        <iframe src="https://www.youtube.com/embed/_vjIeQ9Jj4Q" title="Depoimento cliente curso Google Maps" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+      <div class="depo-short-wrap" data-yt="_vjIeQ9Jj4Q">
+        <img class="yt-thumb" src="https://i.ytimg.com/vi/_vjIeQ9Jj4Q/hqdefault.jpg" alt="Depoimento cliente curso Google Maps" loading="lazy">
+        <div class="yt-play"><svg width="22" height="22" fill="white" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
       </div>
-      <div class="depo-short-wrap">
-        <iframe src="https://www.youtube.com/embed/hF5ku7blho4" title="Depoimento resultado Google Meu Negócio" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+      <div class="depo-short-wrap" data-yt="hF5ku7blho4">
+        <img class="yt-thumb" src="https://i.ytimg.com/vi/hF5ku7blho4/hqdefault.jpg" alt="Depoimento resultado Google Meu Negócio" loading="lazy">
+        <div class="yt-play"><svg width="22" height="22" fill="white" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
       </div>
     </div>
 
@@ -1718,16 +1804,28 @@
         <div class="depo-stars">★★★★★</div>
         <span class="depo-segment">Lanchonete</span>
         <p class="depo-text">"Mano, a ficha da nossa lanchonete ficou <mark>100% visível</mark> depois de usar o checklist. Agora, não tem mais erro. É cliente chegando toda horaaa."</p>
+        <div class="depo-footer">
+          <div class="depo-avatar">RC</div>
+          <span class="depo-name">Rafael C. — Lanchonete do Bairro</span>
+        </div>
       </div>
       <div class="depo-card reveal d1">
         <div class="depo-stars">★★★★★</div>
         <span class="depo-segment">Academia de Ginástica</span>
         <p class="depo-text">"Eu já tinha tentado de tudo para melhorar a visibilidade da minha academia. O curso foi a solução! Em pouco tempo, nossa ficha ficou <mark>nas primeiras posições</mark> e os novos alunos começaram a chegar."</p>
+        <div class="depo-footer">
+          <div class="depo-avatar">MS</div>
+          <span class="depo-name">Marcos S. — Academia Ativa</span>
+        </div>
       </div>
       <div class="depo-card reveal d2">
         <div class="depo-stars">★★★★★</div>
         <span class="depo-segment">Loja de Eletrônicos</span>
         <p class="depo-text">"Após aplicar as recomendações das aulas, nossa loja teve <mark>aumento significativo no tráfego online e nas vendas</mark>. A otimização da ficha foi essencial."</p>
+        <div class="depo-footer">
+          <div class="depo-avatar">PL</div>
+          <span class="depo-name">Paulo L. — TechStore</span>
+        </div>
       </div>
       <div class="depo-card reveal d1">
         <div class="depo-stars">★★★★★</div>
@@ -1871,11 +1969,13 @@
           </li>
         </ul>
         <a href="https://wa.me/5521990770731?text=Quero+o+plano+Checklist+por+R%24+97" class="plano-cta secondary">Começar com Checklist →</a>
+        <img src="assets/img/Bandeira-de-Cartoes.svg" alt="Formas de pagamento aceitas" loading="lazy" style="width:100%;max-width:220px;margin:12px auto 0;display:block;opacity:.55;">
       </div>
       <!-- PLANO COMPLETO -->
       <div class="plano-card featured reveal d1">
         <div class="plano-badge">O mais completo</div>
         <div class="plano-nome featured-txt">Checklist + Aulas + Ferramentas</div>
+        <div style="font-size:12px;color:rgba(255,255,255,.4);text-decoration:line-through;margin-bottom:4px;">Valor de mercado: R$ 890</div>
         <div class="plano-price"><span>R$</span> 197</div>
         <div class="plano-parcel">à vista ou 12x de R$ 19,90</div>
         <div class="plano-divider"></div>
@@ -1918,11 +2018,25 @@
           </li>
         </ul>
         <a href="https://wa.me/5521990770731?text=Quero+o+plano+Completo+por+R%24+197" class="plano-cta primary">Quero o Plano Completo →</a>
+        <img src="assets/img/Bandeira-de-Cartoes.svg" alt="Formas de pagamento aceitas" loading="lazy" style="width:100%;max-width:220px;margin:12px auto 0;display:block;opacity:.55;">
       </div>
     </div>
     <div class="garantia-note reveal">
       <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="var(--green)" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
       Garantia total de 30 dias. Se não obtiver resultados, devolvemos 100% do valor investido.
+    </div>
+  </div>
+</section>
+
+<!-- GARANTIA VISUAL -->
+<section style="background:var(--z2);padding:clamp(56px,7vw,88px) clamp(24px,4vw,80px);" data-funnel="decision">
+  <div class="sec-container">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:28px;text-align:center;">
+      <img src="assets/img/garantia.png" alt="Garantia de 30 dias — devolução total se não obtiver resultado" loading="lazy" style="width:140px;height:140px;object-fit:contain;">
+      <div>
+        <h3 style="font-family:var(--serif);font-size:clamp(22px,3vw,32px);color:#F5F1E8;margin-bottom:12px;">Garantia total de <em style="font-style:italic;color:var(--green2);">30 dias</em></h3>
+        <p style="font-size:15px;color:rgba(255,255,255,.55);max-width:480px;line-height:1.7;">Compre com confiança. Se em 30 dias você aplicar o método e não ver resultado, devolvemos 100% do valor. Sem burocracia, sem questionamentos.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -1940,12 +2054,12 @@
       <div class="faq-item">
         <h3 class="faq-q-h">
           <button class="faq-q" aria-expanded="false">
-            Eu quero, mas o que exatamente vou receber?
+            Quanto tempo vou levar para ver resultado?
             <span class="faq-icon">+</span>
           </button>
         </h3>
         <div class="faq-body">
-          <div class="faq-bi">O acesso é enviado para o seu e-mail imediatamente após a confirmação. Em minutos você entra na área de membros e pode começar a usar o checklist e as aulas para alcançar os primeiros resultados.</div>
+          <div class="faq-bi">A maioria dos alunos vê o negócio aparecer nas buscas em 7 a 15 dias após aplicar o método completo. Fichas que já existem mas estão incompletas podem subir de posição em dias. O acesso é imediato, o checklist é prático e você começa hoje.</div>
         </div>
       </div>
       <div class="faq-item">
@@ -2039,7 +2153,7 @@
 <!-- BOTTOM BAR -->
 <div class="bottom-bar" id="bottomBar">
   <div class="bb-dock">
-    <span class="bb-text">Seu concorrente já aparece primeiro.</span>
+    <span class="bb-text">Apareça no Google em dias →</span>
     <a href="#oferta" class="bb-btn">Ver os Planos →</a>
   </div>
 </div>
@@ -2106,6 +2220,19 @@
       var isOpen = item.classList.contains('open');
       document.querySelectorAll('.faq-item').forEach(function(i) { i.classList.remove('open'); });
       if (!isOpen) item.classList.add('open');
+    });
+  });
+
+  // YouTube lazy facade
+  document.querySelectorAll('.depo-short-wrap[data-yt]').forEach(function(wrap) {
+    wrap.addEventListener('click', function() {
+      var id = this.getAttribute('data-yt');
+      var iframe = document.createElement('iframe');
+      iframe.src = 'https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0';
+      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+      iframe.allowFullscreen = true;
+      this.innerHTML = '';
+      this.appendChild(iframe);
     });
   });
 </script>
