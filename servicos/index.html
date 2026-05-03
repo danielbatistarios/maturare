@@ -760,7 +760,72 @@ nav.scrolled {
 /* === SECTION BASE === */
 section.dark { background: var(--z0); }
 section.raised { background: var(--z1); }
+section.light { background: #FAFAFA; }
+section.light-white { background: #fff; }
 section.sec-pad { padding: clamp(80px, 10vw, 130px) 0; }
+
+/* Typography overrides for light sections */
+section.light .sec-h,
+section.light-white .sec-h {
+  color: var(--ink);
+}
+section.light .sec-h em,
+section.light-white .sec-h em {
+  color: var(--green);
+}
+section.light .sec-label,
+section.light-white .sec-label {
+  color: var(--dim);
+}
+section.light .sec-label.lt,
+section.light-white .sec-label.lt {
+  color: var(--green);
+}
+section.light .sec-desc,
+section.light-white .sec-desc {
+  color: var(--dim);
+}
+
+/* === LIGHT SECTION COMPONENT OVERRIDES === */
+/* Comparison — #diferencial */
+section.light .cmp-grid { border-color: #e0e0db; }
+section.light .cmp-col.old { background: #f4f4f0; }
+section.light .cmp-col.new { background: rgba(26,122,74,.05); border-left-color: #e0e0db; }
+section.light .cmp-row { border-bottom-color: #e8e8e4; }
+section.light .cmp-what { color: var(--ink); }
+section.light .cmp-result { color: var(--dim); }
+section.light .cmp-analogy { background: #fff; border-color: #e0e0db; }
+section.light .cmp-analogy-txt { color: var(--ink); }
+section.light .cmp-analogy-txt strong { color: var(--green); }
+
+/* Process steps — #como-funciona */
+section.light .proc-num { background: #fff; border-color: rgba(26,122,74,.25); color: var(--green); }
+section.light .proc-title { color: var(--ink); }
+section.light .proc-desc { color: var(--dim); }
+
+/* Segment cards — #seo-segmento */
+section.light .seg-hub-link { color: var(--green); }
+section.light .seg-card { background: #fff; border-color: #e4e4e0; box-shadow: 0 2px 8px rgba(0,0,0,.05); }
+section.light .seg-card:hover { border-color: var(--green); box-shadow: 0 8px 28px rgba(0,0,0,.10); }
+section.light .seg-name { color: var(--ink); }
+section.light .seg-arrow { color: #ccc; }
+section.light .seg-card:hover .seg-arrow { color: var(--green); }
+
+/* Testimonial — #depoimento */
+section.light-white .testi-card { background: #FAFAFA; border-color: #e4e4e0; box-shadow: 0 2px 12px rgba(0,0,0,.06); }
+section.light-white .testi-card::before { color: rgba(26,122,74,.10); }
+section.light-white .testi-quote { color: var(--ink); }
+section.light-white .testi-attr { color: var(--dim); }
+section.light-white .testi-detail { color: #aaa; }
+
+/* FAQ — #faq */
+section.light .faq-item { border-bottom-color: #e0e0db; }
+section.light .faq-item:first-child { border-top-color: #e0e0db; }
+section.light .faq-q { color: var(--ink); }
+section.light .faq-q:hover { color: var(--green); }
+section.light .faq-q svg { color: #ccc; }
+section.light .faq-q[aria-expanded="true"] svg { color: var(--green); }
+section.light .faq-a-inner { color: var(--dim); }
 
 /* === PAIN SECTION === */
 .pain-grid {
@@ -1823,7 +1888,7 @@ footer {
 <!-- ============================================ -->
 <!-- 3. POR QUE SOMOS DIFERENTES — COMPARISON -->
 <!-- ============================================ -->
-<section class="raised sec-pad" id="diferencial">
+<section class="light sec-pad" id="diferencial">
   <div class="container">
     <div class="reveal">
       <div class="sec-label lt">A DIFERENÇA</div>
@@ -1917,7 +1982,7 @@ footer {
 <!-- ============================================ -->
 <!-- 5. COMO FUNCIONA — PROCESS -->
 <!-- ============================================ -->
-<section class="raised sec-pad" id="como-funciona">
+<section class="light-white sec-pad" id="como-funciona">
   <div class="container">
     <div class="reveal">
       <div class="sec-label lt">COMO FUNCIONA</div>
@@ -2040,7 +2105,7 @@ footer {
 <!-- ============================================ -->
 <!-- 7. SEO POR SEGMENTO -->
 <!-- ============================================ -->
-<section class="raised sec-pad" id="seo-segmento">
+<section class="light sec-pad" id="seo-segmento">
   <div class="container">
     <div class="seg-head reveal">
       <div class="sec-label lt">NICHOS</div>
@@ -2127,7 +2192,7 @@ footer {
 <!-- ============================================ -->
 <!-- 9. DEPOIMENTO -->
 <!-- ============================================ -->
-<section class="raised sec-pad" id="depoimento">
+<section class="light-white sec-pad" id="depoimento">
   <div class="testi-card reveal">
     <div class="testi-inner">
       <div class="testi-quote">"Eu gastava R$4.000 por mês em Google Ads e vivia refém dos cliques. Hoje recebo 3x mais contatos pelo Google orgânico — e não pago nada por isso."</div>
@@ -2196,7 +2261,7 @@ footer {
 <!-- ============================================ -->
 <!-- 11. FAQ — OBJECTION BREAKERS -->
 <!-- ============================================ -->
-<section class="raised sec-pad" id="faq">
+<section class="light sec-pad" id="faq">
   <div class="container">
     <div class="reveal">
       <div class="sec-label lt">PERGUNTAS FREQUENTES</div>
