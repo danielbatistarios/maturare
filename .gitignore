@@ -5,3 +5,12 @@ briefs/
 *.py
 *.sh
 package-lock.json
+*.bak
+*.bak2
+mobile-audit-report.md
+mobile-patch.css
+HANDOFF-*.md
+teste-*.html
+timeline-preview.html
+upload.mjs
+upload-page.mjs
