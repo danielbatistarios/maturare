@@ -2133,7 +2133,7 @@ textarea.finput { min-height: 90px; resize: vertical; }
 /* === SERVIÇOS TÍTULO === */
 .svc4-heading-sec {
   background: #FAFAFA;
-  padding: 48px 24px 16px;
+  padding: calc(var(--sec-pad) * 1.6) 24px 16px;
   text-align: center;
 }
 .svc4-heading {
@@ -2153,6 +2153,7 @@ textarea.finput { min-height: 90px; resize: vertical; }
   background: #FAFAFA;
   padding: 24px clamp(24px, 5vw, 80px) calc(var(--sec-pad) * 1.6);
 }
+
 .svc4-grid {
   max-width: 1060px;
   margin: 0 auto;
