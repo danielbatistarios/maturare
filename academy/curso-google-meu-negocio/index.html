@@ -680,6 +680,143 @@
       .funciona-grid { grid-template-columns: 1fr; }
     }
 
+    /* ── O QUE VOCÊ RECEBE ── */
+    .recebe-sec {
+      background: var(--z2);
+      padding: clamp(80px,10vw,120px) clamp(24px,4vw,80px);
+    }
+    .recebe-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+    .recebe-header .sec-h { margin: 0 auto 16px; }
+    .recebe-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      max-width: 1100px;
+      margin: 0 auto 64px;
+    }
+    .recebe-card {
+      background: rgba(255,255,255,.04);
+      border: 1px solid var(--border-z2);
+      border-radius: var(--r-card);
+      overflow: hidden;
+      transition: transform var(--t-slow) var(--spring), box-shadow var(--t-slow) var(--spring);
+    }
+    .recebe-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-3);
+    }
+    .recebe-card img {
+      width: 100%;
+      display: block;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+    }
+    .recebe-card-body {
+      padding: 20px 20px 24px;
+    }
+    .recebe-badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--green2);
+      background: rgba(26,122,74,.12);
+      border: 1px solid rgba(26,122,74,.2);
+      border-radius: var(--r-pill);
+      padding: 3px 10px;
+      margin-bottom: 10px;
+    }
+    .recebe-card-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--paper);
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+    .recebe-card-desc {
+      font-size: 13px;
+      font-weight: 300;
+      line-height: 1.7;
+      color: rgba(255,255,255,.55);
+    }
+    /* row de cards menores (bônus) */
+    .recebe-bonus-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .recebe-bonus-card {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      background: rgba(255,255,255,.04);
+      border: 1px solid var(--border-z2);
+      border-radius: var(--r-card);
+      padding: 20px;
+    }
+    .recebe-bonus-card img {
+      width: 80px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 8px;
+      flex-shrink: 0;
+    }
+    .recebe-bonus-text {}
+    .recebe-bonus-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 6px;
+    }
+    .recebe-bonus-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--paper);
+      line-height: 1.4;
+    }
+    @media (max-width: 960px) {
+      .recebe-grid { grid-template-columns: repeat(2, 1fr); }
+      .recebe-bonus-row { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .recebe-grid { grid-template-columns: 1fr; }
+      .recebe-bonus-row { grid-template-columns: 1fr; }
+    }
+
+    /* ── DEPO VÍDEOS SHORTS ── */
+    .depo-shorts-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-bottom: 48px;
+    }
+    .depo-short-wrap {
+      position: relative;
+      padding-bottom: 177.78%; /* 9:16 */
+      height: 0;
+      overflow: hidden;
+      border-radius: var(--r-card);
+      border: 1px solid var(--border-z2);
+      box-shadow: var(--shadow-3);
+    }
+    .depo-short-wrap iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: 0;
+    }
+    @media (max-width: 768px) {
+      .depo-shorts-row { grid-template-columns: 1fr; }
+    }
+
     /* ── DEPOIMENTOS ── */
     .depos-sec {
       background: var(--z1);
@@ -1485,6 +1622,68 @@
   </div>
 </section>
 
+<!-- O QUE VOCÊ IRรÁ RECEBER -->
+<section class="recebe-sec" data-funnel="consideration">
+  <div class="sec-container">
+    <div class="recebe-header">
+      <div class="sec-label dk reveal">Conteúdo do curso</div>
+      <h2 class="sec-h dk reveal d1">Tudo que você recebe ao <em>entrar hoje</em></h2>
+      <p class="sec-desc dk reveal d2">Área de membros completa, videoaulas práticas, suporte real e acesso a ferramentas pagas. Tudo no mesmo lugar.</p>
+    </div>
+    <!-- Cards principais -->
+    <div class="recebe-grid">
+      <div class="recebe-card reveal">
+        <img src="assets/img/Group-21.png" alt="Área de membros do curso Google Meu Negócio" loading="lazy">
+        <div class="recebe-card-body">
+          <div class="recebe-badge">Acesso imediato</div>
+          <div class="recebe-card-title">Área de membros completa</div>
+          <p class="recebe-card-desc">Plataforma organizada com todos os módulos, materiais e atualizações. Acesse de qualquer dispositivo, a qualquer hora.</p>
+        </div>
+      </div>
+      <div class="recebe-card reveal d1">
+        <img src="assets/img/3455-e1759978823810.png" alt="Videoaulas do curso Google Meu Negócio" loading="lazy">
+        <div class="recebe-card-body">
+          <div class="recebe-badge">Videoaulas</div>
+          <div class="recebe-card-title">Aulas em vídeo passo a passo</div>
+          <p class="recebe-card-desc">Assista no seu ritmo. Cada aula mostra exatamente o que fazer na tela, sem enrolação, sem jargão.</p>
+        </div>
+      </div>
+      <div class="recebe-card reveal d2">
+        <img src="assets/img/Group-22.png" alt="Grupo de suporte WhatsApp do curso" loading="lazy">
+        <div class="recebe-card-body">
+          <div class="recebe-badge">Suporte real</div>
+          <div class="recebe-card-title">Grupo de suporte no WhatsApp</div>
+          <p class="recebe-card-desc">Tire dúvidas diretamente com a equipe. Sem bot, sem espera de dias. Resposta de quem está aplicando o método.</p>
+        </div>
+      </div>
+    </div>
+    <!-- Bônus / Extras -->
+    <div class="recebe-bonus-row">
+      <div class="recebe-bonus-card reveal">
+        <img src="assets/img/Frame-30-1.jpg" alt="Checklist prático Google Meu Negócio" loading="lazy">
+        <div class="recebe-bonus-text">
+          <div class="recebe-bonus-label">Bônus</div>
+          <div class="recebe-bonus-title">Checklist prático para aparecer em primeiro</div>
+        </div>
+      </div>
+      <div class="recebe-bonus-card reveal d1">
+        <img src="assets/img/Frame-32.jpg" alt="Aulas em vídeo para planejar e executar" loading="lazy">
+        <div class="recebe-bonus-text">
+          <div class="recebe-bonus-label">Bônus</div>
+          <div class="recebe-bonus-title">Aulas para planejar e executar do zero</div>
+        </div>
+      </div>
+      <div class="recebe-bonus-card reveal d2">
+        <img src="assets/img/Group-32.jpg" alt="Acesso a ferramentas pagas do curso" loading="lazy">
+        <div class="recebe-bonus-text">
+          <div class="recebe-bonus-label">Bônus</div>
+          <div class="recebe-bonus-title">Acesso a ferramentas pagas inclusas</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- DEPOIMENTOS -->
 <section class="depos-sec noise" data-funnel="consideration">
   <div class="sec-container depos-inner">
@@ -1493,6 +1692,19 @@
       <h2 class="sec-h lt reveal d1">Alguns resultados de quem <em>acreditou no método</em></h2>
       <p class="sec-desc lt reveal d2">Negócios de segmentos diferentes, mesma solução: aparecer primeiro no Google e atrair clientes todos os dias.</p>
     </div>
+    <!-- Vídeos de depoimento (YouTube Shorts) -->
+    <div class="depo-shorts-row reveal">
+      <div class="depo-short-wrap">
+        <iframe src="https://www.youtube.com/embed/7cJhaIZb4zg" title="Depoimento cliente Google Meu Negócio" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="depo-short-wrap">
+        <iframe src="https://www.youtube.com/embed/_vjIeQ9Jj4Q" title="Depoimento cliente curso Google Maps" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="depo-short-wrap">
+        <iframe src="https://www.youtube.com/embed/hF5ku7blho4" title="Depoimento resultado Google Meu Negócio" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+
     <!-- Prints reais de resultados (linha 1) -->
     <div class="depos-screenshots reveal" style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:40px;">
       <img src="assets/img/IMG_3474-e1760654345533.png" alt="Print resultado Google Meu Negócio" loading="lazy" style="width:100%;border-radius:12px;border:1px solid rgba(255,255,255,.08);">
@@ -1604,6 +1816,22 @@
       <span class="wb">vai.</span>
     </p>
     <div class="quote-line"></div>
+  </div>
+</section>
+
+<!-- PROVA SOCIAL VISUAL -->
+<section style="background:var(--z1);padding:clamp(64px,8vw,100px) clamp(24px,4vw,80px);" data-funnel="consideration">
+  <div class="sec-container">
+    <div style="text-align:center;margin-bottom:48px;">
+      <div class="sec-label dk reveal">Provas reais</div>
+      <h2 class="sec-h dk reveal d1">Mensagens de quem <em>já aplicou o método</em></h2>
+    </div>
+    <div class="reveal" style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;align-items:start;">
+      <img src="assets/img/WhatsApp-Mockup-English.png" alt="Depoimento WhatsApp cliente curso Google Meu Negócio" loading="lazy" style="width:100%;border-radius:16px;border:1px solid rgba(255,255,255,.08);box-shadow:0 8px 32px rgba(0,0,0,.4);">
+      <img src="assets/img/a59f5837-d5d7-4b36-9739-618171af228f.png" alt="Print conversa resultado Google Maps" loading="lazy" style="width:100%;border-radius:16px;border:1px solid rgba(255,255,255,.08);box-shadow:0 8px 32px rgba(0,0,0,.4);">
+      <img src="assets/img/112dd176-76fd-44d6-9e9f-911387389453.png" alt="Feedback cliente curso Google Meu Negócio" loading="lazy" style="width:100%;border-radius:16px;border:1px solid rgba(255,255,255,.08);box-shadow:0 8px 32px rgba(0,0,0,.4);">
+      <img src="assets/img/0dbbc7bf-ef7e-4061-b00b-4307e0df4ae9.png" alt="Depoimento resultado visibilidade Google" loading="lazy" style="width:100%;border-radius:16px;border:1px solid rgba(255,255,255,.08);box-shadow:0 8px 32px rgba(0,0,0,.4);">
+    </div>
   </div>
 </section>
 
