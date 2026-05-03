@@ -87,95 +87,281 @@ nav {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 0;
+  background: transparent;
+  backdrop-filter: none;
+  border-bottom: 1px solid transparent;
+  transition: background .3s, border-color .3s, backdrop-filter .3s;
+}
+.nav-inner {
+  width: 100%;
+  max-width: 1100px;
+  padding: 0 clamp(24px, 4vw, 80px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+nav.scrolled {
   background: rgba(7,7,9,.92);
   backdrop-filter: blur(28px) saturate(180%);
   -webkit-backdrop-filter: blur(28px) saturate(180%);
-  border-bottom: 1px solid rgba(255,255,255,.07);
+  border-bottom-color: rgba(255,255,255,.07);
   box-shadow: var(--toplight), 0 1px 20px rgba(0,0,0,.3);
-  transition: background .3s;
 }
-nav.scrolled { background: rgba(7,7,9,.97); }
-.nav-inner { width: 100%; max-width: 1100px; padding: 0 clamp(24px,4vw,80px); display: flex; align-items: center; justify-content: space-between; }
-.logo { display: flex; align-items: center; flex-shrink: 0; transition: opacity .2s; }
-.logo:hover { opacity: .7; }
-.nav-links { display: flex; list-style: none; align-items: center; gap: 2px; }
+.logo {
+  font-family: var(--serif);
+  font-size: 19px;
+  letter-spacing: .05em;
+  color: var(--paper);
+  transition: opacity .2s;
+  flex-shrink: 0;
+}
+.logo:hover { opacity: .6; }
+
+/* ── NAV LINKS ── */
+.nav-links { display: flex; list-style: none; align-items: center; gap: 0; }
 .nav-item { position: relative; }
 .nav-btn {
   background: none; border: none;
   font-family: var(--sans); font-size: 13px; font-weight: 500;
   color: rgba(255,255,255,.55);
-  padding: 8px 14px; cursor: pointer;
-  display: flex; align-items: center; gap: 4px;
-  transition: color .2s; white-space: nowrap;
-  position: relative;
+  padding: 8px 14px;
+  cursor: pointer;
+  display: flex; align-items: center; gap: 5px;
+  transition: color .2s;
+  white-space: nowrap;
+  text-decoration: none;
 }
-.nav-btn:hover { color: var(--paper); }
+.nav-btn:hover { color: rgba(255,255,255,.85); }
+.nav-item.open .nav-btn { color: var(--paper); }
+.nav-btn { position: relative; }
 .nav-btn::after {
-  content: ''; position: absolute; bottom: 0; left: 14px; right: 14px; height: 2px;
-  background: var(--green2); border-radius: 2px;
-  transform: scaleX(0); transition: transform .2s var(--spring);
+  content: '';
+  position: absolute; bottom: 2px; left: 14px; right: 14px; height: 2px;
+  background: var(--green2, #6fcf97);
+  border-radius: 2px;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform .2s ease;
 }
-.nav-item.open > .nav-btn::after { transform: scaleX(1); }
-.nav-chevron { transition: transform .2s; }
-.nav-item.open > .nav-btn .nav-chevron { transform: rotate(180deg); }
+.nav-item.open .nav-btn::after { transform: scaleX(1); }
+.nav-caret {
+  width: 10px; height: 10px; flex-shrink: 0;
+  transition: transform .2s, opacity .2s;
+  opacity: .45;
+}
+.nav-item.open .nav-caret { transform: rotate(180deg); opacity: .8; }
+
+/* ── MEGAMENU PANEL ── */
+.mm-panel {
+  position: fixed;
+  top: 64px; left: 0; right: 0;
+  background: rgba(10,11,9,.97);
+  border-top: 1px solid rgba(255,255,255,.06);
+  border-bottom: 1px solid rgba(255,255,255,.04);
+  backdrop-filter: blur(24px) saturate(1.5);
+  -webkit-backdrop-filter: blur(24px) saturate(1.5);
+  box-shadow: 0 24px 80px rgba(0,0,0,.55);
+  z-index: 290;
+  opacity: 0; visibility: hidden; pointer-events: none;
+  transform: translateY(-6px);
+  transition: opacity .2s ease, transform .2s ease, visibility .2s;
+}
+.mm-panel.open {
+  opacity: 1; visibility: visible; pointer-events: auto;
+  transform: translateY(0);
+}
+.mm-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: grid; grid-template-columns: 300px 1fr;
+  gap: 0;
+  min-height: 260px;
+}
+.mm-aside {
+  padding: 32px 28px;
+  display: flex; flex-direction: column; justify-content: space-between;
+  position: relative; overflow: hidden;
+  min-height: 260px;
+}
+.mm-aside-bg {
+  position: absolute; inset: 0;
+  background-size: cover; background-position: center;
+}
+.mm-aside-bg::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(7,7,9,.92) 0%, rgba(7,7,9,.55) 50%, rgba(7,7,9,.35) 100%);
+}
+.mm-aside > *:not(.mm-aside-bg) { position: relative; z-index: 1; }
+.mm-aside-tag {
+  font-family: var(--sans); font-size: 10px; font-weight: 700;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: var(--green2, #6fcf97);
+}
+.mm-aside-title {
+  font-family: var(--serif); font-size: 21px; font-style: italic;
+  color: var(--paper); line-height: 1.35; margin: 0;
+}
+.mm-aside-cta {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-family: var(--sans); font-size: 11px; font-weight: 600;
+  letter-spacing: .06em;
+  color: rgba(255,255,255,.7);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,.25);
+  padding-bottom: 1px; width: fit-content;
+  transition: color .2s, border-color .2s;
+}
+.mm-aside-cta:hover { color: var(--paper); border-color: rgba(255,255,255,.6); }
+.mm-vid-wrap {
+  position: relative; border-radius: 10px; overflow: hidden; cursor: pointer; flex: 1; min-height: 0;
+}
+.mm-vid-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .3s ease; }
+.mm-vid-wrap:hover img { transform: scale(1.04); }
+.mm-vid-play {
+  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+  background: rgba(0,0,0,.35); transition: background .2s;
+}
+.mm-vid-wrap:hover .mm-vid-play { background: rgba(0,0,0,.5); }
+.mm-vid-play svg { width: 44px; height: 44px; filter: drop-shadow(0 2px 8px rgba(0,0,0,.5)); transition: transform .2s; }
+.mm-vid-wrap:hover .mm-vid-play svg { transform: scale(1.1); }
+.mm-vid-label { font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--green2, #6fcf97); margin-bottom: 8px; }
+.mm-vid-title { font-family: var(--sans); font-size: 13px; font-weight: 600; color: rgba(255,255,255,.85); line-height: 1.45; margin-bottom: 14px; }
+.mm-links {
+  padding: 36px 40px;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 0 48px; align-content: start;
+}
+.mm-links--single { grid-template-columns: 1fr; max-width: 420px; }
+.mm-col-label {
+  font-family: var(--sans); font-size: 10px; font-weight: 700;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: rgba(255,255,255,.25);
+  margin: 0 0 8px; grid-column: 1/-1;
+}
+.mm-link {
+  display: flex; flex-direction: column; gap: 2px;
+  padding: 11px 0;
+  border-bottom: 1px solid rgba(255,255,255,.05);
+  text-decoration: none;
+  transition: padding-left .15s;
+}
+.mm-link:last-of-type { border-bottom: none; }
+.mm-link:hover { padding-left: 5px; }
+.mm-link strong { font-family: var(--sans); font-size: 13.5px; font-weight: 600; color: rgba(255,255,255,.8); transition: color .15s; }
+.mm-link span { font-size: 11.5px; color: rgba(255,255,255,.35); line-height: 1.45; transition: color .15s; }
+.mm-link:hover strong { color: var(--paper); }
+.mm-link:hover span { color: rgba(255,255,255,.6); }
+.mm-blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0 40px; }
+.mm-blog-link { display: flex; flex-direction: column; gap: 4px; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,.05); text-decoration: none; transition: padding-left .15s; }
+.mm-blog-link:hover { padding-left: 5px; }
+.mm-blog-tag { font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--green2, #6fcf97); }
+.mm-blog-title { font-size: 13px; font-weight: 600; color: rgba(255,255,255,.75); line-height: 1.4; transition: color .15s; }
+.mm-blog-link:hover .mm-blog-title { color: var(--paper); }
+
+/* ── NAV RIGHT ── */
 .nav-r { display: flex; align-items: center; gap: 12px; }
 .nav-cta {
-  font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+  font-family: var(--sans); font-size: 12px; font-weight: 700;
+  letter-spacing: .08em; text-transform: uppercase;
   background: var(--paper); color: var(--ink);
-  padding: 10px 24px; border: none; cursor: pointer; font-family: var(--sans);
-  transition: transform .2s, box-shadow .2s;
+  padding: 10px 22px; border: none; cursor: pointer;
+  border-radius: 4px; text-decoration: none;
+  transition: transform .2s, box-shadow .2s; white-space: nowrap;
 }
 .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 20px rgba(244,243,239,.15); }
+
+/* ── HAMBURGER ── */
 .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
 .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--paper); }
 
-/* === MEGAMENU PANEL === */
-.mm-panel {
-  position: absolute; top: calc(100% + 8px); left: 50%; transform: translateX(-50%);
-  min-width: 360px; background: var(--z1); border: 1px solid var(--border-z2);
-  border-radius: var(--r-card); box-shadow: var(--shadow-5);
-  opacity: 0; pointer-events: none; transform: translateX(-50%) translateY(-8px);
-  transition: opacity .2s, transform .2s var(--spring);
-  z-index: 400;
-}
-.nav-item.open .mm-panel { opacity: 1; pointer-events: auto; transform: translateX(-50%) translateY(0); }
-.mm-inner { display: grid; grid-template-columns: 160px 1fr; gap: 0; }
-.mm-aside { padding: 20px; border-right: 1px solid var(--border-z1); }
-.mm-aside strong { display: block; font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,.35); margin-bottom: 8px; }
-.mm-aside p { font-size: 13px; color: rgba(255,255,255,.45); line-height: 1.6; }
-.mm-links { list-style: none; padding: 12px; display: flex; flex-direction: column; gap: 2px; }
-.mm-links a { display: block; font-size: 14px; font-weight: 400; color: rgba(255,255,255,.6); padding: 8px 12px; border-radius: 6px; transition: background .15s, color .15s; }
-.mm-links a:hover { background: rgba(255,255,255,.06); color: var(--paper); }
-
-/* === MOBILE MENU === */
-.mob-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.6); z-index: 500; }
+/* ── MOBILE MENU — fullscreen overlay style ── */
+.mob-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.6); z-index: 590; backdrop-filter: blur(4px); }
 .mob-overlay.open { display: block; }
 .mob-menu {
-  position: fixed; inset: 0; width: 100%; height: 100%;
-  background: #0a0a08; z-index: 600;
-  display: flex; flex-direction: column; overflow-y: auto;
-  transform: translateX(100%); transition: transform .35s cubic-bezier(.16,1,.3,1);
+  position: fixed; inset: 0;
+  width: 100%; height: 100%;
+  background: #0a0a08;
+  z-index: 600;
+  display: flex; flex-direction: column;
+  overflow-y: auto;
+  transform: translateX(100%);
+  transition: transform .35s cubic-bezier(.16,1,.3,1);
 }
 .mob-menu.open { transform: translateX(0); }
-.mob-menu-header { display: flex; align-items: center; justify-content: space-between; padding: 20px 24px 18px; border-bottom: 1px solid rgba(255,255,255,.07); flex-shrink: 0; }
-.mob-menu-close { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.1); cursor: pointer; color: rgba(255,255,255,.7); transition: background .15s, color .15s; flex-shrink: 0; }
+.mob-menu-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px 24px 18px;
+  border-bottom: 1px solid rgba(255,255,255,.07);
+  flex-shrink: 0;
+}
+.mob-menu-close {
+  display: flex; align-items: center; justify-content: center;
+  width: 40px; height: 40px; border-radius: 50%;
+  background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.1);
+  cursor: pointer; color: rgba(255,255,255,.7);
+  transition: background .15s, color .15s;
+  flex-shrink: 0;
+}
 .mob-menu-close:hover { background: rgba(255,255,255,.14); color: #fff; }
+.mob-menu > a {
+  display: block; padding: 17px 24px;
+  font-family: var(--sans); font-size: 15px; font-weight: 600;
+  letter-spacing: .01em; text-transform: uppercase;
+  color: rgba(255,255,255,.75); text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+  transition: color .15s;
+}
+.mob-menu > a:hover { color: #fff; }
 .mob-section { border-bottom: 1px solid rgba(255,255,255,.06); }
-.mob-section-btn { width: 100%; background: none; border: none; font-family: var(--sans); font-size: 15px; font-weight: 500; color: rgba(255,255,255,.6); padding: 16px 24px; text-align: left; cursor: pointer; display: flex; align-items: center; justify-content: space-between; transition: color .2s; }
-.mob-section-btn:hover { color: var(--paper); }
-.mob-section-btn svg { transition: transform .25s; flex-shrink: 0; }
-.mob-section-btn[aria-expanded="true"] svg { transform: rotate(180deg); }
-.mob-sub { max-height: 0; overflow: hidden; transition: max-height .35s cubic-bezier(.16,1,.3,1); }
-.mob-sub a { display: block; font-size: 14px; color: rgba(255,255,255,.45); padding: 10px 24px 10px 36px; transition: color .2s; }
-.mob-sub a:hover { color: var(--paper); }
-.mob-menu-ctas { display: flex; gap: 10px; margin: 20px 24px 0; }
-.mob-cta-wa { display: flex; align-items: center; gap: 8px; background: #25d366; color: #fff; font-size: 13px; font-weight: 600; padding: 12px 20px; border-radius: 8px; flex: 1; justify-content: center; transition: opacity .2s; }
-.mob-cta-wa:hover { opacity: .9; }
-.mob-cta-diag { display: flex; align-items: center; justify-content: center; background: var(--green); color: #fff; font-size: 13px; font-weight: 600; padding: 12px 20px; border-radius: 8px; flex: 1; transition: opacity .2s; }
-.mob-cta-diag:hover { opacity: .9; }
-.mob-menu-footer { margin-top: auto; padding: 24px; border-top: 1px solid rgba(255,255,255,.07); display: flex; gap: 16px; }
-.mob-menu-footer a { color: rgba(255,255,255,.4); transition: color .2s; }
-.mob-menu-footer a:hover { color: rgba(255,255,255,.75); }
+.mob-section-btn {
+  display: flex; justify-content: space-between; align-items: center;
+  width: 100%; padding: 17px 24px;
+  background: none; border: none; cursor: pointer;
+  font-family: var(--sans); font-size: 15px; font-weight: 600;
+  letter-spacing: .01em; text-transform: uppercase;
+  color: rgba(255,255,255,.75);
+  transition: color .15s;
+}
+.mob-section-btn:hover { color: #fff; }
+.mob-sub { max-height: 0; overflow: hidden; background: rgba(255,255,255,.02); transition: max-height .35s ease; }
+.mob-sub.open { max-height: 800px; }
+.mob-sub a {
+  display: block; padding: 11px 24px 11px 38px;
+  font-family: var(--sans); font-size: 13px; font-weight: 400;
+  color: rgba(255,255,255,.45); text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,.04);
+  transition: color .15s;
+}
+.mob-sub a:last-child { border-bottom: none; }
+.mob-sub a:hover { color: rgba(255,255,255,.85); }
+.mob-vid-item { position: relative; border-radius: 8px; overflow: hidden; cursor: pointer; margin: 10px 20px 6px; }
+.mob-vid-item img { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; filter: brightness(.72); transition: filter .2s; }
+.mob-vid-item:hover img { filter: brightness(.88); }
+.mob-vid-play-btn { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+.mob-vid-play-btn svg { filter: drop-shadow(0 2px 8px rgba(0,0,0,.5)); }
+.mob-vid-caption { position: absolute; bottom: 0; left: 0; right: 0; padding: 22px 10px 8px; background: linear-gradient(transparent, rgba(0,0,0,.78)); font-size: 11px; color: rgba(255,255,255,.88); line-height: 1.4; }
+.mob-menu-ctas { display: flex; gap: 10px; margin: 20px 24px 0; padding: 0; }
+.mob-cta-wa, .mob-cta-contact {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 10px 16px;
+  font-family: var(--sans); font-size: 13px; font-weight: 700;
+  letter-spacing: .04em; text-transform: uppercase;
+  border-radius: 6px; text-decoration: none;
+  transition: opacity .2s;
+  white-space: nowrap;
+}
+.mob-cta-wa { background: var(--green); color: #fff; flex: 1; justify-content: center; }
+.mob-cta-wa:hover { opacity: .85; }
+.mob-cta-contact { background: rgba(255,255,255,.07); color: rgba(255,255,255,.7); border: 1px solid rgba(255,255,255,.12); flex: 1; justify-content: center; }
+.mob-cta-contact:hover { background: rgba(255,255,255,.12); color: #fff; }
+.mob-menu-footer { margin-top: auto; padding: 24px; border-top: 1px solid rgba(255,255,255,.07); }
+.mob-footer-tagline { font-family: var(--serif); font-style: italic; font-size: 13px; color: rgba(255,255,255,.3); margin-bottom: 18px; line-height: 1.5; }
+.mob-contact-email { display: flex; align-items: center; gap: 7px; font-family: var(--sans); font-size: 13px; color: rgba(255,255,255,.55); text-decoration: none; margin-bottom: 4px; transition: color .15s; }
+.mob-contact-email:hover { color: rgba(255,255,255,.85); }
+.mob-footer-cnpj { font-size: 11px; color: rgba(255,255,255,.22); margin-bottom: 18px; padding-left: 22px; }
+.mob-socials { display: flex; gap: 10px; }
+.mob-soc-link { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: transparent; border: 1px solid rgba(255,255,255,.18); color: rgba(255,255,255,.55); transition: border-color .15s, color .15s, background .15s; }
+.mob-soc-link:hover { border-color: rgba(255,255,255,.4); color: #fff; background: rgba(255,255,255,.06); }
 
 /* === 404 CONTENT === */
 .error-section {
@@ -280,6 +466,24 @@ footer { background: #000; border-top: 1px solid #111; padding: 64px clamp(24px,
 .foot-copy { font-size: 12px; color: rgba(255,255,255,.2); }
 .foot-disclaimer { font-size: 12px; color: rgba(255,255,255,.45); line-height: 1.7; padding-top: 16px; border-top: 1px solid rgba(255,255,255,.08); margin-top: 16px; }
 
+/* === VIDEO MODAL === */
+.vid-modal {
+  display: none; position: fixed; inset: 0; z-index: 2000;
+  background: rgba(0,0,0,.88); align-items: center; justify-content: center; padding: 20px;
+}
+.vid-modal.open { display: flex; }
+.vid-modal-inner {
+  position: relative; width: 100%; max-width: 900px; aspect-ratio: 16/9;
+  border-radius: 12px; overflow: hidden; box-shadow: 0 32px 80px rgba(0,0,0,.7);
+}
+.vid-modal-inner iframe { width: 100%; height: 100%; border: none; }
+.vid-modal-close {
+  position: absolute; top: -44px; right: 0; background: none; border: none;
+  color: rgba(255,255,255,.7); font-size: 28px; cursor: pointer; line-height: 1;
+  transition: color .2s; padding: 4px 8px;
+}
+.vid-modal-close:hover { color: #fff; }
+
 /* === KEYFRAMES === */
 @keyframes errorIn {
   from { opacity: 0; transform: translateY(24px); }
@@ -312,157 +516,330 @@ footer { background: #000; border-top: 1px solid #111; padding: 64px clamp(24px,
 
 <!-- NAV -->
 <a href="#main-content" class="skip-link">Pular para conteúdo</a>
-<nav id="nav" aria-label="Navegação principal">
+<nav id="nav">
   <div class="nav-inner">
-    <a href="/" class="logo" aria-label="Maturare — página inicial">
-      <img src="/assets/maturare-logo-white.png" alt="Maturare" style="height:28px;width:auto;display:block;">
-    </a>
-    <ul class="nav-links" role="list">
-      <li class="nav-item" id="niSobre">
-        <button class="nav-btn" aria-expanded="false" aria-controls="mmSobre" id="nbSobre">Sobre <svg class="nav-chevron" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button>
-        <div class="mm-panel" id="mmSobre" role="region" aria-labelledby="nbSobre">
-          <div class="mm-inner">
-            <div class="mm-aside">
-              <strong>Conheça a Maturare</strong>
-              <p>Agência fundada em Niterói para posicionar negócios no Google e nas IAs.</p>
-            </div>
-            <ul class="mm-links" role="list">
-              <li><a href="/sobre/">A Agência</a></li>
-              <li><a href="/daniel-batista-rios/">Daniel Rios</a></li>
-              <li><a href="/metodologia/">Metodologia</a></li>
-              <li><a href="/nossos-clientes/">Nossos Clientes</a></li>
-              <li><a href="/projetos-realizados/">Projetos Realizados</a></li>
-            </ul>
-          </div>
-        </div>
-      </li>
-      <li class="nav-item" id="niServ">
-        <button class="nav-btn" aria-expanded="false" aria-controls="mmServ" id="nbServ">Serviços <svg class="nav-chevron" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button>
-        <div class="mm-panel" id="mmServ" role="region" aria-labelledby="nbServ">
-          <div class="mm-inner">
-            <div class="mm-aside">
-              <strong>O que fazemos</strong>
-              <p>SEO, GEO, AEO e arquitetura digital para negócios locais e PMEs.</p>
-            </div>
-            <ul class="mm-links" role="list">
-              <li><a href="/servicos/">Todos os Serviços</a></li>
-              <li><a href="/consultoria-de-seo/">Consultoria de SEO</a></li>
-              <li><a href="/agencia-geo-aeo/">GEO + AEO</a></li>
-              <li><a href="/arquitetura-digital/">Arquitetura Digital</a></li>
-              <li><a href="/criacao-de-sites/">Criação de Sites</a></li>
-              <li><a href="/google-meu-negocio-servico/">Google Meu Negócio</a></li>
-            </ul>
-          </div>
-        </div>
-      </li>
-      <li class="nav-item" id="niBlog">
-        <button class="nav-btn" aria-expanded="false" aria-controls="mmBlog" id="nbBlog">Blog <svg class="nav-chevron" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button>
-        <div class="mm-panel" id="mmBlog" role="region" aria-labelledby="nbBlog">
-          <div class="mm-inner">
-            <div class="mm-aside">
-              <strong>Conteúdo e conhecimento</strong>
-              <p>Artigos sobre SEO, GEO, AEO e posicionamento digital.</p>
-            </div>
-            <ul class="mm-links" role="list">
-              <li><a href="/blog/">Todos os Artigos</a></li>
-              <li><a href="/blog/como-aparecer-no-chatgpt/">Como aparecer no ChatGPT</a></li>
-              <li><a href="/glossario/">Glossário SEO/GEO</a></li>
-              <li><a href="/faq-maturare/">Perguntas Frequentes</a></li>
-            </ul>
-          </div>
-        </div>
-      </li>
-      <li class="nav-item" id="niAcad">
-        <button class="nav-btn" aria-expanded="false" aria-controls="mmAcad" id="nbAcad">Academy <svg class="nav-chevron" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button>
-        <div class="mm-panel" id="mmAcad" role="region" aria-labelledby="nbAcad">
-          <div class="mm-inner">
-            <div class="mm-aside">
-              <strong>Aprenda com a Maturare</strong>
-              <p>Cursos e comunidade com 300+ profissionais de SEO e GEO.</p>
-            </div>
-            <ul class="mm-links" role="list">
-              <li><a href="/academy/">Maturare Academy</a></li>
-            </ul>
-          </div>
-        </div>
-      </li>
-    </ul>
-    <div class="nav-r">
-      <a href="/analise-gratuita/" class="nav-cta">Diagnóstico Gratuito</a>
-      <button class="hamburger" id="hambBtn" aria-label="Abrir menu de navegação" aria-expanded="false" aria-controls="mobMenu">
-        <span></span><span></span><span></span>
+  <a href="/" class="logo"><img src="assets/maturare-logo-white.png" alt="Maturare" style="height:32px;width:auto;display:block;"></a>
+  <ul class="nav-links">
+    <li class="nav-item">
+      <a href="/" class="nav-btn">Início</a>
+    </li>
+    <li class="nav-item" id="ni-sobre">
+      <button class="nav-btn" aria-haspopup="true" aria-expanded="false" aria-controls="mm-sobre">
+        Sobre
+        <svg class="nav-caret" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+          <path d="M2 3.5 5 6.5 8 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
       </button>
-    </div>
+    </li>
+    <li class="nav-item" id="ni-servicos">
+      <button class="nav-btn" aria-haspopup="true" aria-expanded="false" aria-controls="mm-servicos">
+        Serviços
+        <svg class="nav-caret" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+          <path d="M2 3.5 5 6.5 8 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </li>
+    <li class="nav-item" id="ni-blog">
+      <button class="nav-btn" aria-haspopup="true" aria-expanded="false" aria-controls="mm-blog">
+        Blog
+        <svg class="nav-caret" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+          <path d="M2 3.5 5 6.5 8 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </li>
+    <li class="nav-item" id="ni-academy">
+      <button class="nav-btn" aria-haspopup="true" aria-expanded="false" aria-controls="mm-academy">
+        Academy
+        <svg class="nav-caret" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+          <path d="M2 3.5 5 6.5 8 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </li>
+  </ul>
+  <div class="nav-r">
+    <a href="#orcamento" class="nav-cta">Diagnóstico Gratuito →</a>
+    <button class="hamburger" id="hambBtn" aria-label="Abrir menu de navegação"><span></span><span></span><span></span></button>
+  </div>
   </div>
 </nav>
 
-<!-- MOBILE MENU -->
+<!-- MEGAMENU: Sobre -->
+<div class="mm-panel" id="mm-sobre" role="region" aria-label="Menu Sobre">
+  <div class="mm-inner">
+    <div class="mm-aside">
+      <div class="mm-aside-bg" style="background-image:url('https://images.unsplash.com/photo-1642621859598-79bc9a87fd77?w=600&auto=format&fit=crop&q=80')"></div>
+      <div>
+        <p class="mm-aside-tag">A Maturare</p>
+        <p class="mm-aside-title">Não é sobre crescer rápido. É sobre crescer certo.</p>
+      </div>
+      <a href="/sobre" class="mm-aside-cta">Conheça nossa história →</a>
+    </div>
+    <div class="mm-links mm-links--single">
+      <a href="/sobre" class="mm-link">
+        <strong>A Maturare</strong>
+        <span>Quem somos, o que acreditamos e por que fazemos o que fazemos</span>
+      </a>
+      <a href="/casos-de-sucesso" class="mm-link">
+        <strong>Casos de Sucesso</strong>
+        <span>Empresas reais que aparecem no Google e nas IAs hoje</span>
+      </a>
+      <a href="/cidades-atendidas" class="mm-link">
+        <strong>Cidades Atendidas</strong>
+        <span>Atuamos em todo o Brasil, com foco em negócios locais</span>
+      </a>
+      <a href="/perguntas-frequentes" class="mm-link">
+        <strong>Perguntas Frequentes</strong>
+        <span>Tira as dúvidas mais comuns antes de conversar com a gente</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- MEGAMENU: Serviços -->
+<div class="mm-panel" id="mm-servicos" role="region" aria-label="Menu Serviços">
+  <div class="mm-inner">
+    <div class="mm-aside" style="gap:16px;">
+      <p class="mm-vid-label">Destaque</p>
+      <div class="mm-vid-wrap" onclick="openVidModal('malcB_gQ6n8')">
+        <img src="https://img.youtube.com/vi/malcB_gQ6n8/maxresdefault.jpg" alt="Como a Move Máquinas dominou o Google em 63 cidades">
+        <div class="mm-vid-play">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="12" fill="rgba(255,255,255,0.15)"/>
+            <polygon points="10,8 17,12 10,16" fill="white"/>
+          </svg>
+        </div>
+      </div>
+      <p class="mm-vid-title">Como a Move Máquinas ficou em 1º no Google em mais de 20 cidades sem pagar anúncio</p>
+      <a href="#" onclick="openVidModal('malcB_gQ6n8');return false;" class="mm-aside-cta">Assistir agora →</a>
+    </div>
+    <div class="mm-links" style="grid-template-columns:1fr 1fr;">
+      <p class="mm-col-label" style="grid-column:1/-1;">O que fazemos</p>
+      <a href="/agencia-seo" class="mm-link">
+        <strong>Agência SEO</strong>
+        <span>Execução completa para sua empresa aparecer no Google e nas IAs</span>
+      </a>
+      <a href="/consultor-seo" class="mm-link">
+        <strong>Consultor SEO</strong>
+        <span>Diagnóstico, estratégia e direcionamento para sua equipe executar</span>
+      </a>
+      <a href="/criacao-de-sites-para-seo" class="mm-link">
+        <strong>Criação de Site</strong>
+        <span>Site construído para ranquear desde o primeiro dia</span>
+      </a>
+      <a href="/seo-para-b2b" class="mm-link">
+        <strong>SEO para B2B</strong>
+        <span>Apareça quando seu comprador corporativo pesquisar sua solução</span>
+      </a>
+      <a href="/seo-para-negocios-locais" class="mm-link">
+        <strong>SEO para Negócios Locais</strong>
+        <span>Domine as buscas na sua cidade e região</span>
+      </a>
+      <a href="/seo-para-saas" class="mm-link">
+        <strong>SEO para SaaS</strong>
+        <span>Tráfego orgânico previsível para reduzir custo de aquisição</span>
+      </a>
+      <a href="/seo-para-contadores" class="mm-link">
+        <strong>SEO para Contadores</strong>
+        <span>Clientes chegando pelo Google sem depender de indicação</span>
+      </a>
+      <a href="/seo-para-clinicas" class="mm-link">
+        <strong>SEO para Clínicas</strong>
+        <span>Pacientes encontrando sua clínica antes da concorrência</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- MEGAMENU: Blog -->
+<div class="mm-panel" id="mm-blog" role="region" aria-label="Menu Blog">
+  <div class="mm-inner" style="grid-template-columns:260px 1fr;">
+    <div class="mm-aside">
+      <div class="mm-aside-bg" style="background-image:url('https://images.unsplash.com/photo-1643148636630-0b0fb138fc74?w=600&auto=format&fit=crop&q=80'); filter:grayscale(100%);"></div>
+      <div>
+        <p class="mm-aside-tag">Blog Maturare</p>
+        <p class="mm-aside-title">Visibilidade não é sorte. É método.</p>
+      </div>
+      <a href="/blog" class="mm-aside-cta">Ver todos os artigos →</a>
+    </div>
+    <div style="padding:32px 40px;">
+      <div class="mm-blog-grid">
+        <a href="/blog/como-aparecer-no-google" class="mm-blog-link">
+          <span class="mm-blog-tag">SEO</span>
+          <span class="mm-blog-title">Como aparecer no Google quando o cliente pesquisar seu serviço</span>
+        </a>
+        <a href="/blog/o-que-e-geo" class="mm-blog-link">
+          <span class="mm-blog-tag">GEO</span>
+          <span class="mm-blog-title">O que é GEO e por que o ChatGPT pode recomendar seu concorrente</span>
+        </a>
+        <a href="/blog/phd-playground-sem-google-ads" class="mm-blog-link">
+          <span class="mm-blog-tag">Case</span>
+          <span class="mm-blog-title">PHD Playground: 2 anos sem pagar Google Ads</span>
+        </a>
+        <a href="/blog/google-meu-negocio-guia" class="mm-blog-link">
+          <span class="mm-blog-tag">Local SEO</span>
+          <span class="mm-blog-title">Google Meu Negócio: o guia definitivo para negócios locais</span>
+        </a>
+        <a href="/blog/5-sinais-agencia-nao-funciona" class="mm-blog-link">
+          <span class="mm-blog-tag">Estratégia</span>
+          <span class="mm-blog-title">5 sinais de que sua agência não está funcionando</span>
+        </a>
+        <a href="/blog/ia-recomenda-empresas" class="mm-blog-link">
+          <span class="mm-blog-tag">AEO</span>
+          <span class="mm-blog-title">Perplexity, Gemini, ChatGPT: qual IA já recomenda empresas?</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MEGAMENU: Academy -->
+<div class="mm-panel" id="mm-academy" role="region" aria-label="Menu Academy">
+  <div class="mm-inner">
+    <div class="mm-aside" style="gap:16px;">
+      <p class="mm-vid-label">Aula gratuita</p>
+      <div class="mm-vid-wrap" onclick="openVidModal('TqsqddD0TVw')">
+        <img src="https://img.youtube.com/vi/TqsqddD0TVw/maxresdefault.jpg" alt="Aula gratuita Maturare Academy">
+        <div class="mm-vid-play">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="12" fill="rgba(255,255,255,0.15)"/>
+            <polygon points="10,8 17,12 10,16" fill="white"/>
+          </svg>
+        </div>
+      </div>
+      <p class="mm-vid-title">Assista uma aula gratuita do curso de Google Meu Negócio</p>
+      <a href="#" onclick="openVidModal('TqsqddD0TVw');return false;" class="mm-aside-cta">Assistir aula →</a>
+    </div>
+    <div class="mm-links mm-links--single">
+      <p class="mm-col-label">Cursos disponíveis</p>
+      <a href="/academy/curso-google-meu-negocio" class="mm-link">
+        <strong>Curso de Google Meu Negócio</strong>
+        <span>Do zero ao perfil otimizado: apareça no mapa e atraia clientes da sua cidade</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- MOBILE OVERLAY + MENU -->
 <div class="mob-overlay" id="mobOverlay"></div>
-<div class="mob-menu" id="mobMenu" role="dialog" aria-modal="true" aria-label="Menu de navegação mobile">
+<div class="mob-menu" id="mobMenu">
+
+  <!-- Header: logo + fechar -->
   <div class="mob-menu-header">
-    <a href="/" aria-label="Maturare — página inicial">
-      <img src="/assets/maturare-logo-white.png" alt="Maturare" style="height:24px;width:auto;">
-    </a>
-    <button class="mob-menu-close" id="mobClose" aria-label="Fechar menu">
-      <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    <img src="assets/maturare-logo-white.png" alt="Maturare" style="height:26px;width:auto;">
+    <button class="mob-menu-close" id="mobCloseBtn" aria-label="Fechar menu">
+      <svg viewBox="0 0 24 24" fill="none" width="16" height="16">
+        <path d="M6 6l12 12M6 18L18 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
     </button>
   </div>
-  <nav aria-label="Menu mobile">
-    <div class="mob-section">
-      <button class="mob-section-btn" id="mobSobreBtn" aria-expanded="false" aria-controls="mobSobreSub">Sobre <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button>
-      <div class="mob-sub" id="mobSobreSub">
-        <a href="/sobre/">A Agência</a>
-        <a href="/daniel-batista-rios/">Daniel Rios</a>
-        <a href="/metodologia/">Metodologia</a>
-        <a href="/nossos-clientes/">Nossos Clientes</a>
-        <a href="/projetos-realizados/">Projetos Realizados</a>
-      </div>
+
+  <!-- Nav -->
+  <a href="/">Início</a>
+
+  <div class="mob-section">
+    <button class="mob-section-btn" id="mobSobreBtn">
+      Sobre
+      <svg viewBox="0 0 10 10" fill="none" width="10" height="10" style="transition:transform .2s"><path d="M2 3.5 5 6.5 8 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="mob-sub" id="mobSobreSub">
+      <a href="/sobre">A Maturare</a>
+      <a href="/casos-de-sucesso">Casos de Sucesso</a>
+      <a href="/cidades-atendidas">Cidades Atendidas</a>
+      <a href="/perguntas-frequentes">Perguntas Frequentes</a>
     </div>
-    <div class="mob-section">
-      <button class="mob-section-btn" id="mobServBtn" aria-expanded="false" aria-controls="mobServSub">Serviços <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button>
-      <div class="mob-sub" id="mobServSub">
-        <a href="/servicos/">Todos os Serviços</a>
-        <a href="/consultoria-de-seo/">Consultoria de SEO</a>
-        <a href="/agencia-geo-aeo/">GEO + AEO</a>
-        <a href="/arquitetura-digital/">Arquitetura Digital</a>
-        <a href="/criacao-de-sites/">Criação de Sites</a>
-        <a href="/google-meu-negocio-servico/">Google Meu Negócio</a>
+  </div>
+
+  <div class="mob-section">
+    <button class="mob-section-btn" id="mobServBtn">
+      Serviços
+      <svg viewBox="0 0 10 10" fill="none" width="10" height="10" style="transition:transform .2s"><path d="M2 3.5 5 6.5 8 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="mob-sub" id="mobServSub">
+      <div class="mob-vid-item" onclick="openVidModal('malcB_gQ6n8')">
+        <img src="https://img.youtube.com/vi/malcB_gQ6n8/maxresdefault.jpg" alt="Move Máquinas no Google">
+        <div class="mob-vid-play-btn">
+          <svg viewBox="0 0 48 48" width="36" height="36" fill="none"><circle cx="24" cy="24" r="24" fill="rgba(255,255,255,0.18)"/><polygon points="20,16 34,24 20,32" fill="white"/></svg>
+        </div>
+        <div class="mob-vid-caption">Move Máquinas: 1º no Google em 20 cidades sem anúncio</div>
       </div>
+      <a href="/agencia-seo">Agência SEO</a>
+      <a href="/consultor-seo">Consultor SEO</a>
+      <a href="/criacao-de-sites-para-seo">Criação de Site</a>
+      <a href="/seo-para-b2b">SEO para B2B</a>
+      <a href="/seo-para-negocios-locais">SEO para Negócios Locais</a>
+      <a href="/seo-para-saas">SEO para SaaS</a>
+      <a href="/seo-para-contadores">SEO para Contadores</a>
+      <a href="/seo-para-clinicas">SEO para Clínicas</a>
     </div>
-    <div class="mob-section">
-      <button class="mob-section-btn" id="mobBlogBtn" aria-expanded="false" aria-controls="mobBlogSub">Blog <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button>
-      <div class="mob-sub" id="mobBlogSub">
-        <a href="/blog/">Todos os Artigos</a>
-        <a href="/blog/como-aparecer-no-chatgpt/">Como aparecer no ChatGPT</a>
-        <a href="/glossario/">Glossário SEO/GEO</a>
-        <a href="/faq-maturare/">Perguntas Frequentes</a>
+  </div>
+
+  <div class="mob-section">
+    <button class="mob-section-btn" id="mobBlogBtn">
+      Blog
+      <svg viewBox="0 0 10 10" fill="none" width="10" height="10" style="transition:transform .2s"><path d="M2 3.5 5 6.5 8 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="mob-sub" id="mobBlogSub">
+      <a href="/blog/como-aparecer-no-google">Como aparecer no Google</a>
+      <a href="/blog/o-que-e-geo">O que é GEO</a>
+      <a href="/blog/phd-playground-sem-google-ads">Case PHD Playground</a>
+      <a href="/blog/google-meu-negocio-guia">Guia Google Meu Negócio</a>
+      <a href="/blog/5-sinais-agencia-nao-funciona">5 sinais da agência ruim</a>
+      <a href="/blog/ia-recomenda-empresas">Qual IA recomenda empresas?</a>
+      <a href="/blog">Ver todos →</a>
+    </div>
+  </div>
+
+  <div class="mob-section">
+    <button class="mob-section-btn" id="mobAcadBtn">
+      Academy
+      <svg viewBox="0 0 10 10" fill="none" width="10" height="10" style="transition:transform .2s"><path d="M2 3.5 5 6.5 8 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="mob-sub" id="mobAcadSub">
+      <div class="mob-vid-item" onclick="openVidModal('TqsqddD0TVw')">
+        <img src="https://img.youtube.com/vi/TqsqddD0TVw/maxresdefault.jpg" alt="Aula gratuita Maturare Academy">
+        <div class="mob-vid-play-btn">
+          <svg viewBox="0 0 48 48" width="36" height="36" fill="none"><circle cx="24" cy="24" r="24" fill="rgba(255,255,255,0.18)"/><polygon points="20,16 34,24 20,32" fill="white"/></svg>
+        </div>
+        <div class="mob-vid-caption">Aula gratuita: como aparecer no ChatGPT e Gemini</div>
       </div>
+      <a href="/academy/curso-google-meu-negocio">Curso de Google Meu Negócio</a>
     </div>
-    <div class="mob-section">
-      <button class="mob-section-btn" id="mobAcadBtn" aria-expanded="false" aria-controls="mobAcadSub">Academy <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button>
-      <div class="mob-sub" id="mobAcadSub">
-        <a href="/academy/">Maturare Academy</a>
-      </div>
-    </div>
-  </nav>
+  </div>
+
+  <!-- CTAs -->
   <div class="mob-menu-ctas">
-    <a href="https://wa.me/5521990770731" class="mob-cta-wa" target="_blank" rel="noopener">
-      <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <a href="https://wa.me/5521990770731" target="_blank" class="mob-cta-wa">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
       WhatsApp
     </a>
-    <a href="/analise-gratuita/" class="mob-cta-diag">Diagnóstico Gratuito</a>
+    <a href="#orcamento" class="mob-cta-contact" onclick="document.getElementById('mobMenu').classList.remove('open')">
+      Fale Conosco →
+    </a>
   </div>
+
+  <!-- Footer -->
   <div class="mob-menu-footer">
-    <a href="https://br.linkedin.com/in/daniel-batista-674b62140" target="_blank" rel="noopener" aria-label="LinkedIn">
-      <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+    <p class="mob-footer-tagline">Presença orgânica real, sem depender de anúncio.</p>
+    <a href="mailto:contato@maturare.com.br" class="mob-contact-email">
+      <svg viewBox="0 0 24 24" fill="none" width="14" height="14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/>
+      </svg>
+      contato@maturare.com.br
     </a>
-    <a href="https://www.instagram.com/maturare.com.br/" target="_blank" rel="noopener" aria-label="Instagram">
-      <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-    </a>
-    <a href="https://www.youtube.com/@googledominado1" target="_blank" rel="noopener" aria-label="YouTube">
-      <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M23.495 6.205a3.007 3.007 0 00-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 00.527 6.205a31.247 31.247 0 00-.522 5.805 31.247 31.247 0 00.522 5.783 3.007 3.007 0 002.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 002.088-2.088 31.247 31.247 0 00.5-5.783 31.247 31.247 0 00-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
-    </a>
+    <p class="mob-footer-cnpj">CNPJ 47.336.340/0001-51</p>
+    <div class="mob-socials">
+      <a href="https://www.instagram.com/maturare.com.br/" target="_blank" class="mob-soc-link" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+      </a>
+      <a href="https://br.linkedin.com/in/daniel-batista-674b62140" target="_blank" class="mob-soc-link" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+      <a href="https://www.youtube.com/@googledominado1" target="_blank" class="mob-soc-link" aria-label="YouTube">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+      </a>
+    </div>
   </div>
+
 </div>
 
 <!-- 404 CONTENT -->
@@ -487,66 +864,84 @@ footer { background: #000; border-top: 1px solid #111; padding: 64px clamp(24px,
 <footer>
   <div class="foot-in">
     <div class="foot-top">
-      <div class="foot-col-brand">
-        <a href="/" aria-label="Maturare — página inicial">
-          <img src="/assets/maturare-logo-white.png" alt="Maturare" style="height:28px;width:auto;display:block;margin-bottom:16px;">
-        </a>
-        <p class="foot-tag">Agência especializada em SEO, GEO e AEO para negócios locais e PMEs no Brasil.</p>
-        <div class="foot-socs">
-          <a href="https://br.linkedin.com/in/daniel-batista-674b62140" target="_blank" rel="noopener" aria-label="LinkedIn da Maturare">
-            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      <div>
+        <div class="foot-brand"><img src="assets/maturare-logo-white.png" alt="Maturare" style="height:36px;width:auto;display:block;"></div>
+        <p class="foot-tag">Aceleradora de negócios que faz empresas locais serem encontradas no Google e recomendadas pelas IAs.</p>
+        <div class="foot-socs" style="margin-top:30px;">
+          <a href="https://br.linkedin.com/in/daniel-batista-674b62140" target="_blank" aria-label="LinkedIn da Maturare">
+            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
           </a>
-          <a href="https://www.instagram.com/maturare.com.br/" target="_blank" rel="noopener" aria-label="Instagram da Maturare">
-            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          <a href="https://www.instagram.com/maturare.com.br/" target="_blank" aria-label="Instagram da Maturare">
+            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
           </a>
-          <a href="https://www.youtube.com/@googledominado1" target="_blank" rel="noopener" aria-label="YouTube da Maturare">
-            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M23.495 6.205a3.007 3.007 0 00-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 00.527 6.205a31.247 31.247 0 00-.522 5.805 31.247 31.247 0 00.522 5.783 3.007 3.007 0 002.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 002.088-2.088 31.247 31.247 0 00.5-5.783 31.247 31.247 0 00-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+          <a href="https://www.youtube.com/@googledominado1" target="_blank" aria-label="YouTube da Maturare">
+            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
           </a>
         </div>
       </div>
       <div>
         <div class="fcol-h">Soluções</div>
         <ul class="flinks">
-          <li><a href="/consultoria-de-seo/">SEO</a></li>
-          <li><a href="/agencia-geo-aeo/">GEO + AEO</a></li>
-          <li><a href="/arquitetura-digital/">Arquitetura Digital</a></li>
-          <li><a href="/criacao-de-sites/">Criação de Sites</a></li>
-          <li><a href="/google-meu-negocio-servico/">Google Meu Negócio</a></li>
+          <li><a href="/agencia-seo/">Agência SEO</a></li>
+          <li><a href="/consultor-seo/">Consultor SEO</a></li>
+          <li><a href="/criacao-de-site/">Criação de Site</a></li>
+          <li><a href="/seo-para-b2b/">SEO para B2B</a></li>
+          <li><a href="/seo-para-negocios-locais/">SEO para Negócios Locais</a></li>
+          <li><a href="/seo-para-saas/">SEO para SaaS</a></li>
+          <li><a href="/seo-para-contadores/">SEO para Contadores</a></li>
+          <li><a href="/seo-para-clinicas/">SEO para Clínicas</a></li>
+          <li><a href="/analise-gratuita/" style="color:var(--green);font-weight:600;">→ Diagnóstico Gratuito</a></li>
         </ul>
       </div>
       <div>
         <div class="fcol-h">Blog</div>
         <ul class="flinks">
-          <li><a href="/blog/">Todos os Artigos</a></li>
-          <li><a href="/glossario/">Glossário</a></li>
-          <li><a href="/faq-maturare/">FAQ</a></li>
+          <li><a href="/blog/">Todos os artigos</a></li>
+          <li><a href="/blog/como-ranquear-no-chatgpt/">Como Ranquear no ChatGPT</a></li>
+          <li><a href="/blog/seo-local-em-2026/">SEO Local em 2026</a></li>
+          <li><a href="/blog/chatgpt-indicando-seu-concorrente/">O ChatGPT Indica Seu Concorrente?</a></li>
+          <li><a href="/blog/seo-ou-google-ads/">SEO ou Google Ads</a></li>
+          <li><a href="/blog/o-que-e-geo/">GEO: o Novo SEO</a></li>
+          <li><a href="/glossario/">Glossário de SEO e IA</a></li>
         </ul>
       </div>
       <div>
         <div class="fcol-h">Empresa</div>
         <ul class="flinks">
-          <li><a href="/sobre/">A Agência</a></li>
-          <li><a href="/daniel-batista-rios/">Daniel Rios</a></li>
-          <li><a href="/nossos-clientes/">Nossos Clientes</a></li>
-          <li><a href="/contato/">Contato</a></li>
-          <li><a href="/analise-gratuita/">Diagnóstico Gratuito</a></li>
+          <li><a href="/sobre/">Sobre a Maturare</a></li>
+          <li><a href="/daniel-rios/">Daniel Rios</a></li>
+          <li><a href="/casos-de-sucesso/">Casos de Sucesso</a></li>
+          <li><a href="/cidades-atendidas/">Cidades Atendidas</a></li>
+          <li><a href="/academy/google-meu-negocio/">Curso Google Meu Negócio</a></li>
+          <li><a href="/faq/">FAQ</a></li>
         </ul>
-        <div class="foot-col-legal-mobile">
-          <a href="/termos-de-privacidade/">Privacidade</a>
-          <a href="/politica-de-cookies/">Cookies</a>
-          <a href="/termos-de-uso/">Termos</a>
+      </div>
+      <!-- col legal: visível só no mobile (desktop usa foot-bot abaixo) -->
+      <div class="foot-col-legal-mobile">
+        <div class="fcol-h">Legal</div>
+        <ul class="flinks">
+          <li><a href="termos-de-privacidade.html">Termos de Privacidade</a></li>
+          <li><a href="politica-de-cookies.html">Política de Cookies</a></li>
+          <li><a href="termos-de-uso.html">Termos de Uso</a></li>
+        </ul>
+        <p class="foot-col-disclaimer-mobile">Os resultados apresentados são reais e referem-se a clientes específicos. Resultados individuais variam conforme mercado e execução.</p>
+      </div>
+    </div>
+    <!-- Copyright mobile only -->
+    <p class="foot-copyright-mobile">&#169; 2026 Maturare Gestão &amp; Marketing Estratégico Ltda | CNPJ: 47.336.340/0001-51</p>
+    <div class="foot-bot">
+      <div class="foot-bot-row">
+        <div class="foot-legal">
+          <a href="termos-de-privacidade.html">Termos de Privacidade</a>
+          <a href="politica-de-cookies.html">Política de Cookies</a>
+          <a href="termos-de-uso.html">Termos de Uso</a>
         </div>
       </div>
-    </div>
-    <div class="foot-bot">
-      <div class="foot-legal">
-        <a href="/termos-de-privacidade/">Termos de Privacidade</a>
-        <a href="/politica-de-cookies/">Política de Cookies</a>
-        <a href="/termos-de-uso/">Termos de Uso</a>
+      <div class="foot-disclaimer">
+        <span style="display:block;text-align:center;">Os resultados apresentados neste site são reais e referem-se a clientes específicos. Resultados individuais variam conforme mercado, histórico do site e consistência na execução.</span><br>
+        <span style="display:block;text-align:center;">&#169; 2026 Maturare Gestão &amp; Marketing Estratégico Ltda | CNPJ: 47.336.340/0001-51 | Todos os Direitos Reservados | Rua Coronel Sebastião Dantas, 56, Niterói/RJ, Brasil</span>
       </div>
-      <div class="foot-copy">&#169; 2026 Maturare · CNPJ 47.336.340/0001-51 · Niterói, RJ</div>
     </div>
-    <p class="foot-disclaimer">A Maturare é uma agência de SEO, GEO e AEO sediada em Niterói, RJ. Não garantimos posições específicas no Google, pois resultados orgânicos dependem de múltiplos fatores além do nosso controle.</p>
   </div>
 </footer>
 
@@ -559,61 +954,112 @@ window.addEventListener('scroll', function() {
 
 /* === MEGAMENU === */
 (function() {
-  var items = document.querySelectorAll('.nav-item');
-  var openItem = null;
+  var openId = null;
   var closeTimer = null;
-  function openPanel(item) {
-    if (closeTimer) { clearTimeout(closeTimer); closeTimer = null; }
-    if (openItem && openItem !== item) closePanel(openItem, true);
-    openItem = item;
-    item.classList.add('open');
-    var btn = item.querySelector('.nav-btn');
-    if (btn) btn.setAttribute('aria-expanded', 'true');
+
+  function openPanel(id) {
+    clearTimeout(closeTimer);
+    if (openId === id) return;
+    closeImmediate();
+    var ni = document.getElementById('ni-' + id);
+    var mm = document.getElementById('mm-' + id);
+    if (!ni || !mm) return;
+    ni.classList.add('open');
+    mm.classList.add('open');
+    ni.querySelector('.nav-btn').setAttribute('aria-expanded', 'true');
+    openId = id;
   }
-  function closePanel(item, immediate) {
-    function doClose() { item.classList.remove('open'); var btn = item.querySelector('.nav-btn'); if (btn) btn.setAttribute('aria-expanded', 'false'); if (openItem === item) openItem = null; }
-    if (immediate) { doClose(); } else { closeTimer = setTimeout(doClose, 180); }
+
+  function scheduleClose() {
+    closeTimer = setTimeout(closeImmediate, 120);
   }
-  items.forEach(function(item) {
-    item.addEventListener('mouseenter', function() { openPanel(item); });
-    item.addEventListener('mouseleave', function() { closePanel(item, false); });
-    var btn = item.querySelector('.nav-btn');
-    if (btn) btn.addEventListener('click', function(e) {
-      e.stopPropagation();
-      item.classList.contains('open') ? closePanel(item, true) : openPanel(item);
+
+  function closeImmediate() {
+    clearTimeout(closeTimer);
+    if (!openId) return;
+    var ni = document.getElementById('ni-' + openId);
+    var mm = document.getElementById('mm-' + openId);
+    if (ni) { ni.classList.remove('open'); ni.querySelector('.nav-btn').setAttribute('aria-expanded', 'false'); }
+    if (mm) mm.classList.remove('open');
+    openId = null;
+  }
+
+  ['sobre', 'servicos', 'blog', 'academy'].forEach(function(id) {
+    var ni = document.getElementById('ni-' + id);
+    var mm = document.getElementById('mm-' + id);
+    if (!ni || !mm) return;
+
+    ni.addEventListener('mouseenter', function() { openPanel(id); });
+    ni.addEventListener('mouseleave', scheduleClose);
+
+    mm.addEventListener('mouseenter', function() { clearTimeout(closeTimer); });
+    mm.addEventListener('mouseleave', scheduleClose);
+
+    ni.querySelector('.nav-btn').addEventListener('click', function() {
+      if (openId === id) { closeImmediate(); } else { openPanel(id); }
     });
   });
-  document.addEventListener('click', function() { if (openItem) closePanel(openItem, true); });
-  document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && openItem) closePanel(openItem, true); });
+
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeImmediate(); });
 })();
 
 /* === MOBILE MENU === */
-(function() {
-  var hambBtn = document.getElementById('hambBtn');
-  var mobMenu = document.getElementById('mobMenu');
-  var mobOverlay = document.getElementById('mobOverlay');
-  var mobClose = document.getElementById('mobClose');
-  function openMob() { if (mobMenu) mobMenu.classList.add('open'); if (mobOverlay) mobOverlay.classList.add('open'); document.body.style.overflow = 'hidden'; if (hambBtn) hambBtn.setAttribute('aria-expanded', 'true'); }
-  function closeMob() { if (mobMenu) mobMenu.classList.remove('open'); if (mobOverlay) mobOverlay.classList.remove('open'); document.body.style.overflow = ''; if (hambBtn) hambBtn.setAttribute('aria-expanded', 'false'); }
-  if (hambBtn) hambBtn.addEventListener('click', openMob);
-  if (mobClose) mobClose.addEventListener('click', closeMob);
-  if (mobOverlay) mobOverlay.addEventListener('click', closeMob);
-  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeMob(); });
-  function setupMobAccordion(btnId, subId) {
-    var btn = document.getElementById(btnId);
-    var sub = document.getElementById(subId);
-    if (!btn || !sub) return;
-    btn.addEventListener('click', function() {
-      var open = sub.style.maxHeight && sub.style.maxHeight !== '0px';
-      sub.style.maxHeight = open ? '0px' : '600px';
-      btn.setAttribute('aria-expanded', open ? 'false' : 'true');
-    });
-  }
-  setupMobAccordion('mobSobreBtn', 'mobSobreSub');
-  setupMobAccordion('mobServBtn', 'mobServSub');
-  setupMobAccordion('mobBlogBtn', 'mobBlogSub');
-  setupMobAccordion('mobAcadBtn', 'mobAcadSub');
-})();
+var hambBtn = document.getElementById('hambBtn');
+var mobMenu = document.getElementById('mobMenu');
+var mobOverlay = document.getElementById('mobOverlay');
+
+function toggleMob() {
+  var isOpen = mobMenu.classList.toggle('open');
+  mobOverlay.classList.toggle('open');
+  hambBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+}
+if (hambBtn) hambBtn.addEventListener('click', toggleMob);
+if (mobOverlay) mobOverlay.addEventListener('click', toggleMob);
+var mobCloseBtn = document.getElementById('mobCloseBtn');
+if (mobCloseBtn) mobCloseBtn.addEventListener('click', toggleMob);
+
+/* Mobile accordion */
+function setupMobAccordion(btnId, subId) {
+  var btn = document.getElementById(btnId);
+  var sub = document.getElementById(subId);
+  if (!btn || !sub) return;
+  btn.addEventListener('click', function() {
+    var isOpen = sub.classList.toggle('open');
+    var caret = btn.querySelector('svg');
+    if (caret) caret.style.transform = isOpen ? 'rotate(180deg)' : '';
+  });
+}
+setupMobAccordion('mobSobreBtn', 'mobSobreSub');
+setupMobAccordion('mobServBtn', 'mobServSub');
+setupMobAccordion('mobBlogBtn', 'mobBlogSub');
+setupMobAccordion('mobAcadBtn', 'mobAcadSub');
+
+/* === VIDEO MODAL === */
+function openVidModal(videoId) {
+  var frame = document.getElementById('vidFrame');
+  var modal = document.getElementById('vidModal');
+  if (!frame || !modal) return;
+  frame.src = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&rel=0';
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeVidModal(e) {
+  var modal = document.getElementById('vidModal');
+  var frame = document.getElementById('vidFrame');
+  if (e && e.target !== modal && !e.target.classList.contains('vid-modal-close')) return;
+  if (frame) frame.src = '';
+  if (modal) modal.classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeVidModal(); });
 </script>
+<!-- VIDEO MODAL -->
+<div class="vid-modal" id="vidModal" onclick="closeVidModal(event)">
+  <div class="vid-modal-inner">
+    <button class="vid-modal-close" onclick="closeVidModal()">&#x2715;</button>
+    <iframe id="vidFrame" src="" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+  </div>
+</div>
+
 </body>
 </html>
