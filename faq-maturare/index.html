@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#0e0f0d">
 <title>FAQ Maturare — Perguntas Frequentes sobre SEO, GEO e IA para Negócios Locais</title>
 <meta name="description" content="26 perguntas e respostas da Maturare sobre SEO, GEO, Google Meu Negócio, IAs generativas (ChatGPT, Perplexity), preços e processo. Por Daniel Rios.">
-<link rel="canonical" href="https://maturare.com.br/faq-maturare">
+<link rel="canonical" href="https://maturare.com.br/faq-maturare/">
 <meta property="og:title" content="FAQ Maturare — Perguntas sobre SEO, GEO e IA para Negócios Locais">
 <meta property="og:description" content="26 respostas claras da Maturare sobre SEO, GEO, IAs generativas e posicionamento digital. Por Daniel Rios, fundador.">
 <meta property="og:type" content="website">
@@ -21,10 +21,10 @@
   "@graph": [
     {
       "@type": "WebPage",
-      "@id": "https://maturare.com.br/faq-maturare",
+      "@id": "https://maturare.com.br/faq-maturare/",
       "name": "FAQ Maturare — Perguntas sobre SEO, GEO e IA para Negócios Locais",
       "description": "26 perguntas e respostas da Maturare sobre SEO, GEO, Google Meu Negócio, IAs generativas, preços e processo de trabalho.",
-      "url": "https://maturare.com.br/faq-maturare",
+      "url": "https://maturare.com.br/faq-maturare/",
       "inLanguage": "pt-BR",
       "dateModified": "2026-04-06",
       "author": {
@@ -57,7 +57,7 @@
       "@type": "BreadcrumbList",
       "itemListElement": [
         {"@type": "ListItem", "position": 1, "name": "Maturare", "item": "https://maturare.com.br"},
-        {"@type": "ListItem", "position": 2, "name": "FAQ", "item": "https://maturare.com.br/faq-maturare"}
+        {"@type": "ListItem", "position": 2, "name": "FAQ", "item": "https://maturare.com.br/faq-maturare/"}
       ]
     },
     {
@@ -305,136 +305,99 @@ img { display: block; max-width: 100%; }
 }
 
 /* === NAV === */
-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: var(--zi-nav);
-  height: 62px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 40px;
-  background: transparent;
-  backdrop-filter: none;
-  border-bottom: 1px solid transparent;
-  transition: top .3s, background .3s, border-color .3s, backdrop-filter .3s;
-  will-change: background, backdrop-filter;
-}
-nav.scrolled {
-  background: rgba(7,7,9,.9);
-  backdrop-filter: blur(28px) saturate(180%);
-  -webkit-backdrop-filter: blur(28px) saturate(180%);
-  border-bottom-color: rgba(255,255,255,.07);
-  box-shadow: var(--toplight), 0 1px 20px rgba(0,0,0,.3);
-}
-.logo {
-  font-family: var(--serif);
-  font-size: 19px;
-  letter-spacing: .05em;
-  color: var(--paper);
-  transition: opacity .2s;
-}
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 300; height: 64px; display: flex; align-items: center; justify-content: center; padding: 0; background: transparent; backdrop-filter: none; border-bottom: 1px solid transparent; transition: background .3s, border-color .3s, backdrop-filter .3s; }
+.nav-inner { width: 100%; max-width: 1100px; padding: 0 clamp(24px, 4vw, 80px); display: flex; align-items: center; justify-content: space-between; }
+nav.scrolled { background: rgba(7,7,9,.92); backdrop-filter: blur(28px) saturate(180%); -webkit-backdrop-filter: blur(28px) saturate(180%); border-bottom-color: rgba(255,255,255,.07); box-shadow: 0 1px 0 rgba(255,255,255,.05), 0 1px 20px rgba(0,0,0,.3); }
+.logo { font-family: var(--serif); font-size: 19px; letter-spacing: .05em; color: var(--paper); transition: opacity .2s; flex-shrink: 0; }
 .logo:hover { opacity: .6; }
-.nav-links { display: flex; list-style: none; align-items: center; }
-.nav-btn {
-  background: none;
-  border: none;
-  font-family: var(--sans);
-  font-size: 13px;
-  font-weight: 500;
-  color: rgba(255,255,255,.55);
-  padding: 8px 14px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  transition: color .2s;
-  white-space: nowrap;
-}
-.nav-btn:hover { color: var(--paper); }
-.nav-btn.active { color: var(--paper); }
+.nav-links { display: flex; list-style: none; align-items: center; gap: 0; }
+.nav-item { position: relative; }
+.nav-btn { background: none; border: none; font-family: var(--sans); font-size: 13px; font-weight: 500; color: rgba(255,255,255,.55); padding: 8px 14px; cursor: pointer; display: flex; align-items: center; gap: 5px; transition: color .2s; white-space: nowrap; text-decoration: none; position: relative; }
+.nav-btn:hover { color: rgba(255,255,255,.85); }
+.nav-item.open .nav-btn { color: var(--paper); }
+.nav-btn::after { content: ''; position: absolute; bottom: 2px; left: 14px; right: 14px; height: 2px; background: #6fcf97; border-radius: 2px; transform: scaleX(0); transform-origin: center; transition: transform .2s ease; }
+.nav-item.open .nav-btn::after { transform: scaleX(1); }
+.nav-caret { width: 10px; height: 10px; flex-shrink: 0; transition: transform .2s, opacity .2s; opacity: .45; }
+.nav-item.open .nav-caret { transform: rotate(180deg); opacity: .8; }
 .nav-r { display: flex; align-items: center; gap: 12px; }
-.nav-cta {
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  background: var(--paper);
-  color: var(--ink);
-  padding: 10px 24px;
-  border: none;
-  cursor: pointer;
-  font-family: var(--sans);
-  transition: transform .2s, box-shadow .2s;
-}
-.nav-cta:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 20px rgba(244,243,239,.15);
-}
-.hamburger {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 4px;
-}
+.nav-cta { font-family: var(--sans); font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; background: var(--paper); color: #0e0f0d; padding: 10px 22px; border: none; cursor: pointer; border-radius: 4px; text-decoration: none; transition: transform .2s, box-shadow .2s; white-space: nowrap; }
+.nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 20px rgba(244,243,239,.15); }
+.hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
 .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--paper); }
+@media (max-width: 900px) { .nav-links, .nav-cta { display: none; } .hamburger { display: flex; } nav { padding: 0 20px; } }
+
+/* === MEGAMENU === */
+.mm-panel { position: fixed; top: 64px; left: 0; right: 0; background: rgba(10,11,9,.97); border-top: 1px solid rgba(255,255,255,.06); border-bottom: 1px solid rgba(255,255,255,.04); backdrop-filter: blur(24px) saturate(1.5); -webkit-backdrop-filter: blur(24px) saturate(1.5); box-shadow: 0 24px 80px rgba(0,0,0,.55); z-index: 290; opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(-6px); transition: opacity .2s ease, transform .2s ease, visibility .2s; }
+.mm-panel.open { opacity: 1; visibility: visible; pointer-events: auto; transform: translateY(0); }
+.mm-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 300px 1fr; gap: 0; min-height: 260px; }
+.mm-aside { padding: 32px 28px; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden; min-height: 260px; }
+.mm-aside-bg { position: absolute; inset: 0; background-size: cover; background-position: center; }
+.mm-aside-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(7,7,9,.92) 0%, rgba(7,7,9,.55) 50%, rgba(7,7,9,.35) 100%); }
+.mm-aside > *:not(.mm-aside-bg) { position: relative; z-index: 1; }
+.mm-aside-tag { font-family: var(--sans); font-size: 10px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #6fcf97; }
+.mm-aside-title { font-family: var(--serif); font-size: 21px; font-style: italic; color: var(--paper); line-height: 1.35; margin: 0; }
+.mm-aside-cta { display: inline-flex; align-items: center; gap: 5px; font-family: var(--sans); font-size: 11px; font-weight: 600; letter-spacing: .06em; color: rgba(255,255,255,.7); text-decoration: none; border-bottom: 1px solid rgba(255,255,255,.25); padding-bottom: 1px; width: fit-content; transition: color .2s, border-color .2s; }
+.mm-aside-cta:hover { color: var(--paper); border-color: rgba(255,255,255,.6); }
+.mm-vid-wrap { position: relative; border-radius: 10px; overflow: hidden; cursor: pointer; flex: 1; min-height: 0; }
+.mm-vid-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .3s ease; }
+.mm-vid-wrap:hover img { transform: scale(1.04); }
+.mm-vid-play { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,.35); transition: background .2s; }
+.mm-vid-wrap:hover .mm-vid-play { background: rgba(0,0,0,.5); }
+.mm-vid-play svg { width: 44px; height: 44px; filter: drop-shadow(0 2px 8px rgba(0,0,0,.5)); transition: transform .2s; }
+.mm-vid-wrap:hover .mm-vid-play svg { transform: scale(1.1); }
+.mm-vid-label { font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #6fcf97; margin-bottom: 8px; }
+.mm-vid-title { font-family: var(--sans); font-size: 13px; font-weight: 600; color: rgba(255,255,255,.85); line-height: 1.45; margin-bottom: 14px; }
+.mm-links { padding: 36px 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 0 48px; align-content: start; }
+.mm-links--single { grid-template-columns: 1fr; max-width: 420px; }
+.mm-col-label { font-family: var(--sans); font-size: 10px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.25); margin: 0 0 8px; grid-column: 1/-1; }
+.mm-link { display: flex; flex-direction: column; gap: 2px; padding: 11px 0; border-bottom: 1px solid rgba(255,255,255,.05); text-decoration: none; transition: padding-left .15s; }
+.mm-link:last-of-type { border-bottom: none; }
+.mm-link:hover { padding-left: 5px; }
+.mm-link strong { font-family: var(--sans); font-size: 13.5px; font-weight: 600; color: rgba(255,255,255,.8); transition: color .15s; }
+.mm-link span { font-size: 11.5px; color: rgba(255,255,255,.35); line-height: 1.45; transition: color .15s; }
+.mm-link:hover strong { color: var(--paper); }
+.mm-link:hover span { color: rgba(255,255,255,.6); }
 
 /* === MOBILE MENU === */
-.mob-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,.6);
-  z-index: 298;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity .3s;
-}
-.mob-overlay.open { opacity: 1; pointer-events: auto; }
-.mob-menu {
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 280px;
-  height: 100%;
-  background: var(--z1);
-  border-left: 1px solid var(--border-z2);
-  z-index: 299;
-  transform: translateX(100%);
-  transition: transform .4s var(--spring);
-  padding: 80px 24px 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
+.mob-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.6); z-index: 590; backdrop-filter: blur(4px); }
+.mob-overlay.open { display: block; }
+.mob-menu { position: fixed; inset: 0; width: 100%; height: 100%; background: #0a0a08; z-index: 600; display: flex; flex-direction: column; overflow-y: auto; transform: translateX(100%); transition: transform .35s cubic-bezier(.16,1,.3,1); }
 .mob-menu.open { transform: translateX(0); }
-.mob-menu a {
-  display: block;
-  font-size: 15px;
-  font-weight: 500;
-  color: rgba(255,255,255,.6);
-  padding: 12px 0;
-  border-bottom: 1px solid var(--border-z1);
-  transition: color .2s;
-}
-.mob-menu a:hover { color: var(--paper); }
-.mob-menu a.active { color: var(--paper); }
-.mob-menu-cta {
-  margin-top: auto;
-  display: block;
-  text-align: center;
-  background: var(--paper);
-  color: var(--ink);
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  padding: 14px 24px;
-}
+.mob-menu-header { display: flex; align-items: center; justify-content: space-between; padding: 20px 24px 18px; border-bottom: 1px solid rgba(255,255,255,.07); flex-shrink: 0; }
+.mob-menu-close { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.1); cursor: pointer; color: rgba(255,255,255,.7); transition: background .15s, color .15s; flex-shrink: 0; }
+.mob-menu-close:hover { background: rgba(255,255,255,.14); color: #fff; }
+.mob-menu > a { display: block; padding: 17px 24px; font-family: var(--sans); font-size: 15px; font-weight: 600; letter-spacing: .01em; text-transform: uppercase; color: rgba(255,255,255,.75); text-decoration: none; border-bottom: 1px solid rgba(255,255,255,.06); transition: color .15s; }
+.mob-menu > a:hover { color: #fff; }
+.mob-section { border-bottom: 1px solid rgba(255,255,255,.06); }
+.mob-section-btn { display: flex; justify-content: space-between; align-items: center; width: 100%; padding: 17px 24px; background: none; border: none; cursor: pointer; font-family: var(--sans); font-size: 15px; font-weight: 600; letter-spacing: .01em; text-transform: uppercase; color: rgba(255,255,255,.75); transition: color .15s; }
+.mob-section-btn:hover { color: #fff; }
+.mob-sub { max-height: 0; overflow: hidden; background: rgba(255,255,255,.02); transition: max-height .35s ease; }
+.mob-sub.open { max-height: 600px; }
+.mob-sub a { display: block; padding: 11px 24px 11px 38px; font-family: var(--sans); font-size: 13px; font-weight: 400; color: rgba(255,255,255,.45); text-decoration: none; border-bottom: 1px solid rgba(255,255,255,.04); transition: color .15s; }
+.mob-sub a:last-child { border-bottom: none; }
+.mob-sub a:hover { color: rgba(255,255,255,.85); }
+.mob-menu-ctas { display: flex; gap: 10px; margin: 20px 24px 0; }
+.mob-cta-wa, .mob-cta-contact { display: inline-flex; align-items: center; gap: 7px; padding: 10px 16px; font-family: var(--sans); font-size: 13px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; border-radius: 6px; text-decoration: none; transition: opacity .2s; white-space: nowrap; flex: 1; justify-content: center; }
+.mob-cta-wa { background: var(--green,#1a7a4a); color: #fff; }
+.mob-cta-wa:hover { opacity: .85; }
+.mob-cta-contact { background: rgba(255,255,255,.07); color: rgba(255,255,255,.7); border: 1px solid rgba(255,255,255,.12); }
+.mob-cta-contact:hover { background: rgba(255,255,255,.12); color: #fff; }
+.mob-menu-footer { margin-top: auto; padding: 24px; border-top: 1px solid rgba(255,255,255,.07); }
+.mob-footer-tagline { font-family: var(--serif); font-style: italic; font-size: 13px; color: rgba(255,255,255,.3); margin-bottom: 18px; line-height: 1.5; }
+.mob-contact-email { display: flex; align-items: center; gap: 7px; font-family: var(--sans); font-size: 13px; color: rgba(255,255,255,.55); text-decoration: none; margin-bottom: 4px; transition: color .15s; }
+.mob-contact-email:hover { color: rgba(255,255,255,.85); }
+.mob-footer-cnpj { font-size: 11px; color: rgba(255,255,255,.22); margin-bottom: 18px; padding-left: 22px; }
+.mob-socials { display: flex; gap: 10px; }
+.mob-soc-link { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: transparent; border: 1px solid rgba(255,255,255,.18); color: rgba(255,255,255,.55); transition: border-color .15s, color .15s, background .15s; }
+.mob-soc-link:hover { border-color: rgba(255,255,255,.4); color: #fff; background: rgba(255,255,255,.06); }
+
+/* === TAB ARROW NAV (mobile) === */
+.faq-tabs-wrap { position: relative; }
+.faq-tab-arrow { display: none; position: absolute; top: 50%; transform: translateY(-50%); z-index: 10; width: 32px; height: 32px; border-radius: 50%; background: rgba(14,15,13,.9); border: 1px solid rgba(255,255,255,.12); color: rgba(255,255,255,.7); cursor: pointer; align-items: center; justify-content: center; transition: background .15s, color .15s; }
+.faq-tab-arrow:hover { background: rgba(255,255,255,.1); color: #fff; }
+.faq-tab-arrow-prev { left: 4px; }
+.faq-tab-arrow-next { right: 4px; }
+@media (max-width: 700px) { .faq-tab-arrow { display: flex; } }
 
 /* === HERO === */
 .faq-hero {
@@ -982,88 +945,41 @@ nav.scrolled {
 }
 
 /* === FOOTER === */
-footer {
-  background: #0d0e0c;
-  border-top: 1px solid #111;
-  padding: 64px 40px 32px;
-}
-.foot-in { max-width: 1200px; margin: 0 auto; }
-.foot-top {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
-  gap: 48px;
-  margin-bottom: 64px;
-}
-.foot-brand {
-  font-family: var(--serif);
-  font-size: 22px;
-  font-style: italic;
-  color: var(--paper);
-  margin-bottom: 8px;
-}
-.foot-tag {
-  font-size: 14px;
-  font-weight: 300;
-  color: #4a4a44;
-  line-height: 1.7;
-  max-width: 220px;
-  margin-bottom: 32px;
-}
-.foot-live {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  color: #24251f;
-  border: 1px solid #1e1f1c;
-  padding: 4px 10px;
-  border-radius: 4px;
-}
-.foot-live::before {
-  content: '';
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: #1a7a4a;
-  animation: pulse 2.5s infinite;
-}
-.fcol-h {
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-  color: #4a4a44;
-  margin-bottom: 16px;
-}
+footer { background: #000; border-top: 1px solid #111; padding: 64px clamp(24px, 4vw, 80px) 32px; }
+.foot-in { max-width: 1100px; margin: 0 auto; }
+.foot-top { display: grid; grid-template-columns: 1.8fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 64px; }
+.foot-brand { font-family: var(--serif); font-size: 22px; font-style: italic; color: var(--paper); margin-bottom: 12px; }
+.foot-tag { font-size: 14px; font-weight: 300; color: #4a4a44; line-height: 1.7; max-width: 320px; margin-bottom: 0; }
+.fcol-h { font-size: 13px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--paper); margin-bottom: 16px; }
 .flinks { list-style: none; display: flex; flex-direction: column; gap: 10px; }
 .flinks a { font-size: 14px; font-weight: 300; color: #4a4a44; transition: color .2s; }
 .flinks a:hover { color: var(--paper); }
-.foot-bot {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: 32px;
-  border-top: 1px solid #111;
-  flex-wrap: wrap;
-  gap: 24px;
-}
-.foot-copy { font-size: 13px; color: #24251f; }
-.foot-socs { display: flex; gap: 24px; }
-.foot-socs a {
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  color: #24251f;
-  transition: color .2s;
-}
+.foot-socs { display: flex; gap: 20px; align-items: center; }
+.foot-socs a { display: flex; align-items: center; color: #3a3a34; transition: color .2s; }
+.foot-socs a svg { width: 18px; height: 18px; display: block; }
 .foot-socs a:hover { color: var(--paper); }
+.foot-bot { display: flex; flex-direction: column; padding-top: 32px; border-top: 1px solid #111; gap: 20px; }
+.foot-bot-row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
 .foot-legal { width: 100%; display: flex; gap: 24px; flex-wrap: wrap; margin-bottom: 8px; }
-.foot-legal a { font-size: 12px; color: #24251f; text-decoration: underline; text-underline-offset: 2px; transition: color .2s; }
+.foot-legal a { font-size: 12px; color: rgba(255,255,255,.45); text-decoration: underline; text-underline-offset: 2px; transition: color .2s; }
 .foot-legal a:hover { color: var(--paper); }
+.foot-disclaimer { font-size: 12px; color: rgba(255,255,255,.45); line-height: 1.7; padding-top: 16px; border-top: 1px solid rgba(255,255,255,.08); }
+.foot-col-legal-mobile { display: none; }
+.foot-copyright-mobile { display: none; }
+.foot-col-disclaimer-mobile { font-size: 11px; color: rgba(255,255,255,.3); line-height: 1.6; margin-top: 14px; }
+@media (max-width: 680px) {
+  footer { padding: 40px 20px 24px; }
+  .foot-top { grid-template-columns: 1fr 1fr !important; gap: 28px 20px !important; }
+  .foot-top > div:first-child { grid-column: 1 / -1 !important; }
+  .foot-top .foot-socs { display: none; }
+  .foot-tag { font-size: 13px; margin-bottom: 0; }
+  .fcol-h { font-size: 11px; margin-bottom: 10px; }
+  .flinks { gap: 8px; }
+  .flinks a { font-size: 13px; }
+  .foot-col-legal-mobile { display: block; }
+  .foot-bot { display: none; }
+  .foot-copyright-mobile { display: block; font-size: 10px; color: rgba(255,255,255,.25); line-height: 1.6; margin-top: 24px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,.07); text-align: center; }
+}
 
 /* === KEYFRAMES === */
 @keyframes up {
@@ -1149,36 +1065,207 @@ footer {
 <div class="reading-prog" id="readingProg" role="progressbar" aria-label="Progresso de leitura"></div>
 
 <!-- NAV -->
-<nav id="nav" role="navigation" aria-label="Navegacao principal">
-  <a href="home-maturare-final.html" class="logo">Maturare</a>
-  <ul class="nav-links">
-    <li><a href="home-maturare-final.html" class="nav-btn">Home</a></li>
-    <li><a href="metodologia.html" class="nav-btn">Metodologia</a></li>
-    <li><a href="projetos.html" class="nav-btn">Projetos</a></li>
-    <li><a href="blog.html" class="nav-btn">Blog</a></li>
-    <li><a href="contato.html" class="nav-btn">Contato</a></li>
-    <li><a href="#" class="nav-btn active">FAQ</a></li>
-  </ul>
-  <div class="nav-r">
-    <a href="contato.html" class="nav-cta">Fale Com Especialista</a>
-    <button class="hamburger" id="hambBtn" aria-label="Abrir menu de navegacao"><span></span><span></span><span></span></button>
+<nav id="nav" role="navigation" aria-label="Navegação principal">
+  <div class="nav-inner">
+    <a href="/" class="logo"><img src="../assets/maturare-logo-white.png" alt="Maturare" style="height:32px;width:auto;display:block;"></a>
+    <ul class="nav-links">
+      <li class="nav-item"><a href="/" class="nav-btn">Início</a></li>
+      <li class="nav-item" id="ni-sobre">
+        <button class="nav-btn" aria-haspopup="true" aria-expanded="false" aria-controls="mm-sobre">Sobre <svg class="nav-caret" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M2 3.5 5 6.5 8 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </li>
+      <li class="nav-item" id="ni-servicos">
+        <button class="nav-btn" aria-haspopup="true" aria-expanded="false" aria-controls="mm-servicos">Serviços <svg class="nav-caret" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M2 3.5 5 6.5 8 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </li>
+      <li class="nav-item" id="ni-blog">
+        <button class="nav-btn" aria-haspopup="true" aria-expanded="false" aria-controls="mm-blog">Blog <svg class="nav-caret" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M2 3.5 5 6.5 8 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </li>
+      <li class="nav-item" id="ni-academy">
+        <button class="nav-btn" aria-haspopup="true" aria-expanded="false" aria-controls="mm-academy">Academy <svg class="nav-caret" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M2 3.5 5 6.5 8 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </li>
+    </ul>
+    <div class="nav-r">
+      <a href="/analise-gratuita/" class="nav-cta">Diagnóstico Gratuito →</a>
+      <button class="hamburger" id="hambBtn" aria-label="Abrir menu de navegação" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
   </div>
 </nav>
 
+<!-- MEGAMENU: Sobre -->
+<div class="mm-panel" id="mm-sobre" role="region" aria-label="Menu Sobre">
+  <div class="mm-inner">
+    <div class="mm-aside">
+      <div class="mm-aside-bg" style="background-image:url('https://images.unsplash.com/photo-1642621859598-79bc9a87fd77?w=600&auto=format&fit=crop&q=80')"></div>
+      <div>
+        <p class="mm-aside-tag">A Maturare</p>
+        <p class="mm-aside-title">Não é sobre crescer rápido. É sobre crescer certo.</p>
+      </div>
+      <a href="/sobre/" class="mm-aside-cta">Conheça nossa história →</a>
+    </div>
+    <div class="mm-links mm-links--single">
+      <a href="/sobre/" class="mm-link"><strong>A Maturare</strong><span>Quem somos, o que acreditamos e por que fazemos o que fazemos</span></a>
+      <a href="/casos-de-sucesso/" class="mm-link"><strong>Casos de Sucesso</strong><span>Empresas reais que aparecem no Google e nas IAs hoje</span></a>
+      <a href="/cidades-atendidas/" class="mm-link"><strong>Cidades Atendidas</strong><span>Atuamos em todo o Brasil, com foco em negócios locais</span></a>
+      <a href="/faq-maturare/" class="mm-link"><strong>Perguntas Frequentes</strong><span>Tira as dúvidas mais comuns antes de conversar com a gente</span></a>
+    </div>
+  </div>
+</div>
+
+<!-- MEGAMENU: Serviços -->
+<div class="mm-panel" id="mm-servicos" role="region" aria-label="Menu Serviços">
+  <div class="mm-inner">
+    <div class="mm-aside" style="gap:16px;">
+      <p class="mm-vid-label">Destaque</p>
+      <div class="mm-vid-wrap" onclick="openVidModal('malcB_gQ6n8')">
+        <img src="https://img.youtube.com/vi/malcB_gQ6n8/maxresdefault.jpg" alt="Como a Move Máquinas dominou o Google em 63 cidades">
+        <div class="mm-vid-play">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="12" fill="rgba(255,255,255,0.15)"/><polygon points="10,8 17,12 10,16" fill="white"/></svg>
+        </div>
+      </div>
+      <p class="mm-vid-title">Como a Move Máquinas ficou em 1º no Google em mais de 20 cidades sem pagar anúncio</p>
+      <a href="#" onclick="openVidModal('malcB_gQ6n8');return false;" class="mm-aside-cta">Assistir agora →</a>
+    </div>
+    <div class="mm-links" style="grid-template-columns:1fr 1fr;">
+      <p class="mm-col-label" style="grid-column:1/-1;">O que fazemos</p>
+      <a href="/agencia-seo/" class="mm-link"><strong>Agência SEO</strong><span>Posicionamento orgânico sustentável no Google</span></a>
+      <a href="/agencia-geo-aeo/" class="mm-link"><strong>Agência GEO &amp; AEO</strong><span>Sua marca recomendada pelas IAs</span></a>
+      <a href="/consultoria-de-seo/" class="mm-link"><strong>Consultoria SEO</strong><span>Diagnóstico e estratégia para crescimento</span></a>
+      <a href="/criacao-de-sites/" class="mm-link"><strong>Criação de Sites</strong><span>Sites rápidos, semânticos e que convertem</span></a>
+      <a href="/seo-para-negocios-locais/" class="mm-link"><strong>SEO Local</strong><span>Dominar sua cidade no Google Maps e busca orgânica</span></a>
+      <a href="/analise-gratuita/" class="mm-link" style="color:var(--green,#1a7a4a);"><strong>→ Diagnóstico Gratuito</strong><span>Análise completa do seu site sem custo</span></a>
+    </div>
+  </div>
+</div>
+
+<!-- MEGAMENU: Blog -->
+<div class="mm-panel" id="mm-blog" role="region" aria-label="Menu Blog">
+  <div class="mm-inner">
+    <div class="mm-aside">
+      <div class="mm-aside-bg" style="background-image:url('https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=600&auto=format&fit=crop&q=80')"></div>
+      <div>
+        <p class="mm-aside-tag">Conteúdo</p>
+        <p class="mm-aside-title">SEO, GEO e IA para quem quer resultados reais.</p>
+      </div>
+      <a href="/blog/" class="mm-aside-cta">Ver todos os artigos →</a>
+    </div>
+    <div class="mm-links mm-links--single">
+      <a href="/blog/como-ranquear-no-chatgpt/" class="mm-link"><strong>Como Ranquear no ChatGPT</strong><span>Estratégias GEO para aparecer nas respostas da IA</span></a>
+      <a href="/blog/seo-local-em-2026/" class="mm-link"><strong>SEO Local em 2026</strong><span>O que mudou e como dominar sua cidade</span></a>
+      <a href="/blog/o-que-e-geo/" class="mm-link"><strong>GEO: o Novo SEO</strong><span>Entenda a evolução da busca orgânica</span></a>
+      <a href="/glossario/" class="mm-link"><strong>Glossário de SEO e IA</strong><span>108+ termos explicados em português</span></a>
+    </div>
+  </div>
+</div>
+
+<!-- MEGAMENU: Academy -->
+<div class="mm-panel" id="mm-academy" role="region" aria-label="Menu Academy">
+  <div class="mm-inner">
+    <div class="mm-aside">
+      <div class="mm-aside-bg" style="background-image:url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&auto=format&fit=crop&q=80')"></div>
+      <div>
+        <p class="mm-aside-tag">Educação</p>
+        <p class="mm-aside-title">Aprenda SEO com quem faz na prática.</p>
+      </div>
+      <a href="/academy/" class="mm-aside-cta">Ver cursos →</a>
+    </div>
+    <div class="mm-links mm-links--single">
+      <a href="/academy/google-meu-negocio/" class="mm-link"><strong>Curso Google Meu Negócio</strong><span>Como otimizar seu perfil e atrair clientes locais</span></a>
+    </div>
+  </div>
+</div>
+
 <!-- MOBILE MENU -->
 <div class="mob-overlay" id="mobOverlay"></div>
-<div class="mob-menu" id="mobMenu" role="dialog" aria-label="Menu mobile">
-  <a href="home-maturare-final.html">Home</a>
-  <a href="sobre.html">Sobre</a>
-  <a href="metodologia.html">Metodologia</a>
-  <a href="projetos.html">Projetos</a>
-  <a href="blog.html">Blog</a>
-  <a href="daniel-rios.html">Daniel Rios</a>
-  <a href="nossos-clientes.html">Clientes</a>
-  <a href="depoimentos.html">Depoimentos</a>
-  <a href="#" class="active">FAQ</a>
-  <a href="contato.html" class="mob-menu-cta">Fale Com Especialista</a>
+<div class="mob-menu" id="mobMenu" role="dialog" aria-label="Menu mobile" aria-modal="true">
+
+  <div class="mob-menu-header">
+    <img src="../assets/maturare-logo-white.png" alt="Maturare" style="height:26px;width:auto;">
+    <button class="mob-menu-close" id="mobCloseBtn" aria-label="Fechar menu">
+      <svg viewBox="0 0 24 24" fill="none" width="16" height="16"><path d="M6 6l12 12M6 18L18 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+
+  <a href="/">Início</a>
+
+  <div class="mob-section">
+    <button class="mob-section-btn" id="mobSobreBtn">Sobre <svg viewBox="0 0 10 10" fill="none" width="10" height="10" style="transition:transform .2s"><path d="M2 3.5 5 6.5 8 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <div class="mob-sub" id="mobSobreSub">
+      <a href="/sobre/">A Maturare</a>
+      <a href="/casos-de-sucesso/">Casos de Sucesso</a>
+      <a href="/cidades-atendidas/">Cidades Atendidas</a>
+      <a href="/faq-maturare/">Perguntas Frequentes</a>
+    </div>
+  </div>
+
+  <div class="mob-section">
+    <button class="mob-section-btn" id="mobServBtn">Serviços <svg viewBox="0 0 10 10" fill="none" width="10" height="10" style="transition:transform .2s"><path d="M2 3.5 5 6.5 8 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <div class="mob-sub" id="mobServSub">
+      <a href="/agencia-seo/">Agência SEO</a>
+      <a href="/consultoria-de-seo/">Consultor SEO</a>
+      <a href="/criacao-de-sites/">Criação de Site</a>
+      <a href="/seo-para-b2b/">SEO para B2B</a>
+      <a href="/seo-para-negocios-locais/">SEO para Negócios Locais</a>
+      <a href="/seo-para-saas/">SEO para SaaS</a>
+      <a href="/seo-para-contadores/">SEO para Contadores</a>
+      <a href="/seo-para-clinicas/">SEO para Clínicas</a>
+    </div>
+  </div>
+
+  <div class="mob-section">
+    <button class="mob-section-btn" id="mobBlogBtn">Blog <svg viewBox="0 0 10 10" fill="none" width="10" height="10" style="transition:transform .2s"><path d="M2 3.5 5 6.5 8 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <div class="mob-sub" id="mobBlogSub">
+      <a href="/blog/como-ranquear-no-chatgpt/">Como Ranquear no ChatGPT</a>
+      <a href="/blog/seo-local-em-2026/">SEO Local em 2026</a>
+      <a href="/blog/o-que-e-geo/">O que é GEO</a>
+      <a href="/glossario/" style="color:var(--green2,#6fcf97)">Glossário de SEO →</a>
+      <a href="/blog/">Ver todos →</a>
+    </div>
+  </div>
+
+  <div class="mob-section">
+    <button class="mob-section-btn" id="mobAcadBtn">Academy <svg viewBox="0 0 10 10" fill="none" width="10" height="10" style="transition:transform .2s"><path d="M2 3.5 5 6.5 8 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <div class="mob-sub" id="mobAcadSub">
+      <a href="/academy/">Maturare Academy</a>
+      <a href="/academy/google-meu-negocio/">Curso Google Meu Negócio</a>
+    </div>
+  </div>
+
+  <div class="mob-menu-ctas">
+    <a href="https://wa.me/5521990770731" target="_blank" class="mob-cta-wa">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+      WhatsApp
+    </a>
+    <a href="/analise-gratuita/" class="mob-cta-contact">Diagnóstico Gratuito →</a>
+  </div>
+
+  <div class="mob-menu-footer">
+    <p class="mob-footer-tagline">Presença orgânica real, sem depender de anúncio.</p>
+    <a href="mailto:contato@maturare.com.br" class="mob-contact-email">
+      <svg viewBox="0 0 24 24" fill="none" width="14" height="14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+      contato@maturare.com.br
+    </a>
+    <p class="mob-footer-cnpj">CNPJ 47.336.340/0001-51</p>
+    <div class="mob-socials">
+      <a href="https://www.instagram.com/maturare.com.br/" target="_blank" class="mob-soc-link" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+      </a>
+      <a href="https://br.linkedin.com/in/daniel-batista-674b62140" target="_blank" class="mob-soc-link" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+      <a href="https://www.youtube.com/@googledominado1" target="_blank" class="mob-soc-link" aria-label="YouTube">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+      </a>
+    </div>
+  </div>
+
 </div>
+
+<!-- BREADCRUMB -->
+<nav class="breadcrumb-nav" aria-label="Trilha de navegação">
+  <ol>
+    <li><a href="/">Maturare</a></li>
+    <li aria-current="page">FAQ</li>
+  </ol>
+</nav>
 
 <!-- HERO (dark) -->
 <section class="faq-hero noise" aria-labelledby="faq-h1">
@@ -1205,6 +1292,8 @@ footer {
 </section>
 
 <!-- TABS (dark, sticky) -->
+<div class="faq-tabs-wrap">
+<button class="faq-tab-arrow faq-tab-arrow-prev" aria-label="Rolar categorias para a esquerda">&#8592;</button>
 <div class="faq-tabs" id="faqTabs" role="tablist" aria-label="Filtrar por categoria">
   <button class="faq-tab active" data-cat="all" role="tab" aria-selected="true" style="--tab-color:#e0e0e0">Todas <span class="faq-tab-count" data-count="all">26</span></button>
   <button class="faq-tab" data-cat="sobre" role="tab" aria-selected="false" style="--tab-color:#6fcf97">Sobre a Maturare <span class="faq-tab-count" data-count="sobre">5</span></button>
@@ -1214,13 +1303,15 @@ footer {
   <button class="faq-tab" data-cat="precos" role="tab" aria-selected="false" style="--tab-color:#c4a054">Precos <span class="faq-tab-count" data-count="precos">3</span></button>
   <button class="faq-tab" data-cat="processo" role="tab" aria-selected="false" style="--tab-color:#e06b8f">Processo <span class="faq-tab-count" data-count="processo">5</span></button>
 </div>
+<button class="faq-tab-arrow faq-tab-arrow-next" aria-label="Rolar categorias para a direita">&#8594;</button>
+</div>
 
 <!-- MAIN CONTENT (light bg) -->
 <main class="faq-main" id="faq-content" itemscope itemtype="https://schema.org/FAQPage">
 
   <!-- E-E-A-T: Author attribution -->
   <div class="container" style="max-width:1200px;margin:0 auto 24px;padding:0 24px;">
-    <p style="font-size:13px;color:var(--dim);text-align:center;">Respostas por <strong><a href="daniel-rios.html" style="color:var(--green);text-decoration:underline;text-underline-offset:2px;">Daniel Rios</a></strong>, fundador da <a href="sobre.html" style="color:var(--green);text-decoration:underline;text-underline-offset:2px;">Maturare</a> &mdash; ex-goleiro profissional, especialista em SEO e GEO desde 2022, Niteroi/RJ.</p>
+    <p style="font-size:13px;color:var(--dim);text-align:center;">Respostas por <strong><a href="/daniel-batista-rios/" style="color:var(--green);text-decoration:underline;text-underline-offset:2px;">Daniel Rios</a></strong>, fundador da <a href="/sobre/" style="color:var(--green);text-decoration:underline;text-underline-offset:2px;">Maturare</a> &mdash; ex-goleiro profissional, especialista em SEO e GEO desde 2022, Niteroi/RJ.</p>
   </div>
 
   <div class="faq-chips-wrap">
@@ -1243,9 +1334,9 @@ footer {
             </summary>
             <div class="faq-answer-inline" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
               <div itemprop="text">
-                <p><strong>Maturare significa maturidade &mdash; estar pronto para a colheita.</strong> A Maturare, fundada em 2022 em Niteroi, RJ, por <a href="daniel-rios.html" class="answer-link">Daniel Rios</a>, leva maturidade digital para empresarios, preparando o terreno para que os resultados venham de forma consistente e duradoura.</p>
+                <p><strong>Maturare significa maturidade &mdash; estar pronto para a colheita.</strong> A Maturare, fundada em 2022 em Niteroi, RJ, por <a href="/daniel-batista-rios/" class="answer-link">Daniel Rios</a>, leva maturidade digital para empresarios, preparando o terreno para que os resultados venham de forma consistente e duradoura.</p>
                 <p>Acreditamos que toda empresa tem uma colheita para fazer, mas precisa estar madura. Somos pautados em cinco pilares: <strong>Pessoas, Cultura, Gestao, Marketing e Vendas</strong>. Investimos no desenvolvimento humano e profissional porque acreditamos no poder que ha dentro das pessoas.</p>
-                <p class="faq-author-byline">Respondido por <a href="daniel-rios.html">Daniel Rios</a>, fundador da Maturare.</p>
+                <p class="faq-author-byline">Respondido por <a href="/daniel-batista-rios/">Daniel Rios</a>, fundador da Maturare.</p>
               </div>
             </div>
           </details>
@@ -1260,8 +1351,8 @@ footer {
             <div class="faq-answer-inline" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
               <div itemprop="text">
                 <p><strong>Sim, a Maturare Academy e o braco educacional da Maturare, com cursos praticos de SEO e IA.</strong> Mais de 300 profissionais ja passaram pela Academy.</p>
-                <p>Oferecemos o Curso de SEO e IA (do zero ao avancado) e a Comunidade Maturare (networking + conteudo semanal). Tudo ensinado por <a href="daniel-rios.html" class="answer-link">Daniel Rios</a>, fundador da Maturare, com a mesma metodologia aplicada nos clientes. <a href="academy.html" class="answer-link">Conheca a Maturare Academy &rarr;</a></p>
-                <p class="faq-author-byline">Respondido por <a href="daniel-rios.html">Daniel Rios</a>, fundador da Maturare.</p>
+                <p>Oferecemos o Curso de SEO e IA (do zero ao avancado) e a Comunidade Maturare (networking + conteudo semanal). Tudo ensinado por <a href="/daniel-batista-rios/" class="answer-link">Daniel Rios</a>, fundador da Maturare, com a mesma metodologia aplicada nos clientes. <a href="/academy/" class="answer-link">Conheca a Maturare Academy &rarr;</a></p>
+                <p class="faq-author-byline">Respondido por <a href="/daniel-batista-rios/">Daniel Rios</a>, fundador da Maturare.</p>
               </div>
             </div>
           </details>
@@ -1276,8 +1367,8 @@ footer {
             <div class="faq-answer-inline" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
               <div itemprop="text">
                 <p><strong>A Maturare oferece 5 servicos: Criacao de Sites SEO, Consultoria de SEO, Google Meu Negocio, Servico Mensal de Posicionamento (Arquitetura Digital) e Maturare Academy.</strong></p>
-                <p>O carro-chefe e o Servico Mensal de Posicionamento e Conteudo (Arquitetura Digital), que combina SEO e GEO. Nao fazemos gestao de redes sociais, e-commerce ou trafego pago. <a href="metodologia.html" class="answer-link">Conheca o Metodo Maturare &rarr;</a></p>
-                <p class="faq-author-byline">Respondido por <a href="daniel-rios.html">Daniel Rios</a>, fundador da Maturare.</p>
+                <p>O carro-chefe e o Servico Mensal de Posicionamento e Conteudo (Arquitetura Digital), que combina SEO e GEO. Nao fazemos gestao de redes sociais, e-commerce ou trafego pago. <a href="/metodologia/" class="answer-link">Conheca o Metodo Maturare &rarr;</a></p>
+                <p class="faq-author-byline">Respondido por <a href="/daniel-batista-rios/">Daniel Rios</a>, fundador da Maturare.</p>
               </div>
             </div>
           </details>
@@ -1292,8 +1383,8 @@ footer {
             <div class="faq-answer-inline" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
               <div itemprop="text">
                 <p><strong>A Maturare e uma das poucas agencias no Brasil que combina SEO tradicional com GEO (Generative Engine Optimization).</strong> Enquanto agencias tradicionais focam apenas no Google, a Maturare posiciona sua empresa no Google E nas 5 IAs generativas &mdash; ChatGPT, Perplexity, Gemini, Claude e Copilot.</p>
-                <p>Alem disso, <strong><a href="daniel-rios.html" class="answer-link">Daniel Rios</a> (fundador, ex-goleiro profissional) participa pessoalmente de cada projeto</strong>. Voce nao e atendido por estagiario. <a href="sobre.html" class="answer-link">Conheca a Maturare &rarr;</a></p>
-                <p class="faq-author-byline">Respondido por <a href="daniel-rios.html">Daniel Rios</a>, fundador da Maturare.</p>
+                <p>Alem disso, <strong><a href="/daniel-batista-rios/" class="answer-link">Daniel Rios</a> (fundador, ex-goleiro profissional) participa pessoalmente de cada projeto</strong>. Voce nao e atendido por estagiario. <a href="/sobre/" class="answer-link">Conheca a Maturare &rarr;</a></p>
+                <p class="faq-author-byline">Respondido por <a href="/daniel-batista-rios/">Daniel Rios</a>, fundador da Maturare.</p>
               </div>
             </div>
           </details>
@@ -1308,8 +1399,8 @@ footer {
             <div class="faq-answer-inline" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
               <div itemprop="text">
                 <p><strong>Os 5 Pilares da Maturare sao: Pessoas, Cultura, Gestao, Marketing e Vendas.</strong> Acreditamos que uma empresa so cresce de verdade quando esses cinco elementos estao maduros.</p>
-                <p>O marketing (SEO, GEO) e o pilar que a Maturare executa diretamente, mas nosso trabalho impacta todos os outros &mdash; porque quando sua empresa e encontrada pelas pessoas certas, tudo muda. <a href="metodologia.html" class="answer-link">Conheca a metodologia &rarr;</a></p>
-                <p class="faq-author-byline">Respondido por <a href="daniel-rios.html">Daniel Rios</a>, fundador da Maturare.</p>
+                <p>O marketing (SEO, GEO) e o pilar que a Maturare executa diretamente, mas nosso trabalho impacta todos os outros &mdash; porque quando sua empresa e encontrada pelas pessoas certas, tudo muda. <a href="/metodologia/" class="answer-link">Conheca a metodologia &rarr;</a></p>
+                <p class="faq-author-byline">Respondido por <a href="/daniel-batista-rios/">Daniel Rios</a>, fundador da Maturare.</p>
               </div>
             </div>
           </details>
@@ -1337,7 +1428,7 @@ footer {
             <div class="faq-answer-inline" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
               <div itemprop="text">
                 <p><strong>SEO (Search Engine Optimization) e o conjunto de estrategias para fazer seu site aparecer nos primeiros resultados do Google sem pagar por anuncios.</strong></p>
-                <p>Quando alguem pesquisa &ldquo;dentista em Copacabana&rdquo; ou &ldquo;limpeza de sofa na Barra&rdquo;, o SEO e o que define quem aparece primeiro. A Maturare usa SEO tecnico, conteudo estrategico e otimizacao continua para posicionar negocios locais. <a href="metodologia.html" class="answer-link">Veja como funciona o Metodo Maturare &rarr;</a></p>
+                <p>Quando alguem pesquisa &ldquo;dentista em Copacabana&rdquo; ou &ldquo;limpeza de sofa na Barra&rdquo;, o SEO e o que define quem aparece primeiro. A Maturare usa SEO tecnico, conteudo estrategico e otimizacao continua para posicionar negocios locais. <a href="/metodologia/" class="answer-link">Veja como funciona o Metodo Maturare &rarr;</a></p>
               </div>
             </div>
           </details>
@@ -1352,7 +1443,7 @@ footer {
             <div class="faq-answer-inline" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
               <div itemprop="text">
                 <p><strong>Os primeiros sinais de SEO aparecem entre 30 e 90 dias; resultados consistentes vem entre 3 e 6 meses.</strong></p>
-                <p>Nos primeiros 30-90 dias voce vera indexacao de paginas e aumento de impressoes. A diferenca do SEO para ads: <strong>o resultado do SEO acumula</strong>. Uma pagina bem posicionada gera contatos por 2 a 4 anos. <a href="projetos.html" class="answer-link">Veja resultados reais dos nossos projetos &rarr;</a></p>
+                <p>Nos primeiros 30-90 dias voce vera indexacao de paginas e aumento de impressoes. A diferenca do SEO para ads: <strong>o resultado do SEO acumula</strong>. Uma pagina bem posicionada gera contatos por 2 a 4 anos. <a href="/projetos-realizados/" class="answer-link">Veja resultados reais dos nossos projetos &rarr;</a></p>
               </div>
             </div>
           </details>
@@ -1382,7 +1473,7 @@ footer {
             <div class="faq-answer-inline" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
               <div itemprop="text">
                 <p><strong>Design nao e SEO &mdash; um site pode ser visualmente impecavel e completamente invisivel para o Google.</strong></p>
-                <p>O que faz um site aparecer e: arquitetura tecnica correta, conteudo otimizado para as buscas do seu publico, dados estruturados (Schema), velocidade de carregamento e autoridade digital. A Maturare constroi sites que sao bonitos E aparecem. <a href="projetos.html" class="answer-link">Veja nossos projetos &rarr;</a></p>
+                <p>O que faz um site aparecer e: arquitetura tecnica correta, conteudo otimizado para as buscas do seu publico, dados estruturados (Schema), velocidade de carregamento e autoridade digital. A Maturare constroi sites que sao bonitos E aparecem. <a href="/projetos-realizados/" class="answer-link">Veja nossos projetos &rarr;</a></p>
               </div>
             </div>
           </details>
@@ -1397,7 +1488,7 @@ footer {
             <div class="faq-answer-inline" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
               <div itemprop="text">
                 <p><strong>Google Meu Negocio e a ficha da sua empresa no Google Maps e nas buscas locais &mdash; uma das ferramentas mais poderosas para negocios locais.</strong></p>
-                <p>Quando alguem pesquisa &ldquo;perto de mim&rdquo;, e o GMB que define quem aparece. A maioria dos empresarios nao usa nem 30% do potencial. A Maturare configura e otimiza sua ficha para que voce apareca quando o cliente pesquisar seu servico na sua cidade. <a href="contato.html" class="answer-link">Peca um diagnostico gratuito &rarr;</a></p>
+                <p>Quando alguem pesquisa &ldquo;perto de mim&rdquo;, e o GMB que define quem aparece. A maioria dos empresarios nao usa nem 30% do potencial. A Maturare configura e otimiza sua ficha para que voce apareca quando o cliente pesquisar seu servico na sua cidade. <a href="/contato/" class="answer-link">Peca um diagnostico gratuito &rarr;</a></p>
               </div>
             </div>
           </details>
@@ -1425,7 +1516,7 @@ footer {
             <div class="faq-answer-inline" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
               <div itemprop="text">
                 <p><strong>GEO (Generative Engine Optimization) e a otimizacao para IAs generativas &mdash; o trabalho de fazer as IAs como ChatGPT, Perplexity e Gemini recomendarem sua empresa.</strong></p>
-                <p>Quando alguem pergunta ao ChatGPT &ldquo;me recomende uma empresa de limpeza em Copacabana&rdquo;, a IA analisa a internet e recomenda quem tem mais autoridade digital. GEO e o trabalho de construir essa autoridade. A Maturare e especializada em GEO para negocios locais e monitora 5 IAs: ChatGPT, Perplexity, Gemini, Claude e Copilot. <a href="sobre.html" class="answer-link">Conheca a Maturare &rarr;</a></p>
+                <p>Quando alguem pergunta ao ChatGPT &ldquo;me recomende uma empresa de limpeza em Copacabana&rdquo;, a IA analisa a internet e recomenda quem tem mais autoridade digital. GEO e o trabalho de construir essa autoridade. A Maturare e especializada em GEO para negocios locais e monitora 5 IAs: ChatGPT, Perplexity, Gemini, Claude e Copilot. <a href="/sobre/" class="answer-link">Conheca a Maturare &rarr;</a></p>
               </div>
             </div>
           </details>
@@ -1440,7 +1531,7 @@ footer {
             <div class="faq-answer-inline" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
               <div itemprop="text">
                 <p><strong>Sim, as IAs generativas (ChatGPT, Perplexity, Gemini) ja recomendam empresas locais quando o usuario pergunta.</strong></p>
-                <p>Exemplo real: o Perplexity ja recomenda o <strong>PHD Playground</strong> (cliente Maturare) como referencia em playground no Rio de Janeiro. Isso acontece porque a Maturare construiu autoridade digital suficiente para que as IAs reconhecam a empresa. <a href="projetos.html" class="answer-link">Veja os projetos da Maturare &rarr;</a></p>
+                <p>Exemplo real: o Perplexity ja recomenda o <strong>PHD Playground</strong> (cliente Maturare) como referencia em playground no Rio de Janeiro. Isso acontece porque a Maturare construiu autoridade digital suficiente para que as IAs reconhecam a empresa. <a href="/projetos-realizados/" class="answer-link">Veja os projetos da Maturare &rarr;</a></p>
               </div>
             </div>
           </details>
@@ -1455,7 +1546,7 @@ footer {
             <div class="faq-answer-inline" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
               <div itemprop="text">
                 <p><strong>A Maturare monitora 5 IAs generativas: ChatGPT (OpenAI), Perplexity, Gemini (Google), Claude (Anthropic) e Copilot (Microsoft).</strong></p>
-                <p>Nenhuma outra agencia no Brasil faz esse monitoramento de forma sistematica para negocios locais. Esse diferencial permite que a Maturare posicione sua empresa nao apenas no Google, mas tambem nas IAs que ja estao substituindo buscas tradicionais. <a href="sobre.html" class="answer-link">Conheca o diferencial da Maturare &rarr;</a></p>
+                <p>Nenhuma outra agencia no Brasil faz esse monitoramento de forma sistematica para negocios locais. Esse diferencial permite que a Maturare posicione sua empresa nao apenas no Google, mas tambem nas IAs que ja estao substituindo buscas tradicionais. <a href="/sobre/" class="answer-link">Conheca o diferencial da Maturare &rarr;</a></p>
               </div>
             </div>
           </details>
@@ -1470,7 +1561,7 @@ footer {
             <div class="faq-answer-inline" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
               <div itemprop="text">
                 <p><strong>Seu concorrente aparece nas IAs porque tem mais autoridade digital &mdash; mais conteudo indexado, mais mencoes, dados estruturados corretos e presenca consistente.</strong></p>
-                <p>As IAs nao recomendam quem paga mais. Recomendam quem construiu autoridade. A boa noticia: <strong>isso e construivel</strong>. E exatamente o que a Maturare faz com GEO (Generative Engine Optimization) para negocios locais. <a href="contato.html" class="answer-link">Peca um diagnostico gratuito &rarr;</a></p>
+                <p>As IAs nao recomendam quem paga mais. Recomendam quem construiu autoridade. A boa noticia: <strong>isso e construivel</strong>. E exatamente o que a Maturare faz com GEO (Generative Engine Optimization) para negocios locais. <a href="/contato/" class="answer-link">Peca um diagnostico gratuito &rarr;</a></p>
               </div>
             </div>
           </details>
@@ -1498,7 +1589,7 @@ footer {
             <div class="faq-answer-inline" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
               <div itemprop="text">
                 <p><strong>O servico mensal da Maturare (Arquitetura Digital), a partir de R$3.000/mes, inclui: criacao de paginas estrategicas, conteudo otimizado, monitoramento no Google e nas 5 IAs, otimizacao de Google Meu Negocio, relatorio mensal e suporte direto com Daniel Rios.</strong></p>
-                <p>E o carro-chefe da Maturare. Cada projeto e personalizado para o nicho e a cidade do cliente. <a href="metodologia.html" class="answer-link">Conheca o Metodo Maturare &rarr;</a></p>
+                <p>E o carro-chefe da Maturare. Cada projeto e personalizado para o nicho e a cidade do cliente. <a href="/metodologia/" class="answer-link">Conheca o Metodo Maturare &rarr;</a></p>
               </div>
             </div>
           </details>
@@ -1513,7 +1604,7 @@ footer {
             <div class="faq-answer-inline" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
               <div itemprop="text">
                 <p><strong>Sim, a Maturare cria sites do zero, ja otimizados para SEO desde a arquitetura, a partir de R$3.000.</strong></p>
-                <p>Nao e site bonito que ninguem encontra &mdash; e site construido para ranquear no Google e gerar contatos organicos. Cada site inclui dados estruturados (Schema), velocidade otimizada e arquitetura pensada para SEO e GEO. <a href="projetos.html" class="answer-link">Veja sites criados pela Maturare &rarr;</a></p>
+                <p>Nao e site bonito que ninguem encontra &mdash; e site construido para ranquear no Google e gerar contatos organicos. Cada site inclui dados estruturados (Schema), velocidade otimizada e arquitetura pensada para SEO e GEO. <a href="/projetos-realizados/" class="answer-link">Veja sites criados pela Maturare &rarr;</a></p>
               </div>
             </div>
           </details>
@@ -1528,7 +1619,7 @@ footer {
             <div class="faq-answer-inline" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
               <div itemprop="text">
                 <p><strong>Sim, a Maturare cria e otimiza fichas do Google Meu Negocio como servico individual (a partir de R$500) ou como parte do pacote mensal.</strong></p>
-                <p>Inclui <strong>fotos, descricao otimizada, categorias corretas, posts e estrategia de avaliacoes</strong>. O GMB e uma das ferramentas mais poderosas para negocios locais aparecerem no Google Maps. <a href="contato.html" class="answer-link">Solicite otimizacao do seu GMB &rarr;</a></p>
+                <p>Inclui <strong>fotos, descricao otimizada, categorias corretas, posts e estrategia de avaliacoes</strong>. O GMB e uma das ferramentas mais poderosas para negocios locais aparecerem no Google Maps. <a href="/contato/" class="answer-link">Solicite otimizacao do seu GMB &rarr;</a></p>
               </div>
             </div>
           </details>
@@ -1543,7 +1634,7 @@ footer {
             <div class="faq-answer-inline" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
               <div itemprop="text">
                 <p><strong>Nao. A Maturare e especializada exclusivamente em posicionamento organico (SEO e GEO), nao em trafego pago.</strong></p>
-                <p>Acreditamos que o caminho mais sustentavel para negocios locais e construir ativos digitais que geram demanda sem depender de anuncios que ficam mais caros todo mes. Se voce precisa de resultado imediato, ads pode complementar &mdash; mas o SEO e o que constroi o <strong>ativo de longo prazo</strong>. <a href="metodologia.html" class="answer-link">Entenda a metodologia &rarr;</a></p>
+                <p>Acreditamos que o caminho mais sustentavel para negocios locais e construir ativos digitais que geram demanda sem depender de anuncios que ficam mais caros todo mes. Se voce precisa de resultado imediato, ads pode complementar &mdash; mas o SEO e o que constroi o <strong>ativo de longo prazo</strong>. <a href="/metodologia/" class="answer-link">Entenda a metodologia &rarr;</a></p>
               </div>
             </div>
           </details>
@@ -1571,7 +1662,7 @@ footer {
             <div class="faq-answer-inline" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
               <div itemprop="text">
                 <p><strong>O servico mensal de SEO da Maturare (Arquitetura Digital) comeca a partir de R$3.000/mes.</strong></p>
-                <p>O valor varia conforme o escopo: numero de paginas, nivel de concorrencia do nicho e abrangencia geografica. Projetos pontuais (site, GMB) tem valores diferentes. A Maturare faz um <strong>diagnostico gratuito</strong> antes de qualquer proposta &mdash; sem compromisso. <a href="contato.html" class="answer-link">Peca seu diagnostico gratuito &rarr;</a></p>
+                <p>O valor varia conforme o escopo: numero de paginas, nivel de concorrencia do nicho e abrangencia geografica. Projetos pontuais (site, GMB) tem valores diferentes. A Maturare faz um <strong>diagnostico gratuito</strong> antes de qualquer proposta &mdash; sem compromisso. <a href="/contato/" class="answer-link">Peca seu diagnostico gratuito &rarr;</a></p>
               </div>
             </div>
           </details>
@@ -1586,7 +1677,7 @@ footer {
             <div class="faq-answer-inline" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
               <div itemprop="text">
                 <p><strong>O servico mensal da Maturare opera com contrato de 6 ou 12 meses, porque SEO e construcao e nao magia.</strong></p>
-                <p>Resultados consistentes levam tempo para consolidar. Mas nao prendemos ninguem: se em 90 dias voce nao estiver satisfeito com a evolucao, conversamos abertamente. <a href="contato.html" class="answer-link">Fale com a Maturare &rarr;</a></p>
+                <p>Resultados consistentes levam tempo para consolidar. Mas nao prendemos ninguem: se em 90 dias voce nao estiver satisfeito com a evolucao, conversamos abertamente. <a href="/contato/" class="answer-link">Fale com a Maturare &rarr;</a></p>
               </div>
             </div>
           </details>
@@ -1601,7 +1692,7 @@ footer {
             <div class="faq-answer-inline" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
               <div itemprop="text">
                 <p><strong>O investimento minimo na Maturare e: Google Meu Negocio a partir de R$500, criacao de site SEO a partir de R$3.000, e servico mensal (Arquitetura Digital) a partir de R$3.000/mes.</strong></p>
-                <p><strong>Maturare Academy:</strong> consulte valores em <a href="academy.html" class="answer-link">Maturare Academy</a>. O melhor caminho e pedir um diagnostico gratuito e entender o que faz sentido para o seu negocio. <a href="contato.html" class="answer-link">Fale conosco &rarr;</a></p>
+                <p><strong>Maturare Academy:</strong> consulte valores em <a href="/academy/" class="answer-link">Maturare Academy</a>. O melhor caminho e pedir um diagnostico gratuito e entender o que faz sentido para o seu negocio. <a href="/contato/" class="answer-link">Fale conosco &rarr;</a></p>
               </div>
             </div>
           </details>
@@ -1629,7 +1720,7 @@ footer {
             <div class="faq-answer-inline" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
               <div itemprop="text">
                 <p><strong>O Metodo Maturare tem 4 etapas: Diagnostico, Arquitetura, Conteudo e Monitoramento.</strong></p>
-                <p><strong>(1) Diagnostico</strong> &mdash; auditamos seu site, GMB e presenca digital. <strong>(2) Arquitetura</strong> &mdash; criamos a estrutura tecnica e de conteudo. <strong>(3) Conteudo</strong> &mdash; produzimos paginas estrategicas que ranqueiam. <strong>(4) Monitoramento</strong> &mdash; acompanhamos Google + 5 IAs (ChatGPT, Perplexity, Gemini, Claude, Copilot) todo mes. Tudo com relatorios claros e suporte direto com <a href="daniel-rios.html" class="answer-link">Daniel Rios</a>. <a href="metodologia.html" class="answer-link">Veja o metodo completo &rarr;</a></p>
+                <p><strong>(1) Diagnostico</strong> &mdash; auditamos seu site, GMB e presenca digital. <strong>(2) Arquitetura</strong> &mdash; criamos a estrutura tecnica e de conteudo. <strong>(3) Conteudo</strong> &mdash; produzimos paginas estrategicas que ranqueiam. <strong>(4) Monitoramento</strong> &mdash; acompanhamos Google + 5 IAs (ChatGPT, Perplexity, Gemini, Claude, Copilot) todo mes. Tudo com relatorios claros e suporte direto com <a href="/daniel-batista-rios/" class="answer-link">Daniel Rios</a>. <a href="/metodologia/" class="answer-link">Veja o metodo completo &rarr;</a></p>
               </div>
             </div>
           </details>
@@ -1644,7 +1735,7 @@ footer {
             <div class="faq-answer-inline" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
               <div itemprop="text">
                 <p><strong>Primeiros sinais de SEO em 30-90 dias; resultados consistentes em 3-6 meses.</strong></p>
-                <p>Caso real: a Move Maquinas teve 78 paginas indexadas em 90 dias. O PHD Playground parou de pagar Google Ads apos o primeiro ano de trabalho com a Maturare. <a href="projetos.html" class="answer-link">Veja os resultados reais &rarr;</a></p>
+                <p>Caso real: a Move Maquinas teve 78 paginas indexadas em 90 dias. O PHD Playground parou de pagar Google Ads apos o primeiro ano de trabalho com a Maturare. <a href="/projetos-realizados/" class="answer-link">Veja os resultados reais &rarr;</a></p>
               </div>
             </div>
           </details>
@@ -1658,8 +1749,8 @@ footer {
             </summary>
             <div class="faq-answer-inline" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
               <div itemprop="text">
-                <p><strong><a href="daniel-rios.html" class="answer-link">Daniel Rios</a>, fundador da Maturare e ex-goleiro profissional, participa pessoalmente de cada projeto.</strong></p>
-                <p>Voce nao e atendido por estagiario. Daniel analisa seu negocio, define a estrategia e acompanha a execucao mes a mes. A Maturare, fundada em 2022 em Niteroi/RJ, preza pelo atendimento personalizado. <a href="daniel-rios.html" class="answer-link">Conheca Daniel Rios &rarr;</a></p>
+                <p><strong><a href="/daniel-batista-rios/" class="answer-link">Daniel Rios</a>, fundador da Maturare e ex-goleiro profissional, participa pessoalmente de cada projeto.</strong></p>
+                <p>Voce nao e atendido por estagiario. Daniel analisa seu negocio, define a estrategia e acompanha a execucao mes a mes. A Maturare, fundada em 2022 em Niteroi/RJ, preza pelo atendimento personalizado. <a href="/daniel-batista-rios/" class="answer-link">Conheca Daniel Rios &rarr;</a></p>
               </div>
             </div>
           </details>
@@ -1674,7 +1765,7 @@ footer {
             <div class="faq-answer-inline" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
               <div itemprop="text">
                 <p><strong>Sim, a Maturare atende todo o Brasil com operacao 100% remota.</strong></p>
-                <p>Clientes atuais incluem empresas no Rio de Janeiro, Goiania, Sao Paulo e outros estados. A sede e em Niteroi, RJ, mas o trabalho e 100% digital. A Maturare foi fundada em 2022 e atende negocios locais de qualquer regiao. <a href="contato.html" class="answer-link">Entre em contato &rarr;</a></p>
+                <p>Clientes atuais incluem empresas no Rio de Janeiro, Goiania, Sao Paulo e outros estados. A sede e em Niteroi, RJ, mas o trabalho e 100% digital. A Maturare foi fundada em 2022 e atende negocios locais de qualquer regiao. <a href="/contato/" class="answer-link">Entre em contato &rarr;</a></p>
               </div>
             </div>
           </details>
@@ -1689,7 +1780,7 @@ footer {
             <div class="faq-answer-inline" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
               <div itemprop="text">
                 <p><strong>Sim, todo mes a Maturare entrega um relatorio com linguagem clara sobre posicoes no Google, nas 5 IAs e contatos organicos gerados.</strong></p>
-                <p>O relatorio inclui: o que foi feito, o que mudou nas posicoes do Google e nas IAs (ChatGPT, Perplexity, Gemini, Claude, Copilot), quantos contatos organicos foram gerados e o que sera feito no proximo mes. Sem jargao tecnico, sem PDF que ninguem entende. <a href="contato.html" class="answer-link">Fale com a Maturare &rarr;</a></p>
+                <p>O relatorio inclui: o que foi feito, o que mudou nas posicoes do Google e nas IAs (ChatGPT, Perplexity, Gemini, Claude, Copilot), quantos contatos organicos foram gerados e o que sera feito no proximo mes. Sem jargao tecnico, sem PDF que ninguem entende. <a href="/contato/" class="answer-link">Fale com a Maturare &rarr;</a></p>
               </div>
             </div>
           </details>
@@ -1705,8 +1796,8 @@ footer {
 <section class="pre-footer noise">
   <div class="container">
     <h2 class="pre-footer-h reveal">Nao encontrou sua <em>resposta</em>?</h2>
-    <p class="pre-footer-p reveal d1">Pode ser que sua duvida seja especifica do seu negocio. A Maturare responde pessoalmente. Conheca a <a href="sobre.html">Maturare</a>, veja o <a href="metodologia.html">Metodo Maturare</a>, conheca <a href="daniel-rios.html">Daniel Rios</a> ou explore os <a href="projetos.html">projetos realizados</a>.</p>
-    <a class="pf-btn-primary reveal d2" href="contato.html">Fale com a Maturare
+    <p class="pre-footer-p reveal d1">Pode ser que sua duvida seja especifica do seu negocio. A Maturare responde pessoalmente. Conheca a <a href="/sobre/">Maturare</a>, veja o <a href="/metodologia/">Metodo Maturare</a>, conheca <a href="/daniel-batista-rios/">Daniel Rios</a> ou explore os <a href="/projetos-realizados/">projetos realizados</a>.</p>
+    <a class="pf-btn-primary reveal d2" href="/contato/">Fale com a Maturare
       <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12l5-5-5-5"/></svg>
     </a>
   </div>
@@ -1716,59 +1807,75 @@ footer {
 <footer>
   <div class="foot-in">
     <div class="foot-top">
-      <div>
-        <div class="foot-brand">Maturare</div>
-        <p class="foot-tag">Aceleradora de negocios que faz empresas locais serem encontradas no Google e recomendadas pelas IAs.</p>
-        <div class="foot-live">Monitoramento ativo</div>
+      <!-- Col 1: brand + socials -->
+      <div class="foot-col-brand">
+        <a href="/" aria-label="Maturare — inicio">
+          <img src="/assets/maturare-logo-white.png" alt="Maturare" style="height:28px;width:auto;display:block;margin-bottom:16px;">
+        </a>
+        <p class="foot-tag">Presenca organica real: Google + ChatGPT + Perplexity + Gemini. Sem depender de anuncio.</p>
+        <div class="foot-socs">
+          <a href="https://br.linkedin.com/in/daniel-batista-674b62140" target="_blank" rel="noopener" aria-label="LinkedIn da Maturare">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/maturare.com.br/" target="_blank" rel="noopener" aria-label="Instagram da Maturare">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+          </a>
+          <a href="https://www.youtube.com/@googledominado1" target="_blank" rel="noopener" aria-label="YouTube da Maturare">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
+        </div>
       </div>
+      <!-- Col 2: Soluções -->
       <div>
-        <div class="fcol-h">Principal</div>
+        <div class="fcol-h">Soluções</div>
         <ul class="flinks">
-          <li><a href="home-maturare-final.html">Home</a></li>
-          <li><a href="sobre.html">Sobre</a></li>
-          <li><a href="metodologia.html">Metodologia</a></li>
-          <li><a href="projetos.html">Projetos</a></li>
-          <li><a href="blog.html">Blog</a></li>
+          <li><a href="/consultoria-de-seo/">Consultoria SEO</a></li>
+          <li><a href="/agencia-geo-aeo/">Agência GEO + AEO</a></li>
+          <li><a href="/arquitetura-digital/">Arquitetura Digital</a></li>
+          <li><a href="/criacao-de-sites/">Criação de Sites</a></li>
+          <li><a href="/google-meu-negocio-servico/">Google Meu Negócio</a></li>
+          <li><a href="/seo-por-segmento/">SEO por Segmento</a></li>
         </ul>
       </div>
+      <!-- Col 3: Blog -->
+      <div>
+        <div class="fcol-h">Blog</div>
+        <ul class="flinks">
+          <li><a href="/blog/como-ranquear-no-chatgpt/">Como aparecer no ChatGPT</a></li>
+          <li><a href="/blog/seo-local-em-2026/">SEO Local em 2026</a></li>
+          <li><a href="/blog/o-que-e-geo/">O que é GEO</a></li>
+          <li><a href="/glossario/">Glossário de SEO</a></li>
+          <li><a href="/blog/">Ver todos os artigos</a></li>
+        </ul>
+      </div>
+      <!-- Col 4: Empresa -->
       <div>
         <div class="fcol-h">Empresa</div>
         <ul class="flinks">
-          <li><a href="nossos-clientes.html">Nossos Clientes</a></li>
-          <li><a href="depoimentos.html">Depoimentos</a></li>
-          <li><a href="contato.html">Contato</a></li>
-          <li><a href="faq-maturare.html">FAQ</a></li>
-          <li><a href="daniel-rios.html">Daniel Rios</a></li>
+          <li><a href="/sobre/">Sobre a Maturare</a></li>
+          <li><a href="/daniel-batista-rios/">Daniel Rios</a></li>
+          <li><a href="/nossos-clientes/">Nossos Clientes</a></li>
+          <li><a href="/metodologia/">Metodologia</a></li>
+          <li><a href="/academy/">Academy</a></li>
+          <li><a href="/analise-gratuita/">Diagnóstico Gratuito</a></li>
         </ul>
-      </div>
-      <div>
-        <div class="fcol-h">Recursos</div>
-        <ul class="flinks">
-          <li><a href="glossario.html">Glossario</a></li>
-          <li><a href="academy.html">Academy</a></li>
-        </ul>
-      </div>
-      <div>
-        <div class="fcol-h">Contato</div>
-        <ul class="flinks">
-          <li><a href="contato.html">Diagnostico gratis</a></li>
-          <li><a href="contato.html">Falar com Daniel</a></li>
-          <li><a href="mailto:contato@maturare.com.br">contato@maturare.com.br</a></li>
-        </ul>
+        <!-- Legal links — mobile only -->
+        <div class="foot-col-legal-mobile">
+          <a href="/termos-de-privacidade/">Privacidade</a>
+          <a href="/politica-de-cookies/">Cookies</a>
+          <a href="/termos-de-uso/">Termos</a>
+        </div>
       </div>
     </div>
+
     <div class="foot-bot">
       <div class="foot-legal">
-        <a href="termos-de-privacidade.html">Termos de Privacidade</a>
-        <a href="politica-de-cookies.html">Politica de Cookies</a>
-        <a href="termos-de-uso.html">Termos de Uso</a>
+        <a href="/termos-de-privacidade/">Termos de Privacidade</a>
+        <a href="/politica-de-cookies/">Política de Cookies</a>
+        <a href="/termos-de-uso/">Termos de Uso</a>
       </div>
-      <div class="foot-copy">&#169; 2026 Maturare &middot; CNPJ 47.336.340/0001-51 &middot; Niteroi, RJ</div>
-      <div class="foot-socs">
-        <a href="https://br.linkedin.com/in/daniel-batista-674b62140" target="_blank" aria-label="LinkedIn da Maturare">LinkedIn</a>
-        <a href="https://www.instagram.com/maturare.com.br/" target="_blank" aria-label="Instagram da Maturare">Instagram</a>
-        <a href="https://www.youtube.com/@googledominado1" target="_blank" aria-label="YouTube da Maturare">YouTube</a>
-      </div>
+      <div class="foot-copy">&#169; 2026 Maturare &middot; CNPJ 47.336.340/0001-51 &middot; Niterói, RJ</div>
+      <p class="foot-disclaimer">A Maturare é uma agência de marketing digital especializada em SEO, GEO e AEO para pequenas e médias empresas no Brasil. Os resultados variam conforme mercado, concorrência e histórico digital de cada cliente. Nenhum resultado é garantido.</p>
     </div>
   </div>
 </footer>
@@ -1810,16 +1917,118 @@ window.addEventListener('scroll', function() {
   if (navEl) navEl.classList.toggle('scrolled', window.scrollY > 80);
 }, {passive: true});
 
+/* === MEGAMENU === */
+(function() {
+  var items = document.querySelectorAll('.nav-item');
+  var openItem = null;
+  var closeTimer = null;
+
+  function openPanel(item) {
+    if (openItem && openItem !== item) closePanel(openItem, true);
+    clearTimeout(closeTimer);
+    var btn = item.querySelector('.nav-btn');
+    var panel = item.querySelector('.mm-panel');
+    if (!panel) return;
+    item.classList.add('open');
+    if (btn) btn.setAttribute('aria-expanded', 'true');
+    panel.setAttribute('aria-hidden', 'false');
+    openItem = item;
+  }
+
+  function closePanel(item, immediate) {
+    var btn = item.querySelector('.nav-btn');
+    var panel = item.querySelector('.mm-panel');
+    if (!panel) return;
+    function doClose() {
+      item.classList.remove('open');
+      if (btn) btn.setAttribute('aria-expanded', 'false');
+      panel.setAttribute('aria-hidden', 'true');
+      if (openItem === item) openItem = null;
+    }
+    if (immediate) { doClose(); } else { closeTimer = setTimeout(doClose, 120); }
+  }
+
+  items.forEach(function(item) {
+    var btn = item.querySelector('.nav-btn');
+    var panel = item.querySelector('.mm-panel');
+    if (!panel) return;
+    item.addEventListener('mouseenter', function() { openPanel(item); });
+    item.addEventListener('mouseleave', function() { closePanel(item, false); });
+    if (btn) btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      item.classList.contains('open') ? closePanel(item, true) : openPanel(item);
+    });
+    panel.addEventListener('mouseenter', function() { clearTimeout(closeTimer); });
+    panel.addEventListener('mouseleave', function() { closePanel(item, false); });
+  });
+
+  document.addEventListener('click', function(e) {
+    if (openItem && !openItem.contains(e.target)) closePanel(openItem, true);
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && openItem) closePanel(openItem, true);
+  });
+})();
+
 /* === MOBILE MENU === */
-var hambBtn = document.getElementById('hambBtn');
-var mobMenu = document.getElementById('mobMenu');
-var mobOverlay = document.getElementById('mobOverlay');
-function toggleMob() {
-  mobMenu.classList.toggle('open');
-  mobOverlay.classList.toggle('open');
-}
-if (hambBtn) hambBtn.addEventListener('click', toggleMob);
-if (mobOverlay) mobOverlay.addEventListener('click', toggleMob);
+(function() {
+  var hambBtn = document.getElementById('hambBtn');
+  var mobMenu = document.getElementById('mobMenu');
+  var mobOverlay = document.getElementById('mobOverlay');
+  var mobClose = document.getElementById('mobClose');
+
+  function openMob() {
+    if (!mobMenu) return;
+    mobMenu.classList.add('open');
+    if (mobOverlay) mobOverlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMob() {
+    if (!mobMenu) return;
+    mobMenu.classList.remove('open');
+    if (mobOverlay) mobOverlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  if (hambBtn) hambBtn.addEventListener('click', openMob);
+  if (mobClose) mobClose.addEventListener('click', closeMob);
+  if (mobOverlay) mobOverlay.addEventListener('click', closeMob);
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeMob(); });
+
+  function setupMobAccordion(btnId, subId) {
+    var btn = document.getElementById(btnId);
+    var sub = document.getElementById(subId);
+    if (!btn || !sub) return;
+    btn.addEventListener('click', function() {
+      var open = sub.classList.toggle('open');
+      var svg = btn.querySelector('svg');
+      if (svg) svg.style.transform = open ? 'rotate(180deg)' : '';
+    });
+  }
+  setupMobAccordion('mobSobreBtn', 'mobSobreSub');
+  setupMobAccordion('mobServBtn',  'mobServSub');
+  setupMobAccordion('mobBlogBtn',  'mobBlogSub');
+  setupMobAccordion('mobAcadBtn',  'mobAcadSub');
+})();
+
+/* === TAB ARROWS === */
+(function() {
+  var wrap = document.querySelector('.faq-tabs-wrap');
+  var tabs = document.getElementById('faqTabs');
+  var prev = document.querySelector('.faq-tab-arrow-prev');
+  var next = document.querySelector('.faq-tab-arrow-next');
+  if (!tabs || !prev || !next) return;
+
+  function updateArrows() {
+    prev.style.opacity = tabs.scrollLeft > 4 ? '1' : '0.3';
+    next.style.opacity = (tabs.scrollLeft + tabs.clientWidth < tabs.scrollWidth - 4) ? '1' : '0.3';
+  }
+
+  prev.addEventListener('click', function() { tabs.scrollBy({left: -200, behavior: 'smooth'}); });
+  next.addEventListener('click', function() { tabs.scrollBy({left: 200, behavior: 'smooth'}); });
+  tabs.addEventListener('scroll', updateArrows, {passive: true});
+  updateArrows();
+})();
 
 /* === REVEAL ON SCROLL === */
 document.querySelectorAll('.reveal').forEach(function(el) {
