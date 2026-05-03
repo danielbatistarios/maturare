@@ -909,6 +909,24 @@ nav.scrolled {
   filter: grayscale(.8) invert(.92) contrast(1.1) brightness(.7);
 }
 
+/* === CONTACT CHANNELS === */
+.ch-sec { background: var(--paper); padding: 56px clamp(24px,4vw,64px); border-bottom: 1px solid var(--faint); }
+.ch-inner { max-width: 960px; margin: 0 auto; }
+.ch-label { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--dim); text-align: center; margin-bottom: 8px; }
+.ch-title { font-family: var(--serif); font-size: clamp(22px,2.6vw,30px); font-style: italic; color: var(--ink); text-align: center; margin-bottom: 36px; }
+.ch-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+.ch-card { display: flex; flex-direction: column; gap: 10px; padding: 24px; background: #fff; border: 1px solid var(--faint); border-radius: 14px; transition: box-shadow .18s, border-color .18s; }
+.ch-card:hover { border-color: var(--green); box-shadow: 0 4px 20px rgba(26,122,74,.08); }
+.ch-card-icon { width: 40px; height: 40px; border-radius: 10px; background: rgba(26,122,74,.08); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.ch-card-label { font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--dim); }
+.ch-card-value { font-size: 15px; font-weight: 600; color: var(--ink); line-height: 1.3; }
+.ch-card-sub { font-size: 13px; color: var(--dim); line-height: 1.5; }
+.ch-card-btn { display: inline-flex; align-items: center; gap: 7px; margin-top: 4px; padding: 9px 18px; background: var(--green); color: #fff; border-radius: 8px; font-size: 13px; font-weight: 600; text-decoration: none; transition: background .18s, transform .15s; align-self: flex-start; }
+.ch-card-btn:hover { background: var(--green2); transform: translateY(-1px); }
+.ch-card-btn.secondary { background: transparent; border: 1px solid var(--green); color: var(--green); }
+.ch-card-btn.secondary:hover { background: rgba(26,122,74,.06); }
+@media (max-width: 700px) { .ch-grid { grid-template-columns: 1fr; } .ch-sec { padding: 40px 20px; } }
+
 /* === CLIENT STRIP === */
 .client-strip {
   padding: 60px clamp(24px,4vw,80px);
@@ -1769,14 +1787,63 @@ footer {
   </div>
 </section>
 
+<!-- CANAIS DE CONTATO -->
+<section class="ch-sec" id="canais">
+  <div class="ch-inner">
+    <p class="ch-label">Canais de atendimento</p>
+    <h2 class="ch-title">Como prefere falar com a Maturare?</h2>
+    <div class="ch-grid">
+
+      <!-- WhatsApp -->
+      <div class="ch-card reveal">
+        <div class="ch-card-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--green)"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>
+        </div>
+        <span class="ch-card-label">WhatsApp</span>
+        <span class="ch-card-value">(21) 99077-0731</span>
+        <span class="ch-card-sub">Resposta em minutos durante horário comercial. Fale direto com o time.</span>
+        <a href="https://wa.me/5521990770731?text=Olá!%20Vim%20pelo%20site%20da%20Maturare%20e%20gostaria%20de%20saber%20mais." target="_blank" rel="noopener" class="ch-card-btn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>
+          Fale Conosco
+        </a>
+      </div>
+
+      <!-- E-mail -->
+      <div class="ch-card reveal d1">
+        <div class="ch-card-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+        </div>
+        <span class="ch-card-label">E-mail</span>
+        <span class="ch-card-value">contato@maturare.com.br</span>
+        <span class="ch-card-sub">Envie sua dúvida, proposta ou pedido de orçamento. Respondemos em até 24h.</span>
+        <a href="mailto:contato@maturare.com.br" class="ch-card-btn secondary">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+          Enviar E-mail
+        </a>
+      </div>
+
+      <!-- Localização + Horário -->
+      <div class="ch-card reveal d2">
+        <div class="ch-card-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <span class="ch-card-label">Localização</span>
+        <span class="ch-card-value">Niterói, RJ. Brasil</span>
+        <span class="ch-card-sub">Operação 100% remota. Atendemos todo o Brasil.<br><strong style="color:var(--ink);">Seg a Sex 9h às 18h &middot; Sáb 9h às 13h</strong></span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- CONTACT GRID -->
 <section class="form-sec noise" id="orcamento" data-funnel="decision">
   <div class="form-in">
     <div class="form-grid">
       <div class="form-info reveal-left">
-        <div class="sec-label lt">Comece agora</div>
-        <h3>Seu mercado está crescendo. Você está capturando essa demanda de buscas?</h3>
-        <p class="form-info-desc">Responda as perguntas a seguir e depois agendamos uma call com nosso time para entender onde está a demanda que você ainda não captura.</p>
+        <div class="sec-label lt">Vamos iniciar um projeto?</div>
+        <h3>Conta para a gente. Daniel analisa pessoalmente e responde em até 24h.</h3>
+        <p class="form-info-desc">Preencha o formulário ao lado. É rápido, sem compromisso, e o diagnóstico é gratuito. Você entende onde está a demanda que ainda não captura, o que seus concorrentes fazem e um plano de ação real.</p>
         <div class="form-feats">
           <div class="ff"><div class="ff-ic"><svg width="14" height="14" fill="none" stroke="var(--green2)" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Entenda o potencial de buscas do seu segmento</div>
           <div class="ff"><div class="ff-ic"><svg width="14" height="14" fill="none" stroke="var(--green2)" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>O que seus concorrentes estão fazendo que você ainda não viu</div>
