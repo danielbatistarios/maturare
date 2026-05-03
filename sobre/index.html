@@ -321,15 +321,6 @@ nav.scrolled{background:rgba(7,7,9,.92);backdrop-filter:blur(28px) saturate(180%
 .escritorio-list li{display:flex;align-items:flex-start;gap:10px;font-family:var(--sans);font-size:14px;color:rgba(255,255,255,.55);line-height:1.5;}
 .escritorio-list li::before{content:'';display:block;width:4px;height:4px;border-radius:50%;background:var(--green2);margin-top:8px;flex-shrink:0;}
 
-/* === QUOTE WORD-BLUR === */
-.s-quote{background:var(--z0);padding:clamp(80px,10vw,120px) clamp(24px,5vw,120px);}
-.quote-inner{max-width:900px;margin:0 auto;text-align:center;}
-.quote-text{font-family:var(--serif);font-size:clamp(22px,3.5vw,42px);font-style:italic;line-height:1.4;margin-bottom:32px;}
-.wb{display:inline;color:rgba(255,255,255,.12);transition:color .5s ease,filter .5s ease;filter:blur(4px);}
-.wb.lit{color:rgba(255,255,255,.9);filter:blur(0);}
-.quote-attr{font-family:var(--sans);font-size:13px;font-weight:600;letter-spacing:.08em;color:rgba(255,255,255,.35);text-transform:uppercase;}
-.quote-attr span{color:var(--green2);}
-
 /* === CTA === */
 .s-cta{background:var(--z1);padding:clamp(80px,10vw,120px) clamp(24px,5vw,120px);}
 .cta-inner{max-width:720px;margin:0 auto;text-align:center;}
@@ -341,6 +332,29 @@ nav.scrolled{background:rgba(7,7,9,.92);backdrop-filter:blur(28px) saturate(180%
 .btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(255,255,255,.15);}
 .btn-secondary{display:inline-flex;align-items:center;gap:8px;background:transparent;color:rgba(255,255,255,.6);font-family:var(--sans);font-size:13px;font-weight:600;letter-spacing:.06em;padding:14px 28px;border:1px solid rgba(255,255,255,.2);border-radius:4px;text-decoration:none;transition:color .2s,border-color .2s;}
 .btn-secondary:hover{color:var(--paper);border-color:rgba(255,255,255,.5);}
+
+/* === MÉTODO GEO/AEO/SEO === */
+.s-metodo{color:var(--ink);}
+.metodo-kicker{font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--green);margin-bottom:20px;}
+.metodo-h2{font-family:var(--serif);font-size:clamp(28px,4vw,48px);font-weight:400;line-height:1.15;letter-spacing:-.01em;max-width:680px;margin-bottom:20px;color:var(--ink);}
+.metodo-h2 em{font-style:italic;color:var(--green);}
+.metodo-intro{font-family:var(--sans);font-size:clamp(15px,1.5vw,17px);color:rgba(0,0,0,.55);max-width:640px;line-height:1.7;margin-bottom:48px;}
+.metodo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:48px;}
+.metodo-card{background:var(--paper);border:1px solid var(--paper3);border-radius:12px;padding:28px 24px;}
+.metodo-card-tag{font-family:var(--sans);font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--green);background:var(--green-bg);padding:4px 10px;border-radius:20px;display:inline-block;margin-bottom:16px;}
+.metodo-card-title{font-family:var(--sans);font-size:15px;font-weight:700;color:var(--ink);margin-bottom:10px;line-height:1.35;}
+.metodo-card-desc{font-family:var(--sans);font-size:13px;color:rgba(0,0,0,.5);line-height:1.65;margin-bottom:16px;}
+.metodo-card-list{list-style:none;display:flex;flex-direction:column;gap:6px;}
+.metodo-card-list li{font-family:var(--sans);font-size:12.5px;color:rgba(0,0,0,.55);padding-left:14px;position:relative;line-height:1.5;}
+.metodo-card-list li::before{content:'';position:absolute;left:0;top:8px;width:5px;height:1px;background:var(--green);border-radius:2px;}
+.metodo-eeat{background:var(--ink);border-radius:16px;overflow:hidden;}
+.metodo-eeat-inner{padding:36px 40px;}
+.metodo-eeat-label{font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:28px;}
+.metodo-eeat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
+.metodo-eeat-item{display:flex;flex-direction:column;gap:8px;}
+.metodo-eeat-key{font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--green2);}
+.metodo-eeat-val{font-family:var(--sans);font-size:12.5px;color:rgba(255,255,255,.5);line-height:1.6;}
+@media(max-width:900px){.metodo-eeat-grid{grid-template-columns:repeat(2,1fr);}}
 
 /* === FOOTER === */
 footer{background:var(--z0);border-top:1px solid var(--border-z1);}
@@ -359,6 +373,7 @@ footer{background:var(--z0);border-top:1px solid var(--border-z1);}
 .flinks a{font-family:var(--sans);font-size:13px;color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s;}
 .flinks a:hover{color:rgba(255,255,255,.8);}
 .foot-col-legal-mobile{display:none;}
+.foot-col-disclaimer-mobile{font-size:11px;color:rgba(255,255,255,.3);line-height:1.6;margin-top:14px;}
 .foot-copyright-mobile{display:none;}
 .foot-bot{border-top:1px solid var(--border-z1);padding-top:24px;}
 .foot-bot-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;}
@@ -399,11 +414,17 @@ footer{background:var(--z0);border-top:1px solid var(--border-z1);}
   .bb-dock-label{display:none;}
   .mm-panel{display:none;}
 }
+@media(max-width:768px){
+  .metodo-grid{grid-template-columns:1fr;}
+  .metodo-eeat-inner{padding:28px 24px;}
+  .metodo-eeat-grid{grid-template-columns:1fr 1fr;}
+}
 @media(max-width:480px){
   .valores-grid{grid-template-columns:1fr;}
   .eventos-grid{grid-template-columns:1fr;}
   .cta-btns{flex-direction:column;align-items:stretch;}
   .btn-primary,.btn-secondary{justify-content:center;}
+  .metodo-eeat-grid{grid-template-columns:1fr;}
 }
 </style>
 </head>
@@ -884,32 +905,70 @@ footer{background:var(--z0);border-top:1px solid var(--border-z1);}
   </div>
 </section>
 
-<!-- 9. QUOTE WORD-BLUR [DARK z0] -->
-<section class="s-quote noise" id="wdQuote">
-  <div class="quote-inner">
-    <blockquote class="quote-text">
-      <span class="wb">Seu</span>
-      <span class="wb">negócio</span>
-      <span class="wb">pode</span>
-      <span class="wb">ter</span>
-      <span class="wb">o</span>
-      <span class="wb">melhor</span>
-      <span class="wb">produto</span>
-      <span class="wb">da</span>
-      <span class="wb">cidade.</span>
-      <span class="wb">Se</span>
-      <span class="wb">o</span>
-      <span class="wb">cliente</span>
-      <span class="wb">não</span>
-      <span class="wb">te</span>
-      <span class="wb">encontra,</span>
-      <span class="wb">você</span>
-      <span class="wb">não</span>
-      <span class="wb">existe</span>
-      <span class="wb">para</span>
-      <span class="wb">ele.</span>
-    </blockquote>
-    <p class="quote-attr">Daniel Batista Rios, <span>Fundador, Maturare</span></p>
+<!-- 9. MÉTODO GEO/AEO/SEO [LIGHT] -->
+<section class="s-light s-metodo">
+  <div class="section-inner">
+    <p class="metodo-kicker reveal">Método</p>
+    <h2 class="metodo-h2 reveal d1">Como posicionamos sua empresa no Google <em>e nas IAs</em></h2>
+    <p class="metodo-intro reveal d2">SEO tradicional ranqueia páginas. GEO e AEO fazem a IA recomendar sua empresa pelo nome. São disciplinas distintas. A Maturare aplica as três de forma integrada porque o comportamento de busca mudou: o cliente pergunta ao ChatGPT antes de abrir o Google.</p>
+    <div class="metodo-grid reveal d3">
+      <div class="metodo-card">
+        <div class="metodo-card-tag">SEO</div>
+        <h3 class="metodo-card-title">Fundação técnica e autoridade</h3>
+        <p class="metodo-card-desc">Arquitetura de informação, velocidade, Core Web Vitals, linkagem interna e construção de autoridade temática. Sem fundação técnica, GEO e AEO não têm onde apoiar.</p>
+        <ul class="metodo-card-list">
+          <li>Auditoria técnica com Screaming Frog e Search Console</li>
+          <li>Arquitetura de cluster semântico (hub + satélites)</li>
+          <li>Schema markup e Knowledge Graph estruturado</li>
+          <li>Link building editorial com critério de relevância</li>
+        </ul>
+      </div>
+      <div class="metodo-card">
+        <div class="metodo-card-tag">GEO</div>
+        <h3 class="metodo-card-title">Ser citado pelos modelos de IA</h3>
+        <p class="metodo-card-desc">Generative Engine Optimization prepara o conteúdo para que modelos como ChatGPT, Perplexity e Gemini o extraiam como resposta confiável. Chunk engineering, EAV triples e entity salience são os pilares técnicos.</p>
+        <ul class="metodo-card-list">
+          <li>Chunk engineering: conteúdo extraível por modelos de linguagem</li>
+          <li>EAV triples: entidade, atributo e valor explícitos no texto</li>
+          <li>Co-citation estratégica com fontes de autoridade</li>
+          <li>Share of voice em IA medido mensalmente</li>
+        </ul>
+      </div>
+      <div class="metodo-card">
+        <div class="metodo-card-tag">AEO</div>
+        <h3 class="metodo-card-title">Responder antes de ser perguntado</h3>
+        <p class="metodo-card-desc">Answer Engine Optimization estrutura o conteúdo para ocupar posições zero, featured snippets e as respostas diretas que as IAs entregam sem link. Quem estrutura bem não precisa de posição 1.</p>
+        <ul class="metodo-card-list">
+          <li>Mapeamento de queries conversacionais do ICP</li>
+          <li>Estrutura FAQ com schema FAQPage</li>
+          <li>Conteúdo em formato pergunta-resposta explícito</li>
+          <li>Monitoramento de aparições em AI Overviews</li>
+        </ul>
+      </div>
+    </div>
+    <div class="metodo-eeat reveal d4">
+      <div class="metodo-eeat-inner">
+        <p class="metodo-eeat-label">Por que o Google e as IAs confiam na Maturare como fonte?</p>
+        <div class="metodo-eeat-grid">
+          <div class="metodo-eeat-item">
+            <span class="metodo-eeat-key">Experiência</span>
+            <span class="metodo-eeat-val">Projetos ativos documentados com métricas reais: PHD Playground, Move Máquinas, Keysfan. Dados de Search Console disponíveis para auditoria.</span>
+          </div>
+          <div class="metodo-eeat-item">
+            <span class="metodo-eeat-key">Expertise</span>
+            <span class="metodo-eeat-val">Daniel Batista Rios acompanhou de perto a transição de busca clássica para busca por IA desde 2023. Visita técnica à Google HQ São Paulo em 2025.</span>
+          </div>
+          <div class="metodo-eeat-item">
+            <span class="metodo-eeat-key">Autoridade</span>
+            <span class="metodo-eeat-val">300+ profissionais formados na Academy. Palestras em eventos de marketing digital em 2025 e 2026. Conteúdo citado em fóruns especializados de SEO.</span>
+          </div>
+          <div class="metodo-eeat-item">
+            <span class="metodo-eeat-key">Confiabilidade</span>
+            <span class="metodo-eeat-val">CNPJ 47.336.340/0001-51. Contratos sem cláusula de fidelidade. Relatórios mensais com dados brutos do Search Console, não capturas de tela editadas.</span>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -989,6 +1048,7 @@ footer{background:var(--z0);border-top:1px solid var(--border-z1);}
           <li><a href="/faq/">FAQ</a></li>
         </ul>
       </div>
+      <!-- col legal: visível só no mobile (desktop usa foot-bot abaixo) -->
       <div class="foot-col-legal-mobile">
         <div class="fcol-h">Legal</div>
         <ul class="flinks">
@@ -996,7 +1056,7 @@ footer{background:var(--z0);border-top:1px solid var(--border-z1);}
           <li><a href="/politica-de-cookies/">Política de Cookies</a></li>
           <li><a href="/termos-de-uso/">Termos de Uso</a></li>
         </ul>
-        <p style="font-size:11px;color:rgba(0,0,0,.35);margin-top:12px;line-height:1.6;">Os resultados apresentados são reais e referem-se a clientes específicos. Resultados individuais variam conforme mercado e execução.</p>
+        <p class="foot-col-disclaimer-mobile">Os resultados apresentados são reais e referem-se a clientes específicos. Resultados individuais variam conforme mercado e execução.</p>
       </div>
     </div>
     <p class="foot-copyright-mobile">&#169; 2026 Maturare Gestão &amp; Marketing Estratégico Ltda | CNPJ: 47.336.340/0001-51</p>
@@ -1156,28 +1216,6 @@ document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-scale').fo
     if(e[0].isIntersecting){el.classList.add('in');this.unobserve(el);}
   },{threshold:.1,rootMargin:'0px 0px -40px 0px'}).observe(el);
 });
-
-/* === WORD BLUR === */
-(function(){
-  var sec=document.getElementById('wdQuote');
-  if(!sec) return;
-  var words=Array.prototype.slice.call(sec.querySelectorAll('.wb'));
-  var total=words.length;
-  function update(){
-    var rect=sec.getBoundingClientRect();
-    var wh=window.innerHeight;
-    var scrollZone=rect.height+wh*0.5;
-    var scrolled=wh-rect.top;
-    var progress=Math.min(1,Math.max(0,scrolled/scrollZone));
-    var litCount=Math.round(progress*total);
-    words.forEach(function(w,i){
-      if(i<litCount){w.classList.add('lit');}
-      else{w.classList.remove('lit');}
-    });
-  }
-  window.addEventListener('scroll',update,{passive:true});
-  update();
-})();
 
 /* === HM TOGGLE === */
 function setHMView(mode){
