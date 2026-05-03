@@ -1,0 +1,1809 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0e0f0d">
+  <title>Curso Google Meu Negócio — Domine o Google Maps e atraia clientes todos os dias | Maturare Academy</title>
+  <meta name="description" content="Aprenda a posicionar seu negócio no topo do Google Maps com o método passo a passo da Maturare Academy. Checklist validado, aulas práticas e suporte real.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --z0: #000000;
+      --z1: #080808;
+      --z2: #111111;
+      --z3: #1a1a1a;
+      --z4: #222222;
+      --ink: #000000;
+      --ink2: #111111;
+      --paper: #ffffff;
+      --paper2: #f5f5f5;
+      --paper3: #ebebeb;
+      --dim: #5a5a56;
+      --faint: #d6d4ce;
+      --green: #1a7a4a;
+      --green2: #6fcf97;
+      --green-bg: #e8f5ee;
+      --deep-green: #1B3A2A;
+      --mid-green: #2D6B45;
+      --gold: #C4A035;
+      --gold-light: #E8C84A;
+      --orange: #e07b39;
+      --border-z1: rgba(255,255,255,.055);
+      --border-z2: rgba(255,255,255,.08);
+      --border-z3: rgba(255,255,255,.11);
+      --toplight: inset 0 1px 0 rgba(255,255,255,.06);
+      --glow-green: rgba(26,122,74,.12);
+      --shadow-2: 0 4px 12px rgba(0,0,0,.25), 0 2px 4px rgba(0,0,0,.2);
+      --shadow-3: 0 8px 24px rgba(0,0,0,.3), 0 4px 8px rgba(0,0,0,.2);
+      --shadow-5: 0 24px 80px rgba(0,0,0,.45), 0 12px 24px rgba(0,0,0,.25);
+      --serif: 'Instrument Serif', Georgia, serif;
+      --sans: 'DM Sans', system-ui, sans-serif;
+      --t-fast: 150ms;
+      --t-normal: 250ms;
+      --t-slow: 400ms;
+      --t-slower: 750ms;
+      --spring: cubic-bezier(.16, 1, .3, 1);
+      --radius: 16px;
+      --radius-sm: 8px;
+      --r-sharp: 0px;
+      --r-subtle: 4px;
+      --r-card: 12px;
+      --r-soft: 16px;
+      --r-pill: 999px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--z0);
+      color: var(--paper);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    body::before, body::after {
+      content: '';
+      position: fixed;
+      top: 0; bottom: 0;
+      width: 1px;
+      background: rgba(255,255,255,.07);
+      z-index: 0;
+      pointer-events: none;
+    }
+    body::before { left: calc(50% - 550px); }
+    body::after  { right: calc(50% - 550px); }
+
+    @media (max-width: 600px) {
+      body::before, body::after { display: none; }
+    }
+
+    .scroll-prog {
+      position: fixed;
+      top: 0; left: 0;
+      height: 2px;
+      background: var(--green);
+      width: 0%;
+      z-index: 999;
+      transition: width .1s linear;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 64px;
+      z-index: 300;
+      transition: background var(--t-normal), backdrop-filter var(--t-normal);
+    }
+    nav.scrolled {
+      background: rgba(7,7,9,.92);
+      backdrop-filter: blur(28px);
+      border-bottom: 1px solid var(--border-z1);
+    }
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 clamp(24px,4vw,80px);
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      font-family: var(--serif);
+      font-size: 19px;
+      font-style: italic;
+      letter-spacing: .05em;
+      color: var(--paper);
+      text-decoration: none;
+    }
+    .logo span { color: var(--green2); }
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--green);
+      color: #fff;
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      padding: 10px 22px;
+      border-radius: var(--r-pill);
+      text-decoration: none;
+      transition: transform var(--t-normal), box-shadow var(--t-normal);
+    }
+    .nav-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(26,122,74,.35);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      background: var(--z1);
+      padding: clamp(120px,14vw,180px) clamp(24px,4vw,80px) clamp(80px,10vw,120px);
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 900px 500px at 50% 40%, rgba(26,122,74,.18) 0%, transparent 70%),
+        radial-gradient(ellipse 400px 200px at 30% 70%, rgba(196,160,53,.07) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hero.noise::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background-size: 180px 180px;
+      opacity: .022;
+      pointer-events: none;
+      mix-blend-mode: screen;
+    }
+    .hero-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-grid {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      max-width: 680px;
+    }
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(26,122,74,.15);
+      border: 1px solid rgba(26,122,74,.3);
+      border-radius: var(--r-pill);
+      padding: 6px 16px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--green2);
+      margin-bottom: 28px;
+    }
+    .kicker-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--green2);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: .5; transform: scale(.8); }
+    }
+    .hero-h1 {
+      font-family: var(--serif);
+      font-size: clamp(36px,5vw,64px);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -.022em;
+      color: #F5F1E8;
+      margin-bottom: 24px;
+    }
+    .hero-h1 em {
+      font-style: italic;
+      color: var(--green2);
+    }
+    .hero-sub {
+      font-size: clamp(15px,1.5vw,18px);
+      font-weight: 300;
+      line-height: 1.7;
+      color: rgba(255,255,255,.55);
+      max-width: 560px;
+      margin-bottom: 40px;
+    }
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--green);
+      color: #fff;
+      font-family: var(--sans);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      padding: 16px 36px;
+      border-radius: var(--r-pill);
+      text-decoration: none;
+      transition: transform var(--t-normal), box-shadow var(--t-normal);
+    }
+    .btn-primary:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 12px 32px rgba(26,122,74,.4);
+    }
+    .btn-secondary {
+      font-size: 14px;
+      font-weight: 500;
+      color: rgba(255,255,255,.55);
+      text-decoration: none;
+      transition: color var(--t-normal);
+    }
+    .btn-secondary:hover { color: rgba(255,255,255,.9); }
+
+    .hero-trust {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      margin-top: 56px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border-z1);
+      flex-wrap: wrap;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: rgba(255,255,255,.45);
+    }
+    .trust-item svg { flex-shrink: 0; }
+
+    /* ── BANNER ROLANTE ── */
+    .marquee-sec {
+      background: var(--green);
+      padding: 14px 0;
+      overflow: hidden;
+    }
+    .marquee-track {
+      display: flex;
+      white-space: nowrap;
+      animation: marquee 20s linear infinite;
+    }
+    .marquee-track:hover { animation-play-state: paused; }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    .marquee-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0 32px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.9);
+    }
+    .marquee-sep { color: rgba(255,255,255,.4); }
+
+    /* ── DORES ── */
+    .dores-sec {
+      background: var(--paper2);
+      padding: clamp(80px,10vw,120px) clamp(24px,4vw,80px);
+    }
+    .sec-container {
+      max-width: 1060px;
+      margin: 0 auto;
+    }
+    .sec-label {
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .sec-label.dk { color: var(--green); }
+    .sec-label.lt { color: rgba(255,255,255,.45); }
+    .sec-h {
+      font-family: var(--serif);
+      font-size: clamp(32px,4.5vw,52px);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -.02em;
+      margin-bottom: 20px;
+    }
+    .sec-h.dk { color: var(--ink); }
+    .sec-h.lt { color: #F5F1E8; }
+    .sec-h em { font-style: italic; }
+    .sec-desc {
+      font-size: 18px;
+      font-weight: 300;
+      line-height: 1.8;
+      max-width: 600px;
+      margin-bottom: 48px;
+    }
+    .sec-desc.dk { color: var(--dim); }
+    .sec-desc.lt { color: rgba(255,255,255,.55); }
+
+    .dores-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    .dor-card {
+      background: #fff;
+      border: 1px solid var(--faint);
+      border-radius: var(--r-card);
+      padding: 28px 28px 28px 72px;
+      position: relative;
+    }
+    .dor-card::before {
+      content: '✗';
+      position: absolute;
+      left: 24px;
+      top: 28px;
+      width: 32px;
+      height: 32px;
+      background: rgba(224,85,85,.1);
+      color: #e05555;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: 700;
+    }
+    .dor-card h3 {
+      font-family: var(--sans);
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+    .dor-card p {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--dim);
+      line-height: 1.7;
+    }
+
+    @media (max-width: 600px) {
+      .dores-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── PRODUTO ── */
+    .produto-sec {
+      background: var(--z0);
+      padding: clamp(80px,10vw,120px) clamp(24px,4vw,80px);
+      position: relative;
+      overflow: hidden;
+    }
+    .produto-sec::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 800px 400px at 50% 50%, rgba(26,122,74,.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .produto-sec.noise::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background-size: 180px 180px;
+      opacity: .022;
+      pointer-events: none;
+      mix-blend-mode: screen;
+    }
+    .produto-inner {
+      position: relative;
+      z-index: 1;
+    }
+    .produto-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .produto-text .sec-h { margin-bottom: 20px; }
+    .produto-desc {
+      font-size: 17px;
+      font-weight: 300;
+      line-height: 1.8;
+      color: rgba(255,255,255,.55);
+      margin-bottom: 36px;
+    }
+    .beneficios-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 40px;
+    }
+    .beneficio-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 15px;
+      font-weight: 400;
+      color: rgba(255,255,255,.75);
+      line-height: 1.5;
+    }
+    .beneficio-item strong { color: var(--paper); font-weight: 600; }
+    .beneficio-dot {
+      flex-shrink: 0;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--green2);
+      margin-top: 8px;
+    }
+
+    .produto-visual {
+      background: var(--z2);
+      border: 1px solid var(--border-z2);
+      border-top: 2px solid rgba(45,107,69,.6);
+      border-radius: var(--r-soft);
+      padding: 32px;
+      box-shadow:
+        0 0 0 1px rgba(45,107,69,.15),
+        0 8px 32px rgba(0,0,0,.4),
+        0 0 80px rgba(45,107,69,.12),
+        inset 0 1px 0 rgba(255,255,255,.08);
+    }
+    .checklist-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border-z1);
+    }
+    .checklist-icon {
+      width: 36px;
+      height: 36px;
+      background: rgba(26,122,74,.2);
+      border: 1px solid rgba(26,122,74,.3);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .checklist-title {
+      font-family: var(--sans);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--paper);
+    }
+    .checklist-subtitle {
+      font-size: 12px;
+      color: rgba(255,255,255,.4);
+    }
+    .checklist-items {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .checklist-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      background: rgba(255,255,255,.03);
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,.05);
+    }
+    .checklist-row.done {
+      border-color: rgba(26,122,74,.2);
+      background: rgba(26,122,74,.06);
+    }
+    .check-mark {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+    }
+    .check-mark.ok { background: var(--green); color: #fff; }
+    .check-mark.pending { background: rgba(255,255,255,.08); color: rgba(255,255,255,.3); border: 1px solid rgba(255,255,255,.1); }
+    .check-text {
+      font-size: 13px;
+      font-weight: 400;
+      color: rgba(255,255,255,.65);
+    }
+    .check-text.done-txt { color: rgba(111,207,151,.85); }
+
+    @media (max-width: 768px) {
+      .produto-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── MÉTODO 5 PONTOS ── */
+    .metodo-sec {
+      background: #fff;
+      padding: clamp(80px,10vw,120px) clamp(24px,4vw,80px);
+    }
+    .metodo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .metodo-left {
+      position: sticky;
+      top: 100px;
+    }
+    .metodo-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .metodo-step {
+      display: flex;
+      gap: 20px;
+      padding: 28px 0;
+      border-bottom: 1px solid var(--faint);
+    }
+    .metodo-step:last-child { border-bottom: none; }
+    .step-num {
+      flex-shrink: 0;
+      width: 36px;
+      height: 36px;
+      background: var(--green);
+      color: #fff;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--sans);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .05em;
+    }
+    .step-content h3 {
+      font-family: var(--sans);
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+    .step-content p {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--dim);
+      line-height: 1.7;
+    }
+
+    @media (max-width: 768px) {
+      .metodo-grid { grid-template-columns: 1fr; gap: 48px; }
+      .metodo-left { position: static; }
+    }
+
+    /* ── POR QUE FUNCIONA ── */
+    .porquefunciona-sec {
+      background: #FAFAFA;
+      padding: clamp(80px,10vw,120px) clamp(24px,4vw,80px);
+    }
+    .funciona-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .funciona-card {
+      background: #fff;
+      border: 1px solid var(--faint);
+      border-radius: var(--r-card);
+      padding: 32px 28px;
+    }
+    .funciona-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--green-bg);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .funciona-card h3 {
+      font-family: var(--sans);
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 10px;
+    }
+    .funciona-card p {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--dim);
+      line-height: 1.7;
+    }
+
+    @media (max-width: 768px) {
+      .funciona-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── DEPOIMENTOS ── */
+    .depos-sec {
+      background: var(--z1);
+      padding: clamp(80px,10vw,120px) clamp(24px,4vw,80px);
+      position: relative;
+      overflow: hidden;
+    }
+    .depos-sec::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 700px 400px at 50% 60%, rgba(26,122,74,.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .depos-sec.noise::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background-size: 180px 180px;
+      opacity: .022;
+      pointer-events: none;
+      mix-blend-mode: screen;
+    }
+    .depos-inner { position: relative; z-index: 1; }
+    .depos-header { text-align: center; margin-bottom: 56px; }
+    .depos-header .sec-h { margin: 0 auto 16px; }
+    .depos-header .sec-desc { margin: 0 auto; text-align: center; }
+    .depos-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .depo-card {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.08);
+      border-top: 2px solid rgba(45,107,69,.4);
+      border-radius: var(--r-card);
+      padding: 28px 24px;
+      backdrop-filter: blur(12px);
+    }
+    .depo-segment {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--green2);
+      background: rgba(26,122,74,.12);
+      border: 1px solid rgba(26,122,74,.2);
+      border-radius: var(--r-pill);
+      padding: 4px 12px;
+      margin-bottom: 16px;
+    }
+    .depo-text {
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 1.8;
+      color: rgba(255,255,255,.7);
+      font-style: italic;
+    }
+    .depo-text mark {
+      background: rgba(196,160,53,.18);
+      color: #d4a843;
+      font-style: normal;
+      padding: 1px 3px;
+      border-radius: 3px;
+    }
+
+    @media (max-width: 768px) {
+      .depos-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 960px) and (min-width: 601px) {
+      .depos-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* ── QUOTE REVEAL ── */
+    .quote-sec {
+      background: var(--z2);
+      padding: clamp(80px,10vw,120px) clamp(24px,4vw,64px);
+      text-align: center;
+    }
+    .quote-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .quote-inner::before {
+      content: '"';
+      position: absolute;
+      top: -60px;
+      left: -20px;
+      font-family: var(--serif);
+      font-size: clamp(100px,12vw,160px);
+      color: rgba(255,255,255,.05);
+      line-height: 1;
+      pointer-events: none;
+    }
+    .quote-txt {
+      font-family: var(--serif);
+      font-size: clamp(22px,3.5vw,36px);
+      font-weight: 700;
+      line-height: 1.5;
+      color: #F5F1E8;
+      position: relative;
+      z-index: 1;
+    }
+    .quote-txt .wb {
+      display: inline;
+      filter: blur(8px);
+      opacity: 0;
+      transition: filter .9s ease, opacity .9s ease;
+    }
+    .quote-txt .wb.visible { filter: blur(0); opacity: 1; }
+    .quote-line {
+      width: 40px;
+      height: 2px;
+      background: var(--green);
+      margin: 28px auto 0;
+      animation: quotePulse 3s ease infinite;
+    }
+    @keyframes quotePulse {
+      0%, 100% { opacity: 1; width: 40px; }
+      50% { opacity: .5; width: 24px; }
+    }
+
+    /* ── OFERTA / PREÇO ── */
+    .oferta-sec {
+      background: #fff;
+      padding: clamp(80px,10vw,120px) clamp(24px,4vw,80px);
+      scroll-margin-top: 64px;
+    }
+    .oferta-header { text-align: center; margin-bottom: 56px; }
+    .oferta-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .plano-card {
+      border: 1.5px solid var(--faint);
+      border-radius: var(--radius);
+      padding: 40px 36px;
+      position: relative;
+    }
+    .plano-card.featured {
+      border-color: var(--green2);
+      box-shadow: 0 0 0 1px rgba(26,122,74,.15), var(--shadow-3), 0 0 60px rgba(26,122,74,.1);
+    }
+    .plano-badge {
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--green);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: 5px 18px;
+      border-radius: var(--r-pill);
+      white-space: nowrap;
+    }
+    .plano-nome {
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 8px;
+    }
+    .plano-nome.featured-txt { color: var(--green); }
+    .plano-price {
+      font-family: var(--serif);
+      font-size: clamp(36px,4vw,48px);
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .plano-price span {
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--dim);
+    }
+    .plano-parcel {
+      font-size: 13px;
+      color: var(--dim);
+      margin-bottom: 28px;
+    }
+    .plano-divider {
+      height: 1px;
+      background: var(--faint);
+      margin-bottom: 24px;
+    }
+    .plano-items {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 36px;
+    }
+    .plano-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--ink);
+      line-height: 1.5;
+    }
+    .item-check {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      background: var(--green-bg);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1px;
+    }
+    .item-check svg { width: 12px; height: 12px; }
+    .plano-cta {
+      display: block;
+      width: 100%;
+      text-align: center;
+      padding: 16px;
+      font-family: var(--sans);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      border-radius: var(--r-pill);
+      text-decoration: none;
+      transition: transform var(--t-normal), box-shadow var(--t-normal);
+    }
+    .plano-cta.primary {
+      background: var(--green);
+      color: #fff;
+    }
+    .plano-cta.primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(26,122,74,.4);
+    }
+    .plano-cta.secondary {
+      background: #f4f4f0;
+      color: var(--ink);
+      border: 1px solid var(--faint);
+    }
+    .plano-cta.secondary:hover {
+      background: #eaeae6;
+      transform: translateY(-2px);
+    }
+    .garantia-note {
+      text-align: center;
+      margin-top: 32px;
+      font-size: 13px;
+      color: var(--dim);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    @media (max-width: 600px) {
+      .oferta-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── FAQ ── */
+    .faq-sec {
+      background: var(--paper);
+      border-top: 1px solid var(--faint);
+      padding: clamp(80px,10vw,120px) clamp(24px,4vw,64px);
+    }
+    .faq-sec-in {
+      max-width: 1060px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 5fr 7fr;
+      gap: clamp(64px,10vw,120px);
+      align-items: start;
+    }
+    .faq-sidebar {
+      position: sticky;
+      top: 100px;
+    }
+    .faq-sidebar .sec-h { margin-bottom: 20px; }
+    .faq-sidebar .sec-desc { margin-bottom: 32px; }
+    .faq-sidebar-cta {
+      display: inline-block;
+      background: var(--ink);
+      color: var(--paper);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      padding: 14px 28px;
+      text-decoration: none;
+      transition: opacity var(--t-normal);
+    }
+    .faq-sidebar-cta:hover { opacity: .8; }
+    .faq-list { display: flex; flex-direction: column; }
+    .faq-item { border-bottom: 1px solid var(--faint); }
+    .faq-q {
+      width: 100%;
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 24px 0;
+      font-family: var(--serif);
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--ink);
+      text-align: left;
+    }
+    .faq-icon {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: 1px solid var(--faint);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      color: var(--dim);
+      transition: transform var(--t-normal), background var(--t-normal), color var(--t-normal);
+    }
+    .faq-item.open .faq-icon {
+      transform: rotate(45deg);
+      background: var(--ink);
+      color: var(--paper);
+      border-color: var(--ink);
+    }
+    .faq-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .45s var(--spring);
+    }
+    .faq-item.open .faq-body { max-height: 300px; }
+    .faq-bi {
+      padding: 0 0 24px;
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.8;
+      color: #4a4a48;
+    }
+
+    @media (max-width: 768px) {
+      .faq-sec-in { grid-template-columns: 1fr; }
+      .faq-sidebar { position: static; }
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #000;
+      padding: clamp(64px,8vw,100px) clamp(24px,4vw,80px) 40px;
+    }
+    .foot-inner { max-width: 1100px; margin: 0 auto; }
+    .foot-top {
+      display: grid;
+      grid-template-columns: 1.8fr 1fr 1fr;
+      gap: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+      margin-bottom: 32px;
+    }
+    .foot-brand {
+      font-family: var(--serif);
+      font-size: 22px;
+      font-style: italic;
+      color: var(--paper);
+      margin-bottom: 12px;
+    }
+    .foot-tag {
+      font-size: 14px;
+      font-weight: 300;
+      color: #4a4a44;
+      line-height: 1.7;
+      max-width: 280px;
+    }
+    .fcol-h {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--paper);
+      margin-bottom: 20px;
+    }
+    .flinks {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .flinks a {
+      font-size: 14px;
+      font-weight: 300;
+      color: #4a4a44;
+      text-decoration: none;
+      transition: color var(--t-normal);
+    }
+    .flinks a:hover { color: var(--paper); }
+    .foot-disclaimer {
+      font-size: 12px;
+      color: rgba(255,255,255,.25);
+      line-height: 1.7;
+    }
+
+    @media (max-width: 768px) {
+      .foot-top { grid-template-columns: 1fr; gap: 36px; }
+    }
+
+    /* ── BOTTOM BAR ── */
+    .bottom-bar {
+      position: fixed;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%) translateY(120px);
+      z-index: 95;
+      transition: transform .4s var(--spring);
+    }
+    .bottom-bar.visible { transform: translateX(-50%) translateY(0); }
+    .bb-dock {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(0,0,0,.88);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 50px;
+      padding: 8px 8px 8px 20px;
+      box-shadow: 0 8px 32px rgba(0,0,0,.4);
+    }
+    .bb-text {
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(255,255,255,.7);
+      white-space: nowrap;
+    }
+    .bb-btn {
+      background: var(--green);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: 10px 22px;
+      border-radius: 50px;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: opacity var(--t-normal);
+    }
+    .bb-btn:hover { opacity: .9; }
+
+    @media (max-width: 600px) {
+      .bottom-bar {
+        bottom: 16px;
+        left: 16px;
+        right: 16px;
+        transform: translateY(120px);
+      }
+      .bottom-bar.visible { transform: translateY(0); }
+      .bb-dock { width: 100%; justify-content: space-between; }
+    }
+
+    /* ── REVEAL ANIMATIONS ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity 1.0s ease-out, transform 1.0s ease-out;
+    }
+    .reveal.in { opacity: 1; transform: translateY(0); }
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-40px);
+      transition: opacity .8s var(--spring), transform .8s var(--spring);
+    }
+    .reveal-left.in { opacity: 1; transform: translateX(0); }
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(40px);
+      transition: opacity .8s var(--spring), transform .8s var(--spring);
+    }
+    .reveal-right.in { opacity: 1; transform: translateX(0); }
+    .d1 { transition-delay: .08s; }
+    .d2 { transition-delay: .16s; }
+    .d3 { transition-delay: .24s; }
+    .d4 { transition-delay: .30s; }
+    .d5 { transition-delay: .36s; }
+  </style>
+</head>
+<body>
+
+<div class="scroll-prog" id="scrollProg"></div>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <div class="nav-inner">
+    <a href="/maturare-seo/" class="logo">Maturare <span>Academy</span></a>
+    <a href="#oferta" class="nav-cta">Quero o Curso →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero noise" id="main-content">
+  <div class="hero-inner">
+    <div class="hero-grid">
+      <div class="hero-kicker reveal">
+        <span class="kicker-dot"></span>
+        Maturare Academy
+      </div>
+      <h1 class="hero-h1 reveal d1">
+        Imagine o seu negócio sendo <em>encontrado todos os dias</em> no Google
+      </h1>
+      <p class="hero-sub reveal d2">
+        Apareça no topo das buscas do Google Maps, atraia mais clientes e construa autoridade digital com estratégia, execução e método validado.
+      </p>
+      <div class="hero-actions reveal d3">
+        <a href="#oferta" class="btn-primary">Eu Quero o Curso →</a>
+        <a href="#metodo" class="btn-secondary">Ver o método</a>
+      </div>
+      <div class="hero-trust reveal d4">
+        <div class="trust-item">
+          <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="rgba(111,207,151,.6)" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          30 dias de garantia
+        </div>
+        <div class="trust-item">
+          <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="rgba(111,207,151,.6)" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/></svg>
+          Acesso imediato
+        </div>
+        <div class="trust-item">
+          <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="rgba(111,207,151,.6)" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          Método validado
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BANNER ROLANTE -->
+<div class="marquee-sec">
+  <div class="marquee-track">
+    <!-- duplicar para loop seamless -->
+    <span class="marquee-item">// VAGAS LIMITADAS <span class="marquee-sep">&bull;</span></span>
+    <span class="marquee-item">NOVOS ALUNOS <span class="marquee-sep">&bull;</span></span>
+    <span class="marquee-item">CHAME NO WHATSAPP E GARANTA <span class="marquee-sep">&bull;</span></span>
+    <span class="marquee-item">MÉTODO VALIDADO <span class="marquee-sep">&bull;</span></span>
+    <span class="marquee-item">RESULTADOS REAIS <span class="marquee-sep">&bull;</span></span>
+    <span class="marquee-item">// VAGAS LIMITADAS <span class="marquee-sep">&bull;</span></span>
+    <span class="marquee-item">NOVOS ALUNOS <span class="marquee-sep">&bull;</span></span>
+    <span class="marquee-item">CHAME NO WHATSAPP E GARANTA <span class="marquee-sep">&bull;</span></span>
+    <span class="marquee-item">MÉTODO VALIDADO <span class="marquee-sep">&bull;</span></span>
+    <span class="marquee-item">RESULTADOS REAIS <span class="marquee-sep">&bull;</span></span>
+  </div>
+</div>
+
+<!-- DORES -->
+<section class="dores-sec" data-funnel="awareness">
+  <div class="sec-container">
+    <div class="sec-label dk reveal">O problema</div>
+    <h2 class="sec-h dk reveal d1">Você tem negócio, mas o Google <em>não te encontra</em></h2>
+    <p class="sec-desc dk reveal d2">Se alguma dessas situações soa familiar, o Curso Google Meu Negócio foi feito para você.</p>
+    <div class="dores-grid">
+      <div class="dor-card reveal d1">
+        <h3>Está no Google Meu Negócio, mas não aparece em primeiro</h3>
+        <p>Você criou a ficha, preencheu as informações, e mesmo assim seus concorrentes aparecem antes. A ficha incompleta custa clientes todos os dias.</p>
+      </div>
+      <div class="dor-card reveal d2">
+        <h3>Agenda vazia mesmo prestando um bom serviço</h3>
+        <p>Quem já te conhece recomenda. Mas novos clientes simplesmente não chegam. Dependência de indicação é frágil e imprevisível.</p>
+      </div>
+      <div class="dor-card reveal d3">
+        <h3>Investe em marketing, mas sem resultado consistente</h3>
+        <p>Ads custam caro e param quando você para de pagar. O que falta é presença orgânica, aquela que trabalha 24 horas por dia mesmo quando você está dormindo.</p>
+      </div>
+      <div class="dor-card reveal d4">
+        <h3>Não sabe por onde começar no digital</h3>
+        <p>Cada guru diz uma coisa diferente. O Curso Google Meu Negócio é direto ao ponto: método claro, passo a passo, sem enrolação.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUTO -->
+<section class="produto-sec noise" data-funnel="consideration">
+  <div class="sec-container produto-inner">
+    <div class="produto-grid">
+      <div class="produto-text">
+        <div class="sec-label lt reveal">O produto</div>
+        <h2 class="sec-h lt reveal d1">Checklist + Aulas que <em>ensinam o caminho</em> exato</h2>
+        <p class="produto-desc reveal d2">Um guia prático que ensina como posicionar seu negócio entre os primeiros resultados do Google Maps e atrair clientes todos os dias, mesmo sem experiência em marketing digital.</p>
+        <ul class="beneficios-list">
+          <li class="beneficio-item reveal d2">
+            <span class="beneficio-dot"></span>
+            <span>Posicionamento no topo do Google Maps, garantindo que <strong>os clientes certos te encontrem com facilidade</strong></span>
+          </li>
+          <li class="beneficio-item reveal d3">
+            <span class="beneficio-dot"></span>
+            <span>Mais visibilidade, mais vendas e autoridade local. <strong>Seja a maior empresa da sua região</strong> no digital</span>
+          </li>
+          <li class="beneficio-item reveal d4">
+            <span class="beneficio-dot"></span>
+            <span>Método simples, prático e rápido. <strong>Executado passo a passo com você</strong>, sem complicação</span>
+          </li>
+        </ul>
+        <a href="#oferta" class="btn-primary reveal d5">Quero Ter Acesso →</a>
+      </div>
+      <div class="produto-visual reveal-right">
+        <div class="checklist-header">
+          <div class="checklist-icon">
+            <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="var(--green2)" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
+            </svg>
+          </div>
+          <div>
+            <div class="checklist-title">Checklist Google Meu Negócio</div>
+            <div class="checklist-subtitle">Método validado · Maturare Academy</div>
+          </div>
+        </div>
+        <div class="checklist-items">
+          <div class="checklist-row done">
+            <div class="check-mark ok">✓</div>
+            <span class="check-text done-txt">Ficha GMB otimizada 100%</span>
+          </div>
+          <div class="checklist-row done">
+            <div class="check-mark ok">✓</div>
+            <span class="check-text done-txt">Fotos estratégicas configuradas</span>
+          </div>
+          <div class="checklist-row done">
+            <div class="check-mark ok">✓</div>
+            <span class="check-text done-txt">Serviços e produtos listados</span>
+          </div>
+          <div class="checklist-row done">
+            <div class="check-mark ok">✓</div>
+            <span class="check-text done-txt">Palavras-chave inseridas</span>
+          </div>
+          <div class="checklist-row">
+            <div class="check-mark pending">○</div>
+            <span class="check-text">Posts e atualizações regulares</span>
+          </div>
+          <div class="checklist-row">
+            <div class="check-mark pending">○</div>
+            <span class="check-text">Respostas a avaliações</span>
+          </div>
+          <div class="checklist-row">
+            <div class="check-mark pending">○</div>
+            <span class="check-text">Integração com site e links</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MÉTODO 5 PONTOS -->
+<section class="metodo-sec" id="metodo" data-funnel="consideration">
+  <div class="sec-container">
+    <div class="metodo-grid">
+      <div class="metodo-left">
+        <div class="sec-label dk reveal">O método</div>
+        <h2 class="sec-h dk reveal d1">5 pontos que <em>separam quem aparece</em> de quem fica invisível</h2>
+        <p class="sec-desc dk reveal d2">O Google Meu Negócio não é só um cadastro. Ele é uma rede social para empresas, e quem entende as regras do jogo aparece primeiro.</p>
+        <a href="#oferta" class="btn-primary reveal d3" style="margin-top: 8px; display: inline-flex;">Ver os Planos →</a>
+      </div>
+      <div class="metodo-steps">
+        <div class="metodo-step reveal">
+          <div class="step-num">01</div>
+          <div class="step-content">
+            <h3>Entender como seu cliente te procura</h3>
+            <p>A maioria dos donos de negócio não sabe as palavras exatas que seus clientes digitam no Google. Descobrir isso muda tudo na hora de otimizar a ficha.</p>
+          </div>
+        </div>
+        <div class="metodo-step reveal d1">
+          <div class="step-num">02</div>
+          <div class="step-content">
+            <h3>Usar nomes, links, informações e imagens estrategicamente</h3>
+            <p>Cada campo da ficha é um sinal para o Google. Quem preenche de forma estratégica, e não aleatória, sai na frente dos concorrentes.</p>
+          </div>
+        </div>
+        <div class="metodo-step reveal d2">
+          <div class="step-num">03</div>
+          <div class="step-content">
+            <h3>Analisar o que o Google leva em consideração</h3>
+            <p>Relevância, proximidade e destaque. Esses 3 fatores definem quem aparece em primeiro. O curso ensina como trabalhar cada um deles a seu favor.</p>
+          </div>
+        </div>
+        <div class="metodo-step reveal d3">
+          <div class="step-num">04</div>
+          <div class="step-content">
+            <h3>Enxergar o GMB como rede social empresarial</h3>
+            <p>Empresas que postam regularmente, respondem avaliações e mantêm informações atualizadas recebem mais visibilidade. É um algoritmo que recompensa consistência.</p>
+          </div>
+        </div>
+        <div class="metodo-step reveal d4">
+          <div class="step-num">05</div>
+          <div class="step-content">
+            <h3>Listar todos os serviços para maximizar sua entrega</h3>
+            <p>Cada serviço listado é uma oportunidade de aparecer em uma busca diferente. Fichas completas capturam demanda que fichas parciais ignoram.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- POR QUE FUNCIONA -->
+<section class="porquefunciona-sec" data-funnel="consideration">
+  <div class="sec-container">
+    <div style="max-width: 600px;">
+      <div class="sec-label dk reveal">Por que funciona</div>
+      <h2 class="sec-h dk reveal d1">Não é teoria. É o método que <em>já funcionou</em> para dezenas de negócios</h2>
+    </div>
+    <div class="funciona-grid">
+      <div class="funciona-card reveal">
+        <div class="funciona-icon">
+          <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="var(--green)" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+          </svg>
+        </div>
+        <h3>Checklist validado por especialistas</h3>
+        <p>Cada item do checklist foi testado em negócios reais, de lanchonetes a escritórios de advocacia. O que está aqui funciona.</p>
+      </div>
+      <div class="funciona-card reveal d1">
+        <div class="funciona-icon">
+          <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="var(--green)" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+          </svg>
+        </div>
+        <h3>Aulas passo a passo, sem enrolação</h3>
+        <p>Videoaulas diretas que mostram exatamente o que fazer, em qual ordem, e como verificar se está correto. Sem jargão desnecessário.</p>
+      </div>
+      <div class="funciona-card reveal d2">
+        <div class="funciona-icon">
+          <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="var(--green)" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"/>
+          </svg>
+        </div>
+        <h3>Suporte real no grupo WhatsApp</h3>
+        <p>Tire dúvidas diretamente com a equipe. Sem suporte robô, sem espera de dias. Resposta rápida para quem está aplicando o método.</p>
+      </div>
+      <div class="funciona-card reveal d3">
+        <div class="funciona-icon">
+          <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="var(--green)" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+          </svg>
+        </div>
+        <h3>Área de membros + ferramentas pagas</h3>
+        <p>Acesso à plataforma completa com materiais, prompts de IA, templates e acesso a ferramentas que normalmente você pagaria separado.</p>
+      </div>
+      <div class="funciona-card reveal d4">
+        <div class="funciona-icon">
+          <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="var(--green)" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+        </div>
+        <h3>1 ano de acesso para implementar no seu ritmo</h3>
+        <p>Sem pressão de prazo. Você revisa o material quando precisar, aplica no seu tempo e volta às aulas se quiser reforçar algum ponto.</p>
+      </div>
+      <div class="funciona-card reveal d5">
+        <div class="funciona-icon">
+          <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="var(--green)" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+          </svg>
+        </div>
+        <h3>Prompts e assistentes de Inteligência Artificial</h3>
+        <p>Templates prontos para gerar descrições, responder avaliações e criar posts usando IA. Disponível no plano completo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEPOIMENTOS -->
+<section class="depos-sec noise" data-funnel="consideration">
+  <div class="sec-container depos-inner">
+    <div class="depos-header">
+      <div class="sec-label lt reveal">Depoimentos</div>
+      <h2 class="sec-h lt reveal d1">Alguns resultados de quem <em>acreditou no método</em></h2>
+      <p class="sec-desc lt reveal d2">Negócios de segmentos diferentes, mesma solução: aparecer primeiro no Google e atrair clientes todos os dias.</p>
+    </div>
+    <div class="depos-grid">
+      <div class="depo-card reveal">
+        <span class="depo-segment">Lanchonete</span>
+        <p class="depo-text">"Mano, a ficha da nossa lanchonete ficou <mark>100% visível</mark> depois de usar o checklist. Agora, não tem mais erro. É cliente chegando toda horaaa."</p>
+      </div>
+      <div class="depo-card reveal d1">
+        <span class="depo-segment">Academia de Ginástica</span>
+        <p class="depo-text">"Eu já tinha tentado de tudo para melhorar a visibilidade da minha academia. O curso foi a solução! Em pouco tempo, nossa ficha ficou <mark>nas primeiras posições</mark> e os novos alunos começaram a chegar."</p>
+      </div>
+      <div class="depo-card reveal d2">
+        <span class="depo-segment">Loja de Eletrônicos</span>
+        <p class="depo-text">"Após aplicar as recomendações das aulas, nossa loja teve <mark>aumento significativo no tráfego online e nas vendas</mark>. A otimização da ficha foi essencial."</p>
+      </div>
+      <div class="depo-card reveal d1">
+        <span class="depo-segment">Clínica Odontológica</span>
+        <p class="depo-text">"Nossa clínica foi otimizada no Google e passamos a ser facilmente encontrados. A metodologia é <mark>eficaz e simples de seguir</mark>, proporcionando resultados rápidos. Incrível!"</p>
+      </div>
+      <div class="depo-card reveal d2">
+        <span class="depo-segment">Oficina Mecânica</span>
+        <p class="depo-text">"Rapaz agora a galera encontra minha oficina sem esforço. O curso foi <mark>um divisor de águas</mark>, mais clientes chamando e chegando pra resolver o problema do carro."</p>
+      </div>
+      <div class="depo-card reveal d3">
+        <span class="depo-segment">Açaiteria</span>
+        <p class="depo-text">"Aplicamos o método e <mark>em menos de uma semana</mark> já apareceu na primeira página do Google. Muito bom, galera tá nos achando direto!"</p>
+      </div>
+      <div class="depo-card reveal">
+        <span class="depo-segment">Pet Shop</span>
+        <p class="depo-text">"Com esse guia, nossa loja de pets ficou <mark>super visível no Google</mark>! O processo é simples, rápido e super eficiente. Agora, não falta cliente."</p>
+      </div>
+      <div class="depo-card reveal d1">
+        <span class="depo-segment">Cafeteria</span>
+        <p class="depo-text">"Agora o pessoal sabe onde tomar aquele cafézinho! O curso fez a gente aparecer na <mark>primeira página do Google</mark> e tá sendo só visita e mais visita."</p>
+      </div>
+      <div class="depo-card reveal d2">
+        <span class="depo-segment">Loja de Calçados</span>
+        <p class="depo-text">"Você ajudou nossa loja a se destacar! Hoje, nossos clientes <mark>não precisam mais procurar muito</mark>, nos encontram direto no Google. Resultado imediato!"</p>
+      </div>
+      <div class="depo-card reveal d1">
+        <span class="depo-segment">Clínica de Estética</span>
+        <p class="depo-text">"Este foi o segredo para a minha clínica aparecer nas buscas e ser vista por <mark>muito mais pessoas</mark>. Já estou tendo um retorno ótimo!"</p>
+      </div>
+      <div class="depo-card reveal d2">
+        <span class="depo-segment">Escritório de Advocacia</span>
+        <p class="depo-text">"Nosso escritório utilizou o passo a passo e os resultados foram excelentes. A otimização nos trouxe <mark>mais visibilidade e reforçou nossa autoridade</mark> no mercado."</p>
+      </div>
+      <div class="depo-card reveal d3">
+        <span class="depo-segment">Barber Shop</span>
+        <p class="depo-text">"Meu salão de barbearia foi de 0 a 100 depois de usar esse checklist. Hoje em dia <mark>a maior parte dos clientes vem do Google</mark>. Só sucesso!"</p>
+      </div>
+      <div class="depo-card reveal">
+        <span class="depo-segment">Restaurante</span>
+        <p class="depo-text">"Deu muito certo pra gente! Seguimos os ensinamentos, fizemos tudo direitinho, e logo a nossa ficha ficou <mark>nas buscas principais</mark>. Tá sendo sucesso total, galera chegando pra almoçar."</p>
+      </div>
+      <div class="depo-card reveal d1">
+        <span class="depo-segment">Consultoria de Marketing</span>
+        <p class="depo-text">"Usei o checklist e, em pouco tempo, a visibilidade da nossa consultoria <mark>aumentou consideravelmente</mark>. Estamos bem posicionados no Google e recebendo muito mais leads!"</p>
+      </div>
+      <div class="depo-card reveal d2">
+        <span class="depo-segment">Loja de Alimentos Saudáveis</span>
+        <p class="depo-text">"A implementação do checklist foi fundamental para otimizar nossa ficha. Em pouco tempo, <mark>começamos a ser mais visíveis</mark> e atraímos novos clientes."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE REVEAL -->
+<section class="quote-sec wd-quote-sec" data-funnel="consideration">
+  <div class="quote-inner">
+    <p class="quote-txt">
+      <span class="wb">Seu</span>
+      <span class="wb">concorrente</span>
+      <span class="wb">aparece</span>
+      <span class="wb">primeiro</span>
+      <span class="wb">porque</span>
+      <span class="wb">ele</span>
+      <span class="wb">entende</span>
+      <span class="wb">o</span>
+      <span class="wb">que</span>
+      <span class="wb">o</span>
+      <span class="wb">Google</span>
+      <span class="wb">quer</span>
+      <span class="wb">ver.</span>
+      <span class="wb">Agora</span>
+      <span class="wb">você</span>
+      <span class="wb">também</span>
+      <span class="wb">vai.</span>
+    </p>
+    <div class="quote-line"></div>
+  </div>
+</section>
+
+<!-- OFERTA -->
+<section class="oferta-sec" id="oferta" data-funnel="decision">
+  <div class="sec-container">
+    <div class="oferta-header">
+      <div class="sec-label dk reveal">Escolha seu plano</div>
+      <h2 class="sec-h dk reveal d1">Comece hoje. <em>Resultados em dias,</em> não em meses.</h2>
+      <p class="sec-desc dk reveal d2" style="margin: 0 auto; text-align: center;">Dois planos para diferentes momentos. Ambos com 30 dias de garantia total.</p>
+    </div>
+    <div class="oferta-grid">
+      <!-- PLANO BÁSICO -->
+      <div class="plano-card reveal">
+        <div class="plano-nome">Checklist</div>
+        <div class="plano-price"><span>R$</span> 97</div>
+        <div class="plano-parcel">à vista ou 12x de R$ 9,90</div>
+        <div class="plano-divider"></div>
+        <ul class="plano-items">
+          <li class="plano-item">
+            <div class="item-check">
+              <svg fill="none" viewBox="0 0 24 24" stroke="var(--green)" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            </div>
+            Checklist Prático
+          </li>
+          <li class="plano-item">
+            <div class="item-check">
+              <svg fill="none" viewBox="0 0 24 24" stroke="var(--green)" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            </div>
+            30 dias de Garantia
+          </li>
+          <li class="plano-item">
+            <div class="item-check">
+              <svg fill="none" viewBox="0 0 24 24" stroke="var(--green)" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            </div>
+            01 ano de Acesso
+          </li>
+        </ul>
+        <a href="https://wa.me/5521999999999?text=Quero+o+plano+Checklist+por+R%24+97" class="plano-cta secondary">Começar com Checklist →</a>
+      </div>
+      <!-- PLANO COMPLETO -->
+      <div class="plano-card featured reveal d1">
+        <div class="plano-badge">O mais completo</div>
+        <div class="plano-nome featured-txt">Checklist + Aulas + Ferramentas</div>
+        <div class="plano-price"><span>R$</span> 197</div>
+        <div class="plano-parcel">à vista ou 12x de R$ 19,90</div>
+        <div class="plano-divider"></div>
+        <ul class="plano-items">
+          <li class="plano-item">
+            <div class="item-check">
+              <svg fill="none" viewBox="0 0 24 24" stroke="var(--green)" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            </div>
+            Checklist Prático
+          </li>
+          <li class="plano-item">
+            <div class="item-check">
+              <svg fill="none" viewBox="0 0 24 24" stroke="var(--green)" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            </div>
+            Aulas Passo a Passo
+          </li>
+          <li class="plano-item">
+            <div class="item-check">
+              <svg fill="none" viewBox="0 0 24 24" stroke="var(--green)" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            </div>
+            Acesso a Plataformas Pagas
+          </li>
+          <li class="plano-item">
+            <div class="item-check">
+              <svg fill="none" viewBox="0 0 24 24" stroke="var(--green)" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            </div>
+            Prompts e Assistentes de IA
+          </li>
+          <li class="plano-item">
+            <div class="item-check">
+              <svg fill="none" viewBox="0 0 24 24" stroke="var(--green)" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            </div>
+            30 dias de Garantia
+          </li>
+          <li class="plano-item">
+            <div class="item-check">
+              <svg fill="none" viewBox="0 0 24 24" stroke="var(--green)" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            </div>
+            01 ano de Acesso
+          </li>
+        </ul>
+        <a href="https://wa.me/5521999999999?text=Quero+o+plano+Completo+por+R%24+197" class="plano-cta primary">Quero o Plano Completo →</a>
+      </div>
+    </div>
+    <div class="garantia-note reveal">
+      <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="var(--green)" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+      Garantia total de 30 dias. Se não obtiver resultados, devolvemos 100% do valor investido.
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-sec" id="faq" data-funnel="decision">
+  <div class="faq-sec-in">
+    <div class="faq-sidebar">
+      <div class="sec-label dk reveal">Perguntas</div>
+      <h2 class="sec-h dk reveal d1">Ficou com <em>dúvidas?</em></h2>
+      <p class="sec-desc dk reveal d2">Respondemos as perguntas mais comuns aqui. Se a sua não estiver, chame no WhatsApp.</p>
+      <a href="https://wa.me/5521999999999?text=Tenho+uma+d%C3%BAvida+sobre+o+curso" class="faq-sidebar-cta reveal d3">Falar no WhatsApp →</a>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <h3 class="faq-q-h">
+          <button class="faq-q" aria-expanded="false">
+            Eu quero, mas o que exatamente vou receber?
+            <span class="faq-icon">+</span>
+          </button>
+        </h3>
+        <div class="faq-body">
+          <div class="faq-bi">O acesso é enviado para o seu e-mail imediatamente após a confirmação. Em minutos você entra na área de membros e pode começar a usar o checklist e as aulas para alcançar os primeiros resultados.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <h3 class="faq-q-h">
+          <button class="faq-q" aria-expanded="false">
+            Preciso ter experiência em marketing digital?
+            <span class="faq-icon">+</span>
+          </button>
+        </h3>
+        <div class="faq-body">
+          <div class="faq-bi">Não. O curso foi desenvolvido para donos de negócio que não têm experiência em marketing digital. Tudo é explicado de forma prática, sem jargão técnico e sem pressupor conhecimento prévio.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <h3 class="faq-q-h">
+          <button class="faq-q" aria-expanded="false">
+            Para quem é o Curso Google Meu Negócio?
+            <span class="faq-icon">+</span>
+          </button>
+        </h3>
+        <div class="faq-body">
+          <div class="faq-bi">Para qualquer dono de negócio local que quer aparecer no Google Maps e atrair clientes sem depender de anúncios pagos. Restaurantes, clínicas, oficinas, lojas físicas, escritórios e qualquer empresa com presença local.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <h3 class="faq-q-h">
+          <button class="faq-q" aria-expanded="false">
+            Qual o formato do produto?
+            <span class="faq-icon">+</span>
+          </button>
+        </h3>
+        <div class="faq-body">
+          <div class="faq-bi">O produto principal é um checklist prático em formato digital com todos os passos organizados. No plano completo, você também tem acesso a videoaulas passo a passo, prompts de IA e materiais complementares, tudo dentro da área de membros.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <h3 class="faq-q-h">
+          <button class="faq-q" aria-expanded="false">
+            Em quanto tempo vejo resultados?
+            <span class="faq-icon">+</span>
+          </button>
+        </h3>
+        <div class="faq-body">
+          <div class="faq-bi">Depende do estado atual da sua ficha. Fichas que partem do zero costumam mostrar resultados em 7 a 30 dias após a otimização completa. Fichas que já existem mas estão incompletas podem melhorar o posicionamento em dias. Os resultados são reais, mas variam conforme a concorrência na sua região.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <h3 class="faq-q-h">
+          <button class="faq-q" aria-expanded="false">
+            E se eu não gostar ou não obter resultados?
+            <span class="faq-icon">+</span>
+          </button>
+        </h3>
+        <div class="faq-body">
+          <div class="faq-bi">Você tem 30 dias de garantia total. Se por qualquer motivo não ficar satisfeito ou não conseguir resultados ao aplicar o método, devolvemos 100% do valor. Sem burocracia, sem questionamentos.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-inner">
+    <div class="foot-top">
+      <div>
+        <div class="foot-brand">Maturare Academy</div>
+        <p class="foot-tag">Método prático para donos de negócio que querem ser encontrados no Google e recomendados pelos clientes certos.</p>
+      </div>
+      <div>
+        <div class="fcol-h">Academy</div>
+        <ul class="flinks">
+          <li><a href="#metodo">O Método</a></li>
+          <li><a href="#oferta">Planos</a></li>
+          <li><a href="#faq">Dúvidas</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="fcol-h">Maturare</div>
+        <ul class="flinks">
+          <li><a href="/maturare-seo/">Site Principal</a></li>
+          <li><a href="/maturare-seo/sobre/">Sobre</a></li>
+          <li><a href="/maturare-seo/contato/">Contato</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="foot-disclaimer">Os depoimentos apresentados são de clientes reais que utilizaram o produto. Resultados individuais variam conforme a aplicação do método, a concorrência local e outros fatores. A garantia de 30 dias é válida para todos os planos.</p>
+  </div>
+</footer>
+
+<!-- BOTTOM BAR -->
+<div class="bottom-bar" id="bottomBar">
+  <div class="bb-dock">
+    <span class="bb-text">Seu concorrente já aparece primeiro.</span>
+    <a href="#oferta" class="bb-btn">Ver os Planos →</a>
+  </div>
+</div>
+
+<script>
+  // Scroll progress
+  var prog = document.getElementById('scrollProg');
+  window.addEventListener('scroll', function() {
+    var pct = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+    prog.style.width = pct + '%';
+  }, { passive: true });
+
+  // Nav scrolled
+  var nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', function() {
+    nav.classList.toggle('scrolled', window.scrollY > 8);
+  }, { passive: true });
+
+  // Bottom bar
+  var bar = document.getElementById('bottomBar');
+  var footerEl = document.querySelector('footer');
+  var scrollObs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) bar.classList.remove('visible');
+    });
+  }, { threshold: 0.1 });
+  scrollObs.observe(footerEl);
+  window.addEventListener('scroll', function() {
+    if (window.scrollY > window.innerHeight * 0.5) {
+      bar.classList.add('visible');
+    } else {
+      bar.classList.remove('visible');
+    }
+  }, { passive: true });
+
+  // Reveal animations
+  var revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+  var revObs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) { e.target.classList.add('in'); revObs.unobserve(e.target); }
+    });
+  }, { rootMargin: '0px 0px -80px 0px', threshold: 0.1 });
+  revealEls.forEach(function(el) { revObs.observe(el); });
+
+  // Word blur reveal
+  var quoteObs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        var words = e.target.querySelectorAll('.wb');
+        words.forEach(function(w, i) {
+          setTimeout(function() { w.classList.add('visible'); }, i * 60);
+        });
+        quoteObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  var quoteSec = document.querySelector('.wd-quote-sec');
+  if (quoteSec) quoteObs.observe(quoteSec);
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-q').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var item = this.closest('.faq-item');
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(function(i) { i.classList.remove('open'); });
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+</script>
+</body>
+</html>
