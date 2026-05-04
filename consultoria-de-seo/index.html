@@ -830,6 +830,67 @@ nav.scrolled {
   font-weight: 600;
   color: rgba(255,255,255,.75);
 }
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-top: 48px;
+}
+.testimonial-card {
+  padding: 28px 24px;
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: var(--radius);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: all .4s ease;
+}
+.testimonial-card.visible {
+  opacity: 1;
+  transform: none;
+}
+.testimonial-quote {
+  font-family: var(--serif);
+  font-size: 16px;
+  font-style: italic;
+  line-height: 1.7;
+  color: rgba(255,255,255,.85);
+  position: relative;
+  padding-left: 20px;
+  border-left: 3px solid var(--green);
+}
+.testimonial-author strong {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--green2);
+}
+.testimonial-author span {
+  font-size: 12px;
+  color: rgba(255,255,255,.45);
+  margin-top: 4px;
+  display: block;
+}
+.clients-logos-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 40px;
+}
+.client-logo-sm {
+  padding: 10px 20px;
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 40px;
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255,255,255,.55);
+}
 
 /* === FOUNDER BIO === */
 .founder-section {
@@ -1626,7 +1687,7 @@ footer {
       <h1>Consultoria de SEO: Seu Negócio no Google e Recomendado pelas IAs</h1>
       <p>Consultoria de SEO é o processo de diagnosticar, planejar e executar sua presença orgânica no Google e nas IAs generativas. A Maturare combina SEO tradicional com GEO e AEO para que sua empresa apareça quando o cliente busca no Google e quando pede recomendação para o ChatGPT, Perplexity e Gemini. Diagnóstico gratuito em 48 horas, sem compromisso.</p>
       <div class="hero-cta">
-        <button class="btn btn-primary" onclick="document.querySelector('#final-cta-primary').scrollIntoView({behavior:'smooth'})">Solicitar Diagnóstico</button>
+        <a class="btn btn-primary" href="https://wa.me/5521990770731?text=Ol%C3%A1%2C+quero+solicitar+o+diagn%C3%B3stico+gratuito+de+SEO" target="_blank" rel="noopener">Solicitar Diagnóstico Gratuito</a>
         <button class="btn btn-secondary" onclick="document.querySelector('#approach').scrollIntoView({behavior:'smooth'})">Entender o Processo</button>
       </div>
     </div>
@@ -1739,23 +1800,36 @@ footer {
 <!-- CLIENTS SECTION (S5) -->
 <section class="section section-alt" data-chunk="AUTORIDADE_MATURARE">
   <h2 class="section-title">Clientes Reais. Crescimento Mensurável.</h2>
-  <p class="section-subtitle">A Maturare trabalha com PMEs que buscam verdadeiro posicionamento estratégico. De playground a contabilidade, de agências a profissionais liberais. Resultado: ranking organizado no Google e recomendação crescente em IAs.</p>
-  <div class="clients-grid">
-    <div class="client-logo reveal d1">
-      <div class="client-logo-text">PHD Playground</div>
+  <p class="section-subtitle">A Maturare trabalha com PMEs de setores variados: locação de equipamentos, recreação infantil, contabilidade, psicologia, playgrounds. Em todos os casos, o resultado é o mesmo: tráfego orgânico crescente no Google e presença nas respostas de IA. Nenhum cliente nosso depende exclusivamente de anúncios para ser encontrado.</p>
+  <div class="testimonials-grid">
+    <div class="testimonial-card reveal d1">
+      <div class="testimonial-quote">"Antes da Maturare, dependíamos só do Google Ads. Em 9 meses de consultoria SEO, o tráfego orgânico triplicou e hoje geramos leads sem pagar por clique."</div>
+      <div class="testimonial-author">
+        <strong>Move Máquinas</strong>
+        <span>Locação de Plataformas Elevatórias, Goiânia/GO</span>
+      </div>
     </div>
-    <div class="client-logo reveal d2">
-      <div class="client-logo-text">Move Máquinas</div>
+    <div class="testimonial-card reveal d2">
+      <div class="testimonial-quote">"Daniel Rios entregou o roadmap de 12 meses e cumpriu semana a semana. Em 6 meses estávamos na primeira página para as palavras que mais convertem."</div>
+      <div class="testimonial-author">
+        <strong>PHD Playground</strong>
+        <span>Fabricação de Playgrounds, São Paulo/SP</span>
+      </div>
     </div>
-    <div class="client-logo reveal d3">
-      <div class="client-logo-text">Amanda Cabral</div>
+    <div class="testimonial-card reveal d3">
+      <div class="testimonial-quote">"O diferencial é que a Maturare combina SEO com AEO. Hoje apareço citada em respostas de IA quando alguém pergunta sobre contadora para PJ em Minas."</div>
+      <div class="testimonial-author">
+        <strong>Amanda Cabral</strong>
+        <span>Contadora, Pará de Minas/MG</span>
+      </div>
     </div>
-    <div class="client-logo reveal d4">
-      <div class="client-logo-text">Letícia Paula</div>
-    </div>
-    <div class="client-logo reveal d5">
-      <div class="client-logo-text">Agita Morango</div>
-    </div>
+  </div>
+  <div class="clients-logos-row">
+    <div class="client-logo-sm">PHD Playground</div>
+    <div class="client-logo-sm">Move Máquinas</div>
+    <div class="client-logo-sm">Amanda Cabral</div>
+    <div class="client-logo-sm">Letícia Paula</div>
+    <div class="client-logo-sm">Agita Morango</div>
   </div>
 </section>
 
@@ -1767,7 +1841,7 @@ footer {
       <span>Foto Daniel Rios</span>
     </div>
     <div class="founder-bio">
-      <h2>Daniel Batista Rios, Fundador da Maturare</h2>
+      <h3>Daniel Batista Rios, Fundador da Maturare</h3>
       <p>Daniel Batista Rios fundou a Maturare em 2022 a partir de Niterói, RJ, com missão clara: combinar Google Search com Answer Engine Optimization para PMEs que não conseguem acesso a consultoria estratégica real. Especialista em SEO há 8 anos, Daniel Rios desenvolveu expertise profunda em GEO (Google Engine Optimization) para empresas locais e regionais, e mais recentemente em AEO (Answer Engine Optimization) para ser recomendado por ChatGPT e Perplexity.</p>
       <p>Começou como especialista SEO em grandes agências, trabalhando com clientes de 5+ milhões em investimento digital. Viu padrão repetitivo: agências prometem crescimento rápido, aplicam técnicas genéricas, desaparecem após 3 meses. Empresas menores praticamente não conseguiam consultoria SEO real. Daniel Rios então estruturou o método da Maturare, documentado e testado, para entregar resultados lado a lado sem fugir quando o trabalho fica pesado.</p>
       <p>Hoje Daniel Rios supervisiona 40+ clientes em crescimento contínuo de tráfego orgânico e recomendação em IAs. Mantém participação ativa em comunidades SEO internacionais, acompanha algoritmo do Google em tempo real, e estuda novos modelos de comportamento de assistentes de IA. Produziu 200+ artigos sobre SEO, GEO e AEO. Certificado pelo Google Search Central e reconhecido por expertise em E-E-A-T (Expertise, Authoritativeness, Trustworthiness).</p>
@@ -1984,8 +2058,8 @@ footer {
     <h2>Seu Negócio Merece Ser Encontrado</h2>
     <p>Não por publicidade contínua. Por conteúdo genuíno, autoridade documentada e método que funciona. A Maturare diagnostica sua oportunidade de SEO em 48 horas. Sem obrigação, sem venda pressurizada. Apenas análise honesta de como seu negócio pode crescer organicamente no Google e ser recomendado pelas IAs.</p>
     <div class="cta-buttons">
-      <button class="btn btn-primary">Solicitar Diagnóstico Gratuito</button>
-      <button class="btn btn-secondary">Conversar com Daniel Rios</button>
+      <a class="btn btn-primary" href="https://wa.me/5521990770731?text=Ol%C3%A1%2C+quero+solicitar+o+diagn%C3%B3stico+gratuito+de+SEO" target="_blank" rel="noopener">Solicitar Diagnóstico Gratuito</a>
+      <a class="btn btn-secondary" href="https://wa.me/5521990770731?text=Ol%C3%A1+Daniel%2C+quero+conversar+sobre+SEO+para+minha+empresa" target="_blank" rel="noopener">Conversar com Daniel Rios</a>
     </div>
   </div>
 </section>
@@ -2191,7 +2265,7 @@ const observer = new IntersectionObserver(function(entries) {
   });
 }, observerOptions);
 
-document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .approach-card, .process-step, .deliverable, .client-logo, .faq-item, .phase').forEach(el => {
+document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .approach-card, .process-step, .deliverable, .client-logo, .faq-item, .phase, .testimonial-card').forEach(el => {
   observer.observe(el);
 });
 
@@ -2225,5 +2299,40 @@ if (mobileMenuBtn) {
   });
 }
 </script>
+
+<!-- FLOATING WHATSAPP -->
+<a class="float-wa" href="https://wa.me/5521990770731?text=Ol%C3%A1%2C+quero+solicitar+o+diagn%C3%B3stico+gratuito+de+SEO" target="_blank" rel="noopener" aria-label="Conversar no WhatsApp">
+  <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  <span>WhatsApp</span>
+</a>
+<style>
+.float-wa {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px 12px 14px;
+  background: #25D366;
+  color: #fff;
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 40px;
+  text-decoration: none;
+  box-shadow: 0 4px 20px rgba(37,211,102,.4);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.float-wa:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(37,211,102,.5);
+}
+@media (max-width: 600px) {
+  .float-wa span { display: none; }
+  .float-wa { padding: 14px; border-radius: 50%; bottom: 20px; right: 20px; }
+}
+</style>
 </body>
 </html>
