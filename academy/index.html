@@ -1379,7 +1379,10 @@ footer {
 
 /* P0.2 — footer: esconder duplicatas mobile */
 .foot-col-legal-mobile, .foot-copyright-mobile { display: none; }
-@media (max-width: 960px) { .foot-col-legal-mobile { display: block; } }
+@media (max-width: 960px) {
+  .foot-col-legal-mobile { display: block; }
+  .foot-bot { display: none; }
+}
 @media (max-width: 480px) {
   .foot-copyright-mobile { display: block; font-size: 12px; color: rgba(255,255,255,.28); text-align: center; padding: 0 24px 24px; }
 }
@@ -1460,6 +1463,7 @@ footer {
   .fcol-h { font-size: 11px; margin-bottom: 10px; }
   .flinks { gap: 8px; }
   .flinks a { font-size: 13px; }
+  .foot-col-disclaimer-mobile { font-size: 11px; color: rgba(255,255,255,.28); margin-top: 12px; line-height: 1.5; }
 }
 @media (max-width: 480px) {
   .flinks a { padding: 6px 0; display: inline-block; }
