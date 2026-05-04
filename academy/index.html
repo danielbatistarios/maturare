@@ -1453,6 +1453,17 @@ footer {
 @media (max-width: 960px) {
   nav { padding-top: env(safe-area-inset-top, 0px); height: calc(62px + env(safe-area-inset-top, 0px)); }
 }
+
+/* Footer — alinhamento com home em mobile */
+@media (max-width: 960px) {
+  .foot-tag { font-size: 13px; margin-bottom: 0; }
+  .fcol-h { font-size: 11px; margin-bottom: 10px; }
+  .flinks { gap: 8px; }
+  .flinks a { font-size: 13px; }
+}
+@media (max-width: 480px) {
+  .flinks a { padding: 6px 0; display: inline-block; }
+}
 </style>
 
 <script type="application/ld+json">
