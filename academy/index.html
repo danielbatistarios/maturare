@@ -644,7 +644,9 @@ nav.scrolled {
 .hero-badge {
   display: inline-flex;
   align-items: center;
-  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px 16px;
   background: rgba(255,255,255,.03);
   border: 1px solid var(--border-z2);
   border-radius: var(--r-pill);
@@ -656,7 +658,7 @@ nav.scrolled {
   opacity: 0;
   animation: up .8s .7s var(--spring) forwards;
 }
-.hero-badge span { display: flex; align-items: center; gap: 6px; }
+.hero-badge span { display: flex; align-items: center; gap: 6px; white-space: nowrap; }
 .hero-badge .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--green2); }
 
 /* === PARA QUEM === */
@@ -1352,6 +1354,81 @@ footer {
   .whatsapp-grid { grid-template-columns: 1fr 1fr; }
   .videos-grid { grid-template-columns: 1fr; }
   .video-short-wrap { aspect-ratio: 9/14; }
+}
+
+/* === MOBILE PATCH — 2026-05-03 (score 67→85) === */
+
+/* P0.1 — hover guard: anula transforms em touch primeiro, reaplica em hover:hover */
+.btn-p:hover, .btn-green:hover, .btn-outline:hover,
+.topic-card:hover, .product-card:hover, .cred-photo-wrap:hover img { transform: none; }
+.btn-p:hover, .btn-green:hover { box-shadow: none; }
+.pq-card:hover { border-color: var(--border-z2); box-shadow: var(--toplight); }
+.mm-link:hover, .mm-blog-link:hover { padding-left: 0; }
+@media (hover: hover) {
+  .btn-p:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 8px 32px rgba(244,243,239,.14), 0 2px 8px rgba(244,243,239,.08); }
+  .btn-green:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 8px 32px rgba(26,122,74,.3), 0 2px 8px rgba(26,122,74,.15); }
+  .btn-outline:hover { transform: translateY(-2px); border-color: rgba(255,255,255,.2); background: rgba(255,255,255,.04); }
+  .topic-card:hover { border-color: rgba(26,122,74,.2); transform: translateY(-4px); }
+  .product-card:hover { border-color: rgba(26,122,74,.2); transform: translateY(-6px); }
+  .pq-card:hover { border-color: var(--border-z3); box-shadow: var(--toplight-strong), var(--shadow-2); }
+  .cred-photo-wrap:hover img { transform: scale(1.03); }
+  .product-cta:hover { gap: 14px; }
+  .mm-link:hover { padding-left: 5px; }
+  .mm-blog-link:hover { padding-left: 5px; }
+}
+
+/* P0.2 — footer: esconder duplicatas mobile */
+.foot-col-legal-mobile, .foot-copyright-mobile { display: none; }
+@media (max-width: 960px) { .foot-col-legal-mobile { display: block; } }
+@media (max-width: 480px) {
+  .foot-copyright-mobile { display: block; font-size: 12px; color: rgba(255,255,255,.28); text-align: center; padding: 0 24px 24px; }
+}
+
+/* P1.1 — vídeos portrait: limitar altura */
+@media (max-width: 480px) {
+  .video-short-wrap { aspect-ratio: 3/4; max-height: 400px; }
+}
+
+/* P1.2 — hamburger: área de toque 44px */
+@media (max-width: 960px) {
+  .hamburger { padding: 10px 8px; margin: -6px -4px; }
+}
+
+/* P1.3 — megamenu: forçar oculto em mobile */
+@media (max-width: 960px) {
+  .mm-panel { display: none !important; }
+}
+
+/* P1.4 — product-cta: área de toque */
+.product-cta { padding: 10px 0; }
+
+/* P2.1 — faq: font menor em mobile */
+@media (max-width: 480px) {
+  .faq-q { font-size: 17px; padding: 20px 0; }
+}
+
+/* P2.2 — faq body: max-height maior */
+.faq-item.open .faq-body { max-height: 500px; }
+
+/* P2.3 — sec-desc: 16px em mobile */
+@media (max-width: 480px) {
+  .sec-desc { font-size: 16px; }
+}
+
+/* P2.4 — fotos credenciais: min-height menor */
+@media (max-width: 480px) {
+  .cred-photo-wrap.tall { min-height: 220px; }
+  .cred-photo-wrap.short { min-height: 160px; }
+}
+
+/* P2.5 — stats: último item span completo */
+@media (max-width: 480px) {
+  .stat-item:last-child { grid-column: 1 / -1; }
+}
+
+/* P2.6 — nav safe-area iOS */
+@media (max-width: 960px) {
+  nav { padding-top: env(safe-area-inset-top, 0px); height: calc(62px + env(safe-area-inset-top, 0px)); }
 }
 </style>
 
