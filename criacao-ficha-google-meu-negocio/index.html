@@ -940,6 +940,79 @@ section.light-white .testi-quote { color: var(--ink); }
 section.light-white .testi-attr { color: var(--dim); }
 section.light-white .testi-detail { color: #aaa; }
 
+/* === COMO O CLIENTE ENCONTRA === */
+.search-types {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 48px;
+}
+.search-type-card {
+  background: var(--z0);
+  border: 1px solid rgba(255,255,255,.07);
+  border-radius: 12px;
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: border-color .25s;
+}
+.search-type-card:hover { border-color: rgba(26,122,74,.35); }
+.st-badge {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(26,122,74,.15);
+  border: 1px solid rgba(26,122,74,.3);
+  color: var(--green2);
+  font-size: .85rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.st-title {
+  font-family: 'Instrument Serif', serif;
+  font-size: 1.2rem;
+  color: #fff;
+  margin: 0;
+}
+.st-query {
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-size: .82rem;
+  color: #aaa;
+  font-family: 'DM Sans', sans-serif;
+  font-style: italic;
+}
+.st-desc {
+  font-size: .9rem;
+  color: var(--dim);
+  line-height: 1.6;
+  margin: 0;
+  flex: 1;
+}
+.st-result {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: .82rem;
+  font-weight: 600;
+  color: var(--green2);
+}
+.st-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.st-dot.green { background: var(--green2); }
+@media (max-width: 960px) {
+  .search-types { grid-template-columns: 1fr; }
+}
+
 /* === FAQ === */
 .faq-list { max-width: 800px; margin-top: clamp(40px, 5vw, 56px); }
 .faq-item { border-bottom: 1px solid var(--border-z2); }
@@ -1208,6 +1281,16 @@ footer {
           "@type": "Question",
           "name": "O que diferencia a otimização da Maturare da de outras agências?",
           "acceptedAnswer": { "@type": "Answer", "text": "Trabalhamos com estratégia de palavras-chave local integrada ao SEO do site. Isso significa que a ficha e o site se reforçam mutuamente, aumentando a autoridade local da empresa e não apenas a visibilidade isolada no mapa." }
+        },
+        {
+          "@type": "Question",
+          "name": "Minha empresa não tem endereço físico. Posso ter ficha no Google?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Sim. Empresas que atendem em domicílio, prestadores de serviço e negócios remotos podem ter ficha no Google configurada como área de atendimento, sem precisar exibir endereço residencial. A Maturare faz essa configuração corretamente para evitar suspensões." }
+        },
+        {
+          "@type": "Question",
+          "name": "Posso gerenciar minha ficha pelo celular depois da entrega?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Sim. O Google disponibiliza o app Google Meu Negócio para iOS e Android. Por ele você publica promoções, responde avaliações, envia fotos e acompanha métricas. Após a entrega, você recebe acesso de gerenciamento e um guia prático de uso." }
         }
       ]
     }
@@ -1574,8 +1657,8 @@ footer {
         <p class="metric-label">mais cliques para quem aparece no Top 3 do mapa vs. o 4º lugar</p>
       </div>
       <div class="metric-item">
-        <div class="metric-num">70%</div>
-        <p class="metric-label">dos consumidores confiam mais em empresas com perfil completo no Google</p>
+        <div class="metric-num">96%</div>
+        <p class="metric-label">dos brasileiros pesquisam no Google antes de contatar uma empresa</p>
       </div>
     </div>
   </div>
@@ -1605,7 +1688,7 @@ footer {
         </div>
         <div>
           <p class="pain-title">Ficha sem fotos reais</p>
-          <p class="pain-desc">Empresas sem fotos têm 35% menos cliques. O cliente precisa ver antes de ligar.</p>
+          <p class="pain-desc">Fichas com fotos recebem 42% mais pedidos de rota e 35% mais cliques no site. Sem foto, o cliente passa direto.</p>
         </div>
       </div>
       <div class="pain-card reveal d3">
@@ -1751,6 +1834,41 @@ footer {
         <p class="proc-desc">Posts semanais, resposta a avaliações, atualização de informações sazonais e relatórios mensais de desempenho no mapa.</p>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- 5.5 COMO O CLIENTE TE ENCONTRA -->
+<!-- ============================================ -->
+<section class="raised sec-pad" id="como-cliente-encontra">
+  <div class="container">
+    <p class="sec-label lt reveal">Na prática</p>
+    <h2 class="sec-h reveal d1">Três formas como o cliente<br><em>chega até você pelo Google</em></h2>
+    <p class="sec-desc reveal d2" style="margin-top:16px;">Seu cliente não digita o nome da sua empresa. Ele digita o que precisa. Uma ficha bem otimizada aparece nos três cenários abaixo.</p>
+    <div class="search-types reveal d3">
+      <div class="search-type-card">
+        <div class="st-badge">1</div>
+        <p class="st-title">Serviço + Cidade</p>
+        <div class="st-query">"escritório de contabilidade em Belo Horizonte"</div>
+        <p class="st-desc">O tipo de busca mais comum. O cliente sabe o que quer e onde está. Uma ficha com categoria e localização corretas aparece no mapa imediatamente.</p>
+        <div class="st-result"><span class="st-dot green"></span>Aparece no Top 3 do mapa</div>
+      </div>
+      <div class="search-type-card">
+        <div class="st-badge">2</div>
+        <p class="st-title">Marca</p>
+        <div class="st-query">"Clínica Saúde Plena Rio de Janeiro"</div>
+        <p class="st-desc">O cliente já ouviu falar. Pesquisa pelo nome para confirmar endereço, horário ou avaliações antes de ir. Seu painel lateral precisa estar impecável.</p>
+        <div class="st-result"><span class="st-dot green"></span>Painel de destaque no lado direito</div>
+      </div>
+      <div class="search-type-card">
+        <div class="st-badge">3</div>
+        <p class="st-title">Categoria</p>
+        <div class="st-query">"seguro de carro barato"</div>
+        <p class="st-desc">O cliente pesquisa por categoria sem nomear cidade. O Google usa a localização atual dele para mostrar negócios próximos. Raio de cobertura depende da otimização.</p>
+        <div class="st-result"><span class="st-dot green"></span>Listagem com destaque de relevância</div>
+      </div>
+    </div>
+    <p class="pain-close reveal" style="margin-top:48px;">Uma ficha mal configurada some em qualquer desses três cenários. <strong>Uma ficha Maturare aparece nos três.</strong></p>
   </div>
 </section>
 
@@ -1925,7 +2043,25 @@ footer {
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
         </button>
         <div class="faq-a" role="region">
-          <p class="faq-a-inner">A ferramenta é gratuita. O conhecimento de como usá-la para dominar o mapa na sua cidade não é. O mesmo acontece com o Excel, que é gratuito, mas poucos sabem usar de forma estratégica. A Maturare traz 5 anos de experiência em otimização local para transformar sua ficha em máquina de geração de clientes.</p>
+          <p class="faq-a-inner">A ferramenta é gratuita. O conhecimento de como usá-la para dominar o mapa na sua cidade não é. O mesmo acontece com o Excel, que é gratuito, mas poucos sabem usar de forma estratégica. A Maturare traz anos de experiência em otimização local para transformar sua ficha em máquina de geração de clientes.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Minha empresa não tem endereço físico. Posso ter ficha no Google?
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </button>
+        <div class="faq-a" role="region">
+          <p class="faq-a-inner">Sim. Empresas que atendem em domicílio, prestadores de serviço e negócios remotos podem ter ficha no Google configurada como área de atendimento, sem precisar exibir endereço residencial. A Maturare faz essa configuração corretamente para evitar suspensões.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Posso gerenciar minha ficha pelo celular depois da entrega?
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </button>
+        <div class="faq-a" role="region">
+          <p class="faq-a-inner">Sim. O Google disponibiliza o app Google Meu Negócio para iOS e Android. Por ele você publica promoções, responde avaliações, envia fotos e acompanha métricas. Após a entrega, você recebe acesso de gerenciamento e um guia prático de uso.</p>
         </div>
       </div>
     </div>
